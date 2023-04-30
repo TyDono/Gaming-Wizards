@@ -213,7 +213,7 @@ struct SignInView: View {
 //            authenticationViewModel.signInWithGoogle()
             signInWithGoogleCoordinator.signInWithGoogle()
         }) {
-            Image("btn_google_signin_light_normal_text")
+            Image("btn_google_signin_light_normal_web")
 //                .aspectRatio(contentMode: .fit)
         }
     }
