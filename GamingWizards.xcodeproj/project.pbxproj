@@ -104,6 +104,7 @@
 		CB5BE8F829FDEA9C009D38D6 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8F729FDEA9C009D38D6 /* FirebaseRemoteConfigSwift */; };
 		CB5BE8FA29FDEA9C009D38D6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8F929FDEA9C009D38D6 /* FirebaseStorage */; };
 		CB5BE8FC29FDEA9C009D38D6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8FB29FDEA9C009D38D6 /* FirebaseStorageCombine-Community */; };
+		CB5BE8FF29FDFD29009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE8FE29FDFD29009D38D6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,7 @@
 		CB5BE87A29FDE956009D38D6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		CB5BE87B29FDE957009D38D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB5BE87D29FDE957009D38D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CB5BE8FE29FDFD29009D38D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +344,7 @@
 		CB5BE83A29FDE955009D38D6 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
+				CB5BE8FE29FDFD29009D38D6 /* GoogleService-Info.plist */,
 			);
 			path = Plist;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			files = (
 				CB5BE8BD29FDE958009D38D6 /* Preview Assets.xcassets in Resources */,
 				CB5BE8BC29FDE958009D38D6 /* Assets.xcassets in Resources */,
+				CB5BE8FF29FDFD29009D38D6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +881,7 @@
 				DEVELOPMENT_TEAM = D6AZ3B5HRK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -906,6 +911,7 @@
 				DEVELOPMENT_TEAM = D6AZ3B5HRK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

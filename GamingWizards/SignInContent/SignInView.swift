@@ -46,6 +46,10 @@ struct SignInView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
+            Image("gaming-wizard")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
 //            LinearGradient(gradient: Gradient(colors: [Colors.foodiBrown, Colors.foodiYellow]), startPoint: .bottomLeading, endPoint: .topTrailing)
 //                .edgesIgnoringSafeArea(.all)
 //                .cornerRadius(15)
@@ -158,7 +162,7 @@ struct SignInView: View {
 //    }
     
     private var titleLabel: some View {
-        Text("FOODiii")
+        Text("Gaming Wizard")
             .foregroundColor(Colors.green)
             .fontWeight(.black)
             .foregroundColor(Color(.systemIndigo))
