@@ -1,6 +1,6 @@
 //
 //  AuthenticationViewModel.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 9/19/22.
 //

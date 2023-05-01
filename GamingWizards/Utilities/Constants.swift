@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 7/7/22.
 //
@@ -35,8 +35,8 @@ enum Colors {
     static let red10 = Color(red: 255/255, green: 0/255, blue: 0/255).opacity(0.1)
     static let redLight = Color(red: 226/255, green: 108/255, blue: 123/255)
     
-    static let foodiBrown = Color(red: 166/255, green: 113/255, blue: 0/255)
-    static let foodiYellow = Color(red: 255/255, green: 209/255, blue: 0/255)
+    static let GamingWizardsBrown = Color(red: 166/255, green: 113/255, blue: 0/255)
+    static let GamingWizardsYellow = Color(red: 255/255, green: 209/255, blue: 0/255)
     
     static let black70 = Color(red: 0/255, green: 0/255, blue: 0/255).opacity(0.7)
     static let black26 = Color(red: 0/255, green: 0/255, blue: 0/255).opacity(0.26)

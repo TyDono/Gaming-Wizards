@@ -1,6 +1,6 @@
 //
 //  FoodThemeSelectionViewModel.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 3/30/23.
 //

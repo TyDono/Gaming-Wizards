@@ -1,6 +1,6 @@
 //
 //  DataManager.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 1/23/23.
 //

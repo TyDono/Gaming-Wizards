@@ -1,6 +1,6 @@
 //
 //  CoreDataManager.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 2/27/23.
 //
@@ -16,7 +16,7 @@
 //    }
 //
 //    private init() {
-//        persistentContainer = NSPersistentContainer(name: "FoodiiiContainer")
+//        persistentContainer = NSPersistentContainer(name: "GamingWizardsContainer")
 //        persistentContainer.loadPersistentStores { (description, err) in
 //            if let error = err {
 //                fatalError("UNABLE TO INITIALIZE CORE DATA STACK: \(error)")

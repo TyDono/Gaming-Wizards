@@ -1,6 +1,6 @@
 //
 //  PublishersExtension.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 6/29/22.
 //

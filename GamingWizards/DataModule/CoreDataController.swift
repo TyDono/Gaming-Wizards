@@ -1,6 +1,6 @@
 //
 //  CoreDataController.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 11/14/22.
 //
@@ -26,7 +26,7 @@ class CoreDataController: ObservableObject {
     @Published var savedUser: UserEntity?
     
     init() {
-        persistentContainer = NSPersistentContainer(name: "FoodiiiContainer")
+        persistentContainer = NSPersistentContainer(name: "GamingWizardsContainer")
         persistentContainer.loadPersistentStores { description, err in
             if let error = err {
                 print("ERROR LOADING CORE DATA: \(error.localizedDescription)")

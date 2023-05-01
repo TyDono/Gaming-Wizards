@@ -1,6 +1,6 @@
 //
 //  Navigation.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 9/28/22.
 //
@@ -10,14 +10,14 @@ import SwiftUI
 
 class Navigation {
     
-    enum foodiiiViews { // alphabetize
+    enum GamingWizardsViews { // alphabetize
         case settingsView
         
         case homeView
         case navigationLogInView
     }
     
-//    func getView(view: foodiiiViews) -> some View {
+//    func getView(view: GamingWizardsViews) -> some View {
 //        switch view { // make exhaustive
 //        case .settingsView:
 //            return AnyView(ChoiceOneView(view: SettingsView()))

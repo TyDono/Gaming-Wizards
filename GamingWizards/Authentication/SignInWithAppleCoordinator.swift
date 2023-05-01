@@ -1,6 +1,6 @@
 //
 //  SignInWithAppleCoordinator.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 7/7/22.
 //
@@ -150,8 +150,8 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
         //this need app delegate to work i have disabled it for now
 //        guard let userId = Auth.auth().currentUser?.uid else { return }
 //        let imageURLString = ""
-//        let message: String = AppDelegate.foodiUserSignupNotificationGreeting
-//        let notification = FoodiNotification(type: .foodiNotification,
+//        let message: String = AppDelegate.GamingWizardsUserSignupNotificationGreeting
+//        let notification = GamingWizardsNotification(type: .foodiNotification,
 //                                          imageUrl: imageURLString,
 //                                          message: message,
 //                                          datePosted: Date().dateToUTC,

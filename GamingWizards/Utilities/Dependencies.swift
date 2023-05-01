@@ -1,6 +1,6 @@
 //
 //  Dependencies.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 4/5/23.
 //

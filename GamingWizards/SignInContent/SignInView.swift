@@ -1,6 +1,6 @@
 //
 //  SignInView.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 6/28/22.
 //
@@ -50,7 +50,7 @@ struct SignInView: View {
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-//            LinearGradient(gradient: Gradient(colors: [Colors.foodiBrown, Colors.foodiYellow]), startPoint: .bottomLeading, endPoint: .topTrailing)
+//            LinearGradient(gradient: Gradient(colors: [Colors.GamingWizardsBrown, Colors.GamingWizardsYellow]), startPoint: .bottomLeading, endPoint: .topTrailing)
 //                .edgesIgnoringSafeArea(.all)
 //                .cornerRadius(15)
 //                .overlay(

@@ -1,6 +1,6 @@
 //
 //  SessionStore.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 7/11/22.
 //

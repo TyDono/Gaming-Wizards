@@ -1,6 +1,6 @@
 //
 //  FontModifier.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 6/28/22.
 //

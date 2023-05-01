@@ -1,6 +1,6 @@
 //
-//  FoodiiiApp.swift
-//  Foodiii
+//  GamingWizardsApp.swift
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 6/27/22.
 //
@@ -16,7 +16,7 @@ import FirebaseAnalytics
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var session = SessionStore()
-    static let foodiUserSignupNotificationGreeting: String = "Welcome "
+    static let GamingWizardsUserSignupNotificationGreeting: String = "Welcome "
 //    @ObservedObject var user = UserObservable()
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -62,8 +62,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 //    func notificationSignup() {
 //        guard let userId = Auth.auth().currentUser?.uid else { return }
 //        let imageURLString = "" //add a image url string here from firebase
-//        let message: String = AppDelegate.foodiUserSignupNotificationGreeting
-//        let notification = FoodiNotification(type: .foodiNotification,
+//        let message: String = AppDelegate.GamingWizardsUserSignupNotificationGreeting
+//        let notification = GamingWizardsNotification(type: .foodiNotification,
 //                                          imageUrl: imageURLString,
 //                                          message: message,
 //                                          datePosted: Date().dateToUTC,
@@ -122,7 +122,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
  
 
 //@main
-//struct FoodiiiApp: App {
+//struct GamingWizardsApp: App {
 //
 //    @StateObject var viewModel = AuthenticationViewModel()
 //
@@ -139,7 +139,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
 
 @main
-struct FoodiiiApp: App {
+struct GamingWizardsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 //    let persistenceController = PersistenceController.shared
     @StateObject var coreDataController = CoreDataController.shared
@@ -163,7 +163,7 @@ struct FoodiiiApp: App {
     }
 }
 
-//extension FoodiiiApp {
+//extension GamingWizardsApp {
 //    private func setupAuthentication() {
 //        FirebaseApp.configure()
 ////        MyFirebase.shared.addUserListender(loggedIn: false)

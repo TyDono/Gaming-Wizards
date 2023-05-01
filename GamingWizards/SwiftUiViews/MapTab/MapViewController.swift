@@ -1,6 +1,6 @@
 //
 //  MapViewController.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 12/5/22.
 //

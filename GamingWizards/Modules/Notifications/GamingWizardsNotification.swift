@@ -1,6 +1,6 @@
 //
 //  FoodiNotification.swift
-//  Foodiii
+//  GamingWizards
 //
 //  Created by Tyler Donohue on 7/11/22.
 //
@@ -9,7 +9,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import SwiftUI
 
-struct FoodiNotification: Identifiable, Equatable {
+struct GamingWizardsNotification: Identifiable, Equatable {
     var id: String? = UUID().uuidString
     let type: NotificationType
     let imageUrl: String
@@ -18,7 +18,7 @@ struct FoodiNotification: Identifiable, Equatable {
     let intelId: String
     var isRead = false
     
-    static func ==(lhs: FoodiNotification, rhs: FoodiNotification) -> Bool {
+    static func ==(lhs: GamingWizardsNotification, rhs: GamingWizardsNotification) -> Bool {
         return lhs.id == rhs.id
     }
 }
@@ -29,5 +29,5 @@ enum NotificationType: String {
 }
 
 final class NotificationViewModel: ObservableObject {
-    @Published var selectedNotification: FoodiNotification?
+    @Published var selectedNotification: GamingWizardsNotification?
 }
