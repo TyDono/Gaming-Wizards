@@ -196,6 +196,7 @@
 		CB5BE87B29FDE957009D38D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB5BE87D29FDE957009D38D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GamingWizards.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,7 +277,8 @@
 		CB5BE7FD29FDE8B7009D38D6 /* GamingWizards */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE87B29FDE957009D38D6 /* Assets.xcassets */,
+				CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */,
+				CB5BE9032A008296009D38D6 /* MiscAssets */,
 				CB5BE87529FDE956009D38D6 /* Authentication */,
 				CB5BE83B29FDE955009D38D6 /* DataModule */,
 				CB5BE84429FDE955009D38D6 /* Extensions */,
@@ -488,6 +490,14 @@
 				CB5BE87D29FDE957009D38D6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CB5BE9032A008296009D38D6 /* MiscAssets */ = {
+			isa = PBXGroup;
+			children = (
+				CB5BE87B29FDE957009D38D6 /* Assets.xcassets */,
+			);
+			path = MiscAssets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -875,6 +885,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GamingWizards/GamingWizards.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GamingWizards/Preview Content\"";
@@ -905,6 +916,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GamingWizards/GamingWizards.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GamingWizards/Preview Content\"";
