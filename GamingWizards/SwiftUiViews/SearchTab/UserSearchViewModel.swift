@@ -1,17 +1,16 @@
 //
-//  InvitationViewModel.swift
+//  UserSearchViewModel.swift
 //  GamingWizards
 //
-//  Created by Tyler Donohue on 10/10/22.
+//  Created by Tyler Donohue on 5/1/23.
 //
 
-import Foundation
+import Combine
 import SwiftUI
-import CoreData
+import Foundation
 
-
-extension InvitationView {
-    @MainActor class InvitationViewModel: ObservableObject {
+extension UserSearchView {
+    @MainActor class UserSearchViewModel: ObservableObject {
         @Published var messages = [Message]()
         @Published var searchText = ""
         @Published var searchScope = SearchScope.inbox

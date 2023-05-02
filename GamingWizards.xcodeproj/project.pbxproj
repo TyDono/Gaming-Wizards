@@ -37,8 +37,7 @@
 		CB5BE89629FDE958009D38D6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE84C29FDE955009D38D6 /* DateExtension.swift */; };
 		CB5BE89729FDE958009D38D6 /* FileManager-DocumentDirectoryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE84D29FDE955009D38D6 /* FileManager-DocumentDirectoryExtension.swift */; };
 		CB5BE89829FDE958009D38D6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE84F29FDE955009D38D6 /* MainTabView.swift */; };
-		CB5BE89929FDE958009D38D6 /* InvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85129FDE955009D38D6 /* InvitationViewModel.swift */; };
-		CB5BE89A29FDE958009D38D6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85229FDE955009D38D6 /* InvitationView.swift */; };
+		CB5BE89A29FDE958009D38D6 /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85229FDE955009D38D6 /* UserSearchView.swift */; };
 		CB5BE89B29FDE958009D38D6 /* HotPotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85429FDE955009D38D6 /* HotPotView.swift */; };
 		CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */; };
 		CB5BE89D29FDE958009D38D6 /* FoodThemeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85629FDE955009D38D6 /* FoodThemeSelectionViewModel.swift */; };
@@ -105,6 +104,7 @@
 		CB5BE8FA29FDEA9C009D38D6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8F929FDEA9C009D38D6 /* FirebaseStorage */; };
 		CB5BE8FC29FDEA9C009D38D6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8FB29FDEA9C009D38D6 /* FirebaseStorageCombine-Community */; };
 		CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */; };
+		CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,8 +158,7 @@
 		CB5BE84C29FDE955009D38D6 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CB5BE84D29FDE955009D38D6 /* FileManager-DocumentDirectoryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentDirectoryExtension.swift"; sourceTree = "<group>"; };
 		CB5BE84F29FDE955009D38D6 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		CB5BE85129FDE955009D38D6 /* InvitationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationViewModel.swift; sourceTree = "<group>"; };
-		CB5BE85229FDE955009D38D6 /* InvitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		CB5BE85229FDE955009D38D6 /* UserSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
 		CB5BE85429FDE955009D38D6 /* HotPotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotPotView.swift; sourceTree = "<group>"; };
 		CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsView.swift; sourceTree = "<group>"; };
 		CB5BE85629FDE955009D38D6 /* FoodThemeSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodThemeSelectionViewModel.swift; sourceTree = "<group>"; };
@@ -197,6 +196,8 @@
 		CB5BE87D29FDE957009D38D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GamingWizards.entitlements; sourceTree = "<group>"; };
+		CB5BE9042A0084A4009D38D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,19 +278,19 @@
 		CB5BE7FD29FDE8B7009D38D6 /* GamingWizards */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */,
-				CB5BE9032A008296009D38D6 /* MiscAssets */,
 				CB5BE87529FDE956009D38D6 /* Authentication */,
-				CB5BE83B29FDE955009D38D6 /* DataModule */,
+				CB5BE84E29FDE955009D38D6 /* SwiftUiViews */,
 				CB5BE84429FDE955009D38D6 /* Extensions */,
 				CB5BE86E29FDE956009D38D6 /* Models */,
 				CB5BE86429FDE955009D38D6 /* Modifiers */,
 				CB5BE82D29FDE954009D38D6 /* Modules */,
+				CB5BE83429FDE954009D38D6 /* SignInContent */,
+				CB5BE86829FDE956009D38D6 /* Utilities */,
+				CB5BE83B29FDE955009D38D6 /* DataModule */,
 				CB5BE83A29FDE955009D38D6 /* Plist */,
 				CB5BE87C29FDE957009D38D6 /* Preview Content */,
-				CB5BE83429FDE954009D38D6 /* SignInContent */,
-				CB5BE84E29FDE955009D38D6 /* SwiftUiViews */,
-				CB5BE86829FDE956009D38D6 /* Utilities */,
+				CB5BE9032A008296009D38D6 /* MiscAssets */,
+				CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */,
 			);
 			path = GamingWizards;
 			sourceTree = "<group>";
@@ -346,6 +347,7 @@
 		CB5BE83A29FDE955009D38D6 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
+				CB5BE9042A0084A4009D38D6 /* Info.plist */,
 				CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */,
 			);
 			path = Plist;
@@ -385,8 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE84F29FDE955009D38D6 /* MainTabView.swift */,
-				CB5BE85029FDE955009D38D6 /* OrderTab */,
-				CB5BE85329FDE955009D38D6 /* HostTab */,
+				CB5BE85029FDE955009D38D6 /* SearchTab */,
+				CB5BE85329FDE955009D38D6 /* Messages */,
 				CB5BE85829FDE955009D38D6 /* MapTab */,
 				CB5BE85B29FDE955009D38D6 /* MainTabViewModel.swift */,
 				CB5BE85C29FDE955009D38D6 /* AccountTab */,
@@ -394,16 +396,16 @@
 			path = SwiftUiViews;
 			sourceTree = "<group>";
 		};
-		CB5BE85029FDE955009D38D6 /* OrderTab */ = {
+		CB5BE85029FDE955009D38D6 /* SearchTab */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE85129FDE955009D38D6 /* InvitationViewModel.swift */,
-				CB5BE85229FDE955009D38D6 /* InvitationView.swift */,
+				CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */,
+				CB5BE85229FDE955009D38D6 /* UserSearchView.swift */,
 			);
-			path = OrderTab;
+			path = SearchTab;
 			sourceTree = "<group>";
 		};
-		CB5BE85329FDE955009D38D6 /* HostTab */ = {
+		CB5BE85329FDE955009D38D6 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
 				CB5BE85429FDE955009D38D6 /* HotPotView.swift */,
@@ -411,7 +413,7 @@
 				CB5BE85629FDE955009D38D6 /* FoodThemeSelectionViewModel.swift */,
 				CB5BE85729FDE955009D38D6 /* FoodThemeSelectionView.swift */,
 			);
-			path = HostTab;
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		CB5BE85829FDE955009D38D6 /* MapTab */ = {
@@ -699,11 +701,10 @@
 				CB5BE88C29FDE958009D38D6 /* Persistence.swift in Sources */,
 				CB5BE88A29FDE958009D38D6 /* CoreDataController.swift in Sources */,
 				CB5BE8AC29FDE958009D38D6 /* Constants.swift in Sources */,
-				CB5BE89929FDE958009D38D6 /* InvitationViewModel.swift in Sources */,
 				CB5BE8A929FDE958009D38D6 /* HideNavigationBar.swift in Sources */,
 				CB5BE89F29FDE958009D38D6 /* MapBoxView.swift in Sources */,
 				CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */,
-				CB5BE89A29FDE958009D38D6 /* InvitationView.swift in Sources */,
+				CB5BE89A29FDE958009D38D6 /* UserSearchView.swift in Sources */,
 				CB5BE88429FDE958009D38D6 /* NavigationLogInView.swift in Sources */,
 				CB5BE88029FDE957009D38D6 /* GamingWizardsApp.swift in Sources */,
 				CB5BE8AA29FDE958009D38D6 /* KeybaordAdaptiveModifier.swift in Sources */,
@@ -724,6 +725,7 @@
 				CB5BE8B029FDE958009D38D6 /* AlertItem.swift in Sources */,
 				CB5BE8A729FDE958009D38D6 /* FriendListViewModel.swift in Sources */,
 				CB5BE89729FDE958009D38D6 /* FileManager-DocumentDirectoryExtension.swift in Sources */,
+				CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */,
 				CB5BE8BB29FDE958009D38D6 /* AuthenticationViewModel.swift in Sources */,
 				CB5BE8B729FDE958009D38D6 /* SignInWithGoogleCoordinator.swift in Sources */,
 				CB5BE88829FDE958009D38D6 /* CoreDataManager.swift in Sources */,
@@ -892,7 +894,7 @@
 				DEVELOPMENT_TEAM = D6AZ3B5HRK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_FILE = GamingWizards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -923,7 +925,7 @@
 				DEVELOPMENT_TEAM = D6AZ3B5HRK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_FILE = GamingWizards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

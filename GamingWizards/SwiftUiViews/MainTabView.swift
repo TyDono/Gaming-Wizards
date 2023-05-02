@@ -29,20 +29,20 @@ struct MainTabView: View {
             .tag("Account")
             
             NavigationStack {
-                InvitationView()
+                UserSearchView()
             }
             .tabItem {
-                Label("Order", systemImage: "menucard")
+                Label("Search", systemImage: "magnifyingglass")
             }
-            .tag("Order")
+            .tag("Search")
             
             NavigationStack {
                 FoodThemeSelectionView()
             }
             .tabItem {
-                Label("Host", systemImage: "fork.knife")
+                Label("Messages", systemImage: "message")
             }
-            .tag("Host")
+            .tag("Messages")
             
             NavigationStack {
                 MapBoxView()
