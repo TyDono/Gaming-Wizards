@@ -10,32 +10,76 @@ import SwiftUI
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchViewModel = UserSearchViewModel()
-    var invitations = [Invitation]()
+    
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(userSearchViewModel.filteredMessages) { message in
-                    VStack(alignment: .leading) {
-                        Text(message.user)
-                            .font(.headline)
-                        
-                        Text(message.text)
+        ZStack(alignment: .bottom) {
+//            backgroundImage
+            //            Image("realistic-billboard")
+            //                .resizable()
+            //                .scaledToFill()
+            //                .edgesIgnoringSafeArea(.all)
+//            NavigationStack {
+            VStack {
+//                backgroundImage
+                List {
+                    ForEach(userSearchViewModel.filteredGames, id: \.self) { name in
+                        Text(name)
                     }
                 }
             }
-            .navigationTitle("Invitations")
+//            }
+            .navigationTitle("Looking for Group")
+            .searchable(text: $userSearchViewModel.searchText) {
+//                ForEach(userSearchViewModel.filteredGames, id: \.self) { name in
+//                    Text(name)
+//                        .searchCompletion(name)
+//                }
+            }
+//            .searchable(text: $userSearchViewModel.searchText)
+//            .searchScopes($userSearchViewModel.searchScope) {
+//                ForEach(SearchScope.allCases, id: \.self) { scope in
+//                    Text(scope.rawValue.capitalized)
+//                }
+//            }
         }
-        .searchable(text: $userSearchViewModel.searchText)
-        .searchScopes($userSearchViewModel.searchScope) {
-            ForEach(SearchScope.allCases, id: \.self) { scope in
-                Text(scope.rawValue.capitalized)
+    }
+    
+    private var backgroundImage: some View {
+        VStack {
+            Image("realistic-billboard")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+        }
+    }
+    
+    struct SearchBar: View {
+        @Binding var text: String
+        var onSearchButtonClicked: () -> Void
+
+        var body: some View {
+            HStack {
+                TextField("Search", text: $text)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                    .padding(.horizontal, 8)
+                
+                Button(action: {
+                    self.onSearchButtonClicked()
+                }) {
+                    Text("Search")
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(Color(.systemBlue))
+                        .cornerRadius(8)
+                }
             }
         }
-        .onAppear(perform: userSearchViewModel.runSearch)
-        .onSubmit(of: .search, userSearchViewModel.runSearch)
-        .onChange(of: userSearchViewModel.searchScope) { _ in userSearchViewModel.runSearch() }
     }
+
     
 }
 

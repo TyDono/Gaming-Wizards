@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
 		CB5BE81529FDE8B9009D38D6 /* GamingWizardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */; };
 		CB5BE81F29FDE8B9009D38D6 /* GamingWizardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81E29FDE8B9009D38D6 /* GamingWizardsUITests.swift */; };
 		CB5BE82129FDE8B9009D38D6 /* GamingWizardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE82029FDE8B9009D38D6 /* GamingWizardsUITestsLaunchTests.swift */; };
@@ -105,6 +106,7 @@
 		CB5BE8FC29FDEA9C009D38D6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8FB29FDEA9C009D38D6 /* FirebaseStorageCombine-Community */; };
 		CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */; };
 		CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */; };
+		CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58132A01AFD200136AA0 /* UserReport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
 		CB5BE7FB29FDE8B7009D38D6 /* GamingWizards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamingWizards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5BE81029FDE8B9009D38D6 /* GamingWizardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GamingWizardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingWizardsTests.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GamingWizards.entitlements; sourceTree = "<group>"; };
 		CB5BE9042A0084A4009D38D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
+		CBCD58132A01AFD200136AA0 /* UserReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,10 +391,10 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE84F29FDE955009D38D6 /* MainTabView.swift */,
+				CB5BE85B29FDE955009D38D6 /* MainTabViewModel.swift */,
 				CB5BE85029FDE955009D38D6 /* SearchTab */,
 				CB5BE85329FDE955009D38D6 /* Messages */,
 				CB5BE85829FDE955009D38D6 /* MapTab */,
-				CB5BE85B29FDE955009D38D6 /* MainTabViewModel.swift */,
 				CB5BE85C29FDE955009D38D6 /* AccountTab */,
 			);
 			path = SwiftUiViews;
@@ -399,8 +403,8 @@
 		CB5BE85029FDE955009D38D6 /* SearchTab */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */,
 				CB5BE85229FDE955009D38D6 /* UserSearchView.swift */,
+				CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */,
 			);
 			path = SearchTab;
 			sourceTree = "<group>";
@@ -468,8 +472,10 @@
 				CB5BE87029FDE956009D38D6 /* Order.swift */,
 				CB5BE87129FDE956009D38D6 /* Message.swift */,
 				CB5BE87229FDE956009D38D6 /* User.swift */,
+				CBCD58132A01AFD200136AA0 /* UserReport.swift */,
 				CB5BE87329FDE956009D38D6 /* Freind.swift */,
 				CB5BE87429FDE956009D38D6 /* Invitation.swift */,
+				CB24502A2A0102E200581048 /* ListOfGames.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -676,6 +682,7 @@
 				CB5BE8A629FDE958009D38D6 /* ManageAccountViewModel.swift in Sources */,
 				CB5BE88E29FDE958009D38D6 /* GamingWizardsContainer.xcdatamodeld in Sources */,
 				CB5BE8B829FDE958009D38D6 /* UserAuth.swift in Sources */,
+				CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */,
 				CB5BE88629FDE958009D38D6 /* SignInView.swift in Sources */,
 				CB5BE8AF29FDE958009D38D6 /* DependencyInjector.swift in Sources */,
 				CB5BE88B29FDE958009D38D6 /* PersistenceStore.swift in Sources */,
@@ -731,6 +738,7 @@
 				CB5BE88829FDE958009D38D6 /* CoreDataManager.swift in Sources */,
 				CB5BE8A329FDE958009D38D6 /* HomeView.swift in Sources */,
 				CB5BE8B529FDE958009D38D6 /* Freind.swift in Sources */,
+				CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */,
 				CB5BE8B629FDE958009D38D6 /* Invitation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

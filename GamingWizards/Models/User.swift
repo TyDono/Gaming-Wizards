@@ -19,6 +19,10 @@ struct User: Identifiable, Codable {
     var friendID = ""
     var friendList: [Friend] = [] // sub collection
     var friendRequests: [Friend] = [] // sub collection
+    var games: [String] = []
+    var groupSize: String = ""
+    var age: String = ""
+    var about: String = ""
     
     var userDictionary: [String: Any] {
         return [
@@ -31,7 +35,12 @@ struct User: Identifiable, Codable {
             "profileImageUrl": profileImageUrl,
             "friendCodeID": friendID,
             "friendList": friendList,
-            "friendRequests": friendRequests
+            "friendRequests": friendRequests,
+            "games": games,
+            "groupSize": groupSize,
+            "age": age,
+            "about": about
+            
         ]
     }
 }
@@ -48,6 +57,10 @@ extension User {
         case friendID = "friendCodeID"
         case friendList = "friendList"
         case friendRequests = "friendRequests"
+        case games = "games"
+        case groupSize = "groupSize"
+        case age = "age"
+        case about = "about"
     }
 }
         
@@ -138,7 +151,7 @@ class UserObservable: ObservableObject {
         UserDefaults.standard.setValue(newId, forKey: idKey)
     }
     
-    init() {
+    init() { //is this used?
         id = UserDefaults.standard.string(forKey: idKey) ?? ""
         firstName = UserDefaults.standard.string(forKey: "\(firstNameKey)-\(id)") ?? ""
         lastName = UserDefaults.standard.string(forKey: "\(lastNameKey)-\(id)") ?? ""
@@ -150,6 +163,12 @@ class UserObservable: ObservableObject {
         latitude = UserDefaults.standard.double(forKey: latitudeKey)
         longitude = UserDefaults.standard.double(forKey: longitudeKey)
         friendID = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)") ?? ""
+        
+    //add these in if the code above is used
+//    case games: "games"
+//    case groupSize: String = "groupSize"
+//    case age: String = "age"
+//    case about: String = "about"
 //        friendList = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)")
     }
 }

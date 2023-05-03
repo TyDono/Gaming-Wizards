@@ -11,25 +11,26 @@ import Foundation
 
 extension UserSearchView {
     @MainActor class UserSearchViewModel: ObservableObject {
-        @Published var messages = [Message]()
-        @Published var searchText = ""
+//        @Published var listOfGames = [ListOfGames]()
+        @Published var listOfGames = ListOfGames.name
+        @Published var searchText: String = ""
         @Published var searchScope = SearchScope.inbox
         
-        var filteredMessages: [Message] {
-            if self.searchText.isEmpty {
-                return self.messages
+        var filteredGames: [String] {
+            if searchText.isEmpty {
+                return [""]
             } else {
-                return self.messages.filter { $0.text.localizedCaseInsensitiveContains(self.searchText) }
+                return listOfGames.filter { $0.localizedCaseInsensitiveContains(searchText) }
             }
         }
-        
+
         func runSearch() {
-            Task {
-                guard let url = URL(string: "https://hws.dev/\(self.searchScope.rawValue).json") else { return }
-                
-                let (data, _) = try await URLSession.shared.data(from: url)
-                self.messages = try JSONDecoder().decode([Message].self, from: data)
-            }
+//            Task {
+//                guard let url = URL(string: "https://hws.dev/\(searchScope.rawValue).json") else { return }
+//
+//                let (data, _) = try await URLSession.shared.data(from: url)
+//                listOfGames = try JSONDecoder().decode([Message].self, from: data)
+//            }
         }
         
     }
