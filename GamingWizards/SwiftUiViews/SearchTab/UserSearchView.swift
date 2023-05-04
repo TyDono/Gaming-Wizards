@@ -35,8 +35,16 @@ struct UserSearchView: View {
             SearchBar(text: $userSearchViewModel.searchText, placeholder: "Search")
             List(userSearchViewModel.filteredGames, id: \.self) { name in
                 Text(name)
+                    .onTapGesture {
+                        userSearchViewModel.searchText = name
+                    }
             }
+            .padding()
+            .animation(Animation.easeInOut(duration: 0.7), value: userSearchViewModel.searchText)
+//            .animation(Animation.easeInOut(duration: 1.0), value: offset)
             .listStyle(.plain)
+//            .cornerRadius(25)
+//            .listStyle(.insetGrouped)
         }
     }
 
