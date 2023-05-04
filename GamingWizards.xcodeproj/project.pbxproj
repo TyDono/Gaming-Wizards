@@ -107,6 +107,7 @@
 		CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */; };
 		CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */; };
 		CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58132A01AFD200136AA0 /* UserReport.swift */; };
+		CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58172A03147900136AA0 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +203,7 @@
 		CB5BE9042A0084A4009D38D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		CBCD58132A01AFD200136AA0 /* UserReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReport.swift; sourceTree = "<group>"; };
+		CBCD58172A03147900136AA0 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 			children = (
 				CB5BE85229FDE955009D38D6 /* UserSearchView.swift */,
 				CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */,
+				CBCD58172A03147900136AA0 /* SearchBar.swift */,
 			);
 			path = SearchTab;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				CB5BE89D29FDE958009D38D6 /* FoodThemeSelectionViewModel.swift in Sources */,
 				CB5BE8BA29FDE958009D38D6 /* SignInWithAppleCoordinator.swift in Sources */,
 				CB5BE89329FDE958009D38D6 /* PublishersExtension.swift in Sources */,
+				CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */,
 				CB5BE89429FDE958009D38D6 /* StringExtension.swift in Sources */,
 				CB5BE8B029FDE958009D38D6 /* AlertItem.swift in Sources */,
 				CB5BE8A729FDE958009D38D6 /* FriendListViewModel.swift in Sources */,
