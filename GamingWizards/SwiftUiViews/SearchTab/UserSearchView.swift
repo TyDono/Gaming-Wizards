@@ -14,13 +14,33 @@ struct UserSearchView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-                searchBar
+                HStack {
+                    searchBar
+//                    searchButton
+                }
             }
             .navigationTitle("Looking for Group")
+//            .navigationBarTitleDisplayMode(.inline)
+//            .font(.custom("Luminari", size: 16))
         }
         .background(
             backgroundImage
         )
+    }
+    
+    private var searchButton: some View {
+        NavigationLink {
+            SearchResultsView()
+//                    .environmentObject(friendListVM)
+                .onAppear {
+                    print("i apeared")
+//                        friendListVM.friendWasTapped(friend: friend)
+                }
+        } label: {
+            Text("Search")
+                .background(.blue)
+                    .cornerRadius(15)
+        }
     }
     
     private var backgroundImage: some View {
@@ -32,9 +52,12 @@ struct UserSearchView: View {
     
     private var searchBar: some View {
         VStack {
-            SearchBar(text: $userSearchViewModel.searchText, placeholder: "Search")
+            SearchBar(searchText: $userSearchViewModel.searchText, placeholder: "Search", isSearchButtonShowing: false, isXCancelButtonShowing: false)
+                .animation(Animation.easeInOut(duration: 0.2), value: userSearchViewModel.searchText)
+//                .font(.custom("Luminari", size: 16))
             List(userSearchViewModel.filteredGames, id: \.self) { name in
                 Text(name)
+//                    .font(.custom("Luminari", size: 16))
                     .onTapGesture {
                         userSearchViewModel.searchText = name
                     }

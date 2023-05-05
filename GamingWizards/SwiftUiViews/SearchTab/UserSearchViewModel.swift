@@ -15,6 +15,11 @@ extension UserSearchView {
         @Published var listOfGames = ListOfGames.name
         @Published var searchText: String = ""
         @Published var searchScope = SearchScope.inbox
+        @ObservedObject var searchResultsViewModel = SearchResultsViewModel()
+        
+        func sendDataToSearchResultsViewModel() {
+            
+        }
         
         var filteredGames: [String] {
             if searchText.isEmpty {
@@ -22,15 +27,6 @@ extension UserSearchView {
             } else {
                 return listOfGames.filter { $0.localizedCaseInsensitiveContains(searchText) }
             }
-        }
-
-        func runSearch() {
-//            Task {
-//                guard let url = URL(string: "https://hws.dev/\(searchScope.rawValue).json") else { return }
-//
-//                let (data, _) = try await URLSession.shared.data(from: url)
-//                listOfGames = try JSONDecoder().decode([Message].self, from: data)
-//            }
         }
         
     }
