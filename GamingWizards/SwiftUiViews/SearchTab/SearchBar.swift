@@ -41,9 +41,8 @@ struct SearchBar: View {
                 .padding(.trailing, isSearchButtonShowing ? 0 : 8)
             if searchText != "" {
                 searchButton
-                    .padding(.leading, 8)
+                    .padding(.trailing, 8)
                     .padding(.vertical, 8)
-                    .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
             }
             
         }
@@ -71,9 +70,12 @@ struct SearchBar: View {
         } label: {
             Text("Search")
                 .font(.custom("Luminari", size: 16))
-                .padding(.trailing, 10)
+                .padding(8)
+                .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
                 .background(.blue)
-                    .cornerRadius(8)
+                .cornerRadius(10)
+                .foregroundColor(.white)
+                    
         }
     }
     
