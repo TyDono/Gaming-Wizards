@@ -60,8 +60,11 @@ struct HomeView: View {
                         Text("Friends")
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
-                            .font(.roboto(.semibold,
+                            .font(.custom(Constants.luminariRegularFontIdentifier,
                                           size: 20))
+//                            .font(.roboto(.custom("luminri")))
+//                            .font(.roboto(.semibold,
+//                                          size: 20))
                         
                         Image(systemName: "chevron.right")
                             .frame(maxWidth: .infinity,
@@ -86,7 +89,7 @@ struct HomeView: View {
                     Text("Manage Account")
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-                        .font(.roboto(.semibold,
+                        .font(.custom(Constants.luminariRegularFontIdentifier,
                                       size: 20))
                     
                     Image(systemName: "chevron.right")
@@ -112,7 +115,7 @@ struct HomeView: View {
                 Text("Log Out")
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                    .font(.roboto(.semibold,
+                    .font(.custom(Constants.luminariRegularFontIdentifier,
                                   size: 20))
                 
 //                Image(systemName: "chevron.right")

@@ -19,26 +19,26 @@ struct SearchBar: View {
             TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
                 isSearchButtonShowing = true
             })
-                .font(.custom("Luminari", size: 16))
-                .padding(8)
-                .padding(.horizontal, 20)
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .overlay(
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 8)
-                        if searchText != "" {
-                            xCancelButton
-                        }
+            .font(.luminari(.regular, size: 16))
+            .padding(8)
+            .padding(.horizontal, 20)
+            .background(Color(.systemGray6))
+            .cornerRadius(8)
+            .overlay(
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 8)
+                    if searchText != "" {
+                        xCancelButton
                     }
-                )
-                .padding(.vertical, 8)
-                .padding(.leading, 8)
-                .padding(.trailing, 4)
-                .padding(.trailing, isSearchButtonShowing ? 0 : 8)
+                }
+            )
+            .padding(.vertical, 8)
+            .padding(.leading, 8)
+            .padding(.trailing, 4)
+            .padding(.trailing, isSearchButtonShowing ? 0 : 8)
             if searchText != "" {
                 searchButton
                     .padding(.trailing, 8)
@@ -59,7 +59,7 @@ struct SearchBar: View {
                 .padding(.trailing, 8)
     }
     
-    private var searchButton: some View { //not using. might delete later :3
+    private var searchButton: some View {
         NavigationLink {
             SearchResultsView()
 //                    .environmentObject(friendListVM)
@@ -69,7 +69,7 @@ struct SearchBar: View {
                 }
         } label: {
             Text("Search")
-                .font(.custom("Luminari", size: 16))
+                .font(.luminari(.regular, size: 16))
                 .padding(8)
                 .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
                 .background(.blue)

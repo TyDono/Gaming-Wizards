@@ -27,7 +27,7 @@ struct FoodThemeSelectionView: View {
     private var titleTipView: some View {
         VStack {
             Text("Select a theme")
-                .font(.system(size: 15))
+//                .font(.system(size: 15))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray)
@@ -83,8 +83,7 @@ struct FoodThemeSelectionView: View {
                     Text("Hot Pot")
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-                        .font(.roboto(.semibold,
-                                      size: 20))
+                        .font(.system(size: 20, weight: .medium))
                 }
             }
             

@@ -21,7 +21,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-
+        
         return true
     }
     
@@ -147,9 +147,9 @@ struct GamingWizardsApp: App {
     @StateObject var signInWithGoogleCoordinator = SignInWithGoogleCoordinator()
     @StateObject var signInWithAppleCoordinator = SignInWithAppleCoordinator()
     
-//    init() {
-//        setupAuthentication()
-//    }
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: Constants.luminariRegularFontIdentifier, size: 40)!]
+    }
     
     var body: some Scene {
         WindowGroup {

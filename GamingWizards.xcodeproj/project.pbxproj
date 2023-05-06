@@ -328,9 +328,9 @@
 		CB5BE82D29FDE954009D38D6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CB5BE83029FDE954009D38D6 /* GamingWizardsApp.swift */,
 				CB5BE82E29FDE954009D38D6 /* NetworkRequestService.swift */,
 				CB5BE82F29FDE954009D38D6 /* RestaurantEndpoint.swift */,
-				CB5BE83029FDE954009D38D6 /* GamingWizardsApp.swift */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB5BE83329FDE954009D38D6 /* Endpoint.swift */,
 			);
@@ -444,8 +444,8 @@
 		CB5BE85C29FDE955009D38D6 /* AccountTab */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE85D29FDE955009D38D6 /* HomeViewModel.swift */,
 				CB5BE85E29FDE955009D38D6 /* HomeView.swift */,
+				CB5BE85D29FDE955009D38D6 /* HomeViewModel.swift */,
 				CB5BE85F29FDE955009D38D6 /* FriendListView.swift */,
 				CB5BE86029FDE955009D38D6 /* DetailedFriendView.swift */,
 				CB5BE86129FDE955009D38D6 /* ManageAccountViewModel.swift */,

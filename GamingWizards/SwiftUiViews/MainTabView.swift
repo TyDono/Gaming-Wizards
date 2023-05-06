@@ -11,7 +11,6 @@ struct MainTabView: View {
     @State private var selectedTab = "Account"
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
-        
 //        UITabBar.appearance().shadowImage = UIImage()
     }
     
@@ -24,6 +23,7 @@ struct MainTabView: View {
             .padding(.top)
             .tabItem {
                 Label("Account", systemImage: "gear")
+                
             }
             .badge(Constants.friendRequestCount)
             .tag("Account")
