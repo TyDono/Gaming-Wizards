@@ -447,10 +447,10 @@
 				CB5BE85E29FDE955009D38D6 /* HomeView.swift */,
 				CB5BE85D29FDE955009D38D6 /* HomeViewModel.swift */,
 				CB5BE85F29FDE955009D38D6 /* FriendListView.swift */,
-				CB5BE86029FDE955009D38D6 /* DetailedFriendView.swift */,
-				CB5BE86129FDE955009D38D6 /* ManageAccountViewModel.swift */,
 				CB5BE86229FDE955009D38D6 /* FriendListViewModel.swift */,
+				CB5BE86029FDE955009D38D6 /* DetailedFriendView.swift */,
 				CB5BE86329FDE955009D38D6 /* ManageAccountView.swift */,
+				CB5BE86129FDE955009D38D6 /* ManageAccountViewModel.swift */,
 			);
 			path = AccountTab;
 			sourceTree = "<group>";

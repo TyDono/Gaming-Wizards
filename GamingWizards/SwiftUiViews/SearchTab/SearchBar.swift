@@ -10,9 +10,10 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var searchText: String
+    @Binding var searchButtonWasTapped: Bool
     @State var placeholder: String
     @State var isSearchButtonShowing: Bool
-     var isXCancelButtonShowing: Bool = false
+    var isXCancelButtonShowing: Bool = false
     
     var body: some View {
         HStack {
@@ -60,23 +61,36 @@ struct SearchBar: View {
     }
     
     private var searchButton: some View {
-        NavigationLink {
-            SearchResultsView()
-//                    .environmentObject(friendListVM)
-                .onAppear {
-                    print("i apeared")
-//                        friendListVM.friendWasTapped(friend: friend)
-                }
-        } label: {
-            Text("Search")
-                .font(.luminari(.regular, size: 16))
-                .padding(8)
-                .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
-                .background(.blue)
-                .cornerRadius(10)
-                .foregroundColor(.white)
-                    
-        }
+        Text(placeholder)
+            .font(.luminari(.regular, size: 16))
+            .padding(8)
+            .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
+            .background(.blue)
+            .cornerRadius(10)
+            .foregroundColor(.white)
+            .onTapGesture {
+                searchButtonWasTapped.toggle()
+                
+            }
+        
+//        NavigationLink {
+////            performSearchForMatchingGames(game: <#T##String#>) { games, err in
+////                if error = err {
+////                    print("SEARCH FOR MATCHING GAMES ERROR: \(error.localizedDescription)")
+////                }
+////            }
+//            SearchResultsView()
+////                    .environmentObject(friendListVM)
+//        } label: {
+//            Text("Search")
+//                .font(.luminari(.regular, size: 16))
+//                .padding(8)
+//                .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
+//                .background(.blue)
+//                .cornerRadius(10)
+//                .foregroundColor(.white)
+//
+//        }
     }
     
 }

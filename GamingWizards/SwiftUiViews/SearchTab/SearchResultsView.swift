@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct SearchResultsView: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject private var searchResultsViewModel = SearchResultsViewModel()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Text("hiay")
+        }
+        
     }
+    
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
