@@ -8,13 +8,13 @@
 import Foundation
 import Swift
 
-struct User: Identifiable, Codable {
+struct User: Identifiable, Codable, Hashable {
     var id: String
     var firstName = ""
     var lastName = ""
     var displayName = ""
     var email: String? = ""
-    var location = ""
+    var location: String = "" //change to UserLocation later date maybe
     var profileImageUrl = ""
     var friendID = ""
     var friendList: [Friend] = [] // sub collection
@@ -23,6 +23,9 @@ struct User: Identifiable, Codable {
     var groupSize: String = ""
     var age: String = ""
     var about: String = ""
+    var availability: String = ""
+    
+    
     
     var userDictionary: [String: Any] {
         return [

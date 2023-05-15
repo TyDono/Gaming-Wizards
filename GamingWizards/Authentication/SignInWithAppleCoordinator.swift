@@ -193,7 +193,7 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
             let location = ""
             let profileImageUrl = ""
             let friendID = String((UUID().uuidString.suffix(4))) // made so the collection can be made and users can just freely add and remove friends and friend requests
-            let newUser = self.authenticationViewModel.createUserBaseData(id: id, firstName: firstName, lastName: lastName, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID)
+            let newUser = self.authenticationViewModel.createUserBaseData(id: id,  firstName: firstName, lastName: lastName, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID)
             self.authenticationViewModel.saveUserInfoInDatabase(newUser)
         }
     }

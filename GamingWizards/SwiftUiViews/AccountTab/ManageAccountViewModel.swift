@@ -35,7 +35,7 @@ extension ManageAccountView {
         func updateUserInfo() {
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
-            let path = firestoreDatabase.collection("users").document(userId)
+            let path = firestoreDatabase.collection(Constants.users).document(userId)
             path.updateData([
                 "displayName": self.displayName
 //                "firstName": self.firstName, // have these user defaults to published. then have user defaults be saved once successful
@@ -63,7 +63,7 @@ extension ManageAccountView {
         func deleteUserAccount() {
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
-            let path = firestoreDatabase.collection("users").document(userId)
+            let path = firestoreDatabase.collection(Constants.users).document(userId)
             
             currentUser?.delete { err in
                 if let error = err {

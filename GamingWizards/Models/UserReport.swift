@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct UserReport: Codable {
+struct UserReport: Codable, Identifiable {
     
+    var id: String
     var reason: String
     var creatorId: String
     var chatId: String
     var dateSent: String
-    var reportId: String
     var userReportedId: String
     
     var dictionary: [String: Any] {
         return [
+            "id": id,
             "reason": reason,
             "creatorId": creatorId,
             "chatId:": chatId,
             "dateSent": dateSent,
-            "reportId": reportId,
             "userReportedId": userReportedId
         ]
     }

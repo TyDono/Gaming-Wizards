@@ -12,6 +12,53 @@ struct Constants {
     static var isFriendRequestPending: Bool = false // not used rn. using friendRequestCount instead. shows number, or if it's 0. shows nothing
     static var friendRequestCount: Int = 0
     static let luminariRegularFontIdentifier = "Luminari"
+    static let users = "users"
+    
+    // MARK: calls to User
+    static let userFriendCode = "friendCode"
+    static let userID = "id"
+    static let userDisplayName = "displayName"
+    static let userEmail = "email"
+    static let userLocation = "location"
+    static let userProfileImageURL = "profileImageURL"
+    static let userFriendID = "friendID"
+    static let userFriendList = "friendList"
+    static let userFriendRequest = "friendRequest"
+    static let userGames = "games"
+    static let userGroupSize = "groupSize"
+    static let userAge = "age"
+    static let userAbout = "about"
+    static let userAvailability = "availability"
+    
+    // MARK: calls to Friend
+    static let friendCodeID = "friendCodeID"
+    static let friendUserID = "friendUserID"
+    static let friendDisplayName = "friendDisplayName"
+    static let isFriend = "isFriend"
+    static let isFavorite = "isFavorite"
+    
+    // MARK: call to UserReport
+    static let reportReason = "reason"
+    static let reportCreatorID = "creatorID"
+    static let reportChatID = "chatID"
+    static let reportDateSent = "dateSent"
+    static let reportID = "id"
+    static let reportUserReportedID = "userReportedID"
+    
+//    var firstName = ""
+//    var lastName = ""
+//    var displayName = ""
+//    var email: String? = ""
+//    var location: String = "" //change to UserLocation later date maybe
+//    var profileImageUrl = ""
+//    var friendID = ""
+//    var friendList: [Friend] = [] // sub collection
+//    var friendRequests: [Friend] = [] // sub collection
+//    var games: [String] = []
+//    var groupSize: String = ""
+//    var age: String = ""
+//    var about: String = ""
+//    var availability: String = ""
 }
 
 enum Colors {

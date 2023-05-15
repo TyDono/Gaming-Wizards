@@ -43,7 +43,7 @@ import CoreData
   }
     
     func saveUserInfoInDatabase(_ user: User) {
-        let path = firestoreDatabase.collection("users").document(user.id)
+        let path = firestoreDatabase.collection(Constants.users).document(user.id)
         path.getDocument { document, err in
             if ((document?.exists) == true) {
                 let id = document?.data()?["id"] as? String ?? "No ID"
@@ -71,13 +71,13 @@ import CoreData
         self.log_Status = true
     }
     
-    private func saveUserToUserDefaults(user newUser: User) {
+    private func saveUserToUserDefaults(user newUser: User) { // remove later. i use coredata over user defaults currently
         display_Name = newUser.displayName
         user_Email = newUser.email ?? ""
         user_Friend_Code_ID = newUser.friendID
         user_Id = newUser.id
-        first_Name = newUser.firstName
-        last_Name = newUser.lastName
+//        first_Name = newUser.firstName
+//        last_Name = newUser.lastName
         
         self.signInState = .signedIn
         self.isLoading = false
@@ -177,7 +177,7 @@ import CoreData
     
     //out dated. remove
     func retrieveFriends(uid: String) { //, completion: @escaping ([Friend]) -> () // this was an escaping. now it isnt
-        let path = firestoreDatabase.collection("users").document(uid).collection("friendList")
+        let path = firestoreDatabase.collection(Constants.users).document(uid).collection("friendList")
             path.addSnapshotListener { querySnapshot, err in
                 if let error = err {
                     print("ERROR RETRIEVING FRIENDS: \(error)")
@@ -215,12 +215,12 @@ import CoreData
         guard let userFriendCodeID = user_Friend_Code_ID else { return }
         guard let friendUserID = friend.friendUserID else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
-        firestoreDatabase.collection("users").document(friendUserID).collection("friendList").document(userFriendCodeID)
+        firestoreDatabase.collection(Constants.users).document(friendUserID).collection("friendList").document(userFriendCodeID)
             .delete() { err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
-                    self.firestoreDatabase.collection("users").document(userID).collection("friendList").document(friendCodeID).delete() { err in
+                    self.firestoreDatabase.collection(Constants.users).document(userID).collection("friendList").document(friendCodeID).delete() { err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THEIR FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
@@ -233,7 +233,7 @@ import CoreData
     
     func retrieveFriendsListener() {
         guard let userID = user_Id else { return }
-        listeningRegistration = firestoreDatabase.collection("users").document(userID).collection("friendList")
+        listeningRegistration = firestoreDatabase.collection(Constants.users).document(userID).collection("friendList")
             .addSnapshotListener({ snapshot, err in
                 if let error = err {
                     print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")

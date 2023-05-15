@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
-extension SearchResultsView {
+//extension SearchResultsView {
     @MainActor class SearchResultsViewModel: ObservableObject {
         @Published var searchText: String = ""
+        @Published var users: [User] = []
         
         func lfgResultWasTapped() {
             //perform segue/navigation here and jazz
         }
         
     }
-}
+//}

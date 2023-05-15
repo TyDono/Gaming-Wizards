@@ -10,8 +10,10 @@ import SwiftUI
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchViewModel = UserSearchViewModel()
+    @StateObject var searchResultsViewModel = SearchResultsViewModel()
     @State private var isSearchButtonShowing: Bool = false
     @State var searchButtonWasTapped: Bool = false
+    @State var users: [User] = []
     
     var body: some View {
         ZStack {
@@ -21,6 +23,9 @@ struct UserSearchView: View {
                 }
             }
             .navigationBarTitle("Looking for Group")
+            .navigationDestination(isPresented: $searchButtonWasTapped) {
+                SearchResultsView()
+           }
         }
         .background(
             backgroundImage
@@ -40,19 +45,21 @@ struct UserSearchView: View {
                 .animation(Animation.easeInOut(duration: 0.2), value: userSearchViewModel.searchText)
                 .font(.luminari(.regular, size: 16))
             List {
-                ForEach(userSearchViewModel.filteredGames, id: \.self) { name in
+                ForEach(userSearchViewModel.filteredGames, id: \.self) { gameName in
                     //            List(userSearchViewModel.filteredGames, id: \.self) { name in
-                    Text(name)
+                    Text(gameName)
                         .font(.luminari(.regular, size: 16))
                         .onTapGesture {
-                            userSearchViewModel.searchText = name
+                            userSearchViewModel.searchText = gameName
                         }
                         .onChange(of: searchButtonWasTapped) { newValue in
                             if newValue {
+                                userSearchViewModel.callPerformSearchForMatchingGames(gameName: gameName)
+                                print(gameName)
                                 print("value was changed!")
-                //                anotherFunction()
                             }
                         }
+                        .environmentObject(searchResultsViewModel)
                 }
             }
             .padding()

@@ -62,7 +62,6 @@
 		CB5BE8AF29FDE958009D38D6 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE86C29FDE956009D38D6 /* DependencyInjector.swift */; };
 		CB5BE8B029FDE958009D38D6 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE86D29FDE956009D38D6 /* AlertItem.swift */; };
 		CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE86F29FDE956009D38D6 /* Navigation.swift */; };
-		CB5BE8B229FDE958009D38D6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87029FDE956009D38D6 /* Order.swift */; };
 		CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87129FDE956009D38D6 /* Message.swift */; };
 		CB5BE8B429FDE958009D38D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87229FDE956009D38D6 /* User.swift */; };
 		CB5BE8B529FDE958009D38D6 /* Freind.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87329FDE956009D38D6 /* Freind.swift */; };
@@ -111,6 +110,8 @@
 		CBCD581B2A0467F600136AA0 /* Luminari.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCD581A2A0467F600136AA0 /* Luminari.ttf */; };
 		CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD581C2A047A0D00136AA0 /* SearchResultsViewModel.swift */; };
 		CBCD581F2A047A1E00136AA0 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD581E2A047A1E00136AA0 /* SearchResultsView.swift */; };
+		CBCD58232A0B1EF400136AA0 /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */; };
+		CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58242A0B4AA400136AA0 /* UserLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,7 +190,6 @@
 		CB5BE86C29FDE956009D38D6 /* DependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		CB5BE86D29FDE956009D38D6 /* AlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		CB5BE86F29FDE956009D38D6 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		CB5BE87029FDE956009D38D6 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		CB5BE87129FDE956009D38D6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CB5BE87229FDE956009D38D6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CB5BE87329FDE956009D38D6 /* Freind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Freind.swift; sourceTree = "<group>"; };
@@ -210,6 +210,8 @@
 		CBCD581A2A0467F600136AA0 /* Luminari.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Luminari.ttf; sourceTree = "<group>"; };
 		CBCD581C2A047A0D00136AA0 /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 		CBCD581E2A047A1E00136AA0 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
+		CBCD58242A0B4AA400136AA0 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,12 +292,12 @@
 		CB5BE7FD29FDE8B7009D38D6 /* GamingWizards */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE87529FDE956009D38D6 /* Authentication */,
 				CB5BE84E29FDE955009D38D6 /* SwiftUiViews */,
 				CB5BE84429FDE955009D38D6 /* Extensions */,
 				CB5BE86E29FDE956009D38D6 /* Models */,
 				CB5BE86429FDE955009D38D6 /* Modifiers */,
 				CB5BE82D29FDE954009D38D6 /* Modules */,
+				CB5BE87529FDE956009D38D6 /* Authentication */,
 				CB5BE83429FDE954009D38D6 /* SignInContent */,
 				CB5BE86829FDE956009D38D6 /* Utilities */,
 				CB5BE83B29FDE955009D38D6 /* DataModule */,
@@ -399,8 +401,7 @@
 		CB5BE84E29FDE955009D38D6 /* SwiftUiViews */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE84F29FDE955009D38D6 /* MainTabView.swift */,
-				CB5BE85B29FDE955009D38D6 /* MainTabViewModel.swift */,
+				CBCD58202A0B1C6300136AA0 /* TabViews */,
 				CB5BE85329FDE955009D38D6 /* Messages */,
 				CB5BE85829FDE955009D38D6 /* MapTab */,
 				CB5BE85029FDE955009D38D6 /* SearchTab */,
@@ -414,7 +415,6 @@
 			children = (
 				CB5BE85229FDE955009D38D6 /* UserSearchView.swift */,
 				CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */,
-				CBCD58172A03147900136AA0 /* SearchBar.swift */,
 				CBCD581E2A047A1E00136AA0 /* SearchResultsView.swift */,
 				CBCD581C2A047A0D00136AA0 /* SearchResultsViewModel.swift */,
 			);
@@ -469,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE86929FDE956009D38D6 /* Constants.swift */,
+				CBCD58212A0B1EC500136AA0 /* UniversalViews */,
 				CB5BE86A29FDE956009D38D6 /* Dependencies.swift */,
 				CB5BE86B29FDE956009D38D6 /* Validation.swift */,
 				CB5BE86C29FDE956009D38D6 /* DependencyInjector.swift */,
@@ -481,13 +482,13 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE86F29FDE956009D38D6 /* Navigation.swift */,
-				CB5BE87029FDE956009D38D6 /* Order.swift */,
 				CB5BE87129FDE956009D38D6 /* Message.swift */,
 				CB5BE87229FDE956009D38D6 /* User.swift */,
 				CBCD58132A01AFD200136AA0 /* UserReport.swift */,
 				CB5BE87329FDE956009D38D6 /* Freind.swift */,
 				CB5BE87429FDE956009D38D6 /* Invitation.swift */,
 				CB24502A2A0102E200581048 /* ListOfGames.swift */,
+				CBCD58242A0B4AA400136AA0 /* UserLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -526,6 +527,24 @@
 				CBCD581A2A0467F600136AA0 /* Luminari.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CBCD58202A0B1C6300136AA0 /* TabViews */ = {
+			isa = PBXGroup;
+			children = (
+				CB5BE84F29FDE955009D38D6 /* MainTabView.swift */,
+				CB5BE85B29FDE955009D38D6 /* MainTabViewModel.swift */,
+			);
+			path = TabViews;
+			sourceTree = "<group>";
+		};
+		CBCD58212A0B1EC500136AA0 /* UniversalViews */ = {
+			isa = PBXGroup;
+			children = (
+				CBCD58172A03147900136AA0 /* SearchBar.swift */,
+				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
+			);
+			path = UniversalViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -718,7 +737,6 @@
 				CB5BE87F29FDE957009D38D6 /* RestaurantEndpoint.swift in Sources */,
 				CB5BE89629FDE958009D38D6 /* DateExtension.swift in Sources */,
 				CB5BE8A029FDE958009D38D6 /* MapViewController.swift in Sources */,
-				CB5BE8B229FDE958009D38D6 /* Order.swift in Sources */,
 				CB5BE89E29FDE958009D38D6 /* FoodThemeSelectionView.swift in Sources */,
 				CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */,
 				CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */,
@@ -730,6 +748,7 @@
 				CB5BE88C29FDE958009D38D6 /* Persistence.swift in Sources */,
 				CB5BE88A29FDE958009D38D6 /* CoreDataController.swift in Sources */,
 				CB5BE8AC29FDE958009D38D6 /* Constants.swift in Sources */,
+				CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */,
 				CB5BE8A929FDE958009D38D6 /* HideNavigationBar.swift in Sources */,
 				CB5BE89F29FDE958009D38D6 /* MapBoxView.swift in Sources */,
 				CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */,
@@ -739,6 +758,7 @@
 				CB5BE8AA29FDE958009D38D6 /* KeybaordAdaptiveModifier.swift in Sources */,
 				CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */,
 				CB5BE89029FDE958009D38D6 /* ViewExtension.swift in Sources */,
+				CBCD58232A0B1EF400136AA0 /* BackgroundImageView.swift in Sources */,
 				CB5BE8AB29FDE958009D38D6 /* FontModifier.swift in Sources */,
 				CB5BE89B29FDE958009D38D6 /* HotPotView.swift in Sources */,
 				CBCD581F2A047A1E00136AA0 /* SearchResultsView.swift in Sources */,
