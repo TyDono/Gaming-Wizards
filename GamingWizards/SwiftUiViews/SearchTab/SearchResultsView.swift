@@ -10,43 +10,52 @@ import SwiftUI
 struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var userSearchViewModel: UserSearchViewModel
-    @StateObject private var searchResultsViewModel = SearchResultsViewModel()
+    @StateObject var searchResultsViewModel = SearchResultsViewModel()
     
     var body: some View {
         ZStack {
-            Image("blank-wood")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            NavigationStack {
-                List {
-                    ForEach(searchResultsViewModel.users, id: \.self) { user in
-                        VStack {
-                            Text(user.displayName)
-                        }
-                        HStack {
-                            ForEach(user.games, id: \.self) { game in
-                                Text(game)
-                            }
-                        }
-                    }
-                }
-                .background(
-                    Image("blank-page")
-                        .resizable()
-                        .scaledToFill()
-                        .edgesIgnoringSafeArea(.all)
-                )
+            NavigationView {
+                searchResultsList
             }
         }
+//        .background(
+//            backgroundImage
+//        )
         .onAppear {
-            searchResultsViewModel.users = searchResultsViewModel.users
-            print(searchResultsViewModel.users)
+//            searchResultsViewModel.users = userSearchViewModel.users
+//            print(searchResultsViewModel.users)
         }
     }
     
-    private var someNewView: some View {
-        Text("ttt")
+    private var searchResultsList: some View {
+        List {
+            ForEach(searchResultsViewModel.users, id: \.self) { user in
+                VStack {
+                    Text(user.displayName)
+                }
+                HStack {
+                    ForEach(user.games, id: \.self) { game in
+                        Text(game)
+                            .background (
+                                Image("blank-page")
+                                    .resizable()
+//                                            .scaledToFill()
+//                                            .edgesIgnoringSafeArea(.all)
+                            )
+                    }
+                }
+            }
+        }
+        .background(
+            backgroundImage
+        )
+    }
+    
+    private var backgroundImage: some View {
+        Image("blank-wood")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
     }
     
 }
@@ -54,5 +63,6 @@ struct SearchResultsView: View {
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultsView()
+            .environmentObject(UserSearchViewModel())
     }
 }

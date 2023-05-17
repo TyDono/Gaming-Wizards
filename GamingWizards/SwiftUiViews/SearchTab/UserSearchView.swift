@@ -25,6 +25,7 @@ struct UserSearchView: View {
             .navigationBarTitle("Looking for Group")
             .navigationDestination(isPresented: $searchButtonWasTapped) {
                 SearchResultsView()
+                
            }
         }
         .background(
