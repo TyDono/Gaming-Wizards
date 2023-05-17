@@ -54,9 +54,16 @@ struct UserSearchView: View {
                         }
                         .onChange(of: searchButtonWasTapped) { newValue in
                             if newValue {
-                                userSearchViewModel.callPerformSearchForMatchingGames(gameName: gameName)
+                                userSearchViewModel.performSearchForMatchingGames(gameName: gameName) { users, err in
+                                    guard let usersUnwrapped = users else { return }
+                                    self.users = usersUnwrapped
+                                    searchResultsViewModel.users = usersUnwrapped
+                                    print("value was changed!")
+                                    //change both user values here
+                                }
+//                                userSearchViewModel.callPerformSearchForMatchingGames(gameName: gameName)
                                 print(gameName)
-                                print("value was changed!")
+                                
                             }
                         }
                         .environmentObject(searchResultsViewModel)

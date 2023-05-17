@@ -47,6 +47,7 @@ struct HomeView: View {
                     isFriendListShowing = true
                 }) {
                     HStack {
+                        /*
                         if Constants.friendRequestCount != 0 {
                             Text("\(Constants.friendRequestCount)")
                                 .foregroundColor(.white)
@@ -56,8 +57,10 @@ struct HomeView: View {
                                         .frame(width: 20, height: 20)
                                 )
                         }
+                        */
                         Image(systemName: "person.2")
                         Text("Friends")
+                            .badge(Constants.friendRequestCount)
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
                             .font(.custom(Constants.luminariRegularFontIdentifier,

@@ -25,7 +25,7 @@ import FirebaseFirestore
             
         }
         
-        func callPerformSearchForMatchingGames(gameName: String) {
+        func callPerformSearchForMatchingGames(gameName: String) { //not used
             performSearchForMatchingGames(gameName: gameName) { users, err in
                 guard let usersUnwrapped = users else { return }
                 self.users = usersUnwrapped
