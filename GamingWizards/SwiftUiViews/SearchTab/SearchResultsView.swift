@@ -9,42 +9,48 @@ import SwiftUI
 
 struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var userSearchViewModel: UserSearchViewModel
+    @ObservedObject var userSearchViewModel: UserSearchViewModel
     @StateObject var searchResultsViewModel = SearchResultsViewModel()
+    var searchText: String
     
     var body: some View {
         ZStack {
             NavigationView {
                 searchResultsList
+//                    .background(
+//                        backgroundImage
+//                    )
             }
         }
+        .background(
+            backgroundImage
+        )
 //        .background(
 //            backgroundImage
 //        )
         .onAppear {
-//            searchResultsViewModel.users = userSearchViewModel.users
-//            print(searchResultsViewModel.users)
+            searchResultsViewModel.callPerformSearchForMatchingGames(gameName: searchText)
         }
     }
     
     private var searchResultsList: some View {
         List {
-            ForEach(searchResultsViewModel.users, id: \.self) { user in
+            ForEach(searchResultsViewModel.users ?? [], id: \.self) { user in
                 VStack {
                     Text(user.displayName)
-                }
-                HStack {
-                    ForEach(user.games, id: \.self) { game in
-                        Text(game)
-                            .background (
-                                Image("blank-page")
-                                    .resizable()
-//                                            .scaledToFill()
-//                                            .edgesIgnoringSafeArea(.all)
-                            )
+                    HStack {
+                        ForEach(user.games, id: \.self) { game in
+                            Text(game)
+                        }
                     }
                 }
             }
+            .background (
+                Image("blank-page")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+            )
         }
         .background(
             backgroundImage
@@ -60,9 +66,9 @@ struct SearchResultsView: View {
     
 }
 
-struct SearchResultsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchResultsView()
-            .environmentObject(UserSearchViewModel())
-    }
-}
+//struct SearchResultsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchResultsView(UserSearchViewModel())
+//            .environmentObject(UserSearchViewModel())
+//    }
+//}

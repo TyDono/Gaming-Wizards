@@ -24,7 +24,7 @@ struct UserSearchView: View {
             }
             .navigationBarTitle("Looking for Group")
             .navigationDestination(isPresented: $searchButtonWasTapped) {
-                SearchResultsView()
+                SearchResultsView(userSearchViewModel: userSearchViewModel, searchText: userSearchViewModel.searchText)
                 
            }
         }
@@ -55,19 +55,20 @@ struct UserSearchView: View {
                         }
                         .onChange(of: searchButtonWasTapped) { newValue in
                             if newValue {
-                                userSearchViewModel.performSearchForMatchingGames(gameName: gameName) { users, err in
-                                    guard let usersUnwrapped = users else { return }
-                                    self.users = usersUnwrapped
-                                    searchResultsViewModel.users = usersUnwrapped
-                                    print("value was changed!")
-                                    //change both user values here
-                                }
+                                //moved to result VM
+//                                userSearchViewModel.performSearchForMatchingGames(gameName: gameName) { users, err in
+//                                    guard let usersUnwrapped = users else { return }
+//                                    self.users = usersUnwrapped
+//                                    searchResultsViewModel.users = usersUnwrapped
+//                                    print(searchResultsViewModel.users)
+//                                    print("value was changed!")
+//                                    //change both user values here
+//                                }
 //                                userSearchViewModel.callPerformSearchForMatchingGames(gameName: gameName)
-                                print(gameName)
                                 
                             }
                         }
-                        .environmentObject(searchResultsViewModel)
+//                        .environmentObject(searchResultsViewModel)
                 }
             }
             .padding()
