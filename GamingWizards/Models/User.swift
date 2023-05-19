@@ -24,6 +24,7 @@ struct User: Identifiable, Codable, Hashable {
     var age: String = ""
     var about: String = ""
     var availability: String = ""
+    var title: String = ""
     
     
     
@@ -42,7 +43,8 @@ struct User: Identifiable, Codable, Hashable {
             "games": games,
             "groupSize": groupSize,
             "age": age,
-            "about": about
+            "about": about,
+            "title": title
             
         ]
     }
@@ -64,6 +66,7 @@ extension User {
         case groupSize = "groupSize"
         case age = "age"
         case about = "about"
+        case title = "title"
     }
 }
         

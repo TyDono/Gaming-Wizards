@@ -13,6 +13,7 @@ struct Constants {
     static var friendRequestCount: Int = 0
     static let luminariRegularFontIdentifier = "Luminari"
     static let users = "users"
+    static let friendList = "friendList"
     
     // MARK: calls to User
     static let userFriendCode = "friendCode"

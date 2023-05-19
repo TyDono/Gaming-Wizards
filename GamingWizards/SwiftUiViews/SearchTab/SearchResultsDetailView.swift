@@ -15,17 +15,32 @@ struct SearchResultsDetailView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text(selectedUser.about)
+                Text(selectedUser.displayName)
+                Text(selectedUser.age)
+                Text(selectedUser.groupSize)
                 listOfGames
+                Text(selectedUser.about)
+                friendRequestButton
             }
         }
-        .navigationTitle(selectedUser.displayName)
+        .navigationTitle(selectedUser.title)
         .background(
             Image("blank-page")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
         )
+    }
+    
+    private var friendRequestButton: some View {
+        Button(action: {
+            searchResultsDetailViewModel.sendFriendRequest(selectedUserID: selectedUser.id)
+            print("Add Friend button pressed!")
+        }) {
+            Text("Add Friend")
+                .background(.blue)
+                .foregroundColor(.white)
+        }
     }
     
     private var listOfGames: some View {

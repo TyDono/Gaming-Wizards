@@ -55,8 +55,10 @@ import FirebaseFirestore
                     let groupSize = data["groupSize"] as? String ?? ""
                     let age = data["age"] as? String ?? ""
                     let about = data["bout"] as? String ?? ""
+                    let availability = data["availability"] as? String ?? ""
+                    let title = data["title"] as? String ?? ""
                     
-                    return User(id: id, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID, games: games, groupSize: groupSize, age: age, about: about)
+                    return User(id: id, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID, games: games, groupSize: groupSize, age: age, about: about, availability: availability,  title: title)
                 }
                 
                 completion(users, err)
