@@ -112,6 +112,8 @@
 		CBCD581F2A047A1E00136AA0 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD581E2A047A1E00136AA0 /* SearchResultsView.swift */; };
 		CBCD58232A0B1EF400136AA0 /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */; };
 		CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58242A0B4AA400136AA0 /* UserLocation.swift */; };
+		CBCD58272A16F84C00136AA0 /* SearchResultsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58262A16F84B00136AA0 /* SearchResultsDetailView.swift */; };
+		CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +214,8 @@
 		CBCD581E2A047A1E00136AA0 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		CBCD58242A0B4AA400136AA0 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		CBCD58262A16F84B00136AA0 /* SearchResultsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailView.swift; sourceTree = "<group>"; };
+		CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +421,8 @@
 				CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */,
 				CBCD581E2A047A1E00136AA0 /* SearchResultsView.swift */,
 				CBCD581C2A047A0D00136AA0 /* SearchResultsViewModel.swift */,
+				CBCD58262A16F84B00136AA0 /* SearchResultsDetailView.swift */,
+				CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */,
 			);
 			path = SearchTab;
 			sourceTree = "<group>";
@@ -722,6 +728,7 @@
 				CB5BE8A629FDE958009D38D6 /* ManageAccountViewModel.swift in Sources */,
 				CB5BE88E29FDE958009D38D6 /* GamingWizardsContainer.xcdatamodeld in Sources */,
 				CB5BE8B829FDE958009D38D6 /* UserAuth.swift in Sources */,
+				CBCD58272A16F84C00136AA0 /* SearchResultsDetailView.swift in Sources */,
 				CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */,
 				CB5BE88629FDE958009D38D6 /* SignInView.swift in Sources */,
 				CB5BE8AF29FDE958009D38D6 /* DependencyInjector.swift in Sources */,
@@ -765,6 +772,7 @@
 				CB5BE8AD29FDE958009D38D6 /* Dependencies.swift in Sources */,
 				CB5BE88229FDE958009D38D6 /* Endpoint.swift in Sources */,
 				CB5BE8B429FDE958009D38D6 /* User.swift in Sources */,
+				CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */,
 				CB5BE88F29FDE958009D38D6 /* UIResponderExtension.swift in Sources */,
 				CB5BE8A829FDE958009D38D6 /* ManageAccountView.swift in Sources */,
 				CB5BE89529FDE958009D38D6 /* UIFont.swift in Sources */,

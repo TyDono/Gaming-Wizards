@@ -11,7 +11,9 @@ struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var userSearchViewModel: UserSearchViewModel
     @StateObject var searchResultsViewModel = SearchResultsViewModel()
-    var searchText: String
+    @State var resultWasTapped: Bool = false
+    @State var selectedUser: User = User(id: "110k1")
+    @State var searchText: String
     
     var body: some View {
         ZStack {
@@ -22,6 +24,9 @@ struct SearchResultsView: View {
 //                    )
             }
         }
+        .navigationDestination(isPresented: $resultWasTapped) {
+            SearchResultsDetailView(selectedUser: $selectedUser, SpecificGame: $searchText)
+       }
         .background(
             backgroundImage
         )
@@ -43,6 +48,10 @@ struct SearchResultsView: View {
                             Text(game)
                         }
                     }
+                }
+                .onTapGesture {
+                    self.selectedUser = user
+                    resultWasTapped = true
                 }
             }
             .background (
@@ -66,9 +75,12 @@ struct SearchResultsView: View {
     
 }
 
-//struct SearchResultsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchResultsView(UserSearchViewModel())
-//            .environmentObject(UserSearchViewModel())
-//    }
-//}
+struct SearchResultsView_Previews: PreviewProvider {
+    static var previews: some View {
+        let userSearchViewModel = UserSearchViewModel()
+        let searchText = "Example Search"
+        let selectedUser = User(id: "110k1")
+        
+        return SearchResultsView(userSearchViewModel: userSearchViewModel, selectedUser: selectedUser, searchText: searchText)
+    }
+}
