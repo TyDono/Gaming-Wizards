@@ -114,6 +114,7 @@
 		CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58242A0B4AA400136AA0 /* UserLocation.swift */; };
 		CBCD58272A16F84C00136AA0 /* SearchResultsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58262A16F84B00136AA0 /* SearchResultsDetailView.swift */; };
 		CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */; };
+		CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +217,7 @@
 		CBCD58242A0B4AA400136AA0 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		CBCD58262A16F84B00136AA0 /* SearchResultsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailView.swift; sourceTree = "<group>"; };
 		CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailViewModel.swift; sourceTree = "<group>"; };
+		CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +400,7 @@
 				CB5BE84B29FDE955009D38D6 /* UIFont.swift */,
 				CB5BE84C29FDE955009D38D6 /* DateExtension.swift */,
 				CB5BE84D29FDE955009D38D6 /* FileManager-DocumentDirectoryExtension.swift */,
+				CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				CB5BE88029FDE957009D38D6 /* GamingWizardsApp.swift in Sources */,
 				CB5BE8AA29FDE958009D38D6 /* KeybaordAdaptiveModifier.swift in Sources */,
 				CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */,
+				CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */,
 				CB5BE89029FDE958009D38D6 /* ViewExtension.swift in Sources */,
 				CBCD58232A0B1EF400136AA0 /* BackgroundImageView.swift in Sources */,
 				CB5BE8AB29FDE958009D38D6 /* FontModifier.swift in Sources */,

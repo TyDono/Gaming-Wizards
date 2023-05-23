@@ -19,20 +19,15 @@ struct SearchResultsView: View {
         ZStack {
             NavigationView {
                 searchResultsList
-//                    .background(
-//                        backgroundImage
-//                    )
             }
         }
+        .font(.luminari(.regular, size: 16))
         .navigationDestination(isPresented: $resultWasTapped) {
-            SearchResultsDetailView(selectedUser: $selectedUser, SpecificGame: $searchText)
+            SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText)
        }
         .background(
             backgroundImage
         )
-//        .background(
-//            backgroundImage
-//        )
         .onAppear {
             searchResultsViewModel.callPerformSearchForMatchingGames(gameName: searchText)
         }
@@ -49,18 +44,38 @@ struct SearchResultsView: View {
                         }
                     }
                 }
+                .listRowSeparator(.hidden)
+                .frame(alignment: .center)
+//                .padding(.vertical, 16)
                 .onTapGesture {
                     self.selectedUser = user
                     resultWasTapped = true
                 }
             }
-            .background (
-                Image("blank-page")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
+//            .environment(\.defaultMinListRowHeight, 50)
+            .listRowBackground(
+                RoundedRectangle(cornerRadius: 5)
+                    .background(.clear)
+                    .foregroundColor(.white)
+                    .padding(
+                        EdgeInsets(
+                            top: 2,
+                            leading: 6,
+                            bottom: 2,
+                            trailing: 6
+                        )
+                    )
             )
+//            .listRowBackground(
+//                Color.red
+////                Image("blank-page")
+////                    .resizable()
+////                    .scaledToFit()
+////                    .edgesIgnoringSafeArea(.all)
+//            )
+
         }
+        .listStyle(PlainListStyle())
         .background(
             backgroundImage
         )

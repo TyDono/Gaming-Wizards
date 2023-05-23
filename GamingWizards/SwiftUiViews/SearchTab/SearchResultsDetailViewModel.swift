@@ -37,33 +37,6 @@ import CoreData
                 path.setData(newFriend.friendDictionary)
             }
         }
-        
-        
-//            .getDocument() { (querySnapshot, err) in
-//                if let error = err {
-//                    self.noFriendExistsAlertIsShowing = true
-//                    print("Error getting documents: \(error)")
-//                } else {
-//                    self.noFriendExistsAlertIsShowing = false
-//                    //if no document exist have an alert
-//                    for document in querySnapshot!.documents {
-//                        let friendUserID = document.data()["id"] as? String ?? "No user id found"
-//                        guard let userID = self.user_Id else { return }
-//                        guard let userFriendCodeID = self.user_Friend_Code_ID else { return }
-//                        guard let displayName = self.display_Name else { return }
-//                        let newFriend: Friend = Friend(friendCodeID: userFriendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
-//                        let newPath = self.firestoreDatabase.collection(Constants.users).document(friendUserID).collection("friendList").document(userFriendCodeID)
-//
-//                        newPath.getDocument { (document, error) in
-//                            if ((document?.exists) == false) {
-//                                newPath.setData(newFriend.friendDictionary)
-//                            } else {
-//                                self.FriendRequestAlreadySentIsTrue = true
-//                            }
-//                        }
-//                    }
-//                }
-//            }
     }
     
 }

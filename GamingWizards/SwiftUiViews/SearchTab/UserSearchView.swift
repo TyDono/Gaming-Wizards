@@ -28,6 +28,7 @@ struct UserSearchView: View {
                 
            }
         }
+        .font(.luminari(.regular, size: 16))
         .background(
             backgroundImage
         )
@@ -49,6 +50,20 @@ struct UserSearchView: View {
                 ForEach(userSearchViewModel.filteredGames, id: \.self) { gameName in
                     //            List(userSearchViewModel.filteredGames, id: \.self) { name in
                     Text(gameName)
+                        .foregroundColor(.black)
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 5)
+                                .background(.clear)
+                                .foregroundColor(.white)
+                                .padding(
+                                    EdgeInsets(
+                                        top: 2,
+                                        leading: 6,
+                                        bottom: 2,
+                                        trailing: 6
+                                    )
+                                )
+                        )
                         .font(.luminari(.regular, size: 16))
                         .onTapGesture {
                             userSearchViewModel.searchText = gameName
