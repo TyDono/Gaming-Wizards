@@ -19,7 +19,6 @@ struct SearchResultsView: View {
         ZStack {
             NavigationView {
                 searchResultsList
-                timmin
             }
         }
         .font(.luminari(.regular, size: 16))
@@ -72,7 +71,7 @@ struct SearchResultsView: View {
                             .resizable()
                             .scaledToFill()
                             .clipShape(RoundedRectangle(cornerRadius: 5))
-                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .frame(width: geometry.size.width - 8, height: geometry.size.height - 8)
                             .clipped()
                     }
                     .alignmentGuide(HorizontalAlignment.center) { _ in
