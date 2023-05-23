@@ -19,6 +19,7 @@ struct SearchResultsView: View {
         ZStack {
             NavigationView {
                 searchResultsList
+                timmin
             }
         }
         .font(.luminari(.regular, size: 16))
@@ -35,51 +36,59 @@ struct SearchResultsView: View {
     
     private var searchResultsList: some View {
         List {
-            ForEach(searchResultsViewModel.users ?? [], id: \.self) { user in
+            ForEach(Array(searchResultsViewModel.users ?? []), id: \.self) { user in
                 VStack {
                     Text(user.displayName)
+                        .font(.luminari(.regular, size: 24))
+                        .bold()
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     HStack {
+                        Text("Location: \(user.location)")
+                        Text("GroupSize: \(user.groupSize)")
+                        Text("Age: \(user.age)")
+                        //pat to play here
                         ForEach(user.games, id: \.self) { game in
-                            Text(game)
+                            Text("Game: \(game)")
                         }
                     }
                 }
                 .listRowSeparator(.hidden)
                 .frame(alignment: .center)
-//                .padding(.vertical, 16)
                 .onTapGesture {
                     self.selectedUser = user
                     resultWasTapped = true
                 }
+//                .listRowInsets(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
             }
-//            .environment(\.defaultMinListRowHeight, 50)
             .listRowBackground(
-                RoundedRectangle(cornerRadius: 5)
-                    .background(.clear)
-                    .foregroundColor(.white)
-                    .padding(
-                        EdgeInsets(
-                            top: 2,
-                            leading: 6,
-                            bottom: 2,
-                            trailing: 6
-                        )
-                    )
+                GeometryReader { geometry in
+                    ZStack(alignment: .center) {
+                        RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(.clear)
+                            .padding(EdgeInsets(top: 2, leading: 6, bottom: 2, trailing: 6))
+                        
+                        Image("blank-page")
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .clipped()
+                    }
+                    .alignmentGuide(HorizontalAlignment.center) { _ in
+                        geometry.size.width / 2
+                    }
+                }
             )
-//            .listRowBackground(
-//                Color.red
-////                Image("blank-page")
-////                    .resizable()
-////                    .scaledToFit()
-////                    .edgesIgnoringSafeArea(.all)
-//            )
-
+            
         }
         .listStyle(PlainListStyle())
         .background(
             backgroundImage
         )
     }
+
+
     
     private var backgroundImage: some View {
         Image("blank-wood")
