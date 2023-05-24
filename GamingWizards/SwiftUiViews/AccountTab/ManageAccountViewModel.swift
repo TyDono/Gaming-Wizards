@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 
-//extension ManageAccountView {
+extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
         @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
         @AppStorage("first_Name") var first_Name: String?
@@ -86,4 +86,4 @@ import FirebaseAuth
         }
         
     }
-//}
+}

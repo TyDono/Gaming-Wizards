@@ -13,14 +13,14 @@ struct ManageAccountView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
 //    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
-    @ObservedObject private var manageAccountViewModel: ManageAccountViewModel
+    @StateObject private var manageAccountViewModel = ManageAccountViewModel()
 //    @ObservedObject var user = UserObservable()
     
 //    let session: SessionStore
     
-    init(viewModel: ManageAccountViewModel) {
-        self.manageAccountViewModel = viewModel
-    }
+//    init(viewModel: ManageAccountViewModel) {
+//        self.manageAccountViewModel = viewModel
+//    }
     
     var body: some View {
             ZStack(alignment: .bottom) {
@@ -304,7 +304,7 @@ struct ManageAccountView: View {
 }
 struct ManageAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = ManageAccountViewModel()
-        ManageAccountView(viewModel: viewModel)
+        
+        ManageAccountView()
     }
 }

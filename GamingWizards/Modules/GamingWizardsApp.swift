@@ -12,6 +12,7 @@ import GoogleSignIn
 import SwiftUI
 import UserNotifications
 import FirebaseAnalytics
+import CoreLocation
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
@@ -30,93 +31,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     -> Bool {
         return GIDSignIn.sharedInstance.handle(url)
     }
-//
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-//        if let error = error {
-//            session.alertItem = AlertItem(title: Text("Error Signing In With Google"), message: Text("\(error.localizedDescription)"), dismissButton: .default(Text("OK")))
-//            return
-//        }
-//        let authentication = user.authentication
-//        let accessToken = authentication.accessToken
-//        guard let user = user, let idToken = authentication.idToken  else { return }
-//
-//        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
-//
-//        session.signInWithCredential(credential: credential) { [self] result, error in
-//            if error != nil, let error = error {
-//                session.alertItem = AlertItem(title: Text("Error Signing In With Google"), message: Text("\(error.localizedDescription)"), dismissButton: .default(Text("OK")))
-//                return
-//            }
-//
-//            if let result = result {
-//                let id = result.user.uid
-//                let firstName = user.profile?.givenName ?? ""
-//                let lastName = user.profile?.familyName ?? ""
-//                let email = user.profile?.email ?? ""
-//                let user = User(id: id, firstName: firstName, lastName: lastName, email: email)
-//                handleAddingUserToDatabase(user)
-//            }
-//        }
-//    }
-//
-//    func notificationSignup() {
-//        guard let userId = Auth.auth().currentUser?.uid else { return }
-//        let imageURLString = "" //add a image url string here from firebase
-//        let message: String = AppDelegate.GamingWizardsUserSignupNotificationGreeting
-//        let notification = GamingWizardsNotification(type: .foodiNotification,
-//                                          imageUrl: imageURLString,
-//                                          message: message,
-//                                          datePosted: Date().dateToUTC,
-//                                          intelId: "edit_user_profile")
-//        let notificationPath: DocumentReference
-//        notificationPath = Firestore.firestore().collection("users").document(userId).collection("notifications").document(notification.id)
-//        let values: [String: Any] = [
-//            "id": notification.id,
-//            "type": notification.type.rawValue,
-//            "image_url": notification.imageUrl,
-//            "message": notification.message,
-//            "date_posted": notification.datePosted,
-//            "intel_id": notification.intelId,
-//            "is_read": notification.isRead
-//        ]
-//        notificationPath.setData(values)
-//    }
-//
-//    private func handleAddingUserToDatabase(_ user: User) {
-//        Firestore.firestore().collection("users").getDocuments() { [self] (querySnapshot, error) in
-//            if let error = error {
-//                session.alertItem = AlertItem(title: Text("Error Saving Data"), message: Text("\(error.localizedDescription)"), dismissButton: .default(Text("OK")))
-//                return
-//            }
-//            var userIDs: [String] = []
-//            for document in querySnapshot!.documents {
-//                if let id = document.get("id") as? String {
-//                    userIDs.append(id)
-//                }
-//            }
-//            if !userIDs.contains(user.id) {
-//                session.user?.isNewUser = true
-//                Analytics.logEvent(AnalyticsEvents.signUpWithGoogle, parameters: nil)
-//                saveUserInfoInDatabase(user)
-//                notificationSignup()
-//            } else {
-//                Analytics.logEvent(AnalyticsEvents.logInWithGoogle, parameters: nil)
-//            }
-//        }
-//    }
-//
-//    private func saveUserInfoInDatabase(_ user: User) {
-//        let path = Firestore.firestore().collection("users").document(user.id)
-//
-//        do {
-//            var ref = Database.database().reference()
-//            ref.child("users").child(user.id)
-////            try path.setData(from: user) //ser data givving an error
-////            add a save user to defaults here if wanted later on // won't need probably. rmeinder to add here is wanted after mvp
-//        } catch let error {
-//            session.alertItem = AlertItem(title: Text("Error Saving Data"), message: Text("\(error.localizedDescription)"), dismissButton: .default(Text("OK")))
-//        }
-//    }
 
 }
  
@@ -146,6 +60,7 @@ struct GamingWizardsApp: App {
 //    @StateObject var authenticationViewModel = AuthenticationViewModel()
     @StateObject var signInWithGoogleCoordinator = SignInWithGoogleCoordinator()
     @StateObject var signInWithAppleCoordinator = SignInWithAppleCoordinator()
+    @State private var locationManager = CLLocationManager()
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: Constants.luminariRegularFontIdentifier, size: 40)!]
@@ -154,6 +69,10 @@ struct GamingWizardsApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationLogInView()
+                .onAppear() {
+                    requestLocationPermission()
+                    askNotificationPermission()
+                }
 //                .environmentObject(authenticationViewModel)
                 .environmentObject(signInWithAppleCoordinator)
                 .environmentObject(signInWithGoogleCoordinator)
@@ -161,6 +80,27 @@ struct GamingWizardsApp: App {
                 .environment(\.managedObjectContext, coreDataController.persistentContainer.viewContext)
         }
     }
+    
+    private func requestLocationPermission() {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    
+    private func askNotificationPermission() {
+        let center = UNUserNotificationCenter.current()
+          center.requestAuthorization(options: [.alert, .sound, .badge]) { success, err in
+              if let error = err {
+                  // Handle the error here.
+                  print("NOTIFICATION AUTHORIZATION ERROR: \(error.localizedDescription)")
+              } else if success {
+                  // User granted authorization.
+                  print("Notification authorization granted.")
+              } else {
+                  // User denied authorization.
+                  print("Notification authorization denied.")
+              }
+          }
+    }
+    
 }
 
 //extension GamingWizardsApp {
