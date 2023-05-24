@@ -57,8 +57,9 @@ import FirebaseFirestore
                     let about = data["bout"] as? String ?? ""
                     let availability = data["availability"] as? String ?? ""
                     let title = data["title"] as? String ?? ""
+                    let payToPlay = data["payToPlay"] as? Bool ?? false
                     
-                    return User(id: id, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID, games: games, groupSize: groupSize, age: age, about: about, availability: availability,  title: title)
+                    return User(id: id, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID, games: games, groupSize: groupSize, age: age, about: about, availability: availability, title: title, payToPlay: payToPlay)
                 }
                 
                 completion(users, err)

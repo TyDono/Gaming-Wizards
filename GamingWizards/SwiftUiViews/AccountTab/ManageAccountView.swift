@@ -13,10 +13,14 @@ struct ManageAccountView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
 //    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
-    @StateObject private var manageAccountViewModel = ManageAccountViewModel()
+    @ObservedObject private var manageAccountViewModel: ManageAccountViewModel
 //    @ObservedObject var user = UserObservable()
     
 //    let session: SessionStore
+    
+    init(viewModel: ManageAccountViewModel) {
+        self.manageAccountViewModel = viewModel
+    }
     
     var body: some View {
             ZStack(alignment: .bottom) {
@@ -24,6 +28,7 @@ struct ManageAccountView: View {
                     Spacer()
                     List {
                         displayNameTextField
+                        aboutUserTextView
                         personalFriendID
                         emailTextField
                         VStack {
@@ -98,6 +103,23 @@ struct ManageAccountView: View {
             guard let displayName = manageAccountViewModel.display_Name else { return }
             manageAccountViewModel.displayName = displayName
         }
+    }
+    
+    private var aboutUserTextView: some View {
+        VStack {
+            if manageAccountViewModel.about.isEmpty == true {
+                Text("Write about yourself")
+                    .foregroundColor(.gray)
+            }
+            
+            TextEditor(text: $manageAccountViewModel.about)
+                .border(Color.gray, width: 1)
+        }
+        .padding()
+        .onChange(of: manageAccountViewModel.about, perform: { newValue in
+            manageAccountViewModel.isSaveChangesButtonIsActive = true
+        })
+        
     }
     
     private var firstNameTextField: some View { //not implemented
@@ -280,9 +302,9 @@ struct ManageAccountView: View {
     }
     
 }
-
-struct SettingsView_Previews: PreviewProvider {
+struct ManageAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        ManageAccountView()
+        let viewModel = ManageAccountViewModel()
+        ManageAccountView(viewModel: viewModel)
     }
 }

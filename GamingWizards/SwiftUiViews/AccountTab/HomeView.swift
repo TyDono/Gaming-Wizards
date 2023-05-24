@@ -104,7 +104,7 @@ struct HomeView: View {
             .padding()
         }
         .navigationDestination(isPresented: $isUserManagingAccountShown) {
-            ManageAccountView()
+            ManageAccountView(viewModel: ManageAccountViewModel())
         }
     }
     

@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 
-extension ManageAccountView {
+//extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
         @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
         @AppStorage("first_Name") var first_Name: String?
@@ -19,6 +19,7 @@ extension ManageAccountView {
         @AppStorage("user_Email") var user_Email: String?
         @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
         @AppStorage("display_Name") var display_Name: String?
+        @AppStorage("about") var about_user: String?
         @ObservedObject var user = UserObservable()
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
@@ -26,6 +27,7 @@ extension ManageAccountView {
         @Published var lastName: String = ""
         @Published var displayName: String = ""
         @Published var email: String = ""
+        @Published var about: String = ""
         @Published var isSaveChangesButtonIsActive: Bool = false
         @Published var emailIsNotValid: Bool = false
         @Published var accountInformationSavedAlertIsActive: Bool = false
@@ -37,7 +39,8 @@ extension ManageAccountView {
             guard let userId = currentUser?.uid else { return }
             let path = firestoreDatabase.collection(Constants.users).document(userId)
             path.updateData([
-                "displayName": self.displayName
+                "displayName": self.displayName,
+                "about": self.about
 //                "firstName": self.firstName, // have these user defaults to published. then have user defaults be saved once successful
 //                "lastName": self.lastName
             ]) { err in
@@ -46,8 +49,6 @@ extension ManageAccountView {
                     print("ERROR UPDATING FIRESTORE DOCUMENT: \(error)")
                 } else {
                     self.saveUserToUserDefaults()
-                    self.isSaveChangesButtonIsActive = false
-                    print("Document successfully updated")
                 }
             }
         }
@@ -57,6 +58,9 @@ extension ManageAccountView {
 //            self.first_Name = self.firstName
 //            self.last_Name = self.lastName
 //            self.user_Email = self.email // used later when users can change their email
+            self.about_user = self.about
+            
+            self.isSaveChangesButtonIsActive = false
             self.accountInformationSavedAlertIsActive = true
         }
         
@@ -82,4 +86,4 @@ extension ManageAccountView {
         }
         
     }
-}
+//}

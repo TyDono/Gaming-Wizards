@@ -25,6 +25,7 @@ struct User: Identifiable, Codable, Hashable {
     var about: String = ""
     var availability: String = ""
     var title: String = ""
+    var payToPlay: Bool = false
     
     
     
@@ -44,7 +45,8 @@ struct User: Identifiable, Codable, Hashable {
             "groupSize": groupSize,
             "age": age,
             "about": about,
-            "title": title
+            "title": title,
+            "payToPlay": payToPlay
             
         ]
     }

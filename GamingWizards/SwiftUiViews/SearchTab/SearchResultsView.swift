@@ -37,19 +37,24 @@ struct SearchResultsView: View {
         List {
             ForEach(Array(searchResultsViewModel.users ?? []), id: \.self) { user in
                 VStack {
-                    Text(user.displayName)
-                        .font(.luminari(.regular, size: 24))
+                    Text(user.title)
+                        .font(.luminari(.regular, size: 19))
                         .bold()
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     HStack {
+                        Text("Name: \(user.displayName)")
+                    }
+                    HStack {
                         Text("Location: \(user.location)")
                         Text("GroupSize: \(user.groupSize)")
+//                        ForEach(user.games, id: \.self) { game in
+//                            Text("Game: \(game)")
+//                        }
+                    }
+                    HStack {
                         Text("Age: \(user.age)")
-                        //pat to play here
-                        ForEach(user.games, id: \.self) { game in
-                            Text("Game: \(game)")
-                        }
+                        Text("Pay to Play: \(user.payToPlay ? "Yes" : "No")")
                     }
                 }
                 .listRowSeparator(.hidden)
@@ -58,7 +63,6 @@ struct SearchResultsView: View {
                     self.selectedUser = user
                     resultWasTapped = true
                 }
-//                .listRowInsets(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
             }
             .listRowBackground(
                 GeometryReader { geometry in
