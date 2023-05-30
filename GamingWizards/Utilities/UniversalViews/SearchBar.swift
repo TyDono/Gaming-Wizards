@@ -16,45 +16,52 @@ struct SearchBar: View {
     @State private var shakeCount = 0
     @State var placeholder: String
     @State var isSearchButtonShowing: Bool
+    @State var isDropDownNotificationShowing: Bool = false
     var isXCancelButtonShowing: Bool = false
     
     var body: some View {
         textFieldView
-//            .shakeEffect(isShaking: searchBarIsShaking)
     }
     
     private var textFieldView: some View {
-        HStack {
-            TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
-                isSearchButtonShowing = true
-            })
-            .font(.luminari(.regular, size: 16))
-            .padding(8)
-            .padding(.horizontal, 20)
-            .background(Color(.systemGray6))
-            .cornerRadius(Constants.roundedCornerRadius)
-            .overlay(
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.gray)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 8)
-                    if searchText != "" {
-                        xCancelButtonView
+        VStack {
+            HStack {
+                TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
+                    isSearchButtonShowing = true
+                })
+                .font(.luminari(.regular, size: 16))
+                .padding(8)
+                .padding(.horizontal, 20)
+                .background(Color(.systemGray6))
+                .cornerRadius(Constants.roundedCornerRadius)
+                .overlay(
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 8)
+                        if searchText != "" {
+                            xCancelButtonView
+                        }
                     }
+                )
+                .modifier(ShakeEffect(shakes: searchBarIsShaking ? 2 : 0))
+                .padding(.vertical, 8)
+                .padding(.leading, 8)
+                .padding(.trailing, 4)
+                .padding(.trailing, isSearchButtonShowing ? 0 : 8)
+                if searchText != "" {
+                    searchButtonView
+                        .padding(.trailing, 8)
+                        .padding(.vertical, 8)
                 }
-            )
-            .shakingAnimation(isShaking: searchBarIsShaking, shakeCount: 4)
-            .padding(.vertical, 8)
-            .padding(.leading, 8)
-            .padding(.trailing, 4)
-            .padding(.trailing, isSearchButtonShowing ? 0 : 8)
-            if searchText != "" {
-                searchButtonView
-                    .padding(.trailing, 8)
-                    .padding(.vertical, 8)
             }
-            
+            if isDropDownNotificationShowing == true {
+                    dropDownNotificationView
+                        .padding(.vertical, 8)
+                        .padding(.leading, 8)
+                        .padding(.trailing, 4)
+                }
         }
     }
     
@@ -69,20 +76,41 @@ struct SearchBar: View {
                 .padding(.trailing, 8)
     }
     
+    private var dropDownNotificationView: some View {
+        Text("you must select an option below to search for")
+                           .font(.subheadline)
+                           .padding(.horizontal, 8)
+                           .padding(.vertical, 4)
+                           .background(Color.white)
+                           .clipShape(RoundedRectangle(cornerRadius: 8))
+                           .offset(x: 0, y: -28)
+                           .animation(.easeInOut(duration: 0.35), value: isDropDownNotificationShowing)
+                           .onTapGesture {
+                               isDropDownNotificationShowing = false
+                           }
+//            .background(
+//                RoundedRectangle(cornerRadius: 8)
+//                    .background(.clear)
+//                    .foregroundColor(.white)
+//            )
+    }
+    
     private var searchButtonView: some View {
         Text(placeholder)
             .font(.luminari(.regular, size: 16))
             .padding(8)
-            .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
+            .animation(Animation.easeInOut(duration: 0.5), value: isSearchButtonShowing)
             .background(.blue)
             .cornerRadius(Constants.roundedCornerRadius)
             .foregroundColor(.white)
             .onTapGesture {
                 if ListOfGames.name.contains(searchText) {
                     isNavigatingToSearchResults = true
+                    isDropDownNotificationShowing = false
                 } else {
-                    withAnimation(Animation.easeInOut(duration: 0.5).repeatCount(4)) {
+                    withAnimation(Animation.easeInOut(duration: 0.5).speed(1)) {
                         searchBarIsShaking.toggle()
+                        isDropDownNotificationShowing = true
                     }
                 }
                 
