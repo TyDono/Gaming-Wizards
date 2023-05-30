@@ -10,12 +10,20 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var searchText: String
-    @Binding var searchButtonWasTapped: Bool
+    @Binding var isNavigatingToSearchResults: Bool
+    @State var gameListDidNotMatch: Bool = false
+    @State var searchBarIsShaking: Bool = false
+    @State private var shakeCount = 0
     @State var placeholder: String
     @State var isSearchButtonShowing: Bool
     var isXCancelButtonShowing: Bool = false
     
     var body: some View {
+        textFieldView
+//            .shakeEffect(isShaking: searchBarIsShaking)
+    }
+    
+    private var textFieldView: some View {
         HStack {
             TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
                 isSearchButtonShowing = true
@@ -24,7 +32,7 @@ struct SearchBar: View {
             .padding(8)
             .padding(.horizontal, 20)
             .background(Color(.systemGray6))
-            .cornerRadius(8)
+            .cornerRadius(Constants.roundedCornerRadius)
             .overlay(
                 HStack {
                     Image(systemName: "magnifyingglass")
@@ -32,16 +40,17 @@ struct SearchBar: View {
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 8)
                     if searchText != "" {
-                        xCancelButton
+                        xCancelButtonView
                     }
                 }
             )
+            .shakingAnimation(isShaking: searchBarIsShaking, shakeCount: 4)
             .padding(.vertical, 8)
             .padding(.leading, 8)
             .padding(.trailing, 4)
             .padding(.trailing, isSearchButtonShowing ? 0 : 8)
             if searchText != "" {
-                searchButton
+                searchButtonView
                     .padding(.trailing, 8)
                     .padding(.vertical, 8)
             }
@@ -49,7 +58,7 @@ struct SearchBar: View {
         }
     }
     
-    private var xCancelButton: some View {
+    private var xCancelButtonView: some View {
             Image(systemName: "x.circle")
                 .resizable()
                 .frame(width: 20, height: 20)
@@ -60,16 +69,22 @@ struct SearchBar: View {
                 .padding(.trailing, 8)
     }
     
-    private var searchButton: some View {
+    private var searchButtonView: some View {
         Text(placeholder)
             .font(.luminari(.regular, size: 16))
             .padding(8)
             .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
             .background(.blue)
-            .cornerRadius(10)
+            .cornerRadius(Constants.roundedCornerRadius)
             .foregroundColor(.white)
             .onTapGesture {
-                searchButtonWasTapped.toggle()
+                if ListOfGames.name.contains(searchText) {
+                    isNavigatingToSearchResults = true
+                } else {
+                    withAnimation(Animation.easeInOut(duration: 0.5).repeatCount(4)) {
+                        searchBarIsShaking.toggle()
+                    }
+                }
                 
             }
         

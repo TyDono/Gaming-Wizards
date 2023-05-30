@@ -449,6 +449,56 @@ struct ListOfGames {
         "Space Alert",
         "X-COM",
         
+        // MARK: - RPG Tabletop games
+        "Dungeons & Dragons",
+        "Pathfinder",
+        "Call of Cthulhu",
+        "Shadowrun",
+        "Warhammer Fantasy Roleplay",
+        "Vampire: The Masquerade",
+        "Star Wars: Edge of the Empire",
+        "Fate",
+        "GURPS",
+        "The Legend of the Five Rings",
+        "Aberrant",
+        "Anima: Beyond Fantasy",
+        "Ars Magica",
+        "Blades in the Dark",
+        "Burning Wheel",
+        "Cortex System",
+        "Cyberpunk 2020",
+        "Dark Heresy",
+        "Deadlands",
+        "Dragon Age",
+        "Earthdawn",
+        "Exalted",
+        "Fiasco",
+        "Feng Shui",
+        "Gamma World",
+        "Genesys",
+        "Iron Kingdoms",
+        "Legend of the Five Rings",
+        "Mage: The Ascension",
+        "Mutants & Masterminds",
+        "Numenera",
+        "Palladium Fantasy Role-Playing Game",
+        "Paranoia",
+        "RuneQuest",
+        "Savage Worlds",
+        "Shadow of the Demon Lord",
+        "Starfinder",
+        "Tales from the Loop",
+        "Ten Candles",
+        "The One Ring",
+        "The Witcher",
+        "Torchbearer",
+        "Traveller",
+        "Uncharted Worlds",
+        "Warhammer 40,000 Roleplay",
+        "World of Darkness",
+        "Wraith: The Oblivion",
+        "Zweihander",
+        
         // MARK: - Word games
         "25 Words or Less",
         "Acronymble",
@@ -479,6 +529,6 @@ struct ListOfGames {
         
         // MARK: - ??????
         "Barbie Dream House"
-
+        
     ]
 }

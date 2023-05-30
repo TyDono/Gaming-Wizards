@@ -43,7 +43,7 @@ struct UserSearchView: View {
     
     private var searchBar: some View {
         VStack {
-            SearchBar(searchText: $userSearchViewModel.searchText, searchButtonWasTapped: $searchButtonWasTapped, placeholder: "Search", isSearchButtonShowing: true, isXCancelButtonShowing: false)
+            SearchBar(searchText: $userSearchViewModel.searchText, isNavigatingToSearchResults: $searchButtonWasTapped, placeholder: "Search", isSearchButtonShowing: true, isXCancelButtonShowing: false)
                 .animation(Animation.easeInOut(duration: 0.2), value: userSearchViewModel.searchText)
                 .font(.luminari(.regular, size: 16))
             List {

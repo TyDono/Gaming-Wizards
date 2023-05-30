@@ -10,6 +10,10 @@ import SwiftUI
 
 extension View {
     
+    func shakingAnimation(isShaking: Bool, shakeCount: CGFloat) -> some View {
+        self.modifier(ShakeEffect(isShaking: isShaking, shakeCount: shakeCount))
+    }
+    
     func hideKeyboard() {
         #if canImport(UIKit)
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

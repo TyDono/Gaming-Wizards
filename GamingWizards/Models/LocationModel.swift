@@ -10,14 +10,14 @@ import CoreLocation
 
 final class LocationModel: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
-    @Published var authorisationStatus: CLAuthorizationStatus = .notDetermined
+    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
 
     override init() {
         super.init()
         self.locationManager.delegate = self
     }
 
-    public func requestAuthorisation(always: Bool = false) {
+    public func requestAuthorization(always: Bool = false) {
         if always {
             self.locationManager.requestAlwaysAuthorization()
         } else {
@@ -29,6 +29,6 @@ final class LocationModel: NSObject, ObservableObject {
 extension LocationModel: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        self.authorisationStatus = status
+        self.authorizationStatus = status
     }
 }
