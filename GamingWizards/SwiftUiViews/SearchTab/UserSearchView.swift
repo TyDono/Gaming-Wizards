@@ -48,7 +48,6 @@ struct UserSearchView: View {
                 .font(.luminari(.regular, size: 16))
             List {
                 ForEach(userSearchViewModel.filteredGames, id: \.self) { gameName in
-                    //            List(userSearchViewModel.filteredGames, id: \.self) { name in
                     Text(gameName)
                         .foregroundColor(.black)
                         .listRowBackground(

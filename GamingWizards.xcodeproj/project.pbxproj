@@ -101,6 +101,7 @@
 		CB5BE8FC29FDEA9C009D38D6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8FB29FDEA9C009D38D6 /* FirebaseStorageCombine-Community */; };
 		CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */; };
 		CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */; };
+		CBBD556A2A27F08900F27626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBD55692A27F08800F27626 /* LaunchScreen.storyboard */; };
 		CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58132A01AFD200136AA0 /* UserReport.swift */; };
 		CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58172A03147900136AA0 /* SearchBar.swift */; };
 		CBCD581B2A0467F600136AA0 /* Luminari.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCD581A2A0467F600136AA0 /* Luminari.ttf */; };
@@ -201,6 +202,7 @@
 		CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GamingWizards.entitlements; sourceTree = "<group>"; };
 		CB5BE9042A0084A4009D38D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
+		CBBD55692A27F08800F27626 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBCD58132A01AFD200136AA0 /* UserReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReport.swift; sourceTree = "<group>"; };
 		CBCD58172A03147900136AA0 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CBCD581A2A0467F600136AA0 /* Luminari.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Luminari.ttf; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				CB5BE86429FDE955009D38D6 /* Modifiers */,
 				CB5BE82D29FDE954009D38D6 /* Modules */,
 				CB5BE87529FDE956009D38D6 /* Authentication */,
+				CBBD556B2A27F2A800F27626 /* StoryBoards */,
 				CB5BE83429FDE954009D38D6 /* SignInContent */,
 				CB5BE86829FDE956009D38D6 /* Utilities */,
 				CB5BE83B29FDE955009D38D6 /* DataModule */,
@@ -521,6 +524,14 @@
 			path = MiscAssets;
 			sourceTree = "<group>";
 		};
+		CBBD556B2A27F2A800F27626 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				CBBD55692A27F08800F27626 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
 		CBCD58192A0467F600136AA0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +702,7 @@
 				CB5BE8BD29FDE958009D38D6 /* Preview Assets.xcassets in Resources */,
 				CBCD581B2A0467F600136AA0 /* Luminari.ttf in Resources */,
 				CB5BE8BC29FDE958009D38D6 /* Assets.xcassets in Resources */,
+				CBBD556A2A27F08900F27626 /* LaunchScreen.storyboard in Resources */,
 				CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -947,9 +959,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GamingWizards/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To help you find users located near you!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -978,9 +993,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GamingWizards/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To help you find users located near you!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -28,6 +28,8 @@ struct ManageAccountView: View {
                     Spacer()
                     List {
                         displayNameTextField
+                        firstNameTextField
+                        lastNameTextField
                         aboutUserTextView
                         personalFriendID
                         emailTextField
@@ -62,7 +64,7 @@ struct ManageAccountView: View {
     // user's will know it as their personal ID, but on code it is their FriendID. their real ID is a uuid.
     private var personalFriendID: some View {
         VStack {
-            Text("Personal ID")
+            Text("Friend ID")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .font(.roboto(.semibold,
@@ -97,11 +99,10 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
             .onChange(of: manageAccountViewModel.firstName) { newValue in
-//                                manageAccountViewModel.isSaveChangesButtonIsActive = true
+                manageAccountViewModel.isSaveChangesButtonIsActive = true
             }
         } .onAppear {
-            guard let displayName = manageAccountViewModel.display_Name else { return }
-            manageAccountViewModel.displayName = displayName
+            manageAccountViewModel.displayName = manageAccountViewModel.display_Name ?? ""
         }
     }
     
@@ -119,6 +120,9 @@ struct ManageAccountView: View {
         .onChange(of: manageAccountViewModel.about, perform: { newValue in
             manageAccountViewModel.isSaveChangesButtonIsActive = true
         })
+        .onAppear {
+            manageAccountViewModel.about = manageAccountViewModel.about_user ?? ""
+        }
         
     }
     
@@ -147,8 +151,7 @@ struct ManageAccountView: View {
 //                                manageAccountViewModel.isSaveChangesButtonIsActive = true
             }
         }.onAppear {
-            guard let firstName = manageAccountViewModel.first_Name else { return }
-            manageAccountViewModel.displayName = firstName
+            manageAccountViewModel.firstName = manageAccountViewModel.first_Name ?? ""
         }
     }
     
@@ -173,12 +176,11 @@ struct ManageAccountView: View {
                     .stroke(Color.gray.opacity(0.80),
                             lineWidth: 1)
             )
-//                            .onChange(of: manageAccountViewModel.lastName) { newValue in
-//                                manageAccountViewModel.isSaveChangesButtonIsActive = true
-//                            }
+            .onChange(of: manageAccountViewModel.lastName) { newValue in
+                manageAccountViewModel.isSaveChangesButtonIsActive = true
+            }
         }.onAppear {
-            guard let lastName = manageAccountViewModel.last_Name else { return }
-            manageAccountViewModel.displayName = lastName
+            manageAccountViewModel.lastName = manageAccountViewModel.last_Name ?? ""
         }
     }
     

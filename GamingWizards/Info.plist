@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To help you find users located near you!</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Luminari.ttf</string>
-	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -23,5 +15,9 @@
 	</array>
 	<key>GIDClientID</key>
 	<string>1047699525382-qg9etkd9keuf8j99271la137hj1kah6p.apps.googleusercontent.com</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Luminari.ttf</string>
+	</array>
 </dict>
 </plist>

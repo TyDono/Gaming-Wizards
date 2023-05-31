@@ -39,6 +39,8 @@ extension ManageAccountView {
             guard let userId = currentUser?.uid else { return }
             let path = firestoreDatabase.collection(Constants.users).document(userId)
             path.updateData([
+                "firstName": self.firstName,
+                "lastName": self.lastName,
                 "displayName": self.displayName,
                 "about": self.about
 //                "firstName": self.firstName, // have these user defaults to published. then have user defaults be saved once successful
@@ -55,8 +57,8 @@ extension ManageAccountView {
         
         private func saveUserToUserDefaults() {
             self.display_Name = self.displayName
-//            self.first_Name = self.firstName
-//            self.last_Name = self.lastName
+            self.first_Name = self.firstName
+            self.last_Name = self.lastName
 //            self.user_Email = self.email // used later when users can change their email
             self.about_user = self.about
             
