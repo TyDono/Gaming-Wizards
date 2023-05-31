@@ -44,7 +44,7 @@ struct UserSearchView: View {
     private var searchBar: some View {
         VStack {
             SearchBar(searchText: $userSearchViewModel.searchText, isNavigatingToSearchResults: $searchButtonWasTapped, placeholder: "Search", isSearchButtonShowing: true, isXCancelButtonShowing: false)
-                .animation(Animation.easeInOut(duration: 0.2), value: userSearchViewModel.searchText)
+                .animation(Animation.easeInOut(duration: 0.25), value: userSearchViewModel.searchText)
                 .font(.luminari(.regular, size: 16))
             List {
                 ForEach(userSearchViewModel.filteredGames, id: \.self) { gameName in
@@ -54,7 +54,7 @@ struct UserSearchView: View {
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 5)
                                 .background(.clear)
-                                .foregroundColor(.white)
+                                .foregroundColor(userSearchViewModel.searchText.isEmpty ? .clear : .white)
                                 .padding(
                                     EdgeInsets(
                                         top: 2,
@@ -88,10 +88,7 @@ struct UserSearchView: View {
             }
             .padding()
             .animation(Animation.easeInOut(duration: 0.7), value: userSearchViewModel.searchText)
-//            .animation(Animation.easeInOut(duration: 1.0), value: offset)
             .listStyle(.plain)
-//            .cornerRadius(25)
-//            .listStyle(.insetGrouped)
         }
     }
 

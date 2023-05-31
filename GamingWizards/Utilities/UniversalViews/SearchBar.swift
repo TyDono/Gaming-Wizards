@@ -72,6 +72,7 @@ struct SearchBar: View {
                 .foregroundColor(.gray)
                 .onTapGesture {
                     self.searchText = ""
+                    isDropDownNotificationShowing = false
                 }
                 .padding(.trailing, 8)
     }
@@ -86,7 +87,9 @@ struct SearchBar: View {
                            .offset(x: 0, y: -28)
                            .animation(.easeInOut(duration: 0.35), value: isDropDownNotificationShowing)
                            .onTapGesture {
-                               isDropDownNotificationShowing = false
+                               withAnimation(Animation.easeInOut(duration: 0.35)) {
+                                   isDropDownNotificationShowing = false
+                               }
                            }
 //            .background(
 //                RoundedRectangle(cornerRadius: 8)
@@ -105,10 +108,13 @@ struct SearchBar: View {
             .foregroundColor(.white)
             .onTapGesture {
                 if ListOfGames.name.contains(searchText) {
+                    withAnimation(Animation.easeInOut(duration: 0.25)) {
+                        isDropDownNotificationShowing = false
+                    }
                     isNavigatingToSearchResults = true
-                    isDropDownNotificationShowing = false
+                    
                 } else {
-                    withAnimation(Animation.easeInOut(duration: 0.5).speed(1)) {
+                    withAnimation(Animation.easeInOut(duration: 0.6).speed(1)) {
                         searchBarIsShaking.toggle()
                         isDropDownNotificationShowing = true
                     }
