@@ -27,8 +27,6 @@ struct User: Identifiable, Codable, Hashable {
     var title: String = ""
     var payToPlay: Bool = false
     
-    
-    
     var userDictionary: [String: Any] {
         return [
             "id": id,

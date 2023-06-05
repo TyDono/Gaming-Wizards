@@ -189,11 +189,36 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
             let firstName = ""
             let lastName = ""
             let displayName = user.displayName ?? ""
-            let email = user.email ?? "No email given"
+            let email = user.email ?? "No email given "
             let location = ""
             let profileImageUrl = ""
-            let friendID = String((UUID().uuidString.suffix(4))) // made so the collection can be made and users can just freely add and remove friends and friend requests
-            let newUser = self.authenticationViewModel.createUserBaseData(id: id,  firstName: firstName, lastName: lastName, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID)
+            let friendID = String((UUID().uuidString.suffix(4)))
+//            let friendList = [Friend]
+//            let friendRequests = [Friend]
+            let games: [String] = []
+            let groupSize = ""
+            let age = ""
+            let about = ""
+            let availability = ""
+            let title = ""
+            let payToPlay = false
+            let newUser = self.authenticationViewModel.createUserBaseData(id: id,
+                                                                          firstName: firstName,
+                                                                          lastName: lastName,
+                                                                          displayName: displayName,
+                                                                          email: email,
+                                                                          location: location,
+                                                                          profileImageUrl: profileImageUrl,
+                                                                          friendID: friendID,
+                                              //                            friendList: friendList,
+                                              //                            friendRequests: friendRequests,
+                                                                          games: games,
+                                                                          groupSize: groupSize,
+                                                                          age: age,
+                                                                          about: about,
+                                                                          availability: availability,
+                                                                          title: title,
+                                                                          payToPlay: payToPlay)
             self.authenticationViewModel.saveUserInfoInDatabase(newUser)
         }
     }

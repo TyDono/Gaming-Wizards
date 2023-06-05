@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import PhotosUI
 
 struct ManageAccountView: View {
     
@@ -27,6 +28,7 @@ struct ManageAccountView: View {
                 VStack {
                     Spacer()
                     List {
+                        profileImageView
                         displayNameTextField
                         firstNameTextField
                         lastNameTextField
@@ -59,6 +61,34 @@ struct ManageAccountView: View {
                 )
             }
 
+    }
+    
+    private var profileImageView: some View {
+        VStack {
+            if let profileImage = manageAccountViewModel.profileImage {
+                Image(uiImage: profileImage)
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 250, alignment: .center)
+            } else {
+                Image("WantedWizard+")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
+                    .frame(width: 250, height: 250, alignment: .center)
+            }
+        }
+        .onTapGesture {
+            manageAccountViewModel.isShowingImagePicker = true
+        }
+        .sheet(isPresented: $manageAccountViewModel.isShowingImagePicker, onDismiss: nil) {
+            ImagePicker(selectedImage: $manageAccountViewModel.profileImage)
+        }
+        .onChange(of: manageAccountViewModel.profileImage) { newValue in
+            manageAccountViewModel.isSaveChangesButtonIsActive = true
+        }
+//        .onChange(of: manageAccountViewModel.inputProfileImage) { _ in manageAccountViewModel.loadImage }
     }
     
     // user's will know it as their personal ID, but on code it is their FriendID. their real ID is a uuid.
@@ -226,7 +256,7 @@ struct ManageAccountView: View {
         //}
     }
     
-    private var customNavigationBar: some View {
+    private var customNavigationBar: some View { // not called anywhere
         ZStack {
             HStack {
                 backButton

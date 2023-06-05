@@ -105,15 +105,24 @@ import CoreData
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String, location: String, profileImageUrl: String, friendID: String) -> User {
+    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageUrl: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User {
         let newUser = User(id: id,
-                           firstName: firstName,
-                           lastName: lastName,
-                           displayName: displayName,
-                           email: email,
-                           location: location,
-                           profileImageUrl: profileImageUrl,
-                           friendID: friendID)
+                            firstName: firstName,
+                            lastName: lastName,
+                            displayName: displayName,
+                            email: email,
+                            location: location,
+                            profileImageUrl: profileImageUrl,
+                            friendID: friendID,
+//                            friendList: friendList,
+//                            friendRequests: friendRequests,
+                            games: games,
+                            groupSize: groupSize,
+                            age: age,
+                            about: about,
+                            availability: availability,
+                            title: title,
+                            payToPlay: payToPlay)
         return newUser
     }
 
