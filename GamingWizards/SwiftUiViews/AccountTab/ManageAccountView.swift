@@ -71,23 +71,41 @@ struct ManageAccountView: View {
                     .scaledToFit()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 250, alignment: .center)
+                    .onChange(of: profileImage, perform: { newValue in
+                        manageAccountViewModel.didProfileImageChange = true
+                    })
+                    .onTapGesture {
+                        manageAccountViewModel.isShowingImagePicker = true
+                    }
+                Button("Save Image") { // remove later
+                    manageAccountViewModel.saveProfileImageToDefaults()
+                    manageAccountViewModel.uploadProfileImageToFirebaseStorage()
+//                    manageAccountViewModel.uploadProfileImageToFirebaseStorage(image: profileImage)
+                }
             } else {
                 Image("WantedWizard+")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .scaledToFit()
                     .frame(width: 250, height: 250, alignment: .center)
+                    .onTapGesture {
+                        manageAccountViewModel.isShowingImagePicker = true
+                    }
             }
+
         }
-        .onTapGesture {
-            manageAccountViewModel.isShowingImagePicker = true
+        .onAppear {
+            manageAccountViewModel.loadProfileImage()
         }
+//        .onTapGesture {
+//            manageAccountViewModel.isShowingImagePicker = true
+//        }
         .sheet(isPresented: $manageAccountViewModel.isShowingImagePicker, onDismiss: nil) {
             ImagePicker(selectedImage: $manageAccountViewModel.profileImage)
         }
-        .onChange(of: manageAccountViewModel.profileImage) { newValue in
-            manageAccountViewModel.isSaveChangesButtonIsActive = true
-        }
+//        .onChange(of: manageAccountViewModel.profileImage) { newValue in
+//            manageAccountViewModel.isSaveChangesButtonIsActive = true
+//        }
 //        .onChange(of: manageAccountViewModel.inputProfileImage) { _ in manageAccountViewModel.loadImage }
     }
     
@@ -128,9 +146,6 @@ struct ManageAccountView: View {
                     .stroke(Color.gray.opacity(0.80),
                             lineWidth: 1)
             )
-            .onChange(of: manageAccountViewModel.firstName) { newValue in
-                manageAccountViewModel.isSaveChangesButtonIsActive = true
-            }
         } .onAppear {
             manageAccountViewModel.displayName = manageAccountViewModel.display_Name ?? ""
         }
@@ -145,11 +160,12 @@ struct ManageAccountView: View {
             
             TextEditor(text: $manageAccountViewModel.about)
                 .border(Color.gray, width: 1)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .onChange(of: manageAccountViewModel.about) { newValue in
+                    manageAccountViewModel.isSaveChangesButtonIsActive = true
+                }
         }
         .padding()
-        .onChange(of: manageAccountViewModel.about, perform: { newValue in
-            manageAccountViewModel.isSaveChangesButtonIsActive = true
-        })
         .onAppear {
             manageAccountViewModel.about = manageAccountViewModel.about_user ?? ""
         }
@@ -177,9 +193,6 @@ struct ManageAccountView: View {
                     .stroke(Color.gray.opacity(0.80),
                             lineWidth: 1)
             )
-            .onChange(of: manageAccountViewModel.firstName) { newValue in
-//                                manageAccountViewModel.isSaveChangesButtonIsActive = true
-            }
         }.onAppear {
             manageAccountViewModel.firstName = manageAccountViewModel.first_Name ?? ""
         }
@@ -206,9 +219,6 @@ struct ManageAccountView: View {
                     .stroke(Color.gray.opacity(0.80),
                             lineWidth: 1)
             )
-            .onChange(of: manageAccountViewModel.lastName) { newValue in
-                manageAccountViewModel.isSaveChangesButtonIsActive = true
-            }
         }.onAppear {
             manageAccountViewModel.lastName = manageAccountViewModel.last_Name ?? ""
         }

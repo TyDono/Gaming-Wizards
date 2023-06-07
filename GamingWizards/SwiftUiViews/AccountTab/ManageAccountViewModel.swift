@@ -21,7 +21,7 @@ extension ManageAccountView {
         @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
         @AppStorage("display_Name") var display_Name: String?
         @AppStorage("about") var about_user: String?
-        @AppStorage("profile_Image_Url") var profile_Image_Url: String?
+        @AppStorage("profile_Image_String") var profile_Image_String: String?
         @AppStorage("saved_Profile_Image") var saved_Profile_Image: String?
 //        @AppStorage("profile_Image") var profile_Image: UIImage?
         @ObservedObject var user = UserObservable()
@@ -39,37 +39,47 @@ extension ManageAccountView {
         @Published var accountInformationChangedErrorAlertIsActive: Bool = false
         @Published var isShowingImagePicker = false
         @Published var profileImage: UIImage?
+        @Published var didProfileImageChange: Bool = false
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()
         
-        func saveImage() {
+        func saveProfileImageToDefaults() {
             guard let image = profileImage else { return }
 
-            if let imageData = image.jpegData(compressionQuality: 0.8) {
+            if let imageData = image.jpegData(compressionQuality: 0.6) {
                 saved_Profile_Image = imageData.base64EncodedString()
+                self.didProfileImageChange = false
             }
         }
+        
+        func saveProfileImageToClod() {
+            // ?????
+        }
 
-        func loadImage() {
+        func loadProfileImage() {
             if let imageData = Data(base64Encoded: saved_Profile_Image ?? "") {
                 profileImage = UIImage(data: imageData)
             }
         }
         
-        func uploadImageToFirebaseStorage(image: UIImage) {
-            let storageRef = firebaseStorage.reference().child("")
-            let data = image.jpegData(compressionQuality: 0.2)
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpg"
-            
-            if let data = data {
-                storageRef.putData(data, metadata: metadata) { (metadata, error) in
+        func loadProfileImageFromFirebaseStorage() {
+            // use this in viewing other people's profile
+        }
+        
+        func uploadProfileImageToFirebaseStorage() {
+            guard let image = profileImage else { return }
+            guard let imageString = profile_Image_String else { return }
+            guard let imageData = image.jpegData(compressionQuality: 0.8) else { return }
+            let storageRef = firebaseStorage.reference().child("profileImages/\(imageString)")
+            if let imageName = profile_Image_String {
+                let imageRef = storageRef.child(imageName)
+                
+                _ = imageRef.putData(imageData, metadata: nil) { metadata, error in
                     if let error = error {
-                        print("ERROR WHILE UPLOADING IMAGE TO FIREBASE STORAGE: ", error)
-                    }
-                    
-                    if let metadata = metadata {
-                        print("Metadata: ", metadata)
+                        print("ERROR UPLOADING IMAGE TO FIREBASE STORAGE: \(error.localizedDescription)")
+                    } else {
+                        self.saveProfileImageToDefaults()
+                        print("IT WENT IN BB")
                     }
                 }
             }
@@ -83,15 +93,15 @@ extension ManageAccountView {
                 "firstName": self.firstName,
                 "lastName": self.lastName,
                 "displayName": self.displayName,
-                "about": self.about,
-                "profileImageUrl": self.profileImageUrl
-//                "firstName": self.firstName, // have these user defaults to published. then have user defaults be saved once successful
-//                "lastName": self.lastName
+                "about": self.about
             ]) { err in
                 if let error = err {
                     self.accountInformationChangedErrorAlertIsActive = true
                     print("ERROR UPDATING FIRESTORE DOCUMENT: \(error)")
                 } else {
+                    if self.didProfileImageChange == true {
+                        self.uploadProfileImageToFirebaseStorage()
+                    }
                     self.saveUserToUserDefaults()
                 }
             }
@@ -103,8 +113,7 @@ extension ManageAccountView {
             self.last_Name = self.lastName
 //            self.user_Email = self.email // used later when users can change their email
             self.about_user = self.about
-            self.profile_Image_Url = self.profileImageUrl
-            saveImage()
+            self.profile_Image_String = self.profileImageUrl
             
             self.isSaveChangesButtonIsActive = false
             self.accountInformationSavedAlertIsActive = true

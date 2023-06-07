@@ -63,8 +63,7 @@ struct HomeView: View {
                             .badge(Constants.friendRequestCount)
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
-                            .font(.custom(Constants.luminariRegularFontIdentifier,
-                                          size: 20))
+                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
 //                            .font(.roboto(.custom("luminri")))
 //                            .font(.roboto(.semibold,
 //                                          size: 20))

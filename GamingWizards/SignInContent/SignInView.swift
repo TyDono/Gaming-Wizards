@@ -162,13 +162,13 @@ struct SignInView: View {
 //    }
     
     private var titleLabel: some View {
-        Text("Gaming Wizard")
-            .foregroundColor(Colors.green)
+        Text("Gaming Wizards")
+            .foregroundColor(Colors.black16)
             .fontWeight(.black)
             .foregroundColor(Color(.systemIndigo))
-            .font(.largeTitle)
             .multilineTextAlignment(.center)
-            .modifier(FontModifier(size: 20, weight: .extraBold))
+//            .modifier(FontModifier(size: 20, weight: .extraBold))
+            .font(.custom(Constants.luminariRegularFontIdentifier, size: 36))
     }
     
     private var appleSignInButton: some View {
