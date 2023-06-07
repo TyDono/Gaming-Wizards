@@ -26,7 +26,7 @@ import CoreData
     
     func sendFriendRequest(selectedUserID: String) {
         guard let userFriendCode = user_Friend_Code_ID else { return }
-        let path = firestoreDatabase.collection(Constants.users).document(selectedUserID).collection(Constants.friendList).document(userFriendCode)
+        let path = firestoreDatabase.collection(Constants.users).document(selectedUserID).collection(Constants.userFriendList).document(userFriendCode)
         let newFriend = Friend(friendCodeID: user_Friend_Code_ID!, friendUserID: user_Id!, friendDisplayName: display_Name!, isFriend: false, isFavorite: false) //this should be the current user's info
         path.getDocument { (documentSnapshot, err) in
             if let error = err {

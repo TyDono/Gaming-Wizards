@@ -51,12 +51,12 @@ import CoreData
                         self.noFriendExistsAlertIsShowing = false
                         //if no document exist have an alert
                         for document in querySnapshot!.documents {
-                            let friendUserID = document.data()["id"] as? String ?? "No user id found"
+                            let friendUserID = document.data()[Constants.userID] as? String ?? "No user id found"
                             guard let userID = self.user_Id else { return }
                             guard let userFriendCodeID = self.user_Friend_Code_ID else { return }
                             guard let displayName = self.display_Name else { return }
                             let newFriend: Friend = Friend(friendCodeID: userFriendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
-                            let newPath = self.firestoreDatabase.collection(Constants.users).document(friendUserID).collection("friendList").document(userFriendCodeID)
+                            let newPath = self.firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID)
                             
                             newPath.getDocument { (document, error) in
                                 if ((document?.exists) == false) {
@@ -98,11 +98,11 @@ import CoreData
 //            guard let friendUserID
             let friends = coreDataController.savedFriendEntities
             let newFriend = Friend(friendCodeID: userFriendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: true, isFavorite: false)
-            let friendPath = firestoreDatabase.collection(Constants.users).document(friendUserID).collection("friendList").document(userFriendCodeID) //goes to the friend and adds you to their friend list
-            let userPath = firestoreDatabase.collection(Constants.users).document(userID).collection("friendList").document(friendCodeIDRequest) // goes to your friend list and changes isFriend to true
+            let friendPath = firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID) //goes to the friend and adds you to their friend list
+            let userPath = firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList).document(friendCodeIDRequest) // goes to your friend list and changes isFriend to true
 
             userPath.updateData([
-                "isFriend": true
+                Constants.isFriend: true
             ]) { err in
                 if let error = err {
                     print("ERROR ACCEPTING FRIEND REUEST: \(error.localizedDescription)")
@@ -113,7 +113,7 @@ import CoreData
                     friendPath.setData(newFriend.friendDictionary)
                     friends.forEach {
                         if $0.friendCodeID == friendCodeIDRequest {
-                            $0.setValue(true, forKey: "isFriend")
+                            $0.setValue(true, forKey: Constants.isFriend)
                             self.coreDataController.saveFriendData()
                         }
                     }

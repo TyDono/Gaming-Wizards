@@ -93,10 +93,10 @@ struct GamingWizardsApp: App {
                   print("NOTIFICATION AUTHORIZATION ERROR: \(error.localizedDescription)")
               } else if success {
                   // User granted authorization.
-                  print("Notification authorization granted.")
+                  print("NOTIFICATION AUTHORIZATION GRANTED.")
               } else {
                   // User denied authorization.
-                  print("Notification authorization denied.")
+                  print("NOTIFICATION AUTHORIZATION DENIED.")
               }
           }
     }

@@ -14,15 +14,17 @@ struct Constants {
     static let luminariRegularFontIdentifier = "Luminari"
     static var roundedCornerRadius: CGFloat = 8
     static let users = "users"
-    static let friendList = "friendList"
+//    static let friendList = "friendList"
     
     // MARK: calls to User
     static let userFriendCode = "friendCode"
     static let userID = "id"
+    static let userFirstName = "firstName"
+    static let userLastName = "lastName"
     static let userDisplayName = "displayName"
     static let userEmail = "email"
     static let userLocation = "location"
-    static let userProfileImageURL = "profileImageURL"
+    static let userProfileImageString = "profileImageString"
     static let userFriendID = "friendID"
     static let userFriendList = "friendList"
     static let userFriendRequest = "friendRequest"
@@ -31,6 +33,8 @@ struct Constants {
     static let userAge = "age"
     static let userAbout = "about"
     static let userAvailability = "availability"
+    static let userTitle = "title"
+    static let userPayToPlay = "payToPlay"
     
     // MARK: calls to Friend
     static let friendCodeID = "friendCodeID"
@@ -52,7 +56,7 @@ struct Constants {
 //    var displayName = ""
 //    var email: String? = ""
 //    var location: String = "" //change to UserLocation later date maybe
-//    var profileImageUrl = ""
+//    var profileImageString = ""
 //    var friendID = ""
 //    var friendList: [Friend] = [] // sub collection
 //    var friendRequests: [Friend] = [] // sub collection

@@ -65,12 +65,12 @@ class CoreDataController: ObservableObject {
         guard let userFriendCodeID = user_Friend_Code_ID else { return }
         guard let friendUserID = friend.friendUserID else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
-        firestoreDatabase.collection(Constants.users).document(friendUserID).collection("friendList").document(userFriendCodeID)
+        firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID)
             .delete() { err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
-                    self.firestoreDatabase.collection(Constants.users).document(userID).collection("friendList").document(friendCodeID).delete() { err in
+                    self.firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList).document(friendCodeID).delete() { err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THE FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {

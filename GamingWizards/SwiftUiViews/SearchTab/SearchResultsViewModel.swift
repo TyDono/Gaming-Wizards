@@ -45,21 +45,21 @@ import FirebaseFirestore
                 }
                 let users = snapshot.documents.map { (document) -> User in
                     let data = document.data()
-                    let id = data["is"] as? String ?? ""
-                    let displayName = data["displayName"] as? String ?? ""
-                    let email = data["email"] as? String ?? ""
+                    let id = data[Constants.userID] as? String ?? ""
+                    let displayName = data[Constants.userDisplayName] as? String ?? ""
+                    let email = data[Constants.userEmail] as? String ?? ""
                     let location = data[""] as? String ?? ""
-                    let profileImageUrl = data["profileImageUrl"] as? String ?? ""
-                    let friendID = data["friendId"] as? String ?? ""
-                    let games = data["games"] as? [String] ?? [""]
-                    let groupSize = data["groupSize"] as? String ?? ""
-                    let age = data["age"] as? String ?? ""
-                    let about = data["bout"] as? String ?? ""
-                    let availability = data["availability"] as? String ?? ""
-                    let title = data["title"] as? String ?? ""
-                    let payToPlay = data["payToPlay"] as? Bool ?? false
+                    let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
+                    let friendID = data[Constants.userFriendID] as? String ?? ""
+                    let games = data[Constants.userGames] as? [String] ?? [""]
+                    let groupSize = data[Constants.userGroupSize] as? String ?? ""
+                    let age = data[Constants.userAge] as? String ?? ""
+                    let about = data[Constants.userAbout] as? String ?? ""
+                    let availability = data[Constants.userAvailability] as? String ?? ""
+                    let title = data[Constants.userTitle] as? String ?? ""
+                    let payToPlay = data[Constants.userPayToPlay] as? Bool ?? false
                     
-                    return User(id: id, displayName: displayName, email: email, location: location, profileImageUrl: profileImageUrl, friendID: friendID, games: games, groupSize: groupSize, age: age, about: about, availability: availability, title: title, payToPlay: payToPlay)
+                    return User(id: id, displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendID: friendID, games: games, groupSize: groupSize, age: age, about: about, availability: availability, title: title, payToPlay: payToPlay)
                 }
                 
                 completion(users, err)

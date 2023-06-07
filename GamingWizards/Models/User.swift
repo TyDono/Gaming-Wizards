@@ -15,7 +15,7 @@ struct User: Identifiable, Codable, Hashable {
     var displayName = ""
     var email: String? = ""
     var location: String = "" //change to UserLocation later date maybe
-    var profileImageUrl = ""
+    var profileImageString = ""
     var friendID = ""
     var friendList: [Friend] = [] // sub collection
     var friendRequests: [Friend] = [] // sub collection
@@ -35,7 +35,7 @@ struct User: Identifiable, Codable, Hashable {
             "displayName": displayName,
             "email": email ?? "No Email Available",
             "location": location,
-            "profileImageUrl": profileImageUrl,
+            "profileImageString": profileImageString,
             "friendCodeID": friendID,
             "friendList": friendList,
             "friendRequests": friendRequests,
@@ -58,7 +58,7 @@ extension User {
         case displayName = "display_Name"
         case email = "user_email"
         case location = "user_location"
-        case profileImageUrl = "profile_image_url"
+        case profileImageString = "profile_image_string"
         case friendID = "friendCodeID"
         case friendList = "friendList"
         case friendRequests = "friendRequests"
@@ -77,7 +77,7 @@ class UserObservable: ObservableObject {
     let displayNameKey = "displayName"
     let emailKey = "email"
     let locationKey = "location"
-    let profileImageUrlKey = "profileImageUrl"
+    let profileImageStringKey = "profileImageString"
     let isNewUserKey = "isNewUser"
     let latitudeKey = "latitude"
     let longitudeKey = "longitude"
@@ -117,9 +117,9 @@ class UserObservable: ObservableObject {
         }
     }
     
-    @Published var profileImageUrl: String {
+    @Published var profileImageString: String {
         didSet {
-            UserDefaults.standard.setValue(profileImageUrl, forKey: "\(profileImageUrlKey)-\(id)")
+            UserDefaults.standard.setValue(profileImageString, forKey: "\(profileImageStringKey)-\(id)")
         }
     }
     
@@ -164,7 +164,7 @@ class UserObservable: ObservableObject {
         displayName = UserDefaults.standard.string(forKey: "\(displayNameKey)-\(id)") ?? ""
         email = UserDefaults.standard.string(forKey: "\(emailKey)-\(id)") ?? ""
         location = UserDefaults.standard.string(forKey: "\(locationKey)-\(id)") ?? ""
-        profileImageUrl = UserDefaults.standard.string(forKey: "\(profileImageUrlKey)-\(id)") ?? ""
+        profileImageString = UserDefaults.standard.string(forKey: "\(profileImageStringKey)-\(id)") ?? ""
         isNewUser = UserDefaults.standard.bool(forKey: "\(isNewUserKey)-\(id)")
         latitude = UserDefaults.standard.double(forKey: latitudeKey)
         longitude = UserDefaults.standard.double(forKey: longitudeKey)

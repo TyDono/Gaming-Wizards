@@ -55,7 +55,7 @@ import CoreData
                 let displayName = user.displayName ?? ""
                 let email = user.email ?? "No email given "
                 let location = ""
-                let profileImageUrl = ""
+                let profileImageString = ""
                 let friendID = String((UUID().uuidString.suffix(4)))
 //                let friendList = [Friend]
 //                let friendRequests = [Friend]
@@ -73,7 +73,7 @@ import CoreData
                                                                               displayName: displayName,
                                                                               email: email,
                                                                               location: location,
-                                                                              profileImageUrl: profileImageUrl,
+                                                                              profileImageString: profileImageString,
                                                                               friendID: friendID,
 //                                                                              friendList: friendList,
 //                                                                              friendRequests: friendRequests,

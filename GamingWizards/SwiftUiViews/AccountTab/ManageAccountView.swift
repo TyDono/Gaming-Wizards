@@ -77,8 +77,8 @@ struct ManageAccountView: View {
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
-                Button("Save Image") { // remove later
-                    manageAccountViewModel.saveProfileImageToDefaults()
+                Button("Save Image") { // remove later...maybe :)
+                    manageAccountViewModel.saveProfileImageToDisc()
                     manageAccountViewModel.uploadProfileImageToFirebaseStorage()
 //                    manageAccountViewModel.uploadProfileImageToFirebaseStorage(image: profileImage)
                 }
@@ -95,7 +95,7 @@ struct ManageAccountView: View {
 
         }
         .onAppear {
-            manageAccountViewModel.loadProfileImage()
+            manageAccountViewModel.loadProfileImageFromDisk()
         }
 //        .onTapGesture {
 //            manageAccountViewModel.isShowingImagePicker = true

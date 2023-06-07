@@ -52,7 +52,7 @@ import CoreData
                 let friendID = document?.data()?["friendCodeID"] as? String ?? "no friendCodeID"
                 //location
                 //image
-                let currentUser: User = User(id: id, displayName: displayName, email: email, location: "location not yet implemented", profileImageUrl: "no image implemented yet", friendID: friendID)
+                let currentUser: User = User(id: id, displayName: displayName, email: email, location: "location not yet implemented", profileImageString: "no image implemented yet", friendID: friendID)
                 self.saveUserToUserDefaults(user: currentUser)
                 self.signInSuccess()
             } else {
@@ -105,15 +105,15 @@ import CoreData
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageUrl: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { //not using the profileImageUrl
-        let profileImageURL = "\(UUID().uuidString).jpg"
+    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageString: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { //not using the profileImageString
+        let profileImageString = "\(UUID().uuidString).jpg"
         let newUser = User(id: id,
                             firstName: firstName,
                             lastName: lastName,
                             displayName: displayName,
                             email: email,
                             location: location,
-                            profileImageUrl: profileImageURL,
+                            profileImageString: profileImageString,
                             friendID: friendID,
 //                            friendList: friendList,
 //                            friendRequests: friendRequests,
@@ -200,11 +200,11 @@ import CoreData
                     self.coreDataController.deleteFriendLocally(friend: friend)
                 }
                 for document in documents {
-                    let friendCodeID = document.data()["friendCodeID"] as? String ?? "????"
-                    let friendUserID = document.data()["friendUserID"] as? String ?? ""
-                    let friendDisplayName = document.data()["friendDisplayName"] as? String ?? ""
-                    let isFriend = document.data()["isFriend"] as? Bool ?? false
-                    let isFavorite = document.data()["isFavorite"] as? Bool ?? false
+                    let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
+                    let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
+                    let friendDisplayName = document.data()[Constants.friendDisplayName] as? String ?? ""
+                    let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
+                    let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
                     self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
 //                    self.coreDataController.addFriend(friendCodeID: friendCodeID, friendDisplayName: displayName, isFriend: isFriend, isFavorite: isFavorite)
 //                    self.friendList.append(Friend(friendCodeID: friendCodeID, friendDisplayName: displayName, isFriend: isFriend))
@@ -225,7 +225,7 @@ import CoreData
         guard let userFriendCodeID = user_Friend_Code_ID else { return }
         guard let friendUserID = friend.friendUserID else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
-        firestoreDatabase.collection(Constants.users).document(friendUserID).collection("friendList").document(userFriendCodeID)
+        firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID)
             .delete() { err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
@@ -243,7 +243,7 @@ import CoreData
     
     func retrieveFriendsListener() {
         guard let userID = user_Id else { return }
-        listeningRegistration = firestoreDatabase.collection(Constants.users).document(userID).collection("friendList")
+        listeningRegistration = firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList)
             .addSnapshotListener({ snapshot, err in
                 if let error = err {
                     print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
@@ -259,11 +259,11 @@ import CoreData
                         self.coreDataController.deleteFriendLocally(friend: friend)
                     }
                     for document in documents {
-                        let friendCodeID = document.data()["friendCodeID"] as? String ?? "????"
-                        let friendUserID = document.data()["friendUserID"] as? String ?? ""
-                        let friendDisplayName = document.data()["friendDisplayName"] as? String ?? ""
-                        let isFriend = document.data()["isFriend"] as? Bool ?? false
-                        let isFavorite = document.data()["isFavorite"] as? Bool ?? false
+                        let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
+                        let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
+                        let friendDisplayName = document.data()[Constants.friendDisplayName] as? String ?? ""
+                        let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
+                        let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
                         self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
                     }
                     //keep. use it so I can update the ui cleaner
