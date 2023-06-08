@@ -25,8 +25,8 @@ struct ManageAccountView: View {
     
     var body: some View {
             ZStack(alignment: .bottom) {
+
                 VStack {
-                    Spacer()
                     List {
                         profileImageView
                         displayNameTextField
@@ -39,11 +39,13 @@ struct ManageAccountView: View {
                             deleteAccountButton
                         }
                     }
-                    
                 }
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
+                if manageAccountViewModel.isProfileUploading {
+                    LoadingAnimation(loadingProgress: $manageAccountViewModel.uploadProfileProgress)
+                }
             }
             .navigationBarTitle("Manage Account", displayMode: .inline)
             .toolbar {
@@ -65,38 +67,45 @@ struct ManageAccountView: View {
     
     private var profileImageView: some View {
         VStack {
+            Spacer()
             if let profileImage = manageAccountViewModel.profileImage {
                 Image(uiImage: profileImage)
                     .resizable()
                     .scaledToFit()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250, alignment: .center)
-                    .onChange(of: profileImage, perform: { newValue in
+                    .frame(width: 250, height: 250)
+                    .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
                         manageAccountViewModel.didProfileImageChange = true
+                        manageAccountViewModel.isSaveChangesButtonIsActive = true
                     })
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
-                Button("Save Image") { // remove later...maybe :)
-                    manageAccountViewModel.saveProfileImageToDisc()
-                    manageAccountViewModel.uploadProfileImageToFirebaseStorage()
-//                    manageAccountViewModel.uploadProfileImageToFirebaseStorage(image: profileImage)
-                }
             } else {
                 Image("WantedWizard+")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .scaledToFit()
-                    .frame(width: 250, height: 250, alignment: .center)
+                    .frame(width: 250, height: 250)
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
             }
-
+            Button(action: {
+                manageAccountViewModel.isShowingImagePicker = true
+            }) {
+                Text("Change image")
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background(Color.blue)
+                    .cornerRadius(5)
+            }
         }
+        
         .onAppear {
             manageAccountViewModel.loadProfileImageFromDisk()
         }
+
 //        .onTapGesture {
 //            manageAccountViewModel.isShowingImagePicker = true
 //        }

@@ -22,8 +22,6 @@ extension ManageAccountView {
         @AppStorage("display_Name") var display_Name: String?
         @AppStorage("about") var about_user: String?
         @AppStorage("profile_Image_String") var profile_Image_String: String?
-        @AppStorage("saved_Profile_Image") var saved_Profile_Image: String?
-//        @AppStorage("profile_Image") var profile_Image: UIImage?
         @ObservedObject var user = UserObservable()
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
@@ -40,23 +38,10 @@ extension ManageAccountView {
         @Published var isShowingImagePicker = false
         @Published var profileImage: UIImage?
         @Published var didProfileImageChange: Bool = false
+        @Published var isProfileUploading: Bool = false
+        @Published var uploadProfileProgress: Double = 0.0
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()
-        
-        func saveProfileImageToDefaults() {
-            guard let image = profileImage else { return }
-
-            if let imageData = image.jpegData(compressionQuality: 0.6) {
-                profile_Image_String = imageData.base64EncodedString()
-                self.didProfileImageChange = false
-            }
-        }
-        
-        func loadProfileImage() {
-            if let imageData = Data(base64Encoded: profile_Image_String ?? "") {
-                profileImage = UIImage(data: imageData)
-            }
-        }
         
         func saveProfileImageToDisc() {
             guard let image = profileImage else { return }
@@ -65,7 +50,6 @@ extension ManageAccountView {
 
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let fileURL = documentsDirectory.appendingPathComponent(profile_Image_String!)
-
             do {
                 try data.write(to: fileURL)
                 print("Image saved to disk.")
@@ -99,20 +83,27 @@ extension ManageAccountView {
         func uploadProfileImageToFirebaseStorage() {
             guard let image = profileImage else { return }
             guard let imageString = profile_Image_String else { return }
-            guard let imageData = image.jpegData(compressionQuality: 0.8) else { return }
-            let data = Data()
+            guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
             let storageRef = firebaseStorage.reference().child("profileImages/\(imageString)")
-            if let imageName = profile_Image_String {
-                let imageRef = storageRef.child(imageName)
-                
-                _ = imageRef.putData(imageData, metadata: nil) { metadata, error in
-                    if let error = error {
-                        print("ERROR UPLOADING IMAGE TO FIREBASE STORAGE: \(error.localizedDescription)")
-                    } else {
-                        self.saveProfileImageToDisc()
-                        print("IT WENT IN BB")
-                    }
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            let uploadTask = storageRef.putData(imageData, metadata: metadata) { metadata, err in
+                if let error = err {
+                    print("ERROR UPLOADING IMAGE TO STORAGE: \(error.localizedDescription)")
+                } else {
+                    print("Image uploaded successfully")
+                    self.saveProfileImageToDisc()
                 }
+                self.isProfileUploading = false
+                self.accountInformationSavedAlertIsActive = true
+            }
+            isProfileUploading = true
+            
+            uploadTask.observe(.progress) { snapshot in
+                guard let progress = snapshot.progress else { return }
+                let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
+                self.uploadProfileProgress = percentComplete
             }
         }
         
@@ -142,19 +133,20 @@ extension ManageAccountView {
             self.display_Name = self.displayName
             self.first_Name = self.firstName
             self.last_Name = self.lastName
-//            self.user_Email = self.email // used later when users can change their email
+            //            self.user_Email = self.email // used later when users can change their email
             self.about_user = self.about
-            self.profile_Image_String = self.profileImageString
             
             self.isSaveChangesButtonIsActive = false
-            self.accountInformationSavedAlertIsActive = true
+            if isProfileUploading == false {
+                self.accountInformationSavedAlertIsActive = true
+            }
         }
         
         func deleteProfileImage() {
             let storageRef = firebaseStorage.reference().child(profile_Image_String!)
             storageRef.delete { err in
               if let error = err {
-                print("ERROR DELETING PROFILE IMAGE FROM CLOUD ")
+                  print("ERROR DELETING PROFILE IMAGE FROM CLOUD: \(error.localizedDescription)")
               } else {
                 // delete locally
                   let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -164,7 +156,6 @@ extension ManageAccountView {
                       self.profileImage = nil
                   } catch {
                       print("ERROR DELETING PROFILE IMAGE FROM DISC: \(error.localizedDescription)")
-                      // have pop up here
                   }
               }
             }

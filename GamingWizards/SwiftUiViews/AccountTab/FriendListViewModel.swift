@@ -13,6 +13,9 @@ import CoreData
 
 //extension FriendListView {
     @MainActor class FriendListViewModel: ObservableObject {
+        @AppStorage("user_Id") var user_Id: String?
+        @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
+        @AppStorage("display_Name") var display_Name: String?
         @Published var friendList: [Friend] = []
         @Published var addFriendAlertIsShowing: Bool = false
         @Published var friendIDTextField: String = ""
@@ -24,13 +27,11 @@ import CoreData
         @Published var friends: [Friend] = []
         @Published var friend: FriendEntity?
         @Published var detailedFriendViewIsDismissed: Bool = false
+        
         @State var friendDisplayName: String = ""
         @State var friendID: String = ""
         @State var isFriend: Bool = false
         @State var isFavorite: Bool = false
-        @AppStorage("user_Id") var user_Id: String?
-        @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
-        @AppStorage("display_Name") var display_Name: String?
 //        var friendDisplayName: String = ""
         let coreDataController = CoreDataController.shared
         let authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM

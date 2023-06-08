@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB049A132A32669600024D01 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB049A122A32669600024D01 /* LoadingAnimation.swift */; };
 		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
 		CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */; };
 		CB5BE81529FDE8B9009D38D6 /* GamingWizardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */; };
@@ -134,6 +135,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB049A122A32669600024D01 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
 		CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CB5BE7FB29FDE8B7009D38D6 /* GamingWizards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamingWizards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -556,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
+				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
 			);
 			path = UniversalViews;
@@ -796,6 +799,7 @@
 				CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */,
 				CB5BE8BB29FDE958009D38D6 /* AuthenticationViewModel.swift in Sources */,
 				CB5BE8B729FDE958009D38D6 /* SignInWithGoogleCoordinator.swift in Sources */,
+				CB049A132A32669600024D01 /* LoadingAnimation.swift in Sources */,
 				CB5BE8A329FDE958009D38D6 /* HomeView.swift in Sources */,
 				CB5BE8B529FDE958009D38D6 /* Freind.swift in Sources */,
 				CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */,
