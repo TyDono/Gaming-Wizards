@@ -105,7 +105,7 @@ import CoreData
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageString: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { //not using the profileImageString
+    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageString: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { // SHOULD ONLY BE CALLED ONCE EVER!!!
         let profileImageString = "\(UUID().uuidString).jpg"
         let isSolo = true
         profile_Image_String = profileImageString

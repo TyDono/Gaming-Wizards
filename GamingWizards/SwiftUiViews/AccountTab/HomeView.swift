@@ -13,7 +13,8 @@ struct HomeView: View {
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @EnvironmentObject var homeViewModel: HomeViewModel
     @EnvironmentObject var userAuth: UserAuth
-    @State var settingsIsActive: Bool = false
+    @State private var isViewPersonalAccountViewPopUp: Bool = false
+    @State private var settingsIsActive: Bool = false
     @State private var isUserManagingAccountShown: Bool = false
     @State private var isShowingLogoutAlert: Bool = false
     @State private var isFriendListShowing: Bool = false
@@ -23,7 +24,7 @@ struct HomeView: View {
                 VStack {
                     List {
                         manageFriendList
-                        manageAccountButton
+                        viewProfileButton
                         logOutButton
                     }
                 }
@@ -58,7 +59,7 @@ struct HomeView: View {
                                 )
                         }
                         */
-                        Image(systemName: "person.2")
+                        Image(systemName: "person.3")
                         Text("Friends")
                             .badge(Constants.friendRequestCount)
                             .frame(maxWidth: .infinity,
@@ -81,14 +82,15 @@ struct HomeView: View {
         }
     }
     
-    private var manageAccountButton: some View {
+    private var viewProfileButton: some View {
         NavigationStack {
             Button(action: {
-                isUserManagingAccountShown = true
+//                isUserManagingAccountShown = true
+                isViewPersonalAccountViewPopUp = true
             }) {
                 HStack {
-                    Image(systemName: "gearshape")
-                    Text("Manage Account")
+                    Image(systemName: "person")
+                    Text("View Profile")
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
                         .font(.custom(Constants.luminariRegularFontIdentifier,
@@ -102,9 +104,12 @@ struct HomeView: View {
             .listRowInsets(EdgeInsets())
             .padding()
         }
-        .navigationDestination(isPresented: $isUserManagingAccountShown) {
-            ManageAccountView()
-        }
+        .sheet(isPresented: $isViewPersonalAccountViewPopUp, content: {
+            ViewPersonalAccountView()
+        })
+//        .navigationDestination(isPresented: $isUserManagingAccountShown) {
+//            ManageAccountView()
+//        }
     }
     
     private var logOutButton: some View {
