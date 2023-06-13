@@ -14,8 +14,8 @@ import FirebaseAuth
 class CoreDataController: ObservableObject {
     
     static let shared = CoreDataController()
-    @AppStorage("user_Id") var user_Id: String?
-    @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
+    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
     let firestoreDatabase = Firestore.firestore()
     let persistentContainer: NSPersistentContainer
     var viewContext: NSManagedObjectContext {

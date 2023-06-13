@@ -13,9 +13,9 @@ import CoreData
 
 //extension FriendListView {
     @MainActor class FriendListViewModel: ObservableObject {
-        @AppStorage("user_Id") var user_Id: String?
-        @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
-        @AppStorage("display_Name") var display_Name: String?
+        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
         @Published var friendList: [Friend] = []
         @Published var addFriendAlertIsShowing: Bool = false
         @Published var friendIDTextField: String = ""

@@ -1,4 +1,13 @@
 //
+//  ViewPersonalAccountView.swift
+//  GamingWizards
+//
+//  Created by Tyler Donohue on 6/9/23.
+//
+
+import SwiftUI
+
+//
 //  SettingsView.swift
 //  GamingWizards
 //
@@ -9,73 +18,36 @@ import SwiftUI
 import Combine
 import PhotosUI
 
-struct ManageAccountView: View {
-    
+struct ViewPersonalAccountView: View {
+    var body: some View {
+        Text("tim")
+    }
+    /*
     @Environment(\.presentationMode) var presentationMode
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-//    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
-    @StateObject private var manageAccountViewModel = ManageAccountViewModel()
-//    @ObservedObject var user = UserObservable()
-    
-//    let session: SessionStore
-    
-//    init(viewModel: ManageAccountViewModel) {
-//        self.manageAccountViewModel = viewModel
-//    }
-    
+    @StateObject private var viewPersonalAccountViewModel = ViewPersonalAccountViewModel()
     var body: some View {
             ZStack(alignment: .bottom) {
 
                 VStack {
-                    ScrollView {
-                        
-                        Group {
-                            padding()
-                            profileImageView
-                                .padding()
-                            personalTitleView
-                                .padding()
-                            displayNameTextField
-                                .padding()
-                            firstNameTextField
-                                .padding()
-                            lastNameTextField
-                                .padding()
-                            aboutUserTextView
-                                .padding()
-                            userAvailabilityTextView
-                                .padding()
+                    List {
+                        profileImageView
+                        displayNameTextField
+                        firstNameTextField
+                        lastNameTextField
+                        aboutUserTextView
+                        personalFriendID
+                        emailTextField
+                        VStack {
+                            deleteAccountButton
                         }
-                        Group {
-                            userIsSoloView
-                                .padding()
-                            userAgeTextView
-                                .padding()
-                            userLocationTextView
-                                .padding()
-                            PayToPlayView
-                                .padding()
-                            personalFriendID
-                                .padding()
-                            emailTextField
-                                .padding()
-                            VStack {
-                                deleteAccountButton
-                                    .padding()
-                            }
-                        }
-                    
                     }
                 }
-        
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
-                if manageAccountViewModel.isProfileUploading {
-                    LoadingAnimation(loadingProgress: $manageAccountViewModel.uploadProfileProgress)
-                }
             }
-            .navigationBarTitle("Manage Account", displayMode: .inline)
+            .navigationBarTitle(viewPersonalAccountViewModel, displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     saveChangesNavButton
@@ -118,10 +90,6 @@ struct ManageAccountView: View {
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
-//                    .onChange(of: manageAccountViewModel.profileImage) { newValue in
-//                        manageAccountViewModel.didProfileImageChange = true
-//                        manageAccountViewModel.isSaveChangesButtonIsActive = true
-//                    }
             }
             Button(action: {
                 manageAccountViewModel.isShowingImagePicker = true
@@ -145,47 +113,9 @@ struct ManageAccountView: View {
             ImagePicker(selectedImage: $manageAccountViewModel.profileImage)
         }
 //        .onChange(of: manageAccountViewModel.profileImage) { newValue in
-//            manageAccountViewModel.didProfileImageChange = true
 //            manageAccountViewModel.isSaveChangesButtonIsActive = true
 //        }
 //        .onChange(of: manageAccountViewModel.inputProfileImage) { _ in manageAccountViewModel.loadImage }
-    }
-    
-    private var userIsSoloView: some View {
-        VStack {
-            Text(manageAccountViewModel.userIsSolo ? "Solo" : "Group")
-            
-            Toggle(isOn: $manageAccountViewModel.userIsSolo) {
-            }
-        } .onAppear {
-//            manageAccountViewModel.isPayToPlay = manageAccountViewModel.user_Is_Solo ?? false
-        }
-    }
-    
-    private var personalTitleView: some View {
-        VStack {
-            Text("Title")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
-            TextField("",
-                      text: $manageAccountViewModel.userTitle.max(Constants.textFieldMaxCharacters),
-                      onEditingChanged: { changed in
-                manageAccountViewModel.isSaveChangesButtonIsActive = true
-                        })
-            .padding(.horizontal, 15)
-            .frame(height: 40.0)
-            .background(Colors.textFieldGrey)
-            .background(RoundedRectangle(cornerRadius: 30))
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray.opacity(0.80),
-                            lineWidth: 1)
-            )
-        } .onAppear {
-            manageAccountViewModel.userTitle = manageAccountViewModel.user_title ?? ""
-        }
     }
     
     // user's will know it as their personal ID, but on code it is their FriendID. their real ID is a uuid.
@@ -212,7 +142,7 @@ struct ManageAccountView: View {
                 .font(.roboto(.semibold,
                               size: 18))
             TextField("",
-                      text: $manageAccountViewModel.displayName.max(Constants.textFieldMaxCharacters),
+                      text: $manageAccountViewModel.displayName,
                       onEditingChanged: { changed in
                 manageAccountViewModel.isSaveChangesButtonIsActive = true
                         })
@@ -230,97 +160,6 @@ struct ManageAccountView: View {
         }
     }
     
-    private var userAgeTextView: some View {
-        VStack {
-            Text("Age")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
-            TextField("",
-                      text: $manageAccountViewModel.userAge.max(Constants.textFieldMaxCharacters),
-                      onEditingChanged: { changed in
-                manageAccountViewModel.isSaveChangesButtonIsActive = true
-                        })
-            .padding(.horizontal, 15)
-            .frame(height: 40.0)
-            .background(Colors.textFieldGrey)
-            .background(RoundedRectangle(cornerRadius: 30))
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray.opacity(0.80),
-                            lineWidth: 1)
-            )
-        } .onAppear {
-            manageAccountViewModel.userAge = manageAccountViewModel.user_Age ?? ""
-        }
-    }
-    
-    private var userLocationTextView: some View {
-        VStack {
-            Text("Location")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
-            TextField("",
-                      text: $manageAccountViewModel.userLocation.max(Constants.textFieldMaxCharacters),
-                      onEditingChanged: { changed in
-                manageAccountViewModel.isSaveChangesButtonIsActive = true
-                        })
-            .padding(.horizontal, 15)
-            .frame(height: 40.0)
-            .background(Colors.textFieldGrey)
-            .background(RoundedRectangle(cornerRadius: 30))
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray.opacity(0.80),
-                            lineWidth: 1)
-            )
-        } .onAppear {
-            manageAccountViewModel.userLocation = manageAccountViewModel.user_Location ?? ""
-        }
-    }
-    
-    private var userAvailabilityTextView: some View {
-        VStack {
-            Text("Availability")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
-            TextField("",
-                      text: $manageAccountViewModel.userAvailability.max(Constants.textFieldMaxCharacters),
-                      onEditingChanged: { changed in
-                manageAccountViewModel.isSaveChangesButtonIsActive = true
-                        })
-            .padding(.horizontal, 15)
-            .frame(height: 40.0)
-            .background(Colors.textFieldGrey)
-            .background(RoundedRectangle(cornerRadius: 30))
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray.opacity(0.80),
-                            lineWidth: 1)
-            )
-        } .onAppear {
-            manageAccountViewModel.userAvailability = manageAccountViewModel.user_Availability ?? ""
-        }
-    }
-    
-    private var PayToPlayView: some View {
-        VStack {
-            Text(manageAccountViewModel.isPayToPlay ? "Pay to Play" : "Free to Play")
-            
-            Toggle(isOn: $manageAccountViewModel.isPayToPlay) {
-//                Text("Switch")
-            }
-            .padding()
-        } .onAppear {
-            manageAccountViewModel.isPayToPlay = manageAccountViewModel.user_PayTo_Play ?? false
-        }
-    }
-    
     private var aboutUserTextView: some View {
         VStack {
             if manageAccountViewModel.about.isEmpty == true {
@@ -328,7 +167,7 @@ struct ManageAccountView: View {
                     .foregroundColor(.gray)
             }
             
-            TextEditor(text: $manageAccountViewModel.about.max(Constants.textViewMaxCharacters))
+            TextEditor(text: $manageAccountViewModel.about)
                 .border(Color.gray, width: 1)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onChange(of: manageAccountViewModel.about) { newValue in
@@ -350,7 +189,7 @@ struct ManageAccountView: View {
                 .font(.roboto(.semibold,
                               size: 18))
             TextField("",
-                      text: $manageAccountViewModel.firstName.max(Constants.textFieldMaxCharacters),
+                      text: $manageAccountViewModel.firstName,
                       onEditingChanged: { changed in
                 manageAccountViewModel.isSaveChangesButtonIsActive = true
                         })
@@ -376,7 +215,7 @@ struct ManageAccountView: View {
                 .font(.roboto(.semibold,
                               size: 18))
             TextField("",
-                      text: $manageAccountViewModel.lastName.max(Constants.textFieldMaxCharacters),
+                      text: $manageAccountViewModel.lastName,
                       onEditingChanged: { changed in
                 manageAccountViewModel.isSaveChangesButtonIsActive = true
                         })
@@ -406,34 +245,7 @@ struct ManageAccountView: View {
                        alignment: .leading)
                 .font(.roboto(.semibold,
                               size: 21))
-            
-            //used for the future when user can change their email
-//                        Text("Email")
-//                            .frame(maxWidth: .infinity,
-//                                   alignment: .leading)
-//                            .font(.roboto(.semibold,
-//                                          size: 18))
-//                        TextField("",
-//                                  text: $manageAccountViewModel.email,
-//                                  onEditingChanged: { changed in
-//                            manageAccountViewModel.isSaveChangesButtonIsActive = true
-//                            //this also needs to have a check for email existing
-//                                    })
-//                        .padding(.horizontal, 15)
-//                        .frame(height: 40.0)
-//                        .background(Colors.textFieldGrey)
-//                        .background(RoundedRectangle(cornerRadius: 30))
-//                        .keyboardType(.emailAddress)
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 5)
-//                                .stroke(Color.gray.opacity(0.80),
-//                                        lineWidth: 1)
-//                        )
-            
-        } //.onAppear {
-           // guard let email = manageAccountViewModel.user_Email else { return }
-           // manageAccountViewModel.displayName = email
-        //}
+        }
     }
     
     private var customNavigationBar: some View { // not called anywhere
@@ -491,8 +303,6 @@ struct ManageAccountView: View {
                 .fontWeight(.black)
                 .foregroundColor(Color(.systemIndigo))
                 .multilineTextAlignment(.center)
-//                .padding(.top, 15)
-//                .padding(.trailing, 25)
         }
         .disabled(manageAccountViewModel.isSaveChangesButtonIsActive == false)
         .alert(isPresented: $manageAccountViewModel.accountInformationSavedAlertIsActive) {
@@ -503,20 +313,14 @@ struct ManageAccountView: View {
                 
             )
         }
-
-//            .modifier(isSaveChangesButtonIsActive ? FontModifier(size: 14, weight: .extraBold) : FontModifier(size: 14, weight: .regular))
         
     }
-    
-    func signOut() {
-//        presentationMode.wrappedValue.dismiss()
-        authenticationViewModel.signOut()
-    }
-    
+    */
 }
-struct ManageAccountView_Previews: PreviewProvider {
+
+
+struct ViewPersonalAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        
-        ManageAccountView()
+        ViewPersonalAccountView()
     }
 }

@@ -54,7 +54,7 @@ struct SearchResultsView: View {
                     }
                     HStack {
                         Text("Age: \(user.age)")
-                        Text("Pay to Play: \(user.payToPlay ? "Yes" : "No")")
+                        Text("Pay to Play: \(user.isPayToPlay ? "Yes" : "No")")
                     }
                 }
                 .listRowSeparator(.hidden)

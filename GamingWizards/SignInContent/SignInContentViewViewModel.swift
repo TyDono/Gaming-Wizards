@@ -10,7 +10,7 @@ import SwiftUI
 
 extension SignInView {
     @MainActor class SignInViewModel: ObservableObject {
-        @AppStorage("log_Status") var log_Status = false
+        @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
         
         func testrest() {
             if log_Status {

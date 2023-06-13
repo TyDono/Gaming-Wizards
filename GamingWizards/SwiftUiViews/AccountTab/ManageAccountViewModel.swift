@@ -15,13 +15,22 @@ import FirebaseStorage
 extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
         @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-        @AppStorage("first_Name") var first_Name: String?
-        @AppStorage("last_Name") var last_Name: String?
-        @AppStorage("user_Email") var user_Email: String?
-        @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
-        @AppStorage("display_Name") var display_Name: String?
-        @AppStorage("about") var about_user: String?
-        @AppStorage("profile_Image_String") var profile_Image_String: String?
+        @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
+        @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
+        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+        @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
+        @AppStorage(Constants.userLocation) var user_Location: String?
+        @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
+        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+        @AppStorage(Constants.appStorageStringUserGames) var user_Games: String?
+        @AppStorage(Constants.appStorageStringUserGroupSize) var user_Group_Size: String?
+        @AppStorage(Constants.userAge) var user_Age: String?
+        @AppStorage(Constants.appStorageStringUserAbout) var about_user: String?
+        @AppStorage(Constants.appStorageStringUserAvailability) var user_Availability: String?
+        @AppStorage(Constants.appStorageStringUserTitle) var user_title: String?
+        @AppStorage(Constants.appStorageStringUserIsPayToPlay) var user_PayTo_Play: Bool?
+        @AppStorage(Constants.appStorageStringUserIsSolo) var user_Is_Solo: Bool?
+        
         @ObservedObject var user = UserObservable()
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
@@ -30,7 +39,7 @@ extension ManageAccountView {
         @Published var displayName: String = ""
         @Published var email: String = ""
         @Published var about: String = ""
-        @Published var profileImageString: String = ""
+        @Published var profileImageString: String = "" // not called
         @Published var isSaveChangesButtonIsActive: Bool = false
         @Published var emailIsNotValid: Bool = false
         @Published var accountInformationSavedAlertIsActive: Bool = false
@@ -40,6 +49,15 @@ extension ManageAccountView {
         @Published var didProfileImageChange: Bool = false
         @Published var isProfileUploading: Bool = false
         @Published var uploadProfileProgress: Double = 0.0
+        @Published var groupSize: String = ""
+        @Published var userAge: String = ""
+        @Published var userLocation: String = ""
+        @Published var userListOfGames: String = ""
+        @Published var userAvailability: String = ""
+        @Published var userTitle: String = ""
+        @Published var isPayToPlay: Bool = false
+        @Published var userIsSolo: Bool = true
+        
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()
         
@@ -66,7 +84,7 @@ extension ManageAccountView {
                let loadedImage = UIImage(data: imageData) {
                 profileImage = loadedImage
             } else {
-                print("Failed to load image from disk")
+                print("Failed to load image from disk, or no image")
             }
         }
         
@@ -115,7 +133,15 @@ extension ManageAccountView {
                 Constants.userFirstName: self.firstName,
                 Constants.userLastName: self.lastName,
                 Constants.userDisplayName: self.displayName,
-                Constants.userAbout: self.about
+                Constants.userLocation: self.userLocation,
+                Constants.userGames: self.userListOfGames,
+                Constants.userGroupSize: self.groupSize,
+                Constants.userAge: self.userAge,
+                Constants.userAbout: self.about,
+                Constants.userAvailability: self.userAvailability,
+                Constants.userTitle: self.userTitle,
+                Constants.userPayToPlay: self.isPayToPlay,
+                Constants.userIsSolo: self.userIsSolo
             ]) { err in
                 if let error = err {
                     self.accountInformationChangedErrorAlertIsActive = true
@@ -130,11 +156,19 @@ extension ManageAccountView {
         }
         
         private func saveUserToUserDefaults() {
-            self.display_Name = self.displayName
-            self.first_Name = self.firstName
-            self.last_Name = self.lastName
+            display_Name = displayName
+            first_Name = firstName
+            last_Name = lastName
             //            self.user_Email = self.email // used later when users can change their email
-            self.about_user = self.about
+            about_user = about
+            user_title = userTitle
+            user_Availability = userAvailability
+            user_PayTo_Play = isPayToPlay
+            user_Group_Size = groupSize
+            user_Games = userListOfGames
+            user_Location = userLocation
+            user_Age = userAge
+            user_Is_Solo = userIsSolo
             
             self.isSaveChangesButtonIsActive = false
             if isProfileUploading == false {

@@ -16,14 +16,14 @@ import CoreData
 
 @MainActor class AuthenticationViewModel: ObservableObject {
     
-    @AppStorage("log_Status") var log_Status = false
-    @AppStorage("user_Email") var user_Email: String?
-    @AppStorage("first_Name") var first_Name: String?
-    @AppStorage("last_Name") var last_Name: String?
-    @AppStorage("user_Id") var user_Id: String?
-    @AppStorage("display_Name") var display_Name: String?
-    @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
-    @AppStorage("log_status") var log_status: Bool = false
+    @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
+    @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
+    @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
+    @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
+    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+    @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
     @Published var currentNonce: String = ""
     @Published var signInState: SignInState = .signedOut
     @Published var isLoading: Bool = false
@@ -107,6 +107,7 @@ import CoreData
     
     func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageString: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { //not using the profileImageString
         let profileImageString = "\(UUID().uuidString).jpg"
+        profile_Image_String = profileImageString
         let newUser = User(id: id,
                             firstName: firstName,
                             lastName: lastName,
@@ -123,7 +124,7 @@ import CoreData
                             about: about,
                             availability: availability,
                             title: title,
-                            payToPlay: payToPlay)
+                            isPayToPlay: payToPlay)
         return newUser
     }
 

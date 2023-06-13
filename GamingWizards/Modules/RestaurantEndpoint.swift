@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RestaurantEndpoint: Endpoint {
+enum RestaurantEndpoint: Endpoint { // change this ti not resturant theme since i changed the app design to dnd
     case wendys
     case mcdonalds
     

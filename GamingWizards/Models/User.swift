@@ -21,11 +21,12 @@ struct User: Identifiable, Codable, Hashable {
     var friendRequests: [Friend] = [] // sub collection
     var games: [String] = []
     var groupSize: String = ""
-    var age: String = ""
+    var age: String = "" // change to an array of Int
     var about: String = ""
     var availability: String = ""
     var title: String = ""
-    var payToPlay: Bool = false
+    var isPayToPlay: Bool = false
+    var isSolo: Bool = true
     
     var userDictionary: [String: Any] {
         return [
@@ -44,7 +45,8 @@ struct User: Identifiable, Codable, Hashable {
             "age": age,
             "about": about,
             "title": title,
-            "payToPlay": payToPlay
+            "isPayToPlay": isPayToPlay,
+            "isSolo": isSolo
             
         ]
     }
@@ -67,6 +69,8 @@ extension User {
         case age = "age"
         case about = "about"
         case title = "title"
+        case payToPlay = "isPayToPlay"
+        case isSolo = "isSolo"
     }
 }
         

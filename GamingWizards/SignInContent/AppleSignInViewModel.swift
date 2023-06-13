@@ -17,12 +17,12 @@ import SwiftUI
 //not used
 @MainActor class AppleSignInViewModel: ObservableObject {
     
-    @AppStorage("log_Status") var log_Status = false
-    @AppStorage("user_Email") var user_Email: String?
-    @AppStorage("first_Name") var first_Name: String?
-    @AppStorage("last_Name") var last_Name: String?
-    @AppStorage("user_Id") var user_Id: String?
-    @AppStorage("display_Name") var display_Name: String?
+    @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
+    @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
+    @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
+    @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
+    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
     
 //    @Published var signInState: SignInState = .signedOut
     @Published var isLoading: Bool = false
