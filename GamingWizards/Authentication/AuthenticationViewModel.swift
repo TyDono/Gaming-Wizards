@@ -107,24 +107,26 @@ import CoreData
     
     func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageString: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { //not using the profileImageString
         let profileImageString = "\(UUID().uuidString).jpg"
+        let isSolo = true
         profile_Image_String = profileImageString
         let newUser = User(id: id,
-                            firstName: firstName,
-                            lastName: lastName,
-                            displayName: displayName,
-                            email: email,
-                            location: location,
-                            profileImageString: profileImageString,
-                            friendID: friendID,
+                           firstName: firstName,
+                           lastName: lastName,
+                           displayName: displayName,
+                           email: email,
+                           location: location,
+                           profileImageString: profileImageString,
+                           friendID: friendID,
 //                            friendList: friendList,
 //                            friendRequests: friendRequests,
-                            games: games,
-                            groupSize: groupSize,
-                            age: age,
-                            about: about,
-                            availability: availability,
-                            title: title,
-                            isPayToPlay: payToPlay)
+                           games: games,
+                           groupSize: groupSize,
+                           age: age,
+                           about: about,
+                           availability: availability,
+                           title: title,
+                           isPayToPlay: payToPlay,
+                           isSolo: isSolo)
         return newUser
     }
 

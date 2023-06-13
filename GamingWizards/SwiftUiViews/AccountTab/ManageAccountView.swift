@@ -66,10 +66,6 @@ struct ManageAccountView: View {
                     
                     }
                 }
-                .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
-                    manageAccountViewModel.didProfileImageChange = true
-                    manageAccountViewModel.isSaveChangesButtonIsActive = true
-                })
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
@@ -104,6 +100,10 @@ struct ManageAccountView: View {
                     .scaledToFit()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 250)
+                    .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
+                        manageAccountViewModel.didProfileImageChange = true
+                        manageAccountViewModel.isSaveChangesButtonIsActive = true
+                    })
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
@@ -113,6 +113,10 @@ struct ManageAccountView: View {
                     .aspectRatio(contentMode: .fit)
                     .scaledToFit()
                     .frame(width: 250, height: 250)
+                    .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
+                        manageAccountViewModel.didProfileImageChange = true
+                        manageAccountViewModel.isSaveChangesButtonIsActive = true
+                    })
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
