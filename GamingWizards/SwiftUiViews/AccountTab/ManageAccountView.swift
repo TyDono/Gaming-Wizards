@@ -30,7 +30,6 @@ struct ManageAccountView: View {
                     ScrollView {
                         
                         Group {
-                            padding()
                             profileImageView
                                 .padding()
                             personalTitleView
@@ -67,7 +66,10 @@ struct ManageAccountView: View {
                     
                     }
                 }
-        
+                .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
+                    manageAccountViewModel.didProfileImageChange = true
+                    manageAccountViewModel.isSaveChangesButtonIsActive = true
+                })
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
@@ -102,10 +104,6 @@ struct ManageAccountView: View {
                     .scaledToFit()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 250)
-                    .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
-                        manageAccountViewModel.didProfileImageChange = true
-                        manageAccountViewModel.isSaveChangesButtonIsActive = true
-                    })
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
@@ -118,10 +116,6 @@ struct ManageAccountView: View {
                     .onTapGesture {
                         manageAccountViewModel.isShowingImagePicker = true
                     }
-//                    .onChange(of: manageAccountViewModel.profileImage) { newValue in
-//                        manageAccountViewModel.didProfileImageChange = true
-//                        manageAccountViewModel.isSaveChangesButtonIsActive = true
-//                    }
             }
             Button(action: {
                 manageAccountViewModel.isShowingImagePicker = true
@@ -137,18 +131,9 @@ struct ManageAccountView: View {
         .onAppear {
             manageAccountViewModel.loadProfileImageFromDisk()
         }
-
-//        .onTapGesture {
-//            manageAccountViewModel.isShowingImagePicker = true
-//        }
         .sheet(isPresented: $manageAccountViewModel.isShowingImagePicker, onDismiss: nil) {
             ImagePicker(selectedImage: $manageAccountViewModel.profileImage)
         }
-//        .onChange(of: manageAccountViewModel.profileImage) { newValue in
-//            manageAccountViewModel.didProfileImageChange = true
-//            manageAccountViewModel.isSaveChangesButtonIsActive = true
-//        }
-//        .onChange(of: manageAccountViewModel.inputProfileImage) { _ in manageAccountViewModel.loadImage }
     }
     
     private var userIsSoloView: some View {
