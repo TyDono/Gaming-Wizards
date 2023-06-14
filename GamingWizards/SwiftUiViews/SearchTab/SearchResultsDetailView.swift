@@ -54,7 +54,7 @@ struct SearchResultsDetailView: View {
     
     private var listOfGames: some View {
         List {
-            ForEach(selectedUser.games, id: \.self) { game in
+            ForEach(selectedUser.listOfGames, id: \.self) { game in
                     Text(game)
                         .font(.luminari(.regular, size: 16))
                         .boldIfStringIsMatching(game, specificGame)

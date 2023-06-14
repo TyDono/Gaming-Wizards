@@ -19,8 +19,15 @@ import Combine
 import PhotosUI
 
 struct ViewPersonalAccountView: View {
+    @ObservedObject var user = UserObservable()
     var body: some View {
         Text("tim")
+            .onTapGesture {
+                getStuff()
+            }
+    }
+    func getStuff() {
+        print(user.displayName)
     }
     /*
     @Environment(\.presentationMode) var presentationMode

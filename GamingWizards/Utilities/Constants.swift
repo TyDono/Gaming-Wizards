@@ -31,6 +31,7 @@ struct Constants {
     static let userFriendList = "friendList"
     static let userFriendRequest = "friendRequest"
     static let userGames = "games"
+    static let userListOfGames: String = "listOfGames" // will over take above userGames.
     static let userGroupSize = "groupSize"
     static let userAge = "age"
     static let userAbout = "about"
@@ -40,6 +41,7 @@ struct Constants {
     static let userIsSolo = "isSolo"
     
     // MARK: calls to AppStorage
+    static let appStorageStringUserId = "user_Id"
     static let appStorageStringUserFirstName = "user_First_Name"
     static let appStorageStringUserLastName = "user_Last_Name"
     static let appStorageStringUserDisplayName = "user_Display_Name"

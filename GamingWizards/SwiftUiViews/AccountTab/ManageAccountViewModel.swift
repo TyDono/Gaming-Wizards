@@ -53,6 +53,7 @@ extension ManageAccountView {
         @Published var userAge: String = ""
         @Published var userLocation: String = ""
         @Published var userListOfGames: String = ""
+        @Published var listOfGames: [String] = []
         @Published var userAvailability: String = ""
         @Published var userTitle: String = ""
         @Published var isPayToPlay: Bool = false
@@ -135,6 +136,7 @@ extension ManageAccountView {
                 Constants.userDisplayName: self.displayName,
                 Constants.userLocation: self.userLocation,
                 Constants.userGames: self.userListOfGames,
+                Constants.userListOfGames: self.listOfGames,
                 Constants.userGroupSize: self.groupSize,
                 Constants.userAge: self.userAge,
                 Constants.userAbout: self.about,
@@ -169,6 +171,9 @@ extension ManageAccountView {
             user_Location = userLocation
             user_Age = userAge
             user_Is_Solo = userIsSolo
+            
+            UserDefaults.standard.array(forKey: "bools") as? [Bool]
+            
             
             self.isSaveChangesButtonIsActive = false
             if isProfileUploading == false {

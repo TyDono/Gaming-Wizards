@@ -51,7 +51,7 @@ import FirebaseFirestore
                     let location = data[""] as? String ?? ""
                     let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
                     let friendID = data[Constants.userFriendID] as? String ?? ""
-                    let games = data[Constants.userGames] as? [String] ?? [""]
+                    let listOfGames = data[Constants.userGames] as? [String] ?? [""]
                     let groupSize = data[Constants.userGroupSize] as? String ?? ""
                     let age = data[Constants.userAge] as? String ?? ""
                     let about = data[Constants.userAbout] as? String ?? ""
@@ -59,7 +59,7 @@ import FirebaseFirestore
                     let title = data[Constants.userTitle] as? String ?? ""
                     let payToPlay = data[Constants.userPayToPlay] as? Bool ?? false
                     
-                    return User(id: id, displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendID: friendID, games: games, groupSize: groupSize, age: age, about: about, availability: availability, title: title, isPayToPlay: payToPlay)
+                    return User(id: id, displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendID: friendID, listOfGames: listOfGames, groupSize: groupSize, age: age, about: about, availability: availability, title: title, isPayToPlay: payToPlay)
                 }
                 
                 completion(users, err)

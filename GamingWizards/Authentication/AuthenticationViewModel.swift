@@ -20,7 +20,7 @@ import CoreData
     @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
     @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
     @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
-    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+    @AppStorage(Constants.appStorageStringUserId) var user_Id: String?
     @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
     @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
     @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
@@ -108,6 +108,7 @@ import CoreData
     func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageString: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { // SHOULD ONLY BE CALLED ONCE EVER!!!
         let profileImageString = "\(UUID().uuidString).jpg"
         let isSolo = true
+        let listOfGames = [""]
         profile_Image_String = profileImageString
         let newUser = User(id: id,
                            firstName: firstName,
@@ -119,7 +120,7 @@ import CoreData
                            friendID: friendID,
 //                            friendList: friendList,
 //                            friendRequests: friendRequests,
-                           games: games,
+                           listOfGames: listOfGames,
                            groupSize: groupSize,
                            age: age,
                            about: about,
