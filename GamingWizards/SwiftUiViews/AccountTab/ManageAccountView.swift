@@ -173,7 +173,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         } .onAppear {
-            manageAccountViewModel.userTitle = manageAccountViewModel.user_title ?? ""
+            manageAccountViewModel.userTitle = manageAccountViewModel.user.title ?? ""
         }
     }
     
@@ -185,7 +185,7 @@ struct ManageAccountView: View {
                        alignment: .leading)
                 .font(.roboto(.semibold,
                               size: 15))
-            Text("\(manageAccountViewModel.user_Friend_Code_ID ?? "")")
+            Text("\(manageAccountViewModel.user.friendCodeID ?? "")")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .font(.roboto(.semibold,
@@ -215,7 +215,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         } .onAppear {
-            manageAccountViewModel.displayName = manageAccountViewModel.display_Name ?? ""
+            manageAccountViewModel.displayName = manageAccountViewModel.user.displayName ?? ""
         }
     }
     
@@ -241,7 +241,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         } .onAppear {
-            manageAccountViewModel.userAge = manageAccountViewModel.user_Age ?? ""
+            manageAccountViewModel.age = manageAccountViewModel.user.age ?? 0
         }
     }
     
@@ -267,7 +267,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         } .onAppear {
-            manageAccountViewModel.userLocation = manageAccountViewModel.user_Location ?? ""
+            manageAccountViewModel.userLocation = manageAccountViewModel.user.location ?? ""
         }
     }
     
@@ -293,7 +293,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         } .onAppear {
-            manageAccountViewModel.userAvailability = manageAccountViewModel.user_Availability ?? ""
+            manageAccountViewModel.userAvailability = manageAccountViewModel.user.availability ?? ""
         }
     }
     
@@ -306,7 +306,7 @@ struct ManageAccountView: View {
             }
             .padding()
         } .onAppear {
-            manageAccountViewModel.isPayToPlay = manageAccountViewModel.user_PayTo_Play ?? false
+            manageAccountViewModel.isPayToPlay = manageAccountViewModel.user.isPayToPlay ?? false
         }
     }
     
@@ -326,7 +326,7 @@ struct ManageAccountView: View {
         }
         .padding()
         .onAppear {
-            manageAccountViewModel.about = manageAccountViewModel.about_user ?? ""
+            manageAccountViewModel.about = manageAccountViewModel.user.about ?? ""
         }
         
     }
@@ -353,7 +353,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         }.onAppear {
-            manageAccountViewModel.firstName = manageAccountViewModel.first_Name ?? ""
+            manageAccountViewModel.firstName = manageAccountViewModel.user.firstName ?? ""
         }
     }
     
@@ -379,7 +379,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         }.onAppear {
-            manageAccountViewModel.lastName = manageAccountViewModel.last_Name ?? ""
+            manageAccountViewModel.lastName = manageAccountViewModel.user.lastName ?? ""
         }
     }
     
@@ -390,7 +390,7 @@ struct ManageAccountView: View {
                        alignment: .leading)
                 .font(.roboto(.semibold,
                               size: 15))
-            Text("\(manageAccountViewModel.user_Email ?? "")")
+            Text("\(manageAccountViewModel.user.email ?? "")")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .font(.roboto(.semibold,

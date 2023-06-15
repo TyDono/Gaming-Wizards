@@ -54,36 +54,14 @@ import CoreData
                 let lastName = ""
                 let displayName = user.displayName ?? ""
                 let email = user.email ?? "No email given "
-                let location = ""
-                let profileImageString = ""
-                let friendID = String((UUID().uuidString.suffix(4)))
-//                let friendList = [Friend]
-//                let friendRequests = [Friend]
-                let games: [String] = []
-                let groupSize = ""
-                let age = ""
-                let about = ""
-                let availability = ""
-                let title = ""
-                let payToPlay = false
                 
                 let newUser = self.authenticationViewModel.createUserBaseData(id: id,
                                                                               firstName: firstName,
                                                                               lastName: lastName,
                                                                               displayName: displayName,
-                                                                              email: email,
-                                                                              location: location,
-                                                                              profileImageString: profileImageString,
-                                                                              friendID: friendID,
+                                                                              email: email)
 //                                                                              friendList: friendList,
-//                                                                              friendRequests: friendRequests,
-                                                                              games: games,
-                                                                              groupSize: groupSize,
-                                                                              age: age,
-                                                                              about: about,
-                                                                              availability: availability,
-                                                                              title: title,
-                                                                              payToPlay: payToPlay)
+//                                                                              friendRequests: friendRequests,)
                 self.authenticationViewModel.saveUserInfoInDatabase(newUser)
             }
         }

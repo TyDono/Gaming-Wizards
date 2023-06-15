@@ -10,12 +10,14 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 import CoreData
+import Security
 
 //extension FriendListView {
     @MainActor class FriendListViewModel: ObservableObject {
-        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
-        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+        @ObservedObject var user = UserObservable()
+//        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+//        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+//        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
         @Published var friendList: [Friend] = []
         @Published var addFriendAlertIsShowing: Bool = false
         @Published var friendIDTextField: String = ""
@@ -44,7 +46,7 @@ import CoreData
         
         func sendFriendRequest() {
             firestoreDatabase.collection(Constants.users).whereField("friendCodeID", isEqualTo: friendIDTextField)
-                .getDocuments() { (querySnapshot, err) in
+                .getDocuments() { [self] (querySnapshot, err) in
                     if let error = err {
                         self.noFriendExistsAlertIsShowing = true
                         print("Error getting documents: \(error)")
@@ -53,9 +55,9 @@ import CoreData
                         //if no document exist have an alert
                         for document in querySnapshot!.documents {
                             let friendUserID = document.data()[Constants.userID] as? String ?? "No user id found"
-                            guard let userID = self.user_Id else { return }
-                            guard let userFriendCodeID = self.user_Friend_Code_ID else { return }
-                            guard let displayName = self.display_Name else { return }
+                             let userID = self.user.id //else { return }
+                            guard let userFriendCodeID = self.user.friendCodeID else { return }
+                            guard let displayName = self.user.displayName else { return }
                             let newFriend: Friend = Friend(friendCodeID: userFriendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
                             let newPath = self.firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID)
                             
@@ -80,7 +82,7 @@ import CoreData
 //                guard let user = doc else { return }
 //                
 //                let displayName = user.data()?["displayName"] as? String ?? "No Username"
-//                let friendID = user.data()?["friendID"] as? String ?? "No image URL"
+//                let friendCodeID = user.data()?["friendCodeID"] as? String ?? "No image URL"
 //                
 //                DispatchQueue.main.async {
 //                    completion(Friend(friendCodeID: "", friendDisplayName: ""))
@@ -93,9 +95,9 @@ import CoreData
         func acceptFriendRequest() {
             guard let friendCodeIDRequest = friend?.friendCodeID else { return }
             guard let friendUserID = friend?.friendUserID else { return }
-            guard let userID = user_Id else { return }
-            guard let userFriendCodeID = user_Friend_Code_ID else { return }
-            guard let displayName = display_Name else { return }
+             let userID = user.id //else { return }
+            guard let userFriendCodeID = user.friendCodeID else { return }
+            guard let displayName = user.displayName else { return }
 //            guard let friendUserID
             let friends = coreDataController.savedFriendEntities
             let newFriend = Friend(friendCodeID: userFriendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: true, isFavorite: false)
@@ -124,7 +126,7 @@ import CoreData
 
         func denyFriendRequest() {
             guard let friendCodeID = friend?.friendCodeID else { return }
-            guard let userID = user_Id else { return }// go into their cloud and remove them as a friend
+             let userID = user.id //else { return }// go into their cloud and remove them as a friend
             let friends = coreDataController.savedFriendEntities
             friends.forEach {
                 if $0.friendCodeID == friendCodeID {
@@ -143,7 +145,7 @@ import CoreData
 
         func removeFriend() { //remove friend from your cloud, their cloud and locally
             guard let friendCodeIDRequest = friend?.friendCodeID else { return }
-            guard let userID = user_Id else { return }// go into their cloud and remove them as a friend
+             let userID = user.id //else { return }// go into their cloud and remove them as a friend
             let friends = coreDataController.savedFriendEntities
             friends.forEach {
                 if $0.friendCodeID == friendCodeIDRequest {

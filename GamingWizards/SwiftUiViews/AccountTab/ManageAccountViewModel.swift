@@ -14,24 +14,24 @@ import FirebaseStorage
 
 extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
-        @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-        @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
-        @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
-        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
-        @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
-        @AppStorage(Constants.userLocation) var user_Location: String?
-        @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
-        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-        @AppStorage(Constants.appStorageStringUserGames) var user_Games: String?
-        @AppStorage(Constants.appStorageStringUserGroupSize) var user_Group_Size: String?
-        @AppStorage(Constants.userAge) var user_Age: String?
-        @AppStorage(Constants.appStorageStringUserAbout) var about_user: String?
-        @AppStorage(Constants.appStorageStringUserAvailability) var user_Availability: String?
-        @AppStorage(Constants.appStorageStringUserTitle) var user_title: String?
-        @AppStorage(Constants.appStorageStringUserIsPayToPlay) var user_PayTo_Play: Bool?
-        @AppStorage(Constants.appStorageStringUserIsSolo) var user_Is_Solo: Bool?
-        
         @ObservedObject var user = UserObservable()
+        @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+//        @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
+//        @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
+//        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+//        @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
+//        @AppStorage(Constants.userLocation) var user_Location: String?
+//        @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
+//        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+//        @AppStorage(Constants.appStorageStringUserGames) var user_Games: String?
+//        @AppStorage(Constants.appStorageStringUserGroupSize) var user_Group_Size: String?
+//        @AppStorage(Constants.userAge) var user_Age: String?
+//        @AppStorage(Constants.appStorageStringUserAbout) var about_user: String?
+//        @AppStorage(Constants.appStorageStringUserAvailability) var user_Availability: String?
+//        @AppStorage(Constants.appStorageStringUserTitle) var user_title: String?
+//        @AppStorage(Constants.appStorageStringUserIsPayToPlay) var user_PayTo_Play: Bool?
+//        @AppStorage(Constants.appStorageStringUserIsSolo) var user_Is_Solo: Bool?
+        
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
         @Published var firstName: String = ""
@@ -52,12 +52,13 @@ extension ManageAccountView {
         @Published var groupSize: String = ""
         @Published var userAge: String = ""
         @Published var userLocation: String = ""
-        @Published var userListOfGames: String = ""
-        @Published var listOfGames: [String] = []
+        @Published var userListOfGames: String = "" // this or
+        @Published var listOfGames: [String] = [] //that
         @Published var userAvailability: String = ""
         @Published var userTitle: String = ""
         @Published var isPayToPlay: Bool = false
         @Published var userIsSolo: Bool = true
+        @Published var age: Int = 0
         
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()
@@ -68,7 +69,7 @@ extension ManageAccountView {
             guard let data = image.jpegData(compressionQuality: 1.0) else { return }
 
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent(profile_Image_String!)
+            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString!)
             do {
                 try data.write(to: fileURL)
                 print("Image saved to disk.")
@@ -79,7 +80,7 @@ extension ManageAccountView {
         
         func loadProfileImageFromDisk() {
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent(profile_Image_String!)
+            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString!)
 
             if let imageData = try? Data(contentsOf: fileURL),
                let loadedImage = UIImage(data: imageData) {
@@ -101,7 +102,7 @@ extension ManageAccountView {
         
         func uploadProfileImageToFirebaseStorage() {
             guard let image = profileImage else { return }
-            guard let imageString = profile_Image_String else { return }
+            guard let imageString = user.profileImageString else { return }
             guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
             let storageRef = firebaseStorage.reference().child("profileImages/\(imageString)")
             let metadata = StorageMetadata()
@@ -158,22 +159,31 @@ extension ManageAccountView {
         }
         
         private func saveUserToUserDefaults() {
-            display_Name = displayName
-            first_Name = firstName
-            last_Name = lastName
+            user.displayName = displayName
+//            display_Name = displayName
+//            first_Name = firstName
+            user.firstName = firstName
+//            last_Name = lastName
+            user.lastName = lastName
             //            self.user_Email = self.email // used later when users can change their email
-            about_user = about
-            user_title = userTitle
-            user_Availability = userAvailability
-            user_PayTo_Play = isPayToPlay
-            user_Group_Size = groupSize
-            user_Games = userListOfGames
-            user_Location = userLocation
-            user_Age = userAge
-            user_Is_Solo = userIsSolo
-            
-            UserDefaults.standard.array(forKey: "bools") as? [Bool]
-            
+//            about_user = about
+            user.about = about
+//            user_title = userTitle
+            user.title = userTitle
+//            user_Availability = userAvailability
+            user.availability = userAvailability
+//            user_PayTo_Play = isPayToPlay
+            user.isPayToPlay = isPayToPlay
+//            user_Group_Size = groupSize
+            user.groupSize = groupSize
+//            user_Games = userListOfGames
+            user.listOfGames = listOfGames
+//            user_Location = userLocation
+            user.location = userLocation
+//            user_Age = userAge
+            user.age = age
+//            user_Is_Solo = userIsSolo
+            user.isSolo = userIsSolo
             
             self.isSaveChangesButtonIsActive = false
             if isProfileUploading == false {
@@ -182,14 +192,14 @@ extension ManageAccountView {
         }
         
         func deleteProfileImage() {
-            let storageRef = firebaseStorage.reference().child(profile_Image_String!)
+            let storageRef = firebaseStorage.reference().child(user.profileImageString!)
             storageRef.delete { err in
               if let error = err {
                   print("ERROR DELETING PROFILE IMAGE FROM CLOUD: \(error.localizedDescription)")
               } else {
                 // delete locally
                   let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                  let fileURL = documentsDirectory.appendingPathComponent(self.profile_Image_String!)
+                  let fileURL = documentsDirectory.appendingPathComponent(self.user.profileImageString!)
                   do {
                       try FileManager.default.removeItem(at: fileURL)
                       self.profileImage = nil

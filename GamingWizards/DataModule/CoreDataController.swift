@@ -14,13 +14,14 @@ import FirebaseAuth
 class CoreDataController: ObservableObject {
     
     static let shared = CoreDataController()
-    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
-    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
     let firestoreDatabase = Firestore.firestore()
     let persistentContainer: NSPersistentContainer
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    @ObservedObject var user = UserObservable()
     @Published var savedUserEntities: [UserEntity] = []
     @Published var savedFriendEntities: [FriendEntity] = []
     @Published var savedUser: UserEntity?
@@ -62,7 +63,7 @@ class CoreDataController: ObservableObject {
     
     //not needed. remove. outdated
     func deleteFriend(friend: FriendEntity, userID: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
-        guard let userFriendCodeID = user_Friend_Code_ID else { return }
+        guard let userFriendCodeID = user.friendCodeID else { return }
         guard let friendUserID = friend.friendUserID else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
         firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID)

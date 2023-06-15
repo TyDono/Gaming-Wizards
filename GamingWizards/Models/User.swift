@@ -16,12 +16,12 @@ struct User: Identifiable, Codable, Hashable {
     var email: String? = ""
     var location: String = "" //change to UserLocation later date maybe
     var profileImageString = ""
-    var friendID = ""
+    var friendCodeID = ""
     var friendList: [Friend] = [] // sub collection
     var friendRequests: [Friend] = [] // sub collection
     var listOfGames: [String] = []
     var groupSize: String = ""
-    var age: String = "" // change to an array of Int
+    var age: Int = 0 // change to an array of Int
     var about: String = ""
     var availability: String = ""
     var title: String = ""
@@ -37,13 +37,14 @@ struct User: Identifiable, Codable, Hashable {
             "email": email ?? "No Email Available",
             "location": location,
             "profileImageString": profileImageString,
-            "friendCodeID": friendID,
+            "friendCodeID": friendCodeID,
             "friendList": friendList,
             "friendRequests": friendRequests,
             "listOfGames": listOfGames,
             "groupSize": groupSize,
             "age": age,
             "about": about,
+            "availability": availability,
             "title": title,
             "isPayToPlay": isPayToPlay,
             "isSolo": isSolo
@@ -61,13 +62,14 @@ extension User {
         case email = "user_email"
         case location = "user_location"
         case profileImageString = "profile_image_string"
-        case friendID = "friendCodeID"
+        case friendCodeID = "friendCodeID"
         case friendList = "friendList"
         case friendRequests = "friendRequests"
         case listOfGames = "listOfGames"
         case groupSize = "groupSize"
         case age = "age"
         case about = "about"
+        case availability = "availability"
         case title = "title"
         case payToPlay = "isPayToPlay"
         case isSolo = "isSolo"
@@ -94,69 +96,76 @@ class UserObservable: ObservableObject {
     private let groupSizeKey = "groupSize"
     private let ageKey = "age"
     private let aboutKey = "about"
+    private let availabilityKey = "availability"
     private let titleKey = "title"
-    private let payToPlayKey = "payToPlay"
+    private let payToPlayKey = "isPayToPlay"
     private let isSoloKey = "isSolo"
     
     var id: String
     
-    @Published var firstName: String {
+//    @Published var id: String {
+//        didSet {
+//            UserDefaults.standard.setValue(id, forKey: "\(idKey)-\(id)")
+//        }
+//    }
+    
+    @Published var firstName: String? {
         didSet {
             UserDefaults.standard.setValue(firstName, forKey: "\(firstNameKey)-\(id)")
         }
     }
     
-    @Published var lastName: String {
+    @Published var lastName: String? {
         didSet {
             UserDefaults.standard.setValue(lastName, forKey: "\(lastNameKey)-\(id)")
         }
     }
     
-    @Published var displayName: String {
+    @Published var displayName: String? {
         didSet {
             UserDefaults.standard.setValue(displayName, forKey: "\(displayNameKey)-\(id)")
         }
     }
     
-    @Published var email: String {
+    @Published var email: String? {
         didSet {
             UserDefaults.standard.setValue(email, forKey: "\(emailKey)-\(id)")
         }
     }
     
-    @Published var location: String {
+    @Published var location: String? {
         didSet {
             UserDefaults.standard.setValue(location, forKey: "\(locationKey)-\(id)")
         }
     }
     
-    @Published var profileImageString: String {
+    @Published var profileImageString: String? {
         didSet {
             UserDefaults.standard.setValue(profileImageString, forKey: "\(profileImageStringKey)-\(id)")
         }
     }
     
-    @Published var isNewUser: Bool {
+    @Published var isNewUser: Bool? {
         didSet {
             UserDefaults.standard.setValue(isNewUser, forKey: "\(isNewUserKey)-\(id)")
         }
     }
     
-    @Published var latitude: Double {
+    @Published var latitude: Double? {
         didSet {
             UserDefaults.standard.setValue(latitude, forKey: latitudeKey)
         }
     }
     
-    @Published var longitude: Double {
+    @Published var longitude: Double? {
         didSet {
             UserDefaults.standard.setValue(longitude, forKey: longitudeKey)
         }
     }
     
-    @Published var friendID: String {
+    @Published var friendCodeID: String? {
         didSet {
-            UserDefaults.standard.setValue(friendID, forKey: "\(friendIDKey)-\(id)")
+            UserDefaults.standard.setValue(friendCodeID, forKey: "\(friendIDKey)-\(id)")
         }
     }
     
@@ -166,44 +175,50 @@ class UserObservable: ObservableObject {
 //        }
 //    }
     
-    @Published var listOfGames: [String] {
+    @Published var listOfGames: [String?] {
         didSet {
             UserDefaults.standard.setValue(listOfGames, forKey: "\(listOfGamesKey)-\(id)")
         }
     }
     
-    @Published var groupSize: String {
+    @Published var groupSize: String? {
         didSet {
             UserDefaults.standard.setValue(groupSize, forKey: "\(groupSizeKey)-\(id)")
         }
     }
     
-    @Published var age: Int {
+    @Published var age: Int? {
         didSet {
             UserDefaults.standard.setValue(age, forKey: "\(ageKey)-\(id)")
         }
     }
     
-    @Published var about: String {
+    @Published var about: String? {
         didSet {
             UserDefaults.standard.setValue(about, forKey: "\(aboutKey)-\(id)")
         }
     }
     
+    @Published var availability: String? {
+        didSet {
+            UserDefaults.standard.setValue(availability, forKey: "\(availabilityKey)-\(id)")
+        }
+    }
     
-    @Published var title: String {
+    
+    @Published var title: String? {
         didSet {
             UserDefaults.standard.setValue(title, forKey: "\(titleKey)-\(id)")
         }
     }
     
-    @Published var payToPlay: Bool {
+    @Published var isPayToPlay: Bool? {
         didSet {
-            UserDefaults.standard.setValue(payToPlay, forKey: "\(payToPlayKey)-\(id)")
+            UserDefaults.standard.setValue(isPayToPlay, forKey: "\(payToPlayKey)-\(id)")
         }
     }
     
-    @Published var isSolo: Bool {
+    @Published var isSolo: Bool? {
         didSet {
             UserDefaults.standard.setValue(isSolo, forKey: "\(isSoloKey)-\(id)")
         }
@@ -214,7 +229,7 @@ class UserObservable: ObservableObject {
     }
     
     init() {
-        id = UserDefaults.standard.string(forKey: idKey) ?? ""
+        id = KeychainHelper.getUserID() ?? "NO ID FOUND"
         firstName = UserDefaults.standard.string(forKey: "\(firstNameKey)-\(id)") ?? ""
         lastName = UserDefaults.standard.string(forKey: "\(lastNameKey)-\(id)") ?? ""
         displayName = UserDefaults.standard.string(forKey: "\(displayNameKey)-\(id)") ?? ""
@@ -224,13 +239,14 @@ class UserObservable: ObservableObject {
         isNewUser = UserDefaults.standard.bool(forKey: "\(isNewUserKey)-\(id)")
         latitude = UserDefaults.standard.double(forKey: latitudeKey)
         longitude = UserDefaults.standard.double(forKey: longitudeKey)
-        friendID = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)") ?? ""
+        friendCodeID = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)") ?? ""
         groupSize = UserDefaults.standard.string(forKey: "\(groupSizeKey)-\(id)") ?? ""
         listOfGames = UserDefaults.standard.array(forKey: "\(listOfGamesKey)-\(id)") as? [String] ?? []
         age = UserDefaults.standard.integer(forKey: "\(ageKey)-\(id)") ?? 0
         about = UserDefaults.standard.string(forKey: "\(aboutKey)-\(id)") ?? ""
+        availability = UserDefaults.standard.string(forKey: "\(availabilityKey)-\(id)") ?? ""
         title = UserDefaults.standard.string(forKey: "\(titleKey)-\(id)") ?? ""
-        payToPlay = UserDefaults.standard.bool(forKey: "\(payToPlayKey)-\(id)") ?? false
+        isPayToPlay = UserDefaults.standard.bool(forKey: "\(payToPlayKey)-\(id)") ?? false
         isSolo = UserDefaults.standard.bool(forKey: "\(isSoloKey)-\(id)") ?? true
     }
 }

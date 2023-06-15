@@ -12,9 +12,10 @@ import FirebaseFirestore
 import CoreData
 
 @MainActor class SearchResultsDetailViewModel: ObservableObject {
-    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
-    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+    @ObservedObject var user = UserObservable()
+//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
+//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+//    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
     @Published var users: [User] = []
     @Published var FriendRequestAlreadySentIsTrue: Bool = false
     @Published var noFriendExistsAlertIsShowing: Bool = false
@@ -25,9 +26,9 @@ import CoreData
     let firestoreDatabase = Firestore.firestore()
     
     func sendFriendRequest(selectedUserID: String) {
-        guard let userFriendCode = user_Friend_Code_ID else { return }
+        guard let userFriendCode = user.friendCodeID else { return }
         let path = firestoreDatabase.collection(Constants.users).document(selectedUserID).collection(Constants.userFriendList).document(userFriendCode)
-        let newFriend = Friend(friendCodeID: user_Friend_Code_ID!, friendUserID: user_Id!, friendDisplayName: display_Name!, isFriend: false, isFavorite: false) //this should be the current user's info
+        let newFriend = Friend(friendCodeID: user.friendCodeID!, friendUserID: user.id, friendDisplayName: user.displayName!, isFriend: false, isFavorite: false) //this should be the current user's info
         path.getDocument { (documentSnapshot, err) in
             if let error = err {
                 print("Error retrieving document: \(error.localizedDescription)")

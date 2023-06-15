@@ -27,7 +27,7 @@ struct ViewPersonalAccountView: View {
             }
     }
     func getStuff() {
-        print(user.displayName)
+        print(user.id)
     }
     /*
     @Environment(\.presentationMode) var presentationMode

@@ -13,17 +13,19 @@ import SwiftUI
 import AuthenticationServices
 import CryptoKit
 import CoreData
+import Security
 
 @MainActor class AuthenticationViewModel: ObservableObject {
     
     @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
-    @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
-    @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
-    @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
-    @AppStorage(Constants.appStorageStringUserId) var user_Id: String?
-    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
-    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-    @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
+    
+//    @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
+//    @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
+//    @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
+//    @AppStorage(Constants.appStorageStringUserId) var user_Id: String?
+//    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
+//    @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
     @Published var currentNonce: String = ""
     @Published var signInState: SignInState = .signedOut
     @Published var isLoading: Bool = false
@@ -34,6 +36,7 @@ import CoreData
     let firestoreDatabase = Firestore.firestore()
     private var listeningRegistration: ListenerRegistration?
     static var sharedAuthenticationVM = AuthenticationViewModel()
+//    private let keychainHelper = KeychainHelper()
     
     private init() { }
 
@@ -52,7 +55,7 @@ import CoreData
                 let friendID = document?.data()?["friendCodeID"] as? String ?? "no friendCodeID"
                 //location
                 //image
-                let currentUser: User = User(id: id, displayName: displayName, email: email, location: "location not yet implemented", profileImageString: "no image implemented yet", friendID: friendID)
+                let currentUser: User = User(id: id, displayName: displayName, email: email, location: "location not yet implemented", profileImageString: "no image implemented yet", friendCodeID: friendID)
                 self.saveUserToUserDefaults(user: currentUser)
                 self.signInSuccess()
             } else {
@@ -71,11 +74,43 @@ import CoreData
         self.log_Status = true
     }
     
-    private func saveUserToUserDefaults(user newUser: User) { // remove later. i use coredata over user defaults currently
-        display_Name = newUser.displayName
-        user_Email = newUser.email ?? ""
-        user_Friend_Code_ID = newUser.friendID
-        user_Id = newUser.id
+    private func saveUserToUserDefaults(user newUser: User) {
+        user.id = newUser.id
+        user.firstName = newUser.firstName
+        user.lastName = newUser.lastName
+        user.displayName = newUser.displayName
+        user.email = newUser.email ?? ""
+        user.location = newUser.location
+        user.profileImageString = newUser.profileImageString
+        user.friendCodeID = newUser.friendCodeID
+        user.listOfGames = newUser.listOfGames
+        user.groupSize = newUser.groupSize
+        user.age = newUser.age
+        user.about = newUser.about
+        user.availability = newUser.availability
+        user.title = newUser.title
+        user.isPayToPlay = newUser.isPayToPlay
+        user.isSolo = newUser.isSolo
+        /*
+         case id = "user_id"
+         case firstName = "first_name"
+         case lastName = "last_name"
+         case displayName = "display_Name"
+         case email = "user_email"
+         case location = "user_location"
+         case profileImageString = "profile_image_string"
+         case friendID = "friendCodeID"
+         case friendList = "friendList"
+         case friendRequests = "friendRequests"
+         case listOfGames = "listOfGames"
+         case groupSize = "groupSize"
+         case age = "age"
+         case about = "about"
+         case availability = "availability"
+         case title = "title"
+         case payToPlay = "isPayToPlay"
+         case isSolo = "isSolo"
+         */
 //        first_Name = newUser.firstName
 //        last_Name = newUser.lastName
         
@@ -83,6 +118,7 @@ import CoreData
         self.isLoading = false
         self.log_Status = true
         retrieveFriendsListener()
+        KeychainHelper.saveUserID(userID: user.id)
 //        for friend in self.coreDataController.savedFriendEntities {
 //            self.coreDataController.deleteFriend(friend: friend)
 //        }
@@ -105,11 +141,19 @@ import CoreData
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, location: String, profileImageString: String, friendID: String, /*friendList: [Friend], friendRequests: [Friend],*/ games: [String], groupSize: String, age: String, about: String, availability: String, title: String, payToPlay: Bool) -> User { // SHOULD ONLY BE CALLED ONCE EVER!!!
+    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?/*friendList: [Friend], friendRequests: [Friend],*/) -> User { // SHOULD ONLY BE CALLED ONCE EVER!!!
+        let location = ""
         let profileImageString = "\(UUID().uuidString).jpg"
+        let friendID = String((UUID().uuidString.suffix(4)))
+        let games: [String] = []
+        let groupSize = ""
+        let age = 0
+        let about = ""
+        let availability = ""
+        let title = ""
         let isSolo = true
-        let listOfGames = [""]
-        profile_Image_String = profileImageString
+        let payToPlay = false
+        user.profileImageString = profileImageString
         let newUser = User(id: id,
                            firstName: firstName,
                            lastName: lastName,
@@ -117,10 +161,10 @@ import CoreData
                            email: email,
                            location: location,
                            profileImageString: profileImageString,
-                           friendID: friendID,
+                           friendCodeID: friendID,
 //                            friendList: friendList,
 //                            friendRequests: friendRequests,
-                           listOfGames: listOfGames,
+                           listOfGames: games,
                            groupSize: groupSize,
                            age: age,
                            about: about,
@@ -226,7 +270,7 @@ import CoreData
     }
     
     func deleteFriendInFirestore(friend: FriendEntity, userID: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
-        guard let userFriendCodeID = user_Friend_Code_ID else { return }
+        guard let userFriendCodeID = user.friendCodeID else { return }
         guard let friendUserID = friend.friendUserID else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
         firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID)
@@ -246,7 +290,7 @@ import CoreData
     }
     
     func retrieveFriendsListener() {
-        guard let userID = user_Id else { return }
+         let userID = user.id //else { return }
         listeningRegistration = firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList)
             .addSnapshotListener({ snapshot, err in
                 if let error = err {

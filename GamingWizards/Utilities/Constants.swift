@@ -27,7 +27,7 @@ struct Constants {
     static let userEmail = "email"
     static let userLocation = "location"
     static let userProfileImageString = "profileImageString"
-    static let userFriendID = "friendID"
+    static let userFriendID = "friendCodeID"
     static let userFriendList = "friendList"
     static let userFriendRequest = "friendRequest"
     static let userGames = "games"
@@ -41,22 +41,22 @@ struct Constants {
     static let userIsSolo = "isSolo"
     
     // MARK: calls to AppStorage
-    static let appStorageStringUserId = "user_Id"
-    static let appStorageStringUserFirstName = "user_First_Name"
-    static let appStorageStringUserLastName = "user_Last_Name"
-    static let appStorageStringUserDisplayName = "user_Display_Name"
-    static let appStorageStringUserEmail = "user_Email"
-    static let appStorageStringUserLocation = "user_Location"
-    static let appStorageStringUserProfileImageString = "user_Profile_Image_String"
-    static let appStorageStringUserFriendCodeID = "user_Friend_Code_ID"
-    static let appStorageStringUserGames = "user_Games"
-    static let appStorageStringUserGroupSize = "user_Group_Size"
-    static let appStorageStringUserAge = "user_Age"
-    static let appStorageStringUserAbout = "user_About"
-    static let appStorageStringUserAvailability = "user_Availability"
-    static let appStorageStringUserTitle = "user_Title"
-    static let appStorageStringUserIsPayToPlay = "user_Is_Pay_To_play"
-    static let appStorageStringUserIsSolo = "user_Is_Solo"
+//    static let appStorageStringUserId = "user_Id"
+//    static let appStorageStringUserFirstName = "user_First_Name"
+//    static let appStorageStringUserLastName = "user_Last_Name"
+//    static let appStorageStringUserDisplayName = "user_Display_Name"
+//    static let appStorageStringUserEmail = "user_Email"
+//    static let appStorageStringUserLocation = "user_Location"
+//    static let appStorageStringUserProfileImageString = "user_Profile_Image_String"
+//    static let appStorageStringUserFriendCodeID = "user_Friend_Code_ID"
+//    static let appStorageStringUserGames = "user_Games"
+//    static let appStorageStringUserGroupSize = "user_Group_Size"
+//    static let appStorageStringUserAge = "user_Age"
+//    static let appStorageStringUserAbout = "user_About"
+//    static let appStorageStringUserAvailability = "user_Availability"
+//    static let appStorageStringUserTitle = "user_Title"
+//    static let appStorageStringUserIsPayToPlay = "user_Is_Pay_To_play"
+//    static let appStorageStringUserIsSolo = "user_Is_Solo"
     
     static let appStorageStringLogStatus = "log_Status"
     /*
@@ -98,7 +98,7 @@ struct Constants {
 //    var email: String? = ""
 //    var location: String = "" //change to UserLocation later date maybe
 //    var profileImageString = ""
-//    var friendID = ""
+//    var friendCodeID = ""
 //    var friendList: [Friend] = [] // sub collection
 //    var friendRequests: [Friend] = [] // sub collection
 //    var games: [String] = []

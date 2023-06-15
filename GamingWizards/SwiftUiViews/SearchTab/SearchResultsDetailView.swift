@@ -16,7 +16,7 @@ struct SearchResultsDetailView: View {
         ZStack {
             VStack {
                 Text(selectedUser.displayName)
-                Text(selectedUser.age)
+                Text("\(selectedUser.age)")
                 Text(selectedUser.groupSize)
                 listOfGames
 //                    .background(
