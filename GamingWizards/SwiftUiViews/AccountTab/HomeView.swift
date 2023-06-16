@@ -18,6 +18,7 @@ struct HomeView: View {
     @State private var isUserManagingAccountShown: Bool = false
     @State private var isShowingLogoutAlert: Bool = false
     @State private var isFriendListShowing: Bool = false
+    @State var isShowingEditAccountView: Bool = false
     
     var body: some View {
             ZStack(alignment: .bottom) {
@@ -39,6 +40,9 @@ struct HomeView: View {
                         secondaryButton: .cancel()
                     )
                 }
+            }
+            .navigationDestination(isPresented: $isShowingEditAccountView) {
+                ManageAccountView()
             }
     }
     
@@ -105,7 +109,7 @@ struct HomeView: View {
             .padding()
         }
         .sheet(isPresented: $isViewPersonalAccountViewPopUp, content: {
-            ViewPersonalAccountView()
+            ViewPersonalAccountView(isShowingEditAccountView: $isShowingEditAccountView)
         })
 //        .navigationDestination(isPresented: $isUserManagingAccountShown) {
 //            ManageAccountView()

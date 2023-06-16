@@ -20,14 +20,30 @@ import PhotosUI
 
 struct ViewPersonalAccountView: View {
     @ObservedObject var user = UserObservable()
+    @StateObject var viewPersonalAccountViewModel = ViewPersonalAccountViewModel()
+    @Environment(\.dismiss) var dismiss
+//    Environment(\.presentationMode) var presentationMode
+    @State var editAccountViewIsPresented: Bool = false
+    @Binding var isShowingEditAccountView: Bool
+    
     var body: some View {
-        Text("tim")
-            .onTapGesture {
-                getStuff()
-            }
+        VStack {
+            editPersonalAccountButtonView
+            .padding()
+        }
     }
     func getStuff() {
-        print(user.id)
+        editAccountViewIsPresented = true
+    }
+    
+    private var editPersonalAccountButtonView: some View {
+        Button(action: {
+            dismiss()
+            isShowingEditAccountView = true
+//            viewPersonalAccountViewModel.isShowingEditAccountView = true
+        }) {
+            Text("Edit Account")
+        }
     }
     /*
     @Environment(\.presentationMode) var presentationMode
@@ -328,6 +344,6 @@ struct ViewPersonalAccountView: View {
 
 struct ViewPersonalAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        ViewPersonalAccountView()
+        ViewPersonalAccountView(isShowingEditAccountView: .constant(false))
     }
 }

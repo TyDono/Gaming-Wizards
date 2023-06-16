@@ -15,7 +15,7 @@ import FirebaseStorage
 extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
         @ObservedObject var user = UserObservable()
-        @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+        @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
 //        @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
 //        @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
 //        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?

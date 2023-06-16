@@ -10,6 +10,7 @@ import SwiftUI
 
 extension HomeView {
     @MainActor class HomeViewModel: ObservableObject {
+//        @Published var isShowingEditAccountView: Bool = false
 //        @Published var isViewPersonalAccountViewPopUp: Bool = false
 //        @Published var settingsIsActive: Bool = false
 //        @Published var isUserManagingAccountShown: Bool = false

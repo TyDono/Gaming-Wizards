@@ -13,10 +13,9 @@ import FirebaseStorage
 
 extension ViewPersonalAccountView {
     class ViewPersonalAccountViewModel: ObservableObject {
-//        @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
-//        @AppStorage(Constants.appStorageStringUserTitle) var user_title: String?
-        @Published var profileImage: UIImage?
         @ObservedObject var user = UserObservable()
+        @Published var profileImage: UIImage?
+        @Published var isShowingEditAccountView: Bool = false
         
         func loadProfileImageFromDisk() {
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
