@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-//    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @EnvironmentObject var homeViewModel: HomeViewModel
     @EnvironmentObject var userAuth: UserAuth
@@ -111,9 +110,6 @@ struct HomeView: View {
         .sheet(isPresented: $isViewPersonalAccountViewPopUp, content: {
             ViewPersonalAccountView(isShowingEditAccountView: $isShowingEditAccountView)
         })
-//        .navigationDestination(isPresented: $isUserManagingAccountShown) {
-//            ManageAccountView()
-//        }
     }
     
     private var logOutButton: some View {
@@ -121,7 +117,6 @@ struct HomeView: View {
             isShowingLogoutAlert = true
         }) {
             HStack {
-//                Image(systemName: "person.2")
                 Image(systemName: "door.right.hand.open")
                 Text("Log Out")
                     .frame(maxWidth: .infinity,

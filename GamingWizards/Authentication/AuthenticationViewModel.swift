@@ -75,7 +75,8 @@ import Security
     }
     
     private func saveUserToUserDefaults(user newUser: User) {
-        user.id = newUser.id
+//        user.id = newUser.id
+        KeychainHelper.saveUserID(userID: user.id)
         user.firstName = newUser.firstName
         user.lastName = newUser.lastName
         user.displayName = newUser.displayName
@@ -118,7 +119,6 @@ import Security
         self.isLoading = false
         self.log_Status = true
         retrieveFriendsListener()
-        KeychainHelper.saveUserID(userID: user.id)
 //        for friend in self.coreDataController.savedFriendEntities {
 //            self.coreDataController.deleteFriend(friend: friend)
 //        }

@@ -32,9 +32,6 @@ struct ViewPersonalAccountView: View {
             .padding()
         }
     }
-    func getStuff() {
-        editAccountViewIsPresented = true
-    }
     
     private var editPersonalAccountButtonView: some View {
         Button(action: {
@@ -43,6 +40,9 @@ struct ViewPersonalAccountView: View {
 //            viewPersonalAccountViewModel.isShowingEditAccountView = true
         }) {
             Text("Edit Account")
+                .foregroundColor(.white)
+                .background(.blue)
+                .cornerRadius(6)
         }
     }
     /*

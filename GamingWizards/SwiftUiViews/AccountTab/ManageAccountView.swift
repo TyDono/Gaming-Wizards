@@ -146,6 +146,9 @@ struct ManageAccountView: View {
             
             Toggle(isOn: $manageAccountViewModel.userIsSolo) {
             }
+            .onChange(of: manageAccountViewModel.userIsSolo) { newValue in
+                manageAccountViewModel.isSaveChangesButtonIsActive = true
+            }
         } .onAppear {
 //            manageAccountViewModel.isPayToPlay = manageAccountViewModel.user_Is_Solo ?? false
         }
@@ -231,6 +234,13 @@ struct ManageAccountView: View {
                       onEditingChanged: { changed in
                 manageAccountViewModel.isSaveChangesButtonIsActive = true
                         })
+            .keyboardType(.numberPad)
+            .onReceive(Just(manageAccountViewModel.userAge)) { newValue in
+                let filtered = newValue.filter { "0123456789".contains($0) }
+                if filtered != newValue {
+                    self.manageAccountViewModel.userAge = filtered
+                }
+            }
             .padding(.horizontal, 15)
             .frame(height: 40.0)
             .background(Colors.textFieldGrey)
@@ -304,7 +314,9 @@ struct ManageAccountView: View {
             Toggle(isOn: $manageAccountViewModel.isPayToPlay) {
 //                Text("Switch")
             }
-            .padding()
+            .onChange(of: manageAccountViewModel.isPayToPlay) { newValue in
+                manageAccountViewModel.isSaveChangesButtonIsActive = true
+            }
         } .onAppear {
             manageAccountViewModel.isPayToPlay = manageAccountViewModel.user.isPayToPlay ?? false
         }
