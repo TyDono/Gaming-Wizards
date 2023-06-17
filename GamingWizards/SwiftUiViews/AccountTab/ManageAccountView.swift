@@ -36,6 +36,8 @@ struct ManageAccountView: View {
                                 .padding()
                             displayNameTextField
                                 .padding()
+                            userIsSoloView
+                                .padding()
                             firstNameTextField
                                 .padding()
                             lastNameTextField
@@ -46,8 +48,6 @@ struct ManageAccountView: View {
                                 .padding()
                         }
                         Group {
-                            userIsSoloView
-                                .padding()
                             userAgeTextView
                                 .padding()
                             userLocationTextView
@@ -235,9 +235,9 @@ struct ManageAccountView: View {
                 manageAccountViewModel.isSaveChangesButtonIsActive = true
                         })
             .keyboardType(.numberPad)
-            .onReceive(Just(manageAccountViewModel.userAge)) { newValue in
-                let filtered = newValue.filter { "0123456789".contains($0) }
-                if filtered != newValue {
+            .onReceive(Just(manageAccountViewModel.userAge)) { newUserAgeValue in
+                let filtered = newUserAgeValue.filter { "0123456789".contains($0) }
+                if filtered != newUserAgeValue {
                     self.manageAccountViewModel.userAge = filtered
                 }
             }
@@ -314,7 +314,7 @@ struct ManageAccountView: View {
             Toggle(isOn: $manageAccountViewModel.isPayToPlay) {
 //                Text("Switch")
             }
-            .onChange(of: manageAccountViewModel.isPayToPlay) { newValue in
+            .onChange(of: manageAccountViewModel.isPayToPlay) { newIsPayToPlayValue in
                 manageAccountViewModel.isSaveChangesButtonIsActive = true
             }
         } .onAppear {
@@ -325,10 +325,10 @@ struct ManageAccountView: View {
     private var aboutUserTextView: some View {
         VStack {
             if manageAccountViewModel.about.isEmpty == true {
-                Text("Write about yourself")
+                Text("Write about \(manageAccountViewModel.userIsSolo ? "yourself" : "your group")")
                     .foregroundColor(.gray)
+                    .padding()
             }
-            
             TextEditor(text: $manageAccountViewModel.about.max(Constants.textViewMaxCharacters))
                 .border(Color.gray, width: 1)
                 .textFieldStyle(RoundedBorderTextFieldStyle())

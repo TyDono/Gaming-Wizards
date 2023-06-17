@@ -25,7 +25,7 @@ struct GamingWizardsNotification: Identifiable, Equatable {
 
 enum NotificationType: String {
     case comments = "comments"
-    case foodiNotification = "foodiNotification"
+    case gamingWizardNotification = "gamingWizardNotification"
 }
 
 final class NotificationViewModel: ObservableObject {

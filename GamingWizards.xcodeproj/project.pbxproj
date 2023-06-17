@@ -314,6 +314,7 @@
 				CB5BE87529FDE956009D38D6 /* Authentication */,
 				CBBD556B2A27F2A800F27626 /* StoryBoards */,
 				CB5BE83429FDE954009D38D6 /* SignInContent */,
+				CBCD58212A0B1EC500136AA0 /* UniversalViews */,
 				CB5BE86829FDE956009D38D6 /* Utilities */,
 				CB5BE83B29FDE955009D38D6 /* DataModule */,
 				CB5BE83A29FDE955009D38D6 /* Plist */,
@@ -486,7 +487,6 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE86929FDE956009D38D6 /* Constants.swift */,
-				CBCD58212A0B1EC500136AA0 /* UniversalViews */,
 				CB5BE86A29FDE956009D38D6 /* Dependencies.swift */,
 				CB5BE86B29FDE956009D38D6 /* Validation.swift */,
 				CB5BE86C29FDE956009D38D6 /* DependencyInjector.swift */,
