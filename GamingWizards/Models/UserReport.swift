@@ -5,7 +5,6 @@
 //  Created by Tyler Donohue on 5/2/23.
 //
 
-import Foundation
 
 struct UserReport: Codable, Identifiable {
     

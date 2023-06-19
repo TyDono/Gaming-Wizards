@@ -5,7 +5,6 @@
 //  Created by Tyler Donohue on 5/24/23.
 //
 
-import Foundation
 import CoreLocation
 
 final class LocationModel: NSObject, ObservableObject {

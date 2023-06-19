@@ -5,7 +5,6 @@
 //  Created by Tyler Donohue on 5/4/23.
 //
 
-import Foundation
 import SwiftUI
 import FirebaseFirestore
 

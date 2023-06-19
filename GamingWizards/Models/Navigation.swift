@@ -5,7 +5,6 @@
 //  Created by Tyler Donohue on 9/28/22.
 //
 
-import Foundation
 import SwiftUI
 
 class Navigation {

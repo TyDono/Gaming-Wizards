@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct FriendListView: View {
     @Environment(\.presentationMode) var presentationMode

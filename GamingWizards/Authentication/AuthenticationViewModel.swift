@@ -6,7 +6,7 @@
 //
 
 import FirebaseFirestore
-import Firebase
+import FirebaseAuth
 import FirebaseFirestoreSwift
 import GoogleSignIn
 import SwiftUI
@@ -18,14 +18,6 @@ import Security
 @MainActor class AuthenticationViewModel: ObservableObject {
     
     @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
-    
-//    @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
-//    @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
-//    @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
-//    @AppStorage(Constants.appStorageStringUserId) var user_Id: String?
-//    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
-//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-//    @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
     @Published var currentNonce: String = ""
     @Published var signInState: SignInState = .signedOut
     @Published var isLoading: Bool = false

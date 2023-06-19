@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Firebase
 import SwiftUI
 import FirebaseCore
 import FirebaseAuth

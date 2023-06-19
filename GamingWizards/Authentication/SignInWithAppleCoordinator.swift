@@ -5,7 +5,6 @@
 //  Created by Tyler Donohue on 7/7/22.
 //
 
-import Foundation
 import AuthenticationServices
 import CryptoKit
 import FirebaseAnalytics

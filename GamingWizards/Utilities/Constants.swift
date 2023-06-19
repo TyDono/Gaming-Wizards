@@ -5,7 +5,7 @@
 //  Created by Tyler Donohue on 7/7/22.
 //
 
-import Foundation
+//import Foundation
 import SwiftUI
 
 struct Constants {
@@ -59,23 +59,6 @@ struct Constants {
 //    static let appStorageStringUserIsSolo = "user_Is_Solo"
     
     static let appStorageStringLogStatus = "log_Status"
-    /*
-    @AppStorage("first_Name") var first_Name: String?
-    @AppStorage("last_Name") var last_Name: String?
-    @AppStorage("display_Name") var display_Name: String?
-    @AppStorage("user_Email") var user_Email: String?
-    @AppStorage("user_Location") var user_Location: String?
-    @AppStorage("profile_Image_String") var profile_Image_String: String?
-    @AppStorage("user_Friend_Code_ID") var user_Friend_Code_ID: String?
-    @AppStorage("user_Games") var user_Games: String?
-    @AppStorage("user_Group_Size") var user_Group_Size: String?
-    @AppStorage("user_Age") var user_Age: String?
-    @AppStorage("about_User") var about_user: String?
-    @AppStorage("user_Availability") var user_Availability: String?
-    @AppStorage("user_Title") var user_title: String?
-    @AppStorage("user_Pay_To_play") var user_PayTo_Play: Bool?
-    @AppStorage("user_is_solo") var user_Is_Solo: Bool?
-     */
     
     // MARK: calls to Friend
     static let friendCodeID = "friendCodeID"
@@ -91,21 +74,6 @@ struct Constants {
     static let reportDateSent = "dateSent"
     static let reportID = "id"
     static let reportUserReportedID = "userReportedID"
-    
-//    var firstName = ""
-//    var lastName = ""
-//    var displayName = ""
-//    var email: String? = ""
-//    var location: String = "" //change to UserLocation later date maybe
-//    var profileImageString = ""
-//    var friendCodeID = ""
-//    var friendList: [Friend] = [] // sub collection
-//    var friendRequests: [Friend] = [] // sub collection
-//    var games: [String] = []
-//    var groupSize: String = ""
-//    var age: String = ""
-//    var about: String = ""
-//    var availability: String = ""
 }
 
 enum Colors {

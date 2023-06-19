@@ -5,7 +5,6 @@
 //  Created by Tyler Donohue on 6/8/23.
 //
 
-import Foundation
 import SwiftUI
 
 struct LoadingAnimation: View {

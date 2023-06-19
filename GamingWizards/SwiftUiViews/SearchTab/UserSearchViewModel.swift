@@ -5,10 +5,7 @@
 //  Created by Tyler Donohue on 5/1/23.
 //
 
-import Combine
 import SwiftUI
-import Foundation
-import Firebase
 import FirebaseFirestore
 
 //extension UserSearchView {

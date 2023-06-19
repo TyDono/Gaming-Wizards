@@ -5,10 +5,9 @@
 //  Created by Tyler Donohue on 5/18/23.
 //
 
-import Foundation
 import SwiftUI
-import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 import CoreData
 
 @MainActor class SearchResultsDetailViewModel: ObservableObject {
