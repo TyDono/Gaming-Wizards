@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct AccountView: View {
 //    @Binding var isShowingAccountView: Bool?
@@ -28,8 +29,135 @@ struct AccountView: View {
     @Binding var isUserSolo: Bool?
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center) {
+            profileTitleView
+            profileImageView
+            profileDisplayName
+            profileIsSolo
+            profileAgeView
+            profileUserLocationView
+            profileIsPayToPlayView
+            profileAboutView
+            
+            
+            profileNameView
+            profileFriendCodeIdView
+        }
     }
+    
+    private var profileTitleView: (some View)?? {
+        VStack {
+            if let profileTitle = title {
+                Text(profileTitle)
+            }
+        }
+    }
+    private var profileDisplayName: some View {
+        VStack {
+            if let profileDisplayName = displayName {
+                Text(profileDisplayName)
+            }
+        }
+    }
+    
+    private var profileImageView: some View {
+        VStack {
+//            Spacer()
+            if let profileImage = profileImage {
+                Image(uiImage: profileImage)
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 250)
+            }
+        }
+    }
+    
+    private var profileIsSolo: some View {
+        VStack {
+            Text(isUserSolo == true ? "Solo" : "Group")
+        }
+    }
+    
+    private var profileAgeView: some View {
+        VStack {
+            if let profileAge = age {
+                Text("\(profileAge)")
+            }
+        }
+    }
+    
+    private var profileAboutView: some View {
+        VStack {
+            if let profileAbout = about {
+                Text(profileAbout)
+            }
+        }
+    }
+    
+    private var profileListOfGamesView: some View {
+        List {
+            ForEach(listOfGames, id: \.self) { game in
+                Text(game ?? "")
+                    .font(.luminari(.regular, size: 16))
+//                    .boldIfStringIsMatching(game, specificGame)
+                    .padding(.vertical, 8)
+                //                        .background(
+                //                            Image("blank-page")
+                //                                .resizable()
+                //                                .scaledToFill()
+                //                        )
+                
+            }
+            .listRowBackground(
+                RoundedRectangle(cornerRadius: 5)
+                    .background(.clear)
+                    .foregroundColor(.white)
+                    .padding(
+                        EdgeInsets(
+                            top: 2,
+                            leading: 6,
+                            bottom: 2,
+                            trailing: 6
+                        )
+                    )
+            )
+        }
+        .listStyle(.plain)
+        .background(Color.clear)
+    }
+    
+    private var profileIsPayToPlayView: some View {
+        VStack {
+            Text(isPayToPlay == true ? "Pay To Play" : "Free To Play")
+            // Add rates below if is pay to play at later date
+        }
+    }
+    
+    private var profileFriendCodeIdView: some View {
+        VStack {
+            if let profileFriendCodeId = friendCodeId {
+                Text(profileFriendCodeId)
+            }
+        }
+    }
+    
+    private var profileUserLocationView: some View {
+        VStack {
+            if let profileUserLocation = userLocation {
+                Text(profileUserLocation)
+            }
+        }
+    }
+    
+    private var profileNameView: some View {
+        VStack {
+            if let profileFirstName = firstName, let profileLastName = lastName {
+                Text("\(profileFirstName) \(profileLastName)")
+            }
+        }
+    }
+    
 }
 
 //struct AccountView_Previews: PreviewProvider {

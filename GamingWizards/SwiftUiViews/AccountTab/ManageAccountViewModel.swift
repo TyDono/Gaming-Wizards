@@ -89,12 +89,6 @@ extension ManageAccountView {
             }
         }
         
-        func saveProfileImageToClod() {
-            // ?????
-        }
-
-
-        
         func loadProfileImageFromFirebaseStorage() {
             // use this in viewing other people's profile
         }
@@ -127,6 +121,7 @@ extension ManageAccountView {
         }
         
         func updateUserInfo() {
+            // if no internet make a pop up appear
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
             let path = firestoreDatabase.collection(Constants.users).document(userId)
@@ -159,29 +154,16 @@ extension ManageAccountView {
         
         private func saveUserToUserDefaults() {
             user.displayName = displayName
-//            display_Name = displayName
-//            first_Name = firstName
             user.firstName = firstName
-//            last_Name = lastName
             user.lastName = lastName
-            //            self.user_Email = self.email // used later when users can change their email
-//            about_user = about
             user.about = about
-//            user_title = userTitle
             user.title = userTitle
-//            user_Availability = userAvailability
             user.availability = userAvailability
-//            user_PayTo_Play = isPayToPlay
             user.isPayToPlay = isPayToPlay
-//            user_Group_Size = groupSize
             user.groupSize = groupSize
-//            user_Games = userListOfGames
             user.listOfGames = listOfGames
-//            user_Location = userLocation
             user.location = userLocation
-//            user_Age = userAge
             user.age = age
-//            user_Is_Solo = userIsSolo
             user.isSolo = userIsSolo
             
             self.isSaveChangesButtonIsActive = false
