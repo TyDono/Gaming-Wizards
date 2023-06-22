@@ -30,6 +30,7 @@ struct ManageAccountView: View {
                     ScrollView {
                         
                         Group {
+                            Spacer().frame(height: 16)
                             profileImageView
                                 .padding()
                             personalTitleView
@@ -93,34 +94,18 @@ struct ManageAccountView: View {
     
     private var profileImageView: some View {
         VStack {
-            Spacer()
-            if let profileImage = manageAccountViewModel.profileImage {
-                Image(uiImage: profileImage)
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
-                    .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
-                        manageAccountViewModel.didProfileImageChange = true
-                        manageAccountViewModel.isSaveChangesButtonIsActive = true
-                    })
-                    .onTapGesture {
-                        manageAccountViewModel.isShowingImagePicker = true
-                    }
-            } else {
-                Image("WantedWizard+")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaledToFit()
-                    .frame(width: 250, height: 250)
-                    .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
-                        manageAccountViewModel.didProfileImageChange = true
-                        manageAccountViewModel.isSaveChangesButtonIsActive = true
-                    })
-                    .onTapGesture {
-                        manageAccountViewModel.isShowingImagePicker = true
-                    }
-            }
+            Image(uiImage: (manageAccountViewModel.profileImage ?? UIImage(named: "WantedWizard+"))!)
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 250, height: 250)
+                .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
+                })
+                .onTapGesture {
+                    manageAccountViewModel.isShowingImagePicker = true
+                    manageAccountViewModel.didProfileImageChange = true
+                    manageAccountViewModel.isSaveChangesButtonIsActive = true
+                }
             Button(action: {
                 manageAccountViewModel.isShowingImagePicker = true
             }) {
@@ -131,10 +116,7 @@ struct ManageAccountView: View {
                     .cornerRadius(5)
             }
         }
-        
-        .onAppear {
-            manageAccountViewModel.loadProfileImageFromDisk()
-        }
+        .onAppear(perform: manageAccountViewModel.loadProfileImageFromDisk)
         .sheet(isPresented: $manageAccountViewModel.isShowingImagePicker, onDismiss: nil) {
             ImagePicker(selectedImage: $manageAccountViewModel.profileImage)
         }
@@ -283,25 +265,43 @@ struct ManageAccountView: View {
     
     private var userAvailabilityTextView: some View {
         VStack {
-            Text("Availability")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
-            TextField("",
-                      text: $manageAccountViewModel.userAvailability.max(Constants.textFieldMaxCharacters),
-                      onEditingChanged: { changed in
-                manageAccountViewModel.isSaveChangesButtonIsActive = true
-                        })
-            .padding(.horizontal, 15)
-            .frame(height: 40.0)
-            .background(Colors.textFieldGrey)
-            .background(RoundedRectangle(cornerRadius: 30))
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray.opacity(0.80),
-                            lineWidth: 1)
-            )
+//            if manageAccountViewModel.userAvailability.isEmpty == true {
+                Text("Availability")
+                    .foregroundColor(.black)
+                    .padding()
+//            }
+            TextEditor(text: $manageAccountViewModel.userAvailability.max(Constants.textViewMaxCharacters))
+                .border(Color.black, width: 1)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .navigationTitle("Availability")
+                .foregroundStyle(.secondary)
+                .padding(.horizontal)
+                .onTapGesture {
+                    manageAccountViewModel.isSaveChangesButtonIsActive = true
+                }
+//                .onChange(of: manageAccountViewModel.userAvailability) { newValue in
+//                    manageAccountViewModel.isSaveChangesButtonIsActive = true
+//                }
+            
+//            Text("Availability")
+//                .frame(maxWidth: .infinity,
+//                       alignment: .leading)
+//                .font(.roboto(.semibold,
+//                              size: 18))
+//            TextField("",
+//                      text: $manageAccountViewModel.userAvailability.max(Constants.textFieldMaxCharacters),
+//                      onEditingChanged: { changed in
+//                manageAccountViewModel.isSaveChangesButtonIsActive = true
+//                        })
+//            .padding(.horizontal, 15)
+//            .frame(height: 40.0)
+//            .background(Colors.textFieldGrey)
+//            .background(RoundedRectangle(cornerRadius: 30))
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 5)
+//                    .stroke(Color.gray.opacity(0.80),
+//                            lineWidth: 1)
+//            )
         } .onAppear {
             manageAccountViewModel.userAvailability = manageAccountViewModel.user.availability ?? ""
         }
@@ -324,19 +324,24 @@ struct ManageAccountView: View {
     
     private var aboutUserTextView: some View {
         VStack {
-            if manageAccountViewModel.about.isEmpty == true {
+//            if manageAccountViewModel.about.isEmpty == true {
                 Text("Write about \(manageAccountViewModel.userIsSolo ? "yourself" : "your group")")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.black)
                     .padding()
-            }
+//            }
             TextEditor(text: $manageAccountViewModel.about.max(Constants.textViewMaxCharacters))
-                .border(Color.gray, width: 1)
+                .border(Color.black, width: 1)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .onChange(of: manageAccountViewModel.about) { newValue in
+                .navigationTitle("About")
+                .foregroundStyle(.secondary)
+                .padding(.horizontal)
+                .onTapGesture {
                     manageAccountViewModel.isSaveChangesButtonIsActive = true
                 }
+//                .onChange(of: manageAccountViewModel.about) { newValue in
+//                    manageAccountViewModel.isSaveChangesButtonIsActive = true
+//                }
         }
-        .padding()
         .onAppear {
             manageAccountViewModel.about = manageAccountViewModel.user.about ?? ""
         }

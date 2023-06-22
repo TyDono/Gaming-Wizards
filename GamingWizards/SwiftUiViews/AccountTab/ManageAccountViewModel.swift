@@ -15,21 +15,6 @@ extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
         @ObservedObject var user = UserObservable()
         @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-//        @AppStorage(Constants.appStorageStringUserFirstName) var first_Name: String?
-//        @AppStorage(Constants.appStorageStringUserLastName) var last_Name: String?
-//        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
-//        @AppStorage(Constants.appStorageStringUserEmail) var user_Email: String?
-//        @AppStorage(Constants.userLocation) var user_Location: String?
-//        @AppStorage(Constants.appStorageStringUserProfileImageString) var profile_Image_String: String?
-//        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-//        @AppStorage(Constants.appStorageStringUserGames) var user_Games: String?
-//        @AppStorage(Constants.appStorageStringUserGroupSize) var user_Group_Size: String?
-//        @AppStorage(Constants.userAge) var user_Age: String?
-//        @AppStorage(Constants.appStorageStringUserAbout) var about_user: String?
-//        @AppStorage(Constants.appStorageStringUserAvailability) var user_Availability: String?
-//        @AppStorage(Constants.appStorageStringUserTitle) var user_title: String?
-//        @AppStorage(Constants.appStorageStringUserIsPayToPlay) var user_PayTo_Play: Bool?
-//        @AppStorage(Constants.appStorageStringUserIsSolo) var user_Is_Solo: Bool?
         
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
@@ -39,13 +24,13 @@ extension ManageAccountView {
         @Published var email: String = ""
         @Published var about: String = ""
         @Published var profileImageString: String = "" // not called
+        @Published var profileImage: UIImage?
+        @Published var didProfileImageChange: Bool = false
         @Published var isSaveChangesButtonIsActive: Bool = false
         @Published var emailIsNotValid: Bool = false
         @Published var accountInformationSavedAlertIsActive: Bool = false
         @Published var accountInformationChangedErrorAlertIsActive: Bool = false
         @Published var isShowingImagePicker = false
-        @Published var profileImage: UIImage?
-        @Published var didProfileImageChange: Bool = false
         @Published var isProfileUploading: Bool = false
         @Published var uploadProfileProgress: Double = 0.0
         @Published var groupSize: String = ""
@@ -117,6 +102,8 @@ extension ManageAccountView {
                 guard let progress = snapshot.progress else { return }
                 let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
                 self.uploadProfileProgress = percentComplete
+                self.didProfileImageChange = false
+                self.isSaveChangesButtonIsActive = false
             }
         }
         

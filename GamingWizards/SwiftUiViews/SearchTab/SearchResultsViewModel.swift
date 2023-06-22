@@ -14,10 +14,6 @@ import FirebaseFirestore
         @Published var users: [User]? = []
         let firesStoreDatabase = Firestore.firestore()
         
-        func lfgResultWasTapped() {
-            //perform segue/navigation here and jazz
-        }
-        
         func callPerformSearchForMatchingGames(gameName: String) {
             performSearchForMatchingGames(gameName: gameName) { user, err in
                 if let error = err {
@@ -60,20 +56,7 @@ import FirebaseFirestore
                     
                     return User(id: id, displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendCodeID: friendCodeID, listOfGames: listOfGames, groupSize: groupSize, age: age, about: about, availability: availability, title: title, isPayToPlay: payToPlay)
                 }
-                
                 completion(users, err)
-                
-                /*
-                    i need id for sending a friend request,
-                     name
-                     title
-                     game
-                     age
-                     group size
-                     about
-                     location. for now location will just be text based a state, city. and or remote as an option.
-                     availability add this to users later
-                     */
 //                let names = snapshot.documents.compactMap { $0.get("name") as? String }
 //                completion(names, nil)
             }

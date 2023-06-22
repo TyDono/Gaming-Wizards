@@ -26,12 +26,22 @@ struct ViewPersonalAccountView: View {
     @Binding var isShowingEditAccountView: Bool
     
     var body: some View {
-        VStack {
-            accountView
-                .padding()
-            editPersonalAccountButtonView
-                .padding()
+        ZStack {
+            VStack {
+                accountView
+                    .padding()
+                editPersonalAccountButtonView
+                    .padding()
+            }
         }
+        .background(backgroundImage)
+    }
+    
+    private var backgroundImage: some View {
+        Image("blank-page")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
     }
     
     private var editPersonalAccountButtonView: some View {

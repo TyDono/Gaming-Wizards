@@ -29,19 +29,21 @@ struct AccountView: View {
     @Binding var isUserSolo: Bool?
     
     var body: some View {
-        VStack(alignment: .center) {
-            profileTitleView
-            profileImageView
-            profileDisplayName
-            profileIsSolo
-            profileAgeView
-            profileUserLocationView
-            profileIsPayToPlayView
-            profileAboutView
-            
-            
-            profileNameView
-            profileFriendCodeIdView
+        ZStack {
+            VStack(alignment: .center) {
+                profileTitleView
+                profileImageView
+                profileDisplayName
+                profileIsSolo
+                profileAgeView
+                profileUserLocationView
+                profileIsPayToPlayView
+                profileAboutView
+                
+                
+                profileNameView
+                profileFriendCodeIdView
+            }
         }
     }
     
@@ -100,13 +102,7 @@ struct AccountView: View {
             ForEach(listOfGames, id: \.self) { game in
                 Text(game ?? "")
                     .font(.luminari(.regular, size: 16))
-//                    .boldIfStringIsMatching(game, specificGame)
                     .padding(.vertical, 8)
-                //                        .background(
-                //                            Image("blank-page")
-                //                                .resizable()
-                //                                .scaledToFill()
-                //                        )
                 
             }
             .listRowBackground(
