@@ -28,7 +28,7 @@ struct UserSearchView: View {
                 
            }
         }
-        .font(.luminari(.regular, size: 16))
+        .font(.globalFont(.luminari, size: 16))
         .background(
             backgroundImage
         )
@@ -45,7 +45,6 @@ struct UserSearchView: View {
         VStack {
             SearchBar(searchText: $userSearchViewModel.searchText, isNavigatingToSearchResults: $searchButtonWasTapped, placeholder: "Search", isSearchButtonShowing: true, isXCancelButtonShowing: false)
                 .animation(Animation.easeInOut(duration: 0.25), value: userSearchViewModel.searchText)
-                .font(.luminari(.regular, size: 16))
             List {
                 ForEach(userSearchViewModel.filteredGames, id: \.self) { gameName in
                     Text(gameName)
@@ -63,7 +62,6 @@ struct UserSearchView: View {
                                     )
                                 )
                         )
-                        .font(.luminari(.regular, size: 16))
                         .onTapGesture {
                             userSearchViewModel.searchText = gameName
                         }

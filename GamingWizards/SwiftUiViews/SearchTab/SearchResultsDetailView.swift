@@ -29,7 +29,7 @@ struct SearchResultsDetailView: View {
                 friendRequestButton
             }
         }
-        .font(.luminari(.regular, size: 16))
+        .font(.globalFont(.luminari, size: 16))
         .navigationTitle(selectedUser.title)
         .background(
             Image("blank-page")
@@ -45,7 +45,6 @@ struct SearchResultsDetailView: View {
             print("Add Friend button pressed!")
         }) {
             Text("Add Friend")
-                .font(.luminari(.regular, size: 16))
                 .background(.blue)
                 .foregroundColor(.white)
                 .cornerRadius(8)
@@ -56,7 +55,6 @@ struct SearchResultsDetailView: View {
         List {
             ForEach(selectedUser.listOfGames, id: \.self) { game in
                     Text(game)
-                        .font(.luminari(.regular, size: 16))
                         .boldIfStringIsMatching(game, specificGame)
                         .padding(.vertical, 8)
 //                        .background(

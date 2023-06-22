@@ -15,6 +15,7 @@ extension HomeView {
 //        @Published var isUserManagingAccountShown: Bool = false
 //        @Published var isShowingLogoutAlert: Bool = false
 //        @Published var isFriendListShowing: Bool = false
+//        @Published var isAccountSettingsShowing: Bool = false
         
         enum currentView {
             case settingsView

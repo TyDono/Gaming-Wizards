@@ -16,6 +16,7 @@ struct Constants {
     static let users = "users"
     static let textFieldMaxCharacters: Int = 45
     static let textViewMaxCharacters: Int = 500
+    static let navigationTitleFontSize: Int = 26
 //    static let friendList = "friendList"
     
     // MARK: calls to User

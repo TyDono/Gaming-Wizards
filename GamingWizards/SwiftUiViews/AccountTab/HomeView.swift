@@ -17,6 +17,7 @@ struct HomeView: View {
     @State private var isUserManagingAccountShown: Bool = false
     @State private var isShowingLogoutAlert: Bool = false
     @State private var isFriendListShowing: Bool = false
+    @State private var isAccountSettingsShowing: Bool = false
     @State var isShowingEditAccountView: Bool = false
     
     var body: some View {
@@ -25,6 +26,7 @@ struct HomeView: View {
                     List {
                         manageFriendList
                         viewProfileButton
+                        // accountSettingsButtonView // change fonts from normal and luminari. post mvp
                         logOutButton
                     }
                 }
@@ -110,6 +112,31 @@ struct HomeView: View {
         .sheet(isPresented: $isViewPersonalAccountViewPopUp, content: {
             ViewPersonalAccountView(isShowingEditAccountView: $isShowingEditAccountView)
         })
+    }
+    
+    private var accountSettingsButtonView: some View {
+        NavigationStack {
+                Button(action: {
+                    isAccountSettingsShowing = true
+                }) {
+                    HStack {
+                        Image(systemName: "gear")
+                        Text("Settings")
+                            .frame(maxWidth: .infinity,
+                                   alignment: .leading)
+                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+                        
+                        Image(systemName: "chevron.right")
+                            .frame(maxWidth: .infinity,
+                                   alignment: .trailing)
+                    }
+                }
+                .listRowInsets(EdgeInsets())
+                .padding()
+        }
+        .navigationDestination(isPresented: $isAccountSettingsShowing) {
+            AccountSettingsView()
+        }
     }
     
     private var logOutButton: some View {

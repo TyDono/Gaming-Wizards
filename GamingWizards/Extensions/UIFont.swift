@@ -24,16 +24,16 @@ extension Font {
         }
     }
     
-    enum luminariFont {
+    enum globalFontType {
         case bold
-        case regular
+        case luminari
         
         var value: String {
             switch self {
             case .bold:
                 return "bold"
                 
-            case .regular:
+            case .luminari:
                 return Constants.luminariRegularFontIdentifier
             }
         }
@@ -43,7 +43,7 @@ extension Font {
         return .custom(type.value, size: size)
     }
     
-    static func luminari(_ type: luminariFont, size: CGFloat = 20) -> Font {
+    static func globalFont(_ type: globalFontType, size: CGFloat = 20) -> Font {
         return .custom(type.value, size: size)
     }
     

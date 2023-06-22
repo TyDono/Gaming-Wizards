@@ -32,6 +32,8 @@ struct AccountView: View {
         ZStack {
             VStack(alignment: .center) {
                 profileTitleView
+                    .font(.globalFont(.luminari, size: 26))
+                    .bold()
                 profileImageView
                 profileDisplayName
                 profileIsSolo
@@ -44,6 +46,8 @@ struct AccountView: View {
                 profileNameView
                 profileFriendCodeIdView
             }
+            .font(.globalFont(.luminari, size: 16))
+            .navigationTitle(title ?? "")
         }
     }
     
@@ -101,7 +105,7 @@ struct AccountView: View {
         List {
             ForEach(listOfGames, id: \.self) { game in
                 Text(game ?? "")
-                    .font(.luminari(.regular, size: 16))
+                    .font(.globalFont(.luminari, size: 16))
                     .padding(.vertical, 8)
                 
             }

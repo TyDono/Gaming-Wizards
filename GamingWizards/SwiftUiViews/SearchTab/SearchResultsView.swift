@@ -21,7 +21,7 @@ struct SearchResultsView: View {
                 searchResultsList
             }
         }
-        .font(.luminari(.regular, size: 16))
+        .font(.globalFont(.luminari, size: 16))
         .navigationDestination(isPresented: $resultWasTapped) {
             SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText)
        }
@@ -38,7 +38,7 @@ struct SearchResultsView: View {
             ForEach(Array(searchResultsViewModel.users ?? []), id: \.self) { user in
                 VStack {
                     Text(user.title)
-                        .font(.luminari(.regular, size: 19))
+                        .font(.globalFont(.luminari, size: 19))
                         .bold()
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

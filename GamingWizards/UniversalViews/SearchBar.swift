@@ -20,6 +20,7 @@ struct SearchBar: View {
     
     var body: some View {
         textFieldView
+            .font(.globalFont(.luminari, size: 16))
     }
     
     private var textFieldView: some View {
@@ -28,7 +29,7 @@ struct SearchBar: View {
                 TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
                     isSearchButtonShowing = true
                 })
-                .font(.luminari(.regular, size: 16))
+                .font(.globalFont(.luminari, size: 16))
                 .padding(8)
                 .padding(.horizontal, 20)
                 .background(Color(.systemGray6))
@@ -99,7 +100,7 @@ struct SearchBar: View {
     
     private var searchButtonView: some View {
         Text(placeholder)
-            .font(.luminari(.regular, size: 16))
+//            .font(.globalFont(.luminari, size: 16))
             .padding(8)
             .animation(Animation.easeInOut(duration: 0.5), value: isSearchButtonShowing)
             .background(.blue)
