@@ -41,6 +41,7 @@ import Security
         let path = firestoreDatabase.collection(Constants.users).document(user.id)
         path.getDocument { document, err in
             if ((document?.exists) == true) {
+                // EXISTING USER
                 let id = document?.data()?["id"] as? String ?? "No ID"
                 let displayName = document?.data()?["displayName"] as? String ?? "No Username"
                 let email = document?.data()?["email"] as? String ?? "No email"
@@ -51,6 +52,7 @@ import Security
                 self.saveUserToUserDefaults(user: currentUser)
                 self.signInSuccess()
             } else {
+                // NEW USER
                 path.setData(user.userDictionary)
 //                path.collection("friendList").document(friend.friendCodeID).setData(friend.friendDictionary)
 //                path.collection("friendRequestList").document(friendRequest.friendCodeID).setData(friend.friendDictionary)
@@ -133,13 +135,14 @@ import Security
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?/*friendList: [Friend], friendRequests: [Friend],*/) -> User { // SHOULD ONLY BE CALLED ONCE EVER!!!
+    func createUserBaseData(id: String, firstName: String, lastName: String,displayName: String, email: String?/*friendList: [Friend], friendRequests: [Friend],*/) -> User { // SHOULD ONLY BE CALLED ONCE EVER!!!
+        let displayName = ""
         let location = ""
         let profileImageString = "\(UUID().uuidString).jpg"
         let friendID = String((UUID().uuidString.suffix(4)))
         let games: [String] = []
         let groupSize = ""
-        let age = 0
+        let age = ""
         let about = ""
         let availability = ""
         let title = ""

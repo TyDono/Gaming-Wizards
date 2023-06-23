@@ -116,8 +116,6 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
                                                                           lastName: lastName,
                                                                           displayName: displayName,
                                                                           email: email
-                                              //                            friendList: friendList,
-                                              //                            friendRequests: friendRequests,
                                                                          )
             self.authenticationViewModel.saveUserInfoInDatabase(newUser)
         }

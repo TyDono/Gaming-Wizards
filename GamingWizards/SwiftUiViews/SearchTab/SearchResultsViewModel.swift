@@ -48,7 +48,7 @@ import FirebaseFirestore
                     let friendCodeID = data[Constants.userFriendID] as? String ?? ""
                     let listOfGames = data[Constants.userGames] as? [String] ?? [""]
                     let groupSize = data[Constants.userGroupSize] as? String ?? ""
-                    let age = data[Constants.userAge] as? Int ?? 0
+                    let age = data[Constants.userAge] as? String ?? ""
                     let about = data[Constants.userAbout] as? String ?? ""
                     let availability = data[Constants.userAvailability] as? String ?? ""
                     let title = data[Constants.userTitle] as? String ?? ""

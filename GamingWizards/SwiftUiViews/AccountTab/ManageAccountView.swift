@@ -37,21 +37,21 @@ struct ManageAccountView: View {
                                 .padding()
                             displayNameTextField
                                 .padding()
-                            userIsSoloView
+//                            firstNameTextField
+//                                .padding()
+//                            lastNameTextField
+//                                .padding()
+                            userAgeTextView
                                 .padding()
-                            firstNameTextField
+                            userLocationTextView
                                 .padding()
-                            lastNameTextField
-                                .padding()
+                        }
+                        Group {
                             aboutUserTextView
                                 .padding()
                             userAvailabilityTextView
                                 .padding()
-                        }
-                        Group {
-                            userAgeTextView
-                                .padding()
-                            userLocationTextView
+                            userIsSoloView
                                 .padding()
                             PayToPlayView
                                 .padding()
@@ -233,7 +233,7 @@ struct ManageAccountView: View {
                             lineWidth: 1)
             )
         } .onAppear {
-            manageAccountViewModel.age = manageAccountViewModel.user.age ?? 0
+            manageAccountViewModel.userAge = manageAccountViewModel.user.age ?? ""
         }
     }
     
@@ -267,11 +267,13 @@ struct ManageAccountView: View {
         VStack {
 //            if manageAccountViewModel.userAvailability.isEmpty == true {
                 Text("Availability")
-                    .foregroundColor(.black)
+                    .foregroundColor(.gray)
                     .padding()
 //            }
             TextEditor(text: $manageAccountViewModel.userAvailability.max(Constants.textViewMaxCharacters))
+                .foregroundColor(.black)
                 .border(Color.black, width: 1)
+                .frame(height: 200)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .navigationTitle("Availability")
                 .foregroundStyle(.secondary)
@@ -326,13 +328,15 @@ struct ManageAccountView: View {
         VStack {
 //            if manageAccountViewModel.about.isEmpty == true {
                 Text("Write about \(manageAccountViewModel.userIsSolo ? "yourself" : "your group")")
-                    .foregroundColor(.black)
+                    .foregroundColor(.gray)
                     .padding()
 //            }
             TextEditor(text: $manageAccountViewModel.about.max(Constants.textViewMaxCharacters))
+                .foregroundColor(.black)
                 .border(Color.black, width: 1)
+                .frame(height: 200)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .navigationTitle("About")
+//                .navigationTitle("About")
                 .foregroundStyle(.secondary)
                 .padding(.horizontal)
                 .onTapGesture {

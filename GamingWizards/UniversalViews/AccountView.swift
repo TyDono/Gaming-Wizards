@@ -12,8 +12,8 @@ struct AccountView: View {
 //    @Binding var isShowingAccountView: Bool?
 //    @Binding var isShowingEditAccountView: Bool?
     
-    @Binding var firstName: String?
-    @Binding var lastName: String?
+//    @Binding var firstName: String?
+//    @Binding var lastName: String?
     @Binding var displayName: String?
 //    @Binding var email: String?
     @Binding var userLocation: String?
@@ -22,7 +22,7 @@ struct AccountView: View {
     @Binding var friendCodeId: String?
     @Binding var listOfGames: [String?]
     @Binding var groupSize: String?
-    @Binding var age: Int?
+    @Binding var age: String?
     @Binding var about: String?
     @Binding var title: String?
     @Binding var isPayToPlay: Bool?
@@ -36,14 +36,12 @@ struct AccountView: View {
                     .bold()
                 profileImageView
                 profileDisplayName
+                profileUserLocationView
                 profileIsSolo
                 profileAgeView
-                profileUserLocationView
                 profileIsPayToPlayView
                 profileAboutView
-                
-                
-                profileNameView
+//                profileNameView
                 profileFriendCodeIdView
             }
             .font(.globalFont(.luminari, size: 16))
@@ -150,13 +148,13 @@ struct AccountView: View {
         }
     }
     
-    private var profileNameView: some View {
-        VStack {
-            if let profileFirstName = firstName, let profileLastName = lastName {
-                Text("\(profileFirstName) \(profileLastName)")
-            }
-        }
-    }
+//    private var profileNameView: some View {
+//        VStack {
+//            if let profileFirstName = firstName, let profileLastName = lastName {
+//                Text("\(profileFirstName) \(profileLastName)")
+//            }
+//        }
+//    }
     
 }
 

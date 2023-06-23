@@ -54,13 +54,13 @@ import CoreData
                 let displayName = user.displayName ?? ""
                 let email = user.email ?? "No email given "
                 
+                
+                
                 let newUser = self.authenticationViewModel.createUserBaseData(id: id,
                                                                               firstName: firstName,
                                                                               lastName: lastName,
                                                                               displayName: displayName,
                                                                               email: email)
-//                                                                              friendList: friendList,
-//                                                                              friendRequests: friendRequests,)
                 self.authenticationViewModel.saveUserInfoInDatabase(newUser)
             }
         }

@@ -20,7 +20,7 @@ struct User: Identifiable, Codable, Hashable {
     var friendRequests: [Friend] = [] // sub collection
     var listOfGames: [String] = []
     var groupSize: String = ""
-    var age: Int = 0 // change to an array of Int
+    var age: String = "" // change to an array of Int
     var about: String = ""
     var availability: String = ""
     var title: String = ""
@@ -186,7 +186,7 @@ class UserObservable: ObservableObject {
         }
     }
     
-    @Published var age: Int? {
+    @Published var age: String? {
         didSet {
             UserDefaults.standard.setValue(age, forKey: "\(ageKey)-\(id)")
         }
@@ -241,7 +241,7 @@ class UserObservable: ObservableObject {
         friendCodeID = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)") ?? ""
         groupSize = UserDefaults.standard.string(forKey: "\(groupSizeKey)-\(id)") ?? ""
         listOfGames = UserDefaults.standard.array(forKey: "\(listOfGamesKey)-\(id)") as? [String] ?? []
-        age = UserDefaults.standard.integer(forKey: "\(ageKey)-\(id)") ?? 0
+        age = UserDefaults.standard.string(forKey: "\(ageKey)-\(id)") ?? ""
         about = UserDefaults.standard.string(forKey: "\(aboutKey)-\(id)") ?? ""
         availability = UserDefaults.standard.string(forKey: "\(availabilityKey)-\(id)") ?? ""
         title = UserDefaults.standard.string(forKey: "\(titleKey)-\(id)") ?? ""

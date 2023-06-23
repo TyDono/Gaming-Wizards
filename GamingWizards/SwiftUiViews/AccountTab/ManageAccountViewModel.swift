@@ -42,7 +42,6 @@ extension ManageAccountView {
         @Published var userTitle: String = ""
         @Published var isPayToPlay: Bool = false
         @Published var userIsSolo: Bool = true
-        @Published var age: Int = 0
         
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()
@@ -150,7 +149,7 @@ extension ManageAccountView {
             user.groupSize = groupSize
             user.listOfGames = listOfGames
             user.location = userLocation
-            user.age = age
+            user.age = userAge
             user.isSolo = userIsSolo
             
             self.isSaveChangesButtonIsActive = false
