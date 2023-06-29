@@ -12,10 +12,8 @@ import Security
 
 //extension FriendListView {
     @MainActor class FriendListViewModel: ObservableObject {
-        @ObservedObject var user = UserObservable()
-//        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
-//        @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-//        @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+//        @ObservedObject var user = UserObservable()
+        @ObservedObject var user = UserObservable.shared
         @Published var friendList: [Friend] = []
         @Published var addFriendAlertIsShowing: Bool = false
         @Published var friendIDTextField: String = ""

@@ -10,7 +10,8 @@ import SwiftUI
 
 extension AccountSettingsView {
     @MainActor class AccountSettingsViewModel: ObservableObject {
-        @ObservedObject var user = UserObservable()
+//        @ObservedObject var user = UserObservable()
+        @ObservedObject var user = UserObservable.shared
         
         
     }

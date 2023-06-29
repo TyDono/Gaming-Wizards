@@ -61,7 +61,8 @@ import CoreData
                                                                               lastName: lastName,
                                                                               displayName: displayName,
                                                                               email: email)
-                self.authenticationViewModel.saveUserInfoInDatabase(newUser)
+                self.authenticationViewModel.saveUserIntoFirestore(for: newUser)
+//                self.authenticationViewModel.saveUserInfoInDatabase(newUser)
             }
         }
     }

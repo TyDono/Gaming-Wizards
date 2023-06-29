@@ -14,10 +14,10 @@ import SwiftUI
 
 
 class SignInWithAppleCoordinator: NSObject, ASAuthorizationControllerPresentationContextProviding, ObservableObject {
-    @ObservedObject var user = UserObservable()
+//    @ObservedObject var user = UserObservable()
 
 //    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
-    @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+    @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
 //    @State private var authenticationViewModel = AuthenticationViewModel()
 //    let session: SessionStore
     let scenes = UIApplication.shared.connectedScenes
@@ -117,7 +117,8 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
                                                                           displayName: displayName,
                                                                           email: email
                                                                          )
-            self.authenticationViewModel.saveUserInfoInDatabase(newUser)
+            self.authenticationViewModel.saveUserIntoFirestore(for: newUser)
+//            self.authenticationViewModel.saveUserInfoInDatabase(newUser)
         }
     }
 

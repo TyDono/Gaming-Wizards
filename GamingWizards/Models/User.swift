@@ -227,7 +227,7 @@ class UserObservable: ObservableObject {
         UserDefaults.standard.setValue(newId, forKey: idKey)
     }
     
-    init() {
+    private init() {
         id = KeychainHelper.getUserID() ?? "NO ID FOUND"
         firstName = UserDefaults.standard.string(forKey: "\(firstNameKey)-\(id)") ?? ""
         lastName = UserDefaults.standard.string(forKey: "\(lastNameKey)-\(id)") ?? ""

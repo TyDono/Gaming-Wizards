@@ -13,6 +13,8 @@ import FirebaseAuth
 class CoreDataController: ObservableObject {
     
     static let shared = CoreDataController()
+//    @ObservedObject var user = UserObservable()
+    @ObservedObject var user = UserObservable.shared
 //    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
 //    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
     let firestoreDatabase = Firestore.firestore()
@@ -20,12 +22,11 @@ class CoreDataController: ObservableObject {
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    @ObservedObject var user = UserObservable()
     @Published var savedUserEntities: [UserEntity] = []
     @Published var savedFriendEntities: [FriendEntity] = []
     @Published var savedUser: UserEntity?
     
-    init() {
+    private init() {
         persistentContainer = NSPersistentContainer(name: "GamingWizardsContainer")
         persistentContainer.loadPersistentStores { description, err in
             if let error = err {

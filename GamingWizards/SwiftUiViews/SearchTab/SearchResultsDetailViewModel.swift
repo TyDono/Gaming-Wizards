@@ -11,10 +11,8 @@ import FirebaseStorage
 import CoreData
 
 @MainActor class SearchResultsDetailViewModel: ObservableObject {
-    @ObservedObject var user = UserObservable()
-//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
-//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-//    @AppStorage(Constants.appStorageStringUserDisplayName) var display_Name: String?
+//    @ObservedObject var user = UserObservable()
+    @ObservedObject var user = UserObservable.shared
     @Published var users: [User] = []
     @Published var FriendRequestAlreadySentIsTrue: Bool = false
     @Published var noFriendExistsAlertIsShowing: Bool = false

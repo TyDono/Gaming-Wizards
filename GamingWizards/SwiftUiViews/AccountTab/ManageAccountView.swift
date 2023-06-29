@@ -12,10 +12,12 @@ import PhotosUI
 struct ManageAccountView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    //    @ObservedObject var user = UserObservable()
+        @ObservedObject var user = UserObservable.shared
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
 //    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @StateObject private var manageAccountViewModel = ManageAccountViewModel()
-//    @ObservedObject var user = UserObservable()
+
     
 //    let session: SessionStore
     
@@ -102,12 +104,10 @@ struct ManageAccountView: View {
                 .onChange(of: manageAccountViewModel.profileImage, perform: { newValue in
                 })
                 .onTapGesture {
-                    manageAccountViewModel.isShowingImagePicker = true
-                    manageAccountViewModel.didProfileImageChange = true
-                    manageAccountViewModel.isSaveChangesButtonIsActive = true
+                    manageAccountViewModel.userChangedImage()
                 }
             Button(action: {
-                manageAccountViewModel.isShowingImagePicker = true
+                manageAccountViewModel.userChangedImage()
             }) {
                 Text("Change image")
                     .foregroundColor(.white)

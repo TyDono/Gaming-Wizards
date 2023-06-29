@@ -45,6 +45,9 @@ struct HomeView: View {
             .navigationDestination(isPresented: $isShowingEditAccountView) {
                 ManageAccountView()
             }
+            .onAppear() {
+                print("")
+            }
     }
     
     private var manageFriendList: some View {

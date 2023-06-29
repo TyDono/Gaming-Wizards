@@ -18,7 +18,7 @@ import SwiftUI
 import PhotosUI
 
 struct ViewPersonalAccountView: View {
-    @ObservedObject var user = UserObservable()
+    @ObservedObject var user = UserObservable.shared
     @StateObject var viewPersonalAccountViewModel = ViewPersonalAccountViewModel()
     @Environment(\.dismiss) var dismiss
 //    Environment(\.presentationMode) var presentationMode
@@ -35,9 +35,16 @@ struct ViewPersonalAccountView: View {
                     .padding()
             }
         }
+        .onAppear() {
+            dothing()
+        }
         .navigationTitle(user.title ?? "")
         .font(.globalFont(.luminari, size: 16))
 //        .background(backgroundImage)
+    }
+    
+    func dothing() {
+        print(user.id)
     }
     
     private var backgroundImage: some View {

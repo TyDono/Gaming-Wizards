@@ -31,8 +31,8 @@ struct Constants {
     static let userFriendID = "friendCodeID"
     static let userFriendList = "friendList"
     static let userFriendRequest = "friendRequest"
-    static let userGames = "games"
-    static let userListOfGames: String = "listOfGames" // will over take above userGames.
+    static let userListOfGamesString = "listOfGames"
+    static let userListOfGames: String = "listOfGames" // will over take above UserlistOfGamesString.
     static let userGroupSize = "groupSize"
     static let userAge = "age"
     static let userAbout = "about"

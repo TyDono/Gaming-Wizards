@@ -26,7 +26,7 @@ import FirebaseFirestore
         }
         
         func performSearchForMatchingGames(gameName: String, completion: @escaping ([User]?, Error?) -> Void) {
-            let gameQuery = firesStoreDatabase.collection(Constants.users).whereField(Constants.userGames, arrayContains: gameName)
+            let gameQuery = firesStoreDatabase.collection(Constants.users).whereField(Constants.userListOfGamesString, arrayContains: gameName)
 
             gameQuery.getDocuments { (snapshot, err) in
                 if let error = err {
@@ -46,15 +46,16 @@ import FirebaseFirestore
                     let location = data[""] as? String ?? ""
                     let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
                     let friendCodeID = data[Constants.userFriendID] as? String ?? ""
-                    let listOfGames = data[Constants.userGames] as? [String] ?? [""]
+                    let listOfGames = data[Constants.userListOfGamesString] as? [String] ?? [""]
                     let groupSize = data[Constants.userGroupSize] as? String ?? ""
                     let age = data[Constants.userAge] as? String ?? ""
                     let about = data[Constants.userAbout] as? String ?? ""
                     let availability = data[Constants.userAvailability] as? String ?? ""
                     let title = data[Constants.userTitle] as? String ?? ""
                     let payToPlay = data[Constants.userPayToPlay] as? Bool ?? false
+                    let isSolo = data[Constants.userIsSolo] as? Bool ?? true
                     
-                    return User(id: id, displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendCodeID: friendCodeID, listOfGames: listOfGames, groupSize: groupSize, age: age, about: about, availability: availability, title: title, isPayToPlay: payToPlay)
+                    return User(id: id, displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendCodeID: friendCodeID, listOfGames: listOfGames, groupSize: groupSize, age: age, about: about, availability: availability, title: title, isPayToPlay: payToPlay, isSolo: isSolo)
                 }
                 completion(users, err)
 //                let names = snapshot.documents.compactMap { $0.get("name") as? String }

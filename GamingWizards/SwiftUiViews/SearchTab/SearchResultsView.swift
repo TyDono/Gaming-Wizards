@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
+//    @ObservedObject var user = UserObservable()
+    @ObservedObject var user = UserObservable.shared
     @ObservedObject var userSearchViewModel: UserSearchViewModel
     @StateObject var searchResultsViewModel = SearchResultsViewModel()
     @State var resultWasTapped: Bool = false
@@ -35,33 +37,36 @@ struct SearchResultsView: View {
     
     private var searchResultsList: some View {
         List {
+            let yourId = KeychainHelper.getUserID()
             ForEach(Array(searchResultsViewModel.users ?? []), id: \.self) { user in
-                VStack {
-                    Text(user.title)
-                        .font(.globalFont(.luminari, size: 19))
-                        .bold()
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    HStack {
-                        Text("Name: \(user.displayName)")
+                if user.id != yourId {
+                    VStack {
+                        Text(user.title)
+                            .font(.globalFont(.luminari, size: 19))
+                            .bold()
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        HStack {
+                            Text("Name: \(user.displayName)")
+                        }
+                        HStack {
+                            Text("Location: \(user.location)")
+                            Text("GroupSize: \(user.groupSize)")
+                            //                        ForEach(user.games, id: \.self) { game in
+                            //                            Text("Game: \(game)")
+                            //                        }
+                        }
+                        HStack {
+                            Text("Age: \(user.age)")
+                            Text("Pay to Play: \(user.isPayToPlay ? "Yes" : "No")")
+                        }
                     }
-                    HStack {
-                        Text("Location: \(user.location)")
-                        Text("GroupSize: \(user.groupSize)")
-//                        ForEach(user.games, id: \.self) { game in
-//                            Text("Game: \(game)")
-//                        }
+                    .listRowSeparator(.hidden)
+                    .frame(alignment: .center)
+                    .onTapGesture {
+                        self.selectedUser = user
+                        resultWasTapped = true
                     }
-                    HStack {
-                        Text("Age: \(user.age)")
-                        Text("Pay to Play: \(user.isPayToPlay ? "Yes" : "No")")
-                    }
-                }
-                .listRowSeparator(.hidden)
-                .frame(alignment: .center)
-                .onTapGesture {
-                    self.selectedUser = user
-                    resultWasTapped = true
                 }
             }
             .listRowBackground(

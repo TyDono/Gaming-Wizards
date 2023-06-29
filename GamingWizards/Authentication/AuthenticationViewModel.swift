@@ -14,6 +14,7 @@ import AuthenticationServices
 import CryptoKit
 import CoreData
 import Security
+//import FirebaseFirestoreSwift
 
 @MainActor class AuthenticationViewModel: ObservableObject {
     
@@ -23,7 +24,8 @@ import Security
     @Published var isLoading: Bool = false
     @Published var signingIn: String = ""
     @Published var myFriendListData: [Friend] = []
-    @ObservedObject var user = UserObservable()
+//    @Published var user = UserObservable.shared
+    @ObservedObject var user = UserObservable.shared
     let coreDataController = CoreDataController.shared
     let firestoreDatabase = Firestore.firestore()
     private var listeningRegistration: ListenerRegistration?
@@ -37,29 +39,86 @@ import Security
         case signedOut
   }
     
-    func saveUserInfoInDatabase(_ user: User) {
+    func saveUserIntoFirestore(for user: User) {
+        let documentPath = firestoreDatabase.collection(Constants.users).document(user.id)
+        documentPath.getDocument { document, err in
+            if let error = err {
+                print("ERROR RETRIEVING FIRESTORE USER DATA WHEN TRYING TO SIGN IN: \(error.localizedDescription)")
+                return
+            }
+            
+            if document?.exists == true {
+                if let documentData = document?.data() {
+                    if let existingUser = try? Firestore.Decoder().decode(User.self, from: documentData) {
+                        self.saveUserToUserDefaults(user: existingUser)
+                        // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
+                    }
+                }
+            } else {
+                documentPath.setData(user.userDictionary)
+                self.saveUserToUserDefaults(user: user)
+            }
+        }
+    }
+
+    
+    func saveUserInfoInDatabase(_ user: User) async { //NOT USED
         let path = firestoreDatabase.collection(Constants.users).document(user.id)
-        path.getDocument { document, err in
-            if ((document?.exists) == true) {
-                // EXISTING USER
-                let id = document?.data()?["id"] as? String ?? "No ID"
-                let displayName = document?.data()?["displayName"] as? String ?? "No Username"
-                let email = document?.data()?["email"] as? String ?? "No email"
-                let friendID = document?.data()?["friendCodeID"] as? String ?? "no friendCodeID"
-                //location
-                //image
-                let currentUser: User = User(id: id, displayName: displayName, email: email, location: "location not yet implemented", profileImageString: "no image implemented yet", friendCodeID: friendID)
-                self.saveUserToUserDefaults(user: currentUser)
+        
+        do {
+            let snapshot = try await path.getDocument()
+
+            if snapshot.exists {
+                // User exists
+                let document = try snapshot.data(as: User.self)
+
+                self.saveUserToUserDefaults(user: document)
                 self.signInSuccess()
             } else {
-                // NEW USER
-                path.setData(user.userDictionary)
-//                path.collection("friendList").document(friend.friendCodeID).setData(friend.friendDictionary)
-//                path.collection("friendRequestList").document(friendRequest.friendCodeID).setData(friend.friendDictionary)
+                // User doesn't exist
+                try await path.setData(user.userDictionary)
                 self.saveUserToUserDefaults(user: user)
                 self.signInSuccess()
             }
+        } catch {
+            print("ERROR RETRIEVING FIRESTORE USER DATA: \(error.localizedDescription)")
+            return
         }
+        
+//        path.getDocument { document, err in
+//            if ((document?.exists) == true) {
+//                let userInfo = try document?.data(as: User.self)
+                // EXISTING USER
+//                let data = document?.data()
+//                let id = data?[Constants.userID] as? String ?? ""
+//                let displayName = data[Constants.userDisplayName] as? String ?? ""
+//                let email = data[Constants.userEmail] as? String ?? ""
+//                let location = data[""] as? String ?? ""
+//                let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
+//                let friendCodeID = data[Constants.userFriendID] as? String ?? ""
+//                let friendList = document.data()[Constants.userFriendList] as? [Friend]
+//                let listOfGames = data[Constants.userListOfGamesString] as? [String] ?? [""]
+//                let groupSize = data[Constants.userGroupSize] as? String ?? ""
+//                let age = data[Constants.userAge] as? String ?? ""
+//                let about = data[Constants.userAbout] as? String ?? ""
+//                let availability = data[Constants.userAvailability] as? String ?? ""
+//                let title = data[Constants.userTitle] as? String ?? ""
+//                let isPayToPlay = data[Constants.userPayToPlay] as? Bool ?? false
+//                let isSolo = data[Constants.userIsSolo] as? Bool ?? true
+//                let currentUser = User(id: id, /*firstName: <#T##String#>, lastName: <#T##String#>,*/ displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendCodeID: friendCodeID, friendList: friendList, /*friendRequests: <#T##[Friend]#>,*/ listOfGames: listOfGames, groupSize: groupSize, age: age, about: about, availability: availability, title: title, isPayToPlay: isPayToPlay, isSolo: isSolo)
+//                let currentUser: User = User(id: id, displayName: displayName, email: email, location: "", profileImageString: "", friendCodeID: friendID)
+//                self.saveUserToUserDefaults(user: userInfo)
+//                self.signInSuccess()
+//            } else {
+                // NEW USER
+//                path.setData(user.userDictionary)
+//                path.collection("friendList").document(friend.friendCodeID).setData(friend.friendDictionary)
+//                path.collection("friendRequestList").document(friendRequest.friendCodeID).setData(friend.friendDictionary)
+//                self.saveUserToUserDefaults(user: user)
+//                self.signInSuccess()
+//            }
+//
+//        }
     }
     
     private func signInSuccess() {
@@ -70,7 +129,7 @@ import Security
     
     private func saveUserToUserDefaults(user newUser: User) {
 //        user.id = newUser.id
-        KeychainHelper.saveUserID(userID: user.id)
+        KeychainHelper.saveUserID(userID: newUser.id)
         user.firstName = newUser.firstName
         user.lastName = newUser.lastName
         user.displayName = newUser.displayName
@@ -86,43 +145,8 @@ import Security
         user.title = newUser.title
         user.isPayToPlay = newUser.isPayToPlay
         user.isSolo = newUser.isSolo
-        /*
-         case id = "user_id"
-         case firstName = "first_name"
-         case lastName = "last_name"
-         case displayName = "display_Name"
-         case email = "user_email"
-         case location = "user_location"
-         case profileImageString = "profile_image_string"
-         case friendID = "friendCodeID"
-         case friendList = "friendList"
-         case friendRequests = "friendRequests"
-         case listOfGames = "listOfGames"
-         case groupSize = "groupSize"
-         case age = "age"
-         case about = "about"
-         case availability = "availability"
-         case title = "title"
-         case payToPlay = "isPayToPlay"
-         case isSolo = "isSolo"
-         */
-//        first_Name = newUser.firstName
-//        last_Name = newUser.lastName
-        
-        self.signInState = .signedIn
-        self.isLoading = false
-        self.log_Status = true
         retrieveFriendsListener()
-//        for friend in self.coreDataController.savedFriendEntities {
-//            self.coreDataController.deleteFriend(friend: friend)
-//        }
-//        retrieveFriends(uid: userID) //{ friends in
-//            for friend in friends {
-//                self.coreDataController.addFriend(friendCodeID: friend.friendCodeID, friendDisplayName: friend.friendDisplayName, isFriend: friend.isFriend, isFavorite: friend.isFavorite)
-//            }
-//        }
-//        user.location = newUser.location
-//        user.profileImageUrl = newUser.profileImageUrl
+        self.signInSuccess()
     }
     
     func getRootViewController() -> UIViewController {
@@ -135,7 +159,7 @@ import Security
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String,displayName: String, email: String?/*friendList: [Friend], friendRequests: [Friend],*/) -> User { // SHOULD ONLY BE CALLED ONCE EVER!!!
+    func createUserBaseData(id: String, firstName: String, lastName: String,displayName: String, email: String?/*friendList: [Friend], friendRequests: [Friend],*/) -> User {
         let displayName = ""
         let location = ""
         let profileImageString = "\(UUID().uuidString).jpg"
@@ -148,7 +172,7 @@ import Security
         let title = ""
         let isSolo = true
         let payToPlay = false
-        user.profileImageString = profileImageString
+//        user.profileImageString = profileImageString
         let newUser = User(id: id,
                            firstName: firstName,
                            lastName: lastName,
@@ -329,6 +353,10 @@ import Security
             signInState = .signedOut
             withAnimation(.easeInOut) {
                 log_Status = false
+                if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                    UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
+//                    KeychainHelper.clearKeychain()
+                }
             }
         } catch {
             print(error.localizedDescription)

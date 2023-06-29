@@ -13,7 +13,8 @@ import FirebaseStorage
 
 extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
-        @ObservedObject var user = UserObservable()
+//        @ObservedObject var user = UserObservable()
+        @ObservedObject var user = UserObservable.shared
         @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
         
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
@@ -36,7 +37,7 @@ extension ManageAccountView {
         @Published var groupSize: String = ""
         @Published var userAge: String = ""
         @Published var userLocation: String = ""
-        @Published var userListOfGames: String = "" // this or
+//        @Published var userListOfGames: String = "" // this or
         @Published var listOfGames: [String] = [] //that
         @Published var userAvailability: String = ""
         @Published var userTitle: String = ""
@@ -116,8 +117,8 @@ extension ManageAccountView {
                 Constants.userLastName: self.lastName,
                 Constants.userDisplayName: self.displayName,
                 Constants.userLocation: self.userLocation,
-                Constants.userGames: self.userListOfGames,
-                Constants.userListOfGames: self.listOfGames,
+//                Constants.userListOfGamesString: self.userListOfGames,
+                Constants.userListOfGamesString: self.listOfGames,
                 Constants.userGroupSize: self.groupSize,
                 Constants.userAge: self.userAge,
                 Constants.userAbout: self.about,
@@ -136,6 +137,12 @@ extension ManageAccountView {
                     self.saveUserToUserDefaults()
                 }
             }
+        }
+        
+        func userChangedImage() {
+            isShowingImagePicker = true
+            didProfileImageChange = true
+            isSaveChangesButtonIsActive = true
         }
         
         private func saveUserToUserDefaults() {

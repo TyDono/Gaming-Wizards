@@ -31,18 +31,32 @@ struct AccountView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .center) {
-                profileTitleView
-                    .font(.globalFont(.luminari, size: 26))
-                    .bold()
-                profileImageView
-                profileDisplayName
-                profileUserLocationView
-                profileIsSolo
-                profileAgeView
-                profileIsPayToPlayView
-                profileAboutView
-//                profileNameView
-                profileFriendCodeIdView
+                Group {
+                    profileTitleView
+                    profileImageView
+                    profileDisplayName
+                    Divider()
+                        .background(Color.black)
+                    profileUserLocationView
+                    Divider()
+                        .background(Color.black)
+                    profileIsSolo
+                    Divider()
+                        .background(Color.black)
+                }
+                Group {
+                    profileAgeView
+                    Divider()
+                        .background(Color.black)
+                    profileIsPayToPlayView
+                    Divider()
+                        .background(Color.black)
+                    profileAboutView
+                    Divider()
+                        .background(Color.black)
+                    //                profileNameView
+                    profileFriendCodeIdView
+                }
             }
             .font(.globalFont(.luminari, size: 16))
             .navigationTitle(title ?? "")
@@ -53,6 +67,8 @@ struct AccountView: View {
         VStack {
             if let profileTitle = title {
                 Text(profileTitle)
+                    .font(.globalFont(.luminari, size: 28))
+                    .bold()
             }
         }
     }
@@ -86,7 +102,12 @@ struct AccountView: View {
     private var profileAgeView: some View {
         VStack {
             if let profileAge = age {
-                Text("\(profileAge)")
+                VStack {
+                    Text("Age")
+                        .foregroundColor(.gray)
+                        .font(.globalFont(.luminari, size: 16))
+                    Text("\(profileAge)")
+                }
             }
         }
     }
@@ -94,7 +115,12 @@ struct AccountView: View {
     private var profileAboutView: some View {
         VStack {
             if let profileAbout = about {
-                Text(profileAbout)
+                VStack {
+                    Text("About")
+                        .foregroundColor(.gray)
+                        .font(.globalFont(.luminari, size: 14))
+                    Text(profileAbout)
+                }
             }
         }
     }
@@ -102,9 +128,14 @@ struct AccountView: View {
     private var profileListOfGamesView: some View {
         List {
             ForEach(listOfGames, id: \.self) { game in
-                Text(game ?? "")
-                    .font(.globalFont(.luminari, size: 16))
-                    .padding(.vertical, 8)
+                VStack {
+                    Text("Games")
+                        .foregroundColor(.gray)
+                        .font(.globalFont(.luminari, size: 12))
+                    Text(game ?? "")
+                        .font(.globalFont(.luminari, size: 14))
+                        .padding(.vertical, 8)
+                }
                 
             }
             .listRowBackground(
@@ -135,7 +166,12 @@ struct AccountView: View {
     private var profileFriendCodeIdView: some View {
         VStack {
             if let profileFriendCodeId = friendCodeId {
-                Text(profileFriendCodeId)
+                VStack {
+                    Text("Friend Code")
+                        .foregroundColor(.gray)
+                        .font(.globalFont(.luminari, size: 14))
+                    Text(profileFriendCodeId)
+                }
             }
         }
     }
@@ -143,7 +179,12 @@ struct AccountView: View {
     private var profileUserLocationView: some View {
         VStack {
             if let profileUserLocation = userLocation {
-                Text(profileUserLocation)
+                VStack {
+                    Text("\(displayName ?? "")'s Location")
+                        .foregroundColor(.gray)
+                        .font(.globalFont(.luminari, size: 14))
+                    Text(profileUserLocation)
+                }
             }
         }
     }
