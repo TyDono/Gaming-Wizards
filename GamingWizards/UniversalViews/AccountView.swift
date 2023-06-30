@@ -17,16 +17,16 @@ struct AccountView: View {
     @Binding var displayName: String?
 //    @Binding var email: String?
     @Binding var userLocation: String?
-    @Binding var profileImageString: String?
+    @Binding var profileImageString: String
     @Binding var profileImage: UIImage?
-    @Binding var friendCodeId: String?
-    @Binding var listOfGames: [String?]
+    @Binding var friendCodeId: String
+    @Binding var listOfGames: [String]?
     @Binding var groupSize: String?
     @Binding var age: String?
     @Binding var about: String?
     @Binding var title: String?
-    @Binding var isPayToPlay: Bool?
-    @Binding var isUserSolo: Bool?
+    @Binding var isPayToPlay: Bool
+    @Binding var isUserSolo: Bool
     
     var body: some View {
         ZStack {
@@ -56,6 +56,9 @@ struct AccountView: View {
                         .background(Color.black)
                     //                profileNameView
                     profileFriendCodeIdView
+                    Divider()
+                        .background(Color.black)
+                    profileListOfGamesView
                 }
             }
             .font(.globalFont(.luminari, size: 16))
@@ -82,7 +85,6 @@ struct AccountView: View {
     
     private var profileImageView: some View {
         VStack {
-//            Spacer()
             if let profileImage = profileImage {
                 Image(uiImage: profileImage)
                     .resizable()
@@ -127,21 +129,36 @@ struct AccountView: View {
     
     private var profileListOfGamesView: some View {
         List {
-            ForEach(listOfGames, id: \.self) { game in
+            ForEach(listOfGames ?? [], id: \.self) { game in
                 VStack {
                     Text("Games")
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 12))
-                    Text(game ?? "")
+                    Text(game)
                         .font(.globalFont(.luminari, size: 14))
                         .padding(.vertical, 8)
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 5)
+                                .background(.red)
+                                .foregroundColor(.black)
+                                .opacity(1.0)
+                                .padding(
+                                    EdgeInsets(
+                                        top: 2,
+                                        leading: 6,
+                                        bottom: 2,
+                                        trailing: 6
+                                    )
+                                )
+                        )
+                    
                 }
                 
             }
             .listRowBackground(
                 RoundedRectangle(cornerRadius: 5)
                     .background(.clear)
-                    .foregroundColor(.white)
+                    .foregroundColor(.clear)
                     .padding(
                         EdgeInsets(
                             top: 2,
@@ -165,14 +182,14 @@ struct AccountView: View {
     
     private var profileFriendCodeIdView: some View {
         VStack {
-            if let profileFriendCodeId = friendCodeId {
+//            if let profileFriendCodeId = friendCodeId {
                 VStack {
                     Text("Friend Code")
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 14))
-                    Text(profileFriendCodeId)
+                    Text(friendCodeId)
                 }
-            }
+//            }
         }
     }
     

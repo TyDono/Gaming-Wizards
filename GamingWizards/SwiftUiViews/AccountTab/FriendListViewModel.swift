@@ -52,10 +52,10 @@ import Security
                         for document in querySnapshot!.documents {
                             let friendUserID = document.data()[Constants.userID] as? String ?? "No user id found"
                              let userID = self.user.id //else { return }
-                            guard let userFriendCodeID = self.user.friendCodeID else { return }
+//                            guard let userFriendCodeID = self.user.friendCodeID else { return }
                             guard let displayName = self.user.displayName else { return }
-                            let newFriend: Friend = Friend(friendCodeID: userFriendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
-                            let newPath = self.firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID)
+                            let newFriend: Friend = Friend(friendCodeID: self.user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
+                            let newPath = self.firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
                             
                             newPath.getDocument { (document, error) in
                                 if ((document?.exists) == false) {
@@ -92,12 +92,12 @@ import Security
             guard let friendCodeIDRequest = friend?.friendCodeID else { return }
             guard let friendUserID = friend?.friendUserID else { return }
              let userID = user.id //else { return }
-            guard let userFriendCodeID = user.friendCodeID else { return }
+//            guard let userFriendCodeID = user.friendCodeID else { return }
             guard let displayName = user.displayName else { return }
 //            guard let friendUserID
             let friends = coreDataController.savedFriendEntities
-            let newFriend = Friend(friendCodeID: userFriendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: true, isFavorite: false)
-            let friendPath = firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(userFriendCodeID) //goes to the friend and adds you to their friend list
+            let newFriend = Friend(friendCodeID: user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: true, isFavorite: false)
+            let friendPath = firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID) //goes to the friend and adds you to their friend list
             let userPath = firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList).document(friendCodeIDRequest) // goes to your friend list and changes isFriend to true
 
             userPath.updateData([

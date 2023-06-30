@@ -9,21 +9,21 @@ import Foundation
 
 struct User: Identifiable, Codable, Hashable {
     var id: String
-    var firstName = ""
-    var lastName = ""
-    var displayName = ""
+    var firstName: String? = ""
+    var lastName: String? = ""
+    var displayName: String? = ""
     var email: String? = ""
-    var location: String = "" //change to UserLocation later date maybe
-    var profileImageString = ""
+    var location: String? = "" //change to UserLocation later date maybe
+    var profileImageString: String = ""
     var friendCodeID = ""
     var friendList: [Friend] = [] // sub collection
     var friendRequests: [Friend] = [] // sub collection
-    var listOfGames: [String] = []
-    var groupSize: String = ""
-    var age: String = "" // change to an array of Int
-    var about: String = ""
-    var availability: String = ""
-    var title: String = ""
+    var listOfGames: [String]? = []
+    var groupSize: String? = ""
+    var age: String? = "" // change to an array of Int
+    var about: String? = ""
+    var availability: String? = ""
+    var title: String? = ""
     var isPayToPlay: Bool = false
     var isSolo: Bool = true
     
@@ -126,7 +126,7 @@ class UserObservable: ObservableObject {
         }
     }
     
-    @Published var email: String? {
+    @Published var email: String {
         didSet {
             UserDefaults.standard.setValue(email, forKey: "\(emailKey)-\(id)")
         }
@@ -138,7 +138,7 @@ class UserObservable: ObservableObject {
         }
     }
     
-    @Published var profileImageString: String? {
+    @Published var profileImageString: String {
         didSet {
             UserDefaults.standard.setValue(profileImageString, forKey: "\(profileImageStringKey)-\(id)")
         }
@@ -162,7 +162,7 @@ class UserObservable: ObservableObject {
         }
     }
     
-    @Published var friendCodeID: String? {
+    @Published var friendCodeID: String {
         didSet {
             UserDefaults.standard.setValue(friendCodeID, forKey: "\(friendIDKey)-\(id)")
         }
@@ -174,7 +174,7 @@ class UserObservable: ObservableObject {
 //        }
 //    }
     
-    @Published var listOfGames: [String?] {
+    @Published var listOfGames: [String]? {
         didSet {
             UserDefaults.standard.setValue(listOfGames, forKey: "\(listOfGamesKey)-\(id)")
         }
@@ -211,20 +211,16 @@ class UserObservable: ObservableObject {
         }
     }
     
-    @Published var isPayToPlay: Bool? {
+    @Published var isPayToPlay: Bool {
         didSet {
             UserDefaults.standard.setValue(isPayToPlay, forKey: "\(payToPlayKey)-\(id)")
         }
     }
     
-    @Published var isSolo: Bool? {
+    @Published var isSolo: Bool {
         didSet {
             UserDefaults.standard.setValue(isSolo, forKey: "\(isSoloKey)-\(id)")
         }
-    }
-    
-    func setId(to newId: String) {
-        UserDefaults.standard.setValue(newId, forKey: idKey)
     }
     
     private init() {

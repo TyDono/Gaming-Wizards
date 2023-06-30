@@ -19,7 +19,7 @@ extension ViewPersonalAccountView {
         
         func loadProfileImageFromDisk() {
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString!)
+            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString)
 
             if let imageData = try? Data(contentsOf: fileURL),
                let loadedImage = UIImage(data: imageData) {

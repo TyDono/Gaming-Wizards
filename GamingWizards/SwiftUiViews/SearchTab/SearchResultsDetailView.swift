@@ -11,32 +11,51 @@ struct SearchResultsDetailView: View {
     @StateObject private var searchResultsDetailViewModel = SearchResultsDetailViewModel()
     @Binding var selectedUser: User
     @Binding var specificGame: String
+    @State var placeHolderImage: UIImage? = UIImage(named: "WantedWizard")!
     
     var body: some View {
         ZStack {
+            backgroundImageView
             VStack {
-                Text(selectedUser.displayName)
-                Text("\(String(selectedUser.age))")
-                Text(selectedUser.groupSize)
-                listOfGames
-//                    .background(
-//                        Image("blank-page")
-//                            .resizable()
-//                            .scaledToFill()
-//                            .edgesIgnoringSafeArea(.all)
-//                    )
-                Text(selectedUser.about)
+                
+//                Text(selectedUser.displayName)
+//                Text("\(String(selectedUser.age))")
+//                Text(selectedUser.groupSize)
+//                listOfGames
+////                    .background(
+////                        Image("blank-page")
+////                            .resizable()
+////                            .scaledToFill()
+////                            .edgesIgnoringSafeArea(.all)
+////                    )
+//                Text(selectedUser.about)
                 friendRequestButton
             }
         }
+        .onAppear() {
+            searchResultsDetailViewModel.optionalBindUser(displayName: selectedUser.displayName ?? "")
+        }
         .font(.globalFont(.luminari, size: 16))
-        .navigationTitle(selectedUser.title)
-        .background(
-            Image("blank-page")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-        )
+        .navigationTitle(selectedUser.title ?? "")
+//        .background(
+//            Image("blank-page")
+//                .resizable()
+//                .scaledToFill()
+//                .edgesIgnoringSafeArea(.all)
+//        )
+    }
+    
+    private var backgroundImageView: some View {
+        Image("blank-page")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
+    }
+    
+    private var viewAccountView: some View {
+        VStack {
+            AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $placeHolderImage, friendCodeId: $selectedUser.friendCodeID, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
+        }
     }
     
     private var friendRequestButton: some View {
@@ -53,7 +72,7 @@ struct SearchResultsDetailView: View {
     
     private var listOfGames: some View {
         List {
-            ForEach(selectedUser.listOfGames, id: \.self) { game in
+            ForEach(selectedUser.listOfGames ?? [], id: \.self) { game in
                     Text(game)
                         .boldIfStringIsMatching(game, specificGame)
                         .padding(.vertical, 8)

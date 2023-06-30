@@ -53,7 +53,7 @@ extension ManageAccountView {
             guard let data = image.jpegData(compressionQuality: 1.0) else { return }
 
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString!)
+            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString)
             do {
                 try data.write(to: fileURL)
                 print("Image saved to disk.")
@@ -64,7 +64,7 @@ extension ManageAccountView {
         
         func loadProfileImageFromDisk() {
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString!)
+            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString)
 
             if let imageData = try? Data(contentsOf: fileURL),
                let loadedImage = UIImage(data: imageData) {
@@ -80,9 +80,9 @@ extension ManageAccountView {
         
         func uploadProfileImageToFirebaseStorage() {
             guard let image = profileImage else { return }
-            guard let imageString = user.profileImageString else { return }
+//            guard let imageString = user.profileImageString else { return }
             guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
-            let storageRef = firebaseStorage.reference().child("profileImages/\(imageString)")
+            let storageRef = firebaseStorage.reference().child("profileImages/\(user.profileImageString)")
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             
@@ -166,14 +166,14 @@ extension ManageAccountView {
         }
         
         func deleteProfileImage() {
-            let storageRef = firebaseStorage.reference().child(user.profileImageString!)
+            let storageRef = firebaseStorage.reference().child(user.profileImageString)
             storageRef.delete { err in
               if let error = err {
                   print("ERROR DELETING PROFILE IMAGE FROM CLOUD: \(error.localizedDescription)")
               } else {
                 // delete locally
                   let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                  let fileURL = documentsDirectory.appendingPathComponent(self.user.profileImageString!)
+                  let fileURL = documentsDirectory.appendingPathComponent(self.user.profileImageString)
                   do {
                       try FileManager.default.removeItem(at: fileURL)
                       self.profileImage = nil

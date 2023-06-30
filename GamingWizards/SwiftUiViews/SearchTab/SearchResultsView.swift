@@ -31,7 +31,7 @@ struct SearchResultsView: View {
             backgroundImage
         )
         .onAppear {
-            searchResultsViewModel.callPerformSearchForMatchingGames(gameName: searchText)
+            searchResultsViewModel.performSearchForMatchingGames(gameName: searchText)
         }
     }
     
@@ -41,23 +41,23 @@ struct SearchResultsView: View {
             ForEach(Array(searchResultsViewModel.users ?? []), id: \.self) { user in
                 if user.id != yourId {
                     VStack {
-                        Text(user.title)
+                        Text(user.title ?? "")
                             .font(.globalFont(.luminari, size: 19))
                             .bold()
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         HStack {
-                            Text("Name: \(user.displayName)")
+                            Text("Name: \(user.displayName ?? "")")
                         }
                         HStack {
-                            Text("Location: \(user.location)")
-                            Text("GroupSize: \(user.groupSize)")
+                            Text("Location: \(user.location ?? "")")
+                            Text("GroupSize: \(user.groupSize ?? "")")
                             //                        ForEach(user.games, id: \.self) { game in
                             //                            Text("Game: \(game)")
                             //                        }
                         }
                         HStack {
-                            Text("Age: \(user.age)")
+                            Text("Age: \(user.age ?? "")")
                             Text("Pay to Play: \(user.isPayToPlay ? "Yes" : "No")")
                         }
                     }
