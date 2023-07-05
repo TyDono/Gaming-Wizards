@@ -11,32 +11,27 @@ struct SearchResultsDetailView: View {
     @StateObject private var searchResultsDetailViewModel = SearchResultsDetailViewModel()
     @Binding var selectedUser: User
     @Binding var specificGame: String
-    @State var placeHolderImage: UIImage? = UIImage(named: "WantedWizard")!
+//    @State var placeHolderImage: UIImage? = UIImage(named: "WantedWizard")!
     
     var body: some View {
         ZStack {
             backgroundImageView
             VStack {
-                
-//                Text(selectedUser.displayName)
-//                Text("\(String(selectedUser.age))")
-//                Text(selectedUser.groupSize)
-//                listOfGames
-////                    .background(
-////                        Image("blank-page")
-////                            .resizable()
-////                            .scaledToFill()
-////                            .edgesIgnoringSafeArea(.all)
-////                    )
-//                Text(selectedUser.about)
+                viewAccountView
+                    .alignmentGuide(HorizontalAlignment.center) { _ in
+                        UIScreen.main.bounds.midX
+                    }
+                    .alignmentGuide(VerticalAlignment.center) { _ in
+                        UIScreen.main.bounds.midY
+                    }
                 friendRequestButton
             }
         }
         .onAppear() {
             searchResultsDetailViewModel.optionalBindUser(displayName: selectedUser.displayName ?? "")
+            searchResultsDetailViewModel.callRetrieveUserProfileImage(selectedUserProfileImageString: selectedUser.profileImageString)
         }
         .font(.globalFont(.luminari, size: 16))
-        .navigationTitle(selectedUser.title ?? "")
 //        .background(
 //            Image("blank-page")
 //                .resizable()
@@ -53,9 +48,7 @@ struct SearchResultsDetailView: View {
     }
     
     private var viewAccountView: some View {
-        VStack {
-            AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $placeHolderImage, friendCodeId: $selectedUser.friendCodeID, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
-        }
+        AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $searchResultsDetailViewModel.profileImage, friendCodeId: $selectedUser.friendCodeID, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
     }
     
     private var friendRequestButton: some View {

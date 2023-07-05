@@ -29,7 +29,6 @@ import FirebaseFirestore
         func performSearchForMatchingGames(gameName: String) {
             Task {
                 do {
-                    
                     self.users = try await searchForMatchingGames(gameName: gameName)
                 } catch {
                     // Handle the error here

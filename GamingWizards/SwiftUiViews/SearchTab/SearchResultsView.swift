@@ -24,9 +24,9 @@ struct SearchResultsView: View {
             }
         }
         .font(.globalFont(.luminari, size: 16))
-        .navigationDestination(isPresented: $resultWasTapped) {
+        .sheet(isPresented: $resultWasTapped, content: {
             SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText)
-       }
+        })
         .background(
             backgroundImage
         )

@@ -19,7 +19,6 @@ class DiskSpace: ObservableObject {
         let fileURL = documentsDirectory.appendingPathComponent(imageString)
         do {
             try data.write(to: fileURL)
-            print("Image saved to disk.")
         } catch {
             print("ERROR SAVING PROFILE IMAGE TO DISC: \(error.localizedDescription)")
         }

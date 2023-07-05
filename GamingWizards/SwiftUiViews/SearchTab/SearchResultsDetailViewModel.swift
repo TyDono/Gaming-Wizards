@@ -21,7 +21,9 @@ import CoreData
     @Published var friend: FriendEntity?
     @Published var detailedFriendViewIsDismissed: Bool = false
     @Published var displayName: String? = ""
+    @Published var profileImage: UIImage?
     let firestoreDatabase = Firestore.firestore()
+    let firebaseHelper = FirebaseHelper()
     
     func sendFriendRequest(selectedUserID: String) {
 //        guard let userFriendCode = user.friendCodeID else { return }
@@ -31,9 +33,19 @@ import CoreData
             if let error = err {
                 print("Error retrieving document: \(error.localizedDescription)")
             } else if documentSnapshot?.exists == true {
-                self?.FriendRequestAlreadySentIsTrue = true
+                guard let self = self else { return }
+                self.FriendRequestAlreadySentIsTrue = true
             } else {
                 path.setData(newFriend.friendDictionary)
+            }
+        }
+    }
+    
+    func callRetrieveUserProfileImage(selectedUserProfileImageString: String ) {
+        firebaseHelper.retrieveUserProfileImage(imageString: selectedUserProfileImageString) { [weak self]  uiimage in
+            guard let self = self else { return }
+            if let image = uiimage {
+                self.profileImage = image
             }
         }
     }

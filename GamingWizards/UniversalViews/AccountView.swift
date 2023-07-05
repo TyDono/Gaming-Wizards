@@ -32,6 +32,7 @@ struct AccountView: View {
         ZStack {
             VStack(alignment: .center) {
                 Group {
+                    Spacer()
                     profileTitleView
                     profileImageView
                     profileDisplayName
@@ -61,12 +62,13 @@ struct AccountView: View {
                     profileListOfGamesView
                 }
             }
+            .background(Color.clear)
             .font(.globalFont(.luminari, size: 16))
-            .navigationTitle(title ?? "")
+//            .navigationTitle(title ?? "")
         }
     }
     
-    private var profileTitleView: (some View)?? {
+    private var profileTitleView: some View {
         VStack {
             if let profileTitle = title {
                 Text(profileTitle)
@@ -87,6 +89,13 @@ struct AccountView: View {
         VStack {
             if let profileImage = profileImage {
                 Image(uiImage: profileImage)
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 250)
+            } else {
+//                UIImage(named: "WantedWizard")!
+                Image("WantedWizard")
                     .resizable()
                     .scaledToFit()
                     .aspectRatio(contentMode: .fit)

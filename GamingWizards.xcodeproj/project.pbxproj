@@ -106,6 +106,7 @@
 		CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */; };
 		CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */; };
 		CB6240682A53AD8100E69C5C /* DiskSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240672A53AD8100E69C5C /* DiskSpace.swift */; };
+		CB62406A2A55432400E69C5C /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240692A55432400E69C5C /* FirebaseHelper.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -216,6 +217,7 @@
 		CB5BE9042A0084A4009D38D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		CB6240672A53AD8100E69C5C /* DiskSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpace.swift; sourceTree = "<group>"; };
+		CB6240692A55432400E69C5C /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				CB5BE82F29FDE954009D38D6 /* RestaurantEndpoint.swift */,
 				CB5BE83329FDE954009D38D6 /* Endpoint.swift */,
 				CB6240672A53AD8100E69C5C /* DiskSpace.swift */,
+				CB6240692A55432400E69C5C /* FirebaseHelper.swift */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 			);
 			path = Modules;
@@ -777,6 +780,7 @@
 				CB5BE89629FDE958009D38D6 /* DateExtension.swift in Sources */,
 				CB5BE8A029FDE958009D38D6 /* MapViewController.swift in Sources */,
 				CB5BE89E29FDE958009D38D6 /* FoodThemeSelectionView.swift in Sources */,
+				CB62406A2A55432400E69C5C /* FirebaseHelper.swift in Sources */,
 				CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */,
 				CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */,
 				CB5BE88529FDE958009D38D6 /* AppleSignInViewModel.swift in Sources */,
