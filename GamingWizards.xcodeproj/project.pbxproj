@@ -105,6 +105,7 @@
 		CB5BE8FC29FDEA9C009D38D6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8FB29FDEA9C009D38D6 /* FirebaseStorageCombine-Community */; };
 		CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */; };
 		CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */; };
+		CB6240682A53AD8100E69C5C /* DiskSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240672A53AD8100E69C5C /* DiskSpace.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -214,6 +215,7 @@
 		CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GamingWizards.entitlements; sourceTree = "<group>"; };
 		CB5BE9042A0084A4009D38D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
+		CB6240672A53AD8100E69C5C /* DiskSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpace.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -355,8 +357,9 @@
 				CBBD556E2A294B6A00F27626 /* imagePicker.swift */,
 				CB5BE82E29FDE954009D38D6 /* NetworkRequestService.swift */,
 				CB5BE82F29FDE954009D38D6 /* RestaurantEndpoint.swift */,
-				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB5BE83329FDE954009D38D6 /* Endpoint.swift */,
+				CB6240672A53AD8100E69C5C /* DiskSpace.swift */,
+				CB5BE83129FDE954009D38D6 /* Notifications */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 				CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */,
 				CB5BE89429FDE958009D38D6 /* StringExtension.swift in Sources */,
 				CB5BE8B029FDE958009D38D6 /* AlertItem.swift in Sources */,
+				CB6240682A53AD8100E69C5C /* DiskSpace.swift in Sources */,
 				CB5BE8A729FDE958009D38D6 /* FriendListViewModel.swift in Sources */,
 				CB5BE89729FDE958009D38D6 /* FileManager-DocumentDirectoryExtension.swift in Sources */,
 				CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */,

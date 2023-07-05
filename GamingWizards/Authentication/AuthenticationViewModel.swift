@@ -14,22 +14,25 @@ import AuthenticationServices
 import CryptoKit
 import CoreData
 import Security
+import FirebaseStorage
 //import FirebaseFirestoreSwift
 
 @MainActor class AuthenticationViewModel: ObservableObject {
     
     @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
+    @ObservedObject var user = UserObservable.shared
+    var diskSpace = DiskSpace()
     @Published var currentNonce: String = ""
     @Published var signInState: SignInState = .signedOut
     @Published var isLoading: Bool = false
     @Published var signingIn: String = ""
     @Published var myFriendListData: [Friend] = []
 //    @Published var user = UserObservable.shared
-    @ObservedObject var user = UserObservable.shared
     let coreDataController = CoreDataController.shared
     let firestoreDatabase = Firestore.firestore()
     private var listeningRegistration: ListenerRegistration?
     static var sharedAuthenticationVM = AuthenticationViewModel()
+    let storageRef = Storage.storage()
 //    private let keychainHelper = KeychainHelper()
     
     private init() { }
@@ -41,7 +44,7 @@ import Security
     
     func saveUserIntoFirestore(for user: User) {
         let documentPath = firestoreDatabase.collection(Constants.users).document(user.id)
-        documentPath.getDocument { document, err in
+        documentPath.getDocument { [weak self] document, err in
             if let error = err {
                 print("ERROR RETRIEVING FIRESTORE USER DATA WHEN TRYING TO SIGN IN: \(error.localizedDescription)")
                 return
@@ -50,13 +53,18 @@ import Security
             if document?.exists == true {
                 if let documentData = document?.data() {
                     if let existingUser = try? Firestore.Decoder().decode(User.self, from: documentData) {
-                        self.saveUserToUserDefaults(user: existingUser)
+                        self?.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
+                            if let image = profileImage {
+                                self?.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
+                            }
+                        }
+                        self?.saveUserToUserDefaults(user: existingUser)
                         // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                     }
                 }
             } else {
                 documentPath.setData(user.userDictionary)
-                self.saveUserToUserDefaults(user: user)
+                self?.saveUserToUserDefaults(user: user)
             }
         }
     }
@@ -119,6 +127,25 @@ import Security
 //            }
 //
 //        }
+    }
+    
+    private func retrieveUserProfileImage(imageString: String, completion: @escaping (UIImage?) -> Void) {
+        let storagePath = storageRef.reference().child("profileImages/\(imageString)")
+        storagePath.getData(maxSize: 5 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("ERROR DOWNLOADING PERSONAL USER PROFILE IMAGE FROM FIREBASE STORAGE: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            if let imageData = data, let image = UIImage(data: imageData) {
+                completion(image)
+            } else {
+                print("Failed to convert image data to UIImage")
+                completion(nil)
+                return
+            }
+        }
     }
     
     private func signInSuccess() {
@@ -255,7 +282,7 @@ import Security
     //out dated. remove
     func retrieveFriends(uid: String) { //, completion: @escaping ([Friend]) -> () // this was an escaping. now it isnt
         let path = firestoreDatabase.collection(Constants.users).document(uid).collection("friendList")
-            path.addSnapshotListener { querySnapshot, err in
+            path.addSnapshotListener { [weak self] querySnapshot, err in
                 if let error = err {
                     print("ERROR RETRIEVING FRIENDS: \(error)")
                     return
@@ -263,8 +290,9 @@ import Security
 //                guard let documents = querySnapshot.data() else { return }
                 guard let documents = querySnapshot?.documents else { return }
                 //deletes all friends locally
-                for friend in self.coreDataController.savedFriendEntities {
-                    self.coreDataController.deleteFriendLocally(friend: friend)
+                guard let savedFriendEntities = self?.coreDataController.savedFriendEntities else { return }
+                for friend in savedFriendEntities {
+                    self?.coreDataController.deleteFriendLocally(friend: friend)
                 }
                 for document in documents {
                     let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
@@ -272,7 +300,7 @@ import Security
                     let friendDisplayName = document.data()[Constants.friendDisplayName] as? String ?? ""
                     let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
                     let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
-                    self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
+                    self?.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
 //                    self.coreDataController.addFriend(friendCodeID: friendCodeID, friendDisplayName: displayName, isFriend: isFriend, isFavorite: isFavorite)
 //                    self.friendList.append(Friend(friendCodeID: friendCodeID, friendDisplayName: displayName, isFriend: isFriend))
                 }
@@ -293,15 +321,15 @@ import Security
         guard let friendUserID = friend.friendUserID else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
         firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID)
-            .delete() { err in
+            .delete() { [weak self] err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
-                    self.firestoreDatabase.collection(Constants.users).document(userID).collection("friendList").document(friendCodeID).delete() { err in
+                    self?.firestoreDatabase.collection(Constants.users).document(userID).collection("friendList").document(friendCodeID).delete() { [weak self] err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THEIR FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
-                            self.coreDataController.deleteFriendLocally(friend: friend)
+                            self?.coreDataController.deleteFriendLocally(friend: friend)
                         }
                     }
                 }
@@ -311,7 +339,7 @@ import Security
     func retrieveFriendsListener() {
          let userID = user.id //else { return }
         listeningRegistration = firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList)
-            .addSnapshotListener({ snapshot, err in
+            .addSnapshotListener({ [weak self] snapshot, err in
                 if let error = err {
                     print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
                 } else {
@@ -322,8 +350,9 @@ import Security
                     
                     let documents = querySnapshot.documents
                     //deletes all friends locally
-                    for friend in self.coreDataController.savedFriendEntities {
-                        self.coreDataController.deleteFriendLocally(friend: friend)
+                    guard let savedFriendEntities = self?.coreDataController.savedFriendEntities else { return }
+                    for friend in savedFriendEntities {
+                        self?.coreDataController.deleteFriendLocally(friend: friend)
                     }
                     for document in documents {
                         let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
@@ -331,7 +360,7 @@ import Security
                         let friendDisplayName = document.data()[Constants.friendDisplayName] as? String ?? ""
                         let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
                         let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
-                        self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
+                        self?.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
                     }
                     //keep. use it so I can update the ui cleaner
 //                    self.myFriendListData = querySnapshot.documents.compactMap({ document in

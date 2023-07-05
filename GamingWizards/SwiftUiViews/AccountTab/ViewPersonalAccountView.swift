@@ -35,16 +35,9 @@ struct ViewPersonalAccountView: View {
                     .padding()
             }
         }
-        .onAppear() {
-            dothing()
-        }
         .navigationTitle(user.title ?? "")
         .font(.globalFont(.luminari, size: 16))
 //        .background(backgroundImage)
-    }
-    
-    func dothing() {
-        print(user.id)
     }
     
     private var backgroundImage: some View {
@@ -80,7 +73,7 @@ struct ViewPersonalAccountView: View {
     private var accountView: some View {
         AccountView(displayName: $user.displayName, userLocation: $user.location, profileImageString: $user.profileImageString, profileImage: $viewPersonalAccountViewModel.profileImage, friendCodeId: $user.friendCodeID, listOfGames: $user.listOfGames, groupSize: $user.groupSize, age: $user.age, about: $user.about, title: $user.title, isPayToPlay: $user.isPayToPlay, isUserSolo: $user.isSolo)
             .onAppear {
-                viewPersonalAccountViewModel.loadProfileImageFromDisk()
+                viewPersonalAccountViewModel.retrieveProfileImageFromDisk()
             }
     }
 }

@@ -16,6 +16,7 @@ extension ManageAccountView {
 //        @ObservedObject var user = UserObservable()
         @ObservedObject var user = UserObservable.shared
         @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+        var diskSpace = DiskSpace()
         
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
@@ -49,33 +50,11 @@ extension ManageAccountView {
         
         func saveProfileImageToDisc() {
             guard let image = profileImage else { return }
-
-            guard let data = image.jpegData(compressionQuality: 1.0) else { return }
-
-            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString)
-            do {
-                try data.write(to: fileURL)
-                print("Image saved to disk.")
-            } catch {
-                print("ERROR SAVING PROFILE IMAGE TO DISC: \(error.localizedDescription)")
-            }
+            diskSpace.saveProfileImageToDisc(imageString: user.profileImageString, image: image)
         }
         
         func loadProfileImageFromDisk() {
-            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent(user.profileImageString)
-
-            if let imageData = try? Data(contentsOf: fileURL),
-               let loadedImage = UIImage(data: imageData) {
-                profileImage = loadedImage
-            } else {
-                print("Failed to load image from disk, or no image")
-            }
-        }
-        
-        func loadProfileImageFromFirebaseStorage() {
-            // use this in viewing other people's profile
+           profileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
         }
         
         func uploadProfileImageToFirebaseStorage() {

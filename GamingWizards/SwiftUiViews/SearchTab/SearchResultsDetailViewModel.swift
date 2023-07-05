@@ -27,11 +27,11 @@ import CoreData
 //        guard let userFriendCode = user.friendCodeID else { return }
         let path = firestoreDatabase.collection(Constants.users).document(selectedUserID).collection(Constants.userFriendList).document(user.friendCodeID)
         let newFriend = Friend(friendCodeID: user.friendCodeID, friendUserID: user.id, friendDisplayName: user.displayName!, isFriend: false, isFavorite: false) //this should be the current user's info
-        path.getDocument { (documentSnapshot, err) in
+        path.getDocument { [weak self] (documentSnapshot, err) in
             if let error = err {
                 print("Error retrieving document: \(error.localizedDescription)")
             } else if documentSnapshot?.exists == true {
-                self.FriendRequestAlreadySentIsTrue = true
+                self?.FriendRequestAlreadySentIsTrue = true
             } else {
                 path.setData(newFriend.friendDictionary)
             }
