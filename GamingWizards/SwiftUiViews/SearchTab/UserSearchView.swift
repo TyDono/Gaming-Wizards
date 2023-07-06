@@ -10,7 +10,6 @@ import SwiftUI
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchViewModel = UserSearchViewModel()
-    @StateObject var searchResultsViewModel = SearchResultsViewModel()
     @State private var isSearchButtonShowing: Bool = false
     @State var searchButtonWasTapped: Bool = false
     @State var users: [User] = []
@@ -67,20 +66,8 @@ struct UserSearchView: View {
                         }
                         .onChange(of: searchButtonWasTapped) { newValue in
                             if newValue {
-                                //moved to result VM
-//                                userSearchViewModel.performSearchForMatchingGames(gameName: gameName) { users, err in
-//                                    guard let usersUnwrapped = users else { return }
-//                                    self.users = usersUnwrapped
-//                                    searchResultsViewModel.users = usersUnwrapped
-//                                    print(searchResultsViewModel.users)
-//                                    print("value was changed!")
-//                                    //change both user values here
-//                                }
-//                                userSearchViewModel.callPerformSearchForMatchingGames(gameName: gameName)
-                                
                             }
                         }
-//                        .environmentObject(searchResultsViewModel)
                 }
             }
             .padding()

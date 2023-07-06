@@ -30,8 +30,8 @@ struct SearchResultsView: View {
         .background(
             backgroundImage
         )
-        .onAppear {
-            searchResultsViewModel.performSearchForMatchingGames(gameName: searchText)
+        .task {
+            await searchResultsViewModel.performSearchForMatchingGames(gameName: searchText)
         }
     }
     

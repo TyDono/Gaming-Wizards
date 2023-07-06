@@ -18,13 +18,9 @@ struct SearchResultsDetailView: View {
             backgroundImageView
             VStack {
                 viewAccountView
-                    .alignmentGuide(HorizontalAlignment.center) { _ in
-                        UIScreen.main.bounds.midX
-                    }
-                    .alignmentGuide(VerticalAlignment.center) { _ in
-                        UIScreen.main.bounds.midY
-                    }
+                    .padding()
                 friendRequestButton
+                    .padding()
             }
         }
         .onAppear() {
@@ -48,7 +44,7 @@ struct SearchResultsDetailView: View {
     }
     
     private var viewAccountView: some View {
-        AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $searchResultsDetailViewModel.profileImage, friendCodeId: $selectedUser.friendCodeID, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
+        AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $searchResultsDetailViewModel.profileImage, friendCodeId: $selectedUser.friendCodeID, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, availability: $selectedUser.availability, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
     }
     
     private var friendRequestButton: some View {

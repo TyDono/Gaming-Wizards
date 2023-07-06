@@ -25,41 +25,52 @@ struct AccountView: View {
     @Binding var age: String?
     @Binding var about: String?
     @Binding var title: String?
+    @Binding var availability: String?
     @Binding var isPayToPlay: Bool
     @Binding var isUserSolo: Bool
     
     var body: some View {
         ZStack {
             VStack(alignment: .center) {
-                Group {
-                    Spacer()
-                    profileTitleView
-                    profileImageView
-                    profileDisplayName
-                    Divider()
-                        .background(Color.black)
-                    profileUserLocationView
-                    Divider()
-                        .background(Color.black)
-                    profileIsSolo
-                    Divider()
-                        .background(Color.black)
-                }
-                Group {
-                    profileAgeView
-                    Divider()
-                        .background(Color.black)
-                    profileIsPayToPlayView
-                    Divider()
-                        .background(Color.black)
-                    profileAboutView
-                    Divider()
-                        .background(Color.black)
-                    //                profileNameView
-                    profileFriendCodeIdView
-                    Divider()
-                        .background(Color.black)
-                    profileListOfGamesView
+                ScrollView {
+                    Group {
+                        Spacer()
+                        profileTitleView
+                        profileImageView
+                        profileDisplayName
+                        Divider()
+                            .background(Color.black)
+                        profileUserLocationView
+                        Divider()
+                            .background(Color.black)
+                        
+                    }
+                    Group {
+                        profileIsSolo
+                        Divider()
+                            .background(Color.black)
+                        profileAgeView
+                        Divider()
+                            .background(Color.black)
+                        profileAvailability
+                        Divider()
+                            .background(Color.black)
+                    }
+                    Group {
+                        profileIsPayToPlayView
+                        Divider()
+                            .background(Color.black)
+                        profileAboutView
+                            .lineLimit(nil)
+                        Divider()
+                            .background(Color.black)
+                        //                profileNameView
+                        profileFriendCodeIdView
+                        Divider()
+                            .background(Color.black)
+                        profileListOfGamesView
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
             }
             .background(Color.clear)
@@ -72,6 +83,7 @@ struct AccountView: View {
         VStack {
             if let profileTitle = title {
                 Text(profileTitle)
+                    .lineLimit(nil)
                     .font(.globalFont(.luminari, size: 28))
                     .bold()
             }
@@ -81,6 +93,7 @@ struct AccountView: View {
         VStack {
             if let profileDisplayName = displayName {
                 Text(profileDisplayName)
+                    .lineLimit(nil)
             }
         }
     }
@@ -131,55 +144,67 @@ struct AccountView: View {
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 14))
                     Text(profileAbout)
+                        .lineLimit(nil)
                 }
             }
         }
     }
     
     private var profileListOfGamesView: some View {
-        List {
-            ForEach(listOfGames ?? [], id: \.self) { game in
-                VStack {
-                    Text("Games")
-                        .foregroundColor(.gray)
-                        .font(.globalFont(.luminari, size: 12))
-                    Text(game)
-                        .font(.globalFont(.luminari, size: 14))
-                        .padding(.vertical, 8)
-                        .listRowBackground(
-                            RoundedRectangle(cornerRadius: 5)
-                                .background(.red)
-                                .foregroundColor(.black)
-                                .opacity(1.0)
-                                .padding(
-                                    EdgeInsets(
-                                        top: 2,
-                                        leading: 6,
-                                        bottom: 2,
-                                        trailing: 6
+        VStack {
+            Text("Games")
+                .foregroundColor(.gray)
+                .font(.globalFont(.luminari, size: 12))
+            List {
+                ForEach(listOfGames ?? [], id: \.self) { game in
+//                    VStack {
+                        Text(game)
+                        .lineLimit(nil)
+                            .font(.globalFont(.luminari, size: 14))
+                            .padding(.vertical, 8)
+                            .listRowBackground(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .background(.red)
+                                    .foregroundColor(.black)
+                                    .opacity(1.0)
+                                    .padding(
+                                        EdgeInsets(
+                                            top: 2,
+                                            leading: 6,
+                                            bottom: 2,
+                                            trailing: 6
+                                        )
                                     )
-                                )
-                        )
-                    
+                            )
+//                    }
                 }
-                
-            }
-            .listRowBackground(
-                RoundedRectangle(cornerRadius: 5)
-                    .background(.clear)
-                    .foregroundColor(.clear)
-                    .padding(
-                        EdgeInsets(
-                            top: 2,
-                            leading: 6,
-                            bottom: 2,
-                            trailing: 6
+                .listRowBackground(
+                    RoundedRectangle(cornerRadius: 5)
+                        .background(.clear)
+                        .foregroundColor(.clear)
+                        .padding(
+                            EdgeInsets(
+                                top: 2,
+                                leading: 6,
+                                bottom: 2,
+                                trailing: 6
+                            )
                         )
-                    )
-            )
+                )
+            }
         }
         .listStyle(.plain)
         .background(Color.clear)
+    }
+    
+    private var profileAvailability: some View {
+        VStack {
+            Text("Availability")
+            if let userAvailability = availability {
+                Text(userAvailability)
+                    .lineLimit(nil)
+            }
+        }
     }
     
     private var profileIsPayToPlayView: some View {
@@ -210,6 +235,7 @@ struct AccountView: View {
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 14))
                     Text(profileUserLocation)
+                        .lineLimit(nil)
                 }
             }
         }
