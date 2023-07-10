@@ -21,7 +21,7 @@ import FirebaseStorage
     
     @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
     @ObservedObject var user = UserObservable.shared
-    var diskSpace = DiskSpace()
+    var diskSpace = DiskSpaceHandler()
     @Published var currentNonce: String = ""
     @Published var signInState: SignInState = .signedOut
     @Published var isLoading: Bool = false
@@ -29,11 +29,12 @@ import FirebaseStorage
     @Published var myFriendListData: [Friend] = []
 //    @Published var user = UserObservable.shared
     let coreDataController = CoreDataController.shared
-    let firestoreDatabase = Firestore.firestore()
-    let firebaseHelper = FirebaseHelper()
     private var listeningRegistration: ListenerRegistration?
     static var sharedAuthenticationVM = AuthenticationViewModel()
+    let firestoreDatabase = Firestore.firestore()
+    let fbFirestoreHelper = FirebaseFirestoreHelper()
     let storageRef = Storage.storage()
+    let fbStorageHelper = FirebaseStorageHelper()
 //    private let keychainHelper = KeychainHelper()
     
     private init() { }
@@ -55,7 +56,7 @@ import FirebaseStorage
                 if let documentData = document?.data() {
                     if let existingUser = try? Firestore.Decoder().decode(User.self, from: documentData) {
                         
-                        self.firebaseHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
+                        self.fbStorageHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
                             if let image = profileImage {
                                 self.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
                             }

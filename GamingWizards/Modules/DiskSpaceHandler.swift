@@ -8,10 +8,9 @@
 import Foundation
 import UIKit
 
-class DiskSpace: ObservableObject {
+class DiskSpaceHandler: ObservableObject {
     
      func saveProfileImageToDisc(imageString: String, image: UIImage) {
-//        guard let image = image else { return }
 
         guard let data = image.jpegData(compressionQuality: 1.0) else { return }
 
@@ -31,7 +30,6 @@ class DiskSpace: ObservableObject {
         if let imageData = try? Data(contentsOf: fileURL),
            let loadedImage = UIImage(data: imageData) {
             return loadedImage
-//            image = loadedImage
         } else {
             print("Failed to load image from disk, or no image")
             return UIImage(named: "WantedWizard")!

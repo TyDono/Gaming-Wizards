@@ -11,7 +11,7 @@ extension SearchResultsView {
     @MainActor class SearchResultsViewModel: ObservableObject {
         @Published var searchText: String = ""
         @Published var users: [User]? = []
-        let firebaseHelper = FirebaseHelper()
+        let firebaseHelper = FirebaseFirestoreHelper()
         
         func performSearchForMatchingGames(gameName: String) async {
             Task {

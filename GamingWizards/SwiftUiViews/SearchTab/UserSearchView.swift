@@ -9,7 +9,8 @@ import SwiftUI
 
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var userSearchViewModel = UserSearchViewModel()
+    @StateObject private var userSearchVM = UserSearchViewModel()
+    @StateObject private var filterer = Filterer()
     @State private var isSearchButtonShowing: Bool = false
     @State var searchButtonWasTapped: Bool = false
     @State var users: [User] = []
@@ -23,7 +24,7 @@ struct UserSearchView: View {
             }
             .navigationBarTitle("Looking for Group")
             .navigationDestination(isPresented: $searchButtonWasTapped) {
-                SearchResultsView(userSearchViewModel: userSearchViewModel, searchText: userSearchViewModel.searchText)
+                SearchResultsView(userSearchViewModel: userSearchVM, searchText: filterer.searchText)
                 
            }
         }
@@ -42,16 +43,16 @@ struct UserSearchView: View {
     
     private var searchBar: some View {
         VStack {
-            SearchBar(searchText: $userSearchViewModel.searchText, isNavigatingToSearchResults: $searchButtonWasTapped, placeholder: "Search", isSearchButtonShowing: true, isXCancelButtonShowing: false)
-                .animation(Animation.easeInOut(duration: 0.25), value: userSearchViewModel.searchText)
+            SearchBar(searchText: $filterer.searchText, actionButtonWasTapped: $searchButtonWasTapped, dropDownNotificationText: $userSearchVM.searchBarDropDownNotificationText, actionButtonPlaceholderText: "Search", isActionButtonShowing: true, isXCancelButtonShowing: false)
+                .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
-                ForEach(userSearchViewModel.filteredGames, id: \.self) { gameName in
+                ForEach(filterer.gamesFilter, id: \.self) { gameName in
                     Text(gameName)
                         .foregroundColor(.black)
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 5)
                                 .background(.clear)
-                                .foregroundColor(userSearchViewModel.searchText.isEmpty ? .clear : .white)
+                                .foregroundColor(filterer.searchText.isEmpty ? .clear : .white)
                                 .padding(
                                     EdgeInsets(
                                         top: 2,
@@ -62,16 +63,12 @@ struct UserSearchView: View {
                                 )
                         )
                         .onTapGesture {
-                            userSearchViewModel.searchText = gameName
-                        }
-                        .onChange(of: searchButtonWasTapped) { newValue in
-                            if newValue {
-                            }
+                            filterer.searchText = gameName
                         }
                 }
             }
             .padding()
-            .animation(Animation.easeInOut(duration: 0.7), value: userSearchViewModel.searchText)
+            .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
             .listStyle(.plain)
         }
     }

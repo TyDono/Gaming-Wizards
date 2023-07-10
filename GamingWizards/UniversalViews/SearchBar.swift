@@ -9,12 +9,13 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var searchText: String
-    @Binding var isNavigatingToSearchResults: Bool
+    @Binding var actionButtonWasTapped: Bool
+    @Binding var dropDownNotificationText: String
     @State var gameListDidNotMatch: Bool = false
     @State var searchBarIsShaking: Bool = false
     @State private var shakeCount = 0
-    @State var placeholder: String
-    @State var isSearchButtonShowing: Bool
+    @State var actionButtonPlaceholderText: String
+    @State var isActionButtonShowing: Bool
     @State var isDropDownNotificationShowing: Bool = false
     var isXCancelButtonShowing: Bool = false
     
@@ -26,8 +27,8 @@ struct SearchBar: View {
     private var textFieldView: some View {
         VStack {
             HStack {
-                TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
-                    isSearchButtonShowing = true
+                TextField(actionButtonPlaceholderText, text: $searchText, onEditingChanged: { isEditing in
+                    isActionButtonShowing = true
                 })
                 .font(.globalFont(.luminari, size: 16))
                 .padding(8)
@@ -49,9 +50,9 @@ struct SearchBar: View {
                 .padding(.vertical, 8)
                 .padding(.leading, 8)
                 .padding(.trailing, 4)
-                .padding(.trailing, isSearchButtonShowing ? 0 : 8)
+                .padding(.trailing, isActionButtonShowing ? 0 : 8)
                 if searchText != "" {
-                    searchButtonView
+                    actionButtonView
                         .padding(.trailing, 8)
                         .padding(.vertical, 8)
                 }
@@ -78,7 +79,8 @@ struct SearchBar: View {
     }
     
     private var dropDownNotificationView: some View {
-        Text("you must select an option below to search for")
+        Text(dropDownNotificationText)
+//        Text("You must select an option below")
                            .font(.subheadline)
                            .padding(.horizontal, 8)
                            .padding(.vertical, 4)
@@ -98,11 +100,11 @@ struct SearchBar: View {
 //            )
     }
     
-    private var searchButtonView: some View {
-        Text(placeholder)
+    private var actionButtonView: some View {
+        Text(actionButtonPlaceholderText)
 //            .font(.globalFont(.luminari, size: 16))
             .padding(8)
-            .animation(Animation.easeInOut(duration: 0.5), value: isSearchButtonShowing)
+            .animation(Animation.easeInOut(duration: 0.5), value: isActionButtonShowing)
             .background(.blue)
             .cornerRadius(Constants.roundedCornerRadius)
             .foregroundColor(.white)
@@ -111,7 +113,7 @@ struct SearchBar: View {
                     withAnimation(Animation.easeInOut(duration: 0.25)) {
                         isDropDownNotificationShowing = false
                     }
-                    isNavigatingToSearchResults = true
+                    actionButtonWasTapped.toggle()
                     
                 } else {
                     withAnimation(Animation.easeInOut(duration: 0.6).speed(1)) {
@@ -134,7 +136,7 @@ struct SearchBar: View {
 //            Text("Search")
 //                .font(.luminari(.regular, size: 16))
 //                .padding(8)
-//                .animation(Animation.easeInOut(duration: 0.2), value: isSearchButtonShowing)
+//                .animation(Animation.easeInOut(duration: 0.2), value: isActionButtonShowing)
 //                .background(.blue)
 //                .cornerRadius(10)
 //                .foregroundColor(.white)

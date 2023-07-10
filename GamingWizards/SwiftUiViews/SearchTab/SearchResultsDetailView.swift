@@ -11,7 +11,6 @@ struct SearchResultsDetailView: View {
     @StateObject private var searchResultsDetailViewModel = SearchResultsDetailViewModel()
     @Binding var selectedUser: User
     @Binding var specificGame: String
-//    @State var placeHolderImage: UIImage? = UIImage(named: "WantedWizard")!
     
     var body: some View {
         ZStack {
@@ -23,17 +22,10 @@ struct SearchResultsDetailView: View {
                     .padding()
             }
         }
-        .onAppear() {
-            searchResultsDetailViewModel.optionalBindUser(displayName: selectedUser.displayName ?? "")
+        .task {
             searchResultsDetailViewModel.callRetrieveUserProfileImage(selectedUserProfileImageString: selectedUser.profileImageString)
         }
         .font(.globalFont(.luminari, size: 16))
-//        .background(
-//            Image("blank-page")
-//                .resizable()
-//                .scaledToFill()
-//                .edgesIgnoringSafeArea(.all)
-//        )
     }
     
     private var backgroundImageView: some View {
@@ -62,15 +54,9 @@ struct SearchResultsDetailView: View {
     private var listOfGames: some View {
         List {
             ForEach(selectedUser.listOfGames ?? [], id: \.self) { game in
-                    Text(game)
-                        .boldIfStringIsMatching(game, specificGame)
-                        .padding(.vertical, 8)
-//                        .background(
-//                            Image("blank-page")
-//                                .resizable()
-//                                .scaledToFill()
-//                        )
-
+                Text(game)
+                    .boldIfStringIsMatching(game, specificGame)
+                    .padding(.vertical, 8)
             }
             .listRowBackground(
                 RoundedRectangle(cornerRadius: 5)
@@ -88,15 +74,6 @@ struct SearchResultsDetailView: View {
         }
         .listStyle(.plain)
         .background(Color.clear)
-
-//        .listStyle(PlainListStyle())
-//        .listRowBackground(
-//            Image("blank-page")
-//                .resizable()
-//                .scaledToFill()
-//                .edgesIgnoringSafeArea(.all)
-//        )
-//        .background(Color.red)
     }
     
 }

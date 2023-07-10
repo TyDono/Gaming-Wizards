@@ -16,7 +16,7 @@ extension ManageAccountView {
 //        @ObservedObject var user = UserObservable()
         @ObservedObject var user = UserObservable.shared
         @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-        var diskSpace = DiskSpace()
+        var diskSpace = DiskSpaceHandler()
         
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
@@ -38,12 +38,15 @@ extension ManageAccountView {
         @Published var groupSize: String = ""
         @Published var userAge: String = ""
         @Published var userLocation: String = ""
-//        @Published var userListOfGames: String = "" // this or
-        @Published var listOfGames: [String] = [] //that
+        @Published var listOfGames: [String] = []
         @Published var userAvailability: String = ""
         @Published var userTitle: String = ""
         @Published var isPayToPlay: Bool = false
         @Published var userIsSolo: Bool = true
+        @Published var isSearchButtonShowing: Bool = false
+        @Published var searchText: String = ""
+        @Published var addGameButtonWasTapped: Bool = false
+        @Published var searchBarDropDownNotificationText: String = "You already have this game added"
         
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()
@@ -59,13 +62,13 @@ extension ManageAccountView {
         
         func uploadProfileImageToFirebaseStorage() {
             guard let image = profileImage else { return }
-//            guard let imageString = user.profileImageString else { return }
             guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
             let storageRef = firebaseStorage.reference().child("profileImages/\(user.profileImageString)")
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             
-            let uploadTask = storageRef.putData(imageData, metadata: metadata) { metadata, err in
+            let uploadTask = storageRef.putData(imageData, metadata: metadata) { [weak self] metadata, err in
+                guard let self = self else { return }
                 if let error = err {
                     print("ERROR UPLOADING IMAGE TO STORAGE: \(error.localizedDescription)")
                 } else {
@@ -96,7 +99,6 @@ extension ManageAccountView {
                 Constants.userLastName: self.lastName,
                 Constants.userDisplayName: self.displayName,
                 Constants.userLocation: self.userLocation,
-//                Constants.userListOfGamesString: self.userListOfGames,
                 Constants.userListOfGamesString: self.listOfGames,
                 Constants.userGroupSize: self.groupSize,
                 Constants.userAge: self.userAge,
@@ -168,7 +170,8 @@ extension ManageAccountView {
             guard let userId = currentUser?.uid else { return }
             let path = firestoreDatabase.collection(Constants.users).document(userId)
             
-            currentUser?.delete { err in
+            currentUser?.delete { [weak self] err in
+                guard let self = self else { return }
                 if let error = err {
                     self.accountDeleteErrorAlertIsShowing = true
                     print("ACCOUNT DELETION ERROR: \(error.localizedDescription)")

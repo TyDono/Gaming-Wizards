@@ -23,7 +23,7 @@ import CoreData
     @Published var displayName: String? = ""
     @Published var profileImage: UIImage?
     let firestoreDatabase = Firestore.firestore()
-    let firebaseHelper = FirebaseHelper()
+    let fbStorageHelper = FirebaseStorageHelper()
     
     func sendFriendRequest(selectedUserID: String) {
 //        guard let userFriendCode = user.friendCodeID else { return }
@@ -42,7 +42,7 @@ import CoreData
     }
     
     func callRetrieveUserProfileImage(selectedUserProfileImageString: String ) {
-        firebaseHelper.retrieveUserProfileImage(imageString: selectedUserProfileImageString) { [weak self]  uiimage in
+        fbStorageHelper.retrieveUserProfileImage(imageString: selectedUserProfileImageString) { [weak self]  uiimage in
             guard let self = self else { return }
             if let image = uiimage {
                 self.profileImage = image
