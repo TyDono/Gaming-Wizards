@@ -31,7 +31,7 @@ struct AccountView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .center) {
+            VStack {
                 ScrollView {
                     Group {
                         Spacer()
@@ -43,7 +43,6 @@ struct AccountView: View {
                         profileUserLocationView
                         Divider()
                             .background(Color.black)
-                        
                     }
                     Group {
                         profileIsSolo
@@ -69,13 +68,12 @@ struct AccountView: View {
                         Divider()
                             .background(Color.black)
                         profileListOfGamesView
-                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
+            .padding(.horizontal, 20)
             .background(Color.clear)
             .font(.globalFont(.luminari, size: 16))
-//            .navigationTitle(title ?? "")
         }
     }
     
@@ -83,6 +81,10 @@ struct AccountView: View {
         VStack {
             if let profileTitle = title {
                 Text(profileTitle)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .center)
                     .lineLimit(nil)
                     .font(.globalFont(.luminari, size: 28))
                     .bold()
@@ -93,6 +95,10 @@ struct AccountView: View {
         VStack {
             if let profileDisplayName = displayName {
                 Text(profileDisplayName)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .center)
                     .lineLimit(nil)
             }
         }
@@ -105,33 +111,50 @@ struct AccountView: View {
                     .resizable()
                     .scaledToFit()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
+                    .frame(width: Constants.profileImageWidth, height: Constants.profileImageHeight, alignment: .center)
             } else {
 //                UIImage(named: "WantedWizard")!
                 Image("WantedWizard")
                     .resizable()
                     .scaledToFit()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
+                    .frame(width: Constants.profileImageWidth, height: Constants.profileImageHeight, alignment: .center)
             }
         }
     }
     
     private var profileIsSolo: some View {
         VStack {
+            Text("Group Size")
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .center)
+                .foregroundColor(.gray)
+                .font(.globalFont(.luminari, size: 16))
             Text(isUserSolo == true ? "Solo" : "Group")
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .leading)
         }
     }
     
     private var profileAgeView: some View {
         VStack {
             if let profileAge = age {
-                VStack {
                     Text("Age")
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .center)
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 16))
                     Text("\(profileAge)")
-                }
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .leading)
             }
         }
     }
@@ -141,9 +164,17 @@ struct AccountView: View {
             if let profileAbout = about {
                 VStack {
                     Text("About")
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .center)
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 14))
                     Text(profileAbout)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .leading)
                         .lineLimit(nil)
                 }
             }
@@ -153,55 +184,75 @@ struct AccountView: View {
     private var profileListOfGamesView: some View {
         VStack {
             Text("Games")
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .center)
                 .foregroundColor(.gray)
                 .font(.globalFont(.luminari, size: 12))
             List {
                 ForEach(listOfGames ?? [], id: \.self) { game in
-//                    VStack {
-                        Text(game)
-                        .lineLimit(nil)
-                            .font(.globalFont(.luminari, size: 14))
-                            .padding(.vertical, 8)
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .background(.red)
-                                    .foregroundColor(.black)
-                                    .opacity(1.0)
-                                    .padding(
-                                        EdgeInsets(
-                                            top: 2,
-                                            leading: 6,
-                                            bottom: 2,
-                                            trailing: 6
-                                        )
-                                    )
-                            )
-//                    }
+                    Text("a game should be here")
+                    Text(game)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .leading)
                 }
-                .listRowBackground(
-                    RoundedRectangle(cornerRadius: 5)
-                        .background(.clear)
-                        .foregroundColor(.clear)
-                        .padding(
-                            EdgeInsets(
-                                top: 2,
-                                leading: 6,
-                                bottom: 2,
-                                trailing: 6
-                            )
-                        )
-                )
             }
         }
-        .listStyle(.plain)
-        .background(Color.clear)
+//                        .lineLimit(nil)
+//                        .font(.globalFont(.luminari, size: 14))
+//                        .padding(.vertical, 8)
+//                        .listRowBackground(
+//                            RoundedRectangle(cornerRadius: 5)
+//                                .background(.red)
+//                                .foregroundColor(.black)
+//                                .opacity(1.0)
+//                                .padding(
+//                                    EdgeInsets(
+//                                        top: 2,
+//                                        leading: 6,
+//                                        bottom: 2,
+//                                        trailing: 6
+//                                    )
+//                                )
+//                        )
+//                }
+//                .listRowBackground(
+//                    RoundedRectangle(cornerRadius: 5)
+//                        .background(.clear)
+//                        .foregroundColor(.clear)
+//                        .padding(
+//                            EdgeInsets(
+//                                top: 2,
+//                                leading: 6,
+//                                bottom: 2,
+//                                trailing: 6
+//                            )
+//                        )
+//                )
+//            }
+//        }
+//        .listStyle(.plain)
+//        .background(Color.clear)
     }
     
     private var profileAvailability: some View {
         VStack {
             Text("Availability")
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .center)
+                .foregroundColor(.gray)
+                .font(.globalFont(.luminari, size: 12))
             if let userAvailability = availability {
                 Text(userAvailability)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .leading)
                     .lineLimit(nil)
             }
         }
@@ -210,6 +261,10 @@ struct AccountView: View {
     private var profileIsPayToPlayView: some View {
         VStack {
             Text(isPayToPlay == true ? "Pay To Play" : "Free To Play")
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .leading)
             // Add rates below if is pay to play at later date
         }
     }
@@ -219,9 +274,17 @@ struct AccountView: View {
 //            if let profileFriendCodeId = friendCodeId {
                 VStack {
                     Text("Friend Code")
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .center)
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 14))
                     Text(friendCodeId)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .leading)
                 }
 //            }
         }
@@ -232,9 +295,17 @@ struct AccountView: View {
             if let profileUserLocation = userLocation {
                 VStack {
                     Text("\(displayName ?? "")'s Location")
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .center)
                         .foregroundColor(.gray)
                         .font(.globalFont(.luminari, size: 14))
                     Text(profileUserLocation)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .leading)
                         .lineLimit(nil)
                 }
             }
@@ -251,8 +322,21 @@ struct AccountView: View {
     
 }
 
-//struct AccountView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AccountView()
-//    }
-//}
+struct AccountView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountView(displayName: .constant("John Doe"),
+                    userLocation: .constant("New York"),
+                    profileImageString: .constant("profileImageString"),
+                    profileImage: .constant(UIImage(named: "WantedWizard")),
+                    friendCodeId: .constant("ABC123"),
+                    listOfGames: .constant(["Game 1", "Game 2", "Game 3"]),
+                    groupSize: .constant("Group"),
+                    age: .constant("30"),
+                    about: .constant("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque tristique lacus id vestibulum. Nulla at justo augue. Mauris a ullamcorper tellus, ut semper ex. Morbi eget sapien ut metus maximus elementum. Fusce a tincidunt justo. Etiam rutrum tellus at libero fringilla, et fringilla nunc dapibus. Phasellus ut orci ac purus lacinia ultricies ac et odio. Nullam consectetur, lectus vitae cursus lacinia, nisl nulla tempus tortor, vel aliquet ligula diam sed erat. Nulla facilisi. Sed sem sapien, lobortis non turpis sit amet, euismod rhoncus purus."),
+                    title: .constant("Title"),
+                    availability: .constant("Available from  ringilla, et fringilla nunc dapibus. Phasellus ut orci ac purus lacinia ultricies ac et odio. Nullam consectetur, lectus vitae cursus lacinia, nisl nulla tempus tortor, vel aliquet ligula diam sed erat. Nulla facilisi. Sed sem sapien, lo"),
+                    isPayToPlay: .constant(true),
+                    isUserSolo: .constant(false))
+    }
+}
+

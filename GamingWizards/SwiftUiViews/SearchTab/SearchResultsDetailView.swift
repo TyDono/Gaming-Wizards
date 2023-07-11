@@ -14,24 +14,27 @@ struct SearchResultsDetailView: View {
     
     var body: some View {
         ZStack {
-            backgroundImageView
             VStack {
                 viewAccountView
                     .padding()
                 friendRequestButton
+                    .font(.globalFont(.luminari, size: 16))
                     .padding()
             }
         }
+        .background(
+            backgroundImageView
+        )
         .task {
             searchResultsDetailViewModel.callRetrieveUserProfileImage(selectedUserProfileImageString: selectedUser.profileImageString)
         }
-        .font(.globalFont(.luminari, size: 16))
+        
     }
     
     private var backgroundImageView: some View {
         Image("blank-page")
             .resizable()
-            .scaledToFill()
+            .aspectRatio(contentMode: .fill)
             .edgesIgnoringSafeArea(.all)
     }
     
@@ -45,9 +48,20 @@ struct SearchResultsDetailView: View {
             print("Add Friend button pressed!")
         }) {
             Text("Add Friend")
-                .background(.blue)
                 .foregroundColor(.white)
-                .cornerRadius(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 6)
+                        .background(.clear)
+                        .foregroundColor(.blue)
+                        .padding(
+                            EdgeInsets(
+                                top: -10,
+                                leading: -10,
+                                bottom: -10,
+                                trailing: -10
+                            )
+                        )
+                )
         }
     }
     

@@ -12,10 +12,8 @@ import PhotosUI
 struct ManageAccountView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    //    @ObservedObject var user = UserObservable()
-        @ObservedObject var user = UserObservable.shared
+    @ObservedObject var user = UserObservable.shared
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-//    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @StateObject private var manageAccountVM = ManageAccountViewModel()
     @StateObject private var filterer = Filterer()
     @State var nilNavigation = false
@@ -32,6 +30,11 @@ struct ManageAccountView: View {
 
                 VStack {
                     ScrollView {
+                        
+                        Group {
+                            listOfGamesView
+                                .padding()
+                        }
                         
                         Group {
                             Spacer().frame(height: 16)
@@ -59,8 +62,8 @@ struct ManageAccountView: View {
                                 .padding()
                             PayToPlayView
                                 .padding()
-                            listOfGamesView
-                                .padding()
+//                            listOfGamesView
+//                                .padding()
                             personalFriendID
                                 .padding()
                             emailTextField
@@ -104,7 +107,7 @@ struct ManageAccountView: View {
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 250, height: 250)
+                .frame(width: Constants.profileImageWidth, height: Constants.profileImageHeight)
                 .onChange(of: manageAccountVM.profileImage, perform: { newValue in
                 })
                 .onTapGesture {
@@ -415,8 +418,8 @@ struct ManageAccountView: View {
                        alignment: .leading)
                 .font(.roboto(.semibold,
                               size: 15))
-            SearchBar(searchText: $manageAccountVM.searchText, actionButtonWasTapped: $manageAccountVM.addGameButtonWasTapped, dropDownNotificationText: $manageAccountVM.searchBarDropDownNotificationText, actionButtonPlaceholderText: "Add", isActionButtonShowing: manageAccountVM.isSearchButtonShowing)
-                .animation(Animation.easeInOut(duration: 0.25), value: manageAccountVM.searchText)
+            SearchBar(searchText: $filterer.searchText, actionButtonWasTapped: $manageAccountVM.addGameButtonWasTapped, dropDownNotificationText: $manageAccountVM.searchBarDropDownNotificationText, actionButtonPlaceholderText: "Add", isActionButtonShowing: manageAccountVM.isSearchButtonShowing)
+                .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
                 ForEach(filterer.gamesFilter, id: \.self) { gameName in
                     Text(gameName)
@@ -424,7 +427,7 @@ struct ManageAccountView: View {
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 5)
                                 .background(.clear)
-                                .foregroundColor(manageAccountVM.searchText.isEmpty ? .clear : .white)
+                                .foregroundColor(filterer.searchText.isEmpty ? .clear : .white)
                                 .padding(
                                     EdgeInsets(
                                         top: 2,
@@ -435,19 +438,21 @@ struct ManageAccountView: View {
                                 )
                         )
                         .onTapGesture {
-                            manageAccountVM.searchText = gameName
+                            filterer.searchText = gameName
                         }
                         .onChange(of: manageAccountVM.addGameButtonWasTapped) { newValue in
-                            if manageAccountVM.listOfGames.contains(manageAccountVM.searchText) {
+                            if ((manageAccountVM.user.listOfGames?.contains(filterer.searchText)) != nil) {
                                 // perform error "you already have this added"
+                                print("already added")
                             } else {
-                                manageAccountVM.listOfGames.append(manageAccountVM.searchText)
+                                manageAccountVM.listOfGames.append(filterer.searchText)
+                                print("added in")
                             }
                         }
                 }
             }
             .padding()
-            .animation(Animation.easeInOut(duration: 0.7), value: manageAccountVM.searchText)
+            .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
             .listStyle(.plain)
         }
     }

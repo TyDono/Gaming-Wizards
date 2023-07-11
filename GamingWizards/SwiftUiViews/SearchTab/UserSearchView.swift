@@ -18,7 +18,7 @@ struct UserSearchView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-                HStack {
+                VStack {
                     searchBar
                 }
             }

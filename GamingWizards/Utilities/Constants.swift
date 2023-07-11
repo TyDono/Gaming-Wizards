@@ -17,6 +17,8 @@ struct Constants {
     static let textFieldMaxCharacters: Int = 45
     static let textViewMaxCharacters: Int = 500
     static let navigationTitleFontSize: Int = 26
+    static let profileImageWidth: CGFloat = 300
+    static let profileImageHeight: CGFloat = 300
 //    static let friendList = "friendList"
     
     // MARK: calls to User

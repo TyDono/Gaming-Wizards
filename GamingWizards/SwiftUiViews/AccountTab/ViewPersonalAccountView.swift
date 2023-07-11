@@ -27,7 +27,7 @@ struct ViewPersonalAccountView: View {
     
     var body: some View {
         ZStack {
-            self.backgroundImage
+//            self.backgroundImage
             VStack {
                 accountView
                     .padding()
@@ -35,15 +35,16 @@ struct ViewPersonalAccountView: View {
                     .padding()
             }
         }
-        .navigationTitle(user.title ?? "")
+        .background(
+            backgroundImage
+        )
         .font(.globalFont(.luminari, size: 16))
-//        .background(backgroundImage)
     }
     
     private var backgroundImage: some View {
         Image("blank-page")
             .resizable()
-            .scaledToFill()
+            .aspectRatio(contentMode: .fill)
             .edgesIgnoringSafeArea(.all)
     }
     

@@ -44,7 +44,6 @@ extension ManageAccountView {
         @Published var isPayToPlay: Bool = false
         @Published var userIsSolo: Bool = true
         @Published var isSearchButtonShowing: Bool = false
-        @Published var searchText: String = ""
         @Published var addGameButtonWasTapped: Bool = false
         @Published var searchBarDropDownNotificationText: String = "You already have this game added"
         
