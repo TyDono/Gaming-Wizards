@@ -25,7 +25,7 @@ struct SignInView: View {
     
     @EnvironmentObject var userAuth: UserAuth
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-//    @EnvironmentObject var session: SessionStore//not used
+//    @EnvironmentObject var session: SessionStore
     
     @StateObject private var signInViewModel = SignInViewModel()
     

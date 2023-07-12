@@ -23,7 +23,6 @@
 		CB5BE88229FDE958009D38D6 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE83329FDE954009D38D6 /* Endpoint.swift */; };
 		CB5BE88329FDE958009D38D6 /* UserSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE83529FDE954009D38D6 /* UserSignInViewController.swift */; };
 		CB5BE88429FDE958009D38D6 /* NavigationLogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE83629FDE954009D38D6 /* NavigationLogInView.swift */; };
-		CB5BE88529FDE958009D38D6 /* AppleSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE83729FDE954009D38D6 /* AppleSignInViewModel.swift */; };
 		CB5BE88629FDE958009D38D6 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE83829FDE954009D38D6 /* SignInView.swift */; };
 		CB5BE88729FDE958009D38D6 /* SignInContentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE83929FDE954009D38D6 /* SignInContentViewViewModel.swift */; };
 		CB5BE88A29FDE958009D38D6 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE83E29FDE955009D38D6 /* CoreDataController.swift */; };
@@ -109,6 +108,7 @@
 		CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */; };
 		CB62406C2A5787FF00E69C5C /* Filterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406B2A5787FF00E69C5C /* Filterer.swift */; };
 		CB62406E2A5C15B700E69C5C /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */; };
+		CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406F2A5F052B00E69C5C /* Debouncer.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -164,7 +164,6 @@
 		CB5BE83329FDE954009D38D6 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		CB5BE83529FDE954009D38D6 /* UserSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignInViewController.swift; sourceTree = "<group>"; };
 		CB5BE83629FDE954009D38D6 /* NavigationLogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationLogInView.swift; sourceTree = "<group>"; };
-		CB5BE83729FDE954009D38D6 /* AppleSignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignInViewModel.swift; sourceTree = "<group>"; };
 		CB5BE83829FDE954009D38D6 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		CB5BE83929FDE954009D38D6 /* SignInContentViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInContentViewViewModel.swift; sourceTree = "<group>"; };
 		CB5BE83E29FDE955009D38D6 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -222,6 +221,7 @@
 		CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreHelper.swift; sourceTree = "<group>"; };
 		CB62406B2A5787FF00E69C5C /* Filterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filterer.swift; sourceTree = "<group>"; };
 		CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
+		CB62406F2A5F052B00E69C5C /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -369,6 +369,7 @@
 				CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */,
 				CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
+				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -386,7 +387,6 @@
 			children = (
 				CB5BE83529FDE954009D38D6 /* UserSignInViewController.swift */,
 				CB5BE83629FDE954009D38D6 /* NavigationLogInView.swift */,
-				CB5BE83729FDE954009D38D6 /* AppleSignInViewModel.swift */,
 				CB5BE83829FDE954009D38D6 /* SignInView.swift */,
 				CB5BE83929FDE954009D38D6 /* SignInContentViewViewModel.swift */,
 			);
@@ -789,7 +789,6 @@
 				CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */,
 				CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */,
 				CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */,
-				CB5BE88529FDE958009D38D6 /* AppleSignInViewModel.swift in Sources */,
 				CB5BE8A529FDE958009D38D6 /* DetailedFriendView.swift in Sources */,
 				CB5BE88129FDE957009D38D6 /* GamingWizardsNotification.swift in Sources */,
 				CB049A152A33D87B00024D01 /* ViewPersonalAccountView.swift in Sources */,
@@ -798,6 +797,7 @@
 				CB5BE88A29FDE958009D38D6 /* CoreDataController.swift in Sources */,
 				CB5BE8AC29FDE958009D38D6 /* Constants.swift in Sources */,
 				CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */,
+				CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */,
 				CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */,
 				CB5BE8A929FDE958009D38D6 /* HideNavigationBar.swift in Sources */,
 				CB5BE89F29FDE958009D38D6 /* MapBoxView.swift in Sources */,

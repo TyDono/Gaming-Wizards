@@ -11,7 +11,7 @@ struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchVM = UserSearchViewModel()
     @StateObject private var filterer = Filterer()
-    @State private var number = 0
+    private var debouncer = Debouncer(delay: 0.5)
     
     var body: some View {
         ZStack {
@@ -71,11 +71,10 @@ struct UserSearchView: View {
                         )
                         .onChange(of: userSearchVM.searchButtonWasTapped, perform: { newValue in
                             if !ListOfGames.name.contains(filterer.searchText) {
-                                userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
-                                userSearchVM.isSearchError.toggle()//this is getting spam toggled by a ghost wtf?! searchButtonWasTapped is what is gettign spammed. idk why
-                                print("no good etnry")
-                                self.number += 1
-                                print(number)
+                                debouncer.schedule {
+                                    userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
+                                    userSearchVM.isSearchError.toggle()
+                                }
                             } else {
                                 userSearchVM.navigateToSearchResults = true
                             }

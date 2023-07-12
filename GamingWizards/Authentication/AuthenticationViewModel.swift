@@ -123,7 +123,6 @@ import FirebaseStorage
         let title = ""
         let isSolo = true
         let payToPlay = false
-//        user.profileImageString = profileImageString
         let newUser = User(id: id,
                            firstName: firstName,
                            lastName: lastName,
@@ -187,57 +186,6 @@ import FirebaseStorage
       }.joined()
 
       return hashString
-    }
-
-//    func startSignInWithAppleFlow() {
-//      let nonce = randomNonceString()
-//      currentNonce = nonce
-//      let appleIDProvider = ASAuthorizationAppleIDProvider()
-//      let request = appleIDProvider.createRequest()
-//      request.requestedScopes = [.fullName, .email]
-//      request.nonce = sha256(nonce)
-//
-//      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-//      authorizationController.delegate = self
-//      authorizationController.presentationContextProvider = self
-//      authorizationController.performRequests()
-//    }
-    
-    //out dated. remove
-    func retrieveFriends(uid: String) { //, completion: @escaping ([Friend]) -> () // this was an escaping. now it isnt
-        let path = firestoreDatabase.collection(Constants.users).document(uid).collection("friendList")
-            path.addSnapshotListener { [weak self] querySnapshot, err in
-                if let error = err {
-                    print("ERROR RETRIEVING FRIENDS: \(error)")
-                    return
-                }
-                guard let self = self else { return }
-//                guard let documents = querySnapshot.data() else { return }
-                guard let documents = querySnapshot?.documents else { return }
-                //deletes all friends locally
-                for friend in self.coreDataController.savedFriendEntities {
-                    self.coreDataController.deleteFriendLocally(friend: friend)
-                }
-                for document in documents {
-                    let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
-                    let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
-                    let friendDisplayName = document.data()[Constants.friendDisplayName] as? String ?? ""
-                    let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
-                    let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
-                    self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
-//                    self.coreDataController.addFriend(friendCodeID: friendCodeID, friendDisplayName: displayName, isFriend: isFriend, isFavorite: isFavorite)
-//                    self.friendList.append(Friend(friendCodeID: friendCodeID, friendDisplayName: displayName, isFriend: isFriend))
-                }
-//                DispatchQueue.main.async {
-                    //remove all friends
-                    
-                    //add new friends
-                    
-//                    let sortedFriends = self.friendList.sorted { !$0.isFriend && $1.isFriend }
-                    // add into core data
-//                    completion(sortedFriends)
-//                }
-            }
     }
     
     func deleteFriendInFirestore(friend: FriendEntity, userID: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,

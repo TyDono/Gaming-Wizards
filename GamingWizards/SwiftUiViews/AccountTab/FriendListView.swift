@@ -70,17 +70,6 @@ struct FriendListView: View {
         }
     }
     
-    //not used
-    private var customNavigationBar: some View {
-        ZStack {
-            HStack {
-                backButton
-                Spacer()
-                addFriendButton
-            }
-        }
-    }
-    
     private var addFriendButton: some View {
         Button(action: {
             friendListVM.addFriendAlertIsShowing = true
@@ -96,8 +85,6 @@ struct FriendListView: View {
                         return
                     }
                     friendListVM.sendFriendRequest()
-                    //friendListVM.addFruit() // remove later
-                    //friendListVM.friendIDTextField = ""
                 })
                 Button("Cancel", role: .cancel, action: {})
             }, message: {

@@ -111,12 +111,10 @@ struct SearchBar: View {
             .cornerRadius(Constants.roundedCornerRadius)
             .foregroundColor(.white)
             .onChange(of: isSearchError, perform: { newValue in
-//                if newValue == true {
                     withAnimation(Animation.easeInOut(duration: 0.6).speed(1)) {
                         searchBarIsShaking.toggle()
                         isDropDownNotificationShowing = true
                     }
-//                }
             })
             .onTapGesture {
                 actionButtonWasTapped.toggle()

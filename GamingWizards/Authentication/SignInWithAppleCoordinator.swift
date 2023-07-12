@@ -14,28 +14,21 @@ import SwiftUI
 
 
 class SignInWithAppleCoordinator: NSObject, ASAuthorizationControllerPresentationContextProviding, ObservableObject {
-//    @ObservedObject var user = UserObservable()
-
-//    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-//    @State private var authenticationViewModel = AuthenticationViewModel()
 //    let session: SessionStore
     let scenes = UIApplication.shared.connectedScenes
-
+    // Unhashed nonce.
+    fileprivate var currentNonce: String?
 
 //    init(session: SessionStore) {
 //        self.session = session
 //    }
-
-    //not used
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
         return window!
     }
-
-    // Unhashed nonce.
-    fileprivate var currentNonce: String?
 
     func startSignInWithAppleFlow() {
         let nonce = authenticationViewModel.randomNonceString()
