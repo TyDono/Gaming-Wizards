@@ -14,7 +14,11 @@ import SwiftUI
 //        @Published var searchText: String = ""
         @Published var searchScope = SearchScope.inbox
         @Published var users: [User] = []
-        @Published var searchBarDropDownNotificationText: String = "You must select a viable option from the list"
+        @Published var searchBarDropDownNotificationText: String = ""
+        @Published var isSearchBarDropDownNotificationShowing: Bool = false
+        @Published var isSearchError: Bool = false
+        @Published var navigateToSearchResults: Bool = false
+        @Published var searchButtonWasTapped: Bool = false
 //        @ObservedObject var filterer = Filterer()
         
 //        var filteredGames: [String] {

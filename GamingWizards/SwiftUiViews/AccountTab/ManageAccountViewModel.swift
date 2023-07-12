@@ -45,7 +45,8 @@ extension ManageAccountView {
         @Published var userIsSolo: Bool = true
         @Published var isSearchButtonShowing: Bool = false
         @Published var addGameButtonWasTapped: Bool = false
-        @Published var searchBarDropDownNotificationText: String = "You already have this game added"
+        @Published var searchBarDropDownNotificationText: String = ""
+        @Published var isSearchError: Bool = false
         
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()

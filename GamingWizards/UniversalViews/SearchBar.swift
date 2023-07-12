@@ -11,12 +11,12 @@ struct SearchBar: View {
     @Binding var searchText: String
     @Binding var actionButtonWasTapped: Bool
     @Binding var dropDownNotificationText: String
-    @State var gameListDidNotMatch: Bool = false
+    @Binding var isSearchError: Bool
+    @State var isDropDownNotificationShowing: Bool = false
     @State var searchBarIsShaking: Bool = false
     @State private var shakeCount = 0
     @State var actionButtonPlaceholderText: String
     @State var isActionButtonShowing: Bool
-    @State var isDropDownNotificationShowing: Bool = false
     var isXCancelButtonShowing: Bool = false
     
     var body: some View {
@@ -72,8 +72,10 @@ struct SearchBar: View {
                 .frame(width: 20, height: 20)
                 .foregroundColor(.gray)
                 .onTapGesture {
-                    self.searchText = ""
-                    isDropDownNotificationShowing = false
+                    withAnimation(Animation.easeInOut(duration: 0.35)) {
+                        self.searchText = ""
+                        isDropDownNotificationShowing = false
+                    }
                 }
                 .padding(.trailing, 8)
     }
@@ -87,7 +89,7 @@ struct SearchBar: View {
                            .background(Color.white)
                            .clipShape(RoundedRectangle(cornerRadius: 8))
                            .offset(x: 0, y: -28)
-                           .animation(.easeInOut(duration: 0.35), value: isDropDownNotificationShowing)
+//                           .animation(.easeInOut(duration: 0.35), value: isDropDownNotificationShowing)
                            .onTapGesture {
                                withAnimation(Animation.easeInOut(duration: 0.35)) {
                                    isDropDownNotificationShowing = false
@@ -108,40 +110,17 @@ struct SearchBar: View {
             .background(.blue)
             .cornerRadius(Constants.roundedCornerRadius)
             .foregroundColor(.white)
-            .onTapGesture {
-                if ListOfGames.name.contains(searchText) {
-                    withAnimation(Animation.easeInOut(duration: 0.25)) {
-                        isDropDownNotificationShowing = false
-                    }
-                    actionButtonWasTapped.toggle()
-                    
-                } else {
+            .onChange(of: isSearchError, perform: { newValue in
+//                if newValue == true {
                     withAnimation(Animation.easeInOut(duration: 0.6).speed(1)) {
                         searchBarIsShaking.toggle()
                         isDropDownNotificationShowing = true
                     }
-                }
-                
+//                }
+            })
+            .onTapGesture {
+                actionButtonWasTapped.toggle()
             }
-        
-//        NavigationLink {
-////            performSearchForMatchingGames(game: <#T##String#>) { games, err in
-////                if error = err {
-////                    print("SEARCH FOR MATCHING GAMES ERROR: \(error.localizedDescription)")
-////                }
-////            }
-//            SearchResultsView()
-////                    .environmentObject(friendListVM)
-//        } label: {
-//            Text("Search")
-//                .font(.luminari(.regular, size: 16))
-//                .padding(8)
-//                .animation(Animation.easeInOut(duration: 0.2), value: isActionButtonShowing)
-//                .background(.blue)
-//                .cornerRadius(10)
-//                .foregroundColor(.white)
-//
-//        }
     }
     
 }

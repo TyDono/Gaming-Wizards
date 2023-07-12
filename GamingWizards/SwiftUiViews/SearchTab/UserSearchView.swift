@@ -11,9 +11,7 @@ struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchVM = UserSearchViewModel()
     @StateObject private var filterer = Filterer()
-    @State private var isSearchButtonShowing: Bool = false
-    @State var searchButtonWasTapped: Bool = false
-    @State var users: [User] = []
+    @State private var number = 0
     
     var body: some View {
         ZStack {
@@ -23,27 +21,36 @@ struct UserSearchView: View {
                 }
             }
             .navigationBarTitle("Looking for Group")
-            .navigationDestination(isPresented: $searchButtonWasTapped) {
+            .navigationDestination(isPresented: $userSearchVM.navigateToSearchResults) {
                 SearchResultsView(userSearchViewModel: userSearchVM, searchText: filterer.searchText)
                 
-           }
+            }
         }
         .font(.globalFont(.luminari, size: 16))
         .background(
             backgroundImage
         )
+        .keyboardAdaptive()
     }
     
     private var backgroundImage: some View {
-            Image("realistic-billboard")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+        Image("realistic-billboard")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
+//            .resizable()
+//            .aspectRatio(contentMode: .fill)
+//            .edgesIgnoringSafeArea(.all)
     }
     
     private var searchBar: some View {
         VStack {
-            SearchBar(searchText: $filterer.searchText, actionButtonWasTapped: $searchButtonWasTapped, dropDownNotificationText: $userSearchVM.searchBarDropDownNotificationText, actionButtonPlaceholderText: "Search", isActionButtonShowing: true, isXCancelButtonShowing: false)
+            SearchBar(searchText: $filterer.searchText,
+                      actionButtonWasTapped: $userSearchVM.searchButtonWasTapped,
+                      dropDownNotificationText: $userSearchVM.searchBarDropDownNotificationText,
+                      isSearchError: $userSearchVM.isSearchError,
+                      actionButtonPlaceholderText: "Search",
+                      isActionButtonShowing: true, isXCancelButtonShowing: false)
                 .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
                 ForEach(filterer.gamesFilter, id: \.self) { gameName in
@@ -62,6 +69,17 @@ struct UserSearchView: View {
                                     )
                                 )
                         )
+                        .onChange(of: userSearchVM.searchButtonWasTapped, perform: { newValue in
+                            if !ListOfGames.name.contains(filterer.searchText) {
+                                userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
+                                userSearchVM.isSearchError.toggle()//this is getting spam toggled by a ghost wtf?! searchButtonWasTapped is what is gettign spammed. idk why
+                                print("no good etnry")
+                                self.number += 1
+                                print(number)
+                            } else {
+                                userSearchVM.navigateToSearchResults = true
+                            }
+                        })
                         .onTapGesture {
                             filterer.searchText = gameName
                         }

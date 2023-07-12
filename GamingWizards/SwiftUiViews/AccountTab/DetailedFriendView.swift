@@ -12,18 +12,19 @@ struct DetailedFriendView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
-            List {
-                friendDisplayNameView
-                    .padding()
-                friendIDView
-                    .padding()
-//                isFavoriteView // implement this post MVP
-//                    .padding()
-
-                if friendListVM.friend?.isFriend == true {
-                        removeFriendView
+        ZStack {
+            VStack {
+                List {
+                    friendDisplayNameView
                         .padding()
+                    friendIDView
+                        .padding()
+                    //                isFavoriteView // implement this post MVP
+                    //                    .padding()
+                    
+                    if friendListVM.friend?.isFriend == true {
+                        removeFriendView
+                            .padding()
                     } else {
                         HStack {
                             acceptFriendRequestView
@@ -31,17 +32,16 @@ struct DetailedFriendView: View {
                             denyFriendRequestView
                                 .padding()
                         }
-
+                        
                     }
-//                    isFriend == true ? removeFriend : acceptFriendRequestView
-//                        .padding()
-//                }
+                }
+                .buttonStyle(.borderless)
             }
-            .buttonStyle(.borderless)
+            .toolbar {
+            }
+            .navigationBarTitle(friendListVM.friend?.friendDisplayName ?? "", displayMode: .large)
         }
-        .toolbar {
-        }
-        .navigationBarTitle(friendListVM.friend?.friendDisplayName ?? "", displayMode: .large)
+        .keyboardAdaptive()
     }
 
     private var friendDisplayNameView: some View {

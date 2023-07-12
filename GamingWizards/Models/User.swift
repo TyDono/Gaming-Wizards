@@ -241,7 +241,7 @@ class UserObservable: ObservableObject {
         about = UserDefaults.standard.string(forKey: "\(aboutKey)-\(id)") ?? ""
         availability = UserDefaults.standard.string(forKey: "\(availabilityKey)-\(id)") ?? ""
         title = UserDefaults.standard.string(forKey: "\(titleKey)-\(id)") ?? ""
-        isPayToPlay = UserDefaults.standard.bool(forKey: "\(payToPlayKey)-\(id)") ?? false
-        isSolo = UserDefaults.standard.bool(forKey: "\(isSoloKey)-\(id)") ?? true
+        isPayToPlay = UserDefaults.standard.bool(forKey: "\(payToPlayKey)-\(id)")
+        isSolo = UserDefaults.standard.bool(forKey: "\(isSoloKey)-\(id)")
     }
 }

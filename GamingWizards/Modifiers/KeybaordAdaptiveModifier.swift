@@ -27,15 +27,12 @@ struct KeyboardAdaptive: ViewModifier {
 }
 
 extension View {
-    
     @ViewBuilder
     func keyboardAdaptive() -> some View {
         if #available(iOS 14, *) {
-            // iOS 14 adds keyboard to the safe area, therefore entire view moves up. Disable this to achieve same keyboard avoidance functionality as iOS 13
             ModifiedContent(content: self, modifier: KeyboardAdaptive())
                 .ignoresSafeArea(.keyboard)
         } else {
-            // iOS 13 needs keyboard avoidance modifier
             ModifiedContent(content: self, modifier: KeyboardAdaptive())
         }
     }

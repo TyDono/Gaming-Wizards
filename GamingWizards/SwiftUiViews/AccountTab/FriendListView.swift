@@ -14,11 +14,8 @@ struct FriendListView: View {
     @StateObject var coreDataController = CoreDataController.shared
     
     var body: some View {
-            //            ZStack(alignment: .bottom) {
+        ZStack {
             VStack {
-//                ForEach(authenticationViewModel.myFriendListData) { friendData in
-//                    Text("\(friendData.friendDisplayName)")
-//                }
                 listOfFriends
             }
             .onAppear {
@@ -27,7 +24,6 @@ struct FriendListView: View {
             .onDisappear {
                 authenticationViewModel.stopListening()
             }
-            //            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     addFriendButton
@@ -39,8 +35,8 @@ struct FriendListView: View {
             }, message: {
                 Text("Your friend request is still pending, or you are already friends")
             })
-            
         }
+    }
     
     private var listOfFriends: some View {
         VStack {

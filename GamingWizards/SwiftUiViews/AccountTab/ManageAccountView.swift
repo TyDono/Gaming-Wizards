@@ -418,7 +418,11 @@ struct ManageAccountView: View {
                        alignment: .leading)
                 .font(.roboto(.semibold,
                               size: 15))
-            SearchBar(searchText: $filterer.searchText, actionButtonWasTapped: $manageAccountVM.addGameButtonWasTapped, dropDownNotificationText: $manageAccountVM.searchBarDropDownNotificationText, actionButtonPlaceholderText: "Add", isActionButtonShowing: manageAccountVM.isSearchButtonShowing)
+            SearchBar(searchText: $filterer.searchText,
+                      actionButtonWasTapped: $manageAccountVM.addGameButtonWasTapped,
+                      dropDownNotificationText: $manageAccountVM.searchBarDropDownNotificationText,
+                      isSearchError: $manageAccountVM.isSearchError,
+                      actionButtonPlaceholderText: "Add", isActionButtonShowing: manageAccountVM.isSearchButtonShowing)
                 .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
                 ForEach(filterer.gamesFilter, id: \.self) { gameName in
@@ -441,9 +445,14 @@ struct ManageAccountView: View {
                             filterer.searchText = gameName
                         }
                         .onChange(of: manageAccountVM.addGameButtonWasTapped) { newValue in
-                            if ((manageAccountVM.user.listOfGames?.contains(filterer.searchText)) != nil) {
-                                // perform error "you already have this added"
+                            if (((manageAccountVM.user.listOfGames?.contains(filterer.searchText))) != nil) {
+                                manageAccountVM.searchBarDropDownNotificationText = "\(filterer.searchText) has already been added"
+                                manageAccountVM.isSearchError.toggle()
                                 print("already added")
+                            } else if !ListOfGames.name.contains(filterer.searchText) {
+                                manageAccountVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
+                                manageAccountVM.isSearchError.toggle()
+                                print("entry did not match game")
                             } else {
                                 manageAccountVM.listOfGames.append(filterer.searchText)
                                 print("added in")
@@ -455,6 +464,7 @@ struct ManageAccountView: View {
             .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
             .listStyle(.plain)
         }
+        .keyboardAdaptive()
     }
     
     private var emailTextField: some View {
