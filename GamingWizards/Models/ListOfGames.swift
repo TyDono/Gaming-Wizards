@@ -9,7 +9,7 @@ import Foundation
 
 struct ListOfGames {
     
-    static let name = [
+    static let name = Array(Set([
         
         // MARK: - Two-player games
         "Abalone",
@@ -19,7 +19,6 @@ struct ListOfGames {
         "Asalto",
         "Backgammon",
         "BattleLore",
-        "Battleship",
         "Blockade",
         "Blood Bowl",
         "Bul",
@@ -638,5 +637,5 @@ struct ListOfGames {
         // MARK: - ??????
         "Barbie Dream House"
         
-    ]
+    ]))
 }

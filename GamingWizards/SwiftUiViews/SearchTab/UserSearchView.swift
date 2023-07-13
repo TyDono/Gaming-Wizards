@@ -54,39 +54,34 @@ struct UserSearchView: View {
                 .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
                 ForEach(filterer.gamesFilter, id: \.self) { gameName in
-                    Text(gameName)
-                        .foregroundColor(.black)
-                        .listRowBackground(
-                            RoundedRectangle(cornerRadius: 5)
-                                .background(.clear)
-                                .foregroundColor(filterer.searchText.isEmpty ? .clear : .white)
-                                .padding(
-                                    EdgeInsets(
-                                        top: 2,
-                                        leading: 6,
-                                        bottom: 2,
-                                        trailing: 6
-                                    )
-                                )
-                        )
-                        .onChange(of: userSearchVM.searchButtonWasTapped, perform: { newValue in
-                            if !ListOfGames.name.contains(filterer.searchText) {
-                                debouncer.schedule {
-                                    userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
-                                    userSearchVM.isSearchError.toggle()
-                                }
-                            } else {
-                                userSearchVM.navigateToSearchResults = true
+                    
+                    Button {
+                        filterer.searchText = gameName
+                    } label: {
+                        SearchResultCellView(index: 0, text: gameName, isEmptyCell: filterer.searchText.isEmpty)
+                    }
+                    .listRowBackground(Color.clear)
+                    .onChange(of: userSearchVM.searchButtonWasTapped, perform: { newValue in
+                        if !ListOfGames.name.contains(filterer.searchText) {
+                            debouncer.schedule {
+                                userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
+                                userSearchVM.isSearchError.toggle()
                             }
-                        })
-                        .onTapGesture {
-                            filterer.searchText = gameName
+                        } else {
+                            userSearchVM.navigateToSearchResults = true
                         }
+                    })
                 }
             }
             .padding()
             .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
             .listStyle(.plain)
+        }
+    }
+    
+    private var gameButtonCellView: some View {
+        VStack {
+            
         }
     }
 
