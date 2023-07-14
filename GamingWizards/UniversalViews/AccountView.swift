@@ -9,6 +9,7 @@ import SwiftUI
 import Foundation
 
 struct AccountView: View {
+    @Environment(\.defaultMinListRowHeight) var minRowHeight
 //    @Binding var isShowingAccountView: Bool?
 //    @Binding var isShowingEditAccountView: Bool?
     
@@ -190,52 +191,22 @@ struct AccountView: View {
                     alignment: .center)
                 .foregroundColor(.gray)
                 .font(.globalFont(.luminari, size: 12))
-            List {
+            OverflowLayout(spacing: 10) {
                 ForEach(listOfGames ?? [], id: \.self) { game in
-                    Text("a game should be here")
                     Text(game)
                         .frame(
                             maxWidth: .infinity,
                             maxHeight: .infinity,
                             alignment: .leading)
+                        .lineLimit(nil)
+//                        .padding(.horizontal, 20)
+                        .foregroundColor(.black)
+                        .background(.white)
+                        .cornerRadius(Constants.roundedCornerRadius)
+                        .lineLimit(nil)
                 }
             }
         }
-//                        .lineLimit(nil)
-//                        .font(.globalFont(.luminari, size: 14))
-//                        .padding(.vertical, 8)
-//                        .listRowBackground(
-//                            RoundedRectangle(cornerRadius: 5)
-//                                .background(.red)
-//                                .foregroundColor(.black)
-//                                .opacity(1.0)
-//                                .padding(
-//                                    EdgeInsets(
-//                                        top: 2,
-//                                        leading: 6,
-//                                        bottom: 2,
-//                                        trailing: 6
-//                                    )
-//                                )
-//                        )
-//                }
-//                .listRowBackground(
-//                    RoundedRectangle(cornerRadius: 5)
-//                        .background(.clear)
-//                        .foregroundColor(.clear)
-//                        .padding(
-//                            EdgeInsets(
-//                                top: 2,
-//                                leading: 6,
-//                                bottom: 2,
-//                                trailing: 6
-//                            )
-//                        )
-//                )
-//            }
-//        }
-//        .listStyle(.plain)
-//        .background(Color.clear)
     }
     
     private var profileAvailability: some View {

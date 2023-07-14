@@ -110,6 +110,8 @@
 		CB62406E2A5C15B700E69C5C /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */; };
 		CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406F2A5F052B00E69C5C /* Debouncer.swift */; };
 		CB62962F2A5F987500F84367 /* SearchResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62962E2A5F987500F84367 /* SearchResultCellView.swift */; };
+		CB6296312A60913300F84367 /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6296302A60913300F84367 /* ListCellView.swift */; };
+		CB6296372A61103500F84367 /* OverflowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6296362A61103500F84367 /* OverflowLayout.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -224,6 +226,8 @@
 		CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
 		CB62406F2A5F052B00E69C5C /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		CB62962E2A5F987500F84367 /* SearchResultCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCellView.swift; sourceTree = "<group>"; };
+		CB6296302A60913300F84367 /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
+		CB6296362A61103500F84367 /* OverflowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowLayout.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -591,8 +595,10 @@
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
 				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
-				CB049A182A33D8EF00024D01 /* AccountView.swift */,
 				CB62962E2A5F987500F84367 /* SearchResultCellView.swift */,
+				CB6296302A60913300F84367 /* ListCellView.swift */,
+				CB6296362A61103500F84367 /* OverflowLayout.swift */,
+				CB049A182A33D8EF00024D01 /* AccountView.swift */,
 			);
 			path = UniversalViews;
 			sourceTree = "<group>";
@@ -827,12 +833,14 @@
 				CB5BE8B429FDE958009D38D6 /* User.swift in Sources */,
 				CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */,
 				CB5BE88F29FDE958009D38D6 /* UIResponderExtension.swift in Sources */,
+				CB6296372A61103500F84367 /* OverflowLayout.swift in Sources */,
 				CB5BE8A829FDE958009D38D6 /* ManageAccountView.swift in Sources */,
 				CB5BE89529FDE958009D38D6 /* UIFont.swift in Sources */,
 				CB5BE89D29FDE958009D38D6 /* FoodThemeSelectionViewModel.swift in Sources */,
 				CB5BE8BA29FDE958009D38D6 /* SignInWithAppleCoordinator.swift in Sources */,
 				CB5BE89329FDE958009D38D6 /* PublishersExtension.swift in Sources */,
 				CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */,
+				CB6296312A60913300F84367 /* ListCellView.swift in Sources */,
 				CB5BE89429FDE958009D38D6 /* StringExtension.swift in Sources */,
 				CB5BE8B029FDE958009D38D6 /* AlertItem.swift in Sources */,
 				CB6240682A53AD8100E69C5C /* DiskSpaceHandler.swift in Sources */,

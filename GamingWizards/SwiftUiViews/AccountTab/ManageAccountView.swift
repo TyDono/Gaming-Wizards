@@ -30,12 +30,6 @@ struct ManageAccountView: View {
 
                 VStack {
                     ScrollView {
-                        
-                        Group {
-                            listOfGamesView
-                                .padding()
-                        }
-                        
                         Group {
                             Spacer().frame(height: 16)
                             profileImageView
@@ -62,8 +56,8 @@ struct ManageAccountView: View {
                                 .padding()
                             PayToPlayView
                                 .padding()
-//                            listOfGamesView
-//                                .padding()
+                            listOfGamesView
+                                .padding()
                             personalFriendID
                                 .padding()
                             emailTextField
