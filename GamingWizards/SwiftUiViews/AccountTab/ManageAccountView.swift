@@ -12,6 +12,7 @@ import PhotosUI
 struct ManageAccountView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.defaultMinListRowHeight) var minRowHeight
     @ObservedObject var user = UserObservable.shared
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @StateObject private var manageAccountVM = ManageAccountViewModel()
@@ -454,6 +455,7 @@ struct ManageAccountView: View {
                         }
                 }
             }
+            .frame(minHeight: minRowHeight * 3)
             .padding()
             .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
             .listStyle(.plain)

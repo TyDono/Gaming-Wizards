@@ -68,7 +68,8 @@ struct AccountView: View {
                         profileFriendCodeIdView
                         Divider()
                             .background(Color.black)
-                        profileListOfGamesView
+                        listOfGamesTagView
+//                        profileListOfGamesView
                     }
                 }
             }
@@ -182,7 +183,7 @@ struct AccountView: View {
         }
     }
     
-    private var profileListOfGamesView: some View {
+    private var listOfGamesTagView: some View {
         VStack {
             Text("Games")
                 .frame(
@@ -191,20 +192,13 @@ struct AccountView: View {
                     alignment: .center)
                 .foregroundColor(.gray)
                 .font(.globalFont(.luminari, size: 12))
-            OverflowLayout(spacing: 10) {
-                ForEach(listOfGames ?? [], id: \.self) { game in
-                    Text(game)
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .leading)
-                        .lineLimit(nil)
-//                        .padding(.horizontal, 20)
-                        .foregroundColor(.black)
-                        .background(.white)
-                        .cornerRadius(Constants.roundedCornerRadius)
-                        .lineLimit(nil)
-                }
+            FlowLayout(mode: .scrollable,
+                       binding: .constant(5),
+                       items: listOfGames ?? []) {
+                Text($0)
+                    .font(.globalFont(.luminari, size: 12))
+                    .foregroundColor(.black)
+                    .padding()
             }
         }
     }
