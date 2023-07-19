@@ -57,7 +57,8 @@ struct ManageAccountView: View {
                                 .padding()
                             PayToPlayView
                                 .padding()
-                            listOfGamesView
+//                            listOfGamesView
+                            manageListOfGamesButtonView
                                 .padding()
                             personalFriendID
                                 .padding()
@@ -115,7 +116,7 @@ struct ManageAccountView: View {
                     .foregroundColor(.white)
                     .padding(5)
                     .background(Color.blue)
-                    .cornerRadius(5)
+                    .cornerRadius(Constants.roundedCornerRadius)
             }
         }
         .onAppear(perform: manageAccountVM.loadProfileImageFromDisk)
@@ -277,7 +278,6 @@ struct ManageAccountView: View {
                 .border(Color.black, width: 1)
                 .frame(height: 200)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .navigationTitle("Availability")
                 .foregroundStyle(.secondary)
                 .padding(.horizontal)
                 .onTapGesture {
@@ -403,6 +403,25 @@ struct ManageAccountView: View {
             )
         }.onAppear {
             manageAccountVM.lastName = manageAccountVM.user.lastName ?? ""
+        }
+    }
+    
+    private var manageListOfGamesButtonView: some View {
+        VStack {
+            Button {
+                manageAccountVM.isManageListOfGamesViewShowing = true
+            } label: {
+                Text("Manage game preferences")
+                    .font(.roboto(.semibold,
+                                  size: 20))
+                    .foregroundColor(.white)
+                    .padding(18)
+                    .background(Color.blue)
+                    .cornerRadius(Constants.roundedCornerRadius)
+            }
+            .navigationDestination(isPresented: $manageAccountVM.isManageListOfGamesViewShowing) {
+                ManageListOfGamesView()
+            }
         }
     }
     

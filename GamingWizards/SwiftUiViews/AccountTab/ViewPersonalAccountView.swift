@@ -3,16 +3,6 @@
 //  GamingWizards
 //
 //  Created by Tyler Donohue on 6/9/23.
-//
-
-import SwiftUI
-
-//
-//  SettingsView.swift
-//  GamingWizards
-//
-//  Created by Tyler Donohue on 9/27/22.
-//
 
 import SwiftUI
 import PhotosUI
