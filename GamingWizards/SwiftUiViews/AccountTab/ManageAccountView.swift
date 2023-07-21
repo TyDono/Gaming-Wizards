@@ -35,6 +35,8 @@ struct ManageAccountView: View {
                             Spacer().frame(height: 16)
                             profileImageView
                                 .padding()
+                            manageListOfGamesButtonView
+                                .padding()
                             personalTitleView
                                 .padding()
                             displayNameTextField
@@ -58,8 +60,6 @@ struct ManageAccountView: View {
                             PayToPlayView
                                 .padding()
 //                            listOfGamesView
-                            manageListOfGamesButtonView
-                                .padding()
                             personalFriendID
                                 .padding()
                             emailTextField
@@ -415,7 +415,7 @@ struct ManageAccountView: View {
                     .font(.roboto(.semibold,
                                   size: 20))
                     .foregroundColor(.white)
-                    .padding(18)
+                    .padding(5)
                     .background(Color.blue)
                     .cornerRadius(Constants.roundedCornerRadius)
             }

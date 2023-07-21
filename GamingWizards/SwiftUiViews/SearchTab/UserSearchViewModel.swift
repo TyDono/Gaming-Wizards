@@ -18,7 +18,7 @@ import SwiftUI
         @Published var isSearchBarDropDownNotificationShowing: Bool = false
         @Published var isSearchError: Bool = false
         @Published var navigateToSearchResults: Bool = false
-        @Published var searchButtonWasTapped: Bool = false
+        @Published var isSearchButtonErrorShowing: Bool = false
 //        @ObservedObject var filterer = Filterer()
         
 //        var filteredGames: [String] {

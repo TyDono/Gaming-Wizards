@@ -46,7 +46,7 @@ struct UserSearchView: View {
     private var searchBar: some View {
         VStack {
             SearchBar(searchText: $filterer.searchText,
-                      actionButtonWasTapped: $userSearchVM.searchButtonWasTapped,
+                      actionButtonWasTapped: $userSearchVM.isSearchButtonErrorShowing,
                       dropDownNotificationText: $userSearchVM.searchBarDropDownNotificationText,
                       isSearchError: $userSearchVM.isSearchError,
                       actionButtonPlaceholderText: "Search",
@@ -61,7 +61,7 @@ struct UserSearchView: View {
                         SearchResultCellView(index: 0, text: gameName, isEmptyCell: filterer.searchText.isEmpty)
                     }
                     .listRowBackground(Color.clear)
-                    .onChange(of: userSearchVM.searchButtonWasTapped, perform: { newValue in
+                    .onChange(of: userSearchVM.isSearchButtonErrorShowing, perform: { newValue in
                         if !ListOfGames.name.contains(filterer.searchText) {
                             debouncer.schedule {
                                 userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
@@ -76,12 +76,6 @@ struct UserSearchView: View {
             .padding()
             .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
             .listStyle(.plain)
-        }
-    }
-    
-    private var gameButtonCellView: some View {
-        VStack {
-            
         }
     }
 

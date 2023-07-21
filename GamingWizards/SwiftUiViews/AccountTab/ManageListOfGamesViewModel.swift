@@ -11,6 +11,11 @@ import SwiftUI
 extension ManageListOfGamesView {
     @MainActor class ManageListOfGamesViewModel: ObservableObject {
         @ObservedObject var user = UserObservable.shared
+        @Published var addGameButtonWasTapped: Bool = false
+        @Published var isSearchButtonShowing: Bool = false
+        @Published var isSearchError: Bool = false
+        @Published var searchBarDropDownNotificationText: String = ""
+        @Published var listOfGames: [String] = ListOfGames.name
         
     }
 }

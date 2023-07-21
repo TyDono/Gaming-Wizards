@@ -117,6 +117,7 @@
 		CBB8CAA32A65EE07009B13A6 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8CAA22A65EE07009B13A6 /* FlowLayout.swift */; };
 		CBB8CAAD2A676106009B13A6 /* ManageListOfGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8CAAC2A676106009B13A6 /* ManageListOfGamesView.swift */; };
 		CBB8CAAF2A676153009B13A6 /* ManageListOfGamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8CAAE2A676153009B13A6 /* ManageListOfGamesViewModel.swift */; };
+		CBB8CAB12A67911D009B13A6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8CAB02A67911D009B13A6 /* ColorExtension.swift */; };
 		CBBD556A2A27F08900F27626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBD55692A27F08800F27626 /* LaunchScreen.storyboard */; };
 		CBBD556F2A294B6A00F27626 /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBD556E2A294B6A00F27626 /* imagePicker.swift */; };
 		CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58132A01AFD200136AA0 /* UserReport.swift */; };
@@ -235,6 +236,7 @@
 		CBB8CAA22A65EE07009B13A6 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		CBB8CAAC2A676106009B13A6 /* ManageListOfGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageListOfGamesView.swift; sourceTree = "<group>"; };
 		CBB8CAAE2A676153009B13A6 /* ManageListOfGamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageListOfGamesViewModel.swift; sourceTree = "<group>"; };
+		CBB8CAB02A67911D009B13A6 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CBBD55692A27F08800F27626 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBBD556E2A294B6A00F27626 /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
 		CBCD58132A01AFD200136AA0 /* UserReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReport.swift; sourceTree = "<group>"; };
@@ -378,7 +380,6 @@
 				CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */,
 				CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */,
 				CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */,
-				CBB8CAA22A65EE07009B13A6 /* FlowLayout.swift */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
 			);
@@ -426,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE84529FDE955009D38D6 /* UIResponderExtension.swift */,
+				CBB8CAB02A67911D009B13A6 /* ColorExtension.swift */,
 				CB5BE84629FDE955009D38D6 /* ViewExtension.swift */,
 				CB5BE84729FDE955009D38D6 /* BindingExtension.swift */,
 				CB5BE84829FDE955009D38D6 /* UITabBarControllerExtension.swift */,
@@ -604,6 +606,7 @@
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
 				CB62962E2A5F987500F84367 /* SearchResultCellView.swift */,
 				CB6296302A60913300F84367 /* ListCellView.swift */,
+				CBB8CAA22A65EE07009B13A6 /* FlowLayout.swift */,
 				CB049A182A33D8EF00024D01 /* AccountView.swift */,
 			);
 			path = UniversalViews;
@@ -788,6 +791,7 @@
 				CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */,
 				CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */,
 				CB5BE88629FDE958009D38D6 /* SignInView.swift in Sources */,
+				CBB8CAB12A67911D009B13A6 /* ColorExtension.swift in Sources */,
 				CB5BE8AF29FDE958009D38D6 /* DependencyInjector.swift in Sources */,
 				CB049A172A33D88700024D01 /* ViewPersonalAccountViewModel.swift in Sources */,
 				CB5BE89129FDE958009D38D6 /* BindingExtension.swift in Sources */,
