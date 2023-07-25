@@ -53,12 +53,12 @@ struct UserSearchView: View {
                       isActionButtonShowing: true, isXCancelButtonShowing: false)
                 .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
-                ForEach(filterer.gamesFilter, id: \.self) { gameName in
+                ForEach(filterer.gamesFilter, id: \.self) { game in
                     
                     Button {
-                        filterer.searchText = gameName
+                        filterer.searchText = game.textName
                     } label: {
-                        SearchResultCellView(index: 0, text: gameName, isEmptyCell: filterer.searchText.isEmpty)
+                        SearchResultCellView(index: 0, text: game.textName, isEmptyCell: filterer.searchText.isEmpty)
                     }
                     .listRowBackground(Color.clear)
                     .onChange(of: userSearchVM.isSearchButtonErrorShowing, perform: { newValue in

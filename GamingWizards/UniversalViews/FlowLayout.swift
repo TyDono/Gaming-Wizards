@@ -17,6 +17,7 @@ struct FlowLayout<B, T: Hashable & Equatable, V: View>: View {
     @Binding var binding: B
     let items: [T]
     let viewMapping: (T) -> V
+//    @State var conformationImage: Image? = Image("circle")
     
     @State private var totalHeight: CGFloat
     
@@ -48,36 +49,62 @@ struct FlowLayout<B, T: Hashable & Equatable, V: View>: View {
         var height = CGFloat.zero
         return ZStack(alignment: .topLeading) {
             ForEach(self.items, id: \.self) { item in
-//                let itemContainsValue = gamesArray.firstIndex(where: { $0 == item as! String }) != nil
-                self.viewMapping(item)
-                    .padding([.horizontal, .vertical], -3)
-                    .alignmentGuide(.leading, computeValue: { d in
-                        if (abs(width - d.width) > g.size.width) {
-                            width = 0
-                            height -= d.height
-                        }
-                        let result = width
-                        if item == self.items.last {
-                            width = 0
-                        } else {
-                            width -= d.width
-                        }
-                        return result
-                    })
-                    .alignmentGuide(.top, computeValue: { d in
-                        let result = height
-                        if item == self.items.last {
-                            height = 0
-                        }
-                        return result
-                    })
-//                    .background(
-//                        RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
-//                            .border(Color.clear)
-//                            .foregroundColor(itemContainsValue ? Color.blue : Color.lightGrey)
-//                            .padding(4)
-//                    )
-//                    .foregroundColor(itemContainsValue ? Color.white : Color.black)
+                //                let itemContainsValue = gamesArray.firstIndex(where: { $0 == item as! String }) != nil
+                HStack {
+//                    if let conformationImage = conformationImage {
+//                        conformationImage
+//                            .padding([.horizontal, .vertical], -3)
+//                            .alignmentGuide(.leading, computeValue: { d in
+//                                if (abs(width - d.width) > g.size.width) {
+//                                    width = 0
+//                                    height -= d.height
+//                                }
+//                                let result = width
+//                                if item == self.items.last {
+//                                    width = 0
+//                                } else {
+//                                    width -= d.width
+//                                }
+//                                return result
+//                            })
+//                            .alignmentGuide(.top, computeValue: { d in
+//                                let result = height
+//                                if item == self.items.last {
+//                                    height = 0
+//                                }
+//                                return result
+//                            })
+//                    }
+                    self.viewMapping(item)
+                        .padding([.horizontal, .vertical], -3)
+                        .alignmentGuide(.leading, computeValue: { d in
+                            if (abs(width - d.width) > g.size.width) {
+                                width = 0
+                                height -= d.height
+                            }
+                            let result = width
+                            if item == self.items.last {
+                                width = 0
+                            } else {
+                                width -= d.width
+                            }
+                            return result
+                        })
+                        .alignmentGuide(.top, computeValue: { d in
+                            let result = height
+                            if item == self.items.last {
+                                height = 0
+                            }
+                            return result
+                        })
+                    //                    .background(
+                    //                        RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
+                    //                            .border(Color.clear)
+                    //                            .foregroundColor(itemContainsValue ? Color.blue : Color.lightGrey)
+                    //                            .padding(4)
+                    //                    )
+                    //                    .foregroundColor(itemContainsValue ? Color.white : Color.black)
+                }
             }
         }
         .background(viewHeightReader($totalHeight))

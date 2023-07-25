@@ -13,6 +13,8 @@
 		CB049A192A33D8EF00024D01 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB049A182A33D8EF00024D01 /* AccountView.swift */; };
 		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
 		CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */; };
+		CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */; };
+		CB5948952A6AD8D500BE0DE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948942A6AD8D500BE0DE2 /* ContentView.swift */; };
 		CB5BE81529FDE8B9009D38D6 /* GamingWizardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */; };
 		CB5BE81F29FDE8B9009D38D6 /* GamingWizardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81E29FDE8B9009D38D6 /* GamingWizardsUITests.swift */; };
 		CB5BE82129FDE8B9009D38D6 /* GamingWizardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE82029FDE8B9009D38D6 /* GamingWizardsUITestsLaunchTests.swift */; };
@@ -157,6 +159,8 @@
 		CB049A182A33D8EF00024D01 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
 		CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
+		CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTag.swift; sourceTree = "<group>"; };
+		CB5948942A6AD8D500BE0DE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CB5BE7FB29FDE8B7009D38D6 /* GamingWizards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamingWizards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5BE81029FDE8B9009D38D6 /* GamingWizardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GamingWizardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingWizardsTests.swift; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 				CBB8CAAE2A676153009B13A6 /* ManageListOfGamesViewModel.swift */,
 				CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */,
 				CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */,
+				CB5948942A6AD8D500BE0DE2 /* ContentView.swift */,
 			);
 			path = AccountTab;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				CB24502A2A0102E200581048 /* ListOfGames.swift */,
 				CBCD58242A0B4AA400136AA0 /* UserLocation.swift */,
 				CBEAF0452A1EB87400B9E900 /* LocationModel.swift */,
+				CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -816,6 +822,7 @@
 				CB5BE88A29FDE958009D38D6 /* CoreDataController.swift in Sources */,
 				CB5BE8AC29FDE958009D38D6 /* Constants.swift in Sources */,
 				CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */,
+				CB5948952A6AD8D500BE0DE2 /* ContentView.swift in Sources */,
 				CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */,
 				CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */,
 				CB5BE8A929FDE958009D38D6 /* HideNavigationBar.swift in Sources */,
@@ -836,6 +843,7 @@
 				CB049A192A33D8EF00024D01 /* AccountView.swift in Sources */,
 				CBCD58232A0B1EF400136AA0 /* BackgroundImageView.swift in Sources */,
 				CB5BE8AB29FDE958009D38D6 /* FontModifier.swift in Sources */,
+				CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */,
 				CBB8CAAD2A676106009B13A6 /* ManageListOfGamesView.swift in Sources */,
 				CB5BE89B29FDE958009D38D6 /* HotPotView.swift in Sources */,
 				CBCD581F2A047A1E00136AA0 /* SearchResultsView.swift in Sources */,

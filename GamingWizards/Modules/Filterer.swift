@@ -8,16 +8,16 @@
 import SwiftUI
 
 class Filterer: ObservableObject {
-    
-    @Published var listOfGames: [String] = ListOfGames.name
+    @Published var listOfGames: [FlowTag] = ListOfGames.name.map { FlowTag(gameName: $0) }
+    @Published var emptyList: [FlowTag] = []
     @Published var searchText: String = ""
-    
-    var gamesFilter: [String] {
+
+    var gamesFilter: [FlowTag] {
         if searchText.isEmpty {
-            return [""]
+            return listOfGames
         } else {
-            return listOfGames.filter { $0.localizedCaseInsensitiveContains(searchText) }
+            return listOfGames.filter { $0.textName.localizedCaseInsensitiveContains(searchText) }
         }
     }
-    
 }
+

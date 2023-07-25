@@ -12,6 +12,9 @@ struct ManageListOfGamesView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var filterer = Filterer()
     @StateObject private var manageListOfGamesVM = ManageListOfGamesViewModel()
+    @State private var textColor: Color = Color.black
+    @State private var backgroundColor: Color = Color.lightGrey
+    @State var gameItems: [FlowTag] = []
     
     var body: some View {
         ZStack {
@@ -37,26 +40,100 @@ struct ManageListOfGamesView: View {
             .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             ScrollView {
                 FlowLayout(mode: .scrollable,
-                           binding: .constant(5),
-                           items: filterer.gamesFilter) { gameName in
-//                    if manageListOfGamesVM.user.listOfGames?.contains(gameName) {
-                        //                    }
-                        Text(gameName)
-                            .font(.globalFont(.luminari, size: 12))
-                            .foregroundColor(.black)
-//                            .background(
-//                                RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
-//                                    .border(Color.clear)
-//                                    .foregroundColor(Color.lightGrey)
-//                                    .padding(-8)
-//                            )
-                            .padding()
-                            .onTapGesture {
-                                filterer.searchText = gameName
-                            }
+                           binding: $filterer.searchText,
+                           items: filterer.gamesFilter) { gameItem in
+                    Text(gameItem.textName)
+                        .font(.globalFont(.luminari, size: 12))
+//                        .foregroundColor(gameItem.textColor)
+                        .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
+                        .background(
+                            RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
+                                .border(Color.clear)
+//                                .foregroundColor(gameItem.backgroundColor)
+                                .foregroundColor(gameItem.isSelected ? Color.blue : Color.lightGrey)
+                                .padding(-8)
+                        )
+                        .padding()
+                        .onTapGesture {
+//                            updateGameTagColorsOnTapGesture()
+                            gameItem.isSelected.toggle()
+                            filterer.searchText = filterer.searchText
+//                            updateGameTagColorsOnTap(for: gameItem)
+                        }
                 }
             }
-            .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
+            .onAppear {
+                updateGameTagsWithMatchingGames()
+//                updateColorsForTags()
+            }
+        }
+        .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
+    }
+    
+    private func updateGameTagColorsOnTapGesture() { // not used
+        for index in filterer.gamesFilter.indices {
+            if filterer.gamesFilter[index].isSelected {
+                filterer.gamesFilter[index].textColor = Color.white
+                filterer.gamesFilter[index].backgroundColor = Color.blue
+            } else {
+                filterer.gamesFilter[index].textColor = Color.black
+                filterer.gamesFilter[index].backgroundColor = Color.lightGrey
+            }
+        }
+//        filterer.searchText = tappedGameTag.textName
+    }
+    
+    private func updateGameTagColorsOnTap(for tappedGameTag: FlowTag) { // not used
+        // Create a dictionary to store the selected tag's index and its current colors
+        var selectedTagColors: [Int: (textColor: Color, backgroundColor: Color)] = [:]
+
+        // Loop through the filterer.gamesFilter to populate the dictionary and update the selected tag's colors
+        for index in filterer.gamesFilter.indices {
+            let tag = filterer.gamesFilter[index]
+            if tag == tappedGameTag {
+                if tag.backgroundColor == Color.blue {
+                    selectedTagColors[index] = (textColor: Color.black, backgroundColor: Color.lightGrey)
+                } else {
+                    selectedTagColors[index] = (textColor: Color.white, backgroundColor: Color.blue)
+                }
+            } else {
+                // Store the original colors for other tags
+                selectedTagColors[index] = (textColor: Color.black, backgroundColor: Color.lightGrey)
+            }
+        }
+
+        // Assign the updated colors from the dictionary back to the tags
+        for (index, colors) in selectedTagColors {
+            filterer.gamesFilter[index].textColor = colors.textColor
+            filterer.gamesFilter[index].backgroundColor = colors.backgroundColor
+        }
+        
+        // Reset the searchText to trigger the view update
+        filterer.searchText = tappedGameTag.textName
+    }
+    
+    private func updateGameTagsWithMatchingGames() {
+        guard let listOfGames = manageListOfGamesVM.user.listOfGames else {
+            return
+        }
+        
+        for gameItem in filterer.gamesFilter {
+            if listOfGames.contains(gameItem.textName) {
+                gameItem.isSelected = true
+            }
+        }
+    }
+    
+    private func updateColorsForTags() { // not used
+        for index in filterer.gamesFilter.indices {
+            let gameName = filterer.gamesFilter[index].textName
+            if manageListOfGamesVM.user.listOfGames?.contains(gameName) == true {
+                filterer.gamesFilter[index].textColor = Color.white
+                filterer.gamesFilter[index].backgroundColor = Color.blue
+            } else {
+                filterer.gamesFilter[index].textColor = Color.black
+                filterer.gamesFilter[index].backgroundColor = Color.lightGrey
+            }
         }
     }
     

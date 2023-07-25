@@ -439,8 +439,8 @@ struct ManageAccountView: View {
                       actionButtonPlaceholderText: "Add", isActionButtonShowing: manageAccountVM.isSearchButtonShowing)
                 .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
-                ForEach(filterer.gamesFilter, id: \.self) { gameName in
-                    Text(gameName)
+                ForEach(filterer.gamesFilter, id: \.self) { game in
+                    Text(game.textName)
                         .foregroundColor(.black)
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 5)
@@ -456,7 +456,7 @@ struct ManageAccountView: View {
                                 )
                         )
                         .onTapGesture {
-                            filterer.searchText = gameName
+                            filterer.searchText = game.textName
                         }
                         .onChange(of: manageAccountVM.addGameButtonWasTapped) { newValue in
                             if (((manageAccountVM.user.listOfGames?.contains(filterer.searchText))) != nil) {
