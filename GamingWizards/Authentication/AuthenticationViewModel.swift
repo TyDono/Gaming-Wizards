@@ -45,7 +45,7 @@ import FirebaseStorage
   }
     
     func saveUserIntoFirestore(for user: User) {
-        let documentPath = firestoreDatabase.collection(Constants.users).document(user.id)
+        let documentPath = firestoreDatabase.collection(Constants.usersString).document(user.id)
         documentPath.getDocument { [weak self] document, err in
             if let error = err {
                 print("ERROR RETRIEVING FIRESTORE USER DATA WHEN TRYING TO SIGN IN: \(error.localizedDescription)")
@@ -192,13 +192,13 @@ import FirebaseStorage
 //        guard let userFriendCodeID = user.friendCodeID else { return }
         guard let friendUserID = friend.friendUserID else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
-        firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID)
+        firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID)
             .delete() { [weak self] err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
                     guard let self = self else { return }
-                    self.firestoreDatabase.collection(Constants.users).document(userID).collection("friendList").document(friendCodeID).delete() { [weak self] err in
+                    self.firestoreDatabase.collection(Constants.usersString).document(userID).collection("friendList").document(friendCodeID).delete() { [weak self] err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THEIR FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
@@ -211,7 +211,7 @@ import FirebaseStorage
     
     func retrieveFriendsListener() {
          let userID = user.id //else { return }
-        listeningRegistration = firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList)
+        listeningRegistration = firestoreDatabase.collection(Constants.usersString).document(userID).collection(Constants.userFriendList)
             .addSnapshotListener({ [weak self] snapshot, err in
                 if let error = err {
                     print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")

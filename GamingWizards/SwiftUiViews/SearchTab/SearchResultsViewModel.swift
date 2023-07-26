@@ -16,7 +16,7 @@ extension SearchResultsView {
         func performSearchForMatchingGames(gameName: String) async {
             Task {
                 do {
-                    self.users = try await firebaseHelper.searchForMatchingGames(collectionName: Constants.users, whereField: Constants.userListOfGamesString, gameName: gameName)
+                    self.users = try await firebaseHelper.searchForMatchingGames(collectionName: Constants.usersString, whereField: Constants.userListOfGamesString, gameName: gameName)
                 } catch {
                     print("ERROR RETRIEVING MATCHING GAMES FROM SEARCH: \(error)")
                 }

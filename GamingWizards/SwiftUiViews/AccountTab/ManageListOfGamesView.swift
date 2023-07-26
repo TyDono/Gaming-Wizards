@@ -35,7 +35,8 @@ struct ManageListOfGamesView: View {
                       actionButtonWasTapped: $manageListOfGamesVM.addGameButtonWasTapped,
                       dropDownNotificationText: $manageListOfGamesVM.searchBarDropDownNotificationText,
                       isSearchError: $manageListOfGamesVM.isSearchError,
-                      actionButtonPlaceholderText: "Add",
+                      actionButtonPlaceholderText: "Search",
+                      isActionButtonEnabled: false,
                       isActionButtonShowing: manageListOfGamesVM.isSearchButtonShowing)
             .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             ScrollView {
@@ -56,14 +57,15 @@ struct ManageListOfGamesView: View {
                         .padding()
                         .onTapGesture {
 //                            updateGameTagColorsOnTapGesture()
-                            gameItem.isSelected.toggle()
-                            filterer.searchText = filterer.searchText
+                            manageListOfGamesVM.gameTagWasTapped(tappedGameTag: gameItem)
+                            filterer.searchText = filterer.searchText // Updates the UI. dons't know why. don't try. accept monkey wrench code here.
 //                            updateGameTagColorsOnTap(for: gameItem)
                         }
                 }
             }
             .onAppear {
-                updateGameTagsWithMatchingGames()
+                manageListOfGamesVM.updateGameTagsWithMatchingGames(filterer: filterer.gamesFilter)
+//                updateGameTagsWithMatchingGames()
 //                updateColorsForTags()
             }
         }
@@ -110,18 +112,6 @@ struct ManageListOfGamesView: View {
         
         // Reset the searchText to trigger the view update
         filterer.searchText = tappedGameTag.textName
-    }
-    
-    private func updateGameTagsWithMatchingGames() {
-        guard let listOfGames = manageListOfGamesVM.user.listOfGames else {
-            return
-        }
-        
-        for gameItem in filterer.gamesFilter {
-            if listOfGames.contains(gameItem.textName) {
-                gameItem.isSelected = true
-            }
-        }
     }
     
     private func updateColorsForTags() { // not used

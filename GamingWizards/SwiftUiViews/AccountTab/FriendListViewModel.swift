@@ -41,7 +41,7 @@ import Security
         }
         
         func sendFriendRequest() {
-            firestoreDatabase.collection(Constants.users).whereField("friendCodeID", isEqualTo: friendIDTextField)
+            firestoreDatabase.collection(Constants.usersString).whereField("friendCodeID", isEqualTo: friendIDTextField)
                 .getDocuments() { [self] (querySnapshot, err) in
                     if let error = err {
                         self.noFriendExistsAlertIsShowing = true
@@ -55,7 +55,7 @@ import Security
 //                            guard let userFriendCodeID = self.user.friendCodeID else { return }
                             guard let displayName = self.user.displayName else { return }
                             let newFriend: Friend = Friend(friendCodeID: self.user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
-                            let newPath = self.firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
+                            let newPath = self.firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
                             
                             newPath.getDocument { (document, error) in
                                 if ((document?.exists) == false) {
@@ -97,8 +97,8 @@ import Security
 //            guard let friendUserID
             let friends = coreDataController.savedFriendEntities
             let newFriend = Friend(friendCodeID: user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: true, isFavorite: false)
-            let friendPath = firestoreDatabase.collection(Constants.users).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID) //goes to the friend and adds you to their friend list
-            let userPath = firestoreDatabase.collection(Constants.users).document(userID).collection(Constants.userFriendList).document(friendCodeIDRequest) // goes to your friend list and changes isFriend to true
+            let friendPath = firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID) //goes to the friend and adds you to their friend list
+            let userPath = firestoreDatabase.collection(Constants.usersString).document(userID).collection(Constants.userFriendList).document(friendCodeIDRequest) // goes to your friend list and changes isFriend to true
 
             userPath.updateData([
                 Constants.isFriend: true

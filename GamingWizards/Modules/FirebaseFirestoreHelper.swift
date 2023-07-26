@@ -9,8 +9,35 @@ import Foundation
 import FirebaseFirestore
 
 class FirebaseFirestoreHelper {
-    let user = UserObservable.shared
+//    let user = UserObservable.shared
     let firestoreDatabase = Firestore.firestore()
+    
+    func deleteItemFromArray(collectionName: String, documentField: String, gameName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
+        let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
+        documentRef.updateData([
+            arrayField: FieldValue.arrayRemove([gameName])
+        ]) { error in
+            if let error = error {
+                print("Error removing item from array: \(error)")
+            } else {
+                print("Item removed successfully from the array.")
+            }
+        }
+        
+    }
+    
+    func addItemToArray(collectionName: String, documentField: String, gameName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
+        let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
+        documentRef.updateData([
+            arrayField: FieldValue.arrayUnion([gameName])
+        ]) { error in
+            if let error = error {
+                print("Error adding item to array: \(error)")
+            } else {
+                print("Item added successfully to the array.")
+            }
+        }
+    }
     
     func searchForMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User] {
         let gameQuery = firestoreDatabase.collection(collectionName).whereField(whereField, arrayContains: gameName)

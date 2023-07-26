@@ -94,7 +94,7 @@ extension ManageAccountView {
             // if no internet make a pop up appear
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
-            let path = firestoreDatabase.collection(Constants.users).document(userId)
+            let path = firestoreDatabase.collection(Constants.usersString).document(userId)
             path.updateData([
                 Constants.userFirstName: self.firstName,
                 Constants.userLastName: self.lastName,
@@ -169,7 +169,7 @@ extension ManageAccountView {
         func deleteUserAccount() {
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
-            let path = firestoreDatabase.collection(Constants.users).document(userId)
+            let path = firestoreDatabase.collection(Constants.usersString).document(userId)
             
             currentUser?.delete { [weak self] err in
                 guard let self = self else { return }

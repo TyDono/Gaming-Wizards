@@ -18,28 +18,47 @@ extension ManageListOfGamesView {
         @Published var listOfGames: [String] = ListOfGames.name
         @Published var gameIsMatching: Bool = false
         @Published var gameItems: [FlowTag] = []
+        let firebaseFirestoreHelper =  FirebaseFirestoreHelper()
         
-        func updateColors(for selectedGameItem: FlowTag? = nil) {
-            for index in gameItems.indices {
-                if let selectedGameItem = selectedGameItem {
-                    // Update colors only for the selected game item
-                    if gameItems[index].id == selectedGameItem.id {
-                        gameItems[index].textColor = Color.white
-                        gameItems[index].backgroundColor = Color.blue
-                    } else {
-                        gameItems[index].textColor = Color.black
-                        gameItems[index].backgroundColor = Color.lightGrey
-                    }
+        func gameTagWasTapped(tappedGameTag: FlowTag) {
+            tappedGameTag.isSelected.toggle()
+            if tappedGameTag.isSelected == true {
+                saveGameToUserListOfGames(tappedGame: tappedGameTag.textName)
+            } else {
+                deleteGameFromUserListOfGames(tappedGame: tappedGameTag.textName)
+            }
+        }
+        
+        func saveGameToUserListOfGames(tappedGame: String) {
+            guard let userId = KeychainHelper.getUserID() else { return }
+            
+            firebaseFirestoreHelper.addItemToArray(collectionName: Constants.usersString, documentField: userId, gameName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self]  err in
+                if let error = err {
+                    print("ERROR ADDING SPECIFIC GAME FROM USER'S LIST OF GAMES: \(error)")
                 } else {
-                    // Update colors for all game items based on the manageListOfGamesVM
-                    let gameName = gameItems[index].textName
-                    if user.listOfGames?.contains(gameName) ?? false {
-                        gameItems[index].textColor = Color.white
-                        gameItems[index].backgroundColor = Color.blue
-                    } else {
-                        gameItems[index].textColor = Color.black
-                        gameItems[index].backgroundColor = Color.lightGrey
-                    }
+                    self?.user.listOfGames?.append(tappedGame)
+                }
+            }
+        }
+        
+        func deleteGameFromUserListOfGames(tappedGame: String) {
+            guard let userId = KeychainHelper.getUserID() else { return }
+            firebaseFirestoreHelper.deleteItemFromArray(collectionName: Constants.usersString, documentField: userId, gameName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self]  err in
+                if let error = err {
+                    print("ERROR DELETING SPECIFIC GAME FROM USER'S LIST OF GAMES: \(error)")
+                } else {
+                    self?.user.listOfGames?.removeAll { $0 == tappedGame}
+                }
+            }
+        }
+        
+        func updateGameTagsWithMatchingGames(filterer: [FlowTag]) {
+            guard let listOfGames = user.listOfGames else {
+                return
+            }
+            for gameItem in filterer {
+                if listOfGames.contains(gameItem.textName) {
+                    gameItem.isSelected = true
                 }
             }
         }

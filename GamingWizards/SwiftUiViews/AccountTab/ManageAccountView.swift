@@ -436,7 +436,9 @@ struct ManageAccountView: View {
                       actionButtonWasTapped: $manageAccountVM.addGameButtonWasTapped,
                       dropDownNotificationText: $manageAccountVM.searchBarDropDownNotificationText,
                       isSearchError: $manageAccountVM.isSearchError,
-                      actionButtonPlaceholderText: "Add", isActionButtonShowing: manageAccountVM.isSearchButtonShowing)
+                      actionButtonPlaceholderText: "Add",
+                      isActionButtonEnabled: true,
+                      isActionButtonShowing: manageAccountVM.isSearchButtonShowing)
                 .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
                 ForEach(filterer.gamesFilter, id: \.self) { game in

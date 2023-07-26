@@ -16,6 +16,7 @@ struct SearchBar: View {
     @State var searchBarIsShaking: Bool = false
     @State private var shakeCount = 0
     @State var actionButtonPlaceholderText: String
+    @State var isActionButtonEnabled: Bool
     @State var isActionButtonShowing: Bool
     var isXCancelButtonShowing: Bool = false
     
@@ -28,7 +29,9 @@ struct SearchBar: View {
         VStack {
             HStack {
                 TextField(actionButtonPlaceholderText, text: $searchText, onEditingChanged: { isEditing in
-                    isActionButtonShowing = true
+                    if isActionButtonEnabled == true {
+                        isActionButtonShowing = true
+                    }
                 })
                 .font(.globalFont(.luminari, size: 16))
                 .padding(8)

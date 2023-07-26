@@ -50,7 +50,7 @@ struct UserSearchView: View {
                       dropDownNotificationText: $userSearchVM.searchBarDropDownNotificationText,
                       isSearchError: $userSearchVM.isSearchError,
                       actionButtonPlaceholderText: "Search",
-                      isActionButtonShowing: true, isXCancelButtonShowing: false)
+                      isActionButtonEnabled: true, isActionButtonShowing: true, isXCancelButtonShowing: false)
                 .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             List {
                 ForEach(filterer.gamesFilter, id: \.self) { game in
