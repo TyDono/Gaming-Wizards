@@ -29,9 +29,7 @@ struct SearchBar: View {
         VStack {
             HStack {
                 TextField(actionButtonPlaceholderText, text: $searchText, onEditingChanged: { isEditing in
-                    if isActionButtonEnabled == true {
-                        isActionButtonShowing = true
-                    }
+                    isActionButtonShowing = true
                 })
                 .font(.globalFont(.luminari, size: 16))
                 .padding(8)
@@ -54,7 +52,7 @@ struct SearchBar: View {
                 .padding(.leading, 8)
                 .padding(.trailing, 4)
                 .padding(.trailing, isActionButtonShowing ? 0 : 8)
-                if searchText != "" {
+                if searchText != "", isActionButtonEnabled == true {
                     actionButtonView
                         .padding(.trailing, 8)
                         .padding(.vertical, 8)

@@ -34,6 +34,8 @@ struct SearchResultCellView: View {
                                 )
                             )
                     )
+                    .opacity(isEmptyCell ? 0 : 1)
+                    .animation(Animation.easeInOut(duration: 0.5), value: text)
             }
         }
     }
