@@ -31,8 +31,7 @@ extension ManageListOfGamesView {
         
         func saveGameToUserListOfGames(tappedGame: String) {
             guard let userId = KeychainHelper.getUserID() else { return }
-            
-            firebaseFirestoreHelper.addItemToArray(collectionName: Constants.usersString, documentField: userId, gameName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self]  err in
+            firebaseFirestoreHelper.addItemToArray(collectionName: Constants.usersString, documentField: userId, itemName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self] err in
                 if let error = err {
                     print("ERROR ADDING SPECIFIC GAME FROM USER'S LIST OF GAMES: \(error)")
                 } else {
@@ -43,7 +42,7 @@ extension ManageListOfGamesView {
         
         func deleteGameFromUserListOfGames(tappedGame: String) {
             guard let userId = KeychainHelper.getUserID() else { return }
-            firebaseFirestoreHelper.deleteItemFromArray(collectionName: Constants.usersString, documentField: userId, gameName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self]  err in
+            firebaseFirestoreHelper.deleteItemFromArray(collectionName: Constants.usersString, documentField: userId, itemName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self] err in
                 if let error = err {
                     print("ERROR DELETING SPECIFIC GAME FROM USER'S LIST OF GAMES: \(error)")
                 } else {

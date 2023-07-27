@@ -45,28 +45,22 @@ struct ManageListOfGamesView: View {
                            items: filterer.gamesFilter) { gameItem in
                     Text(gameItem.textName)
                         .font(.globalFont(.luminari, size: 12))
-//                        .foregroundColor(gameItem.textColor)
                         .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
                         .background(
                             RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
                                 .border(Color.clear)
-//                                .foregroundColor(gameItem.backgroundColor)
                                 .foregroundColor(gameItem.isSelected ? Color.blue : Color.lightGrey)
                                 .padding(-8)
                         )
                         .padding()
                         .onTapGesture {
-//                            updateGameTagColorsOnTapGesture()
                             manageListOfGamesVM.gameTagWasTapped(tappedGameTag: gameItem)
                             filterer.searchText = filterer.searchText // Updates the UI. dons't know why. don't try. accept monkey wrench code here.
-//                            updateGameTagColorsOnTap(for: gameItem)
                         }
                 }
             }
             .onAppear {
                 manageListOfGamesVM.updateGameTagsWithMatchingGames(filterer: filterer.gamesFilter)
-//                updateGameTagsWithMatchingGames()
-//                updateColorsForTags()
             }
         }
         .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)

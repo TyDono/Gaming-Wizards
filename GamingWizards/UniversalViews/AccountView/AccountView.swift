@@ -10,6 +10,7 @@ import Foundation
 
 struct AccountView: View {
     @Environment(\.defaultMinListRowHeight) var minRowHeight
+    @StateObject private var accountVM = AccountViewModel()
 //    @Binding var isShowingAccountView: Bool?
 //    @Binding var isShowingEditAccountView: Bool?
     
@@ -184,6 +185,32 @@ struct AccountView: View {
     }
     
     private var listOfGamesTagView: some View {
+        /*
+        ScrollView {
+            FlowLayout(mode: .scrollable,
+                       binding: $filterer.searchText,
+                       items: filterer.gamesFilter) { gameItem in
+                Text(gameItem.textName)
+                    .font(.globalFont(.luminari, size: 12))
+                    .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
+                    .background(
+                        RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
+                            .border(Color.clear)
+                            .foregroundColor(gameItem.isSelected ? Color.blue : Color.lightGrey)
+                            .padding(-8)
+                    )
+                    .padding()
+                    .onTapGesture {
+                        manageListOfGamesVM.gameTagWasTapped(tappedGameTag: gameItem)
+                        filterer.searchText = filterer.searchText // Updates the UI. dons't know why. don't try. accept monkey wrench code here.
+                    }
+            }
+        }
+        .onAppear {
+            manageListOfGamesVM.updateGameTagsWithMatchingGames(filterer: filterer.gamesFilter)
+        }
+        */
+        
         VStack {
             Text("Games")
                 .frame(
@@ -192,13 +219,28 @@ struct AccountView: View {
                     alignment: .center)
                 .foregroundColor(.gray)
                 .font(.globalFont(.luminari, size: 12))
-            FlowLayout(mode: .scrollable,
-                       binding: .constant(5),
-                       items: listOfGames ?? []) {
-                Text($0)
-                    .font(.globalFont(.luminari, size: 12))
-                    .foregroundColor(.black)
-                    .padding()
+            ScrollView {
+                FlowLayout(mode: .scrollable,
+                           binding: .constant(5),
+                           items: listOfGames ?? []) { gameItem in
+                    Text(gameItem)
+                        .font(.globalFont(.luminari, size: 12))
+                        .foregroundColor(accountVM.user.listOfGames?.contains(gameItem) == true ? .white : .black)
+                        .background(
+                            RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
+                                .border(Color.clear)
+                                .foregroundColor(accountVM.user.listOfGames?.contains(gameItem) == true ? .blue : .lightGrey)
+                                .padding(-8)
+                        )
+                        .padding()
+                        .onTapGesture {
+                            if accountVM.user.listOfGames?.contains(gameItem) == true {
+                                accountVM.callDeleteItemFromArray(tappedGame: gameItem)
+                            } else {
+                                accountVM.callAddItemToArray(tappedGame: gameItem)
+                            }
+                        }
+                }
             }
         }
     }

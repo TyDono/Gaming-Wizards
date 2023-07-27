@@ -11,30 +11,31 @@ import FirebaseFirestore
 class FirebaseFirestoreHelper {
 //    let user = UserObservable.shared
     let firestoreDatabase = Firestore.firestore()
+    let user = UserObservable.shared
     
-    func deleteItemFromArray(collectionName: String, documentField: String, gameName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
+    // HAVE MORE DONE IN HERE
+    func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
         let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
         documentRef.updateData([
-            arrayField: FieldValue.arrayRemove([gameName])
+            arrayField: FieldValue.arrayRemove([itemName])
         ]) { error in
             if let error = error {
-                print("Error removing item from array: \(error)")
+                print("ERROR REMOVING ITEM FROM ARRAY: \(error)")
             } else {
-                print("Item removed successfully from the array.")
+//                print("Item removed successfully from the array.")
             }
         }
-        
     }
     
-    func addItemToArray(collectionName: String, documentField: String, gameName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
+    func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
         let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
         documentRef.updateData([
-            arrayField: FieldValue.arrayUnion([gameName])
+            arrayField: FieldValue.arrayUnion([itemName])
         ]) { error in
             if let error = error {
-                print("Error adding item to array: \(error)")
+                print("ERROR ADDING ITEM FROM ARRAY: \(error)")
             } else {
-                print("Item added successfully to the array.")
+//                print("Item added successfully to the array.")
             }
         }
     }

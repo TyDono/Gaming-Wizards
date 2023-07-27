@@ -15,6 +15,7 @@
 		CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */; };
 		CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */; };
 		CB5948952A6AD8D500BE0DE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948942A6AD8D500BE0DE2 /* ContentView.swift */; };
+		CB5948972A71634D00BE0DE2 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */; };
 		CB5BE81529FDE8B9009D38D6 /* GamingWizardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */; };
 		CB5BE81F29FDE8B9009D38D6 /* GamingWizardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81E29FDE8B9009D38D6 /* GamingWizardsUITests.swift */; };
 		CB5BE82129FDE8B9009D38D6 /* GamingWizardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE82029FDE8B9009D38D6 /* GamingWizardsUITestsLaunchTests.swift */; };
@@ -161,6 +162,7 @@
 		CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTag.swift; sourceTree = "<group>"; };
 		CB5948942A6AD8D500BE0DE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		CB5BE7FB29FDE8B7009D38D6 /* GamingWizards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamingWizards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5BE81029FDE8B9009D38D6 /* GamingWizardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GamingWizardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingWizardsTests.swift; sourceTree = "<group>"; };
@@ -311,6 +313,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB5948982A71636E00BE0DE2 /* AccountView */ = {
+			isa = PBXGroup;
+			children = (
+				CB049A182A33D8EF00024D01 /* AccountView.swift */,
+				CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */,
+			);
+			path = AccountView;
+			sourceTree = "<group>";
+		};
 		CB5BE7F229FDE8B7009D38D6 = {
 			isa = PBXGroup;
 			children = (
@@ -613,7 +624,7 @@
 				CB62962E2A5F987500F84367 /* SearchResultCellView.swift */,
 				CB6296302A60913300F84367 /* ListCellView.swift */,
 				CBB8CAA22A65EE07009B13A6 /* FlowLayout.swift */,
-				CB049A182A33D8EF00024D01 /* AccountView.swift */,
+				CB5948982A71636E00BE0DE2 /* AccountView */,
 			);
 			path = UniversalViews;
 			sourceTree = "<group>";
@@ -869,6 +880,7 @@
 				CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */,
 				CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */,
 				CB5BE8BB29FDE958009D38D6 /* AuthenticationViewModel.swift in Sources */,
+				CB5948972A71634D00BE0DE2 /* AccountViewModel.swift in Sources */,
 				CB5BE8B729FDE958009D38D6 /* SignInWithGoogleCoordinator.swift in Sources */,
 				CB049A132A32669600024D01 /* LoadingAnimation.swift in Sources */,
 				CB5BE8A329FDE958009D38D6 /* HomeView.swift in Sources */,
