@@ -35,35 +35,52 @@ struct ManageAccountView: View {
                             Spacer().frame(height: 16)
                             profileImageView
                                 .padding()
+                            Divider()
                             manageListOfGamesButtonView
                                 .padding()
+                            Divider()
                             personalTitleView
                                 .padding()
+                            Divider()
+                        }
+                        Group {
                             displayNameTextField
                                 .padding()
+                            Divider()
 //                            firstNameTextField
 //                                .padding()
 //                            lastNameTextField
 //                                .padding()
                             userAgeTextView
                                 .padding()
+                            Divider()
                             userLocationTextView
                                 .padding()
+                            Divider()
+                            
                         }
                         Group {
                             aboutUserTextView
                                 .padding()
+                            Divider()
                             userAvailabilityTextView
                                 .padding()
+                            Divider()
                             userIsSoloView
                                 .padding()
+                            Divider()
                             PayToPlayView
                                 .padding()
+                            Divider()
+                        }
+                        Group {
 //                            listOfGamesView
                             personalFriendID
                                 .padding()
+                            Divider()
                             emailTextField
                                 .padding()
+                            Divider()
                             VStack {
                                 deleteAccountButton
                                     .padding()
@@ -411,13 +428,19 @@ struct ManageAccountView: View {
             Button {
                 manageAccountVM.isManageListOfGamesViewShowing = true
             } label: {
-                Text("Manage game preferences")
-                    .font(.roboto(.semibold,
-                                  size: 20))
-                    .foregroundColor(.white)
-                    .padding(5)
-                    .background(Color.blue)
-                    .cornerRadius(Constants.roundedCornerRadius)
+                HStack {
+                    Text("Manage game preferences")
+                        .font(.roboto(.semibold,
+                                      size: 20))
+                        .foregroundColor(.blue)
+                        .padding(5)
+//                        .background(Color.blue)
+//                        .cornerRadius(Constants.roundedCornerRadius)
+                    Image(systemName: "chevron.right")
+                        .frame(maxWidth: .infinity,
+                               alignment: .trailing)
+                        .foregroundColor(.blue)
+                }
             }
             .navigationDestination(isPresented: $manageAccountVM.isManageListOfGamesViewShowing) {
                 ManageListOfGamesView()
@@ -425,7 +448,7 @@ struct ManageAccountView: View {
         }
     }
     
-    private var listOfGamesView: some View {
+    private var listOfGamesView: some View { //not used. prolly won't since i moved it to a new view
         VStack {
             Text("Games")
                 .frame(maxWidth: .infinity,
