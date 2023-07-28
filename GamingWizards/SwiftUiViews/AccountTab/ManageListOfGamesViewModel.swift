@@ -31,30 +31,30 @@ extension ManageListOfGamesView {
         
         func saveGameToUserListOfGames(tappedGame: String) {
             guard let userId = KeychainHelper.getUserID() else { return }
-            firebaseFirestoreHelper.addItemToArray(collectionName: Constants.usersString, documentField: userId, itemName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self] err in
+            firebaseFirestoreHelper.addItemToArray(collectionName: Constants.usersString, documentField: userId, itemName: tappedGame, arrayField: Constants.userListOfGamesString) { err in
                 if let error = err {
                     print("ERROR ADDING SPECIFIC GAME FROM USER'S LIST OF GAMES: \(error)")
                 } else {
-                    self?.user.listOfGames?.append(tappedGame)
+                    print("No error. Update successful.")
+//                    self.user.listOfGames?.append(tappedGame)
                 }
             }
         }
+
         
         func deleteGameFromUserListOfGames(tappedGame: String) {
             guard let userId = KeychainHelper.getUserID() else { return }
-            firebaseFirestoreHelper.deleteItemFromArray(collectionName: Constants.usersString, documentField: userId, itemName: tappedGame, arrayField: Constants.userListOfGamesString) { [weak self] err in
+            firebaseFirestoreHelper.deleteItemFromArray(collectionName: Constants.usersString, documentField: userId, itemName: tappedGame, arrayField: Constants.userListOfGamesString) { err in
                 if let error = err {
                     print("ERROR DELETING SPECIFIC GAME FROM USER'S LIST OF GAMES: \(error)")
                 } else {
-                    self?.user.listOfGames?.removeAll { $0 == tappedGame}
+//                    self?.user.listOfGames?.removeAll { $0 == tappedGame}
                 }
             }
         }
         
         func updateGameTagsWithMatchingGames(filterer: [FlowTag]) {
-            guard let listOfGames = user.listOfGames else {
-                return
-            }
+            guard let listOfGames = user.listOfGames else { return }
             for gameItem in filterer {
                 if listOfGames.contains(gameItem.textName) {
                     gameItem.isSelected = true

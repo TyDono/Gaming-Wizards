@@ -16,7 +16,7 @@ struct ManageAccountView: View {
     @ObservedObject var user = UserObservable.shared
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @StateObject private var manageAccountVM = ManageAccountViewModel()
-    @StateObject private var filterer = Filterer()
+//    @StateObject private var filterer = Filterer()
     @State var nilNavigation = false
 
     
@@ -448,6 +448,7 @@ struct ManageAccountView: View {
         }
     }
     
+    /*
     private var listOfGamesView: some View { //not used. prolly won't since i moved it to a new view
         VStack {
             Text("Games")
@@ -506,6 +507,7 @@ struct ManageAccountView: View {
         }
         .keyboardAdaptive()
     }
+     */
     
     private var emailTextField: some View {
         VStack {

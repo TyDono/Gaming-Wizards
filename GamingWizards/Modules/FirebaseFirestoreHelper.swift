@@ -18,10 +18,11 @@ class FirebaseFirestoreHelper {
         let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayRemove([itemName])
-        ]) { error in
+        ]) { [weak self] error in
             if let error = error {
                 print("ERROR REMOVING ITEM FROM ARRAY: \(error)")
             } else {
+                self?.user.listOfGames?.removeAll { $0 == itemName}
 //                print("Item removed successfully from the array.")
             }
         }
@@ -31,10 +32,11 @@ class FirebaseFirestoreHelper {
         let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayUnion([itemName])
-        ]) { error in
+        ]) { [weak self] error in
             if let error = error {
                 print("ERROR ADDING ITEM FROM ARRAY: \(error)")
             } else {
+                self?.user.listOfGames?.append(itemName)
 //                print("Item added successfully to the array.")
             }
         }

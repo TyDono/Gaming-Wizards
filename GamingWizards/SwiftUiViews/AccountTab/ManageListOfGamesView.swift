@@ -14,7 +14,6 @@ struct ManageListOfGamesView: View {
     @StateObject private var manageListOfGamesVM = ManageListOfGamesViewModel()
     @State private var textColor: Color = Color.black
     @State private var backgroundColor: Color = Color.lightGrey
-    @State var gameItems: [FlowTag] = []
     
     var body: some View {
         ZStack {
@@ -55,15 +54,17 @@ struct ManageListOfGamesView: View {
                         .padding()
                         .onTapGesture {
                             manageListOfGamesVM.gameTagWasTapped(tappedGameTag: gameItem)
+                            filterer.reorderSelectedGameItems()
                             filterer.searchText = filterer.searchText // Updates the UI. dons't know why. don't try. accept monkey wrench code here.
                         }
                 }
             }
             .onAppear {
                 manageListOfGamesVM.updateGameTagsWithMatchingGames(filterer: filterer.gamesFilter)
+                filterer.searchText = filterer.searchText
             }
         }
-        .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
+        .animation(Animation.easeInOut(duration: 0.65), value: filterer.searchText)
     }
     
     private func updateGameTagColorsOnTapGesture() { // not used
