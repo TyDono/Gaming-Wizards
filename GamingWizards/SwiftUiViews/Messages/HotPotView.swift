@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HotPotView: View {
     var body: some View {
-        Text("Hot PotView")
+        Text("Messages")
     }
 }
 
