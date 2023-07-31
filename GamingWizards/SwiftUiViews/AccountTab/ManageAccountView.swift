@@ -13,7 +13,6 @@ struct ManageAccountView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.defaultMinListRowHeight) var minRowHeight
-    @ObservedObject var user = UserObservable.shared
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @StateObject private var manageAccountVM = ManageAccountViewModel()
 //    @StateObject private var filterer = Filterer()
@@ -133,10 +132,10 @@ struct ManageAccountView: View {
                     .foregroundColor(.white)
                     .padding(5)
                     .background(Color.blue)
-                    .cornerRadius(Constants.roundedCornerRadius)
+                    .cornerRadius(Constants.semiRoundedCornerRadius)
             }
         }
-        .onAppear(perform: manageAccountVM.loadProfileImageFromDisk)
+        .onAppear(perform: manageAccountVM.retrieveProfileImageFromDisk)
         .sheet(isPresented: $manageAccountVM.isShowingImagePicker, onDismiss: nil) {
             ImagePicker(selectedImage: $manageAccountVM.profileImage)
         }

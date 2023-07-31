@@ -57,7 +57,7 @@ extension ManageAccountView {
             diskSpace.saveProfileImageToDisc(imageString: user.profileImageString, image: image)
         }
         
-        func loadProfileImageFromDisk() {
+        func retrieveProfileImageFromDisk() {
            profileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
         }
         

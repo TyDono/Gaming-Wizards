@@ -14,7 +14,6 @@
 		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
 		CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */; };
 		CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */; };
-		CB5948952A6AD8D500BE0DE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948942A6AD8D500BE0DE2 /* ContentView.swift */; };
 		CB5948972A71634D00BE0DE2 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */; };
 		CB5BE81529FDE8B9009D38D6 /* GamingWizardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81429FDE8B9009D38D6 /* GamingWizardsTests.swift */; };
 		CB5BE81F29FDE8B9009D38D6 /* GamingWizardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE81E29FDE8B9009D38D6 /* GamingWizardsUITests.swift */; };
@@ -41,7 +40,7 @@
 		CB5BE89729FDE958009D38D6 /* FileManager-DocumentDirectoryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE84D29FDE955009D38D6 /* FileManager-DocumentDirectoryExtension.swift */; };
 		CB5BE89829FDE958009D38D6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE84F29FDE955009D38D6 /* MainTabView.swift */; };
 		CB5BE89A29FDE958009D38D6 /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85229FDE955009D38D6 /* UserSearchView.swift */; };
-		CB5BE89B29FDE958009D38D6 /* HotPotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85429FDE955009D38D6 /* HotPotView.swift */; };
+		CB5BE89B29FDE958009D38D6 /* MainMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85429FDE955009D38D6 /* MainMessagesView.swift */; };
 		CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */; };
 		CB5BE89D29FDE958009D38D6 /* FoodThemeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85629FDE955009D38D6 /* FoodThemeSelectionViewModel.swift */; };
 		CB5BE89E29FDE958009D38D6 /* FoodThemeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85729FDE955009D38D6 /* FoodThemeSelectionView.swift */; };
@@ -114,6 +113,7 @@
 		CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406F2A5F052B00E69C5C /* Debouncer.swift */; };
 		CB62962F2A5F987500F84367 /* SearchResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62962E2A5F987500F84367 /* SearchResultCellView.swift */; };
 		CB6296312A60913300F84367 /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6296302A60913300F84367 /* ListCellView.swift */; };
+		CB8841CC2A77C5AB0017C874 /* MainMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CB2A77C5AB0017C874 /* MainMessagesViewModel.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -161,7 +161,6 @@
 		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
 		CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTag.swift; sourceTree = "<group>"; };
-		CB5948942A6AD8D500BE0DE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		CB5BE7FB29FDE8B7009D38D6 /* GamingWizards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamingWizards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5BE81029FDE8B9009D38D6 /* GamingWizardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GamingWizardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,7 +190,7 @@
 		CB5BE84D29FDE955009D38D6 /* FileManager-DocumentDirectoryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentDirectoryExtension.swift"; sourceTree = "<group>"; };
 		CB5BE84F29FDE955009D38D6 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		CB5BE85229FDE955009D38D6 /* UserSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
-		CB5BE85429FDE955009D38D6 /* HotPotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotPotView.swift; sourceTree = "<group>"; };
+		CB5BE85429FDE955009D38D6 /* MainMessagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMessagesView.swift; sourceTree = "<group>"; };
 		CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsView.swift; sourceTree = "<group>"; };
 		CB5BE85629FDE955009D38D6 /* FoodThemeSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodThemeSelectionViewModel.swift; sourceTree = "<group>"; };
 		CB5BE85729FDE955009D38D6 /* FoodThemeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodThemeSelectionView.swift; sourceTree = "<group>"; };
@@ -236,6 +235,7 @@
 		CB62406F2A5F052B00E69C5C /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		CB62962E2A5F987500F84367 /* SearchResultCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCellView.swift; sourceTree = "<group>"; };
 		CB6296302A60913300F84367 /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
+		CB8841CB2A77C5AB0017C874 /* MainMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessagesViewModel.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -484,7 +484,8 @@
 		CB5BE85329FDE955009D38D6 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				CB5BE85429FDE955009D38D6 /* HotPotView.swift */,
+				CB5BE85429FDE955009D38D6 /* MainMessagesView.swift */,
+				CB8841CB2A77C5AB0017C874 /* MainMessagesViewModel.swift */,
 				CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */,
 				CB5BE85629FDE955009D38D6 /* FoodThemeSelectionViewModel.swift */,
 				CB5BE85729FDE955009D38D6 /* FoodThemeSelectionView.swift */,
@@ -517,7 +518,6 @@
 				CBB8CAAE2A676153009B13A6 /* ManageListOfGamesViewModel.swift */,
 				CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */,
 				CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */,
-				CB5948942A6AD8D500BE0DE2 /* ContentView.swift */,
 			);
 			path = AccountTab;
 			sourceTree = "<group>";
@@ -833,7 +833,6 @@
 				CB5BE88A29FDE958009D38D6 /* CoreDataController.swift in Sources */,
 				CB5BE8AC29FDE958009D38D6 /* Constants.swift in Sources */,
 				CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */,
-				CB5948952A6AD8D500BE0DE2 /* ContentView.swift in Sources */,
 				CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */,
 				CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */,
 				CB5BE8A929FDE958009D38D6 /* HideNavigationBar.swift in Sources */,
@@ -856,8 +855,9 @@
 				CB5BE8AB29FDE958009D38D6 /* FontModifier.swift in Sources */,
 				CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */,
 				CBB8CAAD2A676106009B13A6 /* ManageListOfGamesView.swift in Sources */,
-				CB5BE89B29FDE958009D38D6 /* HotPotView.swift in Sources */,
+				CB5BE89B29FDE958009D38D6 /* MainMessagesView.swift in Sources */,
 				CBCD581F2A047A1E00136AA0 /* SearchResultsView.swift in Sources */,
+				CB8841CC2A77C5AB0017C874 /* MainMessagesViewModel.swift in Sources */,
 				CBBD556F2A294B6A00F27626 /* imagePicker.swift in Sources */,
 				CB5BE8AD29FDE958009D38D6 /* Dependencies.swift in Sources */,
 				CB5BE88229FDE958009D38D6 /* Endpoint.swift in Sources */,

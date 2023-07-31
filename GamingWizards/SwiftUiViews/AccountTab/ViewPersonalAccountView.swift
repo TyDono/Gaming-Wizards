@@ -43,21 +43,19 @@ struct ViewPersonalAccountView: View {
             dismiss()
             isShowingEditAccountView = true
         }) {
-            Text("Edit Account")
-                .foregroundColor(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 6)
-                        .background(.clear)
-                        .foregroundColor(.blue)
-                        .padding(
-                            EdgeInsets(
-                                top: -10,
-                                leading: -10,
-                                bottom: -10,
-                                trailing: -10
-                            )
-                        )
-                )
+            HStack {
+                Text("Edit Account")
+                    .font(.globalFont(.luminari, size: 21))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding(.vertical)
+            .background(.blue)
+            .cornerRadius(Constants.roundedCornerRadius)
+            .padding(.horizontal)
+            .shadow(radius: Constants.buttonShadowRadius)
+            
         }
     }
     

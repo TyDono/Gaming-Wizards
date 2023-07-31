@@ -109,20 +109,11 @@ struct AccountView: View {
     
     private var profileImageView: some View {
         VStack {
-            if let profileImage = profileImage {
-                Image(uiImage: profileImage)
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: Constants.profileImageWidth, height: Constants.profileImageHeight, alignment: .center)
-            } else {
-//                UIImage(named: "WantedWizard")!
-                Image("WantedWizard")
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: Constants.profileImageWidth, height: Constants.profileImageHeight, alignment: .center)
-            }
+            Image(uiImage: (profileImage ?? UIImage(named: "WantedWizard+"))!)
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: Constants.profileImageWidth, height: Constants.profileImageHeight, alignment: .center)
         }
     }
     
@@ -224,7 +215,7 @@ struct AccountView: View {
                            binding: .constant(5),
                            items: listOfGames ?? []) { gameItem in
                     Text(gameItem)
-                        .font(.globalFont(.luminari, size: 12))
+                        .font(.globalFont(.luminari, size: 16))
                         .foregroundColor(accountVM.user.listOfGames?.contains(gameItem) == true ? .white : .black)
                         .background(
                             RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)

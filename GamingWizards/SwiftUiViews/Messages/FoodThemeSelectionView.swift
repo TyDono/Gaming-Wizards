@@ -71,7 +71,7 @@ struct FoodThemeSelectionView: View {
         NavigationStack {
             //        Button(action: {
             NavigationLink {
-                HotPotView()
+                MainMessagesView()
                 //                    .environmentObject(friendListVM)
                 //                    .onAppear {
                 //                        friendListVM.friendWasTapped(friend: friend)

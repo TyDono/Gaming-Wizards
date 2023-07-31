@@ -44,24 +44,21 @@ struct SearchResultsDetailView: View {
     
     private var friendRequestButton: some View {
         Button(action: {
-            searchResultsDetailViewModel.sendFriendRequest(selectedUserID: selectedUser.id)
-            print("Add Friend button pressed!")
+//            searchResultsDetailViewModel.sendFriendRequest(selectedUserID: selectedUser.id)
+            // instead of a friend request. this will be used to just send a message. maybe later have a private account feature in premium that will require users to send a friend request first.
         }) {
-            Text("Add Friend")
-                .foregroundColor(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 6)
-                        .background(.clear)
-                        .foregroundColor(.blue)
-                        .padding(
-                            EdgeInsets(
-                                top: -10,
-                                leading: -10,
-                                bottom: -10,
-                                trailing: -10
-                            )
-                        )
-                )
+            HStack {
+                Text("Send Message")
+                    .font(.globalFont(.luminari, size: 21))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding(.vertical)
+            .background(.blue)
+            .cornerRadius(Constants.roundedCornerRadius)
+            .padding(.horizontal)
+            .shadow(radius: Constants.buttonShadowRadius)
         }
     }
     

@@ -11,12 +11,15 @@ extension Font {
     
     enum RobotoFont {
         case semibold
+        case bold
         case custom(String)
         
         var value: String {
             switch self {
             case .semibold:
                 return "Semibold"
+            case .bold:
+                return "Bold"
                 
             case .custom(let name):
                 return name

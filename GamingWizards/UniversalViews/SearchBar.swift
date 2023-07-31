@@ -35,7 +35,7 @@ struct SearchBar: View {
                 .padding(8)
                 .padding(.horizontal, 20)
                 .background(Color(.systemGray6))
-                .cornerRadius(Constants.roundedCornerRadius)
+                .cornerRadius(Constants.semiRoundedCornerRadius)
                 .overlay(
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -109,7 +109,7 @@ struct SearchBar: View {
             .padding(8)
             .animation(Animation.easeInOut(duration: 0.5), value: isActionButtonShowing)
             .background(.blue)
-            .cornerRadius(Constants.roundedCornerRadius)
+            .cornerRadius(Constants.semiRoundedCornerRadius)
             .foregroundColor(.white)
             .onChange(of: isSearchError, perform: { newValue in
                     withAnimation(Animation.easeInOut(duration: 0.6).speed(1)) {

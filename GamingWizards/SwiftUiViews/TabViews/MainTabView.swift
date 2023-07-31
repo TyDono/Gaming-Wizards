@@ -37,7 +37,7 @@ struct MainTabView: View {
             .tag("Search")
             
             NavigationStack {
-                FoodThemeSelectionView()
+                MainMessagesView()
             }
             .tabItem {
                 Label("Messages", systemImage: "message")

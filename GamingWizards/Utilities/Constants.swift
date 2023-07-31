@@ -12,7 +12,9 @@ struct Constants {
     static var isFriendRequestPending: Bool = false // not used rn. using friendRequestCount instead. shows number, or if it's 0. shows nothing
     static var friendRequestCount: Int = 0
     static let luminariRegularFontIdentifier = "Luminari"
-    static var roundedCornerRadius: CGFloat = 8
+    static var semiRoundedCornerRadius: CGFloat = 8
+    static var roundedCornerRadius: CGFloat = 32
+    static var buttonShadowRadius: CGFloat = 15
     static var tagFlowLayoutCornerRadius: CGFloat = 18
     static let usersString = "users"
     static let textFieldMaxCharacters: Int = 45
