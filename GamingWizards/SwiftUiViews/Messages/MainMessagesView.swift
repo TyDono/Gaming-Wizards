@@ -15,58 +15,48 @@ struct MainMessagesView: View {
             
             VStack {
                 mainMessagesCustomNavBar
-                ScrollView {
-                    ForEach(0..<10, id: \.self) { num in
-                        HStack(spacing: 16){
-                            messengerProfileImage
-                            VStack(alignment: .leading) {
-                                Text("UserName")
-                                    .font(.roboto(.bold, size: 14))
-                                Text("messages sent to user")
-                                    .font(.roboto(.semibold, size: 14))
-                                    .foregroundColor(.lightGrey)
-                            }
-                            Spacer()
-                            Text("22d")
-                                .font(.roboto(.semibold, size: 15))
-                        }
-                        Divider()
-                            .padding(.vertical, 8)
-                    }.padding(.horizontal)
-                    
-                }
-                newMessageView
+                messagesScrollView
+//                newMessageView
             }.navigationBarHidden(true)
         }
     }
     
-    private var newMessageView: some View {
-        Button(action: {
-            
-        }) {
-            VStack {
-                Text("+ New Message")
-                //font
-                Spacer()
+    private var messagesScrollView: some View {
+        ScrollView {
+            ForEach(0..<10, id: \.self) { num in
+                VStack {
+                    HStack(spacing: 16){
+                        messengerProfileImage
+                        VStack(alignment: .leading) {
+                            Text("UserName")
+                                .font(.roboto(.bold, size: 16))
+                            Text("messages sent to user")
+                                .font(.roboto(.semibold, size: 14))
+                                .foregroundColor(.lightGrey)
+                        }
+                        Spacer()
+                        Text("22d")
+                            .font(.roboto(.semibold, size: 15))
+                    }
+                    Divider()
+                        .padding(.vertical, 8)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 8)
             }
-            .cornerRadius(Constants.semiRoundedCornerRadius)
-            .padding(.horizontal)
-            
+            .padding(.bottom, 50)
         }
     }
     
-    
-    
     private var messengerProfileImage: some View {
         Image(systemName: "person.fill")
-            .padding()
+            .font(.system(size: 32))
+            .padding(8)
             .overlay(RoundedRectangle(cornerRadius: 44)
                 .stroke( .black,
                        lineWidth: 1)
             )
-//            .resizable()
             .scaledToFit()
-//            .aspectRatio(contentMode: .fit)
             .frame(width: 32, height: 32)
     }
     
@@ -90,9 +80,18 @@ struct MainMessagesView: View {
                 
             }
             Spacer()
-            Image(systemName: "gear")
+            gearButtonView
         }
         .padding()
+    }
+    
+    private var gearButtonView: some View {
+        Button {
+            // takes you to friend's list maybe? idk. stand by.
+        } label: {
+            Image(systemName: "gear")
+        }
+
     }
     
     private var profileImageView: some View {
@@ -107,9 +106,28 @@ struct MainMessagesView: View {
         .onAppear(perform: mainMessagesVM.retrieveProfileImageFromDisk)
     }
     
+    private var newMessageView: some View {
+        Button {
+            
+        } label: {
+            HStack {
+                Spacer()
+                Text("+ New Message")
+                // font here
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding(.vertical)
+            .background(.blue)
+            .cornerRadius(Constants.roundedCornerRadius)
+            .padding(.horizontal)
+            .shadow(radius: Constants.buttonShadowRadius)
+        }
+    }
+    
 }
 
-struct HotPotView_Previews: PreviewProvider {
+struct MainMessagesView_Previews: PreviewProvider {
     static var previews: some View {
         MainMessagesView()
     }
