@@ -23,6 +23,7 @@ import CoreData
     @Published var displayName: String? = ""
     @Published var profileImage: UIImage?
     let firestoreDatabase = Firestore.firestore()
+    let fbFirestoreHelper = FirebaseFirestoreHelper()
     let fbStorageHelper = FirebaseStorageHelper()
     
     func sendFriendRequest(selectedUserID: String) {

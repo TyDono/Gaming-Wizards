@@ -78,9 +78,9 @@ struct FriendListView: View {
                 Image(systemName: "plus")
             }
             .alert("Add Friend", isPresented: $friendListVM.addFriendAlertIsShowing, actions: {
-                TextField("Friend ID", text: $friendListVM.friendIDTextField)
+                TextField("Friend ID", text: $friendListVM.friendCodeIDTextField)
                 Button("Submit", action: {
-                    guard !friendListVM.friendIDTextField.isEmpty else {
+                    guard !friendListVM.friendCodeIDTextField.isEmpty else {
                         friendListVM.noFriendExistsAlertIsShowing = true
                         return
                     }

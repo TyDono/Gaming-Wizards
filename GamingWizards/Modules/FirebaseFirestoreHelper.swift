@@ -12,6 +12,10 @@ class FirebaseFirestoreHelper {
 //    let user = UserObservable.shared
     let firestoreDatabase = Firestore.firestore()
     let user = UserObservable.shared
+    let coreDataController = CoreDataController.shared
+    
+    
+
     
     // HAVE MORE DONE IN HERE
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
@@ -73,6 +77,60 @@ class FirebaseFirestoreHelper {
             print("ERROR FETCHING SEARCHED FOR USERS: \(error.localizedDescription)")
             throw error
         }
+    }
+    
+    func sendFriendRequest(friendId: String) { // rework to use the new friend id not friend code. add to both you and the sent user.
+        let friendListPath = firestoreDatabase.collection(Constants.usersString).document(friendId).collection(Constants.userFriendList).document(self.user.id)
+        
+        friendListPath.getDocument { [self] docSnapShot, err in
+            if let error = err {
+                print("sendFriendRequest ERROR: \(error.localizedDescription)")
+            } else {
+                let friendCodeID = docSnapShot?.data()?[Constants.friendCodeID] as? String ?? "No user friend code found"
+                let friendUserID = docSnapShot?.data()?[Constants.userID] as? String ?? "No user id found"
+                let friendDisplayName = docSnapShot?.data()?[Constants.friendDisplayName] as? String ?? ""
+                
+                let yourInfoPath = self.firestoreDatabase.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(friendUserID)
+                let yourFriendInfo = Friend(friendCodeID: self.user.friendCodeID,
+                                            friendUserID: (self.user.id),
+                                            friendDisplayName: self.user.displayName ?? "",
+                                            isFriend: false,
+                                            isFavorite: false)
+                let theirFriendInfo = Friend(friendCodeID: friendCodeID,
+                                                     friendUserID: friendUserID,
+                                                     friendDisplayName: friendDisplayName,
+                                                     isFriend: false,
+                                                     isFavorite: false)
+                friendListPath.setData(yourFriendInfo.friendDictionary)
+                yourInfoPath.setData(theirFriendInfo.friendDictionary)
+                self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: false, isFavorite: false)
+            }
+        }
+        /*
+        
+        firestoreDatabase.collection(Constants.usersString).whereField("friendCodeID", isEqualTo: friendId)
+            .getDocuments() { [self] (querySnapshot, err) in
+                if let error = err {
+                    print("ERROR GETTING DOCUMENTS ON A FRIENDS REQUEST BEING SENT: \(error)")
+                } else {
+                    //if no document exist have an alert
+                    for document in querySnapshot!.documents {
+                        let friendUserID = document.data()[Constants.userID] as? String ?? "No user id found"
+                         let userID = self.user.id //else { return }
+//                            guard let userFriendCodeID = self.user.friendCodeID else { return }
+                        guard let displayName = self.user.displayName else { return }
+                        let newFriend: Friend = Friend(friendCodeID: self.user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
+                        let newPath = self.firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
+                        
+                        newPath.getDocument { (document, error) in
+                            if ((document?.exists) == false) {
+                                newPath.setData(newFriend.friendDictionary)
+                            }
+                        }
+                    }
+                }
+            }
+         */
     }
     
 }

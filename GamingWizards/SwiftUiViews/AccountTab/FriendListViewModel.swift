@@ -16,7 +16,7 @@ import Security
         @ObservedObject var user = UserObservable.shared
         @Published var friendList: [Friend] = []
         @Published var addFriendAlertIsShowing: Bool = false
-        @Published var friendIDTextField: String = ""
+        @Published var friendCodeIDTextField: String = ""
         @Published var friendIDName: String = ""
         @Published var friendName: String = ""
         @Published var FriendRequestAlreadySentIsTrue: Bool = false
@@ -41,7 +41,7 @@ import Security
         }
         
         func sendFriendRequest() {
-            firestoreDatabase.collection(Constants.usersString).whereField("friendCodeID", isEqualTo: friendIDTextField)
+            firestoreDatabase.collection(Constants.usersString).whereField("friendCodeID", isEqualTo: friendCodeIDTextField)
                 .getDocuments() { [self] (querySnapshot, err) in
                     if let error = err {
                         self.noFriendExistsAlertIsShowing = true

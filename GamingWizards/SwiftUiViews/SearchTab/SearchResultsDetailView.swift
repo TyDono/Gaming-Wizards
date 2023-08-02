@@ -53,6 +53,7 @@ struct SearchResultsDetailView: View {
             HStack {
                 
                 Button {
+                    searchResultsDetailViewModel.fbFirestoreHelper.sendFriendRequest(friendId: selectedUser.id)
                     dismiss()
                     self.tabSelection = Constants.messageTabViewString
                 } label: {
