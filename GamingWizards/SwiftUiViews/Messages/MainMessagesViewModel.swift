@@ -14,6 +14,7 @@ extension MainMessagesView {
         @ObservedObject var user = UserObservable.shared
         var diskSpace = DiskSpaceHandler()
         @Published var profileImage: UIImage?
+        @Published var isDetailedMessageViewShowing: Bool = false
         
         func retrieveProfileImageFromDisk() {
             profileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)

@@ -11,39 +11,50 @@ struct MainMessagesView: View {
     @StateObject private var mainMessagesVM = MainMessagesViewModel()
     
     var body: some View {
-        NavigationStack {
-            
-            VStack {
-                mainMessagesCustomNavBar
-                messagesScrollView
-//                newMessageView
-            }.navigationBarHidden(true)
+        ZStack {
+            NavigationStack {
+                VStack {
+                    mainMessagesCustomNavBar
+                    messagesScrollView
+                    //                newMessageView
+                }.navigationBarHidden(true)
+            }
+        }
+        .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
+            DetailedMessageView()
         }
     }
     
     private var messagesScrollView: some View {
         ScrollView {
             ForEach(0..<10, id: \.self) { num in
-                VStack {
-                    HStack(spacing: 16){
-                        messengerProfileImage
-                        VStack(alignment: .leading) {
-                            Text("UserName")
-                                .font(.roboto(.bold, size: 16))
-                            Text("messages sent to user")
-                                .font(.roboto(.semibold, size: 14))
-                                .foregroundColor(.lightGrey)
+                Button {
+                    mainMessagesVM.isDetailedMessageViewShowing.toggle()
+                } label: {
+                    VStack {
+                        HStack(spacing: 16) {
+                            messengerProfileImage
+                            VStack(alignment: .leading) {
+                                Text("UserName")
+                                    .font(.roboto(.bold, size: 16))
+                                Text("messages sent to user")
+                                    .font(.roboto(.semibold, size: 14))
+                                    .foregroundColor(.lightGrey)
+                            }
+                            Spacer()
+                            Text("22d")
+                                .font(.roboto(.semibold, size: 15))
                         }
-                        Spacer()
-                        Text("22d")
-                            .font(.roboto(.semibold, size: 15))
+                        Divider()
+                            .padding(.vertical, 8)
                     }
-                    Divider()
-                        .padding(.vertical, 8)
+                    .foregroundColor(.black)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 8)
+
             }
+
             .padding(.bottom, 50)
         }
     }

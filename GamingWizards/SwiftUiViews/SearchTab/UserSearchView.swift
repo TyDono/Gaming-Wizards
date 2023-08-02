@@ -23,7 +23,6 @@ struct UserSearchView: View {
             .navigationBarTitle("Looking for Group")
             .navigationDestination(isPresented: $userSearchVM.navigateToSearchResults) {
                 SearchResultsView(userSearchViewModel: userSearchVM, searchText: filterer.searchText)
-                
             }
         }
         .font(.globalFont(.luminari, size: 16))

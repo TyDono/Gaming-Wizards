@@ -7,48 +7,56 @@
 
 import SwiftUI
 
+import SwiftUI
+
 extension Font {
-    
     enum RobotoFont {
+        case regular
         case semibold
         case bold
         case custom(String)
-        
+
         var value: String {
             switch self {
+            case .regular:
+                return "Regular"
             case .semibold:
                 return "Semibold"
             case .bold:
                 return "Bold"
-                
             case .custom(let name):
                 return name
             }
         }
     }
-    
+
     enum globalFontType {
         case bold
         case luminari
-        
+
         var value: String {
             switch self {
             case .bold:
                 return "bold"
-                
             case .luminari:
                 return Constants.luminariRegularFontIdentifier
             }
         }
     }
-    
+
     static func roboto(_ type: RobotoFont, size: CGFloat = 20) -> Font {
-        return .custom(type.value, size: size)
+        switch type {
+        case .regular, .custom(_):
+            return .custom("Roboto-\(type.value)", size: size)
+        case .semibold, .bold:
+            return .custom("Roboto-\(type.value)", size: size, relativeTo: .headline)
+        }
     }
-    
+
     static func globalFont(_ type: globalFontType, size: CGFloat = 20) -> Font {
         return .custom(type.value, size: size)
     }
+
     
     /*
     /// Create a font with the large title text style.
