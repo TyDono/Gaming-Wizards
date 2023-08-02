@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var selectedTab = "Account"
+    @State var selectedTab = Constants.accountTabViewString
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
 //        UITabBar.appearance().shadowImage = UIImage()
@@ -26,15 +26,15 @@ struct MainTabView: View {
                 
             }
             .badge(Constants.friendRequestCount)
-            .tag("Account")
+            .tag(Constants.accountTabViewString)
             
             NavigationStack {
-                UserSearchView()
+                UserSearchView(tabSelection: $selectedTab)
             }
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
             }
-            .tag("Search")
+            .tag(Constants.searchTabViewString)
             
             NavigationStack {
                 MainMessagesView()
@@ -42,7 +42,7 @@ struct MainTabView: View {
             .tabItem {
                 Label("Messages", systemImage: "message")
             }
-            .tag("Messages")
+            .tag(Constants.messageTabViewString)
             
             NavigationStack {
                 MapBoxView()
@@ -50,7 +50,7 @@ struct MainTabView: View {
             .tabItem {
                 Label("Map", systemImage: "map")
             }
-            .tag("Map")
+            .tag(Constants.mapTabViewString)
             
         }
     }

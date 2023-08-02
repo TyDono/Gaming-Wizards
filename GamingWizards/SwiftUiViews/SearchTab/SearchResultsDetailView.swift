@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct SearchResultsDetailView: View {
+    
     @StateObject private var searchResultsDetailViewModel = SearchResultsDetailViewModel()
+    @Environment(\.dismiss) var dismiss
     @Binding var selectedUser: User
     @Binding var specificGame: String
+    @Binding var tabSelection: String
     
     var body: some View {
         ZStack {
@@ -48,17 +51,24 @@ struct SearchResultsDetailView: View {
             // instead of a friend request. this will be used to just send a message. maybe later have a private account feature in premium that will require users to send a friend request first.
         }) {
             HStack {
-                Text("Send Message")
-                    .font(.globalFont(.luminari, size: 21))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                Spacer()
+                
+                Button {
+                    dismiss()
+                    self.tabSelection = Constants.messageTabViewString
+                } label: {
+                    Text("Send Message")
+                        .font(.globalFont(.luminari, size: 21))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    Spacer()
+                }
+                .foregroundColor(.white)
+                .padding(.vertical)
+                .background(.blue)
+                .cornerRadius(Constants.roundedCornerRadius)
+                .padding(.horizontal)
+                .shadow(radius: Constants.buttonShadowRadius)
             }
-            .foregroundColor(.white)
-            .padding(.vertical)
-            .background(.blue)
-            .cornerRadius(Constants.roundedCornerRadius)
-            .padding(.horizontal)
-            .shadow(radius: Constants.buttonShadowRadius)
+
         }
     }
     
@@ -94,6 +104,6 @@ struct SearchResultsDetailView_Previews: PreviewProvider {
         let user = User(id: "110k1") // Create an instance of User or use a mock object
         let SpecificGame = "tony hawk"
         
-        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(SpecificGame))
+        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(SpecificGame), tabSelection: .constant("nil"))
     }
 }

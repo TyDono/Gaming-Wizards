@@ -24,6 +24,12 @@ struct Constants {
     static let profileImageHeight: CGFloat = 300
 //    static let friendList = "friendList"
     
+    // MARK: calls to Tab
+    static let accountTabViewString = "Account"
+    static let searchTabViewString = "Search"
+    static let messageTabViewString = "TabViewString"
+    static let mapTabViewString = "Map"
+    
     // MARK: calls to User
     static let userFriendCode = "friendCode"
     static let userID = "id"

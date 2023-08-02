@@ -11,7 +11,8 @@ struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchVM = UserSearchViewModel()
     @StateObject private var filterer = Filterer()
-    private var debouncer = Debouncer(delay: 0.5)
+    @State private var debouncer = Debouncer(delay: 0.5)
+    @Binding var tabSelection: String
     
     var body: some View {
         ZStack {
@@ -22,7 +23,7 @@ struct UserSearchView: View {
             }
             .navigationBarTitle("Looking for Group")
             .navigationDestination(isPresented: $userSearchVM.navigateToSearchResults) {
-                SearchResultsView(userSearchViewModel: userSearchVM, searchText: filterer.searchText)
+                SearchResultsView(userSearchViewModel: userSearchVM, searchText: filterer.searchText, tabSelection: $tabSelection)
             }
         }
         .font(.globalFont(.luminari, size: 16))
@@ -82,6 +83,6 @@ struct UserSearchView: View {
 
 struct OrderView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSearchView()
+        UserSearchView(tabSelection: .constant("nil"))
     }
 }

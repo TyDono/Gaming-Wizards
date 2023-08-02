@@ -16,6 +16,7 @@ struct SearchResultsView: View {
     @State var resultWasTapped: Bool = false
     @State var selectedUser: User = User(id: "110k1")
     @State var searchText: String
+    @Binding var tabSelection: String
     
     var body: some View {
         ZStack {
@@ -25,7 +26,7 @@ struct SearchResultsView: View {
         }
         .font(.globalFont(.luminari, size: 16))
         .sheet(isPresented: $resultWasTapped, content: {
-            SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText)
+            SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
         })
         .background(
             backgroundImage
@@ -113,6 +114,6 @@ struct SearchResultsView_Previews: PreviewProvider {
         let searchText = "Example Search"
         let selectedUser = User(id: "110k1")
         
-        return SearchResultsView(userSearchViewModel: userSearchViewModel, selectedUser: selectedUser, searchText: searchText)
+        return SearchResultsView(userSearchViewModel: userSearchViewModel, selectedUser: selectedUser, searchText: searchText, tabSelection: .constant("nil"))
     }
 }

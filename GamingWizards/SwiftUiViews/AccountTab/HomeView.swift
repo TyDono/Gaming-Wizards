@@ -24,7 +24,7 @@ struct HomeView: View {
             ZStack(alignment: .bottom) {
                 VStack {
                     List {
-                        manageFriendList
+//                        manageFriendList // disabled until premium version added. post mvp
                         viewProfileButton
                         // accountSettingsButtonView // change fonts from normal and luminari. post mvp
                         logOutButton
