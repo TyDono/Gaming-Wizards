@@ -11,7 +11,16 @@ import SwiftUI
 extension DetailedMessageView {
     @MainActor class DetailedMessageViewModel: ObservableObject {
         @Published var user = UserObservable.shared
-        @Published var chatText: String = ""
+        @Published var coreDataController = CoreDataController.shared
+//        @Published var chatText: String = ""
+        
+        init() {
+            
+        }
+        
+        func handleSendMessage(text: String) {
+            print(text)
+        }
         
     }
 }

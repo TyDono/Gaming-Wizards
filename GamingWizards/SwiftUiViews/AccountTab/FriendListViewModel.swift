@@ -45,7 +45,7 @@ import Security
                 .getDocuments() { [self] (querySnapshot, err) in
                     if let error = err {
                         self.noFriendExistsAlertIsShowing = true
-                        print("Error getting documents: \(error)")
+                        print("ERROR GETTING DOCUMENTS ON A FRIENDS REQUEST BEING SENT: \(error)")
                     } else {
                         self.noFriendExistsAlertIsShowing = false
                         //if no document exist have an alert

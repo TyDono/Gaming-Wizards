@@ -10,13 +10,13 @@ import SwiftUI
 struct DetailedMessageView: View {
     
     @ObservedObject var detailedMessageVM = DetailedMessageViewModel()
-    @State private var MessageBarTextEditor: String = "Description"
+    @State private var MessageBarTextEditorPlaceholder: String = "Description"
+    @State private var chatText: String = ""
     
     var body: some View {
         ZStack {
             VStack {
                 messagesView
-                bottomChatBarView
             }
         }
         .navigationTitle("place holder") // should be whom so ever the user name in. binding
@@ -29,18 +29,18 @@ struct DetailedMessageView: View {
                 .font(.system(size: 24))
                 .foregroundColor(Color(.darkGray))
             ZStack {
-                if self.detailedMessageVM.chatText.isEmpty {
-                    TextEditor(text: $MessageBarTextEditor)
+                if self.chatText.isEmpty {
+                    TextEditor(text: $MessageBarTextEditorPlaceholder)
                         .foregroundColor(.gray)
                         .disabled(true)
                         .frame(height: 50)
                 }
-                TextEditor(text: $detailedMessageVM.chatText.max(Constants.textFieldMaxCharacters))
-                    .opacity(self.detailedMessageVM.chatText.isEmpty ? 0.25 : 1)
+                TextEditor(text: $chatText.max(Constants.textFieldMaxCharacters))
+                    .opacity(chatText.isEmpty ? 0.25 : 1)
                     .frame(height: 50)
             }
             Button {
-                
+                detailedMessageVM.handleSendMessage(text: self.chatText)
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
@@ -57,13 +57,13 @@ struct DetailedMessageView: View {
     
     private var messagesView: some View {
         ScrollView {
-            ForEach(0..<20) { num in
+//            ForEach(0..<20) { num in
+            ForEach(detailedMessageVM.coreDataController.savedFriendEntities, id: \.self) { friend in
                 HStack {
                     Spacer()
                     HStack {
                         Text("place holder message")
                             .foregroundColor(.white)
-                            
                     }
                     .padding()
                     .background(.blue)
@@ -77,6 +77,12 @@ struct DetailedMessageView: View {
             }
         }
         .background(Color(.init(white: 0.95, alpha: 1)))
+        .safeAreaInset(edge: .bottom) {
+            bottomChatBarView
+                .background(Color(
+                    .systemBackground)
+                    .ignoresSafeArea())
+        }
     }
     
 }

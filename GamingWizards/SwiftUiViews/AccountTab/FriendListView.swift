@@ -29,7 +29,7 @@ struct FriendListView: View {
                     addFriendButton
                 }
             }
-            .navigationBarTitle("Friend List", displayMode: .large)
+            .navigationBarTitle("Contact List", displayMode: .large)
             .alert("Cannot Send", isPresented: $friendListVM.FriendRequestAlreadySentIsTrue, actions: {
                 Button("OK", role: .cancel, action: {})
             }, message: {

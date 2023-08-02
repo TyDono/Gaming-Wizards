@@ -68,7 +68,7 @@ struct HomeView: View {
                         }
                         */
                         Image(systemName: "person.2")
-                        Text("Friends")
+                        Text("Contact Info")
                             .badge(Constants.friendRequestCount)
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
