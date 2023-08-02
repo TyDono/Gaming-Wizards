@@ -116,6 +116,7 @@
 		CB8841CC2A77C5AB0017C874 /* MainMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CB2A77C5AB0017C874 /* MainMessagesViewModel.swift */; };
 		CB8841CE2A791E680017C874 /* DetailedMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CD2A791E680017C874 /* DetailedMessageView.swift */; };
 		CB8841D02A791E790017C874 /* DetailedMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CF2A791E790017C874 /* DetailedMessageViewModel.swift */; };
+		CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -240,6 +241,7 @@
 		CB8841CB2A77C5AB0017C874 /* MainMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessagesViewModel.swift; sourceTree = "<group>"; };
 		CB8841CD2A791E680017C874 /* DetailedMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMessageView.swift; sourceTree = "<group>"; };
 		CB8841CF2A791E790017C874 /* DetailedMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMessageViewModel.swift; sourceTree = "<group>"; };
+		CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */,
 				CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */,
 				CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */,
+				CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
 			);
@@ -847,6 +850,7 @@
 				CB62406C2A5787FF00E69C5C /* Filterer.swift in Sources */,
 				CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */,
 				CB5BE89A29FDE958009D38D6 /* UserSearchView.swift in Sources */,
+				CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */,
 				CB5BE88429FDE958009D38D6 /* NavigationLogInView.swift in Sources */,
 				CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */,
 				CB62962F2A5F987500F84367 /* SearchResultCellView.swift in Sources */,

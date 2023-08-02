@@ -9,12 +9,19 @@ import Foundation
 import FirebaseStorage
 import UIKit
 
-class FirebaseStorageHelper {
-    let user = UserObservable.shared
-    let storageRef = Storage.storage()
+class FirebaseStorageHelper: NSObject {
+    let storage: Storage
+    
+    static let shared = FirebaseStorageHelper()
+    
+    override init() {
+        self.storage = Storage.storage()
+        
+        super.init()
+    }
     
     func retrieveUserProfileImage(imageString: String, completion: @escaping (UIImage?) -> Void) {
-        let storagePath = storageRef.reference().child("profileImages/\(imageString)")
+        let storagePath = storage.reference().child("profileImages/\(imageString)")
         storagePath.getData(maxSize: 5 * 1024 * 1024) { (data, error) in
             if let error = error {
                 print("ERROR DOWNLOADING PERSONAL USER PROFILE IMAGE FROM FIREBASE STORAGE: \(error.localizedDescription)")

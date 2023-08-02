@@ -8,18 +8,25 @@
 import Foundation
 import FirebaseFirestore
 
-class FirebaseFirestoreHelper {
+class FirebaseFirestoreHelper: NSObject {
 //    let user = UserObservable.shared
-    let firestoreDatabase = Firestore.firestore()
+//    let firestoreDatabase = Firestore.firestore()
+    let firestore: Firestore
     let user = UserObservable.shared
     let coreDataController = CoreDataController.shared
     
+    static let shared = FirebaseFirestoreHelper()
     
+    override init() {
+        self.firestore = Firestore.firestore()
+        
+        super.init()
+    }
 
     
     // HAVE MORE DONE IN HERE
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
-        let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
+        let documentRef = firestore.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayRemove([itemName])
         ]) { [weak self] error in
@@ -33,7 +40,7 @@ class FirebaseFirestoreHelper {
     }
     
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
-        let documentRef = firestoreDatabase.collection(collectionName).document(documentField)
+        let documentRef = firestore.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayUnion([itemName])
         ]) { [weak self] error in
@@ -47,7 +54,7 @@ class FirebaseFirestoreHelper {
     }
     
     func searchForMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User] {
-        let gameQuery = firestoreDatabase.collection(collectionName).whereField(whereField, arrayContains: gameName)
+        let gameQuery = firestore.collection(collectionName).whereField(whereField, arrayContains: gameName)
 //            let gameQuery = firesStoreDatabase.collection(Constants.users).whereField(Constants.userListOfGamesString, arrayContains: gameName)
         
         do {
@@ -80,7 +87,7 @@ class FirebaseFirestoreHelper {
     }
     
     func sendFriendRequest(friendId: String) { // rework to use the new friend id not friend code. add to both you and the sent user.
-        let friendListPath = firestoreDatabase.collection(Constants.usersString).document(friendId).collection(Constants.userFriendList).document(self.user.id)
+        let friendListPath = firestore.collection(Constants.usersString).document(friendId).collection(Constants.userFriendList).document(self.user.id)
         
         friendListPath.getDocument { [self] docSnapShot, err in
             if let error = err {
@@ -90,7 +97,7 @@ class FirebaseFirestoreHelper {
                 let friendUserID = docSnapShot?.data()?[Constants.userID] as? String ?? "No user id found"
                 let friendDisplayName = docSnapShot?.data()?[Constants.friendDisplayName] as? String ?? ""
                 
-                let yourInfoPath = self.firestoreDatabase.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(friendUserID)
+                let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(friendUserID)
                 let yourFriendInfo = Friend(friendCodeID: self.user.friendCodeID,
                                             friendUserID: (self.user.id),
                                             friendDisplayName: self.user.displayName ?? "",
