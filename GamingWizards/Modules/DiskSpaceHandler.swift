@@ -31,7 +31,6 @@ class DiskSpaceHandler: ObservableObject {
            let loadedImage = UIImage(data: imageData) {
             return loadedImage
         } else {
-            print("Failed to load image from disk, or no image")
             return UIImage(named: "WantedWizard")!
         }
     }

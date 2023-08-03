@@ -29,7 +29,11 @@ import CoreData
     func sendFriendRequest(selectedUserID: String) {
 //        guard let userFriendCode = user.friendCodeID else { return }
         let path = firestoreDatabase.collection(Constants.usersString).document(selectedUserID).collection(Constants.userFriendList).document(user.friendCodeID)
-        let newFriend = Friend(friendCodeID: user.friendCodeID, friendUserID: user.id, friendDisplayName: user.displayName!, isFriend: false, isFavorite: false) //this should be the current user's info
+        let newFriend = Friend(id: user.id, friendCodeID: user.friendCodeID,
+                               displayName: user.displayName ?? "",
+                               isFriend: false,
+                               isFavorite: false,
+                               imageString: user.profileImageString) //this should be the current user's info
         path.getDocument { [weak self] (documentSnapshot, err) in
             if let error = err {
                 print("Error retrieving document: \(error.localizedDescription)")

@@ -29,24 +29,24 @@ struct User: Identifiable, Codable, Hashable {
     
     var userDictionary: [String: Any] {
         return [
-            "id": id,
-            "firstName": firstName,
-            "lastName": lastName,
-            "displayName": displayName,
-            "email": email ?? "No Email Available",
-            "location": location,
-            "profileImageString": profileImageString,
-            "friendCodeID": friendCodeID,
-            "friendList": friendList,
-            "friendRequests": friendRequests,
-            "listOfGames": listOfGames,
-            "groupSize": groupSize,
-            "age": age,
-            "about": about,
-            "availability": availability,
-            "title": title,
-            "isPayToPlay": isPayToPlay,
-            "isSolo": isSolo
+            Constants.userID: id,
+            Constants.userFirstName: firstName,
+            Constants.userLastName: lastName,
+            Constants.userDisplayName: displayName,
+            Constants.userEmail: email ?? "No Email Available",
+            Constants.userLocation: location,
+            Constants.userProfileImageString: profileImageString,
+            Constants.userFriendCode: friendCodeID,
+            Constants.userFriendList: friendList,
+            Constants.userFriendRequest: friendRequests,
+            Constants.userListOfGamesString: listOfGames,
+            Constants.userGroupSize: groupSize,
+            Constants.userAge: age,
+            Constants.userAbout: about,
+            Constants.userAvailability: availability,
+            Constants.userTitle: title,
+            Constants.userPayToPlay: isPayToPlay,
+            Constants.userIsSolo: isSolo
             
         ]
     }
@@ -72,33 +72,77 @@ extension User {
         case title = "title"
         case payToPlay = "isPayToPlay"
         case isSolo = "isSolo"
+        
+        init?(constantValue: String) {
+            switch constantValue {
+            case Constants.userID:
+                self = .id
+            case Constants.userFirstName:
+                self = .firstName
+            case Constants.userLastName:
+                self = .lastName
+            case Constants.userDisplayName:
+                self = .displayName
+            case Constants.userEmail:
+                self = .email
+            case Constants.userLocation:
+                self = .location
+            case Constants.userProfileImageString:
+                self = .profileImageString
+            case Constants.userFriendCode:
+                self = .friendCodeID
+            case Constants.userFriendList:
+                self = .friendList
+            case Constants.userFriendRequest:
+                self = .friendRequests
+            case Constants.userListOfGamesString:
+                self = .listOfGames
+            case Constants.userGroupSize:
+                self = .groupSize
+            case Constants.userAge:
+                self = .age
+            case Constants.userAbout:
+                self = .about
+            case Constants.userAvailability:
+                self = .availability
+            case Constants.userTitle:
+                self = .title
+            case Constants.userPayToPlay:
+                self = .payToPlay
+            case Constants.userIsSolo:
+                self = .isSolo
+            default:
+                return nil
+            }
+        }
+        
     }
 }
         
 class UserObservable: ObservableObject {
     static let shared = UserObservable()
     
-    private let idKey = "id"
-    private let firstNameKey = "firstName"
-    private let lastNameKey = "lastName"
-    private let displayNameKey = "displayName"
-    private let emailKey = "email"
-    private let locationKey = "location"
-    private let profileImageStringKey = "profileImageString"
-    private let isNewUserKey = "isNewUser"
-    private let latitudeKey = "latitude"
-    private let longitudeKey = "longitude"
-    private let friendIDKey = "friendCodeID"
-    private let friendListKey = "friendList"
-    private let friendRequestsKey = "friendRequests"
-    private let listOfGamesKey = "listOfGames"
-    private let groupSizeKey = "groupSize"
-    private let ageKey = "age"
-    private let aboutKey = "about"
-    private let availabilityKey = "availability"
-    private let titleKey = "title"
-    private let payToPlayKey = "isPayToPlay"
-    private let isSoloKey = "isSolo"
+    private let idKey = Constants.userID
+    private let firstNameKey = Constants.userFirstName
+    private let lastNameKey = Constants.userLastName
+    private let displayNameKey = Constants.userDisplayName
+    private let emailKey = Constants.userEmail
+    private let locationKey = Constants.userLocation
+    private let profileImageStringKey = Constants.userProfileImageString
+    private let isNewUserKey = "isNewUser" // No constant provided for this, so using the original string
+    private let latitudeKey = "latitude" // No constant provided for this, so using the original string
+    private let longitudeKey = "longitude" // No constant provided for this, so using the original string
+    private let friendIDKey = Constants.userFriendCode
+    private let friendListKey = Constants.userFriendList
+    private let friendRequestsKey = Constants.userFriendRequest
+    private let listOfGamesKey = Constants.userListOfGamesString
+    private let groupSizeKey = Constants.userGroupSize
+    private let ageKey = Constants.userAge
+    private let aboutKey = Constants.userAbout
+    private let availabilityKey = Constants.userAvailability
+    private let titleKey = Constants.userTitle
+    private let payToPlayKey = Constants.userPayToPlay
+    private let isSoloKey = Constants.userIsSolo
     
     var id: String
     

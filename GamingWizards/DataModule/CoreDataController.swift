@@ -51,20 +51,21 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    func addFriend(friendCodeID: String, friendUserID: String, friendDisplayName: String, isFriend: Bool, isFavorite: Bool) { // change this to patch friend entity
+    func addFriend(friendCodeID: String, friendUserID: String, friendDisplayName: String, isFriend: Bool, isFavorite: Bool, profileImageString: String) { // change this to patch friend entity
         let newFriend = FriendEntity(context: viewContext)
         newFriend.friendCodeID = friendCodeID
-        newFriend.friendUserID =  friendUserID
-        newFriend.friendDisplayName = friendDisplayName
+        newFriend.id =  friendUserID
+        newFriend.displayName = friendDisplayName
         newFriend.isFriend = isFriend
         newFriend.isFavorite = isFavorite
+        newFriend.imageString = profileImageString
         saveFriendData()
     }
     
     //not needed. remove. outdated
     func deleteFriend(friend: FriendEntity, userID: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
 //        guard let userFriendCodeID = user.friendCodeID else { return }
-        guard let friendUserID = friend.friendUserID else { return }
+        guard let friendUserID = friend.id else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
         firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID )
             .delete() { err in

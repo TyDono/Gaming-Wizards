@@ -445,7 +445,12 @@ struct ManageAccountView: View {
                 ManageListOfGamesView()
             }
         }
-    }
+        .alert("Cannot Send", isPresented: $manageAccountVM.isImageSizeExceedingLimitAlert, actions: {
+            Button("OK", role: .cancel, action: {})
+        }, message: {
+            Text("Image size exceeds the maximum allowed size (3 MB)")
+        })
+    }//isImageSizeExceedingLimit
     
     /*
     private var listOfGamesView: some View { //not used. prolly won't since i moved it to a new view

@@ -25,7 +25,7 @@ struct InviteFriendsView: View {
 //                                }
                         } label: {
                             if friend.isFriend == false {
-                                Text(friend.friendDisplayName ?? "")
+                                Text(friend.displayName ?? "")
                                 //have the VM contain a list of friend entities that are friends only
                             }
                         }

@@ -48,6 +48,7 @@ extension ManageAccountView {
         @Published var searchBarDropDownNotificationText: String = ""
         @Published var isSearchError: Bool = false
         @Published var isManageListOfGamesViewShowing: Bool = false
+        @Published var isImageSizeExceedingLimitAlert: Bool = false
         
         let firestoreDatabase = Firestore.firestore()
         let firebaseStorage = Storage.storage()
@@ -63,12 +64,27 @@ extension ManageAccountView {
         
         func uploadProfileImageToFirebaseStorage() {
             guard let image = profileImage else { return }
-            guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+            let maxSizeInBytes: Int64 = 6 * 1024 * 1024
+            let minSizeInBytes: Int64 = Int64(0.8 * 1024 * 1024)
+            
+            guard let imageData = image.jpegData(compressionQuality: 1.0) else { return }
+            var compressionQuality: CGFloat = 1.0
+            
+            if Int64(imageData.count) > minSizeInBytes {
+                let targetCompressionQuality = CGFloat(minSizeInBytes) / CGFloat(imageData.count)
+                compressionQuality = max(targetCompressionQuality, 0.5)
+            } else if Int64(imageData.count) > maxSizeInBytes {
+                isImageSizeExceedingLimitAlert = true
+                return
+            }
+            
+            guard let compressedImageData = image.jpegData(compressionQuality: compressionQuality) else { return }
+            
             let storageRef = firebaseStorage.reference().child("profileImages/\(user.profileImageString)")
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             
-            let uploadTask = storageRef.putData(imageData, metadata: metadata) { [weak self] metadata, err in
+            let uploadTask = storageRef.putData(compressedImageData, metadata: metadata) { [weak self] metadata, err in
                 guard let self = self else { return }
                 if let error = err {
                     print("ERROR UPLOADING IMAGE TO STORAGE: \(error.localizedDescription)")
@@ -89,6 +105,8 @@ extension ManageAccountView {
                 self.isSaveChangesButtonIsActive = false
             }
         }
+
+
         
         func updateUserInfo() {
             // if no internet make a pop up appear

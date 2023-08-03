@@ -30,7 +30,7 @@ import Security
         @State var friendID: String = ""
         @State var isFriend: Bool = false
         @State var isFavorite: Bool = false
-//        var friendDisplayName: String = ""
+//        var displayName: String = ""
         let coreDataController = CoreDataController.shared
         let authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
         let firestoreDatabase = Firestore.firestore()
@@ -54,7 +54,11 @@ import Security
                              let userID = self.user.id //else { return }
 //                            guard let userFriendCodeID = self.user.friendCodeID else { return }
                             guard let displayName = self.user.displayName else { return }
-                            let newFriend: Friend = Friend(friendCodeID: self.user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
+                            let newFriend: Friend = Friend(id: userID,
+                                                           friendCodeID: self.user.friendCodeID,
+                                                           displayName: displayName,
+                                                           isFriend: false, isFavorite: false,
+                                                           imageString: self.user.profileImageString)
                             let newPath = self.firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
                             
                             newPath.getDocument { (document, error) in
@@ -81,7 +85,7 @@ import Security
 //                let friendCodeID = user.data()?["friendCodeID"] as? String ?? "No image URL"
 //                
 //                DispatchQueue.main.async {
-//                    completion(Friend(friendCodeID: "", friendDisplayName: ""))
+//                    completion(Friend(friendCodeID: "", displayName: ""))
 //                }
 //            }
 //        }
@@ -90,13 +94,17 @@ import Security
         
         func acceptFriendRequest() {
             guard let friendCodeIDRequest = friend?.friendCodeID else { return }
-            guard let friendUserID = friend?.friendUserID else { return }
+            guard let friendUserID = friend?.id else { return }
              let userID = user.id //else { return }
 //            guard let userFriendCodeID = user.friendCodeID else { return }
             guard let displayName = user.displayName else { return }
 //            guard let friendUserID
             let friends = coreDataController.savedFriendEntities
-            let newFriend = Friend(friendCodeID: user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: true, isFavorite: false)
+            let newFriend = Friend(id: userID, friendCodeID: user.friendCodeID,
+                                   displayName: displayName,
+                                   isFriend: true,
+                                   isFavorite: false,
+                                   imageString: user.profileImageString)
             let friendPath = firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID) //goes to the friend and adds you to their friend list
             let userPath = firestoreDatabase.collection(Constants.usersString).document(userID).collection(Constants.userFriendList).document(friendCodeIDRequest) // goes to your friend list and changes isFriend to true
 
@@ -126,11 +134,11 @@ import Security
             let friends = coreDataController.savedFriendEntities
             friends.forEach {
                 if $0.friendCodeID == friendCodeID {
-//                    guard let friendDisplayName = $0.friendDisplayName else { return }
+//                    guard let displayName = $0.displayName else { return }
 //                    guard let friendUserID = $0.friendUserID else { return }
 //                    let isFriend = $0.isFriend
 //                    let isFavorite = $0.isFavorite
-//                    let friend = Friend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
+//                    let friend = Friend(friendCodeID: friendCodeID, friendUserID: friendUserID, displayName: displayName, isFriend: isFriend, isFavorite: isFavorite)
                     authenticationViewModel.deleteFriendInFirestore(friend: $0, userID: userID)
 //                    coreDataController.deleteFriend(friend: $0, userID: userID)
                 } else {
@@ -145,11 +153,11 @@ import Security
             let friends = coreDataController.savedFriendEntities
             friends.forEach {
                 if $0.friendCodeID == friendCodeIDRequest {
-//                    guard let friendDisplayName = $0.friendDisplayName else { return }
+//                    guard let displayName = $0.displayName else { return }
 //                    guard let friendUserID = $0.friendUserID else { return }
 //                    let isFriend = $0.isFriend
 //                    let isFavorite = $0.isFavorite
-//                    let friend = Friend(friendCodeID: friendCodeIDRequest, friendUserID: friendUserID,  friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite) //not used
+//                    let friend = Friend(friendCodeID: friendCodeIDRequest, friendUserID: friendUserID,  displayName: displayName, isFriend: isFriend, isFavorite: isFavorite) //not used
                     authenticationViewModel.deleteFriendInFirestore(friend: $0, userID: userID)
                     detailedFriendViewIsDismissed = true
 //                    coreDataController.deleteFriend(friend: $0, userID: userID)

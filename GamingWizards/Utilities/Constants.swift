@@ -33,13 +33,12 @@ struct Constants {
     // MARK: calls to User
     static let userFriendCode = "friendCode"
     static let userID = "id"
-    static let userFirstName = "firstName"
+    static let userFirstName: String = "firstName"
     static let userLastName = "lastName"
     static let userDisplayName = "displayName"
     static let userEmail = "email"
     static let userLocation = "location"
     static let userProfileImageString = "profileImageString"
-    static let userFriendID = "friendCodeID"
     static let userFriendList = "friendList"
     static let userFriendRequest = "friendRequest"
     static let userListOfGamesString = "listOfGames"
@@ -73,10 +72,11 @@ struct Constants {
     
     // MARK: calls to Friend
     static let friendCodeID = "friendCodeID"
-    static let friendUserID = "friendUserID"
-    static let friendDisplayName = "friendDisplayName"
+    static let friendUserID = "id"
+    static let displayName = "displayName"
     static let isFriend = "isFriend"
     static let isFavorite = "isFavorite"
+    static let imageString = "imageString"
     
     // MARK: call to UserReport
     static let reportReason = "reason"

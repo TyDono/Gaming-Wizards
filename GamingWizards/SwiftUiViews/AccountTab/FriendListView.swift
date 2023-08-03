@@ -43,11 +43,11 @@ struct FriendListView: View {
             List {
                 
 //                ForEach(authenticationViewModel.myFriendListData) { friendData in
-//                    Text("\(friendData.friendDisplayName)")
+//                    Text("\(friendData.displayName)")
 //                }
 //
 //                ForEach(coreDataController.savedFriendEntities) { friendData in
-//                    Text("\(friendData.friendDisplayName)")
+//                    Text("\(friendData.displayName)")
 //                }
                 
                 ForEach(coreDataController.savedFriendEntities, id: \.self) { friend in
@@ -62,7 +62,7 @@ struct FriendListView: View {
                             if friend.isFriend == false {
                                 redCircle
                             }
-                            Text(friend.friendDisplayName ?? "")
+                            Text(friend.displayName ?? "")
                         }
                     }
                 }

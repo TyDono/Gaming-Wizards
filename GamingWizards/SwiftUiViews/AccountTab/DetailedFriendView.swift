@@ -39,14 +39,14 @@ struct DetailedFriendView: View {
             }
             .toolbar {
             }
-            .navigationBarTitle(friendListVM.friend?.friendDisplayName ?? "", displayMode: .large)
+            .navigationBarTitle(friendListVM.friend?.displayName ?? "", displayMode: .large)
         }
         .keyboardAdaptive()
     }
 
     private var friendDisplayNameView: some View {
         VStack {
-            Text(friendListVM.friend?.friendDisplayName ?? "")
+            Text(friendListVM.friend?.displayName ?? "")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .font(.roboto(.semibold,

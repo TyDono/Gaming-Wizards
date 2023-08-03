@@ -22,7 +22,7 @@ class FirebaseStorageHelper: NSObject {
     
     func retrieveUserProfileImage(imageString: String, completion: @escaping (UIImage?) -> Void) {
         let storagePath = storage.reference().child("profileImages/\(imageString)")
-        storagePath.getData(maxSize: 5 * 1024 * 1024) { (data, error) in
+        storagePath.getData(maxSize: 3 * 1024 * 1024) { (data, error) in
             if let error = error {
                 print("ERROR DOWNLOADING PERSONAL USER PROFILE IMAGE FROM FIREBASE STORAGE: \(error.localizedDescription)")
                 completion(nil)

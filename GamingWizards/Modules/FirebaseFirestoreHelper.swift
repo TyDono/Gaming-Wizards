@@ -66,7 +66,7 @@ class FirebaseFirestoreHelper: NSObject {
                 let email = data[Constants.userEmail] as? String ?? ""
                 let location = data[Constants.userLocation] as? String ?? ""
                 let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
-                let friendCodeID = data[Constants.userFriendID] as? String ?? ""
+                let friendCodeID = data[Constants.userFriendCode] as? String ?? ""
                 let listOfGames = data[Constants.userListOfGamesString] as? [String] ?? [""]
                 let groupSize = data[Constants.userGroupSize] as? String ?? ""
                 let age = data[Constants.userAge] as? String ?? ""
@@ -76,7 +76,19 @@ class FirebaseFirestoreHelper: NSObject {
                 let payToPlay = data[Constants.userPayToPlay] as? Bool ?? false
                 let isSolo = data[Constants.userIsSolo] as? Bool ?? true
                 
-                return User(id: id, displayName: displayName, email: email, location: location, profileImageString: profileImageString, friendCodeID: friendCodeID, listOfGames: listOfGames, groupSize: groupSize, age: age, about: about, availability: availability, title: title, isPayToPlay: payToPlay, isSolo: isSolo)
+                return User(id: id,
+                            displayName: displayName,
+                            email: email,
+                            location: location,
+                            profileImageString: profileImageString,
+                            friendCodeID: friendCodeID,
+                            listOfGames: listOfGames,
+                            groupSize: groupSize,
+                            age: age, about: about,
+                            availability: availability,
+                            title: title,
+                            isPayToPlay: payToPlay,
+                            isSolo: isSolo)
             }
             
             return users
@@ -95,22 +107,29 @@ class FirebaseFirestoreHelper: NSObject {
             } else {
                 let friendCodeID = docSnapShot?.data()?[Constants.friendCodeID] as? String ?? "No user friend code found"
                 let friendUserID = docSnapShot?.data()?[Constants.userID] as? String ?? "No user id found"
-                let friendDisplayName = docSnapShot?.data()?[Constants.friendDisplayName] as? String ?? ""
+                let friendDisplayName = docSnapShot?.data()?[Constants.displayName] as? String ?? ""
+                let friendImageString = docSnapShot?.data()?[Constants.userProfileImageString] as? String ?? ""
+                let friendProfileImageString = docSnapShot?.data()?[Constants.imageString] as? String ?? ""
                 
                 let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(friendUserID)
-                let yourFriendInfo = Friend(friendCodeID: self.user.friendCodeID,
-                                            friendUserID: (self.user.id),
-                                            friendDisplayName: self.user.displayName ?? "",
+                let yourFriendInfo = Friend(id: (self.user.id),
+                                            friendCodeID: self.user.friendCodeID,
+                                            displayName: self.user.displayName ?? "",
                                             isFriend: false,
-                                            isFavorite: false)
-                let theirFriendInfo = Friend(friendCodeID: friendCodeID,
-                                                     friendUserID: friendUserID,
-                                                     friendDisplayName: friendDisplayName,
-                                                     isFriend: false,
-                                                     isFavorite: false)
+                                            isFavorite: false, imageString: user.profileImageString)
+                let theirFriendInfo = Friend(id: friendUserID,
+                                             friendCodeID: friendCodeID,
+                                             displayName: friendDisplayName,
+                                             isFriend: false,
+                                             isFavorite: false, imageString: friendImageString)
                 friendListPath.setData(yourFriendInfo.friendDictionary)
                 yourInfoPath.setData(theirFriendInfo.friendDictionary)
-                self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: false, isFavorite: false)
+                self.coreDataController.addFriend(friendCodeID: friendCodeID,
+                                                  friendUserID: friendUserID,
+                                                  friendDisplayName: friendDisplayName,
+                                                  isFriend: false,
+                                                  isFavorite: false,
+                                                  profileImageString: friendProfileImageString)
             }
         }
         /*
@@ -126,7 +145,7 @@ class FirebaseFirestoreHelper: NSObject {
                          let userID = self.user.id //else { return }
 //                            guard let userFriendCodeID = self.user.friendCodeID else { return }
                         guard let displayName = self.user.displayName else { return }
-                        let newFriend: Friend = Friend(friendCodeID: self.user.friendCodeID, friendUserID: userID, friendDisplayName: displayName, isFriend: false, isFavorite: false)
+                        let newFriend: Friend = Friend(friendCodeID: self.user.friendCodeID, friendUserID: userID, displayName: displayName, isFriend: false, isFavorite: false)
                         let newPath = self.firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
                         
                         newPath.getDocument { (document, error) in

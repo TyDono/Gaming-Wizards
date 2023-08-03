@@ -31,9 +31,7 @@ import FirebaseStorage
     let coreDataController = CoreDataController.shared
     private var listeningRegistration: ListenerRegistration?
     static var sharedAuthenticationVM = AuthenticationViewModel()
-    let firestoreDatabase = Firestore.firestore()
     let fbFirestoreHelper = FirebaseFirestoreHelper()
-    let storageRef = Storage.storage()
     let fbStorageHelper = FirebaseStorageHelper()
 //    private let keychainHelper = KeychainHelper()
     
@@ -45,7 +43,7 @@ import FirebaseStorage
   }
     
     func saveUserIntoFirestore(for user: User) {
-        let documentPath = firestoreDatabase.collection(Constants.usersString).document(user.id)
+        let documentPath = fbFirestoreHelper.firestore.collection(Constants.usersString).document(user.id)
         documentPath.getDocument { [weak self] document, err in
             if let error = err {
                 print("ERROR RETRIEVING FIRESTORE USER DATA WHEN TRYING TO SIGN IN: \(error.localizedDescription)")
@@ -190,15 +188,15 @@ import FirebaseStorage
     
     func deleteFriendInFirestore(friend: FriendEntity, userID: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
 //        guard let userFriendCodeID = user.friendCodeID else { return }
-        guard let friendUserID = friend.friendUserID else { return }
+        guard let friendUserID = friend.id else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
-        firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID)
+        fbFirestoreHelper.firestore.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID)
             .delete() { [weak self] err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
                     guard let self = self else { return }
-                    self.firestoreDatabase.collection(Constants.usersString).document(userID).collection("friendList").document(friendCodeID).delete() { [weak self] err in
+                    self.fbFirestoreHelper.firestore.collection(Constants.usersString).document(userID).collection("friendList").document(friendCodeID).delete() { [weak self] err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THEIR FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
@@ -211,7 +209,7 @@ import FirebaseStorage
     
     func retrieveFriendsListener() {
          let userID = user.id //else { return }
-        listeningRegistration = firestoreDatabase.collection(Constants.usersString).document(userID).collection(Constants.userFriendList)
+        listeningRegistration = fbFirestoreHelper.firestore.collection(Constants.usersString).document(userID).collection(Constants.userFriendList)
             .addSnapshotListener({ [weak self] snapshot, err in
                 if let error = err {
                     print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
@@ -230,10 +228,16 @@ import FirebaseStorage
                     for document in documents {
                         let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
                         let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
-                        let friendDisplayName = document.data()[Constants.friendDisplayName] as? String ?? ""
+                        let friendDisplayName = document.data()[Constants.displayName] as? String ?? ""
                         let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
                         let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
-                        self.coreDataController.addFriend(friendCodeID: friendCodeID, friendUserID: friendUserID, friendDisplayName: friendDisplayName, isFriend: isFriend, isFavorite: isFavorite)
+                        let profileImageString = document.data()[Constants.imageString] as? String ?? ""
+                        self.coreDataController.addFriend(friendCodeID: friendCodeID,
+                                                          friendUserID: friendUserID,
+                                                          friendDisplayName: friendDisplayName,
+                                                          isFriend: isFriend,
+                                                          isFavorite: isFavorite,
+                                                          profileImageString: profileImageString)
                     }
                     //keep. use it so I can update the ui cleaner
 //                    self.myFriendListData = querySnapshot.documents.compactMap({ document in
