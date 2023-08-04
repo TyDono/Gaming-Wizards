@@ -31,7 +31,7 @@ class DiskSpaceHandler: ObservableObject {
            let loadedImage = UIImage(data: imageData) {
             return loadedImage
         } else {
-            return UIImage(named: "WantedWizard")!
+            return UIImage(named: Constants.wantedWizardImageString)!
         }
     }
 }

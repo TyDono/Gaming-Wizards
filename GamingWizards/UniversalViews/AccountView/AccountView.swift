@@ -109,7 +109,7 @@ struct AccountView: View {
     
     private var profileImageView: some View {
         VStack {
-            Image(uiImage: (profileImage ?? UIImage(named: "WantedWizard+"))!)
+            Image(uiImage: (profileImage ?? UIImage(named: Constants.wantedWizardImageString))!)
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)
@@ -325,7 +325,7 @@ struct AccountView_Previews: PreviewProvider {
         AccountView(displayName: .constant("John Doe"),
                     userLocation: .constant("New York"),
                     profileImageString: .constant("profileImageString"),
-                    profileImage: .constant(UIImage(named: "WantedWizard")),
+                    profileImage: .constant(UIImage(named: Constants.wantedWizardImageString)),
                     friendCodeId: .constant("ABC123"),
                     listOfGames: .constant(["Game 1", "Game 2", "Game 3"]),
                     groupSize: .constant("Group"),

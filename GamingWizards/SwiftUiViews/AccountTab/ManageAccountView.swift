@@ -115,7 +115,7 @@ struct ManageAccountView: View {
     
     private var profileImageView: some View {
         VStack {
-            Image(uiImage: (manageAccountVM.profileImage ?? UIImage(named: "WantedWizard+"))!)
+            Image(uiImage: (manageAccountVM.profileImage ?? UIImage(named: Constants.wantedWizardPlusImageString))!)
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)

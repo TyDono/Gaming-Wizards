@@ -22,7 +22,8 @@ struct Constants {
     static let navigationTitleFontSize: Int = 26
     static let profileImageWidth: CGFloat = 300
     static let profileImageHeight: CGFloat = 300
-//    static let friendList = "friendList"
+    static let wantedWizardImageString = "WantedWizard"
+    static let wantedWizardPlusImageString = "WantedWizard+"
     
     // MARK: calls to Tab
     static let accountTabViewString = "Account"

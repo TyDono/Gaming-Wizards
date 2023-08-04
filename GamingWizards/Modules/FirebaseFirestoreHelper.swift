@@ -14,6 +14,7 @@ class FirebaseFirestoreHelper: NSObject {
     let firestore: Firestore
     let user = UserObservable.shared
     let coreDataController = CoreDataController.shared
+//    let fbStorageHelper = FirebaseStorageHelper.shared
     
     static let shared = FirebaseFirestoreHelper()
     
@@ -25,7 +26,7 @@ class FirebaseFirestoreHelper: NSObject {
 
     
     // HAVE MORE DONE IN HERE
-    func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
+    func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void) {
         let documentRef = firestore.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayRemove([itemName])
@@ -33,13 +34,14 @@ class FirebaseFirestoreHelper: NSObject {
             if let error = error {
                 print("ERROR REMOVING ITEM FROM ARRAY: \(error)")
             } else {
-                self?.user.listOfGames?.removeAll { $0 == itemName}
+                completion(nil, itemName)
+//                self?.user.listOfGames?.removeAll { $0 == itemName}
 //                print("Item removed successfully from the array.")
             }
         }
     }
     
-    func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?) -> Void) {
+    func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void) {
         let documentRef = firestore.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayUnion([itemName])
@@ -47,7 +49,8 @@ class FirebaseFirestoreHelper: NSObject {
             if let error = error {
                 print("ERROR ADDING ITEM FROM ARRAY: \(error)")
             } else {
-                self?.user.listOfGames?.append(itemName)
+                completion(nil, itemName)
+//                self?.user.listOfGames?.append(itemName)
 //                print("Item added successfully to the array.")
             }
         }
@@ -98,7 +101,7 @@ class FirebaseFirestoreHelper: NSObject {
         }
     }
     
-    func sendFriendRequest(friendId: String) { // rework to use the new friend id not friend code. add to both you and the sent user.
+    func sendFriendRequest(friendId: String, completion: @escaping (Error?, Friend) -> Void) { // return a Friend. use escaping
         let friendListPath = firestore.collection(Constants.usersString).document(friendId).collection(Constants.userFriendList).document(self.user.id)
         
         friendListPath.getDocument { [self] docSnapShot, err in
@@ -116,20 +119,25 @@ class FirebaseFirestoreHelper: NSObject {
                                             friendCodeID: self.user.friendCodeID,
                                             displayName: self.user.displayName ?? "",
                                             isFriend: false,
-                                            isFavorite: false, imageString: user.profileImageString)
+                                            isFavorite: false,
+                                            imageString: user.profileImageString)
                 let theirFriendInfo = Friend(id: friendUserID,
                                              friendCodeID: friendCodeID,
                                              displayName: friendDisplayName,
                                              isFriend: false,
-                                             isFavorite: false, imageString: friendImageString)
+                                             isFavorite: false,
+                                             imageString: friendImageString)
                 friendListPath.setData(yourFriendInfo.friendDictionary)
                 yourInfoPath.setData(theirFriendInfo.friendDictionary)
-                self.coreDataController.addFriend(friendCodeID: friendCodeID,
-                                                  friendUserID: friendUserID,
-                                                  friendDisplayName: friendDisplayName,
-                                                  isFriend: false,
-                                                  isFavorite: false,
-                                                  profileImageString: friendProfileImageString)
+                completion(nil, theirFriendInfo)
+                
+                //remove call to core data. move it to where it this method is being called.
+//                self.coreDataController.addFriend(friendCodeID: friendCodeID,
+//                                                  friendUserID: friendUserID,
+//                                                  friendDisplayName: friendDisplayName,
+//                                                  isFriend: false,
+//                                                  isFavorite: false,
+//                                                  profileImageString: friendProfileImageString)
             }
         }
         /*
