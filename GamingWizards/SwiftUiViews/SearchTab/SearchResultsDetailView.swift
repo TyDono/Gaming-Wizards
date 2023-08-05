@@ -53,8 +53,7 @@ struct SearchResultsDetailView: View {
             HStack {
                 
                 Button {
-                    searchResultsDetailViewModel.friendRequestButtonWasTapped(friendId: selectedUser.id, friendProfileImage: (searchResultsDetailViewModel.profileImage ?? UIImage(named: Constants.wantedWizardImageString))!)
-//                    searchResultsDetailViewModel.fbFirestoreHelper.sendFriendRequest(friendId: selectedUser.id)
+                    searchResultsDetailViewModel.friendRequestButtonWasTapped(newFriend: selectedUser, friendProfileImage: searchResultsDetailViewModel.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
                     //if the functions above succeed then use dissmiss and change tabs
                     dismiss()
                     self.tabSelection = Constants.messageTabViewString

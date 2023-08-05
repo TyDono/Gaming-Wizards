@@ -57,7 +57,6 @@ struct GamingWizardsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 //    let persistenceController = PersistenceController.shared
     @StateObject var coreDataController = CoreDataController.shared
-//    @StateObject var authenticationViewModel = AuthenticationViewModel()
     @StateObject var signInWithGoogleCoordinator = SignInWithGoogleCoordinator()
     @StateObject var signInWithAppleCoordinator = SignInWithAppleCoordinator()
     @State private var locationManager = CLLocationManager()

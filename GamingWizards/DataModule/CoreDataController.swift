@@ -9,6 +9,7 @@ import CoreData
 import SwiftUI
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 class CoreDataController: ObservableObject {
     
@@ -19,8 +20,10 @@ class CoreDataController: ObservableObject {
 //    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
 //    let firestoreDatabase = Firestore.firestore()
     let diskSpaceHandler = DiskSpaceHandler()
-    let fbFirestoreHelper = FirebaseFirestoreHelper.shared
-    let fbStorageHelper = FirebaseStorageHelper.shared
+//    let fbFirestoreHelper = FirebaseFirestoreHelper.shared
+//    let fbStorageHelper = FirebaseStorageHelper.shared
+    let fbFirestoreHelper = Firestore.firestore()
+    let fbStorageHelper = Storage.storage()
     let persistentContainer: NSPersistentContainer
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
@@ -71,12 +74,12 @@ class CoreDataController: ObservableObject {
 //        guard let userFriendCodeID = user.friendCodeID else { return }
         guard let friendUserID = friend.id else { return }
         guard let friendCodeID = friend.friendCodeID else { return }
-        fbFirestoreHelper.firestore.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID )
+        fbFirestoreHelper.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID )
             .delete() { err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
-                    self.fbFirestoreHelper.firestore.collection(Constants.usersString).document(userID).collection(Constants.userFriendList).document(friendCodeID).delete() { err in
+                    self.fbFirestoreHelper.collection(Constants.usersString).document(userID).collection(Constants.userFriendList).document(friendCodeID).delete() { err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THE FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {

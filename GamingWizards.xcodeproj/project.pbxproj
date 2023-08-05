@@ -74,7 +74,6 @@
 		CB5BE8BB29FDE958009D38D6 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87A29FDE956009D38D6 /* AuthenticationViewModel.swift */; };
 		CB5BE8BC29FDE958009D38D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE87B29FDE957009D38D6 /* Assets.xcassets */; };
 		CB5BE8BD29FDE958009D38D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE87D29FDE957009D38D6 /* Preview Assets.xcassets */; };
-		CB5BE8C029FDEA3D009D38D6 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8BF29FDEA3D009D38D6 /* MapboxMaps */; };
 		CB5BE8C329FDEA5B009D38D6 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8C229FDEA5B009D38D6 /* GoogleSignIn */; };
 		CB5BE8C529FDEA5B009D38D6 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8C429FDEA5B009D38D6 /* GoogleSignInSwift */; };
 		CB5BE8C829FDEA9A009D38D6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8C729FDEA9A009D38D6 /* FirebaseAnalytics */; };
@@ -137,6 +136,7 @@
 		CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */; };
 		CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */; };
 		CBEAF0462A1EB87400B9E900 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAF0452A1EB87400B9E900 /* LocationModel.swift */; };
+		CBF91C942A7D059B00F20986 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = CBF91C932A7D059B00F20986 /* MapboxMaps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,7 +285,6 @@
 				CB5BE8E029FDEA9B009D38D6 /* FirebaseFirestore in Frameworks */,
 				CB5BE8C529FDEA5B009D38D6 /* GoogleSignInSwift in Frameworks */,
 				CB5BE8EA29FDEA9B009D38D6 /* FirebaseInAppMessaging-Beta in Frameworks */,
-				CB5BE8C029FDEA3D009D38D6 /* MapboxMaps in Frameworks */,
 				CB5BE8CA29FDEA9A009D38D6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				CB5BE8F829FDEA9C009D38D6 /* FirebaseRemoteConfigSwift in Frameworks */,
 				CB5BE8D629FDEA9A009D38D6 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -294,6 +293,7 @@
 				CB5BE8FC29FDEA9C009D38D6 /* FirebaseStorageCombine-Community in Frameworks */,
 				CB5BE8E229FDEA9B009D38D6 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				CB5BE8C829FDEA9A009D38D6 /* FirebaseAnalytics in Frameworks */,
+				CBF91C942A7D059B00F20986 /* MapboxMaps in Frameworks */,
 				CB5BE8D829FDEA9A009D38D6 /* FirebaseCrashlytics in Frameworks */,
 				CB5BE8C329FDEA5B009D38D6 /* GoogleSignIn in Frameworks */,
 				CB5BE8D229FDEA9A009D38D6 /* FirebaseAppDistribution-Beta in Frameworks */,
@@ -655,7 +655,6 @@
 			);
 			name = GamingWizards;
 			packageProductDependencies = (
-				CB5BE8BF29FDEA3D009D38D6 /* MapboxMaps */,
 				CB5BE8C229FDEA5B009D38D6 /* GoogleSignIn */,
 				CB5BE8C429FDEA5B009D38D6 /* GoogleSignInSwift */,
 				CB5BE8C729FDEA9A009D38D6 /* FirebaseAnalytics */,
@@ -685,6 +684,7 @@
 				CB5BE8F729FDEA9C009D38D6 /* FirebaseRemoteConfigSwift */,
 				CB5BE8F929FDEA9C009D38D6 /* FirebaseStorage */,
 				CB5BE8FB29FDEA9C009D38D6 /* FirebaseStorageCombine-Community */,
+				CBF91C932A7D059B00F20986 /* MapboxMaps */,
 			);
 			productName = GamingWizards;
 			productReference = CB5BE7FB29FDE8B7009D38D6 /* GamingWizards.app */;
@@ -759,9 +759,9 @@
 			);
 			mainGroup = CB5BE7F229FDE8B7009D38D6;
 			packageReferences = (
-				CB5BE8BE29FDEA3D009D38D6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 				CB5BE8C129FDEA5B009D38D6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				CB5BE8C629FDEA9A009D38D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CBF91C922A7D059A00F20986 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 			);
 			productRefGroup = CB5BE7FC29FDE8B7009D38D6 /* Products */;
 			projectDirPath = "";
@@ -1238,14 +1238,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CB5BE8BE29FDEA3D009D38D6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		CB5BE8C129FDEA5B009D38D6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
@@ -1262,14 +1254,17 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		CBF91C922A7D059A00F20986 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CB5BE8BF29FDEA3D009D38D6 /* MapboxMaps */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB5BE8BE29FDEA3D009D38D6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
-			productName = MapboxMaps;
-		};
 		CB5BE8C229FDEA5B009D38D6 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB5BE8C129FDEA5B009D38D6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
@@ -1414,6 +1409,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB5BE8C629FDEA9A009D38D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		CBF91C932A7D059B00F20986 /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBF91C922A7D059A00F20986 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
 		};
 /* End XCSwiftPackageProductDependency section */
 

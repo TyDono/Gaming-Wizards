@@ -30,7 +30,7 @@ class FirebaseFirestoreHelper: NSObject {
         let documentRef = firestore.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayRemove([itemName])
-        ]) { [weak self] error in
+        ]) { error in
             if let error = error {
                 print("ERROR REMOVING ITEM FROM ARRAY: \(error)")
             } else {
@@ -45,7 +45,7 @@ class FirebaseFirestoreHelper: NSObject {
         let documentRef = firestore.collection(collectionName).document(documentField)
         documentRef.updateData([
             arrayField: FieldValue.arrayUnion([itemName])
-        ]) { [weak self] error in
+        ]) { error in
             if let error = error {
                 print("ERROR ADDING ITEM FROM ARRAY: \(error)")
             } else {
@@ -101,70 +101,24 @@ class FirebaseFirestoreHelper: NSObject {
         }
     }
     
-    func sendFriendRequest(friendId: String, completion: @escaping (Error?, Friend) -> Void) { // return a Friend. use escaping
-        let friendListPath = firestore.collection(Constants.usersString).document(friendId).collection(Constants.userFriendList).document(self.user.id)
-        
-        friendListPath.getDocument { [self] docSnapShot, err in
-            if let error = err {
-                print("sendFriendRequest ERROR: \(error.localizedDescription)")
-            } else {
-                let friendCodeID = docSnapShot?.data()?[Constants.friendCodeID] as? String ?? "No user friend code found"
-                let friendUserID = docSnapShot?.data()?[Constants.userID] as? String ?? "No user id found"
-                let friendDisplayName = docSnapShot?.data()?[Constants.displayName] as? String ?? ""
-                let friendImageString = docSnapShot?.data()?[Constants.userProfileImageString] as? String ?? ""
-                let friendProfileImageString = docSnapShot?.data()?[Constants.imageString] as? String ?? ""
-                
-                let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(friendUserID)
+    func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void) {
+        let friendListPath = firestore.collection(Constants.usersString).document(newFriend.id).collection(Constants.userFriendList).document(self.user.id)
+        let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(newFriend.id)
                 let yourFriendInfo = Friend(id: (self.user.id),
                                             friendCodeID: self.user.friendCodeID,
                                             displayName: self.user.displayName ?? "",
                                             isFriend: false,
                                             isFavorite: false,
-                                            imageString: user.profileImageString)
-                let theirFriendInfo = Friend(id: friendUserID,
-                                             friendCodeID: friendCodeID,
-                                             displayName: friendDisplayName,
+                                            imageString: self.user.profileImageString)
+                let theirFriendInfo = Friend(id: newFriend.id,
+                                             friendCodeID: newFriend.friendCodeID,
+                                             displayName: newFriend.displayName ?? "",
                                              isFriend: false,
                                              isFavorite: false,
-                                             imageString: friendImageString)
+                                             imageString: newFriend.profileImageString)
                 friendListPath.setData(yourFriendInfo.friendDictionary)
                 yourInfoPath.setData(theirFriendInfo.friendDictionary)
                 completion(nil, theirFriendInfo)
-                
-                //remove call to core data. move it to where it this method is being called.
-//                self.coreDataController.addFriend(friendCodeID: friendCodeID,
-//                                                  friendUserID: friendUserID,
-//                                                  friendDisplayName: friendDisplayName,
-//                                                  isFriend: false,
-//                                                  isFavorite: false,
-//                                                  profileImageString: friendProfileImageString)
-            }
-        }
-        /*
-        
-        firestoreDatabase.collection(Constants.usersString).whereField("friendCodeID", isEqualTo: friendId)
-            .getDocuments() { [self] (querySnapshot, err) in
-                if let error = err {
-                    print("ERROR GETTING DOCUMENTS ON A FRIENDS REQUEST BEING SENT: \(error)")
-                } else {
-                    //if no document exist have an alert
-                    for document in querySnapshot!.documents {
-                        let friendUserID = document.data()[Constants.userID] as? String ?? "No user id found"
-                         let userID = self.user.id //else { return }
-//                            guard let userFriendCodeID = self.user.friendCodeID else { return }
-                        guard let displayName = self.user.displayName else { return }
-                        let newFriend: Friend = Friend(friendCodeID: self.user.friendCodeID, friendUserID: userID, displayName: displayName, isFriend: false, isFavorite: false)
-                        let newPath = self.firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
-                        
-                        newPath.getDocument { (document, error) in
-                            if ((document?.exists) == false) {
-                                newPath.setData(newFriend.friendDictionary)
-                            }
-                        }
-                    }
-                }
-            }
-         */
     }
     
 }

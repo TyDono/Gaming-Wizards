@@ -47,10 +47,14 @@ struct MainTabView: View {
             NavigationStack {
                 MapBoxView()
             }
+            
+            // Map will return post MVP. I don't need map to use location services.
+            /*
             .tabItem {
                 Label("Map", systemImage: "map")
             }
             .tag(Constants.mapTabViewString)
+             */
             
         }
     }

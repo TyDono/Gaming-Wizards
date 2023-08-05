@@ -30,7 +30,8 @@ import FirebaseStorage
 //    @Published var user = UserObservable.shared
     let coreDataController = CoreDataController.shared
     private var listeningRegistration: ListenerRegistration?
-    static var sharedAuthenticationVM = AuthenticationViewModel()
+    static let sharedAuthenticationVM = AuthenticationViewModel()
+    // The firestore and storage need to be directly called here in coredata as for what ever reason the configure doesn't go through in time.
     let fbFirestoreHelper = FirebaseFirestoreHelper()
     let fbStorageHelper = FirebaseStorageHelper()
 //    private let keychainHelper = KeychainHelper()

@@ -17,7 +17,6 @@ import CoreData
     
 //    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-//    @State private var authenticationViewModel = AuthenticationViewModel()
     let scenes = UIApplication.shared.connectedScenes
     
     func signInWithGoogle() {

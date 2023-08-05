@@ -48,8 +48,8 @@ import CoreData
         }
     }
     
-    func friendRequestButtonWasTapped(friendId: String, friendProfileImage: UIImage) {
-        fbFirestoreHelper.sendFriendRequest(friendId: friendId) { [weak self] err, friend  in
+    func friendRequestButtonWasTapped(newFriend: User, friendProfileImage: UIImage) {
+        fbFirestoreHelper.sendFriendRequest(newFriend: newFriend) { [weak self] err, friend  in
             if let error = err {
                 print("ERROR SENDING FRIEND REQUEST DATA: \(error.localizedDescription)")
             } else {
