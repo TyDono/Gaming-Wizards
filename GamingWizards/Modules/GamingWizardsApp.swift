@@ -8,20 +8,25 @@
 import Firebase
 import FirebaseFirestore
 import FirebaseMessaging
+import FirebaseCore
+import FirebaseAnalytics
+import FirebaseAppCheck
 import GoogleSignIn
 import SwiftUI
 import UserNotifications
-import FirebaseAnalytics
 import CoreLocation
+
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var session = SessionStore()
+//    let providerFactory = AppCheckDebugProviderFactory()
     static let GamingWizardsUserSignupNotificationGreeting: String = "Welcome "
 //    @ObservedObject var user = UserObservable()
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        FirebaseApp.configure()
+//        AppCheck.setAppCheckProviderFactory(providerFactory)
+//        FirebaseApp.configure()
         
         return true
     }
@@ -50,7 +55,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 //    }
 //}
 
-
+class MyAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
+    func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+        return AppAttestProvider(app: app)
+    }
+}
 
 @main
 struct GamingWizardsApp: App {
@@ -60,8 +69,11 @@ struct GamingWizardsApp: App {
     @StateObject var signInWithGoogleCoordinator = SignInWithGoogleCoordinator()
     @StateObject var signInWithAppleCoordinator = SignInWithAppleCoordinator()
     @State private var locationManager = CLLocationManager()
+    let providerFactory = AppCheckDebugProviderFactory()
     
     init() {
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+        FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: Constants.luminariRegularFontIdentifier, size: 40)!]
     }
     
