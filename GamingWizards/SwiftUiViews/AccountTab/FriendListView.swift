@@ -12,6 +12,7 @@ struct FriendListView: View {
     @StateObject private var friendListVM = FriendListViewModel()
     @StateObject var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @StateObject var coreDataController = CoreDataController.shared
+    @StateObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
     
     var body: some View {
         ZStack {
@@ -19,10 +20,12 @@ struct FriendListView: View {
                 listOfFriends
             }
             .onAppear {
-                authenticationViewModel.retrieveFriendsListener()
+                fbFirestoreHelper.retrieveFriendsListener(user: friendListVM.user)
+//                authenticationViewModel.retrieveFriendsListener()
             }
             .onDisappear {
-                authenticationViewModel.stopListening()
+                fbFirestoreHelper.stopListening()
+//                authenticationViewModel.stopListening()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

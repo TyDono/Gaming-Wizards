@@ -8,14 +8,13 @@
 import FirebaseFirestore
 import FirebaseAuth
 import FirebaseFirestoreSwift
+import FirebaseStorage
 import GoogleSignIn
 import SwiftUI
 import AuthenticationServices
 import CryptoKit
 import CoreData
 import Security
-import FirebaseStorage
-//import FirebaseFirestoreSwift
 
 @MainActor class AuthenticationViewModel: ObservableObject {
     
@@ -32,8 +31,8 @@ import FirebaseStorage
     private var listeningRegistration: ListenerRegistration?
     static let sharedAuthenticationVM = AuthenticationViewModel()
     // The firestore and storage need to be directly called here in coredata as for what ever reason the configure doesn't go through in time.
-    let fbFirestoreHelper = FirebaseFirestoreHelper()
-    let fbStorageHelper = FirebaseStorageHelper()
+    @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
+    @ObservedObject var fbStorageHelper = FirebaseStorageHelper.shared
 //    private let keychainHelper = KeychainHelper()
     
     private init() { }
@@ -53,15 +52,18 @@ import FirebaseStorage
             guard let self = self else { return }
             if document?.exists == true {
                 if let documentData = document?.data() {
-                    if let existingUser = try? Firestore.Decoder().decode(User.self, from: documentData) {
-                        
-                        self.fbStorageHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
-                            if let image = profileImage {
-                                self.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
+                    do {
+                        if let existingUser = try? Firestore.Decoder().decode(User.self, from: documentData) {
+                            self.fbStorageHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
+                                if let image = profileImage {
+                                    self.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
+                                }
                             }
+                            self.saveUserToUserDefaults(user: existingUser)
+                            // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                         }
-                        self.saveUserToUserDefaults(user: existingUser)
-                        // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
+                    } catch {
+                        print("Error decoding Firestore data: \(error.localizedDescription)")
                     }
                 }
             } else {
@@ -208,7 +210,7 @@ import FirebaseStorage
             }
     }
     
-    func retrieveFriendsListener() {
+    func retrieveFriendsListener() { // not used. moved to firestore helper
          let userID = user.id //else { return }
         listeningRegistration = fbFirestoreHelper.firestore.collection(Constants.usersString).document(userID).collection(Constants.userFriendList)
             .addSnapshotListener({ [weak self] snapshot, err in
@@ -249,7 +251,7 @@ import FirebaseStorage
             })
     }
     
-    func stopListening() {
+    func stopListening() { // not used. moved to firestore helper
         listeningRegistration?.remove()
     }
     

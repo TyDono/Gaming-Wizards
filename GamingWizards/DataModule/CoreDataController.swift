@@ -47,6 +47,12 @@ class CoreDataController: ObservableObject {
     
     // MARK: FRIEND
     
+    func clearAllFriends() { // post MVP
+        for friend in savedFriendEntities {
+            self.deleteFriendLocally(friend: friend)
+        }
+    }
+    
     func fetchFriends() {
         let request = NSFetchRequest<FriendEntity>(entityName: "FriendEntity")
         

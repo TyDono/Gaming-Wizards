@@ -8,7 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 
-class FirebaseAuthHelper: NSObject {
+class FirebaseAuthHelper: NSObject, ObservableObject {
     
     let auth: Auth
     

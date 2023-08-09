@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainMessagesView: View {
     @StateObject private var mainMessagesVM = MainMessagesViewModel()
+    @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
+    @ObservedObject var coredataController = CoreDataController.shared
     
     var body: some View {
         ZStack {
@@ -20,6 +22,12 @@ struct MainMessagesView: View {
                 }.navigationBarHidden(true)
             }
         }
+        .task {
+            fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
+        }
+        .onDisappear {
+            fbFirestoreHelper.stopListening()
+        }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
             DetailedMessageView()
         }
@@ -27,7 +35,7 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(0..<10, id: \.self) { num in
+            ForEach(coredataController.savedUserEntities, id: \.self) { contact in
                 Button {
                     mainMessagesVM.isDetailedMessageViewShowing.toggle()
                 } label: {
@@ -35,7 +43,7 @@ struct MainMessagesView: View {
                         HStack(spacing: 16) {
                             messengerProfileImage
                             VStack(alignment: .leading) {
-                                Text("UserName")
+                                Text(contact.displayName ?? "")
                                     .font(.roboto(.bold, size: 16))
                                 Text("messages sent to user")
                                     .font(.roboto(.semibold, size: 14))

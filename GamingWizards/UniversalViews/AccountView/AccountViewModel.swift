@@ -11,7 +11,7 @@ import SwiftUI
 extension AccountView {
     @MainActor class AccountViewModel: ObservableObject {
         @ObservedObject var user = UserObservable.shared
-        let fbFirestoreHelper = FirebaseFirestoreHelper()
+        @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
         
         func callDeleteItemFromArray(tappedGame: String) {
             guard let userId = KeychainHelper.getUserID() else { return }

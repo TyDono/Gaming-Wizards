@@ -391,6 +391,7 @@
 		CB5BE82D29FDE954009D38D6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CBF91C962A81715600F20986 /* FirebaseHelpers */,
 				CB5BE83029FDE954009D38D6 /* GamingWizardsApp.swift */,
 				CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */,
 				CBBD556E2A294B6A00F27626 /* imagePicker.swift */,
@@ -399,9 +400,6 @@
 				CB5BE83329FDE954009D38D6 /* Endpoint.swift */,
 				CB62406B2A5787FF00E69C5C /* Filterer.swift */,
 				CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */,
-				CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */,
-				CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */,
-				CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
 			);
@@ -636,6 +634,16 @@
 				CB5948982A71636E00BE0DE2 /* AccountView */,
 			);
 			path = UniversalViews;
+			sourceTree = "<group>";
+		};
+		CBF91C962A81715600F20986 /* FirebaseHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */,
+				CB62406D2A5C15B700E69C5C /* FirebaseStorageHelper.swift */,
+				CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */,
+			);
+			path = FirebaseHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

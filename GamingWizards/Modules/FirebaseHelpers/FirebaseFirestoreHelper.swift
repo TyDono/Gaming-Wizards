@@ -8,12 +8,13 @@
 import Foundation
 import FirebaseFirestore
 
-class FirebaseFirestoreHelper: NSObject {
+class FirebaseFirestoreHelper: NSObject, ObservableObject {
 //    let user = UserObservable.shared
 //    let firestoreDatabase = Firestore.firestore()
     let firestore: Firestore
     let user = UserObservable.shared
     let coreDataController = CoreDataController.shared
+    private var listeningRegistration: ListenerRegistration?
 //    let fbStorageHelper = FirebaseStorageHelper.shared
     
     static let shared = FirebaseFirestoreHelper()
@@ -23,7 +24,50 @@ class FirebaseFirestoreHelper: NSObject {
         
         super.init()
     }
-
+    
+    func retrieveFriendsListener(user: UserObservable) {
+        listeningRegistration = firestore.collection(Constants.usersString).document(user.id).collection(Constants.userFriendList)
+            .addSnapshotListener({ [weak self] snapshot, err in
+                if let error = err {
+                    print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
+                } else {
+                    guard let self = self else { return }
+                    guard let querySnapshot = snapshot else {
+                        print("ERROR FETCHING SNAPSHOT DATA: ")
+                        return
+                    }
+                    
+                    let documents = querySnapshot.documents
+                    //deletes all friends locally. this must be called before you get get new users.
+                    for friend in coreDataController.savedFriendEntities {
+                        self.coreDataController.deleteFriendLocally(friend: friend)
+                    }
+                    for document in documents {
+                        let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
+                        let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
+                        let friendDisplayName = document.data()[Constants.displayName] as? String ?? ""
+                        let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
+                        let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
+                        let profileImageString = document.data()[Constants.imageString] as? String ?? ""
+                        self.coreDataController.addFriend(friendCodeID: friendCodeID,
+                                                          friendUserID: friendUserID,
+                                                          friendDisplayName: friendDisplayName,
+                                                          isFriend: isFriend,
+                                                          isFavorite: isFavorite,
+                                                          profileImageString: profileImageString)
+                    }
+                    //keep. use it so I can update the ui cleaner
+//                    self.myFriendListData = querySnapshot.documents.compactMap({ document in
+//                        try? document.data(as: Friend.self)
+//                    })
+                    
+                }
+            })
+    }
+    
+    func stopListening() {
+        listeningRegistration?.remove()
+    }
     
     // HAVE MORE DONE IN HERE
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void) {

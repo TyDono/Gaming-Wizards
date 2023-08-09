@@ -9,7 +9,7 @@ import Foundation
 import FirebaseStorage
 import UIKit
 
-class FirebaseStorageHelper: NSObject {
+class FirebaseStorageHelper: NSObject, ObservableObject {
     let storage: Storage
     
     static let shared = FirebaseStorageHelper()
