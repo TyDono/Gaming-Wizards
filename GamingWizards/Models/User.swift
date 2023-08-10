@@ -54,13 +54,13 @@ struct User: Identifiable, Codable, Hashable {
 
 extension User {
     enum UserCodingKeys: String, CodingKey {
-        case id = "user_id"
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case displayName = "display_Name"
-        case email = "user_email"
-        case location = "user_location"
-        case profileImageString = "profile_image_string"
+        case id = "userId"
+        case firstName = "firstName"
+        case lastName = "lastName"
+        case displayName = "displayName"
+        case email = "email"
+        case location = "userLocation"
+        case profileImageString = "profileImageString"
         case friendCodeID = "friendCodeID"
         case friendList = "friendList"
         case friendRequests = "friendRequests"

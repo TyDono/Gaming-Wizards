@@ -72,7 +72,9 @@ struct GamingWizardsApp: App {
     let providerFactory = AppCheckDebugProviderFactory()
     
     init() {
+#if DEBUG
         AppCheck.setAppCheckProviderFactory(providerFactory)
+#endif
         FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: Constants.luminariRegularFontIdentifier, size: 40)!]
     }

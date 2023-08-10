@@ -32,9 +32,9 @@ struct Constants {
     static let mapTabViewString = "Map"
     
     // MARK: calls to User
-    static let userFriendCode = "friendCode"
+    static let userFriendCode = "friendCodeID"
     static let userID = "id"
-    static let userFirstName: String = "firstName"
+    static let userFirstName = "firstName"
     static let userLastName = "lastName"
     static let userDisplayName = "displayName"
     static let userEmail = "email"

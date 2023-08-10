@@ -46,29 +46,30 @@ import Security
         let documentPath = fbFirestoreHelper.firestore.collection(Constants.usersString).document(user.id)
         documentPath.getDocument { [weak self] document, err in
             if let error = err {
-                print("ERROR RETRIEVING FIRESTORE USER DATA WHEN TRYING TO SIGN IN: \(error.localizedDescription)")
+                print("ERROR RETRIEVING FIRESTORE USER DATA WHEN SIGNING IN: \(error.localizedDescription)")
                 return
             }
             guard let self = self else { return }
             if document?.exists == true {
                 if let documentData = document?.data() {
                     do {
-                        if let existingUser = try? Firestore.Decoder().decode(User.self, from: documentData) {
-                            self.fbStorageHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
-                                if let image = profileImage {
-                                    self.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
-                                }
+                        let existingUser = try Firestore.Decoder().decode(User.self, from: documentData)
+                        self.fbStorageHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
+                            if let image = profileImage {
+                                self.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
                             }
-                            self.saveUserToUserDefaults(user: existingUser)
-                            // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                         }
+                        self.saveUserToUserDefaults(user: existingUser)
+                        // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                     } catch {
+                        print(documentData)
                         print("Error decoding Firestore data: \(error.localizedDescription)")
+                        print("pause")
                     }
+                } else {
+                    documentPath.setData(user.userDictionary)
+                    self.saveUserToUserDefaults(user: user)
                 }
-            } else {
-                documentPath.setData(user.userDictionary)
-                self.saveUserToUserDefaults(user: user)
             }
         }
     }
