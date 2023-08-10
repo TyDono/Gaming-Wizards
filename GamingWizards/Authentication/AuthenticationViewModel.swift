@@ -53,7 +53,8 @@ import Security
             if document?.exists == true {
                 if let documentData = document?.data() {
                     do {
-                        let existingUser = try Firestore.Decoder().decode(User.self, from: documentData)
+                        let decoder = Firestore.Decoder()
+                        let existingUser = try decoder.decode(User.self, from: documentData)
                         self.fbStorageHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
                             if let image = profileImage {
                                 self.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
@@ -62,9 +63,7 @@ import Security
                         self.saveUserToUserDefaults(user: existingUser)
                         // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                     } catch {
-                        print(documentData)
                         print("Error decoding Firestore data: \(error.localizedDescription)")
-                        print("pause")
                     }
                 } else {
                     documentPath.setData(user.userDictionary)

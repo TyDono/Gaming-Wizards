@@ -113,7 +113,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject {
                 let email = data[Constants.userEmail] as? String ?? ""
                 let location = data[Constants.userLocation] as? String ?? ""
                 let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
-                let friendCodeID = data[Constants.userFriendCode] as? String ?? ""
+                let friendCodeID = data[Constants.userFriendCodeID] as? String ?? ""
                 let listOfGames = data[Constants.userListOfGamesString] as? [String] ?? [""]
                 let groupSize = data[Constants.userGroupSize] as? String ?? ""
                 let age = data[Constants.userAge] as? String ?? ""

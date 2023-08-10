@@ -16,8 +16,8 @@ struct User: Identifiable, Codable, Hashable {
     var location: String? = "" //change to UserLocation later date maybe
     var profileImageString: String = ""
     var friendCodeID = ""
-    var friendList: [Friend] = [] // sub collection
-    var friendRequests: [Friend] = [] // sub collection
+//    var friendList: [Friend] = [] // sub collection
+//    var friendRequests: [Friend] = [] // sub collection
     var listOfGames: [String]? = []
     var groupSize: String? = ""
     var age: String? = "" // change to an array of Int
@@ -36,9 +36,9 @@ struct User: Identifiable, Codable, Hashable {
             Constants.userEmail: email ?? "No Email Available",
             Constants.userLocation: location,
             Constants.userProfileImageString: profileImageString,
-            Constants.userFriendCode: friendCodeID,
-            Constants.userFriendList: friendList,
-            Constants.userFriendRequest: friendRequests,
+            Constants.userFriendCodeID: friendCodeID,
+//            Constants.userFriendList: friendList,
+//            Constants.userFriendRequest: friendRequests,
             Constants.userListOfGamesString: listOfGames,
             Constants.userGroupSize: groupSize,
             Constants.userAge: age,
@@ -54,7 +54,7 @@ struct User: Identifiable, Codable, Hashable {
 
 extension User {
     enum UserCodingKeys: String, CodingKey {
-        case id = "userId"
+        case id = "id"
         case firstName = "firstName"
         case lastName = "lastName"
         case displayName = "displayName"
@@ -62,8 +62,8 @@ extension User {
         case location = "userLocation"
         case profileImageString = "profileImageString"
         case friendCodeID = "friendCodeID"
-        case friendList = "friendList"
-        case friendRequests = "friendRequests"
+//        case friendList = "friendList"
+//        case friendRequests = "friendRequests"
         case listOfGames = "listOfGames"
         case groupSize = "groupSize"
         case age = "age"
@@ -73,6 +73,7 @@ extension User {
         case payToPlay = "isPayToPlay"
         case isSolo = "isSolo"
         
+        /*
         init?(constantValue: String) {
             switch constantValue {
             case Constants.userID:
@@ -89,7 +90,7 @@ extension User {
                 self = .location
             case Constants.userProfileImageString:
                 self = .profileImageString
-            case Constants.userFriendCode:
+            case Constants.userFriendCodeID:
                 self = .friendCodeID
             case Constants.userFriendList:
                 self = .friendList
@@ -115,7 +116,7 @@ extension User {
                 return nil
             }
         }
-        
+        */
     }
 }
         
@@ -132,7 +133,7 @@ class UserObservable: ObservableObject {
     private let isNewUserKey = "isNewUser" // No constant provided for this, so using the original string
     private let latitudeKey = "latitude" // No constant provided for this, so using the original string
     private let longitudeKey = "longitude" // No constant provided for this, so using the original string
-    private let friendIDKey = Constants.userFriendCode
+    private let friendIDKey = Constants.userFriendCodeID
     private let friendListKey = Constants.userFriendList
     private let friendRequestsKey = Constants.userFriendRequest
     private let listOfGamesKey = Constants.userListOfGamesString
@@ -268,7 +269,11 @@ class UserObservable: ObservableObject {
     }
     
     private init() {
-        id = KeychainHelper.getUserID() ?? "NO ID FOUND"
+        guard let userId = KeychainHelper.getUserID() else {
+            // Crashes the app, post mvp on just log them out and take them back to log in screen.
+                fatalError("USER ID NOT FOUND WHEN TRYING TO INIT USER OBSERVABLE.")
+            }
+        id = userId
         firstName = UserDefaults.standard.string(forKey: "\(firstNameKey)-\(id)") ?? ""
         lastName = UserDefaults.standard.string(forKey: "\(lastNameKey)-\(id)") ?? ""
         displayName = UserDefaults.standard.string(forKey: "\(displayNameKey)-\(id)") ?? ""
