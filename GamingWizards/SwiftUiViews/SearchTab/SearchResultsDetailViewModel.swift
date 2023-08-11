@@ -22,7 +22,6 @@ import CoreData
     @Published var detailedFriendViewIsDismissed: Bool = false
     @Published var displayName: String? = ""
     @Published var profileImage: UIImage?
-//    let firestoreDatabase = Firestore.firestore()
     let fbFirestoreHelper = FirebaseFirestoreHelper.shared
     let fbStorageHelper = FirebaseStorageHelper.shared
     let coreDataController = CoreDataController.shared

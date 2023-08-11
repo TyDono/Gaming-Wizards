@@ -89,7 +89,6 @@ extension ManageAccountView {
                 if let error = err {
                     print("ERROR UPLOADING IMAGE TO STORAGE: \(error.localizedDescription)")
                 } else {
-                    print("Image uploaded successfully")
                     self.saveProfileImageToDisc()
                 }
                 self.isProfileUploading = false
@@ -109,7 +108,6 @@ extension ManageAccountView {
 
         
         func updateUserInfo() {
-            // if no internet make a pop up appear
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
             let path = firestoreDatabase.collection(Constants.usersString).document(userId)
@@ -118,7 +116,7 @@ extension ManageAccountView {
                 Constants.userLastName: self.lastName,
                 Constants.userDisplayName: self.displayName,
                 Constants.userLocation: self.userLocation,
-                Constants.userListOfGamesString: self.listOfGames,
+//                Constants.userListOfGamesString: self.listOfGames,
                 Constants.userGroupSize: self.groupSize,
                 Constants.userAge: self.userAge,
                 Constants.userAbout: self.about,
@@ -154,7 +152,7 @@ extension ManageAccountView {
             user.availability = userAvailability
             user.isPayToPlay = isPayToPlay
             user.groupSize = groupSize
-            user.listOfGames = listOfGames
+//            user.listOfGames = listOfGames
             user.location = userLocation
             user.age = userAge
             user.isSolo = userIsSolo

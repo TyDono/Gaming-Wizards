@@ -23,6 +23,7 @@ struct SearchBar: View {
     var body: some View {
         textFieldView
             .font(.globalFont(.luminari, size: 16))
+            .background(Color.clear)
     }
     
     private var textFieldView: some View {

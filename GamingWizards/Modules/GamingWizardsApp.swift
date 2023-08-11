@@ -20,13 +20,9 @@ import CoreLocation
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var session = SessionStore()
-//    let providerFactory = AppCheckDebugProviderFactory()
     static let GamingWizardsUserSignupNotificationGreeting: String = "Welcome "
-//    @ObservedObject var user = UserObservable()
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        AppCheck.setAppCheckProviderFactory(providerFactory)
-//        FirebaseApp.configure()
         
         return true
     }
@@ -38,22 +34,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
 }
- 
-
-//@main
-//struct GamingWizardsApp: App {
-//
-//    @StateObject var viewModel = AuthenticationViewModel()
-//
-//
-//    var body: some Scene {
-//        WindowGroup {
-//            NavigationLogInView()
-//                .environmentObject(UserAuth())
-//
-//        }
-//    }
-//}
 
 class MyAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
     func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
@@ -69,10 +49,10 @@ struct GamingWizardsApp: App {
     @StateObject var signInWithGoogleCoordinator = SignInWithGoogleCoordinator()
     @StateObject var signInWithAppleCoordinator = SignInWithAppleCoordinator()
     @State private var locationManager = CLLocationManager()
-    let providerFactory = AppCheckDebugProviderFactory()
     
     init() {
 #if DEBUG
+        let providerFactory = AppCheckDebugProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
 #endif
         FirebaseApp.configure()
@@ -86,7 +66,6 @@ struct GamingWizardsApp: App {
                     requestLocationPermission()
                     askNotificationPermission()
                 }
-//                .environmentObject(authenticationViewModel)
                 .environmentObject(signInWithAppleCoordinator)
                 .environmentObject(signInWithGoogleCoordinator)
                 .environmentObject(UserAuth())
@@ -102,7 +81,6 @@ struct GamingWizardsApp: App {
         let center = UNUserNotificationCenter.current()
           center.requestAuthorization(options: [.alert, .sound, .badge]) { success, err in
               if let error = err {
-                  // Handle the error here.
                   print("NOTIFICATION AUTHORIZATION ERROR: \(error.localizedDescription)")
               } else if success {
                   // User granted authorization.
@@ -115,10 +93,3 @@ struct GamingWizardsApp: App {
     }
     
 }
-
-//extension GamingWizardsApp {
-//    private func setupAuthentication() {
-//        FirebaseApp.configure()
-////        MyFirebase.shared.addUserListender(loggedIn: false)
-//    }
-//}

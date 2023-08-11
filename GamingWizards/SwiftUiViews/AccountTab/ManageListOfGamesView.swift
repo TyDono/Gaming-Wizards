@@ -39,24 +39,26 @@ struct ManageListOfGamesView: View {
                       isActionButtonShowing: manageListOfGamesVM.isSearchButtonShowing)
             .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
             ScrollView {
-                FlowLayout(mode: .scrollable,
-                           binding: $filterer.searchText,
-                           items: filterer.gamesFilter) { gameItem in
-                    Text(gameItem.textName)
-                        .font(.globalFont(.luminari, size: 16))
-                        .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
-                        .background(
-                            RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
-                                .border(Color.clear)
-                                .foregroundColor(gameItem.isSelected ? Color.blue : Color.lightGrey)
-                                .padding(-8)
-                        )
-                        .padding()
-                        .onTapGesture {
-                            manageListOfGamesVM.gameTagWasTapped(tappedGameTag: gameItem)
-                            filterer.reorderSelectedGameItems()
-                            filterer.searchText = filterer.searchText // Updates the UI. dons't know why. don't try. accept monkey wrench code here.
-                        }
+                LazyVStack {
+                    FlowLayout(mode: .scrollable,
+                               binding: $filterer.searchText,
+                               items: filterer.gamesFilter) { gameItem in
+                        Text(gameItem.textName)
+                            .font(.globalFont(.luminari, size: 16))
+                            .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
+                            .background(
+                                RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
+                                    .border(Color.clear)
+                                    .foregroundColor(gameItem.isSelected ? Color.blue : Color.lightGrey)
+                                    .padding(-8)
+                            )
+                            .padding()
+                            .onTapGesture {
+                                manageListOfGamesVM.gameTagWasTapped(tappedGameTag: gameItem)
+                                filterer.reorderSelectedGameItems()
+                                filterer.searchText = filterer.searchText // Updates the UI. dons't know why. don't try. accept monkey wrench code here.
+                            }
+                    }
                 }
             }
             .onAppear {

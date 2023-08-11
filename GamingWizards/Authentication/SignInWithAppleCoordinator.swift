@@ -102,8 +102,6 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
             let lastName = ""
             let displayName = user.displayName ?? ""
             let email = user.email ?? "No email given "
-//            let friendList = [Friend]
-//            let friendRequests = [Friend]
             let newUser = self.authenticationViewModel.createUserBaseData(id: id,
                                                                           firstName: firstName,
                                                                           lastName: lastName,
@@ -111,7 +109,6 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
                                                                           email: email
                                                                          )
             self.authenticationViewModel.saveUserIntoFirestore(for: newUser)
-//            self.authenticationViewModel.saveUserInfoInDatabase(newUser)
         }
     }
 

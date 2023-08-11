@@ -57,7 +57,7 @@ struct DetailedMessageView: View {
     
     private var messagesView: some View {
         ScrollView {
-//            ForEach(0..<20) { num in
+//            ForEach(0..<20) { friend in
             ForEach(detailedMessageVM.coreDataController.savedFriendEntities, id: \.self) { friend in
                 HStack {
                     Spacer()

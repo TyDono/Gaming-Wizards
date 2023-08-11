@@ -19,6 +19,7 @@ struct UserSearchView: View {
             NavigationStack {
                 VStack {
                     searchBar
+                    resultView
                 }
             }
             .navigationBarTitle("Looking for Group")
@@ -44,45 +45,62 @@ struct UserSearchView: View {
     }
     
     private var searchBar: some View {
+        SearchBar(searchText: $filterer.searchText,
+                  actionButtonWasTapped: $userSearchVM.isSearchButtonErrorShowing,
+                  dropDownNotificationText: $userSearchVM.searchBarDropDownNotificationText,
+                  isSearchError: $userSearchVM.isSearchError,
+                  actionButtonPlaceholderText: "Search",
+                  isActionButtonEnabled: true, isActionButtonShowing: true, isXCancelButtonShowing: false)
+            .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
+    }
+    
+    private var resultView: some View {
         VStack {
-            SearchBar(searchText: $filterer.searchText,
-                      actionButtonWasTapped: $userSearchVM.isSearchButtonErrorShowing,
-                      dropDownNotificationText: $userSearchVM.searchBarDropDownNotificationText,
-                      isSearchError: $userSearchVM.isSearchError,
-                      actionButtonPlaceholderText: "Search",
-                      isActionButtonEnabled: true, isActionButtonShowing: true, isXCancelButtonShowing: false)
-                .animation(Animation.easeInOut(duration: 0.25), value: filterer.searchText)
-            List {
-                ForEach(filterer.gamesFilter, id: \.self) { game in
-                    
-                    Button {
-                        filterer.searchText = game.textName
-                    } label: {
-                        SearchResultCellView(index: 0, text: game.textName, isEmptyCell: filterer.searchText.isEmpty)
-                    }
-                    .listRowBackground(Color.clear)
-                    .onChange(of: userSearchVM.isSearchButtonErrorShowing, perform: { newValue in
-                        if !ListOfGames.name.contains(filterer.searchText) {
-                            debouncer.schedule {
-                                userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
-                                userSearchVM.isSearchError.toggle()
+//            searchBar
+//            List {
+            ScrollView {
+                LazyVStack {
+                    ForEach(filterer.gamesFilter, id: \.self) { game in
+                        HStack {
+                            Button {
+                                filterer.searchText = game.textName
+                            } label: {
+                                SearchResultCellView(index: 0, text: game.textName, isEmptyCell: filterer.searchText.isEmpty)
                             }
-                        } else {
-                            userSearchVM.navigateToSearchResults = true
+                            .listRowBackground(Color.clear)
+                            .onChange(of: userSearchVM.isSearchButtonErrorShowing, perform: { newValue in
+                                if !ListOfGames.name.contains(filterer.searchText) {
+                                    debouncer.schedule {
+                                        userSearchVM.searchBarDropDownNotificationText = "Entry did not match any of our games, please select one from the list"
+                                        userSearchVM.isSearchError.toggle()
+                                    }
+                                } else {
+                                    userSearchVM.navigateToSearchResults = true
+                                }
+                            })
                         }
-                    })
+                        .padding(.top, 8)
+                    }
                 }
             }
+            .listRowBackground(Color.clear)
+            .foregroundColor(Color.clear)
+            .listRowBackground(Color.clear)
             .padding()
-            .animation(Animation.easeInOut(duration: 0.7), value: filterer.searchText)
             .listStyle(.plain)
+            .animation(Animation.easeInOut(duration: 0.5), value: filterer.searchText)
+            
         }
     }
 
 }
 
-struct OrderView_Previews: PreviewProvider {
+struct UserSearchView_Previews: PreviewProvider {
+    @State static private var tabSelection: String = "search"
+
     static var previews: some View {
-        UserSearchView(tabSelection: .constant("nil"))
+        NavigationView {
+            UserSearchView(tabSelection: $tabSelection)
+        }
     }
 }
