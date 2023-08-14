@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ManageListOfGamesView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var filterer = Filterer()
+    @StateObject private var filterer = Filterer(isLayoutDesign: true)
     @StateObject private var manageListOfGamesVM = ManageListOfGamesViewModel()
     @State private var textColor: Color = Color.black
     @State private var backgroundColor: Color = Color.lightGrey

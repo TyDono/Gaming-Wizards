@@ -11,9 +11,11 @@ class Filterer: ObservableObject {
     @Published var listOfGames: [FlowTag] = ListOfGames.name.map { FlowTag(gameName: $0) }
     @Published var emptyList: [FlowTag] = []
     @Published var searchText: String = ""
+    @Binding var isLayoutDesign: Bool
     let userListOfGames = UserObservable.shared.listOfGames
 
-    init() {
+    init(isLayoutDesign: Bool) {
+        self._isLayoutDesign = Binding.constant(isLayoutDesign)
         reorderSelectedGameItems()
         updateSelectedGames()
     }
@@ -42,8 +44,10 @@ class Filterer: ObservableObject {
     }
     
     func updateSelectedGames() {
-        for game in listOfGames {
-            game.isSelected = ((userListOfGames?.contains(game.textName)) == true)
+        if isLayoutDesign == true {
+            for game in listOfGames {
+                game.isSelected = ((userListOfGames?.contains(game.textName)) == true)
+            }
         }
     }
     

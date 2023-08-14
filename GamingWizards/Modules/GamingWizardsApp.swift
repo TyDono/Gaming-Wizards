@@ -37,7 +37,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
 class MyAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
     func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+#if DEBUG
         return AppAttestProvider(app: app)
+#endif
     }
 }
 

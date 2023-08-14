@@ -18,7 +18,7 @@ extension ManageListOfGamesView {
         @Published var listOfGames: [String] = ListOfGames.name
         @Published var gameIsMatching: Bool = false
         @Published var gameItems: [FlowTag] = []
-        let firebaseFirestoreHelper =  FirebaseFirestoreHelper()
+        let firebaseFirestoreHelper =  FirebaseFirestoreHelper.shared
         
         func gameTagWasTapped(tappedGameTag: FlowTag) {
             tappedGameTag.isSelected.toggle()

@@ -54,12 +54,13 @@ class CoreDataController: ObservableObject {
     }
     
     func fetchFriends() {
-        let request = NSFetchRequest<FriendEntity>(entityName: "FriendEntity")
-        
-        do {
-            savedFriendEntities = try viewContext.fetch(request)
-        } catch let error {
-            print("ERROR FETCHING CORE DATA: \(error)")
+        viewContext.perform { [self] in
+            let request = NSFetchRequest<FriendEntity>(entityName: "FriendEntity")
+            do {
+                savedFriendEntities = try viewContext.fetch(request)
+            } catch let error {
+                print("ERROR FETCHING CORE DATA: \(error)")
+            }
         }
     }
     
@@ -97,9 +98,19 @@ class CoreDataController: ObservableObject {
             }
     }
     
+    func checkIfUserIsInFriendList(user: User) -> Bool {
+        if savedFriendEntities.contains(where: { $0.id == user.id })  {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func deleteFriendLocally(friend: FriendEntity) {
-        self.viewContext.delete(friend)
-        self.saveFriendData()
+        viewContext.perform { [self] in
+            self.viewContext.delete(friend)
+            self.saveFriendData()
+        }
     }
     
     func saveFriendData() {

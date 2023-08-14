@@ -10,7 +10,7 @@ import SwiftUI
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchVM = UserSearchViewModel()
-    @StateObject private var filterer = Filterer()
+    @StateObject private var filterer = Filterer(isLayoutDesign: false)
     @State private var debouncer = Debouncer(delay: 0.5)
     @Binding var tabSelection: String
     
@@ -56,8 +56,6 @@ struct UserSearchView: View {
     
     private var resultView: some View {
         VStack {
-//            searchBar
-//            List {
             ScrollView {
                 LazyVStack {
                     ForEach(filterer.gamesFilter, id: \.self) { game in

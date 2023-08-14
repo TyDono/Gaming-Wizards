@@ -35,7 +35,7 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(coredataController.savedUserEntities, id: \.self) { contact in
+            ForEach(coredataController.savedFriendEntities, id: \.self) { contact in
                 Button {
                     mainMessagesVM.isDetailedMessageViewShowing.toggle()
                 } label: {
@@ -61,6 +61,10 @@ struct MainMessagesView: View {
                     .padding(.vertical, 8)
                 }
 
+            }
+            .onAppear {
+                print(coredataController.savedUserEntities)
+                print("pause")
             }
 
             .padding(.bottom, 50)
