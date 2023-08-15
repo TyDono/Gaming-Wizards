@@ -113,6 +113,8 @@
 		CB8841CE2A791E680017C874 /* DetailedMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CD2A791E680017C874 /* DetailedMessageView.swift */; };
 		CB8841D02A791E790017C874 /* DetailedMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CF2A791E790017C874 /* DetailedMessageViewModel.swift */; };
 		CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */; };
+		CB9CFD3C2A8AAAED000C09ED /* MessengerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */; };
+		CB9CFD3F2A8AAB86000C09ED /* MessengerProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -236,6 +238,8 @@
 		CB8841CD2A791E680017C874 /* DetailedMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMessageView.swift; sourceTree = "<group>"; };
 		CB8841CF2A791E790017C874 /* DetailedMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMessageViewModel.swift; sourceTree = "<group>"; };
 		CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
+		CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileView.swift; sourceTree = "<group>"; };
+		CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileViewModel.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -588,6 +592,15 @@
 			path = MiscAssets;
 			sourceTree = "<group>";
 		};
+		CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */,
+				CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */,
+			);
+			path = MessengerProfileView;
+			sourceTree = "<group>";
+		};
 		CBBD556B2A27F2A800F27626 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,6 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
+				CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */,
 				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
 				CB62962E2A5F987500F84367 /* SearchResultCellView.swift */,
@@ -845,6 +859,7 @@
 				CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */,
 				CB5BE8A929FDE958009D38D6 /* HideNavigationBar.swift in Sources */,
 				CB5BE89F29FDE958009D38D6 /* MapBoxView.swift in Sources */,
+				CB9CFD3C2A8AAAED000C09ED /* MessengerProfileView.swift in Sources */,
 				CB62406C2A5787FF00E69C5C /* Filterer.swift in Sources */,
 				CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */,
 				CB5BE89A29FDE958009D38D6 /* UserSearchView.swift in Sources */,
@@ -880,6 +895,7 @@
 				CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */,
 				CB6296312A60913300F84367 /* ListCellView.swift in Sources */,
 				CB5BE89429FDE958009D38D6 /* StringExtension.swift in Sources */,
+				CB9CFD3F2A8AAB86000C09ED /* MessengerProfileViewModel.swift in Sources */,
 				CB5BE8B029FDE958009D38D6 /* AlertItem.swift in Sources */,
 				CB6240682A53AD8100E69C5C /* DiskSpaceHandler.swift in Sources */,
 				CB5BE8A729FDE958009D38D6 /* FriendListViewModel.swift in Sources */,

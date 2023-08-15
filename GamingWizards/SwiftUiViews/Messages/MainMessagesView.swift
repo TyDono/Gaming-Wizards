@@ -11,6 +11,7 @@ struct MainMessagesView: View {
     @StateObject private var mainMessagesVM = MainMessagesViewModel()
     @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
     @ObservedObject var coredataController = CoreDataController.shared
+    @State private var profileImageString: String = ""
     
     var body: some View {
         ZStack {
@@ -41,7 +42,8 @@ struct MainMessagesView: View {
                 } label: {
                     VStack {
                         HStack(spacing: 16) {
-                            messengerProfileImage
+//                            messengerProfileImage
+                            MessengerProfileView(profileImageString: $profileImageString)
                             VStack(alignment: .leading) {
                                 Text(contact.displayName ?? "")
                                     .font(.roboto(.bold, size: 16))
@@ -60,28 +62,27 @@ struct MainMessagesView: View {
                     .padding(.horizontal)
                     .padding(.vertical, 8)
                 }
-
+                .task {
+                    self.profileImageString = contact.imageString ?? ""
+                }
             }
-            .onAppear {
-                print(coredataController.savedUserEntities)
-                print("pause")
-            }
-
             .padding(.bottom, 50)
         }
     }
     
-    private var messengerProfileImage: some View {
-        Image(systemName: "person.fill")
-            .font(.system(size: 32))
-            .padding(8)
-            .overlay(RoundedRectangle(cornerRadius: 44)
-                .stroke( .black,
-                       lineWidth: 1)
-            )
-            .scaledToFit()
-            .frame(width: 32, height: 32)
-    }
+//    private var messengerProfileImage: some View {
+//
+//        Image(systemName: "person.fill")
+//            .font(.system(size: 32))
+//            .padding(8)
+//            .overlay(RoundedRectangle(cornerRadius: 44)
+//                .stroke( .black,
+//                       lineWidth: 1)
+//            )
+//            .scaledToFit()
+//            .frame(width: 32, height: 32)
+//
+//    }
     
     private var mainMessagesCustomNavBar: some View {
         HStack (spacing: 16){

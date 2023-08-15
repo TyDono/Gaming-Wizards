@@ -65,10 +65,10 @@ import Security
                     } catch {
                         print("Error decoding Firestore data: \(error.localizedDescription)")
                     }
-                } else {
-                    documentPath.setData(user.userDictionary)
-                    self.saveUserToUserDefaults(user: user)
                 }
+            } else {
+                documentPath.setData(user.userDictionary)
+                self.saveUserToUserDefaults(user: user)
             }
         }
     }

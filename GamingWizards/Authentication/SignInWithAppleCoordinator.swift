@@ -14,7 +14,7 @@ import SwiftUI
 
 
 class SignInWithAppleCoordinator: NSObject, ASAuthorizationControllerPresentationContextProviding, ObservableObject {
-    @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+     private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
 //    let session: SessionStore
     let scenes = UIApplication.shared.connectedScenes
     // Unhashed nonce.
@@ -30,7 +30,7 @@ class SignInWithAppleCoordinator: NSObject, ASAuthorizationControllerPresentatio
         return window!
     }
 
-    func startSignInWithAppleFlow() {
+    @MainActor func startSignInWithAppleFlow() {
         let nonce = authenticationViewModel.randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -80,7 +80,7 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
 //        notificationPath.setData(values)
     }
     
-    func appleAuthenticate(credential: ASAuthorizationAppleIDCredential) {
+    @MainActor func appleAuthenticate(credential: ASAuthorizationAppleIDCredential) {
         guard let token = credential.identityToken else {
             print("ERROR WITH FIREBASE")
             return
