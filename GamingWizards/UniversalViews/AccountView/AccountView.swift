@@ -10,7 +10,7 @@ import Foundation
 
 struct AccountView: View {
     @Environment(\.defaultMinListRowHeight) var minRowHeight
-    @StateObject private var accountVM = AccountViewModel()
+    @ObservedObject private var accountVM: AccountViewModel
 //    @Binding var isShowingAccountView: Bool?
 //    @Binding var isShowingEditAccountView: Bool?
     
@@ -30,6 +30,37 @@ struct AccountView: View {
     @Binding var availability: String?
     @Binding var isPayToPlay: Bool
     @Binding var isUserSolo: Bool
+    
+    init(
+        displayName: Binding<String?>,
+        userLocation: Binding<String?>,
+        profileImageString: Binding<String>,
+        profileImage: Binding<UIImage?>,
+        friendCodeId: Binding<String>,
+        listOfGames: Binding<[String]?>,
+        groupSize: Binding<String?>,
+        age: Binding<String?>,
+        about: Binding<String?>,
+        title: Binding<String?>,
+        availability: Binding<String?>,
+        isPayToPlay: Binding<Bool>,
+        isUserSolo: Binding<Bool>
+    ) {
+        _displayName = displayName
+        _userLocation = userLocation
+        _profileImageString = profileImageString
+        _profileImage = profileImage
+        _friendCodeId = friendCodeId
+        _listOfGames = listOfGames
+        _groupSize = groupSize
+        _age = age
+        _about = about
+        _title = title
+        _availability = availability
+        _isPayToPlay = isPayToPlay
+        _isUserSolo = isUserSolo
+        self.accountVM = .init()
+    }
     
     var body: some View {
         ZStack {

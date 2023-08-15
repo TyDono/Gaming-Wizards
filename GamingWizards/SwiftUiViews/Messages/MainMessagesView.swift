@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct MainMessagesView: View {
-    @StateObject private var mainMessagesVM = MainMessagesViewModel()
+    @ObservedObject private var mainMessagesVM: MainMessagesViewModel
     @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
     @State var tappedFriend: FriendEntity?
+    
+    init() {
+        self.mainMessagesVM = .init()
+    }
     
     var body: some View {
         ZStack {

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ChatLogView: View {
     
-    @ObservedObject var detailedChatVM: ChatLogViewModel
-//    @ObservedObject var detailedChatVM: DetailedMessageViewModel
+    @ObservedObject private var chatLogVM: ChatLogViewModel
+//    @ObservedObject var chatLogVM: DetailedMessageViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
     let chatUser: FriendEntity?
     
     init(chatUser: FriendEntity?) {
         self.chatUser = chatUser
-        self.detailedChatVM = .init(chatUser: chatUser)
+        self.chatLogVM = .init(chatUser: chatUser)
     }
     
     var body: some View {
@@ -35,18 +35,18 @@ struct ChatLogView: View {
                 .font(.system(size: 24))
                 .foregroundColor(Color(.darkGray))
             ZStack {
-                if detailedChatVM.chatText.isEmpty {
+                if chatLogVM.chatText.isEmpty {
                     TextEditor(text: $MessageBarTextEditorPlaceholder)
                         .foregroundColor(.gray)
                         .disabled(true)
                         .frame(height: 50)
                 }
-                TextEditor(text: $detailedChatVM.chatText.max(Constants.textFieldMaxCharacters))
-                    .opacity(detailedChatVM.chatText.isEmpty ? 0.25 : 1)
+                TextEditor(text: $chatLogVM.chatText.max(Constants.textFieldMaxCharacters))
+                    .opacity(chatLogVM.chatText.isEmpty ? 0.25 : 1)
                     .frame(height: 50)
             }
             Button {
-                detailedChatVM.handleSendMessage()
+                chatLogVM.handleSendMessage()
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
@@ -64,7 +64,7 @@ struct ChatLogView: View {
     private var messagesView: some View {
         ScrollView {
 //            ForEach(0..<20) { friend in
-            ForEach(detailedChatVM.coreDataController.savedFriendEntities, id: \.self) { friend in
+            ForEach(chatLogVM.coreDataController.savedFriendEntities, id: \.self) { friend in
                 HStack {
                     Spacer()
                     HStack {

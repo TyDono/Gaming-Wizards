@@ -9,7 +9,12 @@ import SwiftUI
 
 struct MessengerProfileView: View {
     @Binding var profileImageString: String
-    @StateObject private var messengerProfileVM = MessengerProfileViewModel()
+    @ObservedObject private var messengerProfileVM: MessengerProfileViewModel
+    
+    init(profileImageString: Binding<String>) {
+        self._profileImageString = profileImageString
+        self.messengerProfileVM = .init()
+    }
     
     var body: some View {
         messengerProfileImage
@@ -40,6 +45,11 @@ struct MessengerProfileView: View {
 
 struct MessengerProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        MessengerProfileView(profileImageString: .constant("nuphing"))
+        let profileImageBinding = Binding<String>(
+            get: { "nuphing" }, // Provide a getter
+            set: { _ in }       // Provide a setter
+        )
+        
+        return MessengerProfileView(profileImageString: profileImageBinding)
     }
 }
