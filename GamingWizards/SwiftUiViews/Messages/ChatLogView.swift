@@ -7,11 +7,17 @@
 
 import SwiftUI
 
-struct DetailedMessageView: View {
+struct ChatLogView: View {
     
-    @ObservedObject var detailedMessageVM = DetailedMessageViewModel()
+    @ObservedObject var detailedChatVM: ChatLogViewModel
+//    @ObservedObject var detailedChatVM: DetailedMessageViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
-    @State private var chatText: String = ""
+    let chatUser: FriendEntity?
+    
+    init(chatUser: FriendEntity?) {
+        self.chatUser = chatUser
+        self.detailedChatVM = .init(chatUser: chatUser)
+    }
     
     var body: some View {
         ZStack {
@@ -29,18 +35,18 @@ struct DetailedMessageView: View {
                 .font(.system(size: 24))
                 .foregroundColor(Color(.darkGray))
             ZStack {
-                if self.chatText.isEmpty {
+                if detailedChatVM.chatText.isEmpty {
                     TextEditor(text: $MessageBarTextEditorPlaceholder)
                         .foregroundColor(.gray)
                         .disabled(true)
                         .frame(height: 50)
                 }
-                TextEditor(text: $chatText.max(Constants.textFieldMaxCharacters))
-                    .opacity(chatText.isEmpty ? 0.25 : 1)
+                TextEditor(text: $detailedChatVM.chatText.max(Constants.textFieldMaxCharacters))
+                    .opacity(detailedChatVM.chatText.isEmpty ? 0.25 : 1)
                     .frame(height: 50)
             }
             Button {
-                detailedMessageVM.handleSendMessage(text: self.chatText)
+                detailedChatVM.handleSendMessage()
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
@@ -58,7 +64,7 @@ struct DetailedMessageView: View {
     private var messagesView: some View {
         ScrollView {
 //            ForEach(0..<20) { friend in
-            ForEach(detailedMessageVM.coreDataController.savedFriendEntities, id: \.self) { friend in
+            ForEach(detailedChatVM.coreDataController.savedFriendEntities, id: \.self) { friend in
                 HStack {
                     Spacer()
                     HStack {
@@ -87,8 +93,8 @@ struct DetailedMessageView: View {
     
 }
 
-struct DetailedMessageView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailedMessageView()
-    }
-}
+//struct ChatLogView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatLogView(chatUser: .constant(nil))
+//    }
+//}

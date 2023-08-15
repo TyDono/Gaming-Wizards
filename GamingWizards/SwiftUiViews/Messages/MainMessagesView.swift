@@ -10,8 +10,7 @@ import SwiftUI
 struct MainMessagesView: View {
     @StateObject private var mainMessagesVM = MainMessagesViewModel()
     @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
-    @ObservedObject var coredataController = CoreDataController.shared
-    @State private var profileImageString: String = ""
+    @State var tappedFriend: FriendEntity?
     
     var body: some View {
         ZStack {
@@ -24,26 +23,29 @@ struct MainMessagesView: View {
             }
         }
         .task {
-            fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
+//            fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
         }
         .onDisappear {
             fbFirestoreHelper.stopListening()
         }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
-            DetailedMessageView()
+            ChatLogView(chatUser: tappedFriend)
         }
     }
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(coredataController.savedFriendEntities, id: \.self) { contact in
+            ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { contact in
                 Button {
+                    tappedFriend = contact
                     mainMessagesVM.isDetailedMessageViewShowing.toggle()
                 } label: {
                     VStack {
                         HStack(spacing: 16) {
-//                            messengerProfileImage
-                            MessengerProfileView(profileImageString: $profileImageString)
+                            MessengerProfileView(profileImageString: Binding<String>(
+                                get: { contact.imageString! },
+                                set: { contact.imageString = $0 }
+                            ))
                             VStack(alignment: .leading) {
                                 Text(contact.displayName ?? "")
                                     .font(.roboto(.bold, size: 16))
@@ -61,9 +63,6 @@ struct MainMessagesView: View {
                     .foregroundColor(.black)
                     .padding(.horizontal)
                     .padding(.vertical, 8)
-                }
-                .task {
-                    self.profileImageString = contact.imageString ?? ""
                 }
             }
             .padding(.bottom, 50)
@@ -120,14 +119,12 @@ struct MainMessagesView: View {
     
     private var profileImageView: some View {
         VStack {
-            //            if let profileImage = mainMessagesVM.profileImage {
-            Image(uiImage: (mainMessagesVM.profileImage ?? UIImage(named: "WantedWizard+"))!)
+            Image(uiImage: (mainMessagesVM.mainUserProfileImage ?? UIImage(named: "WantedWizard+"))!)
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 34, height: 34)
         }
-        .onAppear(perform: mainMessagesVM.retrieveProfileImageFromDisk)
     }
     
     private var newMessageView: some View {

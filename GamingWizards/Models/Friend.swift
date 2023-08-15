@@ -1,5 +1,5 @@
 //
-//  Freind.swift
+//  Friend.swift
 //  GamingWizards
 //
 //  Created by Tyler Donohue on 11/21/22.
@@ -27,9 +27,21 @@ struct Friend: Codable, Hashable, Identifiable {
             Constants.imageString: imageString
         ]
     }
+    
+    /*
+    init(from friendEntity: FriendEntity) {
+        id = friendEntity.id!
+        friendCodeID = friendEntity.friendCodeID!
+        displayName = friendEntity.displayName ?? ""
+        isFriend = friendEntity.isFriend
+        isFavorite = friendEntity.isFavorite
+        imageString = friendEntity.imageString!
+    }
+     */
+    
 }
 
-extension User {
+extension Friend {
     enum FriendCodingKeys: String, CodingKey {
         case id = "id"
         case friendCodeID = "friend_code_id"
