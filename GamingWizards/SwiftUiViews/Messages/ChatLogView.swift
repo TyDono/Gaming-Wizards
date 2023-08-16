@@ -23,6 +23,7 @@ struct ChatLogView: View {
         ZStack {
             VStack {
                 messagesView
+                Text(chatLogVM.errorMessage)
             }
         }
         .navigationTitle("place holder") // should be whom so ever the user name in. binding

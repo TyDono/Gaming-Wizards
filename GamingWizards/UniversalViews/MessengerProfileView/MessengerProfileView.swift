@@ -22,7 +22,7 @@ struct MessengerProfileView: View {
     
     private var messengerProfileImage: some View {
         VStack {
-            Image(uiImage: messengerProfileVM.profileImage ?? UIImage(named: Constants.wantedWizardPlusImageString)!)
+            Image(uiImage: messengerProfileVM.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
             // change these two aspects later on. to what? idk. fit in the circle a lil bit.
                 .resizable()
                 .aspectRatio(contentMode: .fit)
