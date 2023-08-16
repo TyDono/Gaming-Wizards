@@ -389,7 +389,6 @@
 		CB5BE82D29FDE954009D38D6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CBF91C962A81715600F20986 /* FirebaseHelpers */,
 				CB5BE83029FDE954009D38D6 /* GamingWizardsApp.swift */,
 				CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */,
 				CBBD556E2A294B6A00F27626 /* imagePicker.swift */,
@@ -398,6 +397,7 @@
 				CB5BE83329FDE954009D38D6 /* Endpoint.swift */,
 				CB62406B2A5787FF00E69C5C /* Filterer.swift */,
 				CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */,
+				CBF91C962A81715600F20986 /* FirebaseHelpers */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
 			);
@@ -630,12 +630,12 @@
 			isa = PBXGroup;
 			children = (
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
-				CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */,
 				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
 				CB62962E2A5F987500F84367 /* SearchResultCellView.swift */,
 				CB6296302A60913300F84367 /* ListCellView.swift */,
 				CBB8CAA22A65EE07009B13A6 /* FlowLayout.swift */,
+				CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */,
 				CB5948982A71636E00BE0DE2 /* AccountView */,
 			);
 			path = UniversalViews;

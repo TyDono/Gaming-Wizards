@@ -16,14 +16,29 @@ extension ChatLogView {
         @Published var coreDataController = CoreDataController.shared
         @Published var chatText: String = ""
         @Published var errorMessage = ""
-        let fbFirestoreHelper = FirebaseFirestoreHelper.shared
+        private let firestoreService: FirebaseFirestoreService
+//        let fbFirestoreHelper = FirebaseFirestoreHelper.shared
         let fbAuthHelper = FirebaseAuthHelper.shared
         let chatUser: FriendEntity?
+        var sentChatText: String = ""
         
-        init(chatUser: FriendEntity?) {
+        init(firestoreService: FirebaseFirestoreService, chatUser: FriendEntity?) {
             self.chatUser = chatUser
+            self.firestoreService = firestoreService
         }
         
+        func callHandelSendMessage() async {
+            guard let chatUserId = chatUser?.id else { return }
+            sentChatText = chatText
+            chatText = ""
+            do {
+                try await firestoreService.handleSendMessage(toId: user.id, fromId: chatUserId, chatText: sentChatText)
+            } catch {
+                self.errorMessage = "Failed to send the message" // error.localizedDescription
+            }
+        }
+        
+        /*
         func handleSendMessage() {
             let fromId = user.id
             guard let toId = chatUser?.id else { return }
@@ -59,6 +74,7 @@ extension ChatLogView {
                 
             }
         }
+         */
         
     }
 }

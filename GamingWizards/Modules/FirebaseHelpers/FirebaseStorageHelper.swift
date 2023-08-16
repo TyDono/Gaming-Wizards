@@ -9,6 +9,10 @@ import Foundation
 import FirebaseStorage
 import UIKit
 
+protocol FirebaseStorageService {
+    func retrieveUserProfileImage(imageString: String, completion: @escaping (UIImage?) -> Void)
+}
+
 class FirebaseStorageHelper: NSObject, ObservableObject {
     let storage: Storage
     

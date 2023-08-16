@@ -7,8 +7,19 @@
 
 import Foundation
 import FirebaseFirestore
+import Firebase
 
-class FirebaseFirestoreHelper: NSObject, ObservableObject {
+protocol FirebaseFirestoreService {
+    func retrieveFriendsListener(user: UserObservable)
+    func stopListening()
+    func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
+    func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
+    func searchForMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User]
+    func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
+    func handleSendMessage(toId: String, fromId: String, chatText: String) async throws
+}
+
+class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreService {
 //    let user = UserObservable.shared
 //    let firestoreDatabase = Firestore.firestore()
     let firestore: Firestore
@@ -79,8 +90,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject {
                 print("ERROR REMOVING ITEM FROM ARRAY: \(error)")
             } else {
                 completion(nil, itemName)
-//                self?.user.listOfGames?.removeAll { $0 == itemName}
-//                print("Item removed successfully from the array.")
             }
         }
     }
@@ -164,5 +173,38 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject {
                 yourInfoPath.setData(theirFriendInfo.friendDictionary)
                 completion(nil, theirFriendInfo)
     }
+    
+    func handleSendMessage(toId: String, fromId: String, chatText: String) async throws {
+        let senderMessageDocumentPath = firestore
+            .collection("messages")
+            .document(fromId)
+            .collection(toId)
+            .document()
+        let recipientMessageDocumentPath = firestore
+            .collection("messages")
+            .document(toId)
+            .collection(fromId)
+            .document()
+        
+        let messageData = ["fromId": fromId,
+                           "toId": toId,
+                           "text": chatText,
+                           "timeStamp": Timestamp()] as [String : Any]
+        
+        do {
+            try await senderMessageDocumentPath.setData(messageData)
+        } catch {
+            print("ERROR SETTING DATA IN THE MESSAGE CHAT LOG: \(error.localizedDescription)")
+            throw error
+        }
+        
+        do {
+            try await recipientMessageDocumentPath.setData(messageData)
+        } catch {
+            print("ERROR SETTING DATA IN THE MESSAGE CHAT LOG: \(error.localizedDescription)")
+            throw error
+        }
+    }
+
     
 }

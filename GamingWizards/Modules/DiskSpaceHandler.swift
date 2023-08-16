@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+protocol DiskSpaceService {
+    func saveProfileImageToDisc(imageString: String, image: UIImage)
+    func loadProfileImageFromDisk(imageString: String) -> UIImage 
+}
+
 class DiskSpaceHandler: ObservableObject {
     
      func saveProfileImageToDisc(imageString: String, image: UIImage) {

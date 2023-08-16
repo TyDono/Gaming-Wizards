@@ -8,6 +8,10 @@
 import SwiftUI
 import FirebaseAuth
 
+protocol FirebaseAuthService {
+    
+}
+
 class FirebaseAuthHelper: NSObject, ObservableObject {
     
     let auth: Auth

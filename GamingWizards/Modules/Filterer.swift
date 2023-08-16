@@ -7,7 +7,13 @@
 
 import SwiftUI
 
-class Filterer: ObservableObject {
+protocol FiltererService {
+    var gamesFilter: [FlowTag] { get }
+    func reorderSelectedGameItems()
+    func updateSelectedGames()
+}
+
+class Filterer: FiltererService, ObservableObject {
     @Published var listOfGames: [FlowTag] = ListOfGames.name.map { FlowTag(gameName: $0) }
     @Published var emptyList: [FlowTag] = []
     @Published var searchText: String = ""

@@ -16,7 +16,8 @@ struct ChatLogView: View {
     
     init(chatUser: FriendEntity?) {
         self.chatUser = chatUser
-        self.chatLogVM = .init(chatUser: chatUser)
+        let firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper()
+        self.chatLogVM = .init(firestoreService: firestoreService, chatUser: chatUser)
     }
     
     var body: some View {
@@ -42,12 +43,15 @@ struct ChatLogView: View {
                         .disabled(true)
                         .frame(height: 50)
                 }
-                TextEditor(text: $chatLogVM.chatText.max(Constants.textFieldMaxCharacters))
+                TextEditor(text: $chatLogVM.chatText.max(Constants.textViewMaxCharacters))
                     .opacity(chatLogVM.chatText.isEmpty ? 0.25 : 1)
                     .frame(height: 50)
             }
             Button {
-                chatLogVM.handleSendMessage()
+                Task {
+                    await chatLogVM.callHandelSendMessage()
+                }
+//                chatLogVM.handleSendMessage()
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
