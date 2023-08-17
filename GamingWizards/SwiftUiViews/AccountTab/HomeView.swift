@@ -20,6 +20,11 @@ struct HomeView: View {
     @State private var isAccountSettingsShowing: Bool = false
     @State var isShowingEditAccountView: Bool = false
     
+//    init(homeViewModel: HomeViewModel, userAuth: UserAuth) {
+//        self._homeViewModel = EnvironmentObject(wrappedValue: homeViewModel)
+//        self._userAuth = EnvironmentObject(wrappedValue: userAuth)
+//    }
+    
     var body: some View {
             ZStack(alignment: .bottom) {
                 VStack {

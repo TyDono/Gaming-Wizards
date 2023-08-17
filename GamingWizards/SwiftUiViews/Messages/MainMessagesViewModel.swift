@@ -11,14 +11,22 @@ import SwiftUI
 
 extension MainMessagesView {
     @MainActor class MainMessagesViewModel: ObservableObject {
-        @ObservedObject var user = UserObservable.shared
-        @ObservedObject var coredataController = CoreDataController.shared
-        var diskSpace = DiskSpaceHandler()
+        @ObservedObject var user: UserObservable
+        @ObservedObject var coredataController: CoreDataController
+        var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
         @Published var isDetailedMessageViewShowing: Bool = false
         @Published var friends: [FriendEntity] = []
-        
-        init() {
+
+        init(
+            user: UserObservable = UserObservable.shared,
+            coredataController: CoreDataController = CoreDataController.shared,
+            diskSpace: DiskSpaceHandler = DiskSpaceHandler()
+        ) {
+            self.user = user
+            self.coredataController = coredataController
+            self.diskSpace = diskSpace
+            
             mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
         }
         

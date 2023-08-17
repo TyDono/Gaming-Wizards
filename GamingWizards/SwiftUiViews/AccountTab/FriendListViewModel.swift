@@ -11,29 +11,41 @@ import CoreData
 import Security
 
 //extension FriendListView {
-    @MainActor class FriendListViewModel: ObservableObject {
-//        @ObservedObject var user = UserObservable()
-        @ObservedObject var user = UserObservable.shared
-        @Published var friendList: [Friend] = []
-        @Published var addFriendAlertIsShowing: Bool = false
-        @Published var friendCodeIDTextField: String = ""
-        @Published var friendIDName: String = ""
-        @Published var friendName: String = ""
-        @Published var FriendRequestAlreadySentIsTrue: Bool = false
-        @Published var noFriendExistsAlertIsShowing: Bool = false
-        @Published var detailedFriendViewIsShowing: Bool = false
-        @Published var friends: [Friend] = []
-        @Published var friend: FriendEntity?
-        @Published var detailedFriendViewIsDismissed: Bool = false
-        
-        @State var friendDisplayName: String = ""
-        @State var friendID: String = ""
-        @State var isFriend: Bool = false
-        @State var isFavorite: Bool = false
-//        var displayName: String = ""
-        let coreDataController = CoreDataController.shared
-        let authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-        let firestoreDatabase = Firestore.firestore()
+class FriendListViewModel: ObservableObject {
+    @ObservedObject var user: UserObservable
+    @Published var friendList: [Friend] = []
+    @Published var addFriendAlertIsShowing: Bool = false
+    @Published var friendCodeIDTextField: String = ""
+    @Published var friendIDName: String = ""
+    @Published var friendName: String = ""
+    @Published var FriendRequestAlreadySentIsTrue: Bool = false
+    @Published var noFriendExistsAlertIsShowing: Bool = false
+    @Published var detailedFriendViewIsShowing: Bool = false
+    @Published var friends: [Friend] = []
+    @Published var friend: FriendEntity?
+    @Published var detailedFriendViewIsDismissed: Bool = false
+
+    @State var friendDisplayName: String = ""
+    @State var friendID: String = ""
+    @State var isFriend: Bool = false
+    @State var isFavorite: Bool = false
+    
+    let coreDataController: CoreDataController
+    let authenticationViewModel: AuthenticationViewModel
+    let firestoreDatabase: Firestore
+    
+    // Dependency injection
+    init(
+        user: UserObservable,
+        coreDataController: CoreDataController = CoreDataController.shared,
+        authenticationViewModel: AuthenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM,
+        firestoreDatabase: Firestore = Firestore.firestore()
+    ) {
+        self.user = user
+        self.coreDataController = coreDataController
+        self.authenticationViewModel = authenticationViewModel
+        self.firestoreDatabase = firestoreDatabase
+    }
         
         func friendWasTapped(friend: FriendEntity) {
             self.friend = friend

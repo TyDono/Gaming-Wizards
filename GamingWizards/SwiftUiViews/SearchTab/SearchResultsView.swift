@@ -12,11 +12,18 @@ struct SearchResultsView: View {
 //    @ObservedObject var user = UserObservable()
     @ObservedObject var user = UserObservable.shared
     @ObservedObject var userSearchViewModel: UserSearchViewModel
-    @StateObject var searchResultsViewModel = SearchResultsViewModel()
+    @ObservedObject var searchResultsViewModel: SearchResultsViewModel
     @State var resultWasTapped: Bool = false
     @State var selectedUser: User = User(id: "110k1")
     @State var searchText: String
     @Binding var tabSelection: String
+    
+    init(tabSelection: Binding<String>, searchText: String) {
+        self._tabSelection = tabSelection
+        self._searchText = State(initialValue: searchText) // Initialize the @State property
+        self.userSearchViewModel = UserSearchViewModel() // Initialize userSearchViewModel
+        self.searchResultsViewModel = SearchResultsViewModel() // Initialize searchResultsViewModel
+    }
     
     var body: some View {
         ZStack {
@@ -114,6 +121,6 @@ struct SearchResultsView_Previews: PreviewProvider {
         let searchText = "Example Search"
         let selectedUser = User(id: "110k1")
         
-        return SearchResultsView(userSearchViewModel: userSearchViewModel, selectedUser: selectedUser, searchText: searchText, tabSelection: .constant("nil"))
+        return SearchResultsView(tabSelection: .constant("nil"), searchText: searchText)
     }
 }

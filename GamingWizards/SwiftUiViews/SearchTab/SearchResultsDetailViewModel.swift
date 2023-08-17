@@ -11,9 +11,7 @@ import FirebaseStorage
 import CoreData
 
 @MainActor class SearchResultsDetailViewModel: ObservableObject {
-//    @ObservedObject var user = UserObservable()
-    @ObservedObject var user = UserObservable.shared
-//    @Published var users: [User] = []
+    @ObservedObject var user: UserObservable
     @Published var FriendRequestAlreadySentIsTrue: Bool = false
     @Published var noFriendExistsAlertIsShowing: Bool = false
     @Published var detailedFriendViewIsShowing: Bool = false
@@ -22,10 +20,24 @@ import CoreData
     @Published var detailedFriendViewIsDismissed: Bool = false
     @Published var displayName: String? = ""
     @Published var profileImage: UIImage?
-    let fbFirestoreHelper = FirebaseFirestoreHelper.shared
-    let fbStorageHelper = FirebaseStorageHelper.shared
-    let coreDataController = CoreDataController.shared
-    let diskSpaceHandler = DiskSpaceHandler()
+    let fbFirestoreHelper: FirebaseFirestoreHelper
+    let fbStorageHelper: FirebaseStorageHelper
+    let coreDataController: CoreDataController
+    let diskSpaceHandler: DiskSpaceHandler
+
+    init(
+        user: UserObservable = UserObservable.shared,
+        fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
+        fbStorageHelper: FirebaseStorageHelper = FirebaseStorageHelper.shared,
+        coreDataController: CoreDataController = CoreDataController.shared,
+        diskSpaceHandler: DiskSpaceHandler = DiskSpaceHandler()
+    ) {
+        self.user = user
+        self.fbFirestoreHelper = fbFirestoreHelper
+        self.fbStorageHelper = fbStorageHelper
+        self.coreDataController = coreDataController
+        self.diskSpaceHandler = diskSpaceHandler
+    }
     
     func sendFriendRequest(selectedUserID: String) { // not used
 //        guard let userFriendCode = user.friendCodeID else { return }

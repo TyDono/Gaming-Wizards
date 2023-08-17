@@ -8,12 +8,21 @@ import SwiftUI
 import PhotosUI
 
 struct ViewPersonalAccountView: View {
-    @ObservedObject var user = UserObservable.shared
-    @StateObject var viewPersonalAccountViewModel = ViewPersonalAccountViewModel()
+    @ObservedObject var user: UserObservable
+    @StateObject var viewPersonalAccountViewModel: ViewPersonalAccountViewModel
     @Environment(\.dismiss) var dismiss
-//    Environment(\.presentationMode) var presentationMode
     @State var editAccountViewIsPresented: Bool = false
     @Binding var isShowingEditAccountView: Bool
+
+    init(
+        user: UserObservable = UserObservable.shared,
+        viewPersonalAccountViewModel: ViewPersonalAccountViewModel = ViewPersonalAccountViewModel(user: UserObservable.shared),
+        isShowingEditAccountView: Binding<Bool>
+    ) {
+        self._user = ObservedObject(wrappedValue: user)
+        self._viewPersonalAccountViewModel = StateObject(wrappedValue: viewPersonalAccountViewModel)
+        self._isShowingEditAccountView = isShowingEditAccountView
+    }
     
     var body: some View {
         ZStack {

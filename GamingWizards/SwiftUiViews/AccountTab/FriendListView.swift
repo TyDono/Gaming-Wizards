@@ -9,10 +9,22 @@ import SwiftUI
 
 struct FriendListView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var friendListVM = FriendListViewModel()
-    @StateObject var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-    @StateObject var coreDataController = CoreDataController.shared
-    @StateObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
+      @ObservedObject var friendListVM: FriendListViewModel
+      @ObservedObject var authenticationViewModel: AuthenticationViewModel
+      @ObservedObject var coreDataController: CoreDataController
+      @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
+
+    init(
+        friendListVM: FriendListViewModel = .init(user: UserObservable.shared),
+        authenticationViewModel: AuthenticationViewModel = .sharedAuthenticationVM,
+        coreDataController: CoreDataController = .shared,
+        fbFirestoreHelper: FirebaseFirestoreHelper = .shared
+    ) {
+        self.friendListVM = friendListVM
+        self.authenticationViewModel = authenticationViewModel
+        self.coreDataController = coreDataController
+        self.fbFirestoreHelper = fbFirestoreHelper
+      }
     
     var body: some View {
         ZStack {
@@ -128,8 +140,14 @@ struct FriendListView: View {
     
 }
 
-struct FriendsListView_Previews: PreviewProvider {
+struct FriendListView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendListView()
+        FriendListView(
+            friendListVM: FriendListViewModel(user: UserObservable.shared),
+            authenticationViewModel: AuthenticationViewModel.sharedAuthenticationVM,
+            coreDataController: CoreDataController.shared,
+            fbFirestoreHelper: FirebaseFirestoreHelper.shared
+        )
     }
 }
+

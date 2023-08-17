@@ -11,8 +11,16 @@ extension SearchResultsView {
     @MainActor class SearchResultsViewModel: ObservableObject {
         @Published var searchText: String = ""
         @Published var users: [User]? = []
-        let fbFirestoreHelper = FirebaseFirestoreHelper.shared
-        let coreDataController = CoreDataController.shared
+        let fbFirestoreHelper: FirebaseFirestoreHelper
+        let coreDataController: CoreDataController
+        
+        init(
+            fbFirestoreHelper: FirebaseFirestoreHelper = .shared,
+            coreDataController: CoreDataController = .shared
+        ) {
+            self.fbFirestoreHelper = fbFirestoreHelper
+            self.coreDataController = coreDataController
+        }
         
         func performSearchForMatchingGames(gameName: String) async {
             Task {

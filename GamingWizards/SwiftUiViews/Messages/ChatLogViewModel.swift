@@ -22,7 +22,10 @@ extension ChatLogView {
         let chatUser: FriendEntity?
         var sentChatText: String = ""
         
-        init(firestoreService: FirebaseFirestoreService, chatUser: FriendEntity?) {
+        init(
+            firestoreService: FirebaseFirestoreService,
+            chatUser: FriendEntity?
+        ) {
             self.chatUser = chatUser
             self.firestoreService = firestoreService
         }

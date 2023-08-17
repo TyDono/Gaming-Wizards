@@ -9,10 +9,18 @@ import SwiftUI
 
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var userSearchVM = UserSearchViewModel()
+    @ObservedObject private var userSearchVM: UserSearchViewModel
     @StateObject private var filterer = Filterer(isLayoutDesign: false)
     @State private var debouncer = Debouncer(delay: 0.5)
     @Binding var tabSelection: String
+    
+    init(debouncer: Debouncer, tabSelection: Binding<String>) {
+        self._tabSelection = tabSelection
+        self._userSearchVM = ObservedObject(wrappedValue: UserSearchViewModel())
+        self._filterer = StateObject(wrappedValue: Filterer(isLayoutDesign: false))
+        self._debouncer = State(wrappedValue: debouncer)
+    }
+
     
     var body: some View {
         ZStack {
@@ -24,7 +32,7 @@ struct UserSearchView: View {
             }
             .navigationBarTitle("Looking for Group")
             .navigationDestination(isPresented: $userSearchVM.navigateToSearchResults) {
-                SearchResultsView(userSearchViewModel: userSearchVM, searchText: filterer.searchText, tabSelection: $tabSelection)
+                SearchResultsView(tabSelection: $tabSelection, searchText: filterer.searchText)
             }
         }
         .font(.globalFont(.luminari, size: 16))
@@ -94,11 +102,11 @@ struct UserSearchView: View {
 }
 
 struct UserSearchView_Previews: PreviewProvider {
-    @State static private var tabSelection: String = "search"
-
     static var previews: some View {
         NavigationView {
-            UserSearchView(tabSelection: $tabSelection)
+            UserSearchView(debouncer: Debouncer(delay: 0.5),
+                           tabSelection: .constant("YourTabSelection"))
         }
     }
 }
+

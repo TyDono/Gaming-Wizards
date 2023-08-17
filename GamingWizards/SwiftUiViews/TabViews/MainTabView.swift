@@ -29,7 +29,7 @@ struct MainTabView: View {
             .tag(Constants.accountTabViewString)
             
             NavigationStack {
-                UserSearchView(tabSelection: $selectedTab)
+                UserSearchView(debouncer: Debouncer(delay: 0.5), tabSelection: $selectedTab)
             }
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")

@@ -15,6 +15,13 @@ struct SearchResultsDetailView: View {
     @Binding var specificGame: String
     @Binding var tabSelection: String
     
+    init(selectedUser: Binding<User>, specificGame: Binding<String>, tabSelection: Binding<String>) {
+        self._searchResultsDetailViewModel = StateObject(wrappedValue: SearchResultsDetailViewModel())
+        self._selectedUser = selectedUser
+        self._specificGame = specificGame
+        self._tabSelection = tabSelection
+    }
+    
     var body: some View {
         ZStack {
             VStack {
