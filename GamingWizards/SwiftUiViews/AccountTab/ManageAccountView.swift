@@ -21,7 +21,7 @@ struct ManageAccountView: View {
     
 //    let session: SessionStore
     
-//    init(viewModel: ManageAccountViewModel) {
+//    init(viewMod  el: ManageAccountViewModel) {
 //        self.manageAccountViewModel = viewModel
 //    }
     

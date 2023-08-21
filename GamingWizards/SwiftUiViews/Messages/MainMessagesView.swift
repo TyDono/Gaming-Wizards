@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MainMessagesView: View {
     @ObservedObject private var mainMessagesVM: MainMessagesViewModel
-    @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
-    @State var tappedFriend: FriendEntity?
     
     init() {
         self.mainMessagesVM = .init()
@@ -27,21 +25,21 @@ struct MainMessagesView: View {
             }
         }
         .task {
-//            fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
+//            mainMessagesVM.fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
         }
         .onDisappear {
-            fbFirestoreHelper.stopListening()
+//            mainMessagesVM.fbFirestoreHelper.stopListening()
         }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
-            ChatLogView(chatUser: tappedFriend)
+            ChatLogView(chatUser: mainMessagesVM.selectedContact)
         }
     }
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { contact in
+            ForEach(mainMessagesVM.savedFriendEntities, id: \.self) { contact in
                 Button {
-                    tappedFriend = contact
+                    mainMessagesVM.selectedContact = contact
                     mainMessagesVM.isDetailedMessageViewShowing.toggle()
                 } label: {
                     VStack {
@@ -70,6 +68,10 @@ struct MainMessagesView: View {
                 }
             }
             .padding(.bottom, 50)
+        }
+        .onAppear {
+            print(mainMessagesVM.savedFriendEntities)
+            print(mainMessagesVM.coredataController.savedFriendEntities)
         }
     }
     
