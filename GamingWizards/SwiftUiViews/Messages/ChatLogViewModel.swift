@@ -16,18 +16,38 @@ extension ChatLogView {
         @Published var coreDataController = CoreDataController.shared
         @Published var chatText: String = ""
         @Published var errorMessage = ""
+        @Published var chatMessages: [ChatMessage]
         private let firestoreService: FirebaseFirestoreService
-//        let fbFirestoreHelper = FirebaseFirestoreHelper.shared
+//        let fbFirestoreHelper: FirebaseFirestoreHelper
         let fbAuthHelper = FirebaseAuthHelper.shared
-        let chatUser: FriendEntity?
+        var chatUser: FriendEntity?
         var sentChatText: String = ""
         
         init(
             firestoreService: FirebaseFirestoreService,
+            chatMessages: [ChatMessage] = [ChatMessage](),
+//            fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
             chatUser: FriendEntity?
         ) {
-            self.chatUser = chatUser
+            
+            self.chatMessages = chatMessages
+//            self.fbFirestoreHelper = fbFirestoreHelper
             self.firestoreService = firestoreService
+            if let unwrappedChatUser = chatUser {
+                self.chatUser = unwrappedChatUser
+                callFetchMessages(chatUser: unwrappedChatUser)
+            } else {
+                self.chatUser = chatUser
+            }
+        }
+        
+        func callFetchMessages(chatUser: FriendEntity) {
+            guard let chatUser = chatUser.id else { return }
+            firestoreService.fetchMessages(fromId: user.id, toId: chatUser) { [weak self] err, chatMessage in
+                guard let self = self else { return }
+                print(chatMessage.chatMessageText)
+                self.chatMessages.append(chatMessage)
+            }
         }
         
         func callHandelSendMessage() async {
@@ -40,44 +60,6 @@ extension ChatLogView {
                 self.errorMessage = "Failed to send the message" // error.localizedDescription
             }
         }
-        
-        /*
-        func handleSendMessage() {
-            let fromId = user.id
-            guard let toId = chatUser?.id else { return }
-            let senderMessageDocumentPath = fbFirestoreHelper.firestore
-                .collection("messages")
-                .document(fromId)
-                .collection(toId)
-                .document()
-            let messageData = ["fromId": fromId,
-                               "toId": toId,
-                               "text": self.chatText,
-                               "timeStamp": Timestamp()] as [String : Any]
-            senderMessageDocumentPath.setData(messageData) { err in
-                if let error = err {
-                    print("ERROR SETTING DATA IN THE MESSAGE CHAT LOG: \(error.localizedDescription)")
-                    self.errorMessage = "Failed to send message"
-                    return
-                }
-            }
-            self.chatText = ""
-            
-            let recipientMessageDocumentPath = fbFirestoreHelper.firestore
-                .collection("messages")
-                .document(toId)
-                .collection(fromId)
-                .document()
-            recipientMessageDocumentPath.setData(messageData) { err in
-                if let error = err {
-                    print("ERROR SETTING DATA IN THE MESSAGE CHAT LOG: \(error.localizedDescription)")
-                    self.errorMessage = "Failed to send message"
-                    return
-                }
-                
-            }
-        }
-         */
         
     }
 }

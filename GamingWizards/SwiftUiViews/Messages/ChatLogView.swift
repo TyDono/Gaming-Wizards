@@ -27,7 +27,7 @@ struct ChatLogView: View {
                 Text(chatLogVM.errorMessage)
             }
         }
-        .navigationTitle("place holder") // should be whom so ever the user name in. binding
+        .navigationTitle(chatUser?.displayName ?? "")
         .navigationBarTitleDisplayMode(.inline)
     }
     
@@ -68,12 +68,11 @@ struct ChatLogView: View {
     
     private var messagesView: some View {
         ScrollView {
-//            ForEach(0..<20) { friend in
-            ForEach(chatLogVM.coreDataController.savedFriendEntities, id: \.self) { friend in
+            ForEach(chatLogVM.chatMessages, id: \.self) { message in
                 HStack {
                     Spacer()
                     HStack {
-                        Text("place holder message")
+                        Text(message.chatMessageText)
                             .foregroundColor(.white)
                     }
                     .padding()

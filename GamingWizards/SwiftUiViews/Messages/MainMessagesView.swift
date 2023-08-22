@@ -20,8 +20,8 @@ struct MainMessagesView: View {
                 VStack {
                     mainMessagesCustomNavBar
                     messagesScrollView
-                    //                newMessageView
-                }.navigationBarHidden(true)
+                }
+                .navigationBarHidden(true)
             }
         }
         .task {
@@ -37,7 +37,8 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(mainMessagesVM.savedFriendEntities, id: \.self) { contact in
+            //change to mainMessagesVM.savedFriendEntities later when i have a fix
+            ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { contact in
                 Button {
                     mainMessagesVM.selectedContact = contact
                     mainMessagesVM.isDetailedMessageViewShowing.toggle()

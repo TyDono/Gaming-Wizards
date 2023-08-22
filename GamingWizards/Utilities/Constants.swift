@@ -24,6 +24,7 @@ struct Constants {
     static let profileImageHeight: CGFloat = 300
     static let wantedWizardImageString = "WantedWizard"
     static let wantedWizardPlusImageString = "WantedWizard+"
+    static let messagesStringCollectionCall = "messages"
     
     // MARK: calls to Tab
     static let accountTabViewString = "Account"
@@ -50,6 +51,12 @@ struct Constants {
     static let userTitle = "title"
     static let userPayToPlay = "isPayToPlay"
     static let userIsSolo = "isSolo"
+    
+    // MARK: calls to ChatMessages
+    static let fromId = "fromId"
+    static let toId = "toId"
+    static let chatMessageText = "chatMessageText"
+    static let chatMessageTimeStamp = "timeStamp"
     
     // MARK: calls to AppStorage
 //    static let appStorageStringUserId = "user_Id"

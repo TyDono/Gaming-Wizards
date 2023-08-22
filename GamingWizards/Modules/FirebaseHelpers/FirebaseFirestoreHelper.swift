@@ -16,6 +16,7 @@ protocol FirebaseFirestoreService {
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func searchForMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User]
     func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
+    func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
     func handleSendMessage(toId: String, fromId: String, chatText: String) async throws
 }
 
@@ -174,22 +175,45 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 completion(nil, theirFriendInfo)
     }
     
+    func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void) {
+        let senderMessageDocumentPath = firestore
+            .collection(Constants.messagesStringCollectionCall)
+            .document(fromId)
+            .collection(toId)
+            .order(by: Constants.chatMessageTimeStamp)
+        
+        senderMessageDocumentPath.getDocuments { querySnapshot, err in
+            if let error = err {
+                print("FAILED TO LISTEN FOR MESSAGES ERROR: \(error.localizedDescription)")
+                return
+            }
+            querySnapshot?.documentChanges.forEach({ change in
+                if change.type == .added {
+                    let data = change.document.data()
+                    let chatMessage = ChatMessage(documentId: change.document.documentID, data: data)
+                    completion(nil, chatMessage)
+                }
+            })
+            
+        }
+    }
+    
     func handleSendMessage(toId: String, fromId: String, chatText: String) async throws {
         let senderMessageDocumentPath = firestore
-            .collection("messages")
+            .collection(Constants.messagesStringCollectionCall)
             .document(fromId)
             .collection(toId)
             .document()
         let recipientMessageDocumentPath = firestore
-            .collection("messages")
+            .collection(Constants.messagesStringCollectionCall)
             .document(toId)
             .collection(fromId)
             .document()
         
-        let messageData = ["fromId": fromId,
-                           "toId": toId,
-                           "text": chatText,
-                           "timeStamp": Timestamp()] as [String : Any]
+        let messageData = [Constants.fromId: fromId,
+                           Constants.toId: toId,
+                           Constants.chatMessageText: chatText,
+                           Constants.chatMessageTimeStamp: Timestamp()] as [String : Any]
         
         do {
             try await senderMessageDocumentPath.setData(messageData)
