@@ -182,7 +182,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             .collection(toId)
             .order(by: Constants.chatMessageTimeStamp)
         
-        senderMessageDocumentPath.getDocuments { querySnapshot, err in
+        senderMessageDocumentPath.addSnapshotListener { querySnapshot, err in
             if let error = err {
                 print("FAILED TO LISTEN FOR MESSAGES ERROR: \(error.localizedDescription)")
                 return
