@@ -17,11 +17,11 @@ extension ChatLogView {
         @Published var chatText: String = ""
         @Published var errorMessage = ""
         @Published var chatMessages: [ChatMessage]
+        @Published var sentChatText: String = ""
         private let firestoreService: FirebaseFirestoreService
 //        let fbFirestoreHelper: FirebaseFirestoreHelper
         let fbAuthHelper = FirebaseAuthHelper.shared
         var chatUser: FriendEntity?
-        var sentChatText: String = ""
         
         init(
             firestoreService: FirebaseFirestoreService,
@@ -33,12 +33,15 @@ extension ChatLogView {
             self.chatMessages = chatMessages
 //            self.fbFirestoreHelper = fbFirestoreHelper
             self.firestoreService = firestoreService
+            self.chatUser = chatUser
+            /*
             if let unwrappedChatUser = chatUser {
                 self.chatUser = unwrappedChatUser
                 callFetchMessages(chatUser: unwrappedChatUser)
             } else {
                 self.chatUser = chatUser
             }
+             */
         }
         
         func callFetchMessages(chatUser: FriendEntity) {
@@ -50,12 +53,12 @@ extension ChatLogView {
             }
         }
         
-        func callHandelSendMessage() async {
-            guard let chatUserId = chatUser?.id else { return }
+        func callHandelSendMessage(chatUser: FriendEntity) async {
+            guard let chatUserId = chatUser.id else { return }
             sentChatText = chatText
             chatText = ""
             do {
-                try await firestoreService.handleSendMessage(toId: user.id, fromId: chatUserId, chatText: sentChatText)
+                try await firestoreService.handleSendMessage(toId: chatUserId, fromId: user.id, chatText: sentChatText)
             } catch {
                 self.errorMessage = "Failed to send the message" // error.localizedDescription
             }

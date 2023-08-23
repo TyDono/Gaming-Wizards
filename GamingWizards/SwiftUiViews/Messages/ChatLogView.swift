@@ -29,6 +29,10 @@ struct ChatLogView: View {
         }
         .navigationTitle(chatUser?.displayName ?? "")
         .navigationBarTitleDisplayMode(.inline)
+        .task {
+            guard let unwrappedChatUser = self.chatUser else { return }
+            chatLogVM.callFetchMessages(chatUser: unwrappedChatUser)
+        }
     }
     
     private var bottomChatBarView: some View {
@@ -49,7 +53,8 @@ struct ChatLogView: View {
             }
             Button {
                 Task {
-                    await chatLogVM.callHandelSendMessage()
+                    guard let unwrappedChatUser = chatUser else { return }
+                    await chatLogVM.callHandelSendMessage(chatUser: unwrappedChatUser)
                 }
 //                chatLogVM.handleSendMessage()
             } label: {
@@ -69,18 +74,36 @@ struct ChatLogView: View {
     private var messagesView: some View {
         ScrollView {
             ForEach(chatLogVM.chatMessages, id: \.self) { message in
-                HStack {
-                    Spacer()
-                    HStack {
-                        Text(message.chatMessageText)
-                            .foregroundColor(.white)
+                VStack {
+                    if message.fromId == chatLogVM.user.id {
+                        HStack {
+                            Spacer()
+                            HStack {
+                                Text(message.chatMessageText)
+                                    .foregroundColor(.white)
+                            }
+                            .padding()
+                            .background(.blue)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                        }
+                    } else {
+                        HStack {
+                            
+                            HStack {
+                                Text(message.chatMessageText)
+                                    .foregroundColor(.black)
+                            }
+                            .padding()
+                            .background(.white)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                            Spacer()
+                        }
+                       
                     }
-                    .padding()
-                    .background(.blue)
-                    .cornerRadius(Constants.semiRoundedCornerRadius)
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
+
             }
             HStack {
                 Spacer()
