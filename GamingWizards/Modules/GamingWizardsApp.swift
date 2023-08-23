@@ -37,9 +37,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
 class MyAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
     func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
-#if DEBUG
+//#if DEBUG
         return AppAttestProvider(app: app)
-#endif
+//#endif
     }
 }
 
@@ -53,10 +53,10 @@ struct GamingWizardsApp: App {
     @State private var locationManager = CLLocationManager()
     
     init() {
-#if DEBUG
+//#if DEBUG
         let providerFactory = AppCheckDebugProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
-#endif
+//#endif
         FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: Constants.luminariRegularFontIdentifier, size: 40)!]
     }
