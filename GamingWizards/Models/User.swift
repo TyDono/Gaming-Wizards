@@ -269,10 +269,20 @@ class UserObservable: ObservableObject {
     }
     
     private init() {
-        guard let userId = KeychainHelper.getUserID() else {
-            // Crashes the app, post mvp on just log them out and take them back to log in screen.
-                fatalError("USER ID NOT FOUND WHEN TRYING TO INIT USER OBSERVABLE.")
+//        guard let userId = KeychainHelper.getUserID() else {
+//            // Crashes the app, post mvp on just log them out and take them back to log in screen.
+//            print("USER ID NOT FOUND WHEN TRYING TO INIT USER OBSERVABLE.")
+//            return
+//            }
+        var userId: String = {
+            if let userId = KeychainHelper.getUserID() {
+                return userId
+            } else {
+                // Provide a default value here
+                print("USER ID NOT FOUND WHEN TRYING TO INIT USER OBSERVABLE.")
+                return "defaultUserId is nil"
             }
+        }()
         id = userId
         firstName = UserDefaults.standard.string(forKey: "\(firstNameKey)-\(id)") ?? ""
         lastName = UserDefaults.standard.string(forKey: "\(lastNameKey)-\(id)") ?? ""

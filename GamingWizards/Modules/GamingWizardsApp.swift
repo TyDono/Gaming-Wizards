@@ -37,9 +37,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
 class MyAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
     func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
-//#if DEBUG
-        return AppAttestProvider(app: app)
-//#endif
+        if #available(iOS 14.0, *) {
+          return AppAttestProvider(app: app)
+        } else {
+          return DeviceCheckProvider(app: app)
+        }
     }
 }
 
@@ -53,10 +55,13 @@ struct GamingWizardsApp: App {
     @State private var locationManager = CLLocationManager()
     
     init() {
-//#if DEBUG
-        let providerFactory = AppCheckDebugProviderFactory()
+        
+        // change scheme to debug to run on simulator. change to release when testing on irl device/ ready for public.
+#if DEBUG
+//        let providerFactory = MyAppCheckProviderFactory() //for app attest, only one of the the can be used.
+        let providerFactory = AppCheckDebugProviderFactory() // for device test
         AppCheck.setAppCheckProviderFactory(providerFactory)
-//#endif
+#endif
         FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: Constants.luminariRegularFontIdentifier, size: 40)!]
     }

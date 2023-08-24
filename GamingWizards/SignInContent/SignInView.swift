@@ -57,7 +57,7 @@ struct SignInView: View {
                     ZStack {
                         if authenticationViewModel.isLoading {
                             Color.black
-                                .opacity(0.25)
+                                .opacity(1.00) //post mvp
                                 .ignoresSafeArea()
                             
                             ProgressView()
