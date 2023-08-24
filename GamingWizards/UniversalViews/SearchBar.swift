@@ -22,7 +22,8 @@ struct SearchBar: View {
     
     var body: some View {
         textFieldView
-            .font(.globalFont(.luminari, size: 16))
+//            .font(.globalFont(.luminari, size: 16))
+            .font(.roboto(.regular, size: 16))
             .background(Color.clear)
     }
     
@@ -32,7 +33,8 @@ struct SearchBar: View {
                 TextField(actionButtonPlaceholderText, text: $searchText, onEditingChanged: { isEditing in
                     isActionButtonShowing = true
                 })
-                .font(.globalFont(.luminari, size: 16))
+//                .font(.globalFont(.luminari, size: 16))
+                .font(.roboto(.regular, size: 16))
                 .padding(8)
                 .padding(.horizontal, 20)
                 .background(Color(.systemGray6))

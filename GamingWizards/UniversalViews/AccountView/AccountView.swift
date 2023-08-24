@@ -107,7 +107,8 @@ struct AccountView: View {
             }
             .padding(.horizontal, 20)
             .background(Color.clear)
-            .font(.globalFont(.luminari, size: 16))
+//            .font(.globalFont(.luminari, size: 16))
+            .font(.roboto(.regular, size: 16))
         }
     }
     
@@ -120,7 +121,8 @@ struct AccountView: View {
                         maxHeight: .infinity,
                         alignment: .center)
                     .lineLimit(nil)
-                    .font(.globalFont(.luminari, size: 28))
+//                    .font(.globalFont(.luminari, size: 28))
+                    .font(.roboto(.regular, size: 28))
                     .bold()
             }
         }
@@ -156,7 +158,8 @@ struct AccountView: View {
                     maxHeight: .infinity,
                     alignment: .center)
                 .foregroundColor(.gray)
-                .font(.globalFont(.luminari, size: 16))
+//                .font(.globalFont(.luminari, size: 16))
+                .font(.roboto(.regular, size: 16))
             Text(isUserSolo == true ? "Solo" : "Group")
                 .frame(
                     maxWidth: .infinity,
@@ -174,7 +177,8 @@ struct AccountView: View {
                             maxHeight: .infinity,
                             alignment: .center)
                         .foregroundColor(.gray)
-                        .font(.globalFont(.luminari, size: 16))
+//                        .font(.globalFont(.luminari, size: 16))
+                        .font(.roboto(.regular, size: 16))
                     Text("\(profileAge)")
                         .frame(
                             maxWidth: .infinity,
@@ -194,7 +198,8 @@ struct AccountView: View {
                             maxHeight: .infinity,
                             alignment: .center)
                         .foregroundColor(.gray)
-                        .font(.globalFont(.luminari, size: 14))
+//                        .font(.globalFont(.luminari, size: 14))
+                        .font(.roboto(.regular, size: 14))
                     Text(profileAbout)
                         .frame(
                             maxWidth: .infinity,
@@ -240,13 +245,15 @@ struct AccountView: View {
                     maxHeight: .infinity,
                     alignment: .center)
                 .foregroundColor(.gray)
-                .font(.globalFont(.luminari, size: 12))
+//                .font(.globalFont(.luminari, size: 12))
+                .font(.roboto(.regular, size: 12))
             ScrollView {
                 FlowLayout(mode: .scrollable,
                            binding: .constant(5),
                            items: listOfGames ?? []) { gameItem in
                     Text(gameItem)
-                        .font(.globalFont(.luminari, size: 16))
+//                        .font(.globalFont(.luminari, size: 16))
+                        .font(.roboto(.regular, size: 16))
                         .foregroundColor(accountVM.user.listOfGames?.contains(gameItem) == true ? .white : .black)
                         .background(
                             RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
@@ -275,7 +282,8 @@ struct AccountView: View {
                     maxHeight: .infinity,
                     alignment: .center)
                 .foregroundColor(.gray)
-                .font(.globalFont(.luminari, size: 12))
+//                .font(.globalFont(.luminari, size: 12))
+                .font(.roboto(.regular, size: 12))
             if let userAvailability = availability {
                 Text(userAvailability)
                     .frame(
@@ -308,7 +316,8 @@ struct AccountView: View {
                             maxHeight: .infinity,
                             alignment: .center)
                         .foregroundColor(.gray)
-                        .font(.globalFont(.luminari, size: 14))
+//                        .font(.globalFont(.luminari, size: 14))
+                        .font(.roboto(.regular, size: 14))
                     Text(friendCodeId)
                         .frame(
                             maxWidth: .infinity,
@@ -329,7 +338,8 @@ struct AccountView: View {
                             maxHeight: .infinity,
                             alignment: .center)
                         .foregroundColor(.gray)
-                        .font(.globalFont(.luminari, size: 14))
+//                        .font(.globalFont(.luminari, size: 14))
+                        .font(.roboto(.regular, size: 14))
                     Text(profileUserLocation)
                         .frame(
                             maxWidth: .infinity,

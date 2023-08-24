@@ -31,7 +31,8 @@ struct SearchResultsView: View {
                 searchResultsList
             }
         }
-        .font(.globalFont(.luminari, size: 16))
+//        .font(.globalFont(.luminari, size: 16))
+        .font(.roboto(.regular, size: 16))
         .sheet(isPresented: $resultWasTapped, content: {
             SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
         })
@@ -50,7 +51,8 @@ struct SearchResultsView: View {
                 if user.id != yourId {
                     VStack {
                         Text(user.title ?? "")
-                            .font(.globalFont(.luminari, size: 19))
+//                            .font(.globalFont(.luminari, size: 19))
+                            .font(.roboto(.regular, size: 19))
                             .bold()
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)

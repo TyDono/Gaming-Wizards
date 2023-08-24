@@ -37,7 +37,8 @@ struct ViewPersonalAccountView: View {
         .background(
             backgroundImage
         )
-        .font(.globalFont(.luminari, size: 16))
+//        .font(.globalFont(.luminari, size: 16))
+        .font(.roboto(.regular, size: 16))
     }
     
     private var backgroundImage: some View {
@@ -54,7 +55,8 @@ struct ViewPersonalAccountView: View {
         }) {
             HStack {
                 Text("Edit Account")
-                    .font(.globalFont(.luminari, size: 21))
+//                    .font(.globalFont(.luminari, size: 21))
+                    .font(.roboto(.regular, size: 21))
                     .frame(maxWidth: .infinity, alignment: .center)
                 Spacer()
             }

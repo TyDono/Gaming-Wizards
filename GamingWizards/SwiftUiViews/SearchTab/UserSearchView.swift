@@ -35,7 +35,8 @@ struct UserSearchView: View {
                 SearchResultsView(tabSelection: $tabSelection, searchText: filterer.searchText)
             }
         }
-        .font(.globalFont(.luminari, size: 16))
+//        .font(.globalFont(.luminari, size: 16))
+        .font(.roboto(.regular, size: 16))
         .background(
             backgroundImage
         )

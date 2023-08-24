@@ -28,7 +28,8 @@ struct SearchResultsDetailView: View {
                 viewAccountView
                     .padding()
                 friendRequestButton
-                    .font(.globalFont(.luminari, size: 16))
+//                    .font(.globalFont(.luminari, size: 16))
+                    .font(.roboto(.regular, size: 16))
                     .padding()
             }
         }
@@ -66,7 +67,8 @@ struct SearchResultsDetailView: View {
                     self.tabSelection = Constants.messageTabViewString
                 } label: {
                     Text("Send Message")
-                        .font(.globalFont(.luminari, size: 21))
+//                        .font(.globalFont(.luminari, size: 21))
+                        .font(.roboto(.regular, size: 21))
                         .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
                 }

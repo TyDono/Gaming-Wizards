@@ -44,7 +44,8 @@ struct ManageListOfGamesView: View {
                                binding: $filterer.searchText,
                                items: filterer.gamesFilter) { gameItem in
                         Text(gameItem.textName)
-                            .font(.globalFont(.luminari, size: 16))
+//                            .font(.globalFont(.luminari, size: 16))
+                            .font(.roboto(.regular, size: 16))
                             .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
                             .background(
                                 RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)

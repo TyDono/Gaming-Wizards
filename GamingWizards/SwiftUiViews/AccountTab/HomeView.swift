@@ -77,7 +77,8 @@ struct HomeView: View {
                             .badge(Constants.friendRequestCount)
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
-                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+//                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+                            .font(.roboto(.regular, size: 20))
 //                            .font(.roboto(.custom("luminri")))
 //                            .font(.roboto(.semibold,
 //                                          size: 20))
@@ -106,8 +107,8 @@ struct HomeView: View {
                     Text("View Profile")
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-                        .font(.custom(Constants.luminariRegularFontIdentifier,
-                                      size: 20))
+//                        .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+                        .font(.roboto(.regular, size: 20))
                     
                     Image(systemName: "chevron.right")
                         .frame(maxWidth: .infinity,
@@ -132,7 +133,8 @@ struct HomeView: View {
                         Text("Settings")
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
-                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+//                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+                            .font(.roboto(.regular, size: 20))
                         
                         Image(systemName: "chevron.right")
                             .frame(maxWidth: .infinity,
@@ -156,8 +158,8 @@ struct HomeView: View {
                 Text("Log Out")
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                    .font(.custom(Constants.luminariRegularFontIdentifier,
-                                  size: 20))
+//                    .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+                    .font(.roboto(.regular, size: 20))
                 
 //                Image(systemName: "chevron.right")
 //                    .frame(maxWidth: .infinity,
