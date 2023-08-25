@@ -14,7 +14,6 @@ import FirebaseAppCheck
 import GoogleSignIn
 import SwiftUI
 import UserNotifications
-import CoreLocation
 
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -52,7 +51,7 @@ struct GamingWizardsApp: App {
     @StateObject var coreDataController = CoreDataController.shared
     @StateObject var signInWithGoogleCoordinator = SignInWithGoogleCoordinator()
     @StateObject var signInWithAppleCoordinator = SignInWithAppleCoordinator()
-    @State private var locationManager = CLLocationManager()
+    @StateObject var locationManager = LocationManager()
     
     init() {
         
@@ -70,7 +69,7 @@ struct GamingWizardsApp: App {
         WindowGroup {
             NavigationLogInView()
                 .onAppear() {
-                    requestLocationPermission()
+                    locationManager.requestLocationPermission()
                     askNotificationPermission()
                 }
                 .environmentObject(signInWithAppleCoordinator)
@@ -79,10 +78,6 @@ struct GamingWizardsApp: App {
                 .environment(\.managedObjectContext, coreDataController.persistentContainer.viewContext)
         }
     }
-    
-    private func requestLocationPermission() {
-            locationManager.requestWhenInUseAuthorization()
-        }
     
     private func askNotificationPermission() {
         let center = UNUserNotificationCenter.current()

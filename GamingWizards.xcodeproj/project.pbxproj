@@ -135,7 +135,7 @@
 		CBCD58272A16F84C00136AA0 /* SearchResultsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58262A16F84B00136AA0 /* SearchResultsDetailView.swift */; };
 		CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */; };
 		CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */; };
-		CBEAF0462A1EB87400B9E900 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAF0452A1EB87400B9E900 /* LocationModel.swift */; };
+		CBEAF0462A1EB87400B9E900 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAF0452A1EB87400B9E900 /* LocationManager.swift */; };
 		CBF91C942A7D059B00F20986 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = CBF91C932A7D059B00F20986 /* MapboxMaps */; };
 /* End PBXBuildFile section */
 
@@ -261,7 +261,7 @@
 		CBCD58262A16F84B00136AA0 /* SearchResultsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailView.swift; sourceTree = "<group>"; };
 		CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailViewModel.swift; sourceTree = "<group>"; };
 		CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
-		CBEAF0452A1EB87400B9E900 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		CBEAF0452A1EB87400B9E900 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,7 +559,7 @@
 				CB5BE87429FDE956009D38D6 /* Invitation.swift */,
 				CB24502A2A0102E200581048 /* ListOfGames.swift */,
 				CBCD58242A0B4AA400136AA0 /* UserLocation.swift */,
-				CBEAF0452A1EB87400B9E900 /* LocationModel.swift */,
+				CBEAF0452A1EB87400B9E900 /* LocationManager.swift */,
 				CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */,
 				CB9CFD402A93C39C000C09ED /* ChatMessage.swift */,
 			);
@@ -872,7 +872,7 @@
 				CB62962F2A5F987500F84367 /* SearchResultCellView.swift in Sources */,
 				CB5BE88029FDE957009D38D6 /* GamingWizardsApp.swift in Sources */,
 				CBB8CAAF2A676153009B13A6 /* ManageListOfGamesViewModel.swift in Sources */,
-				CBEAF0462A1EB87400B9E900 /* LocationModel.swift in Sources */,
+				CBEAF0462A1EB87400B9E900 /* LocationManager.swift in Sources */,
 				CB5BE8AA29FDE958009D38D6 /* KeybaordAdaptiveModifier.swift in Sources */,
 				CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */,
 				CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */,
