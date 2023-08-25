@@ -16,6 +16,7 @@ extension ManageAccountView {
 //        @ObservedObject var user = UserObservable()
         @ObservedObject var user = UserObservable.shared
         @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+        @ObservedObject var locationManager: LocationManager = LocationManager()
         var diskSpace = DiskSpaceHandler()
         
         @Published var accountDeleteErrorAlertIsShowing: Bool = false

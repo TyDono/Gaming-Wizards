@@ -53,7 +53,7 @@ struct ManageAccountView: View {
                             userAgeTextView
                                 .padding()
                             Divider()
-                            userLocationTextView
+                            userLocation
                                 .padding()
                             Divider()
                             
@@ -228,8 +228,7 @@ struct ManageAccountView: View {
             Text("Age")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
+                .font(.roboto(.semibold, size: 18))
             TextField("",
                       text: $manageAccountVM.userAge.max(Constants.textFieldMaxCharacters),
                       onEditingChanged: { changed in
@@ -256,29 +255,32 @@ struct ManageAccountView: View {
         }
     }
     
-    private var userLocationTextView: some View {
-        VStack {
-            Text("Location")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
-            TextField("",
-                      text: $manageAccountVM.userLocation.max(Constants.textFieldMaxCharacters),
-                      onEditingChanged: { changed in
-                manageAccountVM.isSaveChangesButtonIsActive = true
-                        })
-            .padding(.horizontal, 15)
-            .frame(height: 40.0)
-            .background(Colors.textFieldGrey)
-            .background(RoundedRectangle(cornerRadius: 30))
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray.opacity(0.80),
-                            lineWidth: 1)
-            )
-        } .onAppear {
-            manageAccountVM.userLocation = manageAccountVM.user.location ?? ""
+    private var userLocation: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "location")
+                .font(.system(size: 30))
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Current Location")
+                    .font(.roboto(.semibold, size: 18))
+                Text("User's Location")
+                    .font(.roboto(.regular, size: 18))
+            }
+            
+            Spacer()
+            
+            Button(action: {
+                manageAccountVM.locationManager.getLocation()
+            }) {
+                Text("Update Location")
+                    .font(.roboto(.regular, size: 14))
+                    .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
+                    .background(
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
+                    .background(Color.white)
+            }
         }
     }
     
