@@ -13,7 +13,11 @@ extension View {
 //        self.modifier(ShakeEffect(isShaking: isShaking, shakeCount: shakeCount))
 //    }
     
-    
+    func customPickerBackground(selected: Bool) -> some View {
+        self
+            .background(selected ? Color(.systemGray6) : Color(.systemGray4))
+            .cornerRadius(8)
+    }
     
     func hideKeyboard() {
         #if canImport(UIKit)

@@ -6,26 +6,33 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var userSearchVM: UserSearchViewModel
     @StateObject private var filterer = Filterer(isLayoutDesign: false)
     @State private var debouncer = Debouncer(delay: 0.5)
+    @State private var selectedDistance: String = "150"
     @Binding var tabSelection: String
+    private let distanceOptions: [String] = [
+        "10", "50", "100",
+        "150", "200", "250", "No Limit"
+    ]
     
     init(debouncer: Debouncer, tabSelection: Binding<String>) {
         self._tabSelection = tabSelection
         self._userSearchVM = ObservedObject(wrappedValue: UserSearchViewModel())
         self._filterer = StateObject(wrappedValue: Filterer(isLayoutDesign: false))
         self._debouncer = State(wrappedValue: debouncer)
+//        self._selectedDistance = selectedDistance
     }
-
     
     var body: some View {
         ZStack {
             NavigationStack {
                 VStack {
+                    distancePicker
                     searchBar
                     resultView
                 }
@@ -52,6 +59,23 @@ struct UserSearchView: View {
 //            .aspectRatio(contentMode: .fill)
 //            .edgesIgnoringSafeArea(.all)
     }
+    
+    private var distancePicker: some View {
+           VStack {
+               Text("Miles")
+                   .padding(.horizontal, 16)
+                   .padding(.vertical, 8)
+                   .background(Color.white)
+                   .cornerRadius(8)
+               Picker("Distance", selection: $selectedDistance) {
+                   ForEach(distanceOptions, id: \.self) { option in
+                       Text(option)
+                   }
+               }
+               .pickerStyle(SegmentedPickerStyle())
+               .customPickerBackground(selected: true)
+           }
+       }
     
     private var searchBar: some View {
         SearchBar(searchText: $filterer.searchText,
@@ -105,8 +129,11 @@ struct UserSearchView: View {
 struct UserSearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            UserSearchView(debouncer: Debouncer(delay: 0.5),
-                           tabSelection: .constant("YourTabSelection"))
+            UserSearchView(
+                debouncer: Debouncer(delay: 0.5),
+                tabSelection: Binding.constant("Tab 1")
+//                selectedDistance: "10"
+            )
         }
     }
 }
