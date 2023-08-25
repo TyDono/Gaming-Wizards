@@ -133,6 +133,8 @@ struct ManageAccountView: View {
                     .padding(5)
                     .background(Color.blue)
                     .cornerRadius(Constants.semiRoundedCornerRadius)
+                    .shadow(radius: Constants.buttonShadowRadius)
+
             }
         }
         .onAppear(perform: manageAccountVM.retrieveProfileImageFromDisk)
@@ -143,7 +145,11 @@ struct ManageAccountView: View {
     
     private var userIsSoloView: some View {
         VStack {
-            Text(manageAccountVM.userIsSolo ? "Solo" : "Group")
+            HStack(spacing: 10) {
+                Image(systemName: manageAccountVM.userIsSolo ? "person" : "person.3")
+                    .font(.system(size: 30))
+                Text(manageAccountVM.userIsSolo ? "Solo" : "Group")
+            }
             
             Toggle(isOn: $manageAccountVM.userIsSolo) {
             }
@@ -157,11 +163,15 @@ struct ManageAccountView: View {
     
     private var personalTitleView: some View {
         VStack {
-            Text("Title")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
+            HStack(spacing: 10) {
+                Image(systemName: "pencil")
+                    .font(.system(size: 30))
+                Text("Title")
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .font(.roboto(.semibold,
+                                  size: 18))
+            }
             TextField("",
                       text: $manageAccountVM.userTitle.max(Constants.textFieldMaxCharacters),
                       onEditingChanged: { changed in
@@ -199,11 +209,15 @@ struct ManageAccountView: View {
     
     private var displayNameTextField: some View {
         VStack {
-            Text("Display Name")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 18))
+            HStack(spacing: 10) {
+                Image(systemName: "pencil")
+                    .font(.system(size: 30))
+                Text("Display Name")
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .font(.roboto(.semibold,
+                                  size: 18))
+            }
             TextField("",
                       text: $manageAccountVM.displayName.max(Constants.textFieldMaxCharacters),
                       onEditingChanged: { changed in
@@ -225,10 +239,14 @@ struct ManageAccountView: View {
     
     private var userAgeTextView: some View {
         VStack {
-            Text("Age")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold, size: 18))
+            HStack(spacing: 10) {
+                Image(systemName: "birthday.cake")
+                    .font(.system(size: 30))
+                Text("Age")
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .font(.roboto(.semibold, size: 18))
+            }
             TextField("",
                       text: $manageAccountVM.userAge.max(Constants.textFieldMaxCharacters),
                       onEditingChanged: { changed in
@@ -266,9 +284,7 @@ struct ManageAccountView: View {
                 Text("User's Location")
                     .font(.roboto(.regular, size: 18))
             }
-            
             Spacer()
-            
             Button(action: {
                 manageAccountVM.locationManager.getLocation()
             }) {
@@ -287,9 +303,13 @@ struct ManageAccountView: View {
     private var userAvailabilityTextView: some View {
         VStack {
 //            if manageAccountViewModel.userAvailability.isEmpty == true {
+            HStack(spacing: 10) {
+                Image(systemName: "calendar")
+                    .font(.system(size: 30))
                 Text("Availability")
                     .foregroundColor(.gray)
                     .padding()
+            }
 //            }
             TextEditor(text: $manageAccountVM.userAvailability.max(Constants.textViewMaxCharacters))
                 .foregroundColor(.black)
@@ -331,7 +351,11 @@ struct ManageAccountView: View {
     
     private var PayToPlayView: some View {
         VStack {
-            Text(manageAccountVM.isPayToPlay ? "Pay to Play" : "Free to Play")
+            HStack(spacing: 10) {
+                Image(systemName: manageAccountVM.isPayToPlay ? "dollarsign" : "dollarsign")
+                    .font(.system(size: 30))
+                Text(manageAccountVM.isPayToPlay ? "Pay to Play" : "Free to Play")
+            }
             
             Toggle(isOn: $manageAccountVM.isPayToPlay) {
 //                Text("Switch")
@@ -346,10 +370,14 @@ struct ManageAccountView: View {
     
     private var aboutUserTextView: some View {
         VStack {
-//            if manageAccountViewModel.about.isEmpty == true {
+            HStack(spacing: 10) {
+                Image(systemName: "pencil")
+                    .font(.system(size: 30))
+                //            if manageAccountViewModel.about.isEmpty == true {
                 Text("Write about \(manageAccountVM.userIsSolo ? "yourself" : "your group")")
                     .foregroundColor(.gray)
                     .padding()
+            }
 //            }
             TextEditor(text: $manageAccountVM.about.max(Constants.textViewMaxCharacters))
                 .foregroundColor(.black)
@@ -425,35 +453,38 @@ struct ManageAccountView: View {
     }
     
     private var manageListOfGamesButtonView: some View {
-        VStack {
-            Button {
-                manageAccountVM.isManageListOfGamesViewShowing = true
-            } label: {
-                HStack {
-                    Text("Manage game preferences")
-                        .font(.roboto(.semibold,
-                                      size: 20))
-                        .foregroundColor(.blue)
-                        .padding(5)
-//                        .background(Color.blue)
-//                        .cornerRadius(Constants.roundedCornerRadius)
-                    Image(systemName: "chevron.right")
-                        .frame(maxWidth: .infinity,
-                               alignment: .trailing)
-                        .foregroundColor(.blue)
+        HStack(spacing: 10) {
+            Image(systemName: "gamecontroller")
+                .font(.system(size: 30))
+            VStack {
+                Button {
+                    manageAccountVM.isManageListOfGamesViewShowing = true
+                } label: {
+                    HStack {
+                        Text("Manage game preferences")
+                            .font(.roboto(.semibold,
+                                          size: 20))
+                            .foregroundColor(.blue)
+                            .padding(5)
+                        //                        .background(Color.blue)
+                        //                        .cornerRadius(Constants.roundedCornerRadius)
+                        Image(systemName: "chevron.right")
+                            .frame(maxWidth: .infinity,
+                                   alignment: .trailing)
+                            .foregroundColor(.blue)
+                    }
+                }
+                .navigationDestination(isPresented: $manageAccountVM.isManageListOfGamesViewShowing) {
+                    ManageListOfGamesView()
                 }
             }
-            .navigationDestination(isPresented: $manageAccountVM.isManageListOfGamesViewShowing) {
-                ManageListOfGamesView()
-            }
-        }
-        .alert("Cannot Send", isPresented: $manageAccountVM.isImageSizeExceedingLimitAlert, actions: {
-            Button("OK", role: .cancel, action: {})
-        }, message: {
-            Text("Image size exceeds the maximum allowed size (3 MB)")
-        })
-    }//isImageSizeExceedingLimit
-    
+            .alert("Cannot Send", isPresented: $manageAccountVM.isImageSizeExceedingLimitAlert, actions: {
+                Button("OK", role: .cancel, action: {})
+            }, message: {
+                Text("Image size exceeds the maximum allowed size (3 MB)")
+            })
+        }//isImageSizeExceedingLimit
+    }
     /*
     private var listOfGamesView: some View { //not used. prolly won't since i moved it to a new view
         VStack {
@@ -573,6 +604,12 @@ struct ManageAccountView: View {
         }) {
             Text("Delete Account")
                 .foregroundColor(.red)
+                .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
+                .background(
+                    RoundedRectangle(cornerRadius: 18)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .background(Color.white)
             
         }
         .alert(isPresented: $manageAccountVM.accountDeleteErrorAlertIsShowing) {
