@@ -114,8 +114,8 @@ import Security
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String,displayName: String, email: String?, completion: @escaping (User) -> Void) {
-        let displayName = ""
+    func createUserBaseData(id: String, firstName: String, lastName: String, displayName: String, email: String?, completion: @escaping (User) -> Void) {
+        let displayName = displayName
         let latitude = 0.0
         let longitude = 0.0
         let location = ""

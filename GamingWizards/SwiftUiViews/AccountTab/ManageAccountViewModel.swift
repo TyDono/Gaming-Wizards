@@ -13,11 +13,16 @@ import FirebaseStorage
 
 extension ManageAccountView {
     @MainActor class ManageAccountViewModel: ObservableObject {
-//        @ObservedObject var user = UserObservable()
-        @ObservedObject var user = UserObservable.shared
-        @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
-        @ObservedObject var locationManager: LocationManager = LocationManager()
-        var diskSpace = DiskSpaceHandler()
+//        @ObservedObject var user = UserObservable.shared
+//        @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+//        @ObservedObject var locationManager: LocationManager = LocationManager()
+//        var diskSpace = DiskSpaceHandler()
+        @ObservedObject var user: UserObservable
+        @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
+        @ObservedObject var fbStorageHelper: FirebaseStorageHelper
+        @ObservedObject var authenticationViewModel: AuthenticationViewModel
+        @ObservedObject var locationManager: LocationManager
+        let diskSpaceHandler: DiskSpaceHandler
         
         @Published var accountDeleteErrorAlertIsShowing: Bool = false
         @Published var settingsIsActive: Bool = false
@@ -53,16 +58,29 @@ extension ManageAccountView {
         @Published var isManageListOfGamesViewShowing: Bool = false
         @Published var isImageSizeExceedingLimitAlert: Bool = false
         
-        let firestoreDatabase = Firestore.firestore()
-        let firebaseStorage = Storage.storage()
+        init(
+            authenticationViewModel: AuthenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM,
+            user: UserObservable = UserObservable.shared,
+            fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
+            fbStorageHelper: FirebaseStorageHelper = FirebaseStorageHelper.shared,
+            diskSpaceHandler: DiskSpaceHandler = DiskSpaceHandler(),
+            locationManager: LocationManager = LocationManager()
+        ) {
+            self.authenticationViewModel = authenticationViewModel
+            self.user = user
+            self.fbFirestoreHelper =  fbFirestoreHelper
+            self.fbStorageHelper = fbStorageHelper
+            self.diskSpaceHandler = diskSpaceHandler
+            self.locationManager = locationManager
+        }
         
         func saveProfileImageToDisc() {
             guard let image = profileImage else { return }
-            diskSpace.saveProfileImageToDisc(imageString: user.profileImageString, image: image)
+            diskSpaceHandler.saveProfileImageToDisc(imageString: user.profileImageString, image: image)
         }
         
         func retrieveProfileImageFromDisk() {
-           profileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
+           profileImage = diskSpaceHandler.loadProfileImageFromDisk(imageString: user.profileImageString)
         }
         
         func uploadProfileImageToFirebaseStorage() {
@@ -83,7 +101,7 @@ extension ManageAccountView {
             
             guard let compressedImageData = image.jpegData(compressionQuality: compressionQuality) else { return }
             
-            let storageRef = firebaseStorage.reference().child("profileImages/\(user.profileImageString)")
+            let storageRef = fbStorageHelper.storage.reference().child("profileImages/\(user.profileImageString)")
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             
@@ -113,7 +131,7 @@ extension ManageAccountView {
         func updateUserInfo() {
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
-            let path = firestoreDatabase.collection(Constants.usersString).document(userId)
+            let path = fbFirestoreHelper.firestore.collection(Constants.usersString).document(userId)
             path.updateData([
                 Constants.userFirstName: self.firstName,
                 Constants.userLastName: self.lastName,
@@ -171,7 +189,7 @@ extension ManageAccountView {
         }
         
         func deleteProfileImage() {
-            let storageRef = firebaseStorage.reference().child(user.profileImageString)
+            let storageRef = fbStorageHelper.storage.reference().child(user.profileImageString)
             storageRef.delete { err in
               if let error = err {
                   print("ERROR DELETING PROFILE IMAGE FROM CLOUD: \(error.localizedDescription)")
@@ -192,7 +210,7 @@ extension ManageAccountView {
         func deleteUserAccount() {
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
-            let path = firestoreDatabase.collection(Constants.usersString).document(userId)
+            let path = fbFirestoreHelper.firestore.collection(Constants.usersString).document(userId)
             
             currentUser?.delete { [weak self] err in
                 guard let self = self else { return }

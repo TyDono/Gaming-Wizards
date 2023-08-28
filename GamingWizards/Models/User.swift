@@ -79,7 +79,6 @@ extension User {
         case payToPlay = "isPayToPlay"
         case isSolo = "isSolo"
         
-        
         init?(constantValue: String) {
             switch constantValue {
             case Constants.userID:
