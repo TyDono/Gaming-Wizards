@@ -147,7 +147,8 @@ import Security
                            title: title,
                            isPayToPlay: payToPlay,
                            isSolo: isSolo)
-        locationManager.requestUserLocation { [weak self] lat, long in
+        locationManager.requestUserLocation { [weak self] lat, long, city, state  in
+            newUser.location = "\(city), \(state)"
             newUser.latitude = lat
             newUser.longitude = long
             completion(newUser)

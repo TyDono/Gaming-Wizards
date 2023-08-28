@@ -282,15 +282,13 @@ struct ManageAccountView: View {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Current Location")
                     .font(.roboto(.semibold, size: 18))
-                Text("User's Location")
+                Text(manageAccountVM.userLocation)
                     .font(.roboto(.regular, size: 18))
             }
             Spacer()
             Button(action: {
-                manageAccountVM.locationManager.requestUserLocation { lat, long in
-                    manageAccountVM.userLatitude = lat ?? 0.0
-                    manageAccountVM.userLongitude = long ?? 0.0
-                    manageAccountVM.isSaveChangesButtonIsActive = true
+                manageAccountVM.locationManager.requestUserLocation { lat, long, city, state  in
+                    manageAccountVM.getUserLocation(latitude: lat ?? 0.0, longitude: long ?? 0.0, city: city ?? "", state: state ?? "")
                 }
             }) {
                 Text("Update Location")

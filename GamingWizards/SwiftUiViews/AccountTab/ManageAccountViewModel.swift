@@ -74,6 +74,13 @@ extension ManageAccountView {
             self.locationManager = locationManager
         }
         
+        func getUserLocation(latitude: Double, longitude: Double, city: String, state: String ) {
+            userLocation = "\(city), \(state)"
+            userLatitude = latitude
+            userLongitude = longitude
+            isSaveChangesButtonIsActive = true
+        }
+        
         func saveProfileImageToDisc() {
             guard let image = profileImage else { return }
             diskSpaceHandler.saveProfileImageToDisc(imageString: user.profileImageString, image: image)

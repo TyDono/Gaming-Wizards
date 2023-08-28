@@ -12,7 +12,7 @@ final class LocationManager: NSObject, ObservableObject {
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     private var locationManager = CLLocationManager()
     @Published var location: CLLocationCoordinate2D?
-    var locationCompletion: ((Double?, Double?) -> Void)?
+    var locationCompletion: ((Double?, Double?, String?, String?) -> Void)?
     
     override init() {
         super.init()
@@ -28,24 +28,38 @@ final class LocationManager: NSObject, ObservableObject {
         locationManager.requestLocation()
     }
     
-    func requestUserLocation(completion: @escaping (Double?, Double?) -> Void) {
+    func requestUserLocation(completion: @escaping (Double?, Double?, String?, String?) -> Void) {
         locationCompletion = completion
         locationManager.requestWhenInUseAuthorization() // You can customize this based on your app's requirements
         locationManager.requestLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last?.coordinate {
-            self.location = location
-            
-            locationCompletion?(location.latitude, location.longitude)
-            
+        if let location = locations.last {
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location) { placemarks, err in
+                if let error = err {
+                    print("ERROR WITH REVERSE GEOCODE LOCATION: \(error.localizedDescription)")
+                    return
+                }
+                var city: String?
+                var state: String?
+                if let placemark = placemarks?.first {
+                    city = placemark.locality
+                    state = placemark.administrativeArea
+                }
+                self.locationCompletion?(self.location?.latitude, self.location?.longitude, city, state)
+                self.locationCompletion = nil
+            }
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location error: \(error.localizedDescription)")
+        print("ERROR, LOCATION UPDATE FAILED WITH ERROR: \(error.localizedDescription)")
+        locationCompletion?(nil, nil, nil, nil)
+        locationCompletion = nil
     }
+    
 }
 
 extension LocationManager: CLLocationManagerDelegate {
