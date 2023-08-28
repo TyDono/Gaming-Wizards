@@ -87,6 +87,7 @@ struct ManageAccountView: View {
                         }
                     
                     }
+                    .padding(.bottom, 125)
                 }
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
@@ -286,7 +287,11 @@ struct ManageAccountView: View {
             }
             Spacer()
             Button(action: {
-                manageAccountVM.locationManager.getLocation()
+                manageAccountVM.locationManager.requestUserLocation { lat, long in
+                    manageAccountVM.userLatitude = lat ?? 0.0
+                    manageAccountVM.userLongitude = long ?? 0.0
+                    manageAccountVM.isSaveChangesButtonIsActive = true
+                }
             }) {
                 Text("Update Location")
                     .font(.roboto(.regular, size: 14))
@@ -373,12 +378,10 @@ struct ManageAccountView: View {
             HStack(spacing: 10) {
                 Image(systemName: "pencil")
                     .font(.system(size: 30))
-                //            if manageAccountViewModel.about.isEmpty == true {
                 Text("Write about \(manageAccountVM.userIsSolo ? "yourself" : "your group")")
                     .foregroundColor(.gray)
                     .padding()
             }
-//            }
             TextEditor(text: $manageAccountVM.about.max(Constants.textViewMaxCharacters))
                 .foregroundColor(.black)
                 .border(Color.black, width: 1)

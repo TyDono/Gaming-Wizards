@@ -12,6 +12,7 @@ final class LocationManager: NSObject, ObservableObject {
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     private var locationManager = CLLocationManager()
     @Published var location: CLLocationCoordinate2D?
+    var locationCompletion: ((Double?, Double?) -> Void)?
     
     override init() {
         super.init()
@@ -22,14 +23,23 @@ final class LocationManager: NSObject, ObservableObject {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func getLocation() {
+    func requestLocation() {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestLocation()
+    }
+    
+    func requestUserLocation(completion: @escaping (Double?, Double?) -> Void) {
+        locationCompletion = completion
+        locationManager.requestWhenInUseAuthorization() // You can customize this based on your app's requirements
         locationManager.requestLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last?.coordinate {
             self.location = location
+            
+            locationCompletion?(location.latitude, location.longitude)
+            
         }
     }
     

@@ -14,7 +14,7 @@ protocol FirebaseFirestoreService {
     func stopListening()
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
-    func searchForMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User]
+    func searchForUserMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User]
     func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
     func handleSendMessage(toId: String, fromId: String, chatText: String) async throws
@@ -81,7 +81,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         listeningRegistration?.remove()
     }
     
-    // HAVE MORE DONE IN HERE
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void) {
         let documentRef = firestore.collection(collectionName).document(documentField)
         documentRef.updateData([
@@ -104,13 +103,11 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 print("ERROR ADDING ITEM FROM ARRAY: \(error)")
             } else {
                 completion(nil, itemName)
-//                self?.user.listOfGames?.append(itemName)
-//                print("Item added successfully to the array.")
             }
         }
     }
     
-    func searchForMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User] {
+    func searchForUserMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User] {
         let gameQuery = firestore.collection(collectionName).whereField(whereField, arrayContains: gameName)
 //            let gameQuery = firesStoreDatabase.collection(Constants.users).whereField(Constants.userListOfGamesString, arrayContains: gameName)
         
@@ -121,6 +118,8 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 let id = data[Constants.userID] as? String ?? ""
                 let displayName = data[Constants.userDisplayName] as? String ?? ""
                 let email = data[Constants.userEmail] as? String ?? ""
+                let latitude = data[Constants.userLatitude] as? Double ?? 0.0
+                let longitude = data[Constants.userLongitude] as? Double ?? 0.0
                 let location = data[Constants.userLocation] as? String ?? ""
                 let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
                 let friendCodeID = data[Constants.userFriendCodeID] as? String ?? ""
@@ -136,6 +135,8 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 return User(id: id,
                             displayName: displayName,
                             email: email,
+                            latitude: latitude,
+                            longitude: longitude,
                             location: location,
                             profileImageString: profileImageString,
                             friendCodeID: friendCodeID,
@@ -155,6 +156,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
+    // change to use codable and decodable.
     func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void) {
         let friendListPath = firestore.collection(Constants.usersString).document(newFriend.id).collection(Constants.userFriendList).document(self.user.id)
         let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(newFriend.id)

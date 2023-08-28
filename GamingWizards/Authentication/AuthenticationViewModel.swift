@@ -20,6 +20,7 @@ import Security
     
     @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
     @ObservedObject var user = UserObservable.shared
+    @ObservedObject var locationManager = LocationManager()
     var diskSpace = DiskSpaceHandler()
     @Published var currentNonce: String = ""
     @Published var signInState: SignInState = .signedOut
@@ -86,6 +87,8 @@ import Security
         user.lastName = newUser.lastName
         user.displayName = newUser.displayName
         user.email = newUser.email ?? ""
+        user.latitude = newUser.latitude
+        user.longitude = newUser.longitude
         user.location = newUser.location
         user.profileImageString = newUser.profileImageString
         user.friendCodeID = newUser.friendCodeID
@@ -111,8 +114,10 @@ import Security
         return root
     }
     
-    func createUserBaseData(id: String, firstName: String, lastName: String,displayName: String, email: String?/*friendList: [Friend], friendRequests: [Friend],*/) -> User {
+    func createUserBaseData(id: String, firstName: String, lastName: String,displayName: String, email: String?, completion: @escaping (User) -> Void) {
         let displayName = ""
+        let latitude = 0.0
+        let longitude = 0.0
         let location = ""
         let profileImageString = "\(UUID().uuidString).jpg"
         let friendID = String((UUID().uuidString.suffix(4)))
@@ -124,16 +129,16 @@ import Security
         let title = ""
         let isSolo = true
         let payToPlay = false
-        let newUser = User(id: id,
+        var newUser = User(id: id,
                            firstName: firstName,
                            lastName: lastName,
                            displayName: displayName,
                            email: email,
+                           latitude: latitude,
+                           longitude: longitude,
                            location: location,
                            profileImageString: profileImageString,
                            friendCodeID: friendID,
-//                            friendList: friendList,
-//                            friendRequests: friendRequests,
                            listOfGames: games,
                            groupSize: groupSize,
                            age: age,
@@ -142,7 +147,11 @@ import Security
                            title: title,
                            isPayToPlay: payToPlay,
                            isSolo: isSolo)
-        return newUser
+        locationManager.requestUserLocation { [weak self] lat, long in
+            newUser.latitude = lat
+            newUser.longitude = long
+            completion(newUser)
+        }
     }
 
     func randomNonceString(length: Int = 32) -> String {

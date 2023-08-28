@@ -13,6 +13,8 @@ struct User: Identifiable, Codable, Hashable {
     var lastName: String? = ""
     var displayName: String? = ""
     var email: String? = ""
+    var latitude: Double?
+    var longitude: Double?
     var location: String? = "" //change to UserLocation later date maybe
     var profileImageString: String = ""
     var friendCodeID = ""
@@ -34,6 +36,8 @@ struct User: Identifiable, Codable, Hashable {
             Constants.userLastName: lastName,
             Constants.userDisplayName: displayName,
             Constants.userEmail: email ?? "No Email Available",
+            Constants.userLatitude: latitude,
+            Constants.userLongitude: longitude,
             Constants.userLocation: location,
             Constants.userProfileImageString: profileImageString,
             Constants.userFriendCodeID: friendCodeID,
@@ -59,6 +63,8 @@ extension User {
         case lastName = "lastName"
         case displayName = "displayName"
         case email = "email"
+        case latitude = "latitude"
+        case longitude = "longitude"
         case location = "userLocation"
         case profileImageString = "profileImageString"
         case friendCodeID = "friendCodeID"
@@ -73,7 +79,7 @@ extension User {
         case payToPlay = "isPayToPlay"
         case isSolo = "isSolo"
         
-        /*
+        
         init?(constantValue: String) {
             switch constantValue {
             case Constants.userID:
@@ -86,16 +92,16 @@ extension User {
                 self = .displayName
             case Constants.userEmail:
                 self = .email
+            case Constants.userLatitude:
+                self = .latitude
+            case Constants.userLocation:
+                self = .longitude
             case Constants.userLocation:
                 self = .location
             case Constants.userProfileImageString:
                 self = .profileImageString
             case Constants.userFriendCodeID:
                 self = .friendCodeID
-            case Constants.userFriendList:
-                self = .friendList
-            case Constants.userFriendRequest:
-                self = .friendRequests
             case Constants.userListOfGamesString:
                 self = .listOfGames
             case Constants.userGroupSize:
@@ -116,7 +122,7 @@ extension User {
                 return nil
             }
         }
-        */
+        
     }
 }
         
@@ -128,11 +134,11 @@ class UserObservable: ObservableObject {
     private let lastNameKey = Constants.userLastName
     private let displayNameKey = Constants.userDisplayName
     private let emailKey = Constants.userEmail
+    private let latitudeKey = Constants.userLatitude
+    private let longitudeKey = Constants.userLongitude
     private let locationKey = Constants.userLocation
     private let profileImageStringKey = Constants.userProfileImageString
     private let isNewUserKey = "isNewUser" // No constant provided for this, so using the original string
-    private let latitudeKey = "latitude" // No constant provided for this, so using the original string
-    private let longitudeKey = "longitude" // No constant provided for this, so using the original string
     private let friendIDKey = Constants.userFriendCodeID
     private let friendListKey = Constants.userFriendList
     private let friendRequestsKey = Constants.userFriendRequest
@@ -177,6 +183,18 @@ class UserObservable: ObservableObject {
         }
     }
     
+    @Published var latitude: Double? {
+        didSet {
+            UserDefaults.standard.setValue(latitude, forKey: latitudeKey)
+        }
+    }
+    
+    @Published var longitude: Double? {
+        didSet {
+            UserDefaults.standard.setValue(longitude, forKey: longitudeKey)
+        }
+    }
+    
     @Published var location: String? {
         didSet {
             UserDefaults.standard.setValue(location, forKey: "\(locationKey)-\(id)")
@@ -192,18 +210,6 @@ class UserObservable: ObservableObject {
     @Published var isNewUser: Bool? {
         didSet {
             UserDefaults.standard.setValue(isNewUser, forKey: "\(isNewUserKey)-\(id)")
-        }
-    }
-    
-    @Published var latitude: Double? {
-        didSet {
-            UserDefaults.standard.setValue(latitude, forKey: latitudeKey)
-        }
-    }
-    
-    @Published var longitude: Double? {
-        didSet {
-            UserDefaults.standard.setValue(longitude, forKey: longitudeKey)
         }
     }
     
@@ -288,11 +294,11 @@ class UserObservable: ObservableObject {
         lastName = UserDefaults.standard.string(forKey: "\(lastNameKey)-\(id)") ?? ""
         displayName = UserDefaults.standard.string(forKey: "\(displayNameKey)-\(id)") ?? ""
         email = UserDefaults.standard.string(forKey: "\(emailKey)-\(id)") ?? ""
+        latitude = UserDefaults.standard.double(forKey: latitudeKey)
+        longitude = UserDefaults.standard.double(forKey: longitudeKey)
         location = UserDefaults.standard.string(forKey: "\(locationKey)-\(id)") ?? ""
         profileImageString = UserDefaults.standard.string(forKey: "\(profileImageStringKey)-\(id)") ?? ""
         isNewUser = UserDefaults.standard.bool(forKey: "\(isNewUserKey)-\(id)")
-        latitude = UserDefaults.standard.double(forKey: latitudeKey)
-        longitude = UserDefaults.standard.double(forKey: longitudeKey)
         friendCodeID = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)") ?? ""
         groupSize = UserDefaults.standard.string(forKey: "\(groupSizeKey)-\(id)") ?? ""
         listOfGames = UserDefaults.standard.array(forKey: "\(listOfGamesKey)-\(id)") as? [String] ?? []

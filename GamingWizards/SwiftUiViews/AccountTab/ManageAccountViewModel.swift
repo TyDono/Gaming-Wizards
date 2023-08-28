@@ -38,6 +38,8 @@ extension ManageAccountView {
         @Published var uploadProfileProgress: Double = 0.0
         @Published var groupSize: String = ""
         @Published var userAge: String = ""
+        @Published var userLatitude: Double = 0.0
+        @Published var userLongitude: Double = 0.0
         @Published var userLocation: String = ""
         @Published var listOfGames: [String] = []
         @Published var userAvailability: String = ""
@@ -116,6 +118,8 @@ extension ManageAccountView {
                 Constants.userFirstName: self.firstName,
                 Constants.userLastName: self.lastName,
                 Constants.userDisplayName: self.displayName,
+                Constants.userLatitude: self.userLatitude,
+                Constants.userLongitude: self.userLongitude,
                 Constants.userLocation: self.userLocation,
 //                Constants.userListOfGamesString: self.listOfGames,
                 Constants.userGroupSize: self.groupSize,
@@ -154,6 +158,8 @@ extension ManageAccountView {
             user.isPayToPlay = isPayToPlay
             user.groupSize = groupSize
 //            user.listOfGames = listOfGames
+            user.latitude = userLatitude
+            user.longitude = userLongitude
             user.location = userLocation
             user.age = userAge
             user.isSolo = userIsSolo

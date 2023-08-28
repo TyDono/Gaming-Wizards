@@ -39,6 +39,8 @@ struct Constants {
     static let userLastName = "lastName"
     static let userDisplayName = "displayName"
     static let userEmail = "email"
+    static let userLatitude = "latitude"
+    static let userLongitude = "longitude"
     static let userLocation = "location"
     static let userProfileImageString = "profileImageString"
     static let userFriendList = "friendList"

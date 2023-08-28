@@ -25,7 +25,7 @@ extension SearchResultsView {
         func performSearchForMatchingGames(gameName: String) async {
             Task {
                 do {
-                    let listOfUsers: [User]? = try await fbFirestoreHelper.searchForMatchingGames(collectionName: Constants.usersString, whereField: Constants.userListOfGamesString, gameName: gameName)
+                    let listOfUsers: [User]? = try await fbFirestoreHelper.searchForUserMatchingGames(collectionName: Constants.usersString, whereField: Constants.userListOfGamesString, gameName: gameName)
                     guard let safeListOfUsers = listOfUsers else { return }
                     for user in safeListOfUsers {
                         // Have a check if they are in your blocked user list here as well
