@@ -48,7 +48,7 @@ final class LocationManager: NSObject, ObservableObject {
                     city = placemark.locality
                     state = placemark.administrativeArea
                 }
-                self.locationCompletion?(self.location?.latitude, self.location?.longitude, city, state)
+                self.locationCompletion?(location.coordinate.latitude, location.coordinate.longitude, city, state)
                 self.locationCompletion = nil
             }
         }

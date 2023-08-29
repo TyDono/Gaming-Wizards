@@ -132,8 +132,6 @@ extension ManageAccountView {
                 self.isSaveChangesButtonIsActive = false
             }
         }
-
-
         
         func updateUserInfo() {
             let currentUser = Auth.auth().currentUser
