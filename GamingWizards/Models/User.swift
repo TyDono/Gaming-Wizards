@@ -184,13 +184,13 @@ class UserObservable: ObservableObject {
     
     @Published var latitude: Double? {
         didSet {
-            UserDefaults.standard.setValue(latitude, forKey: latitudeKey)
+            UserDefaults.standard.setValue(latitude, forKey: "\(latitudeKey)-\(id)")
         }
     }
     
     @Published var longitude: Double? {
         didSet {
-            UserDefaults.standard.setValue(longitude, forKey: longitudeKey)
+            UserDefaults.standard.setValue(longitude, forKey: "\(longitudeKey)-\(id)")
         }
     }
     
@@ -293,8 +293,8 @@ class UserObservable: ObservableObject {
         lastName = UserDefaults.standard.string(forKey: "\(lastNameKey)-\(id)") ?? ""
         displayName = UserDefaults.standard.string(forKey: "\(displayNameKey)-\(id)") ?? ""
         email = UserDefaults.standard.string(forKey: "\(emailKey)-\(id)") ?? ""
-        latitude = UserDefaults.standard.double(forKey: latitudeKey)
-        longitude = UserDefaults.standard.double(forKey: longitudeKey)
+        latitude = UserDefaults.standard.double(forKey: "\(latitudeKey)-\(id)")
+        longitude = UserDefaults.standard.double(forKey: "\(longitudeKey)-\(id)")
         location = UserDefaults.standard.string(forKey: "\(locationKey)-\(id)") ?? ""
         profileImageString = UserDefaults.standard.string(forKey: "\(profileImageStringKey)-\(id)") ?? ""
         isNewUser = UserDefaults.standard.bool(forKey: "\(isNewUserKey)-\(id)")

@@ -301,6 +301,11 @@ struct ManageAccountView: View {
                     .background(Color.white)
             }
         }
+        .onAppear {
+            manageAccountVM.userLatitude = manageAccountVM.user.latitude ?? 0.0
+            manageAccountVM.userLongitude = manageAccountVM.user.longitude ?? 0.0
+            manageAccountVM.userLocation = manageAccountVM.user.location ?? ""
+        }
     }
     
     private var userAvailabilityTextView: some View {

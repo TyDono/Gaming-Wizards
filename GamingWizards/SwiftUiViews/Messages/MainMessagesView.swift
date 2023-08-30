@@ -46,7 +46,7 @@ struct MainMessagesView: View {
                     VStack {
                         HStack(spacing: 16) {
                             MessengerProfileView(profileImageString: Binding<String>(
-                                get: { contact.imageString! },
+                                get: { contact.imageString ?? "1993" },
                                 set: { contact.imageString = $0 }
                             ))
                             VStack(alignment: .leading) {

@@ -273,8 +273,9 @@ import Security
             withAnimation(.easeInOut) {
                 log_Status = false
                 if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                    KeychainHelper.clearKeychain()
+                    coreDataController.clearAllFriends()
                     UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
-//                    KeychainHelper.clearKeychain()
                 }
             }
         } catch {
