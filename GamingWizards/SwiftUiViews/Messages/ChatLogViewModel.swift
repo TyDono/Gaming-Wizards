@@ -18,6 +18,7 @@ extension ChatLogView {
         @Published var errorMessage = ""
         @Published var chatMessages: [ChatMessage]
         @Published var sentChatText: String = ""
+        @Published var counter: Int = 0
         private let firestoreService: FirebaseFirestoreService
 //        let fbFirestoreHelper: FirebaseFirestoreHelper
         let fbAuthHelper = FirebaseAuthHelper.shared
@@ -50,6 +51,9 @@ extension ChatLogView {
                 guard let self = self else { return }
                 print(chatMessage.chatMessageText)
                 self.chatMessages.append(chatMessage)
+                DispatchQueue.main.async {
+                    self.counter += 1
+                }
             }
         }
         
@@ -57,6 +61,7 @@ extension ChatLogView {
             guard let chatUserId = chatUser.id else { return }
             sentChatText = chatText
             chatText = ""
+            counter += 1
             do {
                 try await firestoreService.handleSendMessage(toId: chatUserId, fromId: user.id, chatText: sentChatText)
             } catch {

@@ -116,6 +116,7 @@
 		CB9CFD3C2A8AAAED000C09ED /* MessengerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */; };
 		CB9CFD3F2A8AAB86000C09ED /* MessengerProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */; };
 		CB9CFD412A93C39C000C09ED /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD402A93C39C000C09ED /* ChatMessage.swift */; };
+		CB9F7C312AA0FCD4000E8AE1 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F7C302AA0FCD4000E8AE1 /* MessageView.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -242,6 +243,7 @@
 		CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileView.swift; sourceTree = "<group>"; };
 		CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileViewModel.swift; sourceTree = "<group>"; };
 		CB9CFD402A93C39C000C09ED /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		CB9F7C302AA0FCD4000E8AE1 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				CBB8CAA22A65EE07009B13A6 /* FlowLayout.swift */,
 				CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */,
 				CB5948982A71636E00BE0DE2 /* AccountView */,
+				CB9F7C302AA0FCD4000E8AE1 /* MessageView.swift */,
 			);
 			path = UniversalViews;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				CB5BE8A229FDE958009D38D6 /* HomeViewModel.swift in Sources */,
 				CB5BE8A429FDE958009D38D6 /* FriendListView.swift in Sources */,
 				CB5BE8AE29FDE958009D38D6 /* Validation.swift in Sources */,
+				CB9F7C312AA0FCD4000E8AE1 /* MessageView.swift in Sources */,
 				CB5BE89229FDE958009D38D6 /* UITabBarControllerExtension.swift in Sources */,
 				CB5BE87F29FDE957009D38D6 /* RestaurantEndpoint.swift in Sources */,
 				CB5BE89629FDE958009D38D6 /* DateExtension.swift in Sources */,
@@ -1093,7 +1097,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TylerDonohue.GamingWizards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1129,7 +1133,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TylerDonohue.GamingWizards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

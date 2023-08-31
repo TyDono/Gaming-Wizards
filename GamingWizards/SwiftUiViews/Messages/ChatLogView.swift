@@ -13,6 +13,7 @@ struct ChatLogView: View {
 //    @ObservedObject var chatLogVM: DetailedMessageViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
     let chatUser: FriendEntity?
+    private let chatLogScrollToString: String = "Empty"
     
     init(chatUser: FriendEntity?) {
         self.chatUser = chatUser
@@ -56,7 +57,6 @@ struct ChatLogView: View {
                     guard let unwrappedChatUser = chatUser else { return }
                     await chatLogVM.callHandelSendMessage(chatUser: unwrappedChatUser)
                 }
-//                chatLogVM.handleSendMessage()
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
@@ -72,49 +72,30 @@ struct ChatLogView: View {
     }
     
     private var messagesView: some View {
-        ScrollView {
-            ForEach(chatLogVM.chatMessages, id: \.self) { message in
-                VStack {
-                    if message.fromId == chatLogVM.user.id {
-                        HStack {
-                            Spacer()
-                            HStack {
-                                Text(message.chatMessageText)
-                                    .foregroundColor(.white)
-                            }
-                            .padding()
-                            .background(.blue)
-                            .cornerRadius(Constants.semiRoundedCornerRadius)
+        VStack {
+            ScrollView {
+                ScrollViewReader { ScrollViewProxy in
+                    VStack {
+                        ForEach(chatLogVM.chatMessages, id: \.self) { message in
+                            MessageView(message: message)
                         }
-                    } else {
-                        HStack {
-                            
-                            HStack {
-                                Text(message.chatMessageText)
-                                    .foregroundColor(.black)
-                            }
-                            .padding()
-                            .background(.white)
-                            .cornerRadius(Constants.semiRoundedCornerRadius)
-                            Spacer()
+                        HStack { Spacer() }
+                        .id(chatLogScrollToString)
+                    }
+                    .onReceive(chatLogVM.$counter) { _ in
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            ScrollViewProxy.scrollTo(chatLogScrollToString, anchor: .bottom)
                         }
-                       
                     }
                 }
-                .padding(.horizontal)
-                .padding(.top, 8)
-
             }
-            HStack {
-                Spacer()
+            .background(Color(.init(white: 0.95, alpha: 1)))
+            .safeAreaInset(edge: .bottom) {
+                bottomChatBarView
+                    .background(Color(
+                        .systemBackground)
+                        .ignoresSafeArea())
             }
-        }
-        .background(Color(.init(white: 0.95, alpha: 1)))
-        .safeAreaInset(edge: .bottom) {
-            bottomChatBarView
-                .background(Color(
-                    .systemBackground)
-                    .ignoresSafeArea())
         }
     }
     
