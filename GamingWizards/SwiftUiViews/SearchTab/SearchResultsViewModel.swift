@@ -22,6 +22,12 @@ extension SearchResultsView {
             self.coreDataController = coreDataController
         }
         
+        func performSearchForUsers(searchText: String)  {
+            Task {
+                await performSearchForMatchingGames(gameName: searchText)
+            }
+        }
+        
         func performSearchForMatchingGames(gameName: String) async {
             Task {
                 do {

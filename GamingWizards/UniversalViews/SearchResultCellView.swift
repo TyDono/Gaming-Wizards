@@ -25,7 +25,7 @@ struct SearchResultCellView: View {
                         trailing: 2
                     )
                 )
-                .foregroundColor(isEmptyCell ? .clear : .white)
+                .foregroundColor(isEmptyCell ? .clear : Color(.init(white: 0.95, alpha: 1)))
                 .animation(Animation.easeInOut(duration: 0.7), value: text)
             VStack {
                 Text(text)

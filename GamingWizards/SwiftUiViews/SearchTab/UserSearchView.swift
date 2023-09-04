@@ -45,16 +45,18 @@ struct UserSearchView: View {
 //        .font(.globalFont(.luminari, size: 16))
         .font(.roboto(.regular, size: 16))
         .background(
-            backgroundImage
         )
         .keyboardAdaptive()
     }
     
     private var backgroundImage: some View {
+        Color(.init(white: 0.95, alpha: 1))
+        /*
         Image("realistic-billboard")
             .resizable()
             .scaledToFill()
             .edgesIgnoringSafeArea(.all)
+         */
 //            .resizable()
 //            .aspectRatio(contentMode: .fill)
 //            .edgesIgnoringSafeArea(.all)

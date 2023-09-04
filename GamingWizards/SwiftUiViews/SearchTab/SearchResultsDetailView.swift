@@ -34,7 +34,7 @@ struct SearchResultsDetailView: View {
             }
         }
         .background(
-            backgroundImageView
+//            backgroundImageView
         )
         .task {
             searchResultsDetailViewModel.callRetrieveUserProfileImage(selectedUserProfileImageString: selectedUser.profileImageString)
@@ -43,10 +43,13 @@ struct SearchResultsDetailView: View {
     }
     
     private var backgroundImageView: some View {
+        Color(.init(white: 0.95, alpha: 1))
+        /*
         Image("blank-page")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .edgesIgnoringSafeArea(.all)
+         */
     }
     
     private var viewAccountView: some View {

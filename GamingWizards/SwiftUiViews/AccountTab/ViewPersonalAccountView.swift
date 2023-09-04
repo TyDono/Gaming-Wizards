@@ -42,10 +42,13 @@ struct ViewPersonalAccountView: View {
     }
     
     private var backgroundImage: some View {
+        Color.clear
+        /*
         Image("blank-page")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .edgesIgnoringSafeArea(.all)
+         */
     }
     
     private var editPersonalAccountButtonView: some View {

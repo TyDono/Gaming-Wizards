@@ -23,6 +23,7 @@ struct SearchResultsView: View {
         self._searchText = State(initialValue: searchText) // Initialize the @State property
         self.userSearchViewModel = UserSearchViewModel() // Initialize userSearchViewModel
         self.searchResultsViewModel = SearchResultsViewModel() // Initialize searchResultsViewModel
+        searchResultsViewModel.performSearchForUsers(searchText: searchText)
     }
     
     var body: some View {
@@ -37,11 +38,14 @@ struct SearchResultsView: View {
             SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
         })
         .background(
+//            Color(.init(white: 1.0, alpha: 1))
+            /*
             backgroundImage
+             */
         )
-        .task {
-            await searchResultsViewModel.performSearchForMatchingGames(gameName: searchText)
-        }
+//        .task {
+//            await searchResultsViewModel.performSearchForMatchingGames(gameName: searchText)
+//        }
     }
     
     private var searchResultsList: some View {
@@ -51,7 +55,6 @@ struct SearchResultsView: View {
                 if user.id != yourId {
                     VStack {
                         Text(user.title ?? "")
-//                            .font(.globalFont(.luminari, size: 19))
                             .font(.roboto(.regular, size: 19))
                             .bold()
                             .multilineTextAlignment(.center)
@@ -62,9 +65,6 @@ struct SearchResultsView: View {
                         HStack {
                             Text("Location: \(user.location ?? "")")
                             Text("GroupSize: \(user.groupSize ?? "")")
-                            //                        ForEach(user.games, id: \.self) { game in
-                            //                            Text("Game: \(game)")
-                            //                        }
                         }
                         HStack {
                             Text("Age: \(user.age ?? "")")
@@ -73,39 +73,43 @@ struct SearchResultsView: View {
                     }
                     .listRowSeparator(.hidden)
                     .frame(alignment: .center)
+                    .background(
+                        GeometryReader { geometry in
+                            ZStack(alignment: .center) {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .foregroundColor(.clear)
+                                    .padding(EdgeInsets(top: 2, leading: 6, bottom: 2, trailing: 6))
+                                
+                                /*
+                                Image("blank-page")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                    .frame(width: geometry.size.width - 8, height: geometry.size.height - 8)
+                                    .clipped()
+                                 */
+                                
+                            }
+                            .alignmentGuide(HorizontalAlignment.center) { _ in
+                                geometry.size.width / 2
+                            }
+                        }
+                    )
                     .onTapGesture {
                         self.selectedUser = user
                         resultWasTapped = true
                     }
                 }
             }
-            .listRowBackground(
-                GeometryReader { geometry in
-                    ZStack(alignment: .center) {
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(.clear)
-                            .padding(EdgeInsets(top: 2, leading: 6, bottom: 2, trailing: 6))
-                        
-                        Image("blank-page")
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                            .frame(width: geometry.size.width - 8, height: geometry.size.height - 8)
-                            .clipped()
-                    }
-                    .alignmentGuide(HorizontalAlignment.center) { _ in
-                        geometry.size.width / 2
-                    }
-                }
-            )
-            
         }
         .listStyle(PlainListStyle())
         .background(
+            Color.clear
+            /*
             backgroundImage
+             */
         )
     }
-
 
     
     private var backgroundImage: some View {
