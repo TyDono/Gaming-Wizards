@@ -49,7 +49,6 @@ extension ChatLogView {
             guard let chatUser = chatUser.id else { return }
             firestoreService.fetchMessages(fromId: user.id, toId: chatUser) { [weak self] err, chatMessage in
                 guard let self = self else { return }
-                print(chatMessage.chatMessageText)
                 self.chatMessages.append(chatMessage)
                 DispatchQueue.main.async {
                     self.counter += 1

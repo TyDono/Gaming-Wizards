@@ -23,6 +23,9 @@ struct MainMessagesView: View {
                 }
                 .navigationBarHidden(true)
             }
+//            .sheet(isPresented: $mainMessagesVM.isDetailedMessageViewShowing, content: {
+//                ChatLogView(chatUser: mainMessagesVM.selectedContact)
+//            })
         }
         .task {
 //            mainMessagesVM.fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
@@ -37,7 +40,6 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            //change to mainMessagesVM.savedFriendEntities later when i have a fix
             ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { contact in
                 Button {
                     mainMessagesVM.selectedContact = contact
@@ -71,8 +73,7 @@ struct MainMessagesView: View {
             .padding(.bottom, 50)
         }
         .onAppear {
-            print(mainMessagesVM.savedFriendEntities)
-            print(mainMessagesVM.coredataController.savedFriendEntities)
+//            mainMessagesVM.savedFriendEntities = mainMessagesVM.coredataController.savedFriendEntities
         }
     }
     

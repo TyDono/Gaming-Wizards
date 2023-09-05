@@ -20,6 +20,7 @@ extension MainMessagesView {
         
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
+        @Published var friendEntityImageCache: [String: UIImage] = [:]
 
         init(
             user: UserObservable = UserObservable.shared,
@@ -33,10 +34,23 @@ extension MainMessagesView {
             self.diskSpace = diskSpace
             
             savedFriendEntities = self.coredataController.savedFriendEntities
-            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
+//            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
+            mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
         }
         
-        func retrieveProfileImageFromDisk() {
+        func loadImageFromDisk(imageString: String) -> UIImage? {
+            if let cachedImage = friendEntityImageCache[imageString] {
+                return cachedImage
+            } else {
+                if let image = diskSpace.loadProfileImageFromDisk(imageString: imageString) {
+                    friendEntityImageCache[imageString] = image
+                    return image
+                }
+            }
+            return nil
+        }
+        
+        func retrieveProfileImageFromDisk() { // not used
             mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
         }
         

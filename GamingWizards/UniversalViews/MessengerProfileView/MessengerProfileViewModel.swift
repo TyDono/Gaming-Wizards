@@ -10,11 +10,36 @@ import SwiftUI
 
 extension MessengerProfileView {
     @MainActor class MessengerProfileViewModel: ObservableObject {
-        @ObservedObject var user = UserObservable.shared
+        @ObservedObject var user: UserObservable
         @Published var profileImage: UIImage?
-        let diskSpaceHandler = DiskSpaceHandler()
+        @Published var profileImageString: String
+        let diskSpaceHandler: DiskSpaceHandler
+        private var imageCache: [String: UIImage] = [:]
         
-        func callRetrieveProfileImageFromDisk(imageString: String) {
+        init(userObservable: UserObservable = UserObservable.shared,
+             diskSpaceHandler: DiskSpaceHandler = DiskSpaceHandler(),
+             profileImageString: String)
+        {
+            self.user = userObservable
+            self.diskSpaceHandler = diskSpaceHandler
+            self.profileImageString = profileImageString
+            
+            self.profileImage = loadImageFromDisk(imageString: profileImageString)
+        }
+        
+        func loadImageFromDisk(imageString: String) -> UIImage? {
+            if let cachedImage = imageCache[imageString] {
+                return cachedImage
+            } else {
+                if let image = diskSpaceHandler.loadProfileImageFromDisk(imageString: imageString) {
+                    imageCache[imageString] = image
+                    return image
+                }
+            }
+            return nil
+        }
+        
+        func callRetrieveProfileImageFromDisk(imageString: String) { // not used
             self.profileImage = diskSpaceHandler.loadProfileImageFromDisk(imageString: imageString)
         }
         

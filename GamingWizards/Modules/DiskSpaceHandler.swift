@@ -28,7 +28,7 @@ class DiskSpaceHandler: ObservableObject {
         }
     }
     
-     func loadProfileImageFromDisk(imageString: String) -> UIImage {
+     func loadProfileImageFromDisk(imageString: String) -> UIImage? {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsDirectory.appendingPathComponent(imageString)
 

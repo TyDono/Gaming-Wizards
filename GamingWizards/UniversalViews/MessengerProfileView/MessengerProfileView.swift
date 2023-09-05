@@ -9,11 +9,12 @@ import SwiftUI
 
 struct MessengerProfileView: View {
     @Binding var profileImageString: String
-    @ObservedObject private var messengerProfileVM: MessengerProfileViewModel
+    @StateObject private var messengerProfileVM: MessengerProfileViewModel
     
     init(profileImageString: Binding<String>) {
         self._profileImageString = profileImageString
-        self.messengerProfileVM = .init()
+        let profileString = profileImageString.wrappedValue
+        self._messengerProfileVM = StateObject(wrappedValue: MessengerProfileViewModel( profileImageString: profileString))
     }
     
     var body: some View {
@@ -22,26 +23,27 @@ struct MessengerProfileView: View {
     
     private var messengerProfileImage: some View {
         VStack {
-            Image(uiImage: messengerProfileVM.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
-            // change these two aspects later on. to what? idk. fit in the circle a lil bit.
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-                .font(.system(size: 32))
-                .padding(8)
-                .overlay(RoundedRectangle(cornerRadius: 44)
-                    .stroke( .black,
-                             lineWidth: 1)
-                )
-//                .scaledToFit()
-                .frame(width: 52, height: 52)
+            if let profileImage = messengerProfileVM.profileImage {
+                Image(uiImage: profileImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .font(.system(size: 32))
+                    .padding(8)
+                    .overlay(RoundedRectangle(cornerRadius: 44)
+                        .stroke(.black, lineWidth: 1)
+                    )
+                    .frame(width: 52, height: 52)
+            } else {
+                // You can show a placeholder image or loading indicator here
+                Text("Loading...")
+            }
         }
-        .task {
-            messengerProfileVM.callRetrieveProfileImageFromDisk(imageString: profileImageString)
+        .onAppear {
+            messengerProfileVM.loadImageFromDisk(imageString: profileImageString)
         }
     }
-    
 }
+
 
 struct MessengerProfileView_Previews: PreviewProvider {
     static var previews: some View {
