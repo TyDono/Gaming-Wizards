@@ -148,7 +148,11 @@ import Security
                            isPayToPlay: payToPlay,
                            isSolo: isSolo)
         locationManager.requestUserLocation { [weak self] lat, long, city, state  in
-            newUser.location = "\(city), \(state)"
+            if let safeCity = city, let safeState = state {
+                newUser.location = "\(safeCity), \(safeState)"
+            } else {
+                newUser.location = "\(city), \(state)"
+            }
             newUser.latitude = lat
             newUser.longitude = long
             completion(newUser)

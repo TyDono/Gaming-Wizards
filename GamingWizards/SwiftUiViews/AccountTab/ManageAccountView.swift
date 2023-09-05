@@ -87,7 +87,7 @@ struct ManageAccountView: View {
                         }
                     
                     }
-                    .padding(.bottom, 125)
+                    .padding(.bottom, 80)
                 }
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)

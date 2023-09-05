@@ -34,12 +34,8 @@ struct MessengerProfileView: View {
                     )
                     .frame(width: 52, height: 52)
             } else {
-                // You can show a placeholder image or loading indicator here
                 Text("Loading...")
             }
-        }
-        .onAppear {
-            messengerProfileVM.loadImageFromDisk(imageString: profileImageString)
         }
     }
 }
@@ -48,8 +44,8 @@ struct MessengerProfileView: View {
 struct MessengerProfileView_Previews: PreviewProvider {
     static var previews: some View {
         let profileImageBinding = Binding<String>(
-            get: { "nuphing" }, // Provide a getter
-            set: { _ in }       // Provide a setter
+            get: { "nuphing" }, 
+            set: { _ in }
         )
         
         return MessengerProfileView(profileImageString: profileImageBinding)
