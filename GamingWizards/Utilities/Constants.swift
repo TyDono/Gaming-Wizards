@@ -16,7 +16,6 @@ struct Constants {
     static var roundedCornerRadius: CGFloat = 32
     static var buttonShadowRadius: CGFloat = 15
     static var tagFlowLayoutCornerRadius: CGFloat = 18
-    static let usersString = "users"
     static let textFieldMaxCharacters: Int = 45
     static let textViewMaxCharacters: Int = 500
     static let navigationTitleFontSize: Int = 26
@@ -24,7 +23,6 @@ struct Constants {
     static let profileImageHeight: CGFloat = 300
     static let wantedWizardImageString = "WantedWizard"
     static let wantedWizardPlusImageString = "WantedWizard+"
-    static let messagesStringCollectionCall = "messages"
     
     // MARK: calls to Tab
     static let accountTabViewString = "Account"
@@ -53,6 +51,11 @@ struct Constants {
     static let userTitle = "title"
     static let userPayToPlay = "isPayToPlay"
     static let userIsSolo = "isSolo"
+    
+    // MARK: calls to Firebase Firestore
+    static let recentMessages = "recent_messages"
+    static let messagesStringCollectionCall = "messages"
+    static let usersString = "users"
     
     // MARK: calls to ChatMessages
     static let fromId = "fromId"

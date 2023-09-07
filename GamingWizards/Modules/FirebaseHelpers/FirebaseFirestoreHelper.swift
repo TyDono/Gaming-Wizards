@@ -17,7 +17,10 @@ protocol FirebaseFirestoreService {
     func searchForUserMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User]
     func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
-    func handleSendMessage(toId: String, fromId: String, chatText: String) async throws
+    func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
+    func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
+    func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void)
+    
 }
 
 class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreService {
@@ -200,7 +203,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func handleSendMessage(toId: String, fromId: String, chatText: String) async throws {
+    func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws {
         let senderMessageDocumentPath = firestore
             .collection(Constants.messagesStringCollectionCall)
             .document(fromId)
@@ -232,5 +235,46 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
 
+    func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws {
+        let uid = user.id
+        let document = firestore.collection(Constants.recentMessages).document(uid).collection(Constants.messagesStringCollectionCall).document(toId)
+        
+        let data = [
+            Constants.chatMessageTimeStamp: Timestamp(),
+            Constants.chatMessageText: chatText,
+            Constants.fromId: uid,
+            Constants.toId: toId,
+            Constants.displayName: chatUserDisplayName
+//            "profileImageUrl":
+            
+            // similar dictionary for the recipient of this message.
+        ] as [String : Any]
+        
+        do {
+            try await document.setData(data)
+        } catch {
+            print("ERROR, FAILED TO SAVE RECENT MESSAGES TO FIRESTORE: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void) {
+        let uid = user.id
+        firestore.collection(Constants.recentMessages).document(uid).collection(Constants.messagesStringCollectionCall).addSnapshotListener { querySnapshot, err in
+            if let error = err {
+                print("ERROR, FAILED TO LISTEN FOR RECENT MESSAGES: \(error.localizedDescription)")
+                return
+            }
+            querySnapshot?.documentChanges.forEach({ change in
+//                if change.type == .added {
+                    let docId = change.document.documentID
+                    var recentMessages: [RecentMessage] = []
+                    recentMessages.append(.init(documentId: docId, data: change.document.data()))
+                    completion(nil, recentMessages)
+                    // ad to recent messages
+//                }
+            })
+        }
+    }
     
 }

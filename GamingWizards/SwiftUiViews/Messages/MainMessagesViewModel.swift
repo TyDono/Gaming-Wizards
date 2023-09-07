@@ -14,6 +14,7 @@ extension MainMessagesView {
         @ObservedObject var user: UserObservable
         @ObservedObject var coredataController: CoreDataController
         @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
+//        private let firestoreService: FirebaseFirestoreService
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
         @Published var isDetailedMessageViewShowing: Bool = false
@@ -21,17 +22,22 @@ extension MainMessagesView {
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
-
+        @Published var recentMessages: [RecentMessage]
+        
         init(
             user: UserObservable = UserObservable.shared,
             coredataController: CoreDataController = CoreDataController.shared,
             fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
-            diskSpace: DiskSpaceHandler = DiskSpaceHandler()
+//            firestoreService: FirebaseFirestoreService,
+            diskSpace: DiskSpaceHandler = DiskSpaceHandler(),
+            recentMessages: [RecentMessage]
         ) {
             self.user = user
             self.coredataController = coredataController
-            self.fbFirestoreHelper =  fbFirestoreHelper
+            self.fbFirestoreHelper = fbFirestoreHelper
+//            self.firestoreService = firestoreService
             self.diskSpace = diskSpace
+            self.recentMessages = recentMessages
             
             savedFriendEntities = self.coredataController.savedFriendEntities
 //            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
@@ -50,8 +56,16 @@ extension MainMessagesView {
             return nil
         }
         
-        func retrieveProfileImageFromDisk() { // not used
-            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
+        func callFetchRecentMessages() {
+            fbFirestoreHelper.fetchRecentMessages { [weak self] err, recentMessages in
+                if let error = err {
+                    print("ERROR FETCHING RECENT MESSAGES: \(error.localizedDescription)")
+                } else {
+                    if let self = self {
+                        self.recentMessages.append(contentsOf: recentMessages)
+                    }
+                }
+            }
         }
         
     }

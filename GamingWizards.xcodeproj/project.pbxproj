@@ -117,6 +117,7 @@
 		CB9CFD3F2A8AAB86000C09ED /* MessengerProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */; };
 		CB9CFD412A93C39C000C09ED /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD402A93C39C000C09ED /* ChatMessage.swift */; };
 		CB9F7C312AA0FCD4000E8AE1 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F7C302AA0FCD4000E8AE1 /* MessageView.swift */; };
+		CBA22B142AA8DFA500D02912 /* RecentMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22B132AA8DFA500D02912 /* RecentMessage.swift */; };
 		CBAD3BC92A3A9CCC0068089B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */; };
 		CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */; };
 		CBAD3BCD2A44EFB60068089B /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */; };
@@ -244,6 +245,7 @@
 		CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileViewModel.swift; sourceTree = "<group>"; };
 		CB9CFD402A93C39C000C09ED /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		CB9F7C302AA0FCD4000E8AE1 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CBA22B132AA8DFA500D02912 /* RecentMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessage.swift; sourceTree = "<group>"; };
 		CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				CBEAF0452A1EB87400B9E900 /* LocationManager.swift */,
 				CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */,
 				CB9CFD402A93C39C000C09ED /* ChatMessage.swift */,
+				CBA22B132AA8DFA500D02912 /* RecentMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				CB5BE88029FDE957009D38D6 /* GamingWizardsApp.swift in Sources */,
 				CBB8CAAF2A676153009B13A6 /* ManageListOfGamesViewModel.swift in Sources */,
 				CBEAF0462A1EB87400B9E900 /* LocationManager.swift in Sources */,
+				CBA22B142AA8DFA500D02912 /* RecentMessage.swift in Sources */,
 				CB5BE8AA29FDE958009D38D6 /* KeybaordAdaptiveModifier.swift in Sources */,
 				CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */,
 				CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */,

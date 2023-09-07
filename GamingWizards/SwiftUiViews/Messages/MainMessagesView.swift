@@ -10,8 +10,9 @@ import SwiftUI
 struct MainMessagesView: View {
     @ObservedObject private var mainMessagesVM: MainMessagesViewModel
     
-    init() {
-        self.mainMessagesVM = .init()
+    init(
+    ) {
+        self.mainMessagesVM = .init(recentMessages: [])
     }
     
     var body: some View {
@@ -23,9 +24,6 @@ struct MainMessagesView: View {
                 }
                 .navigationBarHidden(true)
             }
-//            .sheet(isPresented: $mainMessagesVM.isDetailedMessageViewShowing, content: {
-//                ChatLogView(chatUser: mainMessagesVM.selectedContact)
-//            })
         }
         .task {
 //            mainMessagesVM.fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
@@ -40,6 +38,39 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
+            ForEach(mainMessagesVM.recentMessages, id: \.self) { contact in
+                Button {
+//                    mainMessagesVM.selectedContact = contact
+                    mainMessagesVM.isDetailedMessageViewShowing.toggle()
+                } label: {
+                    VStack {
+                        HStack(spacing: 16) {
+                            MessengerProfileView(profileImageString: Binding<String>(
+                                get: { contact.imageString ?? "1993" },
+                                set: { contact.imageString = $0 }
+                            ))
+                            VStack(alignment: .leading) {
+                                Text(contact.displayName ?? "")
+                                    .font(.roboto(.bold, size: 16))
+                                Text(contact.text)
+                                    .font(.roboto(.semibold, size: 14))
+                                    .foregroundColor(.lightGrey)
+                            }
+                            Spacer()
+                            Text("\(contact.timeStamp)")
+                                .font(.roboto(.semibold, size: 15))
+                        }
+                        Divider()
+                            .padding(.vertical, 8)
+                    }
+                    .foregroundColor(.black)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                }
+            }
+            .padding(.bottom, 50)
+            }
+            /*
             ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { contact in
                 Button {
                     mainMessagesVM.selectedContact = contact
@@ -71,9 +102,7 @@ struct MainMessagesView: View {
                 }
             }
             .padding(.bottom, 50)
-        }
-        .onAppear {
-//            mainMessagesVM.savedFriendEntities = mainMessagesVM.coredataController.savedFriendEntities
+            */
         }
     }
     
