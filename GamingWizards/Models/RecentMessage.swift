@@ -8,14 +8,15 @@
 import Foundation
 import Firebase
 
-struct RecentMessage: Identifiable, Hashable {
+struct RecentMessage: Identifiable, Hashable, Codable {
     var id: String { documentId }
-    let documentId: String
-    let text: String
-    let fromId: String
-    let toId: String
-    let chatUserDisplayName: String
-    let timeStamp: Timestamp
+    var documentId: String
+    var text: String
+    var fromId: String
+    var toId: String
+    var chatUserDisplayName: String
+    var timeStamp: Timestamp
+    var imageString: String
     
     init(documentId: String, data: [String: Any]) {
         self.documentId = documentId
@@ -24,6 +25,7 @@ struct RecentMessage: Identifiable, Hashable {
         self.toId = data[Constants.toId] as? String ?? ""
         self.chatUserDisplayName = data[Constants.displayName] as? String ?? ""
         self.timeStamp = data[Constants.chatMessageTimeStamp] as? Timestamp ?? Timestamp(date: Date())
+        self.imageString = data[Constants.imageString] as? String ?? ""
         
     }
 }

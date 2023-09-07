@@ -266,13 +266,11 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 return
             }
             querySnapshot?.documentChanges.forEach({ change in
-//                if change.type == .added {
                     let docId = change.document.documentID
                     var recentMessages: [RecentMessage] = []
                     recentMessages.append(.init(documentId: docId, data: change.document.data()))
                     completion(nil, recentMessages)
                     // ad to recent messages
-//                }
             })
         }
     }

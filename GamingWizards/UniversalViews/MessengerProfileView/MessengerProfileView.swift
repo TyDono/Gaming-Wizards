@@ -26,13 +26,14 @@ struct MessengerProfileView: View {
             if let profileImage = messengerProfileVM.profileImage {
                 Image(uiImage: profileImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .font(.system(size: 32))
-                    .padding(8)
+                    .scaledToFill()
+                    .frame(width: 64, height: 64)
+                    .clipped()
+                    .cornerRadius(64)
                     .overlay(RoundedRectangle(cornerRadius: 44)
                         .stroke(.black, lineWidth: 1)
                     )
-                    .frame(width: 52, height: 52)
+                    .shadow(radius: 5)
             } else {
                 Text("Loading...")
             }

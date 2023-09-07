@@ -38,26 +38,32 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
+            
             ForEach(mainMessagesVM.recentMessages, id: \.self) { contact in
+                 var mutableContact = contact
                 Button {
-//                    mainMessagesVM.selectedContact = contact
+                    mainMessagesVM.selectedContact2 = mutableContact
+//                    mainMessagesVM.selectedContact = mutableContact
                     mainMessagesVM.isDetailedMessageViewShowing.toggle()
                 } label: {
                     VStack {
                         HStack(spacing: 16) {
                             MessengerProfileView(profileImageString: Binding<String>(
-                                get: { contact.imageString ?? "1993" },
-                                set: { contact.imageString = $0 }
+                                get: { mutableContact.imageString },
+                                set: { mutableContact.imageString = $0 }
                             ))
-                            VStack(alignment: .leading) {
-                                Text(contact.displayName ?? "")
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(mutableContact.chatUserDisplayName )
                                     .font(.roboto(.bold, size: 16))
-                                Text(contact.text)
+                                    .foregroundColor(Color(.label))
+                                    .multilineTextAlignment(.leading)
+                                Text(mutableContact.text)
                                     .font(.roboto(.semibold, size: 14))
-                                    .foregroundColor(.lightGrey)
+                                    .foregroundColor(Color(.darkGray))
+                                    .multilineTextAlignment(.leading)
                             }
                             Spacer()
-                            Text("\(contact.timeStamp)")
+                            Text("\(mutableContact.timeStamp)")
                                 .font(.roboto(.semibold, size: 15))
                         }
                         Divider()
@@ -69,7 +75,7 @@ struct MainMessagesView: View {
                 }
             }
             .padding(.bottom, 50)
-            }
+             
             /*
             ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { contact in
                 Button {

@@ -21,6 +21,7 @@ extension MainMessagesView {
         
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
+        @Published var selectedContact2: RecentMessage?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
         @Published var recentMessages: [RecentMessage]
         
@@ -42,6 +43,7 @@ extension MainMessagesView {
             savedFriendEntities = self.coredataController.savedFriendEntities
 //            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
+            callFetchRecentMessages()
         }
         
         func loadImageFromDisk(imageString: String) -> UIImage? {
