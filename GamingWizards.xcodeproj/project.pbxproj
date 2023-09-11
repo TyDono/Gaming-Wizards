@@ -113,6 +113,7 @@
 		CB8841CE2A791E680017C874 /* ChatLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CD2A791E680017C874 /* ChatLogView.swift */; };
 		CB8841D02A791E790017C874 /* ChatLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CF2A791E790017C874 /* ChatLogViewModel.swift */; };
 		CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */; };
+		CB9685592AABD4DB0051D7D6 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9685582AABD4DB0051D7D6 /* TimeUtils.swift */; };
 		CB9CFD3C2A8AAAED000C09ED /* MessengerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */; };
 		CB9CFD3F2A8AAB86000C09ED /* MessengerProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */; };
 		CB9CFD412A93C39C000C09ED /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD402A93C39C000C09ED /* ChatMessage.swift */; };
@@ -241,6 +242,7 @@
 		CB8841CD2A791E680017C874 /* ChatLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogView.swift; sourceTree = "<group>"; };
 		CB8841CF2A791E790017C874 /* ChatLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewModel.swift; sourceTree = "<group>"; };
 		CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
+		CB9685582AABD4DB0051D7D6 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileView.swift; sourceTree = "<group>"; };
 		CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileViewModel.swift; sourceTree = "<group>"; };
 		CB9CFD402A93C39C000C09ED /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 		CB5BE86429FDE955009D38D6 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				CB9685582AABD4DB0051D7D6 /* TimeUtils.swift */,
 				CB5BE86529FDE955009D38D6 /* HideNavigationBar.swift */,
 				CB5BE86629FDE955009D38D6 /* KeybaordAdaptiveModifier.swift */,
 				CB5BE86729FDE955009D38D6 /* FontModifier.swift */,
@@ -876,6 +879,7 @@
 				CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */,
 				CB5BE88429FDE958009D38D6 /* NavigationLogInView.swift in Sources */,
 				CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */,
+				CB9685592AABD4DB0051D7D6 /* TimeUtils.swift in Sources */,
 				CB62962F2A5F987500F84367 /* SearchResultCellView.swift in Sources */,
 				CB5BE88029FDE957009D38D6 /* GamingWizardsApp.swift in Sources */,
 				CBB8CAAF2A676153009B13A6 /* ManageListOfGamesViewModel.swift in Sources */,

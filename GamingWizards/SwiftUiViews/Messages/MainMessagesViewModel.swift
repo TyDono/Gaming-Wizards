@@ -8,35 +8,38 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Firebase
 
 extension MainMessagesView {
     @MainActor class MainMessagesViewModel: ObservableObject {
         @ObservedObject var user: UserObservable
         @ObservedObject var coredataController: CoreDataController
-        @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
-//        private let firestoreService: FirebaseFirestoreService
+//        @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
+        private let timeUtilsService: TimeUtilsService
+        private let firestoreService: FirebaseFirestoreService
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
         @Published var isDetailedMessageViewShowing: Bool = false
         
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
-        @Published var selectedContact2: RecentMessage?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
         @Published var recentMessages: [RecentMessage]
         
         init(
             user: UserObservable = UserObservable.shared,
             coredataController: CoreDataController = CoreDataController.shared,
-            fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
-//            firestoreService: FirebaseFirestoreService,
+//            fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
+            firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
             diskSpace: DiskSpaceHandler = DiskSpaceHandler(),
+            timeUtilsService: TimeUtilsService = TimeUtils(),
             recentMessages: [RecentMessage]
         ) {
             self.user = user
             self.coredataController = coredataController
-            self.fbFirestoreHelper = fbFirestoreHelper
-//            self.firestoreService = firestoreService
+//            self.fbFirestoreHelper = fbFirestoreHelper
+            self.timeUtilsService = timeUtilsService
+            self.firestoreService = firestoreService
             self.diskSpace = diskSpace
             self.recentMessages = recentMessages
             
@@ -44,6 +47,11 @@ extension MainMessagesView {
 //            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
             callFetchRecentMessages()
+        }
+        
+        func callTimeUtilsService(timeStamp: Timestamp) -> String {
+            let timeAgo = timeUtilsService.timeAgoString(from: timeStamp)
+            return timeAgo
         }
         
         func loadImageFromDisk(imageString: String) -> UIImage? {
@@ -59,12 +67,14 @@ extension MainMessagesView {
         }
         
         func callFetchRecentMessages() {
-            fbFirestoreHelper.fetchRecentMessages { [weak self] err, recentMessages in
+            firestoreService.fetchRecentMessages { [weak self] err, recentMessages in
                 if let error = err {
                     print("ERROR FETCHING RECENT MESSAGES: \(error.localizedDescription)")
                 } else {
                     if let self = self {
-                        self.recentMessages.append(contentsOf: recentMessages)
+                        DispatchQueue.main.async {
+                            self.recentMessages.append(contentsOf: recentMessages)
+                        }
                     }
                 }
             }

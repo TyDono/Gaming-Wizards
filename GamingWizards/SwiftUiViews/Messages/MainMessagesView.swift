@@ -10,10 +10,10 @@ import SwiftUI
 struct MainMessagesView: View {
     @ObservedObject private var mainMessagesVM: MainMessagesViewModel
     
-    init(
-    ) {
-        self.mainMessagesVM = .init(recentMessages: [])
+    init() {
+        self._mainMessagesVM = ObservedObject(wrappedValue: MainMessagesViewModel(recentMessages: []))
     }
+
     
     var body: some View {
         ZStack {
@@ -39,35 +39,36 @@ struct MainMessagesView: View {
     private var messagesScrollView: some View {
         ScrollView {
             
-            ForEach(mainMessagesVM.recentMessages, id: \.self) { contact in
-                 var mutableContact = contact
-                Button {
-                    mainMessagesVM.selectedContact2 = mutableContact
-//                    mainMessagesVM.selectedContact = mutableContact
-                    mainMessagesVM.isDetailedMessageViewShowing.toggle()
-                } label: {
-                    VStack {
-                        HStack(spacing: 16) {
-                            MessengerProfileView(profileImageString: Binding<String>(
-                                get: { mutableContact.imageString },
-                                set: { mutableContact.imageString = $0 }
-                            ))
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text(mutableContact.chatUserDisplayName )
-                                    .font(.roboto(.bold, size: 16))
-                                    .foregroundColor(Color(.label))
-                                    .multilineTextAlignment(.leading)
-                                Text(mutableContact.text)
-                                    .font(.roboto(.semibold, size: 14))
-                                    .foregroundColor(Color(.darkGray))
-                                    .multilineTextAlignment(.leading)
+            ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { (contact: FriendEntity) in
+                // Find the matching recent message for this contact
+                if let matchingRecentMessage = mainMessagesVM.recentMessages.first(where: { recentMessage in
+                    return contact.id == recentMessage.id
+                }) {
+                    let timeAgo = mainMessagesVM.callTimeUtilsService(timeStamp: matchingRecentMessage.timeStamp)
+                    Button {
+                        mainMessagesVM.selectedContact = contact
+                        mainMessagesVM.isDetailedMessageViewShowing.toggle()
+                    } label: {
+                        VStack {
+                            HStack(spacing: 16) {
+                                MessengerProfileView(profileImageString: Binding<String>(
+                                    get: { contact.imageString ?? "1993" },
+                                    set: { contact.imageString = $0 }
+                                ))
+                                VStack(alignment: .leading) {
+                                    Text(matchingRecentMessage.chatUserDisplayName)
+                                        .font(.roboto(.bold, size: 16))
+                                    Text(matchingRecentMessage.text)
+                                        .font(.roboto(.semibold, size: 14))
+                                        .foregroundColor(.lightGrey)
+                                }
+                                Spacer()
+                                Text("Sent \(timeAgo)")
+                                    .font(.roboto(.semibold, size: 15))
                             }
-                            Spacer()
-                            Text("\(mutableContact.timeStamp)")
-                                .font(.roboto(.semibold, size: 15))
+                            Divider()
+                                .padding(.vertical, 8)
                         }
-                        Divider()
-                            .padding(.vertical, 8)
                     }
                     .foregroundColor(.black)
                     .padding(.horizontal)
@@ -75,40 +76,7 @@ struct MainMessagesView: View {
                 }
             }
             .padding(.bottom, 50)
-             
-            /*
-            ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { contact in
-                Button {
-                    mainMessagesVM.selectedContact = contact
-                    mainMessagesVM.isDetailedMessageViewShowing.toggle()
-                } label: {
-                    VStack {
-                        HStack(spacing: 16) {
-                            MessengerProfileView(profileImageString: Binding<String>(
-                                get: { contact.imageString ?? "1993" },
-                                set: { contact.imageString = $0 }
-                            ))
-                            VStack(alignment: .leading) {
-                                Text(contact.displayName ?? "")
-                                    .font(.roboto(.bold, size: 16))
-                                Text("messages sent to user")
-                                    .font(.roboto(.semibold, size: 14))
-                                    .foregroundColor(.lightGrey)
-                            }
-                            Spacer()
-                            Text("22d")
-                                .font(.roboto(.semibold, size: 15))
-                        }
-                        Divider()
-                            .padding(.vertical, 8)
-                    }
-                    .foregroundColor(.black)
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                }
-            }
-            .padding(.bottom, 50)
-            */
+            
         }
     }
     
@@ -191,8 +159,8 @@ struct MainMessagesView: View {
     
 }
 
-struct MainMessagesView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainMessagesView()
-    }
-}
+//struct MainMessagesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainMessagesView()
+//    }
+//}
