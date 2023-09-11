@@ -25,7 +25,7 @@ extension ChatLogView {
         var chatUser: FriendEntity?
         
         init(
-            firestoreService: FirebaseFirestoreService,
+            firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper(),
             chatMessages: [ChatMessage] = [ChatMessage](),
 //            fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
             chatUser: FriendEntity?

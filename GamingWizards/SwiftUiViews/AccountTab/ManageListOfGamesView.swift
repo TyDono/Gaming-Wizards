@@ -43,10 +43,14 @@ struct ManageListOfGamesView: View {
                     FlowLayout(mode: .scrollable,
                                binding: $filterer.searchText,
                                items: filterer.gamesFilter) { gameItem in
-                        Text(gameItem.textName)
-//                            .font(.globalFont(.luminari, size: 16))
-                            .font(.roboto(.regular, size: 16))
-                            .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
+                        HStack {
+                            Image(systemName: gameItem.isSelected ? "xmark" : "")
+                                .foregroundColor(Color.red)
+                                .font(.system(size: 16))
+                            Text(gameItem.textName)
+                                .font(.roboto(.regular, size: 16))
+                                .foregroundColor(gameItem.isSelected ? Color.white : Color.black)
+                        }
                             .background(
                                 RoundedRectangle(cornerRadius: Constants.tagFlowLayoutCornerRadius)
                                     .border(Color.clear)

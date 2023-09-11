@@ -38,7 +38,6 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            
             ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { (contact: FriendEntity) in
                 // Find the matching recent message for this contact
                 if let matchingRecentMessage = mainMessagesVM.recentMessages.first(where: { recentMessage in

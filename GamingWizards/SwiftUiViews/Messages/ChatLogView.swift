@@ -17,8 +17,8 @@ struct ChatLogView: View {
     
     init(chatUser: FriendEntity?) {
         self.chatUser = chatUser
-        let firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper()
-        self.chatLogVM = .init(firestoreService: firestoreService, chatUser: chatUser)
+        self._chatLogVM = ObservedObject(wrappedValue: ChatLogViewModel(chatUser: chatUser))
+//        self.chatLogVM = .init(chatUser: chatUser)
     }
     
     var body: some View {
