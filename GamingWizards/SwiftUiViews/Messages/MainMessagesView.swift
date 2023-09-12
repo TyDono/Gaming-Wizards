@@ -41,7 +41,7 @@ struct MainMessagesView: View {
             ForEach(mainMessagesVM.coredataController.savedFriendEntities, id: \.self) { (contact: FriendEntity) in
                 // Find the matching recent message for this contact
                 if let matchingRecentMessage = mainMessagesVM.recentMessages.first(where: { recentMessage in
-                    return contact.id == recentMessage.id
+                    return contact.id == recentMessage.toId
                 }) {
                     let timeAgo = mainMessagesVM.callTimeUtilsService(timeStamp: matchingRecentMessage.timeStamp)
                     Button {

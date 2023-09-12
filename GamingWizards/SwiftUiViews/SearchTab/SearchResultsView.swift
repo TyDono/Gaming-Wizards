@@ -76,9 +76,8 @@ struct SearchResultsView: View {
                     .background(
                         GeometryReader { geometry in
                             ZStack(alignment: .center) {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .foregroundColor(.clear)
-                                    .padding(EdgeInsets(top: 2, leading: 6, bottom: 2, trailing: 6))
+                                RoundedRectangle(cornerRadius: Constants.roundedCornerRadius)
+                                    .foregroundColor(Color(.systemGray6))
                                 
                                 /*
                                 Image("blank-page")
@@ -95,6 +94,7 @@ struct SearchResultsView: View {
                             }
                         }
                     )
+//                    Divider()
                     .onTapGesture {
                         self.selectedUser = user
                         resultWasTapped = true
