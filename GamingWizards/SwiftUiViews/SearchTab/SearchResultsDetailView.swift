@@ -62,10 +62,15 @@ struct SearchResultsDetailView: View {
             // instead of a friend request. this will be used to just send a message. maybe later have a private account feature in premium that will require users to send a friend request first.
         }) {
             HStack {
-                
                 Button {
-                    searchResultsDetailViewModel.friendRequestButtonWasTapped(newFriend: selectedUser, friendProfileImage: searchResultsDetailViewModel.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
-                    //if the functions above succeed then use dissmiss and change tabs
+                    Task {
+                        do {
+                            try await searchResultsDetailViewModel.friendRequestButtonWasTapped(newFriend: selectedUser, friendProfileImage: searchResultsDetailViewModel.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
+                        } catch {
+                            print("ERROR friendRequestButtonWasTapped FAILED: \(error.localizedDescription)")
+                            return
+                        }
+                    }
                     dismiss()
                     self.tabSelection = Constants.messageTabViewString
                 } label: {

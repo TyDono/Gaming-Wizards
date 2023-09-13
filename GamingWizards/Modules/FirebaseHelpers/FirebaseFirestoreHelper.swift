@@ -15,7 +15,8 @@ protocol FirebaseFirestoreService {
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func searchForUserMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User]
-    func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
+//    func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
+    func sendFriendRequest(newFriend: User) async throws -> Friend 
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
     func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
     func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
@@ -161,25 +162,33 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     }
     
     // change to use codable and decodable.
-    func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void) {
+    func sendFriendRequest(newFriend: User) async throws -> Friend {
         let friendListPath = firestore.collection(Constants.usersString).document(newFriend.id).collection(Constants.userFriendList).document(self.user.id)
         let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(newFriend.id)
-                let yourFriendInfo = Friend(id: (self.user.id),
-                                            friendCodeID: self.user.friendCodeID,
-                                            displayName: self.user.displayName ?? "",
-                                            isFriend: false,
-                                            isFavorite: false,
-                                            imageString: self.user.profileImageString)
-                let theirFriendInfo = Friend(id: newFriend.id,
-                                             friendCodeID: newFriend.friendCodeID,
-                                             displayName: newFriend.displayName ?? "",
-                                             isFriend: false,
-                                             isFavorite: false,
-                                             imageString: newFriend.profileImageString)
-                friendListPath.setData(yourFriendInfo.friendDictionary)
-                yourInfoPath.setData(theirFriendInfo.friendDictionary)
-                completion(nil, theirFriendInfo)
+
+        let yourFriendInfo = Friend(id: self.user.id,
+                                    friendCodeID: self.user.friendCodeID,
+                                    displayName: self.user.displayName ?? "",
+                                    isFriend: false,
+                                    isFavorite: false,
+                                    imageString: self.user.profileImageString)
+
+        let theirFriendInfo = Friend(id: newFriend.id,
+                                     friendCodeID: newFriend.friendCodeID,
+                                     displayName: newFriend.displayName ?? "",
+                                     isFriend: false,
+                                     isFavorite: false,
+                                     imageString: newFriend.profileImageString)
+
+        do {
+            try await friendListPath.setData(yourFriendInfo.friendDictionary)
+            try await yourInfoPath.setData(theirFriendInfo.friendDictionary)
+            return theirFriendInfo
+        } catch {
+            throw error
+        }
     }
+
     
     func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws {
         

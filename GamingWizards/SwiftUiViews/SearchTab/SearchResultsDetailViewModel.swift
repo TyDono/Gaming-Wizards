@@ -20,28 +20,29 @@ import CoreData
     @Published var detailedFriendViewIsDismissed: Bool = false
     @Published var displayName: String? = ""
     @Published var profileImage: UIImage?
-    let fbFirestoreHelper: FirebaseFirestoreHelper
+    let fbFirestoreService: FirebaseFirestoreService
     let fbStorageHelper: FirebaseStorageHelper
     let coreDataController: CoreDataController
     let diskSpaceHandler: DiskSpaceHandler
 
     init(
         user: UserObservable = UserObservable.shared,
-        fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
+        fbFirestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
         fbStorageHelper: FirebaseStorageHelper = FirebaseStorageHelper.shared,
         coreDataController: CoreDataController = CoreDataController.shared,
         diskSpaceHandler: DiskSpaceHandler = DiskSpaceHandler()
     ) {
         self.user = user
-        self.fbFirestoreHelper = fbFirestoreHelper
+        self.fbFirestoreService = fbFirestoreService
         self.fbStorageHelper = fbStorageHelper
         self.coreDataController = coreDataController
         self.diskSpaceHandler = diskSpaceHandler
     }
     
+    /*
     func sendFriendRequest(selectedUserID: String) { // not used
 //        guard let userFriendCode = user.friendCodeID else { return }
-        let path = fbFirestoreHelper.firestore.collection(Constants.usersString).document(selectedUserID).collection(Constants.userFriendList).document(user.friendCodeID)
+        let path = fbFirestoreService.firestore.collection(Constants.usersString).document(selectedUserID).collection(Constants.userFriendList).document(user.friendCodeID)
         let newFriend = Friend(id: user.id, friendCodeID: user.friendCodeID,
                                displayName: user.displayName ?? "",
                                isFriend: false,
@@ -58,15 +59,19 @@ import CoreData
             }
         }
     }
-    
-    func friendRequestButtonWasTapped(newFriend: User, friendProfileImage: UIImage) {
-        fbFirestoreHelper.sendFriendRequest(newFriend: newFriend) { [weak self] err, friend  in
-            if let error = err {
-                print("ERROR SENDING FRIEND REQUEST DATA: \(error.localizedDescription)")
-            } else {
-                // save to disk. and save to coredata.
-                self?.coreDataController.addFriend(friendCodeID: friend.friendCodeID, friendUserID: friend.id, friendDisplayName: friend.displayName, isFriend: false, isFavorite: false, profileImageString: friend.imageString)
-                self?.diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString, image: friendProfileImage)
+    */
+     
+    func friendRequestButtonWasTapped(newFriend: User, friendProfileImage: UIImage) async throws {
+        do {
+            let friend = try await fbFirestoreService.sendFriendRequest(newFriend: newFriend)
+            
+            coreDataController.addFriend(friendCodeID: friend.friendCodeID, friendUserID: friend.id, friendDisplayName: friend.displayName, isFriend: false, isFavorite: false, profileImageString: friend.imageString)
+            diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString, image: friendProfileImage)
+            
+            do {
+                try await fbFirestoreService.createDualRecentMessage(toId: newFriend.id, chatUserDisplayName: newFriend.displayName ?? "", fromId: user.id)
+            } catch {
+                print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
             }
         }
     }
