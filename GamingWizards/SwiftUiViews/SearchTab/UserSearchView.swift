@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreLocation
+import Combine
 
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -41,6 +42,10 @@ struct UserSearchView: View {
             .navigationDestination(isPresented: $userSearchVM.navigateToSearchResults) {
                 SearchResultsView(tabSelection: $tabSelection, searchText: filterer.searchText)
             }
+        }
+        .scrollDismissesKeyboard(.automatic)
+        .onTapGesture {
+            hideKeyboard()
         }
 //        .font(.globalFont(.luminari, size: 16))
         .font(.roboto(.regular, size: 16))

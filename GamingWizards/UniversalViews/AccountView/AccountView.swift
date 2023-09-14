@@ -136,6 +136,7 @@ struct AccountView: View {
                         maxHeight: .infinity,
                         alignment: .center)
                     .lineLimit(nil)
+                    .font(.roboto(.regular, size: 24))
             }
         }
     }
@@ -152,38 +153,40 @@ struct AccountView: View {
     
     private var profileIsSolo: some View {
         VStack {
-            Text("Group Size")
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity,
-                    alignment: .center)
-                .foregroundColor(.gray)
-//                .font(.globalFont(.luminari, size: 16))
-                .font(.roboto(.regular, size: 16))
+            HStack(alignment: .center) {
+                Image(systemName: isUserSolo ? "person" : "person.3")
+                    .foregroundColor(.black)
+                Text("Group Size")
+                    .foregroundColor(.black)
+                //                .font(.globalFont(.luminari, size: 16))
+                    .font(.roboto(.regular, size: 16))
+            }
             Text(isUserSolo == true ? "Solo" : "Group")
                 .frame(
                     maxWidth: .infinity,
                     maxHeight: .infinity,
                     alignment: .leading)
+                .foregroundColor(.gray)
         }
     }
-    
+//    Image(systemName: isUserSolo ? "person" : "person.3")
     private var profileAgeView: some View {
         VStack {
             if let profileAge = age {
+                HStack(alignment: .center) {
+                    Image(systemName: "birthday.cake")
+                        .foregroundColor(.black)
                     Text("Age")
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .center)
-                        .foregroundColor(.gray)
-//                        .font(.globalFont(.luminari, size: 16))
+                        .foregroundColor(.black)
+                    //                        .font(.globalFont(.luminari, size: 16))
                         .font(.roboto(.regular, size: 16))
+                }
                     Text("\(profileAge)")
                         .frame(
                             maxWidth: .infinity,
                             maxHeight: .infinity,
                             alignment: .leading)
+                        .foregroundColor(.gray)
             }
         }
     }
@@ -192,20 +195,22 @@ struct AccountView: View {
         VStack {
             if let profileAbout = about {
                 VStack {
-                    Text("About")
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .center)
-                        .foregroundColor(.gray)
-//                        .font(.globalFont(.luminari, size: 14))
-                        .font(.roboto(.regular, size: 14))
+                    HStack(alignment: .center) {
+                        Image(systemName: "rectangle.and.pencil.and.ellipsis")
+                            .foregroundColor(.black)
+                        Text("About")
+                            .foregroundColor(.black)
+                        //                        .font(.globalFont(.luminari, size: 14))
+                            .font(.roboto(.regular, size: 14))
+                    }
                     Text(profileAbout)
                         .frame(
                             maxWidth: .infinity,
                             maxHeight: .infinity,
                             alignment: .leading)
                         .lineLimit(nil)
+                        .foregroundColor(.gray)
+
                 }
             }
         }
@@ -239,14 +244,14 @@ struct AccountView: View {
         */
         
         VStack {
-            Text("Games")
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity,
-                    alignment: .center)
-                .foregroundColor(.gray)
-//                .font(.globalFont(.luminari, size: 12))
-                .font(.roboto(.regular, size: 12))
+            HStack(alignment: .center) {
+                Image(systemName: "gamecontroller")
+                    .foregroundColor(.black)
+                Text("Games")
+                    .foregroundColor(.black)
+                //                .font(.globalFont(.luminari, size: 12))
+                    .font(.roboto(.regular, size: 12))
+            }
             ScrollView {
                 FlowLayout(mode: .scrollable,
                            binding: .constant(5),
@@ -276,14 +281,13 @@ struct AccountView: View {
     
     private var profileAvailability: some View {
         VStack {
-            Text("Availability")
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity,
-                    alignment: .center)
-                .foregroundColor(.gray)
-//                .font(.globalFont(.luminari, size: 12))
-                .font(.roboto(.regular, size: 12))
+            HStack(alignment: .center) {
+                Image(systemName: "calendar")
+                Text("Availability")
+                    .foregroundColor(.black)
+                //                .font(.globalFont(.luminari, size: 12))
+                    .font(.roboto(.regular, size: 12))
+            }
             if let userAvailability = availability {
                 Text(userAvailability)
                     .frame(
@@ -291,40 +295,40 @@ struct AccountView: View {
                         maxHeight: .infinity,
                         alignment: .leading)
                     .lineLimit(nil)
+                    .foregroundColor(.gray)
             }
         }
     }
     
     private var profileIsPayToPlayView: some View {
         VStack {
-            Text(isPayToPlay == true ? "Pay To Play" : "Free To Play")
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity,
-                    alignment: .leading)
+            HStack(alignment: .center) {
+                Image(systemName: isPayToPlay ? "dollarsign" : "")
+                Text(isPayToPlay == true ? "Pay To Play" : "Free To Play")
+            }
             // Add rates below if is pay to play at later date
         }
     }
     
     private var profileFriendCodeIdView: some View {
         VStack {
-//            if let profileFriendCodeId = friendCodeId {
-                VStack {
+            VStack {
+                HStack(alignment: .center) {
+                    Image(systemName: "barcode")
+                        .foregroundColor(.black)
                     Text("Friend Code")
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .center)
-                        .foregroundColor(.gray)
-//                        .font(.globalFont(.luminari, size: 14))
+                        .foregroundColor(.black)
+                //                        .font(.globalFont(.luminari, size: 14))
                         .font(.roboto(.regular, size: 14))
-                    Text(friendCodeId)
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .leading)
                 }
-//            }
+                Text(friendCodeId)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .leading)
+                    .foregroundColor(.gray)
+                
+            }
         }
     }
     
@@ -332,20 +336,17 @@ struct AccountView: View {
         VStack {
             if let profileUserLocation = userLocation {
                 VStack {
-                    Text("\(displayName ?? "")'s Location")
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .center)
-                        .foregroundColor(.gray)
-//                        .font(.globalFont(.luminari, size: 14))
-                        .font(.roboto(.regular, size: 14))
+                    HStack(alignment: .center) {
+                        Image(systemName: "location")
+                        Text("\(displayName ?? "")'s Location")
+                            .foregroundColor(.black)
+                        //                        .font(.globalFont(.luminari, size: 14))
+                            .font(.roboto(.regular, size: 14))
+                    }
                     Text(profileUserLocation)
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .leading)
                         .lineLimit(nil)
+                        .foregroundColor(.gray)
+
                 }
             }
         }

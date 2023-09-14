@@ -16,7 +16,7 @@ struct ManageAccountView: View {
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @StateObject private var manageAccountVM = ManageAccountViewModel()
 //    @StateObject private var filterer = Filterer()
-    @State var nilNavigation = false
+    @State private var isKeyboardVisible = false
 
     
 //    let session: SessionStore
@@ -88,6 +88,10 @@ struct ManageAccountView: View {
                     
                     }
                     .padding(.bottom, 80)
+                    .scrollDismissesKeyboard(.automatic)
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
                 }
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
@@ -195,11 +199,14 @@ struct ManageAccountView: View {
     // user's will know it as their personal ID, but on code it is their FriendID. their real ID is a uuid.
     private var personalFriendID: some View {
         VStack {
-            Text("Friend ID")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 15))
+            HStack(alignment: .center) {
+                Image(systemName: "barcode")
+                Text("Friend ID")
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .font(.roboto(.semibold,
+                                  size: 15))
+            }
             Text("\(manageAccountVM.user.friendCodeID)")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
@@ -379,7 +386,7 @@ struct ManageAccountView: View {
     private var aboutUserTextView: some View {
         VStack {
             HStack(spacing: 10) {
-                Image(systemName: "pencil")
+                Image(systemName: "rectangle.and.pencil.and.ellipsis")
                     .font(.system(size: 30))
                 Text("Write about \(manageAccountVM.userIsSolo ? "yourself" : "your group")")
                     .foregroundColor(.gray)
