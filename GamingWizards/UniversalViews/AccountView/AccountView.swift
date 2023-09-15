@@ -67,9 +67,9 @@ struct AccountView: View {
             VStack {
                 ScrollView {
                     Group {
-                        Spacer()
                         profileTitleView
                         profileImageView
+                            .padding()
                         profileDisplayName
                         Divider()
                             .background(Color.black)
@@ -121,8 +121,8 @@ struct AccountView: View {
                         maxHeight: .infinity,
                         alignment: .center)
                     .lineLimit(nil)
-//                    .font(.globalFont(.luminari, size: 28))
-                    .font(.roboto(.regular, size: 28))
+                    .font(.globalFont(.luminari, size: 28))
+//                    .font(.roboto(.regular, size: 28))
                     .bold()
             }
         }
@@ -130,13 +130,18 @@ struct AccountView: View {
     private var profileDisplayName: some View {
         VStack {
             if let profileDisplayName = displayName {
-                Text(profileDisplayName)
-                    .frame(
-                        maxWidth: .infinity,
-                        maxHeight: .infinity,
-                        alignment: .center)
-                    .lineLimit(nil)
-                    .font(.roboto(.regular, size: 24))
+                HStack {
+                    Image(systemName: "pencil")
+                        .foregroundColor(.black)
+                    Text(profileDisplayName)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .leading)
+                        .lineLimit(nil)
+                        .font(.roboto(.regular, size: 24))
+                    Spacer()
+                }
             }
         }
     }
@@ -153,13 +158,14 @@ struct AccountView: View {
     
     private var profileIsSolo: some View {
         VStack {
-            HStack(alignment: .center) {
+            HStack {
                 Image(systemName: isUserSolo ? "person" : "person.3")
                     .foregroundColor(.black)
                 Text("Group Size")
                     .foregroundColor(.black)
                 //                .font(.globalFont(.luminari, size: 16))
                     .font(.roboto(.regular, size: 16))
+                Spacer()
             }
             Text(isUserSolo == true ? "Solo" : "Group")
                 .frame(
@@ -173,13 +179,14 @@ struct AccountView: View {
     private var profileAgeView: some View {
         VStack {
             if let profileAge = age {
-                HStack(alignment: .center) {
+                HStack {
                     Image(systemName: "birthday.cake")
                         .foregroundColor(.black)
                     Text("Age")
                         .foregroundColor(.black)
                     //                        .font(.globalFont(.luminari, size: 16))
                         .font(.roboto(.regular, size: 16))
+                    Spacer()
                 }
                     Text("\(profileAge)")
                         .frame(
@@ -195,13 +202,14 @@ struct AccountView: View {
         VStack {
             if let profileAbout = about {
                 VStack {
-                    HStack(alignment: .center) {
+                    HStack {
                         Image(systemName: "rectangle.and.pencil.and.ellipsis")
                             .foregroundColor(.black)
                         Text("About")
                             .foregroundColor(.black)
                         //                        .font(.globalFont(.luminari, size: 14))
                             .font(.roboto(.regular, size: 14))
+                        Spacer()
                     }
                     Text(profileAbout)
                         .frame(
@@ -244,13 +252,14 @@ struct AccountView: View {
         */
         
         VStack {
-            HStack(alignment: .center) {
+            HStack {
                 Image(systemName: "gamecontroller")
                     .foregroundColor(.black)
                 Text("Games")
                     .foregroundColor(.black)
                 //                .font(.globalFont(.luminari, size: 12))
                     .font(.roboto(.regular, size: 12))
+                Spacer()
             }
             ScrollView {
                 FlowLayout(mode: .scrollable,
@@ -281,12 +290,13 @@ struct AccountView: View {
     
     private var profileAvailability: some View {
         VStack {
-            HStack(alignment: .center) {
+            HStack{
                 Image(systemName: "calendar")
                 Text("Availability")
                     .foregroundColor(.black)
                 //                .font(.globalFont(.luminari, size: 12))
                     .font(.roboto(.regular, size: 12))
+                Spacer()
             }
             if let userAvailability = availability {
                 Text(userAvailability)
@@ -302,9 +312,10 @@ struct AccountView: View {
     
     private var profileIsPayToPlayView: some View {
         VStack {
-            HStack(alignment: .center) {
+            HStack {
                 Image(systemName: isPayToPlay ? "dollarsign" : "")
                 Text(isPayToPlay == true ? "Pay To Play" : "Free To Play")
+                Spacer()
             }
             // Add rates below if is pay to play at later date
         }
@@ -313,13 +324,14 @@ struct AccountView: View {
     private var profileFriendCodeIdView: some View {
         VStack {
             VStack {
-                HStack(alignment: .center) {
+                HStack {
                     Image(systemName: "barcode")
                         .foregroundColor(.black)
                     Text("Friend Code")
                         .foregroundColor(.black)
                 //                        .font(.globalFont(.luminari, size: 14))
                         .font(.roboto(.regular, size: 14))
+                    Spacer()
                 }
                 Text(friendCodeId)
                     .frame(
@@ -336,16 +348,22 @@ struct AccountView: View {
         VStack {
             if let profileUserLocation = userLocation {
                 VStack {
-                    HStack(alignment: .center) {
+                    HStack {
                         Image(systemName: "location")
                         Text("\(displayName ?? "")'s Location")
                             .foregroundColor(.black)
                         //                        .font(.globalFont(.luminari, size: 14))
                             .font(.roboto(.regular, size: 14))
+                        Spacer()
                     }
                     Text(profileUserLocation)
                         .lineLimit(nil)
                         .foregroundColor(.gray)
+                        .multilineTextAlignment(.leading)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .leading)
 
                 }
             }

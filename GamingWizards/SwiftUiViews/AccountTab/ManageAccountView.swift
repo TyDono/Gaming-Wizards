@@ -299,13 +299,15 @@ struct ManageAccountView: View {
                 }
             }) {
                 Text("Update Location")
+                    .cornerRadius(Constants.roundedCornerRadius)
+                    .shadow(radius: Constants.buttonShadowRadius)
+                
                     .font(.roboto(.regular, size: 14))
                     .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
-                    .background(
-                        RoundedRectangle(cornerRadius: 18)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: Constants.roundedCornerRadius)
                             .stroke(Color.black, lineWidth: 2)
                     )
-                    .background(Color.white)
             }
         }
         .onAppear {
@@ -400,6 +402,7 @@ struct ManageAccountView: View {
 //                .navigationTitle("About")
                 .foregroundStyle(.secondary)
                 .padding(.horizontal)
+                .background(Color.white)
                 .onTapGesture {
                     manageAccountVM.isSaveChangesButtonIsActive = true
                 }
@@ -616,13 +619,14 @@ struct ManageAccountView: View {
             manageAccountVM.deleteUserAccount()
         }) {
             Text("Delete Account")
+                .cornerRadius(Constants.roundedCornerRadius)
+                .shadow(radius: Constants.buttonShadowRadius)
                 .foregroundColor(.red)
                 .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
-                .background(
-                    RoundedRectangle(cornerRadius: 18)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Constants.roundedCornerRadius)
                         .stroke(Color.black, lineWidth: 2)
                 )
-                .background(Color.white)
             
         }
         .alert(isPresented: $manageAccountVM.accountDeleteErrorAlertIsShowing) {

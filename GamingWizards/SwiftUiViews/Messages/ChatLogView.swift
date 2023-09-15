@@ -38,10 +38,14 @@ struct ChatLogView: View {
     
     private var bottomChatBarView: some View {
         HStack(spacing: 16) {
-            Image(systemName: "photo.on.rectangle.angled")
-                .font(.system(size: 24))
-                .foregroundColor(Color(.darkGray))
+//            Image(systemName: "photo.on.rectangle.angled")
+//                .font(.system(size: 24))
+//                .foregroundColor(Color(.darkGray))
             ZStack {
+//                RoundedRectangle(cornerRadius: 10)
+//                        .stroke(Color.gray, lineWidth: 1)
+//                        .frame(height: 50)
+                
                 if chatLogVM.chatText.isEmpty {
                     TextEditor(text: $MessageBarTextEditorPlaceholder)
                         .foregroundColor(.gray)
@@ -51,6 +55,10 @@ struct ChatLogView: View {
                 TextEditor(text: $chatLogVM.chatText.max(Constants.textViewMaxCharacters))
                     .opacity(chatLogVM.chatText.isEmpty ? 0.25 : 1)
                     .frame(height: 50)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
             }
             Button {
                 Task {
@@ -60,6 +68,7 @@ struct ChatLogView: View {
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
+                    .background(Color.clear)
             }
             .padding(.horizontal)
             .padding(.vertical, 8)
@@ -101,8 +110,8 @@ struct ChatLogView: View {
     
 }
 
-//struct ChatLogView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChatLogView(chatUser: .constant(nil))
-//    }
-//}
+struct ChatLogView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatLogView(chatUser: nil)
+    }
+}

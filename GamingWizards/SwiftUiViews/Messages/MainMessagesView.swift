@@ -131,9 +131,14 @@ struct MainMessagesView: View {
         VStack {
             Image(uiImage: (mainMessagesVM.mainUserProfileImage ?? UIImage(named: "WantedWizard+"))!)
                 .resizable()
-                .scaledToFit()
-                .aspectRatio(contentMode: .fit)
+                .scaledToFill()
                 .frame(width: 34, height: 34)
+                .clipped()
+                .cornerRadius(34)
+                .overlay(RoundedRectangle(cornerRadius: 44)
+                    .stroke(.black, lineWidth: 1)
+                )
+                .shadow(radius: 5)
         }
     }
     

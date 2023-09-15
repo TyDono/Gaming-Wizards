@@ -163,7 +163,7 @@ struct SignInView: View {
     
     private var titleLabel: some View {
         Text("Gaming Wizards")
-            .foregroundColor(Colors.black16)
+            .foregroundColor(Color.black)
             .fontWeight(.black)
             .foregroundColor(Color(.systemIndigo))
             .multilineTextAlignment(.center)

@@ -18,7 +18,7 @@ struct UserSearchView: View {
     @Binding var tabSelection: String
     private let distanceOptions: [String] = [
         "10", "50", "100",
-        "150", "200", "250", "No Limit"
+        "150", "250", "No Limit"
     ]
     
     init(debouncer: Debouncer, tabSelection: Binding<String>) {
@@ -72,8 +72,10 @@ struct UserSearchView: View {
                Text("Miles")
                    .padding(.horizontal, 16)
                    .padding(.vertical, 8)
-                   .background(Color.white)
+                   .background(Color.clear)
                    .cornerRadius(8)
+                   .font(.roboto(.semibold,
+                                 size: 18))
                Picker("Distance", selection: $selectedDistance) {
                    ForEach(distanceOptions, id: \.self) { option in
                        Text(option)
