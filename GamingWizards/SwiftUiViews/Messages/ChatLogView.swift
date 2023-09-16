@@ -9,15 +9,14 @@ import SwiftUI
 
 struct ChatLogView: View {
     
-    @ObservedObject private var chatLogVM: ChatLogViewModel
-//    @ObservedObject var chatLogVM: DetailedMessageViewModel
+    @StateObject private var chatLogVM: ChatLogViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
     let chatUser: FriendEntity?
     private let chatLogScrollToString: String = "Empty"
     
     init(chatUser: FriendEntity?) {
         self.chatUser = chatUser
-        self._chatLogVM = ObservedObject(wrappedValue: ChatLogViewModel(chatUser: chatUser))
+        self._chatLogVM = StateObject(wrappedValue: ChatLogViewModel(chatUser: chatUser))
 //        self.chatLogVM = .init(chatUser: chatUser)
     }
     
@@ -38,13 +37,7 @@ struct ChatLogView: View {
     
     private var bottomChatBarView: some View {
         HStack(spacing: 16) {
-//            Image(systemName: "photo.on.rectangle.angled")
-//                .font(.system(size: 24))
-//                .foregroundColor(Color(.darkGray))
             ZStack {
-//                RoundedRectangle(cornerRadius: 10)
-//                        .stroke(Color.gray, lineWidth: 1)
-//                        .frame(height: 50)
                 
                 if chatLogVM.chatText.isEmpty {
                     TextEditor(text: $MessageBarTextEditorPlaceholder)

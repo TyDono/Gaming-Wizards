@@ -20,14 +20,12 @@ extension ChatLogView {
         @Published var sentChatText: String = ""
         @Published var counter: Int = 0
         private let firestoreService: FirebaseFirestoreService
-//        let fbFirestoreHelper: FirebaseFirestoreHelper
         let fbAuthHelper = FirebaseAuthHelper.shared
         var chatUser: FriendEntity?
         
         init(
             firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper(),
             chatMessages: [ChatMessage] = [ChatMessage](),
-//            fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
             chatUser: FriendEntity?
         ) {
             
@@ -35,14 +33,6 @@ extension ChatLogView {
 //            self.fbFirestoreHelper = fbFirestoreHelper
             self.firestoreService = firestoreService
             self.chatUser = chatUser
-            /*
-            if let unwrappedChatUser = chatUser {
-                self.chatUser = unwrappedChatUser
-                callFetchMessages(chatUser: unwrappedChatUser)
-            } else {
-                self.chatUser = chatUser
-            }
-             */
         }
         
         func callFetchMessages(chatUser: FriendEntity) {
