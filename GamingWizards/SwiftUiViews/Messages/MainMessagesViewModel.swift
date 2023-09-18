@@ -20,6 +20,7 @@ extension MainMessagesView {
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
         @Published var isDetailedMessageViewShowing: Bool = false
+        @Published var onlineStatus: Bool = false
         
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
@@ -64,6 +65,22 @@ extension MainMessagesView {
                 }
             }
             return nil
+        }
+        
+        func onlineStatusCircleWasTapped(toId: String) async {
+            onlineStatus.toggle()
+            
+            // Post MVP
+            /*
+            do {
+                try await firestoreService.changeOnlineStatus(onlineStatus: onlineStatus, toId: toId, fromId: user.id)
+                
+            } catch {
+                print("ERROR, FAILED TO CHANGE ONLINE STATUS: ")
+                onlineStatus.toggle()
+                return
+            }
+             */
         }
         
         func callFetchRecentMessages() {

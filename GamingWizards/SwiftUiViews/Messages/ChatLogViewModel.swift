@@ -46,6 +46,10 @@ extension ChatLogView {
             }
         }
         
+        func chatSettingsButtonWasTapped() {
+            
+        }
+        
         func callHandelSendMessage(chatUser: FriendEntity) async {
             guard let chatUserId = chatUser.id else { return }
             sentChatText = chatText

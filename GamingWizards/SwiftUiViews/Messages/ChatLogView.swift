@@ -29,6 +29,10 @@ struct ChatLogView: View {
         }
         .navigationTitle(chatUser?.displayName ?? "")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(chatUser?.displayName ?? "")
+        .navigationBarItems(trailing: HStack {
+            gearButtonView
+        })
         .task {
             guard let unwrappedChatUser = self.chatUser else { return }
             chatLogVM.callFetchMessages(chatUser: unwrappedChatUser)
@@ -71,6 +75,16 @@ struct ChatLogView: View {
         .background(Color.white)
         .padding(.horizontal)
         .padding(.vertical, 4)
+    }
+    
+    private var gearButtonView: some View {
+        Button {
+            
+            // takes you to friend's list maybe? idk. stand by.
+        } label: {
+            Image(systemName: "gear")
+        }
+
     }
     
     private var messagesView: some View {

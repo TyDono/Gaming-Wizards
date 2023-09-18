@@ -102,10 +102,16 @@ struct MainMessagesView: View {
                 Text(mainMessagesVM.user.displayName ?? "")
                     .font(.roboto(.bold, size: 24))
                 HStack {
-                    Circle()
-                        .foregroundColor(.green)
-                        .frame(width: 14, height: 14)
-                    Text("Online")
+                    OnlineStatus(circleColor: mainMessagesVM.onlineStatus ? .green : .red,
+                                 circleWidth: 14,
+                                 circleHeight: 14)
+//                    .task {
+//                        await mainMessagesVM.onlineStatusCircleWasTapped(toId: "POST MVP")
+//                    }
+//                    Circle()
+//                        .foregroundColor(.green)
+//                        .frame(width: 14, height: 14)
+                    Text(mainMessagesVM.onlineStatus ? "Online" : "Offline")
                         .font(.roboto(.semibold, size: 12))
                         .foregroundColor(.lightGrey)
                 }
@@ -120,6 +126,9 @@ struct MainMessagesView: View {
     
     private var gearButtonView: some View {
         Button {
+            withAnimation(Animation.easeInOut(duration: 0.9).speed(1)) {
+                mainMessagesVM.onlineStatus.toggle()
+            }
             // takes you to friend's list maybe? idk. stand by.
         } label: {
             Image(systemName: "gear")

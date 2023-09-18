@@ -17,6 +17,7 @@ struct RecentMessage: Identifiable, Hashable, Codable {
     var chatUserDisplayName: String
     var timeStamp: Timestamp
     var imageString: String
+    var onlineStatus: Bool
     
     init(documentId: String, data: [String: Any]) {
         self.documentId = documentId
@@ -26,6 +27,7 @@ struct RecentMessage: Identifiable, Hashable, Codable {
         self.chatUserDisplayName = data[Constants.displayName] as? String ?? ""
         self.timeStamp = data[Constants.chatMessageTimeStamp] as? Timestamp ?? Timestamp(date: Date())
         self.imageString = data[Constants.imageString] as? String ?? ""
+        self.onlineStatus = data[Constants.onlineStatus] as? Bool ?? false
         
     }
 }

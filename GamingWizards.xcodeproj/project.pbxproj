@@ -139,6 +139,7 @@
 		CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */; };
 		CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */; };
 		CBEAF0462A1EB87400B9E900 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAF0452A1EB87400B9E900 /* LocationManager.swift */; };
+		CBF071B02AB8D24D00CB7C13 /* OnlineStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF071AF2AB8D24D00CB7C13 /* OnlineStatus.swift */; };
 		CBF91C942A7D059B00F20986 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = CBF91C932A7D059B00F20986 /* MapboxMaps */; };
 /* End PBXBuildFile section */
 
@@ -268,6 +269,7 @@
 		CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailViewModel.swift; sourceTree = "<group>"; };
 		CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		CBEAF0452A1EB87400B9E900 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		CBF071AF2AB8D24D00CB7C13 /* OnlineStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -649,6 +651,7 @@
 				CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */,
 				CB5948982A71636E00BE0DE2 /* AccountView */,
 				CB9F7C302AA0FCD4000E8AE1 /* MessageView.swift */,
+				CBF071AF2AB8D24D00CB7C13 /* OnlineStatus.swift */,
 			);
 			path = UniversalViews;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				CB5BE89229FDE958009D38D6 /* UITabBarControllerExtension.swift in Sources */,
 				CB5BE87F29FDE957009D38D6 /* RestaurantEndpoint.swift in Sources */,
 				CB5BE89629FDE958009D38D6 /* DateExtension.swift in Sources */,
+				CBF071B02AB8D24D00CB7C13 /* OnlineStatus.swift in Sources */,
 				CB5BE8A029FDE958009D38D6 /* MapViewController.swift in Sources */,
 				CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */,
 				CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */,

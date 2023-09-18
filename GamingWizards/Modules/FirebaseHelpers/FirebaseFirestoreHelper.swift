@@ -22,6 +22,7 @@ protocol FirebaseFirestoreService {
     func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
     func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void)
     func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws
+    func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws 
     
 }
 
@@ -197,7 +198,8 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             Constants.chatMessageText: "",
             Constants.fromId: fromId,
             Constants.toId: toId,
-            Constants.displayName: chatUserDisplayName
+            Constants.displayName: chatUserDisplayName,
+            Constants.onlineStatus: true
 //            "profileImageUrl":
             
         ] as [String : Any]
@@ -220,7 +222,8 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             Constants.chatMessageText: "",
             Constants.fromId: toId,
             Constants.toId: fromId,
-            Constants.displayName: user.displayName
+            Constants.displayName: user.displayName ?? "",
+            Constants.onlineStatus: true
 //            "profileImageUrl":
             
         ] as [String : Any]
@@ -308,6 +311,22 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
 //            "profileImageUrl":
             
             // similar dictionary for the recipient of this message.
+        ] as [String : Any]
+        
+        do {
+            try await recentMessageDocumentPath.setData(recentMessageData)
+        } catch {
+            print("ERROR, FAILED TO SAVE RECENT MESSAGES TO FIRESTORE: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws {
+        let uid = user.id
+        let recentMessageDocumentPath = firestore.collection(Constants.recentMessages).document(uid).collection(Constants.messagesStringCollectionCall).document(toId)
+        
+        let recentMessageData = [
+            Constants.onlineStatus: onlineStatus
         ] as [String : Any]
         
         do {
