@@ -102,6 +102,9 @@
 		CB5BE8FC29FDEA9C009D38D6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CB5BE8FB29FDEA9C009D38D6 /* FirebaseStorageCombine-Community */; };
 		CB5BE9012A0079BD009D38D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */; };
 		CB5BE9062A00D690009D38D6 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */; };
+		CB5F57E32AB9E73F0003660A /* CreateReportUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F57E22AB9E73F0003660A /* CreateReportUserView.swift */; };
+		CB5F57E52AB9EBEB0003660A /* CreateReportUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F57E42AB9EBEB0003660A /* CreateReportUserViewModel.swift */; };
+		CB5F57E72AB9EF340003660A /* ReportReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F57E62AB9EF330003660A /* ReportReason.swift */; };
 		CB6240682A53AD8100E69C5C /* DiskSpaceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */; };
 		CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */; };
 		CB62406C2A5787FF00E69C5C /* Filterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406B2A5787FF00E69C5C /* Filterer.swift */; };
@@ -232,6 +235,9 @@
 		CB5BE9022A008170009D38D6 /* GamingWizards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GamingWizards.entitlements; sourceTree = "<group>"; };
 		CB5BE9042A0084A4009D38D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		CB5BE9052A00D690009D38D6 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
+		CB5F57E22AB9E73F0003660A /* CreateReportUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportUserView.swift; sourceTree = "<group>"; };
+		CB5F57E42AB9EBEB0003660A /* CreateReportUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportUserViewModel.swift; sourceTree = "<group>"; };
+		CB5F57E62AB9EF330003660A /* ReportReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReason.swift; sourceTree = "<group>"; };
 		CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceHandler.swift; sourceTree = "<group>"; };
 		CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreHelper.swift; sourceTree = "<group>"; };
 		CB62406B2A5787FF00E69C5C /* Filterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filterer.swift; sourceTree = "<group>"; };
@@ -400,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE83029FDE954009D38D6 /* GamingWizardsApp.swift */,
+				CB5F57E62AB9EF330003660A /* ReportReason.swift */,
 				CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */,
 				CBBD556E2A294B6A00F27626 /* imagePicker.swift */,
 				CB5BE82E29FDE954009D38D6 /* NetworkRequestService.swift */,
@@ -605,6 +612,15 @@
 			path = MiscAssets;
 			sourceTree = "<group>";
 		};
+		CB5F57E12AB9E7180003660A /* Create Report User */ = {
+			isa = PBXGroup;
+			children = (
+				CB5F57E22AB9E73F0003660A /* CreateReportUserView.swift */,
+				CB5F57E42AB9EBEB0003660A /* CreateReportUserViewModel.swift */,
+			);
+			path = "Create Report User";
+			sourceTree = "<group>";
+		};
 		CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +658,7 @@
 		CBCD58212A0B1EC500136AA0 /* UniversalViews */ = {
 			isa = PBXGroup;
 			children = (
+				CB5F57E12AB9E7180003660A /* Create Report User */,
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
 				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
@@ -840,6 +857,7 @@
 				CB5BE89829FDE958009D38D6 /* MainTabView.swift in Sources */,
 				CB5BE8A629FDE958009D38D6 /* ManageAccountViewModel.swift in Sources */,
 				CB5BE88E29FDE958009D38D6 /* GamingWizardsContainer.xcdatamodeld in Sources */,
+				CB5F57E32AB9E73F0003660A /* CreateReportUserView.swift in Sources */,
 				CB5BE8B829FDE958009D38D6 /* UserAuth.swift in Sources */,
 				CBCD58272A16F84C00136AA0 /* SearchResultsDetailView.swift in Sources */,
 				CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */,
@@ -855,6 +873,7 @@
 				CB5BE8A429FDE958009D38D6 /* FriendListView.swift in Sources */,
 				CB5BE8AE29FDE958009D38D6 /* Validation.swift in Sources */,
 				CB9F7C312AA0FCD4000E8AE1 /* MessageView.swift in Sources */,
+				CB5F57E72AB9EF340003660A /* ReportReason.swift in Sources */,
 				CB5BE89229FDE958009D38D6 /* UITabBarControllerExtension.swift in Sources */,
 				CB5BE87F29FDE957009D38D6 /* RestaurantEndpoint.swift in Sources */,
 				CB5BE89629FDE958009D38D6 /* DateExtension.swift in Sources */,
@@ -906,6 +925,7 @@
 				CB5BE88229FDE958009D38D6 /* Endpoint.swift in Sources */,
 				CB5BE8B429FDE958009D38D6 /* User.swift in Sources */,
 				CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */,
+				CB5F57E52AB9EBEB0003660A /* CreateReportUserViewModel.swift in Sources */,
 				CB5BE88F29FDE958009D38D6 /* UIResponderExtension.swift in Sources */,
 				CB5BE8A829FDE958009D38D6 /* ManageAccountView.swift in Sources */,
 				CBB8CAA32A65EE07009B13A6 /* FlowLayout.swift in Sources */,

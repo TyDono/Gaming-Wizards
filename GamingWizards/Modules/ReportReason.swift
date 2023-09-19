@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+enum ReportReason: String, Codable {
+    case spam = "spam"
+    case fakeAccount = "fake account"
+    case inappropriateName = "inappropriate name"
+    case inappropriatePhoto = "inappropriate photo"
+    case inappropriateAbout = "inappropriate about"
+    case inappropriateTags = "inappropriate tags"
+    case advertisement = "advertisement"
+    case other = "other"
+}

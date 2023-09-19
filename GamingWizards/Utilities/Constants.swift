@@ -53,6 +53,9 @@ struct Constants {
     static let userPayToPlay = "isPayToPlay"
     static let userIsSolo = "isSolo"
     
+    // MARK: calls to user reports
+    static let userReports = "userReports"
+    
     // MARK: calls to Firebase Firestore
     static let recentMessages = "recent_messages"
     static let messagesStringCollectionCall = "messages"

@@ -23,6 +23,7 @@ protocol FirebaseFirestoreService {
     func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void)
     func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws
     func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws 
+    func saveUserReportToFirestore(userReport: UserReport) async
     
 }
 
@@ -357,5 +358,18 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             })
         }
     }
+
+        func saveUserReportToFirestore(userReport: UserReport) async {
+            do {
+                let encoder = JSONEncoder()
+                let reportData = try encoder.encode(userReport)
+                
+                let firestoreDocReference = firestore.collection(Constants.userReports).document(userReport.id)
+                try firestoreDocReference.setData(from: reportData)
+                
+            } catch {
+                print("Error encoding user report: \(error)")
+            }
+        }
     
 }
