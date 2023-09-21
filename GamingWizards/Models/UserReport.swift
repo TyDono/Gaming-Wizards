@@ -5,6 +5,7 @@
 //  Created by Tyler Donohue on 5/2/23.
 //
 
+import Foundation
 
 struct UserReport: Codable, Identifiable {
     
@@ -12,7 +13,7 @@ struct UserReport: Codable, Identifiable {
     var reason: ReportReason
     var creatorId: String
     var chatId: String
-    var dateSent: String
+    var dateSent: Date
     var userReportedId: String
     var userReportMessage: String
     
@@ -26,4 +27,5 @@ struct UserReport: Codable, Identifiable {
             "userReportedId": userReportedId
         ]
     }
+    
 }

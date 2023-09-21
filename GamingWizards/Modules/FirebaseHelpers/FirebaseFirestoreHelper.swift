@@ -360,12 +360,12 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     }
 
         func saveUserReportToFirestore(userReport: UserReport) async {
+            let firestoreDocReference = firestore.collection(Constants.userReports).document(userReport.id)
             do {
-                let encoder = JSONEncoder()
-                let reportData = try encoder.encode(userReport)
+//                let encoder = JSONEncoder()
+//                let reportData = try encoder.encode(userReport)
                 
-                let firestoreDocReference = firestore.collection(Constants.userReports).document(userReport.id)
-                try firestoreDocReference.setData(from: reportData)
+                try firestoreDocReference.setData(from: userReport)
                 
             } catch {
                 print("Error encoding user report: \(error)")

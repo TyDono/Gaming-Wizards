@@ -29,13 +29,14 @@ extension SearchResultsView {
         }
         
         func performSearchForMatchingGames(gameName: String) async {
+            let yourId = KeychainHelper.getUserID()
             Task {
                 do {
                     let listOfUsers: [User]? = try await fbFirestoreHelper.searchForUserMatchingGames(collectionName: Constants.usersString, whereField: Constants.userListOfGamesString, gameName: gameName)
                     guard let safeListOfUsers = listOfUsers else { return }
                     for user in safeListOfUsers {
                         // Have a check if they are in your blocked user list here as well
-                        if coreDataController.checkIfUserIsInFriendList(user: user) == false {
+                        if coreDataController.checkIfUserIsInFriendList(user: user) == false && user.id != yourId {
                             self.users?.append(user)
                         }
                     }

@@ -50,9 +50,17 @@ struct SearchResultsView: View {
     
     private var searchResultsList: some View {
         List {
-            let yourId = KeychainHelper.getUserID()
             ForEach(Array(searchResultsViewModel.users ?? []), id: \.self) { user in
-                if user.id != yourId {
+                if ((searchResultsViewModel.users?.isEmpty) == nil) {
+                    Spacer()
+                    Text("No Matches Found :(")
+                        .font(.roboto(.regular, size: 26))
+                        .foregroundStyle(.secondary)
+                        .fontWeight(.bold)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity)
+                } else {
                     VStack {
                         Text(user.title ?? "")
                             .font(.roboto(.regular, size: 19))
@@ -80,12 +88,12 @@ struct SearchResultsView: View {
                                     .foregroundColor(Color(.systemGray6))
                                 
                                 /*
-                                Image("blank-page")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                    .frame(width: geometry.size.width - 8, height: geometry.size.height - 8)
-                                    .clipped()
+                                 Image("blank-page")
+                                 .resizable()
+                                 .scaledToFill()
+                                 .clipShape(RoundedRectangle(cornerRadius: 5))
+                                 .frame(width: geometry.size.width - 8, height: geometry.size.height - 8)
+                                 .clipped()
                                  */
                                 
                             }
@@ -94,7 +102,7 @@ struct SearchResultsView: View {
                             }
                         }
                     )
-//                    Divider()
+                    //                    Divider()
                     .onTapGesture {
                         self.selectedUser = user
                         resultWasTapped = true

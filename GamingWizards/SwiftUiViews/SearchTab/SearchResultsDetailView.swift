@@ -28,6 +28,7 @@ struct SearchResultsDetailView: View {
                 viewAccountView
                     .padding()
                 friendRequestButton
+                reportUserButton
 //                    .font(.globalFont(.luminari, size: 16))
                     .font(.roboto(.regular, size: 16))
                     .padding()
@@ -91,6 +92,13 @@ struct SearchResultsDetailView: View {
         }
     }
     
+    private var reportUserButton: some View {
+        // tapping this sould pop up a view with cancel, report user, and block user. this should be created in the CreateReportUserView. so we wont need report reason and message since we will get that whent the user types in a message and selects a reason
+        CreateReportUserView(reporterId: $searchResultsDetailViewModel.user.id,
+                             reportedUser: $selectedUser,
+                             chatRoomId: $selectedUser.id)
+    }
+    
     private var listOfGames: some View {
         List {
             ForEach(selectedUser.listOfGames ?? [], id: \.self) { game in
@@ -117,12 +125,18 @@ struct SearchResultsDetailView: View {
     }
     
 }
-
-struct SearchResultsDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let user = User(id: "110k1") // Create an instance of User or use a mock object
-        let SpecificGame = "tony hawk"
-        
-        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(SpecificGame), tabSelection: .constant("nil"))
-    }
+#Preview {
+    let user = User(id: "110k1") // Create an instance of User or use a mock object
+    let SpecificGame = "tony hawk"
+    
+    return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(SpecificGame), tabSelection: .constant("nil"))
 }
+
+//struct SearchResultsDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let user = User(id: "110k1") // Create an instance of User or use a mock object
+//        let SpecificGame = "tony hawk"
+//        
+//        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(SpecificGame), tabSelection: .constant("nil"))
+//    }
+//}

@@ -555,6 +555,21 @@
                   endingLineNumber = "60"
                   offsetFromSymbolStart = "180">
                </Location>
+               <Location
+                  uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8c2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.FriendListViewModel.sendFriendRequest() -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/AccountTab/FriendListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "462">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -584,8 +599,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
          </BreakpointContent>
@@ -709,6 +724,21 @@
                   startingLineNumber = "46"
                   endingLineNumber = "46"
                   offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "443">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -882,6 +912,21 @@
                   endingLineNumber = "89"
                   offsetFromSymbolStart = "820">
                </Location>
+               <Location
+                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "1188">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -974,6 +1019,21 @@
                   startingLineNumber = "85"
                   endingLineNumber = "85"
                   offsetFromSymbolStart = "684">
+               </Location>
+               <Location
+                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "1447">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1112,6 +1172,21 @@
                   startingLineNumber = "95"
                   endingLineNumber = "95"
                   offsetFromSymbolStart = "296">
+               </Location>
+               <Location
+                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "443">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1679,6 +1754,21 @@
                   endingLineNumber = "89"
                   offsetFromSymbolStart = "395">
                </Location>
+               <Location
+                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986d62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "481">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1712,6 +1802,22 @@
             endingLineNumber = "94"
             landmarkName = "callFetchRecentMessages()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3725CDA7-C767-410E-A157-3AE88A30EA20"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "FirebaseFirestoreHelper"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

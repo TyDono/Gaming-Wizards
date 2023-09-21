@@ -28,5 +28,18 @@ extension CreateReportUserView {
             }
         }
         
+        func constructUserReportBaseData(reportReason: ReportReason, reporterId: String, reportedUserId: String, userReportedMessage: String, chatRoomId: String?) -> UserReport {
+            let currentTimeAndDate = AppContext.getDateAndTimeWhenCreated()
+            let reportId = UUID().uuidString
+            let userReport = UserReport(id: reportId,
+                                        reason: reportReason,
+                                        creatorId: reporterId,
+                                        chatId: chatRoomId ?? "No Chat Room",
+                                        dateSent: currentTimeAndDate,
+                                        userReportedId: reportedUserId,
+                                        userReportMessage: userReportedMessage)
+            return userReport
+        }
+        
     }
 }
