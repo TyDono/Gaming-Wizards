@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ReportReason: String, Codable {
+enum ReportReason: String, Codable, CaseIterable {
     case spam = "spam"
     case fakeAccount = "fake account"
     case inappropriateName = "inappropriate name"

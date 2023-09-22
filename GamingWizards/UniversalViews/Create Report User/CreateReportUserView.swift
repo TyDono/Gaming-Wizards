@@ -14,8 +14,11 @@ struct CreateReportUserView: View {
     @Binding var reportedUser: User
     @State var userReportedMessage: String
     @Binding var chatRoomId: String
+    @State private var selectedReasons: [ReportReason] = []
+    @State private var isReportBlockPresented: Bool = false
+    @State private var isReportReasonsPresented: Bool = false
+    @State var userReportDescriptionTextEditorPlaceHolderText: String = "Your description here"
     
-    @State private var isSheetPresented = false
     
     init(
         createReportUserVM: CreateReportUserViewModel = CreateReportUserViewModel(),
@@ -39,24 +42,170 @@ struct CreateReportUserView: View {
                 reportPopUp
                     .background(Color.clear)
             }
+        }
+    }
+    
+    private var customNavigationBar: some View {
+        HStack {
+            Button(action: {
+                isReportReasonsPresented.toggle()
+            }) {
+                Image(systemName: "xmark")
+                    .foregroundColor(.blue)
+                    .padding()
+                    .background(Color.clear)
+                    .imageScale(.large)
+            }
+            
+            Spacer()
+            Image(systemName: "exclamationmark.shield")
+            Text("ReportUser")
+            Spacer()
+            Button(action: {
+                isReportReasonsPresented.toggle()
+                Task {
+                    let userReportInfo = createReportUserVM.constructUserReportBaseData(
+                        reportReason: reportReason,
+                        reporterId: reporterId,
+                        reportedUserId: reportedUser.id,
+                        userReportedMessage: createReportUserVM.userReportDescription,
+                        chatRoomId: chatRoomId
+                    )
+                    do {
+                        try await createReportUserVM.handleSendUserReportWasTapped(userReport: userReportInfo)
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
+            }) {
+                Text("Submit")
+                    .foregroundColor(.blue)
+                    .padding()
+                    .background(Color.clear)
+            }
+            
+        }
+        .background(Color.clear)
+        .font(.headline)
+        .foregroundColor(.primary)
+        .navigationBarHidden(true)
+    }
+    
+    private var userReportMessageDescription: some View {
+        
+            VStack {
+                Text("Add a description to the report")
+                    .font(.roboto(.semibold,
+                                  size: 18))
+                ZStack {
+                    if createReportUserVM.userReportDescription.isEmpty {
+                        TextEditor(text: $userReportDescriptionTextEditorPlaceHolderText)
+                            .foregroundColor(.gray)
+                            .disabled(true)
+                            .frame(height: 200)
+                    }
+                    TextEditor(text: $createReportUserVM.userReportDescription.max(Constants.textViewMaxCharacters))
+                        .opacity(createReportUserVM.userReportDescription.isEmpty ? 0.25 : 1)
+                        .frame(height: 200)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
 
+//                TextEditor(text: $createReportUserVM.userReportDescription.max(Constants.textViewMaxCharacters))
+//                    .foregroundColor(.black)
+//                    .frame(height: 200)
+//                //                .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    .foregroundStyle(.secondary)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .stroke(Color.black, lineWidth: 1)
+//                    )
+//                    .foregroundColor(createReportUserVM.userReportDescription.isEmpty ? Color.black.opacity(0.25) : .black)
+//                    .padding(.horizontal)
+//                    .padding(.vertical)
+//                    .background(Color.white)
+//                    .font(.roboto(.regular,
+//                                  size: 16))
+//                    if createReportUserVM.userReportDescription.isEmpty {
+//                        Text("Your description here")
+//                            .foregroundColor(Color(UIColor.placeholderText))
+//                    }
+            }
+                .padding(.horizontal)
+                .padding(.vertical)
+        }
+    }
+    
+    private var explanationText: some View {
+        VStack {
+            Text("Why are you reporting?")
+                .frame(alignment: .leading)
+                .lineLimit(nil)
+                .font(.roboto(.semibold,
+                              size: 18))
+                .bold()
+                .foregroundStyle(Color.black)
+        }
+        .background(Color.clear)
+    }
+    
+    private var reportReasonsList: some View {
+        List {
+            ForEach(ReportReason.allCases, id: \.self) { reason in
+                HStack {
+                    Text(reason.rawValue)
+                    Spacer()
+                    Image(systemName: selectedReasons.contains(reason) ? "checkmark.circle.fill" : "circle")
+                        .foregroundColor(selectedReasons.contains(reason) ? .blue : .gray)
+                        .onTapGesture {
+                            withAnimation {
+                                if selectedReasons.contains(reason) {
+                                    selectedReasons.removeAll { $0 == reason }
+                                } else {
+                                    selectedReasons.append(reason)
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+    
+    private var reportReasonsPopUpView: some View {
+        NavigationView {
+            VStack {
+                customNavigationBar
+                explanationText
+                reportReasonsList
+                userReportMessageDescription
+                Spacer()
+            }
+            .navigationBarItems(leading:
+                                    Button(action: {
+                isReportReasonsPresented.toggle()
+            }) {
+                Text("Cancel")
+                
+            }
+            )
         }
     }
     
     private var reportPopUp: some View {
         
         Button(action: {
-            isSheetPresented.toggle()
+            isReportBlockPresented.toggle()
         }) {
             Image(systemName: "exclamationmark.bubble")
                 .frame(width: 25, height: 25, alignment: .center)
                 .foregroundColor(.blue)
         }
-        .sheet(isPresented: $isSheetPresented, content: {
+        .sheet(isPresented: $isReportBlockPresented, content: {
             VStack(spacing: 20) {
                 Button(action: {
                     print("tim")
-                    isSheetPresented.toggle()
+                    isReportBlockPresented.toggle()
                 }) {
                     Text("Block")
                         .foregroundColor(.red)
@@ -65,21 +214,7 @@ struct CreateReportUserView: View {
                         .cornerRadius(Constants.semiRoundedCornerRadius)
                 }
                 Button(action: {
-                    Task {
-                        let userReportInfo = createReportUserVM.constructUserReportBaseData(
-                            reportReason: reportReason,
-                            reporterId: reporterId,
-                            reportedUserId: reportedUser.id,
-                            userReportedMessage: userReportedMessage,
-                            chatRoomId: chatRoomId
-                        )
-                        do {
-                            try await createReportUserVM.handleSendUserReportWasTapped(userReport: userReportInfo)
-                            isSheetPresented.toggle()
-                        } catch {
-                            print("Error: \(error)")
-                        }
-                    }
+                    isReportReasonsPresented.toggle()
                 }) {
                     Text("Report")
                         .foregroundColor(.red)
@@ -87,9 +222,13 @@ struct CreateReportUserView: View {
                         .background(Color.white)
                         .cornerRadius(Constants.semiRoundedCornerRadius)
                 }
+                .sheet(isPresented: $isReportReasonsPresented, content: {
+//                    reportReasonsPopUp
+                    reportReasonsPopUpView
+                })
                 Spacer()
                 Button(action: {
-                    isSheetPresented.toggle()
+                    isReportBlockPresented.toggle()
                 }) {
                     Text("Cancel")
                         .foregroundColor(.blue)

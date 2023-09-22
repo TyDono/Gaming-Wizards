@@ -398,6 +398,7 @@ struct ManageAccountView: View {
                 .foregroundColor(.black)
                 .border(Color.black, width: 1)
                 .frame(height: 200)
+                .foregroundColor(manageAccountVM.about.isEmpty ? Color.black.opacity(0.25) : .black)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 //                .navigationTitle("About")
                 .foregroundStyle(.secondary)
@@ -482,8 +483,6 @@ struct ManageAccountView: View {
                                           size: 20))
                             .foregroundColor(.blue)
                             .padding(5)
-                        //                        .background(Color.blue)
-                        //                        .cornerRadius(Constants.roundedCornerRadius)
                         Image(systemName: "chevron.right")
                             .frame(maxWidth: .infinity,
                                    alignment: .trailing)
