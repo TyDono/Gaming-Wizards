@@ -1804,53 +1804,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3725CDA7-C767-410E-A157-3AE88A30EA20"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "saveUserReportToFirestore(userReport:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3725CDA7-C767-410E-A157-3AE88A30EA20 - 15236dcff8dc6eec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.saveUserReportToFirestore(userReport: GamingWizards.UserReport) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "371"
-                  endingLineNumber = "371"
-                  offsetFromSymbolStart = "850">
-               </Location>
-               <Location
-                  uuid = "3725CDA7-C767-410E-A157-3AE88A30EA20 - 15236dcff8dc6eec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.saveUserReportToFirestore(userReport: GamingWizards.UserReport) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "371"
-                  endingLineNumber = "371"
-                  offsetFromSymbolStart = "739">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

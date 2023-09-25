@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BlockedUserEntity" representedClassName="BlockedUserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="dateRemoved" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="displayName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="FriendEntity" representedClassName="FriendEntity" syncable="YES" codeGenerationType="class">
         <attribute name="displayName" attributeType="String"/>
         <attribute name="friendCodeID" attributeType="String"/>

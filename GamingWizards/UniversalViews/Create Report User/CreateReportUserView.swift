@@ -102,11 +102,11 @@ struct CreateReportUserView: View {
                         TextEditor(text: $userReportDescriptionTextEditorPlaceHolderText)
                             .foregroundColor(.gray)
                             .disabled(true)
-                            .frame(height: 200)
+                            .frame(height: 135)
                     }
                     TextEditor(text: $createReportUserVM.userReportDescription.max(Constants.textViewMaxCharacters))
                         .opacity(createReportUserVM.userReportDescription.isEmpty ? 0.25 : 1)
-                        .frame(height: 200)
+                        .frame(height: 135)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray, lineWidth: 1)
@@ -193,54 +193,53 @@ struct CreateReportUserView: View {
     }
     
     private var reportPopUp: some View {
-        
-        Button(action: {
-            isReportBlockPresented.toggle()
-        }) {
-            Image(systemName: "exclamationmark.bubble")
-                .frame(width: 25, height: 25, alignment: .center)
-                .foregroundColor(.blue)
-        }
-        .sheet(isPresented: $isReportBlockPresented, content: {
-            VStack(spacing: 20) {
-                Button(action: {
-                    print("tim")
-                    isReportBlockPresented.toggle()
-                }) {
-                    Text("Block")
-                        .foregroundColor(.red)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(Constants.semiRoundedCornerRadius)
-                }
-                Button(action: {
-                    isReportReasonsPresented.toggle()
-                }) {
-                    Text("Report")
-                        .foregroundColor(.red)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(Constants.semiRoundedCornerRadius)
-                }
-                .sheet(isPresented: $isReportReasonsPresented, content: {
-//                    reportReasonsPopUp
-                    reportReasonsPopUpView
-                })
-                Spacer()
-                Button(action: {
-                    isReportBlockPresented.toggle()
-                }) {
-                    Text("Cancel")
-                        .foregroundColor(.blue)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(Constants.semiRoundedCornerRadius)
-                }
+        VStack {
+            Button(action: {
+                isReportBlockPresented.toggle()
+            }) {
+                Image(systemName: "exclamationmark.bubble")
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .foregroundColor(.blue)
             }
-            .background(Color.clear)
-            .presentationDetents([.height(200)])
-            .padding()
-        })
+            .sheet(isPresented: $isReportBlockPresented, content: {
+                VStack(spacing: 20) {
+                    Button(action: {
+                        isReportBlockPresented.toggle()
+                    }) {
+                        Text("Block")
+                            .foregroundColor(.red)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                    }
+                    Button(action: {
+                        isReportReasonsPresented.toggle()
+                    }) {
+                        Text("Report")
+                            .foregroundColor(.red)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                    }
+                    .sheet(isPresented: $isReportReasonsPresented, content: {
+                        reportReasonsPopUpView
+                    })
+                    Spacer()
+                    Button(action: {
+                        isReportBlockPresented.toggle()
+                    }) {
+                        Text("Cancel")
+                            .foregroundColor(.blue)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                    }
+                }
+                .background(Color.clear)
+                .presentationDetents([.height(200)])
+                .padding()
+            }).background(Color.clear)
+        }
     }
     
 }

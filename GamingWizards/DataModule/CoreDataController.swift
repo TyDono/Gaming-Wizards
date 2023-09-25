@@ -21,7 +21,8 @@ class CoreDataController: ObservableObject {
 //    let firestoreDatabase = Firestore.firestore()
     let diskSpaceHandler = DiskSpaceHandler()
 //    let fbFirestoreHelper = FirebaseFirestoreHelper.shared
-//    let fbStorageHelper = FirebaseStorageHelper.shared
+//    var fbStorageHelper2 = FirebaseFirestoreHelper.shared
+//    var fbFirestoreService: FirebaseFirestoreService
     let fbFirestoreHelper = Firestore.firestore()
     let fbStorageHelper = Storage.storage()
     let persistentContainer: NSPersistentContainer
@@ -30,6 +31,7 @@ class CoreDataController: ObservableObject {
     }
     @Published var savedUserEntities: [UserEntity] = []
     @Published var savedFriendEntities: [FriendEntity] = []
+    @Published var blockedUserEntities: [BlockedUserEntity] = []
     @Published var savedUser: UserEntity?
     
     private init() {
@@ -76,17 +78,16 @@ class CoreDataController: ObservableObject {
         saveFriendData()
     }
     
-    //not needed. remove. outdated
-    func deleteFriend(friend: FriendEntity, userID: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
+    func deleteFriendInCloud(friend: FriendEntity, userId: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
 //        guard let userFriendCodeID = user.friendCodeID else { return }
         guard let friendUserID = friend.id else { return }
-        guard let friendCodeID = friend.friendCodeID else { return }
-        fbFirestoreHelper.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID )
+//        guard let friendCodeID = friend.friendCodeID else { return }
+        fbFirestoreHelper.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(userId)
             .delete() { err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
-                    self.fbFirestoreHelper.collection(Constants.usersString).document(userID).collection(Constants.userFriendList).document(friendCodeID).delete() { err in
+                    self.fbFirestoreHelper.collection(Constants.usersString).document(userId).collection(Constants.userFriendList).document(friendUserID).delete() { err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THE FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
@@ -120,6 +121,69 @@ class CoreDataController: ObservableObject {
         } catch let error {
             print("ERROR SAVING CORE DATA \(error)")
         }
+    }
+    
+    // MARK: Blocked Users
+    
+    func blockUser() { //adds them your list of blocked
+        
+    }
+    
+    func fetchBlockedUser() {
+        viewContext.perform { [self] in
+            let request = NSFetchRequest<BlockedUserEntity>(entityName: "BlockedUserEntities")
+            do {
+                blockedUserEntities = try viewContext.fetch(request)
+            } catch let error {
+                print("ERROR FETCHING CORE DATA: \(error)")
+            }
+        }
+    }
+    
+    func saveBlockedUsers() {
+        do {
+            try viewContext.save()
+            fetchBlockedUser()
+        } catch let error {
+            print("ERROR SAVING CORE DATA \(error)")
+        }
+    }
+    
+    func deleteBlockedUserInCloud(blockedUser: BlockedUserEntity, userId: String) {
+        guard let blockedUserId = blockedUser.id else { return }
+        //        guard let friendCodeID = blockedUser.friendCodeID else { return }
+        
+        fbFirestoreHelper.collection(Constants.usersString).document(blockedUserId).collection(Constants.blockedUsers).document(userId )
+            .delete() { err in
+                if let error = err {
+                    print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
+                } else {
+                    self.fbFirestoreHelper.collection(Constants.usersString).document(userId).collection(Constants.userFriendList).document(blockedUserId).delete() { err in
+                        if let error = err {
+                            print("ERROR DELETING SPECIFIC FRIEND IN THE FIRESTORE CLOUD: \(error.localizedDescription)")
+                        } else {
+                            self.viewContext.delete(blockedUser)
+                            self.saveBlockedUsers()
+                        }
+                    }
+                }
+            }
+    }
+    
+    func deleteBlockedUserLocally(blockedUser: BlockedUserEntity) {
+        viewContext.perform { [self] in
+            self.viewContext.delete(blockedUser)
+            self.saveBlockedUsers()
+        }
+    }
+    
+    func addBlockedUser(id: String, displayName: String, dateRemoved: Date) {
+        let newBlockedUser = BlockedUserEntity(context: viewContext)
+        newBlockedUser.id = id
+        newBlockedUser.displayName = displayName
+        newBlockedUser.dateRemoved = dateRemoved
+        
+        saveBlockedUsers()
     }
     
     // MARK: USER

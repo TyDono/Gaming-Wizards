@@ -68,6 +68,9 @@ struct Constants {
     static let chatMessageText = "chatMessageText"
     static let chatMessageTimeStamp = "timeStamp"
     
+    // MARK: calls to BlockedUser
+    static let blockedUsers = "blockedUsers"
+    
     // MARK: calls to AppStorage
 //    static let appStorageStringUserId = "user_Id"
 //    static let appStorageStringUserFirstName = "user_First_Name"
