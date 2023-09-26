@@ -125,10 +125,6 @@ class CoreDataController: ObservableObject {
     
     // MARK: Blocked Users
     
-    func blockUser() { //adds them your list of blocked
-        
-    }
-    
     func fetchBlockedUser() {
         viewContext.perform { [self] in
             let request = NSFetchRequest<BlockedUserEntity>(entityName: "BlockedUserEntities")

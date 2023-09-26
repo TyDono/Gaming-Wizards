@@ -70,6 +70,7 @@ struct Constants {
     
     // MARK: calls to BlockedUser
     static let blockedUsers = "blockedUsers"
+    static let dateRemoved = "dateRemoved"
     
     // MARK: calls to AppStorage
 //    static let appStorageStringUserId = "user_Id"

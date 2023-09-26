@@ -24,6 +24,10 @@ protocol FirebaseFirestoreService {
     func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws
     func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws 
     func saveUserReportToFirestore(userReport: UserReport) async
+    func deleteRecentMessage(friend: FriendEntity, userId: String) async throws
+    func deleteFriend(friend: FriendEntity, userId: String) async throws
+    func blockUser(blockedUser: BlockedUser) async throws
+    func deleteBlockedUser(blockedUser: BlockedUser) async throws
     
 }
 
@@ -190,7 +194,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             throw error
         }
     }
-
     
     func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws {
         
@@ -242,6 +245,80 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             throw error
         }
         
+    }
+    
+    func blockUser(blockedUser: BlockedUser) async throws {
+        let blockedUserData = blockedUser.blockedUserDictionary
+        let blockedUserDocumentPath = firestore
+            .collection(Constants.usersString)
+            .document(user.id)
+            .collection(Constants.blockedUsers)
+            .document(blockedUser.id)
+        do {
+            try await blockedUserDocumentPath.setData(blockedUserData)
+        } catch {
+            print("ERROR BLOCKING USER FROM FIRESTORE: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func deleteBlockedUser(blockedUser: BlockedUser) async throws {
+        let blockedUserDocumentPath = firestore
+            .collection(Constants.usersString)
+            .document(user.id)
+            .collection(Constants.blockedUsers)
+            .document(blockedUser.id)
+        do {
+            try await blockedUserDocumentPath.delete()
+        } catch {
+            print("ERROR DELETING BLOCKED USER FROM FIRESTORE: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func deleteRecentMessage(friend: FriendEntity, userId: String) async throws {
+        guard let friendUserId = friend.id else { return }
+        let friendDocPath = firestore.collection(Constants.recentMessages)
+            .document(friendUserId)
+            .collection(Constants.messagesStringCollectionCall)
+            .document(userId)
+        let userFriendDocPath = firestore.collection(Constants.recentMessages)
+            .document(userId)
+            .collection(Constants.messagesStringCollectionCall)
+            .document(friendUserId)
+        do {
+            try await friendDocPath.delete()
+            try await userFriendDocPath.delete()
+        } catch {
+            print("ERROR DELETING RECENT MESSAGE FROM FIRESTORE: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func deleteFriend(friend: FriendEntity, userId: String) async throws {
+        guard let friendUserId = friend.id else { return }
+        // Delete your yourself from their friend's list
+        let friendDocPath = firestore.collection(Constants.usersString)
+            .document(friendUserId)
+            .collection(Constants.userFriendList)
+            .document(userId)
+        // Delete the friend from the user's friend list
+        let userFriendDocPath = firestore.collection(Constants.usersString)
+            .document(userId)
+            .collection(Constants.userFriendList)
+            .document(friendUserId)
+        do {
+            try await friendDocPath.delete()
+            try await userFriendDocPath.delete()
+            
+            // Delete the friend from CoreData
+            await coreDataController.viewContext.delete(friend)
+            await coreDataController.saveFriendData()
+            
+        } catch {
+            print("ERROR DELETING FRIEND FROM FIRESTORE: \(error.localizedDescription)")
+            throw error
+        }
     }
     
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void) {
