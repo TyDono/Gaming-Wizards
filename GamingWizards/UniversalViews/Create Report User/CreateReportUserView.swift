@@ -9,31 +9,34 @@ import SwiftUI
 
 struct CreateReportUserView: View {
     @ObservedObject private var createReportUserVM: CreateReportUserViewModel
-    @State var reportReason: ReportReason
+//    @State var reportReason: ReportReason
     @Binding var reporterId: String
     @Binding var reportedUser: User
-    @State var userReportedMessage: String
+    @State var userReportedMessage: String = ""
     @Binding var chatRoomId: String
     @State private var selectedReasons: [ReportReason] = []
     @State private var isReportBlockPresented: Bool = false
     @State private var isReportReasonsPresented: Bool = false
     @State var userReportDescriptionTextEditorPlaceHolderText: String = "Your description here"
+    @Binding var blockedUser: BlockedUser
     
     
     init(
         createReportUserVM: CreateReportUserViewModel = CreateReportUserViewModel(),
-        reportReason: ReportReason = .other,
+//        reportReason: ReportReason,
         reporterId: Binding<String>,
         reportedUser: Binding<User>,
-        userReportedMessage: String = "",
-        chatRoomId: Binding<String>
+//        userReportedMessage: String,
+        chatRoomId: Binding<String>,
+        blockedUser: Binding<BlockedUser>
     ) {
         self._createReportUserVM = ObservedObject(wrappedValue: createReportUserVM)
-        self.reportReason = reportReason
+//        self.reportReason = reportReason
         self._reporterId = reporterId
         self._reportedUser = reportedUser
-        self.userReportedMessage = userReportedMessage
+//        self.userReportedMessage = userReportedMessage
         self._chatRoomId = chatRoomId
+        self._blockedUser = blockedUser
     }
     
     var body: some View {
@@ -65,7 +68,7 @@ struct CreateReportUserView: View {
                 isReportReasonsPresented.toggle()
                 Task {
                     let userReportInfo = createReportUserVM.constructUserReportBaseData(
-                        reportReason: reportReason,
+                        reportReason: .other,
                         reporterId: reporterId,
                         reportedUserId: reportedUser.id,
                         userReportedMessage: createReportUserVM.userReportDescription,
@@ -204,6 +207,9 @@ struct CreateReportUserView: View {
             .sheet(isPresented: $isReportBlockPresented, content: {
                 VStack(spacing: 20) {
                     Button(action: {
+                        Task {
+//                           await createReportUserVM.handleBlockingUser(blockedUser: blockedUser)
+                        }
                         isReportBlockPresented.toggle()
                     }) {
                         Text("Block")
@@ -213,6 +219,16 @@ struct CreateReportUserView: View {
                             .cornerRadius(Constants.semiRoundedCornerRadius)
                     }
                     Button(action: {
+//                        let finishedReport =
+//                        createReportUserVM.constructUserReportBaseData(reportReason: .other,
+//                                                         reporterId: createReportUserVM.user.id,
+//                                                         reportedUserId: blockedUser.id,
+//                                                         userReportedMessage: createReportUserVM.userReportDescription,
+//                                                         chatRoomId: "")
+                        Task {
+//                            await createReportUserVM.handleSendUserReportWasTapped(userReport: finishedReport)
+                            await createReportUserVM.handleBlockingUser(blockedUser: blockedUser)
+                        }
                         isReportReasonsPresented.toggle()
                     }) {
                         Text("Report")
@@ -244,11 +260,14 @@ struct CreateReportUserView: View {
     
 }
 
-#Preview {
-    CreateReportUserView(
-        reportReason: .other,
-        reporterId: .constant("YourReporterID"),
-        reportedUser: .constant(User(id: "ReportedUserID")),
-        chatRoomId: .constant("ChatRoomID")
-    )
-}
+//#Preview {
+//    CreateReportUserView(
+////        reportReason: .other,
+//        reporterId: .constant("YourReporterID"),
+//        reportedUser: .constant(User(id: "ReportedUserID")),
+//        userReportedMessage: "thy are beans", chatRoomId: .constant("ChatRoomID"),
+//        blockedUser: .constant(BlockedUser(blockedUserId: "7778ht7",
+//                                           displayName: "phil whil",
+//                                           dateRemoved: Date()))
+//    )
+//}

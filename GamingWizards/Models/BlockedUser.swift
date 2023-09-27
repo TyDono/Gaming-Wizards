@@ -13,12 +13,12 @@ struct BlockedUser:Identifiable, Codable {
     var displayName: String
     var dateRemoved: Date
     
-    init(blockedUserId: String, data: [String: Any]) {
-        self.blockedUserId = blockedUserId
-        self.blockedUserId = data[Constants.blockedUsers] as? String ?? ""
-        self.displayName = data[Constants.displayName] as? String ?? ""
-        self.dateRemoved = data[Constants.dateRemoved] as? Date ?? Date()   
-    }
+//    init(blockedUserId: String, data: [String: Any]) {
+//        self.blockedUserId = blockedUserId
+//        self.blockedUserId = data[Constants.blockedUsers] as? String ?? ""
+//        self.displayName = data[Constants.displayName] as? String ?? ""
+//        self.dateRemoved = data[Constants.dateRemoved] as? Date ?? Date()   
+//    }
     
     var blockedUserDictionary: [String: Any] {
         return [

@@ -23,7 +23,7 @@ protocol FirebaseFirestoreService {
     func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void)
     func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws
     func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws 
-    func saveUserReportToFirestore(userReport: UserReport) async
+    func saveUserReportToFirestore(userReport: UserReport) async throws
     func deleteRecentMessage(friend: FriendEntity, userId: String) async throws
     func deleteFriend(friend: FriendEntity, userId: String) async throws
     func blockUser(blockedUser: BlockedUser) async throws
@@ -256,6 +256,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             .document(blockedUser.id)
         do {
             try await blockedUserDocumentPath.setData(blockedUserData)
+            await coreDataController.addBlockedUser(blockedUser: blockedUser)
         } catch {
             print("ERROR BLOCKING USER FROM FIRESTORE: \(error.localizedDescription)")
             throw error
@@ -436,7 +437,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
 
-        func saveUserReportToFirestore(userReport: UserReport) async {
+        func saveUserReportToFirestore(userReport: UserReport) async throws {
             let firestoreDocReference = firestore.collection(Constants.userReports).document(userReport.id)
             do {
 //                let encoder = JSONEncoder()

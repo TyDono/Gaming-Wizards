@@ -21,6 +21,14 @@ extension CreateReportUserView {
             self.firestoreService = firestoreService
         }
         
+        func handleBlockingUser(blockedUser: BlockedUser) async {
+            do {
+                try await firestoreService.blockUser(blockedUser: blockedUser)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
         func handleSendUserReportWasTapped(userReport: UserReport) async {
             do {
                 try await firestoreService.saveUserReportToFirestore(userReport: userReport)

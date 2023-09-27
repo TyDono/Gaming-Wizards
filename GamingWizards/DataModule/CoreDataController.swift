@@ -127,7 +127,7 @@ class CoreDataController: ObservableObject {
     
     func fetchBlockedUser() {
         viewContext.perform { [self] in
-            let request = NSFetchRequest<BlockedUserEntity>(entityName: "BlockedUserEntities")
+            let request = NSFetchRequest<BlockedUserEntity>(entityName: "BlockedUserEntity")
             do {
                 blockedUserEntities = try viewContext.fetch(request)
             } catch let error {
@@ -143,6 +143,15 @@ class CoreDataController: ObservableObject {
         } catch let error {
             print("ERROR SAVING CORE DATA \(error)")
         }
+    }
+    
+    func addBlockedUser(blockedUser: BlockedUser) {
+        let newBlockedUser = BlockedUserEntity(context: viewContext)
+        newBlockedUser.id = blockedUser.id
+        newBlockedUser.displayName = blockedUser.displayName
+        newBlockedUser.dateRemoved = blockedUser.dateRemoved
+        
+        saveBlockedUsers()
     }
     
     func deleteBlockedUserInCloud(blockedUser: BlockedUserEntity, userId: String) {
