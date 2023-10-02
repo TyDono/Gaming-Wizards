@@ -93,7 +93,6 @@ struct SearchResultsDetailView: View {
     }
     
     private var reportUserButton: some View {
-        // tapping this sould pop up a view with cancel, report user, and block user. this should be created in the CreateReportUserView. so we wont need report reason and message since we will get that whent the user types in a message and selects a reason
         CreateReportUserView(reporterId: $searchResultsDetailViewModel.user.id,
                              reportedUser: $selectedUser,
                              chatRoomId: $selectedUser.id,

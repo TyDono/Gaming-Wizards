@@ -350,8 +350,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/UserSearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "resultView"
             landmarkType = "24">
          </BreakpointContent>

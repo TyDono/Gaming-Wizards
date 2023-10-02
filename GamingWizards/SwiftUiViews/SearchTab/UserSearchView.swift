@@ -16,10 +16,6 @@ struct UserSearchView: View {
     @State private var debouncer = Debouncer(delay: 0.5)
     @State private var selectedDistance: String = "150"
     @Binding var tabSelection: String
-    private let distanceOptions: [String] = [
-        "10", "50", "100",
-        "150", "250", "No Limit"
-    ]
     
     init(debouncer: Debouncer, tabSelection: Binding<String>) {
         self._tabSelection = tabSelection
@@ -33,15 +29,25 @@ struct UserSearchView: View {
         ZStack {
             NavigationStack {
                 VStack {
-                    distancePicker
                     searchBar
                     resultView
                 }
             }
             .navigationBarTitle("Looking for Group")
-            .navigationDestination(isPresented: $userSearchVM.navigateToSearchResults) {
+//            .navigationBarTitleDisplayMode(.inline)
+//            .navigationTitleView(NavigationTitleWithImage())
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                userSearchVM.isSearchSettingsViewShown.toggle()
+            }) {
+                Image(systemName: "slider.horizontal.3")
+            })
+            .navigationDestination(isPresented: $userSearchVM.isNavigateToSearchResults) {
                 SearchResultsView(tabSelection: $tabSelection, searchText: filterer.searchText)
             }
+        }
+        .navigationDestination(isPresented: $userSearchVM.isSearchSettingsViewShown) {
+            SearchSettingsView(searchSettingsVM: userSearchVM.searchSettingsVM)
         }
         .scrollDismissesKeyboard(.automatic)
         .onTapGesture {
@@ -66,25 +72,6 @@ struct UserSearchView: View {
 //            .aspectRatio(contentMode: .fill)
 //            .edgesIgnoringSafeArea(.all)
     }
-    
-    private var distancePicker: some View {
-           VStack {
-               Text("Miles")
-                   .padding(.horizontal, 16)
-                   .padding(.vertical, 8)
-                   .background(Color.clear)
-                   .cornerRadius(8)
-                   .font(.roboto(.semibold,
-                                 size: 18))
-               Picker("Distance", selection: $selectedDistance) {
-                   ForEach(distanceOptions, id: \.self) { option in
-                       Text(option)
-                   }
-               }
-               .pickerStyle(SegmentedPickerStyle())
-               .customPickerBackground(selected: true)
-           }
-       }
     
     private var searchBar: some View {
         SearchBar(searchText: $filterer.searchText,
@@ -115,7 +102,7 @@ struct UserSearchView: View {
                                         userSearchVM.isSearchError.toggle()
                                     }
                                 } else {
-                                    userSearchVM.navigateToSearchResults = true
+                                    userSearchVM.isNavigateToSearchResults = true
                                 }
                             })
                         }

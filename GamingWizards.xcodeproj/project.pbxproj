@@ -107,6 +107,12 @@
 		CB5F57E72AB9EF340003660A /* ReportReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F57E62AB9EF330003660A /* ReportReason.swift */; };
 		CB5F57E92ABB66E20003660A /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F57E82ABB66E20003660A /* AppContext.swift */; };
 		CB623DF22AC28B8D008E6180 /* BlockedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DF12AC28B8D008E6180 /* BlockedUser.swift */; };
+		CB623DF52AC600F2008E6180 /* DistancePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DF42AC600F2008E6180 /* DistancePickerView.swift */; };
+		CB623DF72AC6012C008E6180 /* DistancePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DF62AC6012C008E6180 /* DistancePickerViewModel.swift */; };
+		CB623DF92AC602C0008E6180 /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DF82AC602C0008E6180 /* UnitConverter.swift */; };
+		CB623DFC2AC62570008E6180 /* SearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DFB2AC62570008E6180 /* SearchSettingsView.swift */; };
+		CB623DFE2AC62580008E6180 /* SearchSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DFD2AC62580008E6180 /* SearchSettingsViewModel.swift */; };
+		CB623E002ACB42A3008E6180 /* CustomNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DFF2ACB42A3008E6180 /* CustomNavigationTitle.swift */; };
 		CB6240682A53AD8100E69C5C /* DiskSpaceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */; };
 		CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */; };
 		CB62406C2A5787FF00E69C5C /* Filterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406B2A5787FF00E69C5C /* Filterer.swift */; };
@@ -242,6 +248,12 @@
 		CB5F57E62AB9EF330003660A /* ReportReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReason.swift; sourceTree = "<group>"; };
 		CB5F57E82ABB66E20003660A /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		CB623DF12AC28B8D008E6180 /* BlockedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUser.swift; sourceTree = "<group>"; };
+		CB623DF42AC600F2008E6180 /* DistancePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancePickerView.swift; sourceTree = "<group>"; };
+		CB623DF62AC6012C008E6180 /* DistancePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancePickerViewModel.swift; sourceTree = "<group>"; };
+		CB623DF82AC602C0008E6180 /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
+		CB623DFB2AC62570008E6180 /* SearchSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsView.swift; sourceTree = "<group>"; };
+		CB623DFD2AC62580008E6180 /* SearchSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewModel.swift; sourceTree = "<group>"; };
+		CB623DFF2ACB42A3008E6180 /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
 		CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceHandler.swift; sourceTree = "<group>"; };
 		CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreHelper.swift; sourceTree = "<group>"; };
 		CB62406B2A5787FF00E69C5C /* Filterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filterer.swift; sourceTree = "<group>"; };
@@ -418,6 +430,7 @@
 				CB5BE83329FDE954009D38D6 /* Endpoint.swift */,
 				CB62406B2A5787FF00E69C5C /* Filterer.swift */,
 				CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */,
+				CB623DF82AC602C0008E6180 /* UnitConverter.swift */,
 				CBF91C962A81715600F20986 /* FirebaseHelpers */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
@@ -627,6 +640,24 @@
 			path = "Create Report User";
 			sourceTree = "<group>";
 		};
+		CB623DF32AC600D0008E6180 /* Distance Picker */ = {
+			isa = PBXGroup;
+			children = (
+				CB623DF42AC600F2008E6180 /* DistancePickerView.swift */,
+				CB623DF62AC6012C008E6180 /* DistancePickerViewModel.swift */,
+			);
+			path = "Distance Picker";
+			sourceTree = "<group>";
+		};
+		CB623DFA2AC62558008E6180 /* Search Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CB623DFB2AC62570008E6180 /* SearchSettingsView.swift */,
+				CB623DFD2AC62580008E6180 /* SearchSettingsViewModel.swift */,
+			);
+			path = "Search Settings";
+			sourceTree = "<group>";
+		};
 		CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,9 +695,12 @@
 		CBCD58212A0B1EC500136AA0 /* UniversalViews */ = {
 			isa = PBXGroup;
 			children = (
+				CB623DF32AC600D0008E6180 /* Distance Picker */,
 				CB5F57E12AB9E7180003660A /* Create Report User */,
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
+				CB623DFA2AC62558008E6180 /* Search Settings */,
 				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
+				CB623DFF2ACB42A3008E6180 /* CustomNavigationTitle.swift */,
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
 				CB62962E2A5F987500F84367 /* SearchResultCellView.swift */,
 				CB6296302A60913300F84367 /* ListCellView.swift */,
@@ -862,6 +896,7 @@
 				CB5BE88729FDE958009D38D6 /* SignInContentViewViewModel.swift in Sources */,
 				CB5F57E92ABB66E20003660A /* AppContext.swift in Sources */,
 				CB5BE89829FDE958009D38D6 /* MainTabView.swift in Sources */,
+				CB623DFE2AC62580008E6180 /* SearchSettingsViewModel.swift in Sources */,
 				CB5BE8A629FDE958009D38D6 /* ManageAccountViewModel.swift in Sources */,
 				CB5BE88E29FDE958009D38D6 /* GamingWizardsContainer.xcdatamodeld in Sources */,
 				CB5F57E32AB9E73F0003660A /* CreateReportUserView.swift in Sources */,
@@ -877,6 +912,7 @@
 				CB5BE87E29FDE957009D38D6 /* NetworkRequestService.swift in Sources */,
 				CB5BE88329FDE958009D38D6 /* UserSignInViewController.swift in Sources */,
 				CB5BE8A229FDE958009D38D6 /* HomeViewModel.swift in Sources */,
+				CB623E002ACB42A3008E6180 /* CustomNavigationTitle.swift in Sources */,
 				CB5BE8A429FDE958009D38D6 /* FriendListView.swift in Sources */,
 				CB5BE8AE29FDE958009D38D6 /* Validation.swift in Sources */,
 				CB9F7C312AA0FCD4000E8AE1 /* MessageView.swift in Sources */,
@@ -889,6 +925,8 @@
 				CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */,
 				CB623DF22AC28B8D008E6180 /* BlockedUser.swift in Sources */,
 				CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */,
+				CB623DF92AC602C0008E6180 /* UnitConverter.swift in Sources */,
+				CB623DFC2AC62570008E6180 /* SearchSettingsView.swift in Sources */,
 				CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */,
 				CB5BE8A529FDE958009D38D6 /* DetailedFriendView.swift in Sources */,
 				CB5BE88129FDE957009D38D6 /* GamingWizardsNotification.swift in Sources */,
@@ -932,6 +970,8 @@
 				CBBD556F2A294B6A00F27626 /* imagePicker.swift in Sources */,
 				CB5BE88229FDE958009D38D6 /* Endpoint.swift in Sources */,
 				CB5BE8B429FDE958009D38D6 /* User.swift in Sources */,
+				CB623DF72AC6012C008E6180 /* DistancePickerViewModel.swift in Sources */,
+				CB623DF52AC600F2008E6180 /* DistancePickerView.swift in Sources */,
 				CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */,
 				CB5F57E52AB9EBEB0003660A /* CreateReportUserViewModel.swift in Sources */,
 				CB5BE88F29FDE958009D38D6 /* UIResponderExtension.swift in Sources */,
