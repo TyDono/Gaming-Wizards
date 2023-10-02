@@ -32,6 +32,7 @@ class CoreDataController: ObservableObject {
     @Published var savedUserEntities: [UserEntity] = []
     @Published var savedFriendEntities: [FriendEntity] = []
     @Published var blockedUserEntities: [BlockedUserEntity] = []
+    @Published var SearchSettingsEntities: [SearchSettingsEntity] = []
     @Published var savedUser: UserEntity?
     
     private init() {
@@ -45,6 +46,25 @@ class CoreDataController: ObservableObject {
         }
         fetchFriends()
         //have fetch user here later if ever added
+    }
+    
+    func clearAllData() {
+        clearEntityData(entityName: "UserEntity")
+        clearEntityData(entityName: "FriendEntity")
+        clearEntityData(entityName: "BlockedUserEntity")
+        clearEntityData(entityName: "SearchSettingsEntity")
+    }
+
+    private func clearEntityData(entityName: String) {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try viewContext.execute(deleteRequest)
+            try viewContext.save()
+            print("Cleared Core Data for entity \(entityName)")
+        } catch {
+            print("Failed to clear Core Data for entity \(entityName): \(error)")
+        }
     }
     
     // MARK: FRIEND

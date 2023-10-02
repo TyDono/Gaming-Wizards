@@ -278,7 +278,7 @@ import Security
                 log_Status = false
                 if let bundleIdentifier = Bundle.main.bundleIdentifier {
                     KeychainHelper.clearKeychain()
-                    coreDataController.clearAllFriends()
+                    coreDataController.clearAllData()
                     UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
                 }
             }
