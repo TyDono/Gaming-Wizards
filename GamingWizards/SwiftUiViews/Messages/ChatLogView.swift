@@ -12,6 +12,8 @@ struct ChatLogView: View {
     @StateObject private var chatLogVM: ChatLogViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
     let chatUser: FriendEntity?
+//    @State private var reportedUser: User!
+    
     private let chatLogScrollToString: String = "Empty"
     
     init(chatUser: FriendEntity?) {
@@ -78,13 +80,16 @@ struct ChatLogView: View {
     }
     
     private var gearButtonView: some View {
-        Button {
-            
-            // takes you to friend's list maybe? idk. stand by.
-        } label: {
-            Image(systemName: "gear")
-        }
-
+//            let reportedUser = chatLogVM.convertFriendEntityToReportedUser(friend: chatUser!)
+            CreateReportUserView(
+                reporterId: $chatLogVM.user.id,
+                reportedUser: Binding(get: { chatLogVM.reportedUser }, set: { _ in }),
+                chatRoomId: Binding<String>( get: { chatLogVM.reportedUser.id }, set: { _ in }),
+                blockedUser: .constant(BlockedUser(blockedUserId: chatLogVM.reportedUser.id,
+                                                   displayName: chatLogVM.reportedUser.displayName ?? "",
+                                                   dateRemoved: Date()))
+            )
+        
     }
     
     private var messagesView: some View {
@@ -115,10 +120,4 @@ struct ChatLogView: View {
         }
     }
     
-}
-
-struct ChatLogView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatLogView(chatUser: nil)
-    }
 }

@@ -22,17 +22,38 @@ extension ChatLogView {
         private let firestoreService: FirebaseFirestoreService
         let fbAuthHelper = FirebaseAuthHelper.shared
         var chatUser: FriendEntity?
+        var reportedUser: User
         
         init(
             firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper(),
             chatMessages: [ChatMessage] = [ChatMessage](),
             chatUser: FriendEntity?
+//            reportedUser: User
         ) {
             
             self.chatMessages = chatMessages
-//            self.fbFirestoreHelper = fbFirestoreHelper
             self.firestoreService = firestoreService
             self.chatUser = chatUser
+            self.reportedUser = User(
+                    id: chatUser?.id ?? "",
+                    firstName: nil,
+                    lastName: nil,
+                    displayName: chatUser?.displayName ?? "",
+                    email: nil,
+                    latitude: nil,
+                    longitude: nil,
+                    location: nil,
+                    profileImageString: "",
+                    friendCodeID: "",
+                    listOfGames: nil,
+                    groupSize: nil,
+                    age: nil,
+                    about: nil,
+                    availability: nil,
+                    title: nil,
+                    isPayToPlay: false,
+                    isSolo: false
+                )
         }
         
         func callFetchMessages(chatUser: FriendEntity) {
@@ -48,6 +69,15 @@ extension ChatLogView {
         
         func chatSettingsButtonWasTapped() {
             
+        }
+        
+        func convertFriendEntityToReportedUser(friend: FriendEntity, completion: @escaping (User) -> Void) {
+            DispatchQueue.global().async {
+                let user = User(id: friend.id!, firstName: "", lastName: "", displayName: friend.displayName, email: "", latitude: 0.0, longitude: 0.0, location: "", profileImageString: "", friendCodeID: "", listOfGames: [""], groupSize: "", age: "", about: "", availability: "", title: "", isPayToPlay: false, isSolo: false)
+                DispatchQueue.main.async {
+                    completion(user)
+                }
+            }
         }
         
         func callHandelSendMessage(chatUser: FriendEntity) async {

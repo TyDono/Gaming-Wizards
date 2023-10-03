@@ -113,6 +113,8 @@
 		CB623DFC2AC62570008E6180 /* SearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DFB2AC62570008E6180 /* SearchSettingsView.swift */; };
 		CB623DFE2AC62580008E6180 /* SearchSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DFD2AC62580008E6180 /* SearchSettingsViewModel.swift */; };
 		CB623E002ACB42A3008E6180 /* CustomNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623DFF2ACB42A3008E6180 /* CustomNavigationTitle.swift */; };
+		CB623E052ACC8DAB008E6180 /* AgeRangePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623E042ACC8DAA008E6180 /* AgeRangePickerView.swift */; };
+		CB623E072ACC8E2F008E6180 /* AgeRangePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB623E062ACC8E2F008E6180 /* AgeRangePickerViewModel.swift */; };
 		CB6240682A53AD8100E69C5C /* DiskSpaceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */; };
 		CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */; };
 		CB62406C2A5787FF00E69C5C /* Filterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62406B2A5787FF00E69C5C /* Filterer.swift */; };
@@ -254,6 +256,8 @@
 		CB623DFB2AC62570008E6180 /* SearchSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsView.swift; sourceTree = "<group>"; };
 		CB623DFD2AC62580008E6180 /* SearchSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewModel.swift; sourceTree = "<group>"; };
 		CB623DFF2ACB42A3008E6180 /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
+		CB623E042ACC8DAA008E6180 /* AgeRangePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangePickerView.swift; sourceTree = "<group>"; };
+		CB623E062ACC8E2F008E6180 /* AgeRangePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangePickerViewModel.swift; sourceTree = "<group>"; };
 		CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceHandler.swift; sourceTree = "<group>"; };
 		CB6240692A55432400E69C5C /* FirebaseFirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreHelper.swift; sourceTree = "<group>"; };
 		CB62406B2A5787FF00E69C5C /* Filterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filterer.swift; sourceTree = "<group>"; };
@@ -658,6 +662,15 @@
 			path = "Search Settings";
 			sourceTree = "<group>";
 		};
+		CB623E032ACC8D83008E6180 /* AgeRangePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CB623E042ACC8DAA008E6180 /* AgeRangePickerView.swift */,
+				CB623E062ACC8E2F008E6180 /* AgeRangePickerViewModel.swift */,
+			);
+			path = AgeRangePicker;
+			sourceTree = "<group>";
+		};
 		CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,6 +708,7 @@
 		CBCD58212A0B1EC500136AA0 /* UniversalViews */ = {
 			isa = PBXGroup;
 			children = (
+				CB623E032ACC8D83008E6180 /* AgeRangePicker */,
 				CB623DF32AC600D0008E6180 /* Distance Picker */,
 				CB5F57E12AB9E7180003660A /* Create Report User */,
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
@@ -926,6 +940,7 @@
 				CB623DF22AC28B8D008E6180 /* BlockedUser.swift in Sources */,
 				CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */,
 				CB623DF92AC602C0008E6180 /* UnitConverter.swift in Sources */,
+				CB623E052ACC8DAB008E6180 /* AgeRangePickerView.swift in Sources */,
 				CB623DFC2AC62570008E6180 /* SearchSettingsView.swift in Sources */,
 				CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */,
 				CB5BE8A529FDE958009D38D6 /* DetailedFriendView.swift in Sources */,
@@ -979,6 +994,7 @@
 				CBB8CAA32A65EE07009B13A6 /* FlowLayout.swift in Sources */,
 				CB5BE89529FDE958009D38D6 /* UIFont.swift in Sources */,
 				CB5BE8BA29FDE958009D38D6 /* SignInWithAppleCoordinator.swift in Sources */,
+				CB623E072ACC8E2F008E6180 /* AgeRangePickerViewModel.swift in Sources */,
 				CB5BE89329FDE958009D38D6 /* PublishersExtension.swift in Sources */,
 				CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */,
 				CB6296312A60913300F84367 /* ListCellView.swift in Sources */,
@@ -1181,7 +1197,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.04;
+				MARKETING_VERSION = 1.05;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TylerDonohue.GamingWizards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1217,7 +1233,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.04;
+				MARKETING_VERSION = 1.05;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TylerDonohue.GamingWizards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

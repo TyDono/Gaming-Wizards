@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "2bfe6abe1014aafe5cf28401708f7d39f9926a76",
-        "version" : "10.14.0"
+        "revision" : "8a8ec57a272e0d31480fb0893dda0cf4f769b57e",
+        "version" : "10.15.0"
       }
     },
     {
@@ -113,17 +113,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-common-ios.git",
       "state" : {
-        "revision" : "2cedb7546e7276b6a931195d49cc0fd49924fdbe",
-        "version" : "24.0.0-beta.3"
-      }
-    },
-    {
-      "identity" : "mapbox-core-maps-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
-      "state" : {
-        "revision" : "fb09333cb97c22de5f7802862b9bf7a8bcb1a517",
-        "version" : "11.0.0-beta.3"
+        "revision" : "800a4f93748304883e1112111f343e1c9eb7e41d",
+        "version" : "24.0.0-beta.5"
       }
     },
     {
@@ -132,7 +123,7 @@
       "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
       "state" : {
         "branch" : "main",
-        "revision" : "78ee61724c0a79d60d41bab0bd90a1355d6a83a6"
+        "revision" : "53328d37735b872eda25592e5a0f817308d48e6f"
       }
     },
     {
@@ -158,8 +149,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "ce20dc083ee485524b802669890291c0d8090170",
-        "version" : "1.22.1"
+        "revision" : "3c54ab05249f59f2c6641dd2920b8358ea9ed127",
+        "version" : "1.24.0"
       }
     },
     {
@@ -167,8 +158,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/turf-swift.git",
       "state" : {
-        "revision" : "87b5b37108ba9f37f0885b586d8f6355d8240dd8",
-        "version" : "2.6.1"
+        "revision" : "f0afe204b4266337066a436becab62fdd2b32378",
+        "version" : "2.7.0"
       }
     }
   ],

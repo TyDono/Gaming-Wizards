@@ -32,7 +32,7 @@ class CoreDataController: ObservableObject {
     @Published var savedUserEntities: [UserEntity] = []
     @Published var savedFriendEntities: [FriendEntity] = []
     @Published var blockedUserEntities: [BlockedUserEntity] = []
-    @Published var SearchSettingsEntities: [SearchSettingsEntity] = []
+    @Published var savedSearchSettingsEntity: SearchSettingsEntity?
     @Published var savedUser: UserEntity?
     
     private init() {
@@ -64,6 +64,29 @@ class CoreDataController: ObservableObject {
             print("Cleared Core Data for entity \(entityName)")
         } catch {
             print("Failed to clear Core Data for entity \(entityName): \(error)")
+        }
+    }
+    
+    // MARK: SearchSettings
+    
+    func fetchSavedSearchSettings() {
+        let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
+        do {
+            let settings = try viewContext.fetch(fetchRequest)
+            savedSearchSettingsEntity = settings.first
+            print("Fetched saved SearchSettingsEntity: \(String(describing: savedSearchSettingsEntity))")
+        } catch {
+            print("Failed to fetch saved SearchSettingsEntity: \(error)")
+        }
+    }
+    
+    func saveSearchSettings(searchSettings: SearchSettingsEntity) {
+        do {
+            try viewContext.save()
+            savedSearchSettingsEntity = searchSettings
+            print("Saved SearchSettingsEntity successfully")
+        } catch {
+            print("Failed to save SearchSettingsEntity: \(error)")
         }
     }
     

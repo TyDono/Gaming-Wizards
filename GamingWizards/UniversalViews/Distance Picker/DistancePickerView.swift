@@ -46,10 +46,18 @@ struct DistancePickerView: View {
             Text("Up to \(distancePickerVM.miles, specifier: "%.0f")miles (\(distancePickerVM.convertMilesToKm(miles: distancePickerVM.miles))km) away")
                 .font(.roboto(.bold, size: 18))
                 .foregroundStyle(Color.black)
-            Slider(value: $distancePickerVM.miles, in: 0...1000, step: 1) // add world and country optin
-                            .padding()
-           }
-       }
+            
+            Slider(value: Binding(
+                            get: {
+                                self.distancePickerVM.miles
+                            },
+                            set: { newValue in
+                                self.distancePickerVM.miles = self.distancePickerVM.mapExponential(value: newValue)
+                            }
+                        ), in: 1...1000)
+                        .padding()
+        }
+    }
     
 }
 

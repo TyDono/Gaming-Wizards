@@ -22,5 +22,17 @@ import SwiftUI
             return UnitConverter.milesToKilometers(miles: miles)
         }
         
+        func mapExponential(value: Double) -> Double {
+            let exponent = 1.5 // You can adjust the exponent based on your preference
+            let maxValue: Double = 1000
+            let midPoint: Double = 150
+            
+            if value <= midPoint {
+                return pow(value / midPoint, exponent) * midPoint
+            } else {
+                return midPoint + pow((value - midPoint) / (maxValue - midPoint), exponent) * (maxValue - midPoint)
+            }
+        }
+        
     }
 //}
