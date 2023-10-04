@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainMessagesView: View {
+    @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var mainMessagesVM: MainMessagesViewModel
     
     init() {
@@ -32,7 +33,7 @@ struct MainMessagesView: View {
 //            mainMessagesVM.fbFirestoreHelper.stopListening()
         }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
-            ChatLogView(chatUser: mainMessagesVM.selectedContact)
+            ChatLogView(presentationMode: self.presentationMode, chatUser: mainMessagesVM.selectedContact)
         }
     }
     

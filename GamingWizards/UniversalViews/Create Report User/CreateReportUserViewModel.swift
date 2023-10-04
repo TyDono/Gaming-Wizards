@@ -21,9 +21,9 @@ extension CreateReportUserView {
             self.firestoreService = firestoreService
         }
         
-        func handleBlockingUser(blockedUser: BlockedUser) async {
+        func handleBlockingUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async {
             do {
-                try await firestoreService.blockUser(blockedUser: blockedUser)
+                try await firestoreService.blockUser(blockedUser: blockedUser, friendEntity: friendEntity)
             } catch {
                 print(error.localizedDescription)
             }

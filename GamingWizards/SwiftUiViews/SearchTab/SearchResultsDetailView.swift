@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SearchResultsDetailView: View {
     
+    @Environment(\.presentationMode) private var presentationMode
     @StateObject private var searchResultsDetailViewModel = SearchResultsDetailViewModel()
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     @Binding var selectedUser: User
     @Binding var specificGame: String
     @Binding var tabSelection: String
@@ -72,7 +73,7 @@ struct SearchResultsDetailView: View {
                             return
                         }
                     }
-                    dismiss()
+                    presentationMode.wrappedValue.dismiss()
                     self.tabSelection = Constants.messageTabViewString
                 } label: {
                     Text("Send Message")
@@ -93,12 +94,19 @@ struct SearchResultsDetailView: View {
     }
     
     private var reportUserButton: some View {
-        CreateReportUserView(reporterId: $searchResultsDetailViewModel.user.id,
+        CreateReportUserView(presentationMode: self.presentationMode,
+                             reporterId: $searchResultsDetailViewModel.user.id,
                              reportedUser: $selectedUser,
                              chatRoomId: $selectedUser.id,
                              blockedUser: .constant(BlockedUser(blockedUserId: selectedUser.id,
                                                                 displayName: selectedUser.displayName ?? "",
-                                                                dateRemoved: Date()))
+                                                                dateRemoved: Date())), friendEntity: searchResultsDetailViewModel.convertUserToFriendDataBinding(
+                                                                    displayName: selectedUser.displayName ?? "",
+                                                                    friendUserID: selectedUser.id,
+                                                                    friendCodeID: selectedUser.friendCodeID,
+                                                                    profileImageString: selectedUser.profileImageString,
+                                                                    isFavorite: false,
+                                                                    isFriend: false)
         )
     }
     

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateReportUserView: View {
+    @Binding var presentationMode: PresentationMode
     @ObservedObject private var createReportUserVM: CreateReportUserViewModel
 //    @State var reportReason: ReportReason
     @Binding var reporterId: String
@@ -19,17 +20,21 @@ struct CreateReportUserView: View {
     @State private var isReportReasonsPresented: Bool = false
     @State var userReportDescriptionTextEditorPlaceHolderText: String = "Your description here"
     @Binding var blockedUser: BlockedUser
+    @Binding var friendEntity: FriendEntity
     
     
     init(
+        presentationMode: Binding<PresentationMode>,
         createReportUserVM: CreateReportUserViewModel = CreateReportUserViewModel(),
 //        reportReason: ReportReason,
         reporterId: Binding<String>,
         reportedUser: Binding<User>,
 //        userReportedMessage: String,
         chatRoomId: Binding<String>,
-        blockedUser: Binding<BlockedUser>
+        blockedUser: Binding<BlockedUser>,
+        friendEntity: Binding<FriendEntity>
     ) {
+        self._presentationMode = presentationMode
         self._createReportUserVM = ObservedObject(wrappedValue: createReportUserVM)
 //        self.reportReason = reportReason
         self._reporterId = reporterId
@@ -37,6 +42,7 @@ struct CreateReportUserView: View {
 //        self.userReportedMessage = userReportedMessage
         self._chatRoomId = chatRoomId
         self._blockedUser = blockedUser
+        self._friendEntity = friendEntity
     }
     
     var body: some View {
@@ -74,12 +80,10 @@ struct CreateReportUserView: View {
                         userReportedMessage: createReportUserVM.userReportDescription,
                         chatRoomId: chatRoomId
                     )
-                    do {
-                        try await createReportUserVM.handleSendUserReportWasTapped(userReport: userReportInfo)
-                    } catch {
-                        print("Error: \(error)")
-                    }
+                    await createReportUserVM.handleSendUserReportWasTapped(userReport: userReportInfo)
+                    await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
                 }
+                $presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Submit")
                     .foregroundColor(.blue)
@@ -199,6 +203,7 @@ struct CreateReportUserView: View {
         VStack {
             Button(action: {
                 isReportBlockPresented.toggle()
+                $presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "exclamationmark.bubble")
                     .frame(width: 25, height: 25, alignment: .center)
@@ -208,7 +213,7 @@ struct CreateReportUserView: View {
                 VStack(spacing: 20) {
                     Button(action: {
                         Task {
-//                           await createReportUserVM.handleBlockingUser(blockedUser: blockedUser)
+                            await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
                         }
                         isReportBlockPresented.toggle()
                     }) {
@@ -219,16 +224,6 @@ struct CreateReportUserView: View {
                             .cornerRadius(Constants.semiRoundedCornerRadius)
                     }
                     Button(action: {
-//                        let finishedReport =
-//                        createReportUserVM.constructUserReportBaseData(reportReason: .other,
-//                                                         reporterId: createReportUserVM.user.id,
-//                                                         reportedUserId: blockedUser.id,
-//                                                         userReportedMessage: createReportUserVM.userReportDescription,
-//                                                         chatRoomId: "")
-                        Task {
-//                            await createReportUserVM.handleSendUserReportWasTapped(userReport: finishedReport)
-                            await createReportUserVM.handleBlockingUser(blockedUser: blockedUser)
-                        }
                         isReportReasonsPresented.toggle()
                     }) {
                         Text("Report")

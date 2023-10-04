@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatLogView: View {
+    @Binding var presentationMode: PresentationMode
     
     @StateObject private var chatLogVM: ChatLogViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
@@ -16,7 +17,11 @@ struct ChatLogView: View {
     
     private let chatLogScrollToString: String = "Empty"
     
-    init(chatUser: FriendEntity?) {
+    init(
+        presentationMode: Binding<PresentationMode>,
+         chatUser: FriendEntity?
+    ) {
+        self._presentationMode = presentationMode
         self.chatUser = chatUser
         self._chatLogVM = StateObject(wrappedValue: ChatLogViewModel(chatUser: chatUser))
 //        self.chatLogVM = .init(chatUser: chatUser)
@@ -80,15 +85,17 @@ struct ChatLogView: View {
     }
     
     private var gearButtonView: some View {
-//            let reportedUser = chatLogVM.convertFriendEntityToReportedUser(friend: chatUser!)
-            CreateReportUserView(
-                reporterId: $chatLogVM.user.id,
-                reportedUser: Binding(get: { chatLogVM.reportedUser }, set: { _ in }),
-                chatRoomId: Binding<String>( get: { chatLogVM.reportedUser.id }, set: { _ in }),
-                blockedUser: .constant(BlockedUser(blockedUserId: chatLogVM.reportedUser.id,
-                                                   displayName: chatLogVM.reportedUser.displayName ?? "",
-                                                   dateRemoved: Date()))
-            )
+        //            let reportedUser = chatLogVM.convertFriendEntityToReportedUser(friend: chatUser!)
+        CreateReportUserView(
+            presentationMode: self.$presentationMode,
+            reporterId: $chatLogVM.user.id,
+            reportedUser: Binding(get: { chatLogVM.reportedUser }, set: { _ in }),
+            chatRoomId: Binding<String>( get: { chatLogVM.reportedUser.id }, set: { _ in }),
+            blockedUser: .constant(BlockedUser(blockedUserId: chatLogVM.reportedUser.id,
+                                               displayName: chatLogVM.reportedUser.displayName ?? "",
+                                               dateRemoved: Date())),
+            friendEntity: Binding<FriendEntity>( get: { chatUser! }, set: { _ in })
+        )
         
     }
     

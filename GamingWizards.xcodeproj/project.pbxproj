@@ -12,6 +12,7 @@
 		CB049A172A33D88700024D01 /* ViewPersonalAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB049A162A33D88700024D01 /* ViewPersonalAccountViewModel.swift */; };
 		CB049A192A33D8EF00024D01 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB049A182A33D8EF00024D01 /* AccountView.swift */; };
 		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
+		CB3270A02ACCE8CC00717D4E /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32709F2ACCE8CC00717D4E /* DataConverter.swift */; };
 		CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */; };
 		CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */; };
 		CB5948972A71634D00BE0DE2 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */; };
@@ -41,7 +42,6 @@
 		CB5BE89829FDE958009D38D6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE84F29FDE955009D38D6 /* MainTabView.swift */; };
 		CB5BE89A29FDE958009D38D6 /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85229FDE955009D38D6 /* UserSearchView.swift */; };
 		CB5BE89B29FDE958009D38D6 /* MainMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85429FDE955009D38D6 /* MainMessagesView.swift */; };
-		CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */; };
 		CB5BE89F29FDE958009D38D6 /* MapBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85929FDE955009D38D6 /* MapBoxView.swift */; };
 		CB5BE8A029FDE958009D38D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85A29FDE955009D38D6 /* MapViewController.swift */; };
 		CB5BE8A129FDE958009D38D6 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE85B29FDE955009D38D6 /* MainTabViewModel.swift */; };
@@ -179,6 +179,7 @@
 		CB049A162A33D88700024D01 /* ViewPersonalAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPersonalAccountViewModel.swift; sourceTree = "<group>"; };
 		CB049A182A33D8EF00024D01 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
+		CB32709F2ACCE8CC00717D4E /* DataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConverter.swift; sourceTree = "<group>"; };
 		CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTag.swift; sourceTree = "<group>"; };
 		CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
@@ -211,7 +212,6 @@
 		CB5BE84F29FDE955009D38D6 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		CB5BE85229FDE955009D38D6 /* UserSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
 		CB5BE85429FDE955009D38D6 /* MainMessagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMessagesView.swift; sourceTree = "<group>"; };
-		CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsView.swift; sourceTree = "<group>"; };
 		CB5BE85929FDE955009D38D6 /* MapBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBoxView.swift; sourceTree = "<group>"; };
 		CB5BE85A29FDE955009D38D6 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CB5BE85B29FDE955009D38D6 /* MainTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
@@ -438,6 +438,7 @@
 				CBF91C962A81715600F20986 /* FirebaseHelpers */,
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
+				CB32709F2ACCE8CC00717D4E /* DataConverter.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -529,7 +530,6 @@
 				CB8841CB2A77C5AB0017C874 /* MainMessagesViewModel.swift */,
 				CB8841CD2A791E680017C874 /* ChatLogView.swift */,
 				CB8841CF2A791E790017C874 /* ChatLogViewModel.swift */,
-				CB5BE85529FDE955009D38D6 /* InviteFriendsView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -954,11 +954,11 @@
 				CB8841CE2A791E680017C874 /* ChatLogView.swift in Sources */,
 				CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */,
 				CBCD58252A0B4AA400136AA0 /* UserLocation.swift in Sources */,
+				CB3270A02ACCE8CC00717D4E /* DataConverter.swift in Sources */,
 				CB5BE8A929FDE958009D38D6 /* HideNavigationBar.swift in Sources */,
 				CB5BE89F29FDE958009D38D6 /* MapBoxView.swift in Sources */,
 				CB9CFD3C2A8AAAED000C09ED /* MessengerProfileView.swift in Sources */,
 				CB62406C2A5787FF00E69C5C /* Filterer.swift in Sources */,
-				CB5BE89C29FDE958009D38D6 /* InviteFriendsView.swift in Sources */,
 				CB5BE89A29FDE958009D38D6 /* UserSearchView.swift in Sources */,
 				CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */,
 				CB5BE88429FDE958009D38D6 /* NavigationLogInView.swift in Sources */,

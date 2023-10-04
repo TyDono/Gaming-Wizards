@@ -15,8 +15,8 @@ import CoreData
     @Published var FriendRequestAlreadySentIsTrue: Bool = false
     @Published var noFriendExistsAlertIsShowing: Bool = false
     @Published var detailedFriendViewIsShowing: Bool = false
-    @Published var friends: [Friend] = []
-    @Published var friend: FriendEntity?
+    @Published var friends: [Friend] = [] // not being called. not used. ?
+    @Published var friend: FriendEntity? // not being called. not used. ?
     @Published var detailedFriendViewIsDismissed: Bool = false
     @Published var displayName: String? = ""
     @Published var profileImage: UIImage?
@@ -60,6 +60,31 @@ import CoreData
         }
     }
     */
+    
+    func convertUserToFriendDataBinding(displayName: String, friendUserID: String, friendCodeID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
+        let friendEntity = DataConverter.convertToFriendEntity(
+            displayName: displayName,
+            friendUserID: friendUserID,
+            friendCodeID: friendCodeID,
+            profileImageString: profileImageString,
+            isFavorite: isFavorite,
+            isFriend: isFriend
+        )
+        // Create a Binding for the FriendEntity
+        let binding = Binding(get: {
+            friendEntity
+        }, set: { newValue in
+            // Update properties of friendEntity when the binding is set
+            friendEntity.friendCodeID = newValue.friendCodeID
+            friendEntity.id = newValue.id
+            friendEntity.displayName = newValue.displayName
+            friendEntity.isFriend = newValue.isFriend
+            friendEntity.isFavorite = newValue.isFavorite
+            friendEntity.imageString = newValue.imageString
+        })
+        return binding
+    }
+
      
     func friendRequestButtonWasTapped(newFriend: User, friendProfileImage: UIImage) async throws {
         do {

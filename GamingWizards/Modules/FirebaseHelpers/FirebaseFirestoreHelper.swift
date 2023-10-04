@@ -26,7 +26,7 @@ protocol FirebaseFirestoreService {
     func saveUserReportToFirestore(userReport: UserReport) async throws
     func deleteRecentMessage(friend: FriendEntity, userId: String) async throws
     func deleteFriend(friend: FriendEntity, userId: String) async throws
-    func blockUser(blockedUser: BlockedUser) async throws
+    func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws
     func deleteBlockedUser(blockedUser: BlockedUser) async throws
     
 }
@@ -247,7 +247,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         
     }
     
-    func blockUser(blockedUser: BlockedUser) async throws {
+    func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws {
         let blockedUserData = blockedUser.blockedUserDictionary
         let blockedUserDocumentPath = firestore
             .collection(Constants.usersString)
@@ -257,6 +257,8 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         do {
             try await blockedUserDocumentPath.setData(blockedUserData)
             await coreDataController.addBlockedUser(blockedUser: blockedUser)
+            await coreDataController.deleteFriendInCloud(friend: friendEntity, userId: user.id)
+            //remove from friend list if they are there.
         } catch {
             print("ERROR BLOCKING USER FROM FIRESTORE: \(error.localizedDescription)")
             throw error
