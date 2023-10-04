@@ -13,6 +13,8 @@
 		CB049A192A33D8EF00024D01 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB049A182A33D8EF00024D01 /* AccountView.swift */; };
 		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
 		CB3270A02ACCE8CC00717D4E /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32709F2ACCE8CC00717D4E /* DataConverter.swift */; };
+		CB3270A42ACDECA200717D4E /* BlockedUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3270A32ACDECA200717D4E /* BlockedUsersView.swift */; };
+		CB3270A62ACDECAB00717D4E /* BlockedUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3270A52ACDECAB00717D4E /* BlockedUsersViewModel.swift */; };
 		CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */; };
 		CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */; };
 		CB5948972A71634D00BE0DE2 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */; };
@@ -127,6 +129,8 @@
 		CB8841D02A791E790017C874 /* ChatLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CF2A791E790017C874 /* ChatLogViewModel.swift */; };
 		CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */; };
 		CB9685592AABD4DB0051D7D6 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9685582AABD4DB0051D7D6 /* TimeUtils.swift */; };
+		CB9BBE0C2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBE0B2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift */; };
+		CB9BBE0E2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBE0D2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift */; };
 		CB9CFD3C2A8AAAED000C09ED /* MessengerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */; };
 		CB9CFD3F2A8AAB86000C09ED /* MessengerProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */; };
 		CB9CFD412A93C39C000C09ED /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CFD402A93C39C000C09ED /* ChatMessage.swift */; };
@@ -180,6 +184,8 @@
 		CB049A182A33D8EF00024D01 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
 		CB32709F2ACCE8CC00717D4E /* DataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConverter.swift; sourceTree = "<group>"; };
+		CB3270A32ACDECA200717D4E /* BlockedUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersView.swift; sourceTree = "<group>"; };
+		CB3270A52ACDECAB00717D4E /* BlockedUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersViewModel.swift; sourceTree = "<group>"; };
 		CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CB5948902A6AA9EC00BE0DE2 /* FlowTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTag.swift; sourceTree = "<group>"; };
 		CB5948962A71634D00BE0DE2 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
@@ -270,6 +276,8 @@
 		CB8841CF2A791E790017C874 /* ChatLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewModel.swift; sourceTree = "<group>"; };
 		CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
 		CB9685582AABD4DB0051D7D6 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		CB9BBE0B2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAndChatSettingsView.swift; sourceTree = "<group>"; };
+		CB9BBE0D2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAndChatSettingsViewModel.swift; sourceTree = "<group>"; };
 		CB9CFD3B2A8AAAED000C09ED /* MessengerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileView.swift; sourceTree = "<group>"; };
 		CB9CFD3E2A8AAB86000C09ED /* MessengerProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerProfileViewModel.swift; sourceTree = "<group>"; };
 		CB9CFD402A93C39C000C09ED /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -353,6 +361,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB3270A22ACDEC8A00717D4E /* BlockedUsers */ = {
+			isa = PBXGroup;
+			children = (
+				CB3270A32ACDECA200717D4E /* BlockedUsersView.swift */,
+				CB3270A52ACDECAB00717D4E /* BlockedUsersViewModel.swift */,
+			);
+			path = BlockedUsers;
+			sourceTree = "<group>";
+		};
 		CB5948982A71636E00BE0DE2 /* AccountView */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +688,15 @@
 			path = AgeRangePicker;
 			sourceTree = "<group>";
 		};
+		CB9BBE0A2ACE06AC00FD4A51 /* ContactAndChatSettings */ = {
+			isa = PBXGroup;
+			children = (
+				CB9BBE0B2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift */,
+				CB9BBE0D2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift */,
+			);
+			path = ContactAndChatSettings;
+			sourceTree = "<group>";
+		};
 		CB9CFD3D2A8AAB5F000C09ED /* MessengerProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,8 +738,10 @@
 				CB623DF32AC600D0008E6180 /* Distance Picker */,
 				CB5F57E12AB9E7180003660A /* Create Report User */,
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
+				CB9BBE0A2ACE06AC00FD4A51 /* ContactAndChatSettings */,
 				CB623DFA2AC62558008E6180 /* Search Settings */,
 				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
+				CB3270A22ACDEC8A00717D4E /* BlockedUsers */,
 				CB623DFF2ACB42A3008E6180 /* CustomNavigationTitle.swift */,
 				CBCD58222A0B1EF400136AA0 /* BackgroundImageView.swift */,
 				CB62962E2A5F987500F84367 /* SearchResultCellView.swift */,
@@ -935,6 +963,8 @@
 				CB5BE87F29FDE957009D38D6 /* RestaurantEndpoint.swift in Sources */,
 				CB5BE89629FDE958009D38D6 /* DateExtension.swift in Sources */,
 				CBF071B02AB8D24D00CB7C13 /* OnlineStatus.swift in Sources */,
+				CB9BBE0C2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift in Sources */,
+				CB9BBE0E2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift in Sources */,
 				CB5BE8A029FDE958009D38D6 /* MapViewController.swift in Sources */,
 				CB62406A2A55432400E69C5C /* FirebaseFirestoreHelper.swift in Sources */,
 				CB623DF22AC28B8D008E6180 /* BlockedUser.swift in Sources */,
@@ -963,6 +993,7 @@
 				CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */,
 				CB5BE88429FDE958009D38D6 /* NavigationLogInView.swift in Sources */,
 				CBAD3BCB2A44EF820068089B /* AccountSettingsView.swift in Sources */,
+				CB3270A42ACDECA200717D4E /* BlockedUsersView.swift in Sources */,
 				CB9685592AABD4DB0051D7D6 /* TimeUtils.swift in Sources */,
 				CB62962F2A5F987500F84367 /* SearchResultCellView.swift in Sources */,
 				CB5BE88029FDE957009D38D6 /* GamingWizardsApp.swift in Sources */,
@@ -970,6 +1001,7 @@
 				CBEAF0462A1EB87400B9E900 /* LocationManager.swift in Sources */,
 				CBA22B142AA8DFA500D02912 /* RecentMessage.swift in Sources */,
 				CB5BE8AA29FDE958009D38D6 /* KeybaordAdaptiveModifier.swift in Sources */,
+				CB3270A62ACDECAB00717D4E /* BlockedUsersViewModel.swift in Sources */,
 				CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */,
 				CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */,
 				CB5BE89029FDE958009D38D6 /* ViewExtension.swift in Sources */,

@@ -72,6 +72,11 @@ struct Constants {
     static let blockedUsers = "blockedUsers"
     static let dateRemoved = "dateRemoved"
     
+        // MARK: calls to navigation titles
+    static let contactAndChatSettingsTitle = "Contact and Chat Settings"
+    static let blockedUsersTitle = "Blocked Users"
+    static let lookingForGroupTitle = "Looking for Group"
+    
     // MARK: calls to AppStorage
 //    static let appStorageStringUserId = "user_Id"
 //    static let appStorageStringUserFirstName = "user_First_Name"

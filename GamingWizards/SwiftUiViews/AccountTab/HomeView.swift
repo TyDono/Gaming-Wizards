@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
+    @ObservedObject var searchSettingsViewModel = SearchSettingsViewModel()
+    @ObservedObject var contactAndChatSettingsViewModel = ContactAndChatSettingsViewModel()
     @EnvironmentObject var homeViewModel: HomeViewModel
     @EnvironmentObject var userAuth: UserAuth
     @State private var isViewPersonalAccountViewPopUp: Bool = false
@@ -19,6 +21,8 @@ struct HomeView: View {
     @State private var isFriendListShowing: Bool = false
     @State private var isAccountSettingsShowing: Bool = false
     @State var isShowingEditAccountView: Bool = false
+    @State private var isSearchSettingsShowing: Bool = false
+    @State private var isContactAndChatSettingsShowing: Bool = false
     
 //    init(homeViewModel: HomeViewModel, userAuth: UserAuth) {
 //        self._homeViewModel = EnvironmentObject(wrappedValue: homeViewModel)
@@ -31,6 +35,8 @@ struct HomeView: View {
                     List {
 //                        manageFriendList // disabled until premium version added. post mvp
                         viewProfileButton
+                        searchSettings
+                        contactAndChatSettings
                         // accountSettingsButtonView // change fonts from normal and luminari. post mvp
                         logOutButton
                     }
@@ -73,6 +79,8 @@ struct HomeView: View {
                         }
                         */
                         Image(systemName: "person.2")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                         Text("Contact Info")
                             .badge(Constants.friendRequestCount)
                             .frame(maxWidth: .infinity,
@@ -96,6 +104,62 @@ struct HomeView: View {
         }
     }
     
+    private var contactAndChatSettings: some View {
+        NavigationStack {
+            Button(action: {
+                isContactAndChatSettingsShowing = true
+            }) {
+                HStack {
+                    Image(systemName: "person.2.badge.gearshape")
+                        .resizable()
+                        .frame(width: 23, height: 23)
+                    Text(Constants.contactAndChatSettingsTitle)
+                        .frame(maxWidth: .infinity,
+                               alignment: .leading)
+                        .font(.roboto(.regular, size: 20))
+                    
+                    Image(systemName: "chevron.right")
+                        .frame(maxWidth: .infinity,
+                               alignment: .trailing)
+                }
+                .listRowInsets(EdgeInsets())
+                .padding()
+            }
+        }
+        .navigationDestination(isPresented: $isContactAndChatSettingsShowing) {
+            ContactAndChatSettingsView(ContactAndChatSettingsVM: contactAndChatSettingsViewModel)
+        }
+    }
+    
+    private var searchSettings: some View {
+        NavigationStack {
+            Button(action: {
+                isSearchSettingsShowing = true
+            }) {
+                HStack {
+                    Image(systemName: "slider.horizontal.3")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Search Settings")
+                        .frame(maxWidth: .infinity,
+                               alignment: .leading)
+                        .font(.roboto(.regular, size: 20))
+                    
+                    Image(systemName: "chevron.right")
+                        .frame(maxWidth: .infinity,
+                               alignment: .trailing)
+                }
+                .listRowInsets(EdgeInsets())
+                .padding()
+            }
+        }
+        .navigationDestination(isPresented: $isSearchSettingsShowing) {
+            SearchSettingsView(searchSettingsVM: searchSettingsViewModel)
+        }
+    }
+    
+
+    
     private var viewProfileButton: some View {
         NavigationStack {
             Button(action: {
@@ -104,6 +168,8 @@ struct HomeView: View {
             }) {
                 HStack {
                     Image(systemName: "person")
+                        .resizable()
+                        .frame(width: 20, height: 20)
                     Text("View Profile")
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
@@ -130,6 +196,8 @@ struct HomeView: View {
                 }) {
                     HStack {
                         Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                         Text("Settings")
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
@@ -155,6 +223,8 @@ struct HomeView: View {
         }) {
             HStack {
                 Image(systemName: "door.right.hand.open")
+                    .resizable()
+                    .frame(width: 20, height: 20)
                 Text("Log Out")
                     .frame(maxWidth: .infinity,
                            alignment: .leading)

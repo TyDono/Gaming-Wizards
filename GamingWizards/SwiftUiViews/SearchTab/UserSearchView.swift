@@ -33,7 +33,14 @@ struct UserSearchView: View {
                     resultView
                 }
             }
-            .navigationBarTitle("Looking for Group")
+            .navigationBarTitle("", displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(Constants.lookingForGroupTitle)
+                        .font(.globalFont(.luminari, size: 26))
+                        .foregroundColor(.primary)
+                }
+            }
 //            .navigationBarTitleDisplayMode(.inline)
 //            .navigationTitleView(NavigationTitleWithImage())
             .navigationBarItems(trailing:
