@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BlockedUsersView: View {
     @StateObject var blockedUsersVM: BlockedUsersViewModel
+    @State var isUnblockUserAlertShowing: Bool = false
     
     init(blockedUsersVM: BlockedUsersViewModel) {
         self._blockedUsersVM = StateObject(wrappedValue: blockedUsersVM)
@@ -30,14 +31,35 @@ struct BlockedUsersView: View {
                 }
             }
         }
+       
     }
     
     private var listOfBlockedUsers: some View {
         ZStack {
             VStack {
-                
-                Text("Blocked Users")
+                List {
+                    ForEach(blockedUsersVM.coreDataController.blockedUserEntities, id: \.self) { blockedUser in
+                        Button {
+                            isUnblockUserAlertShowing = true
+                        } label: {
+                            Text(blockedUser.displayName ?? "")
+                        }
+                        .alert(isPresented: $isUnblockUserAlertShowing) {
+                            Alert(
+                                title: Text("Are you sure you want to unblock this user?"),
+                                message: Text(""),
+                                primaryButton: .default(Text("Unblock")) {
+                                    Task {
+                                        await blockedUsersVM.callUnblockUser(blockedUser: blockedUser)
+                                    }
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
+                    }
+                }
             }
+           
         }
     }
     
