@@ -28,6 +28,7 @@ protocol FirebaseFirestoreService {
     func deleteFriend(friend: FriendEntity, userId: String) async throws
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
+    func retrieveBlockedUsers(userId: String) async throws
     
 }
 
@@ -245,6 +246,34 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             throw error
         }
         
+    }
+    
+    func retrieveBlockedUsers(userId: String) async {
+        let blockedUsersPath = firestore
+            .collection(Constants.usersString)
+            .document(userId)
+            .collection(Constants.blockedUsers)
+
+        do {
+            let snapshot = try await blockedUsersPath.getDocuments()
+            
+            if let error = snapshot.documents.first?.metadata.isFromCache, error {
+                print("Error fetching snapshot data: \(error)")
+                return
+            }
+
+            let documents = snapshot.documents
+            for blockedUser in await coreDataController.blockedUserEntities {
+                await self.coreDataController.deleteBlockedUserLocally(blockedUser: blockedUser)
+            }
+            for document in documents {
+                let decoder = Firestore.Decoder()
+                let blockedUser = try decoder.decode(BlockedUser.self, from: document)
+                await self.coreDataController.addBlockedUser(blockedUser: blockedUser)
+            }
+        } catch {
+            print("Error getting friend list documents: \(error.localizedDescription)")
+        }
     }
     
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws {

@@ -43,6 +43,7 @@ import Security
         case signedOut
   }
     
+    //MARK MAKE THE AYSNC CALLS HERE ? Maybe
     func saveUserIntoFirestore(for user: User) {
         let documentPath = fbFirestoreHelper.firestore.collection(Constants.usersString).document(user.id)
         documentPath.getDocument { [weak self] document, err in
@@ -61,7 +62,10 @@ import Security
                                 self.diskSpace.saveProfileImageToDisc(imageString: existingUser.profileImageString, image: image)
                             }
                         }
-                        self.saveUserToUserDefaults(user: existingUser)
+                        self.saveUserToUserDefaults(user: existingUser) {
+                            self.retrieveFriendsListener()
+                            self.signInSuccess()
+                        }
                         // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                     } catch {
                         print("Error decoding Firestore data: \(error.localizedDescription)")
@@ -69,7 +73,10 @@ import Security
                 }
             } else {
                 documentPath.setData(user.userDictionary)
-                self.saveUserToUserDefaults(user: user)
+                self.saveUserToUserDefaults(user: user) {
+                    self.retrieveFriendsListener()
+                    self.signInSuccess()
+                }
             }
         }
     }
@@ -80,8 +87,7 @@ import Security
         self.log_Status = true
     }
     
-    private func saveUserToUserDefaults(user newUser: User) {
-//        user.id = newUser.id
+    private func saveUserToUserDefaults(user newUser: User, completion: @escaping () -> Void) {
         KeychainHelper.saveUserID(userID: newUser.id)
         user.firstName = newUser.firstName
         user.lastName = newUser.lastName
@@ -100,8 +106,8 @@ import Security
         user.title = newUser.title
         user.isPayToPlay = newUser.isPayToPlay
         user.isSolo = newUser.isSolo
-        retrieveFriendsListener()
-        self.signInSuccess()
+        
+        completion()
     }
     
     func getRootViewController() -> UIViewController {
