@@ -47,10 +47,10 @@ struct BlockedUsersView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "x.circle")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 20))
                                     .foregroundStyle(Color.red)
                                 Text(blockedUser.displayName ?? "")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 20))
                             }
                         }
                         .alert(isPresented: $isUnblockUserAlertShowing) {

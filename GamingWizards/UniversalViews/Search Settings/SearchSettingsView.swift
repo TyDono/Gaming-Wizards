@@ -13,6 +13,7 @@ struct SearchSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var searchSettingsVM: SearchSettingsViewModel
     @State private var isDistancePickerSettingsShowing: Bool = false
+    @State private var isAgeRangeSettingsShowing: Bool = false
     @State private var searchSettingViewTitle: String? = "Search Settings"
     @State private var searchSettingTitleSystemImageName: String? = "slider.horizontal.3"
     
@@ -26,18 +27,12 @@ struct SearchSettingsView: View {
                 VStack {
                     List {
                         distanceSettingsButton
+                        ageRangeSettingsButton
                     }
                 }
             }
         }
-        .sheet(isPresented: $isDistancePickerSettingsShowing, content: {
-            VStack(spacing: 20) {
-                DistancePickerView(distancePickerVM: searchSettingsVM.distancePickerViewModel)
-            }
-            .background(Color.clear)
-            .presentationDetents([.height(200)])
-            .padding()
-        }).background(Color.clear)
+        .background(Color.clear)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -46,13 +41,41 @@ struct SearchSettingsView: View {
             }
     }
     
+    private var ageRangeSettingsButton: some View {
+        VStack {
+            Button {
+                isAgeRangeSettingsShowing.toggle()
+            } label: {
+                Text("Age Range Settings")
+                    .font(.system(size: 20))
+            }
+            .sheet(isPresented: $isAgeRangeSettingsShowing, content: {
+                VStack(spacing: 20) {
+                    TwoPointRangeSliderView()
+                }
+                .background(Color.clear)
+                .presentationDetents([.height(200)])
+                .padding()
+            })
+        }
+    }
+    
     private var distanceSettingsButton: some View {
-        ZStack {
+        VStack {
             Button {
                 isDistancePickerSettingsShowing.toggle()
             } label: {
                 Text("Distance Settings")
+                    .font(.system(size: 20))
             }
+            .sheet(isPresented: $isDistancePickerSettingsShowing, content: {
+                VStack(spacing: 20) {
+                    DistancePickerView(distancePickerVM: searchSettingsVM.distancePickerViewModel)
+                }
+                .background(Color.clear)
+                .presentationDetents([.height(200)])
+                .padding()
+            })
         }
     }
     
