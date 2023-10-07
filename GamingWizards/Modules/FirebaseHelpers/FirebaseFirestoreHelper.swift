@@ -28,7 +28,7 @@ protocol FirebaseFirestoreService {
     func deleteFriend(friend: FriendEntity, userId: String) async throws
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
-    func retrieveBlockedUsers(userId: String) async throws
+    func retrieveBlockedUsers(userId: String) async 
     
 }
 
@@ -267,15 +267,19 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 await self.coreDataController.deleteBlockedUserLocally(blockedUser: blockedUser)
             }
             for document in documents {
-                let decoder = Firestore.Decoder()
-                let blockedUser = try decoder.decode(BlockedUser.self, from: document)
-                await self.coreDataController.addBlockedUser(blockedUser: blockedUser)
+                do {
+                    let decoder = Firestore.Decoder()
+                    let blockedUser = try decoder.decode(BlockedUser.self, from: document.data())
+                    await self.coreDataController.addBlockedUser(blockedUser: blockedUser)
+                } catch {
+                    print("Error decoding document: \(error.localizedDescription)")
+                }
             }
         } catch {
             print("Error getting friend list documents: \(error.localizedDescription)")
         }
     }
-    
+    //let blockedUserId = document.data()["id"] as? String ?? ""
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws {
         let blockedUserData = blockedUser.blockedUserDictionary
         let blockedUserDocumentPath = firestore

@@ -16,13 +16,7 @@ class CoreDataController: ObservableObject {
     static let shared = CoreDataController()
 //    @ObservedObject var user = UserObservable()
     @ObservedObject var user = UserObservable.shared
-//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Id: String?
-//    @AppStorage(Constants.appStorageStringUserFriendCodeID) var user_Friend_Code_ID: String?
-//    let firestoreDatabase = Firestore.firestore()
     let diskSpaceHandler = DiskSpaceHandler()
-//    let fbFirestoreHelper = FirebaseFirestoreHelper.shared
-//    var fbStorageHelper2 = FirebaseFirestoreHelper.shared
-//    var fbFirestoreService: FirebaseFirestoreService
     let fbFirestoreHelper = Firestore.firestore()
     let fbStorageHelper = Storage.storage()
     let persistentContainer: NSPersistentContainer
@@ -45,6 +39,8 @@ class CoreDataController: ObservableObject {
             self.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
         fetchFriends()
+        fetchBlockedUser()
+        fetchSavedSearchSettings()
         //have fetch user here later if ever added
     }
     
@@ -179,12 +175,23 @@ class CoreDataController: ObservableObject {
         }
     }
     
+    func fetchFriengds() {
+        viewContext.perform { [self] in
+            let request = NSFetchRequest<FriendEntity>(entityName: "FriendEntity")
+            do {
+                savedFriendEntities = try viewContext.fetch(request)
+            } catch let error {
+                print("ERROR FETCHING CORE DATA: \(error)")
+            }
+        }
+    }
+    
     func saveBlockedUsers() {
         do {
             try viewContext.save()
             fetchBlockedUser()
-        } catch let error {
-            print("ERROR SAVING CORE DATA \(error)")
+        } catch {
+            print("ERROR SAVING CORE DATA \(error.localizedDescription)")
         }
     }
     
@@ -242,8 +249,8 @@ class CoreDataController: ObservableObject {
         
         do {
             savedUserEntities = try viewContext.fetch(request)
-        } catch let error {
-            print("ERROR FETCHING CORE DATA: \(error)")
+        } catch {
+            print("ERROR FETCHING CORE DATA: \(error.localizedDescription)")
         }
     }
     

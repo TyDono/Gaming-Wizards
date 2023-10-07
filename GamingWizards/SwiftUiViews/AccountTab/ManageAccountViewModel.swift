@@ -57,6 +57,7 @@ extension ManageAccountView {
         @Published var isSearchError: Bool = false
         @Published var isManageListOfGamesViewShowing: Bool = false
         @Published var isImageSizeExceedingLimitAlert: Bool = false
+        @Published var isDisplayNameTextFieldBlank: Bool = false
         
         init(
             authenticationViewModel: AuthenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM,
@@ -134,6 +135,10 @@ extension ManageAccountView {
         }
         
         func updateUserInfo() {
+            guard self.firstName == "" else {
+                isDisplayNameTextFieldBlank = true
+                return
+            }
             let currentUser = Auth.auth().currentUser
             guard let userId = currentUser?.uid else { return }
             let path = fbFirestoreHelper.firestore.collection(Constants.usersString).document(userId)

@@ -98,7 +98,7 @@ struct SearchResultsDetailView: View {
                              reporterId: $searchResultsDetailViewModel.user.id,
                              reportedUser: $selectedUser,
                              chatRoomId: $selectedUser.id,
-                             blockedUser: .constant(BlockedUser(blockedUserId: selectedUser.id,
+                             blockedUser: .constant(BlockedUser(id: selectedUser.id,
                                                                 displayName: selectedUser.displayName ?? "",
                                                                 dateRemoved: Date())), friendEntity: searchResultsDetailViewModel.convertUserToFriendDataBinding(
                                                                     displayName: selectedUser.displayName ?? "",

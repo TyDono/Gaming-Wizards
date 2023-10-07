@@ -10,6 +10,8 @@ import SwiftUI
 struct BlockedUsersView: View {
     @StateObject var blockedUsersVM: BlockedUsersViewModel
     @State var isUnblockUserAlertShowing: Bool = false
+    @State var fbFirestore = FirebaseFirestoreHelper.shared
+    @State var user = UserObservable.shared
     
     init(blockedUsersVM: BlockedUsersViewModel) {
         self._blockedUsersVM = StateObject(wrappedValue: blockedUsersVM)

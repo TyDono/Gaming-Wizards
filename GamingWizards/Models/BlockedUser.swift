@@ -8,8 +8,7 @@
 import Foundation
 
 struct BlockedUser:Identifiable, Codable {
-    var id: String { blockedUserId }
-    var blockedUserId: String
+    var id: String 
     var displayName: String
     var dateRemoved: Date
     
@@ -19,6 +18,12 @@ struct BlockedUser:Identifiable, Codable {
 //        self.displayName = data[Constants.displayName] as? String ?? ""
 //        self.dateRemoved = data[Constants.dateRemoved] as? Date ?? Date()   
 //    }
+    
+    enum BlockedUserCodingKeys: String, CodingKey {
+        case id = "id"
+        case displayName = "displayName"
+        case dateRemoved = "dateRemoved"
+    }
     
     var blockedUserDictionary: [String: Any] {
         return [

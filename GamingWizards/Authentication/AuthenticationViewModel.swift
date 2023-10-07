@@ -63,8 +63,11 @@ import Security
                             }
                         }
                         self.saveUserToUserDefaults(user: existingUser) {
-                            self.retrieveFriendsListener()
-                            self.signInSuccess()
+                            Task.detached {
+                                await self.retrieveFriendsListener()
+                                await self.fbFirestoreHelper.retrieveBlockedUsers(userId: existingUser.id)
+                                await self.signInSuccess()
+                            }
                         }
                         // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                     } catch {
@@ -74,8 +77,10 @@ import Security
             } else {
                 documentPath.setData(user.userDictionary)
                 self.saveUserToUserDefaults(user: user) {
-                    self.retrieveFriendsListener()
-                    self.signInSuccess()
+                    Task.detached {
+                        await self.retrieveFriendsListener()
+                        await self.signInSuccess()
+                    }
                 }
             }
         }

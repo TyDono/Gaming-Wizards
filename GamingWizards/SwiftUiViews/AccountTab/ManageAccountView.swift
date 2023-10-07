@@ -243,6 +243,11 @@ struct ManageAccountView: View {
         } .onAppear {
             manageAccountVM.displayName = manageAccountVM.user.displayName ?? ""
         }
+        .alert("Display name cannot be blank.", isPresented: $manageAccountVM.isDisplayNameTextFieldBlank, actions: {
+            Button("OK", role: .cancel, action: { manageAccountVM.isDisplayNameTextFieldBlank = false })
+        }, message: {
+            Text("Please enter a valid display name before saving")
+        })
     }
     
     private var userAgeTextView: some View {

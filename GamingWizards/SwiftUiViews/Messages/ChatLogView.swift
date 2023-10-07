@@ -91,7 +91,7 @@ struct ChatLogView: View {
             reporterId: $chatLogVM.user.id,
             reportedUser: Binding(get: { chatLogVM.reportedUser }, set: { _ in }),
             chatRoomId: Binding<String>( get: { chatLogVM.reportedUser.id }, set: { _ in }),
-            blockedUser: .constant(BlockedUser(blockedUserId: chatLogVM.reportedUser.id,
+            blockedUser: .constant(BlockedUser(id: chatLogVM.reportedUser.id,
                                                displayName: chatLogVM.reportedUser.displayName ?? "",
                                                dateRemoved: Date())),
             friendEntity: Binding<FriendEntity>( get: { chatUser! }, set: { _ in })
