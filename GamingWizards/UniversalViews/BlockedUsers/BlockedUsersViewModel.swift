@@ -11,6 +11,7 @@ import SwiftUI
 class BlockedUsersViewModel: ObservableObject {
     let coreDataController: CoreDataController
     private let firestoreService: FirebaseFirestoreService
+    @Published var selectedUsedToUnblock: BlockedUserEntity?
     
     init(
         coreDataController: CoreDataController = CoreDataController.shared,

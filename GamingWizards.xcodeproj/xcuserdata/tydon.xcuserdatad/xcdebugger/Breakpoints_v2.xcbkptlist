@@ -1946,5 +1946,68 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B8E8370-2A8E-47F0-B9FA-E3193E3F1CDC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/UniversalViews/BlockedUsers/BlockedUsersView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "listOfBlockedUsers"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "7B8E8370-2A8E-47F0-B9FA-E3193E3F1CDC - bdff204b0d4c192a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #3 () -&gt; SwiftUI.Alert in closure #2 (Swift.Int, GamingWizards.BlockedUserEntity) -&gt; &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in GamingWizards.BlockedUsersView.listOfBlockedUsers.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/BlockedUsers/BlockedUsersView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "74">
+               </Location>
+               <Location
+                  uuid = "7B8E8370-2A8E-47F0-B9FA-E3193E3F1CDC - ecfdb1000575f437"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #3 () -&gt; SwiftUI.Alert in closure #2 (Swift.Int, GamingWizards.BlockedUserEntity) -&gt; &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in GamingWizards.BlockedUsersView.listOfBlockedUsers.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/BlockedUsers/BlockedUsersView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  uuid = "7B8E8370-2A8E-47F0-B9FA-E3193E3F1CDC - 907e41da3706dd34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #3 () -&gt; SwiftUI.Alert in closure #2 (Swift.Int, GamingWizards.BlockedUserEntity) -&gt; &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: GamingWizards.BlockedUserEntity)&gt;, Swift.Optional&lt;Swift.String&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in GamingWizards.BlockedUsersView.listOfBlockedUsers.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/BlockedUsers/BlockedUsersView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
