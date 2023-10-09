@@ -14,6 +14,8 @@
 		CB1248082AD1C03E0057372F /* TwoPointRangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1248072AD1C03E0057372F /* TwoPointRangeSliderView.swift */; };
 		CB12480A2AD1C04A0057372F /* AgeSearchRangeSliderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1248092AD1C04A0057372F /* AgeSearchRangeSliderViewModel.swift */; };
 		CB12480C2AD493DA0057372F /* SearchSettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12480B2AD493DA0057372F /* SearchSettingsEntity.swift */; };
+		CB1248102AD4B23D0057372F /* IsPayToPlaySearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12480F2AD4B23D0057372F /* IsPayToPlaySearchSettingsView.swift */; };
+		CB1248132AD4B2610057372F /* IsPayToPlaySearchSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1248122AD4B2610057372F /* IsPayToPlaySearchSettingsViewModel.swift */; };
 		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
 		CB3270A02ACCE8CC00717D4E /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32709F2ACCE8CC00717D4E /* DataConverter.swift */; };
 		CB3270A42ACDECA200717D4E /* BlockedUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3270A32ACDECA200717D4E /* BlockedUsersView.swift */; };
@@ -186,6 +188,8 @@
 		CB1248072AD1C03E0057372F /* TwoPointRangeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPointRangeSliderView.swift; sourceTree = "<group>"; };
 		CB1248092AD1C04A0057372F /* AgeSearchRangeSliderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeSearchRangeSliderViewModel.swift; sourceTree = "<group>"; };
 		CB12480B2AD493DA0057372F /* SearchSettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsEntity.swift; sourceTree = "<group>"; };
+		CB12480F2AD4B23D0057372F /* IsPayToPlaySearchSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPayToPlaySearchSettingsView.swift; sourceTree = "<group>"; };
+		CB1248122AD4B2610057372F /* IsPayToPlaySearchSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPayToPlaySearchSettingsViewModel.swift; sourceTree = "<group>"; };
 		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
 		CB32709F2ACCE8CC00717D4E /* DataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConverter.swift; sourceTree = "<group>"; };
 		CB3270A32ACDECA200717D4E /* BlockedUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersView.swift; sourceTree = "<group>"; };
@@ -370,6 +374,38 @@
 				CB1248092AD1C04A0057372F /* AgeSearchRangeSliderViewModel.swift */,
 			);
 			path = TwoPointRangeSlider;
+			sourceTree = "<group>";
+		};
+		CB12480D2AD4B16D0057372F /* ProfileSettings */ = {
+			isa = PBXGroup;
+			children = (
+				CB049A142A33D87B00024D01 /* ViewPersonalAccountView.swift */,
+				CB049A162A33D88700024D01 /* ViewPersonalAccountViewModel.swift */,
+				CB5BE86329FDE955009D38D6 /* ManageAccountView.swift */,
+				CB5BE86129FDE955009D38D6 /* ManageAccountViewModel.swift */,
+				CBB8CAAC2A676106009B13A6 /* ManageListOfGamesView.swift */,
+				CBB8CAAE2A676153009B13A6 /* ManageListOfGamesViewModel.swift */,
+			);
+			path = ProfileSettings;
+			sourceTree = "<group>";
+		};
+		CB12480E2AD4B19B0057372F /* FriendGroup */ = {
+			isa = PBXGroup;
+			children = (
+				CB5BE85F29FDE955009D38D6 /* FriendListView.swift */,
+				CB5BE86229FDE955009D38D6 /* FriendListViewModel.swift */,
+				CB5BE86029FDE955009D38D6 /* DetailedFriendView.swift */,
+			);
+			path = FriendGroup;
+			sourceTree = "<group>";
+		};
+		CB1248112AD4B2430057372F /* IsPayToPlaySearchSettings */ = {
+			isa = PBXGroup;
+			children = (
+				CB12480F2AD4B23D0057372F /* IsPayToPlaySearchSettingsView.swift */,
+				CB1248122AD4B2610057372F /* IsPayToPlaySearchSettingsViewModel.swift */,
+			);
+			path = IsPayToPlaySearchSettings;
 			sourceTree = "<group>";
 		};
 		CB3270A22ACDEC8A00717D4E /* BlockedUsers */ = {
@@ -576,15 +612,8 @@
 			children = (
 				CB5BE85E29FDE955009D38D6 /* HomeView.swift */,
 				CB5BE85D29FDE955009D38D6 /* HomeViewModel.swift */,
-				CB5BE85F29FDE955009D38D6 /* FriendListView.swift */,
-				CB5BE86229FDE955009D38D6 /* FriendListViewModel.swift */,
-				CB5BE86029FDE955009D38D6 /* DetailedFriendView.swift */,
-				CB049A142A33D87B00024D01 /* ViewPersonalAccountView.swift */,
-				CB049A162A33D88700024D01 /* ViewPersonalAccountViewModel.swift */,
-				CB5BE86329FDE955009D38D6 /* ManageAccountView.swift */,
-				CB5BE86129FDE955009D38D6 /* ManageAccountViewModel.swift */,
-				CBB8CAAC2A676106009B13A6 /* ManageListOfGamesView.swift */,
-				CBB8CAAE2A676153009B13A6 /* ManageListOfGamesViewModel.swift */,
+				CB12480D2AD4B16D0057372F /* ProfileSettings */,
+				CB12480E2AD4B19B0057372F /* FriendGroup */,
 				CBAD3BCA2A44EF810068089B /* AccountSettingsView.swift */,
 				CBAD3BCC2A44EFB60068089B /* AccountSettingsViewModel.swift */,
 			);
@@ -687,6 +716,8 @@
 			children = (
 				CB623DFB2AC62570008E6180 /* SearchSettingsView.swift */,
 				CB623DFD2AC62580008E6180 /* SearchSettingsViewModel.swift */,
+				CB1248112AD4B2430057372F /* IsPayToPlaySearchSettings */,
+				CB623DF32AC600D0008E6180 /* Distance Picker */,
 			);
 			path = "Search Settings";
 			sourceTree = "<group>";
@@ -737,12 +768,11 @@
 		CBCD58212A0B1EC500136AA0 /* UniversalViews */ = {
 			isa = PBXGroup;
 			children = (
-				CB623DF32AC600D0008E6180 /* Distance Picker */,
+				CB623DFA2AC62558008E6180 /* Search Settings */,
 				CB5F57E12AB9E7180003660A /* Create Report User */,
 				CBCD58172A03147900136AA0 /* SearchBar.swift */,
 				CB1248062AD1C0160057372F /* TwoPointRangeSlider */,
 				CB9BBE0A2ACE06AC00FD4A51 /* ContactAndChatSettings */,
-				CB623DFA2AC62558008E6180 /* Search Settings */,
 				CB049A122A32669600024D01 /* LoadingAnimation.swift */,
 				CB3270A22ACDEC8A00717D4E /* BlockedUsers */,
 				CB623DFF2ACB42A3008E6180 /* CustomNavigationTitle.swift */,
@@ -955,6 +985,7 @@
 				CB5BE8AF29FDE958009D38D6 /* DependencyInjector.swift in Sources */,
 				CB049A172A33D88700024D01 /* ViewPersonalAccountViewModel.swift in Sources */,
 				CB5BE89129FDE958009D38D6 /* BindingExtension.swift in Sources */,
+				CB1248102AD4B23D0057372F /* IsPayToPlaySearchSettingsView.swift in Sources */,
 				CB5BE87E29FDE957009D38D6 /* NetworkRequestService.swift in Sources */,
 				CB5BE88329FDE958009D38D6 /* UserSignInViewController.swift in Sources */,
 				CB5BE8A229FDE958009D38D6 /* HomeViewModel.swift in Sources */,
@@ -1014,6 +1045,7 @@
 				CB049A192A33D8EF00024D01 /* AccountView.swift in Sources */,
 				CBCD58232A0B1EF400136AA0 /* BackgroundImageView.swift in Sources */,
 				CB5BE8AB29FDE958009D38D6 /* FontModifier.swift in Sources */,
+				CB1248132AD4B2610057372F /* IsPayToPlaySearchSettingsViewModel.swift in Sources */,
 				CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */,
 				CBB8CAAD2A676106009B13A6 /* ManageListOfGamesView.swift in Sources */,
 				CB5BE89B29FDE958009D38D6 /* MainMessagesView.swift in Sources */,

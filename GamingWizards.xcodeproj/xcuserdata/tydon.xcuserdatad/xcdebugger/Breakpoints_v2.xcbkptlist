@@ -112,7 +112,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "getRootViewController()"
+            landmarkName = "createUserBaseData(id:firstName:lastName:displayName:email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1187,7 +1187,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "createBaselineSearchSettings()"
+            landmarkName = "saveUserToUserDefaults(user:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1360,7 +1360,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "randomNonceString(length:)"
+            landmarkName = "sha256(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

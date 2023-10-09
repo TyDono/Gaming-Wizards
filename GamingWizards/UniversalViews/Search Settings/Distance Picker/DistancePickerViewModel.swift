@@ -15,13 +15,13 @@ import SwiftUI
         @Published var kilometers: Int = 0
         
         init(
-            coredataController: CoreDataController = CoreDataController.shared,
+            coreDataController: CoreDataController = CoreDataController.shared,
             miles: Double = CoreDataController.shared.savedSearchSettingsEntity?.searchRadius ?? 0,
             kilometers: Int
         ) {
             self.miles = miles
             self.kilometers = kilometers
-            self.coreDataController = coredataController
+            self.coreDataController = coreDataController
         }
         
         func convertMilesToKm(miles: Double) -> Int {

@@ -11,6 +11,7 @@ import SwiftUI
 struct SearchSettingsView: View {
 //    @Environment(\.presentationMode) var presentationMode
     @StateObject var searchSettingsVM: SearchSettingsViewModel
+    @ObservedObject var isPayToPlaySearchSettingsVM = IsPayToPlaySearchSettingsViewModel()
     @State private var isDistancePickerSettingsShowing: Bool = false
     @State private var isAgeRangeSettingsShowing: Bool = false
     @State private var searchSettingViewTitle: String? = "Search Settings"
@@ -26,7 +27,10 @@ struct SearchSettingsView: View {
                 VStack {
                     List {
                         distanceSettingsButton
+                            .font(.system(size: 25))
 //                        ageRangeSettingsButton
+                        isPayToPlaySearchSettingsView
+                            .font(.system(size: 25))
                     }
                 }
             }
@@ -38,6 +42,10 @@ struct SearchSettingsView: View {
                     CustomNavigationTitle(titleImageSystemName: $searchSettingTitleSystemImageName, titleText: $searchSettingViewTitle)
                 }
             }
+    }
+    
+    private var isPayToPlaySearchSettingsView: some View {
+        IsPayToPlaySearchSettingsView(isPayToPlaySearchSettingsVM: isPayToPlaySearchSettingsVM)
     }
     
     private var ageRangeSettingsButton: some View {

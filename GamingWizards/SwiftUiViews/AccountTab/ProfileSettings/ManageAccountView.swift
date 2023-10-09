@@ -374,7 +374,7 @@ struct ManageAccountView: View {
     private var PayToPlayView: some View {
         VStack {
             HStack(spacing: 10) {
-                Image(systemName: manageAccountVM.isPayToPlay ? "dollarsign" : "dollarsign")
+                Image(systemName: manageAccountVM.isPayToPlay ? "dollarsign" : "dice")
                     .font(.system(size: 30))
                 Text(manageAccountVM.isPayToPlay ? "Pay to Play" : "Free to Play")
             }
