@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-//            .navigationBarTitleDisplayMode(.inline)
-//            .navigationBarTitle("", displayMode: .inline)
-//            .navigationBarItems(trailing: CustomNavigationTitle(titleImageSystemName: $searchSettingTitleSystemImageName, titleText: $searchSettingViewTitle))
+
+
 struct SearchSettingsView: View {
-    @Environment(\.presentationMode) var presentationMode
+//    @Environment(\.presentationMode) var presentationMode
     @StateObject var searchSettingsVM: SearchSettingsViewModel
     @State private var isDistancePickerSettingsShowing: Bool = false
     @State private var isAgeRangeSettingsShowing: Bool = false
@@ -27,7 +26,7 @@ struct SearchSettingsView: View {
                 VStack {
                     List {
                         distanceSettingsButton
-                        ageRangeSettingsButton
+//                        ageRangeSettingsButton
                     }
                 }
             }

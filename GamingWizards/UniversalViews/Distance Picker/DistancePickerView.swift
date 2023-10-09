@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DistancePickerView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -36,8 +37,16 @@ struct DistancePickerView: View {
                 }
             ), in: 1...1000)
             .padding()
+            .onChange(of: distancePickerVM.miles) { newMiles in
+                distancePickerVM.saveDistanceSearchSettings(distance: newMiles)
+            }
+            .onAppear {
+                self.distancePickerVM.miles = distancePickerVM.coreDataController.savedSearchSettingsEntity?.searchRadius ?? 0
+            }
         }
     }
+    
+
     
     private var distancePickerMessage: some View {
         VStack {
@@ -52,6 +61,13 @@ struct DistancePickerView: View {
     
     private var distancePickTitle: some View {
         HStack {
+            Image(systemName: "xmark")
+                .resizable()
+                .frame(width: 32, height: 32)
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .foregroundColor(.black)
             Spacer()
             Image(systemName: "mappin.and.ellipse")
                 .resizable()
@@ -61,13 +77,7 @@ struct DistancePickerView: View {
                 .foregroundColor(.black)
                 .font(.roboto(.bold, size: 28))
             Spacer()
-            Image(systemName: "xmark")
-                .resizable()
-                .frame(width: 32, height: 32)
-                .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
-                }
-                .foregroundColor(.black)
+
         }
     }
     

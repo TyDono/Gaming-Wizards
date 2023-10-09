@@ -63,28 +63,50 @@ class CoreDataController: ObservableObject {
         }
     }
     
+    enum CoreDataError: Error {
+        case saveError
+        // Add more cases as needed
+    }
+    
     // MARK: SearchSettings
+    
+    func createBaselineSearchSettings() {
+        guard savedSearchSettingsEntity == nil else { return }
+        let newSearchSettings = SearchSettingsEntity(context: viewContext)
+        newSearchSettings.ageRangeMax = 18
+        newSearchSettings.ageRangeMin = 18
+        newSearchSettings.groupSizeRangeMax = 0
+        newSearchSettings.groupSizeRangeMin = 25
+        newSearchSettings.isFreeToPlay = true
+        newSearchSettings.searchRadius = 150
+        
+        do {
+            try saveSearchSettings(searchSettings: newSearchSettings)
+        } catch {
+            print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")
+        }
+    }
     
     func fetchSavedSearchSettings() {
         let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
         do {
             let settings = try viewContext.fetch(fetchRequest)
             savedSearchSettingsEntity = settings.first
-            print("Fetched saved SearchSettingsEntity: \(String(describing: savedSearchSettingsEntity))")
         } catch {
             print("Failed to fetch saved SearchSettingsEntity: \(error)")
         }
     }
     
-    func saveSearchSettings(searchSettings: SearchSettingsEntity) {
+    func saveSearchSettings(searchSettings: SearchSettingsEntity) throws {
         do {
             try viewContext.save()
             savedSearchSettingsEntity = searchSettings
-            print("Saved SearchSettingsEntity successfully")
         } catch {
-            print("Failed to save SearchSettingsEntity: \(error)")
+            print("FAILED TO SAVED SEARCH SETTINGS: \(error)")
+            throw CoreDataError.saveError
         }
     }
+
     
     // MARK: FRIEND
     

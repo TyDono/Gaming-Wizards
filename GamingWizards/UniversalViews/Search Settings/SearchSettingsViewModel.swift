@@ -11,5 +11,8 @@ import SwiftUI
 //extension SearchSettingsView {
     class SearchSettingsViewModel: ObservableObject {
         @ObservedObject var distancePickerViewModel = DistancePickerViewModel(miles: 0.0, kilometers: 0)
+        
+        
+        
     }
 //}

@@ -66,6 +66,7 @@ import Security
                             Task.detached {
                                 await self.retrieveFriendsListener()
                                 await self.fbFirestoreHelper.retrieveBlockedUsers(userId: existingUser.id)
+                                await self.coreDataController.createBaselineSearchSettings()
                                 await self.signInSuccess()
                             }
                         }
@@ -79,6 +80,7 @@ import Security
                 self.saveUserToUserDefaults(user: user) {
                     Task.detached {
                         await self.retrieveFriendsListener()
+                        await self.coreDataController.createBaselineSearchSettings()
                         await self.signInSuccess()
                     }
                 }

@@ -13,6 +13,7 @@
 		CB049A192A33D8EF00024D01 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB049A182A33D8EF00024D01 /* AccountView.swift */; };
 		CB1248082AD1C03E0057372F /* TwoPointRangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1248072AD1C03E0057372F /* TwoPointRangeSliderView.swift */; };
 		CB12480A2AD1C04A0057372F /* AgeSearchRangeSliderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1248092AD1C04A0057372F /* AgeSearchRangeSliderViewModel.swift */; };
+		CB12480C2AD493DA0057372F /* SearchSettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12480B2AD493DA0057372F /* SearchSettingsEntity.swift */; };
 		CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24502A2A0102E200581048 /* ListOfGames.swift */; };
 		CB3270A02ACCE8CC00717D4E /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32709F2ACCE8CC00717D4E /* DataConverter.swift */; };
 		CB3270A42ACDECA200717D4E /* BlockedUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3270A32ACDECA200717D4E /* BlockedUsersView.swift */; };
@@ -184,6 +185,7 @@
 		CB049A182A33D8EF00024D01 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CB1248072AD1C03E0057372F /* TwoPointRangeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPointRangeSliderView.swift; sourceTree = "<group>"; };
 		CB1248092AD1C04A0057372F /* AgeSearchRangeSliderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeSearchRangeSliderViewModel.swift; sourceTree = "<group>"; };
+		CB12480B2AD493DA0057372F /* SearchSettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsEntity.swift; sourceTree = "<group>"; };
 		CB24502A2A0102E200581048 /* ListOfGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGames.swift; sourceTree = "<group>"; };
 		CB32709F2ACCE8CC00717D4E /* DataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConverter.swift; sourceTree = "<group>"; };
 		CB3270A32ACDECA200717D4E /* BlockedUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersView.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				CB5BE86F29FDE956009D38D6 /* Navigation.swift */,
+				CB12480B2AD493DA0057372F /* SearchSettingsEntity.swift */,
 				CB5BE87129FDE956009D38D6 /* Message.swift */,
 				CB5BE87229FDE956009D38D6 /* User.swift */,
 				CBCD58132A01AFD200136AA0 /* UserReport.swift */,
@@ -980,6 +983,7 @@
 				CB5BE8A129FDE958009D38D6 /* MainTabViewModel.swift in Sources */,
 				CB5BE88A29FDE958009D38D6 /* CoreDataController.swift in Sources */,
 				CB5BE8AC29FDE958009D38D6 /* Constants.swift in Sources */,
+				CB12480C2AD493DA0057372F /* SearchSettingsEntity.swift in Sources */,
 				CB3392C12A1EF4F000EE72D2 /* ShakeEffect.swift in Sources */,
 				CB8841CE2A791E680017C874 /* ChatLogView.swift in Sources */,
 				CB6240702A5F052B00E69C5C /* Debouncer.swift in Sources */,
@@ -1229,7 +1233,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.05;
+				MARKETING_VERSION = 1.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TylerDonohue.GamingWizards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1265,7 +1269,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.05;
+				MARKETING_VERSION = 1.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TylerDonohue.GamingWizards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

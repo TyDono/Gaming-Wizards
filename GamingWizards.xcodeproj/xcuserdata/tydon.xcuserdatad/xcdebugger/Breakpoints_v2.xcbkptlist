@@ -110,9 +110,9 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "createUserBaseData(id:firstName:lastName:displayName:email:completion:)"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "getRootViewController()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1185,9 +1185,9 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "saveUserToUserDefaults(user:completion:)"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "createBaselineSearchSettings()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1358,9 +1358,9 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "sha256(_:)"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "randomNonceString(length:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1766,9 +1766,9 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "saveBlockedUsers()"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "fetchFriengds()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1892,28 +1892,28 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "fetchBlockedUser()"
-            landmarkType = "7">
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "CoreDataController"
+            landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "D7894E95-E307-4E49-820E-BAF7FE687015 - 73b602d0cbc59a50"
+                  uuid = "D7894E95-E307-4E49-820E-BAF7FE687015 - fd8ef4088ac41e2c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.fetchBlockedUser() -&gt; ()"
+                  symbolName = "GamingWizards.CoreDataController.saveBlockedUsers() -&gt; ()"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "72">
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "91">
                </Location>
                <Location
-                  uuid = "D7894E95-E307-4E49-820E-BAF7FE687015 - 73b602d0cbc59a50"
+                  uuid = "D7894E95-E307-4E49-820E-BAF7FE687015 - 73b602d0cbc5a651"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1923,8 +1923,23 @@
                   urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "429">
+               </Location>
+               <Location
+                  uuid = "D7894E95-E307-4E49-820E-BAF7FE687015 - 73b602d0cbc5a77e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.fetchBlockedUser() -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
                   offsetFromSymbolStart = "429">
                </Location>
             </Locations>
@@ -2007,6 +2022,54 @@
                   offsetFromSymbolStart = "28">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E332F9D-EBD8-4C02-879A-95CF96BDB5AD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/UniversalViews/Distance Picker/DistancePickerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "saveDistanceSearchSettings(distance:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86916BDE-4117-4B40-AD9E-802CD857E400"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/UniversalViews/Distance Picker/DistancePickerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "saveDistanceSearchSettings(distance:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E45B8207-6AF5-4941-8156-726B16645F86"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/UniversalViews/Distance Picker/DistancePickerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "distancePickerSlider"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

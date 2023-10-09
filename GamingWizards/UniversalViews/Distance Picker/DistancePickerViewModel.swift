@@ -10,16 +10,33 @@ import SwiftUI
 
 //extension DistancePickerView {
     class DistancePickerViewModel: ObservableObject {
+        @ObservedObject var coreDataController: CoreDataController
         @Published var miles: Double = 0.0
         @Published var kilometers: Int = 0
         
-        init(miles: Double, kilometers: Int) {
+        init(
+            coredataController: CoreDataController = CoreDataController.shared,
+            miles: Double = CoreDataController.shared.savedSearchSettingsEntity?.searchRadius ?? 0,
+            kilometers: Int
+        ) {
             self.miles = miles
             self.kilometers = kilometers
+            self.coreDataController = coredataController
         }
         
         func convertMilesToKm(miles: Double) -> Int {
             return UnitConverter.milesToKilometers(miles: miles)
+        }
+        
+        func saveDistanceSearchSettings(distance: Double) {
+            guard let newSearchSettings = coreDataController.savedSearchSettingsEntity else { return }
+            newSearchSettings.searchRadius = distance
+            do {
+                print(newSearchSettings.searchRadius)
+                try coreDataController.saveSearchSettings(searchSettings: newSearchSettings)
+            } catch {
+                print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")
+            }
         }
         
         func mapExponential(value: Double) -> Double {

@@ -16,7 +16,8 @@
     <entity name="SearchSettingsEntity" representedClassName="SearchSettingsEntity" syncable="YES" codeGenerationType="class">
         <attribute name="ageRangeMax" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="ageRangeMin" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="groupSize" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="groupSizeRangeMax" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="groupSizeRangeMin" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isFreeToPlay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="searchRadius" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
