@@ -14,7 +14,6 @@ protocol FirebaseFirestoreService {
     func stopListening()
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
-    func searchForUserMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User]
 //    func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
     func sendFriendRequest(newFriend: User) async throws -> Friend 
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
@@ -29,6 +28,7 @@ protocol FirebaseFirestoreService {
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
     func retrieveBlockedUsers(userId: String) async 
+    func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?) async throws -> [User]
     
 }
 
@@ -119,14 +119,22 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func searchForUserMatchingGames(collectionName: String, whereField: String, gameName: String) async throws -> [User] {
-        let gameQuery = firestore.collection(collectionName).whereField(whereField, arrayContains: gameName)
-//            let gameQuery = firesStoreDatabase.collection(Constants.users).whereField(Constants.userListOfGamesString, arrayContains: gameName)
+    func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?) async throws -> [User] {
+        var query: Query = firestore.collection(Constants.usersString)
+        
+        if let gameName = gameName {
+            query = query.whereField(Constants.userListOfGamesString, arrayContains: gameName)
+        }
+        
+        if let isPayToPlay = isPayToPlay {
+            query = query.whereField(Constants.userPayToPlay, isEqualTo: isPayToPlay)
+        }
         
         do {
-            let snapshot = try await gameQuery.getDocuments()
-            let users = snapshot.documents.map { document -> User in
+            let querySnapshot = try await query.getDocuments()
+            let users = querySnapshot.documents.compactMap { document in
                 let data = document.data()
+                
                 let id = data[Constants.userID] as? String ?? ""
                 let displayName = data[Constants.userDisplayName] as? String ?? ""
                 let email = data[Constants.userEmail] as? String ?? ""
@@ -144,26 +152,28 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 let payToPlay = data[Constants.userPayToPlay] as? Bool ?? false
                 let isSolo = data[Constants.userIsSolo] as? Bool ?? true
                 
-                return User(id: id,
-                            displayName: displayName,
-                            email: email,
-                            latitude: latitude,
-                            longitude: longitude,
-                            location: location,
-                            profileImageString: profileImageString,
-                            friendCodeID: friendCodeID,
-                            listOfGames: listOfGames,
-                            groupSize: groupSize,
-                            age: age, about: about,
-                            availability: availability,
-                            title: title,
-                            isPayToPlay: payToPlay,
-                            isSolo: isSolo)
+                return User(
+                    id: id,
+                    displayName: displayName,
+                    email: email,
+                    latitude: latitude,
+                    longitude: longitude,
+                    location: location,
+                    profileImageString: profileImageString,
+                    friendCodeID: friendCodeID,
+                    listOfGames: listOfGames,
+                    groupSize: groupSize,
+                    age: age,
+                    about: about,
+                    availability: availability,
+                    title: title,
+                    isPayToPlay: payToPlay,
+                    isSolo: isSolo
+                )
             }
-            
             return users
         } catch {
-            print("ERROR FETCHING SEARCHED FOR USERS: \(error.localizedDescription)")
+            print("Error in Firestore query for user search: \(error)")
             throw error
         }
     }

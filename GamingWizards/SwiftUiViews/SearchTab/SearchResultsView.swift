@@ -9,33 +9,40 @@ import SwiftUI
 
 struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
-//    @ObservedObject var user = UserObservable()
-    @ObservedObject var user = UserObservable.shared
-    @ObservedObject var userSearchViewModel: UserSearchViewModel
-    @ObservedObject var searchResultsViewModel: SearchResultsViewModel
-    @State var resultWasTapped: Bool = false
-    @State var selectedUser: User = User(id: "110k1")
-    @State var searchText: String
-    @Binding var tabSelection: String
+    @StateObject private var searchResultsVM: SearchResultsViewModel
     
-    init(tabSelection: Binding<String>, searchText: String) {
+    @Binding var tabSelection: String
+    @Binding var searchText: String
+    
+    init(
+        searchResultsVM: SearchResultsViewModel = SearchResultsViewModel(),
+        tabSelection: Binding<String>,
+        searchText: Binding<String>
+    ) {
         self._tabSelection = tabSelection
-        self._searchText = State(initialValue: searchText) // Initialize the @State property
-        self.userSearchViewModel = UserSearchViewModel() // Initialize userSearchViewModel
-        self.searchResultsViewModel = SearchResultsViewModel() // Initialize searchResultsViewModel
-        searchResultsViewModel.performSearchForUsers(searchText: searchText)
+        self._searchText = searchText
+        self._searchResultsVM = StateObject(wrappedValue: searchResultsVM)
     }
     
     var body: some View {
         ZStack {
             NavigationView {
-                searchResultsList
+                if ((searchResultsVM.users?.isEmpty) == true) {
+                    noSearchResults
+                } else {
+                    searchResultsList
+                }
+            }
+            .onAppear {
+                Task {
+                    await searchResultsVM.searchForMatchingUsers(gameName: searchText, isPayToPlay: searchResultsVM.coreDataController.savedSearchSettingsEntity?.isFreeToPlay ?? true)
+                }
             }
         }
 //        .font(.globalFont(.luminari, size: 16))
         .font(.roboto(.regular, size: 16))
-        .sheet(isPresented: $resultWasTapped, content: {
-            SearchResultsDetailView(selectedUser: $selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
+        .sheet(isPresented: $searchResultsVM.resultWasTapped, content: {
+            SearchResultsDetailView(selectedUser: $searchResultsVM.selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
         })
         .background(
 //            Color(.init(white: 1.0, alpha: 1))
@@ -43,79 +50,65 @@ struct SearchResultsView: View {
             backgroundImage
              */
         )
-//        .task {
-//            await searchResultsViewModel.performSearchForMatchingGames(gameName: searchText)
-//        }
+    }
+    
+    private var noSearchResults: some View {
+        VStack {
+            Spacer()
+            Text("No Matches Found :(")
+                .font(.roboto(.regular, size: 26))
+                .foregroundStyle(.secondary)
+                .fontWeight(.bold)
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity)
+        }
     }
     
     private var searchResultsList: some View {
         List {
-            ForEach(Array(searchResultsViewModel.users ?? []), id: \.self) { user in
-                if ((searchResultsViewModel.users?.isEmpty) == nil) {
-                    Spacer()
-                    Text("No Matches Found :(")
-                        .font(.roboto(.regular, size: 26))
-                        .foregroundStyle(.secondary)
-                        .fontWeight(.bold)
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity)
-                } else {
-                    VStack {
-                        Text(user.title ?? "")
-                            .font(.roboto(.regular, size: 19))
-                            .bold()
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        HStack {
-                            Text("Name: \(user.displayName ?? "")")
+            ForEach(Array(searchResultsVM.users ?? []), id: \.self) { user in
+                VStack {
+                    Text(user.title ?? "")
+                        .font(.roboto(.regular, size: 19))
+                        .bold()
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    HStack {
+                        Text("Name: \(user.displayName ?? "")")
+                    }
+                    HStack {
+                        Text("Location: \(user.location ?? "")")
+                        Text("GroupSize: \(user.groupSize ?? "")")
+                    }
+                    HStack {
+                        Text("Age: \(user.age ?? "")")
+                        Text("Pay to Play: \(user.isPayToPlay ? "Yes" : "No")")
+                    }
+                }
+                .listRowSeparator(.hidden)
+                .frame(alignment: .center)
+                .background(
+                    GeometryReader { geometry in
+                        ZStack(alignment: .center) {
+                            RoundedRectangle(cornerRadius: Constants.roundedCornerRadius)
+                                .foregroundColor(Color(.systemGray6))
+                            
                         }
-                        HStack {
-                            Text("Location: \(user.location ?? "")")
-                            Text("GroupSize: \(user.groupSize ?? "")")
-                        }
-                        HStack {
-                            Text("Age: \(user.age ?? "")")
-                            Text("Pay to Play: \(user.isPayToPlay ? "Yes" : "No")")
+                        .alignmentGuide(HorizontalAlignment.center) { _ in
+                            geometry.size.width / 2
                         }
                     }
-                    .listRowSeparator(.hidden)
-                    .frame(alignment: .center)
-                    .background(
-                        GeometryReader { geometry in
-                            ZStack(alignment: .center) {
-                                RoundedRectangle(cornerRadius: Constants.roundedCornerRadius)
-                                    .foregroundColor(Color(.systemGray6))
-                                
-                                /*
-                                 Image("blank-page")
-                                 .resizable()
-                                 .scaledToFill()
-                                 .clipShape(RoundedRectangle(cornerRadius: 5))
-                                 .frame(width: geometry.size.width - 8, height: geometry.size.height - 8)
-                                 .clipped()
-                                 */
-                                
-                            }
-                            .alignmentGuide(HorizontalAlignment.center) { _ in
-                                geometry.size.width / 2
-                            }
-                        }
-                    )
-                    //                    Divider()
-                    .onTapGesture {
-                        self.selectedUser = user
-                        resultWasTapped = true
-                    }
+                )
+                .onTapGesture {
+                    searchResultsVM.selectedUser = user
+                    searchResultsVM.resultWasTapped = true
                 }
             }
         }
         .listStyle(PlainListStyle())
         .background(
             Color.clear
-            /*
-            backgroundImage
-             */
         )
     }
 
@@ -127,14 +120,4 @@ struct SearchResultsView: View {
             .edgesIgnoringSafeArea(.all)
     }
     
-}
-
-struct SearchResultsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let userSearchViewModel = UserSearchViewModel()
-        let searchText = "Example Search"
-        let selectedUser = User(id: "110k1")
-        
-        return SearchResultsView(tabSelection: .constant("nil"), searchText: searchText)
-    }
 }
