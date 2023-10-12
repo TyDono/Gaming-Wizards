@@ -27,12 +27,6 @@ import SwiftUI
             self._selectedUser = Published(initialValue: selectedUser)
         }
         
-        func performSearchForUsers(searchText: String)  {
-            Task {
-                await performSearchForMatchingGames(gameName: searchText)
-            }
-        }
-        
         func searchForMatchingUsers(gameName: String, isPayToPlay: Bool) async {
             Task {
                 do {
