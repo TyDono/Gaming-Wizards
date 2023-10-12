@@ -73,8 +73,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                         let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
                         let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
                         let profileImageString = document.data()[Constants.imageString] as? String ?? ""
-                        self.coreDataController.addFriend(friendCodeID: friendCodeID,
-                                                          friendUserID: friendUserID,
+                        self.coreDataController.addFriend(friendUserID: friendUserID,
                                                           friendDisplayName: friendDisplayName,
                                                           isFriend: isFriend,
                                                           isFavorite: isFavorite,
@@ -160,7 +159,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                     longitude: longitude,
                     location: location,
                     profileImageString: profileImageString,
-                    friendCodeID: friendCodeID,
+//                    friendCodeID: friendCodeID,
                     listOfGames: listOfGames,
                     groupSize: groupSize,
                     age: age,
@@ -184,14 +183,14 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(newFriend.id)
 
         let yourFriendInfo = Friend(id: self.user.id,
-                                    friendCodeID: self.user.friendCodeID,
+//                                    friendCodeID: self.user.friendCodeID,
                                     displayName: self.user.displayName ?? "",
                                     isFriend: false,
                                     isFavorite: false,
                                     imageString: self.user.profileImageString)
 
         let theirFriendInfo = Friend(id: newFriend.id,
-                                     friendCodeID: newFriend.friendCodeID,
+//                                     friendCodeID: newFriend.friendCodeID,
                                      displayName: newFriend.displayName ?? "",
                                      isFriend: false,
                                      isFavorite: false,

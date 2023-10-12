@@ -104,7 +104,7 @@ import Security
         user.longitude = newUser.longitude
         user.location = newUser.location
         user.profileImageString = newUser.profileImageString
-        user.friendCodeID = newUser.friendCodeID
+//        user.friendCodeID = newUser.friendCodeID
         user.listOfGames = newUser.listOfGames
         user.groupSize = newUser.groupSize
         user.age = newUser.age
@@ -151,7 +151,7 @@ import Security
                            longitude: longitude,
                            location: location,
                            profileImageString: profileImageString,
-                           friendCodeID: friendID,
+//                           friendCodeID: friendID,
                            listOfGames: games,
                            groupSize: groupSize,
                            age: age,
@@ -219,14 +219,14 @@ import Security
     func deleteFriendInFirestore(friend: FriendEntity, userID: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
 //        guard let userFriendCodeID = user.friendCodeID else { return }
         guard let friendUserID = friend.id else { return }
-        guard let friendCodeID = friend.friendCodeID else { return }
-        fbFirestoreHelper.firestore.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID)
+//        guard let friendCodeID = friend.friendCodeID else { return }
+        fbFirestoreHelper.firestore.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.id)
             .delete() { [weak self] err in
                 if let error = err {
                     print("ERROR DELETING YOURSELF FROM YOUR FRIEND'S FRIEND LIST: \(error.localizedDescription)")
                 } else {
                     guard let self = self else { return }
-                    self.fbFirestoreHelper.firestore.collection(Constants.usersString).document(userID).collection("friendList").document(friendCodeID).delete() { [weak self] err in
+                    self.fbFirestoreHelper.firestore.collection(Constants.usersString).document(userID).collection("friendList").document(friendUserID).delete() { [weak self] err in
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THEIR FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
@@ -262,8 +262,7 @@ import Security
                         let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
                         let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
                         let profileImageString = document.data()[Constants.imageString] as? String ?? ""
-                        self.coreDataController.addFriend(friendCodeID: friendCodeID,
-                                                          friendUserID: friendUserID,
+                        self.coreDataController.addFriend(friendUserID: friendUserID,
                                                           friendDisplayName: friendDisplayName,
                                                           isFriend: isFriend,
                                                           isFavorite: isFavorite,

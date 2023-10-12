@@ -61,11 +61,10 @@ import CoreData
     }
     */
     
-    func convertUserToFriendDataBinding(displayName: String, friendUserID: String, friendCodeID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
+    func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
         let friendEntity = DataConverter.convertToFriendEntity(
             displayName: displayName,
             friendUserID: friendUserID,
-            friendCodeID: friendCodeID,
             profileImageString: profileImageString,
             isFavorite: isFavorite,
             isFriend: isFriend
@@ -75,7 +74,7 @@ import CoreData
             friendEntity
         }, set: { newValue in
             // Update properties of friendEntity when the binding is set
-            friendEntity.friendCodeID = newValue.friendCodeID
+//            friendEntity.friendCodeID = newValue.friendCodeID
             friendEntity.id = newValue.id
             friendEntity.displayName = newValue.displayName
             friendEntity.isFriend = newValue.isFriend
@@ -90,7 +89,7 @@ import CoreData
         do {
             let friend = try await fbFirestoreService.sendFriendRequest(newFriend: newFriend)
             
-            coreDataController.addFriend(friendCodeID: friend.friendCodeID, friendUserID: friend.id, friendDisplayName: friend.displayName, isFriend: false, isFavorite: false, profileImageString: friend.imageString)
+            coreDataController.addFriend(friendUserID: friend.id, friendDisplayName: friend.displayName, isFriend: false, isFavorite: false, profileImageString: friend.imageString)
             diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString, image: friendProfileImage)
             
             do {

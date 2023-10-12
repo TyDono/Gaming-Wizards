@@ -17,7 +17,7 @@ struct User: Identifiable, Codable, Hashable {
     var longitude: Double?
     var location: String? = "" //change to UserLocation later date maybe
     var profileImageString: String = ""
-    var friendCodeID = ""
+//    var friendCodeID = ""
 //    var friendList: [Friend] = [] // sub collection
 //    var friendRequests: [Friend] = [] // sub collection
     var listOfGames: [String]? = []
@@ -40,7 +40,7 @@ struct User: Identifiable, Codable, Hashable {
             Constants.userLongitude: longitude,
             Constants.userLocation: location,
             Constants.userProfileImageString: profileImageString,
-            Constants.userFriendCodeID: friendCodeID,
+//            Constants.userFriendCodeID: friendCodeID,
 //            Constants.userFriendList: friendList,
 //            Constants.userFriendRequest: friendRequests,
             Constants.userListOfGamesString: listOfGames,
@@ -67,7 +67,7 @@ extension User {
         case longitude = "longitude"
         case location = "userLocation"
         case profileImageString = "profileImageString"
-        case friendCodeID = "friendCodeID"
+//        case friendCodeID = "friendCodeID"
 //        case friendList = "friendList"
 //        case friendRequests = "friendRequests"
         case listOfGames = "listOfGames"
@@ -99,8 +99,8 @@ extension User {
                 self = .location
             case Constants.userProfileImageString:
                 self = .profileImageString
-            case Constants.userFriendCodeID:
-                self = .friendCodeID
+//            case Constants.userFriendCodeID:
+//                self = .friendCodeID
             case Constants.userListOfGamesString:
                 self = .listOfGames
             case Constants.userGroupSize:
@@ -138,7 +138,7 @@ class UserObservable: ObservableObject {
     private let locationKey = Constants.userLocation
     private let profileImageStringKey = Constants.userProfileImageString
     private let isNewUserKey = "isNewUser" // No constant provided for this, so using the original string
-    private let friendIDKey = Constants.userFriendCodeID
+//    private let friendIDKey = Constants.userFriendCodeID
     private let friendListKey = Constants.userFriendList
     private let friendRequestsKey = Constants.userFriendRequest
     private let listOfGamesKey = Constants.userListOfGamesString
@@ -212,11 +212,11 @@ class UserObservable: ObservableObject {
         }
     }
     
-    @Published var friendCodeID: String {
-        didSet {
-            UserDefaults.standard.setValue(friendCodeID, forKey: "\(friendIDKey)-\(id)")
-        }
-    }
+//    @Published var friendCodeID: String {
+//        didSet {
+//            UserDefaults.standard.setValue(friendCodeID, forKey: "\(friendIDKey)-\(id)")
+//        }
+//    }
     
 //    @Published var friendList: [Friend] { // Saved in CoreData
 //        didSet {
@@ -298,7 +298,7 @@ class UserObservable: ObservableObject {
         location = UserDefaults.standard.string(forKey: "\(locationKey)-\(id)") ?? ""
         profileImageString = UserDefaults.standard.string(forKey: "\(profileImageStringKey)-\(id)") ?? ""
         isNewUser = UserDefaults.standard.bool(forKey: "\(isNewUserKey)-\(id)")
-        friendCodeID = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)") ?? ""
+//        friendCodeID = UserDefaults.standard.string(forKey: "\(friendIDKey)-\(id)") ?? ""
         groupSize = UserDefaults.standard.string(forKey: "\(groupSizeKey)-\(id)") ?? ""
         listOfGames = UserDefaults.standard.array(forKey: "\(listOfGamesKey)-\(id)") as? [String] ?? []
         age = UserDefaults.standard.string(forKey: "\(ageKey)-\(id)") ?? ""

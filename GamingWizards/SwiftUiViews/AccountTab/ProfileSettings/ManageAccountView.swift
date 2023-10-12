@@ -74,8 +74,6 @@ struct ManageAccountView: View {
                         }
                         Group {
 //                            listOfGamesView
-                            personalFriendID
-                                .padding()
                             Divider()
                             emailTextField
                                 .padding()
@@ -197,23 +195,23 @@ struct ManageAccountView: View {
     }
     
     // user's will know it as their personal ID, but on code it is their FriendID. their real ID is a uuid.
-    private var personalFriendID: some View {
-        VStack {
-            HStack(alignment: .center) {
-                Image(systemName: "barcode")
-                Text("Friend ID")
-                    .frame(maxWidth: .infinity,
-                           alignment: .leading)
-                    .font(.roboto(.semibold,
-                                  size: 15))
-            }
-            Text("\(manageAccountVM.user.friendCodeID)")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 21))
-        }
-    }
+//    private var personalFriendID: some View {
+//        VStack {
+//            HStack(alignment: .center) {
+//                Image(systemName: "barcode")
+//                Text("Friend ID")
+//                    .frame(maxWidth: .infinity,
+//                           alignment: .leading)
+//                    .font(.roboto(.semibold,
+//                                  size: 15))
+//            }
+//            Text("\(manageAccountVM.user.friendCodeID)")
+//                .frame(maxWidth: .infinity,
+//                       alignment: .leading)
+//                .font(.roboto(.semibold,
+//                              size: 21))
+//        }
+//    }
     
     private var displayNameTextField: some View {
         VStack {

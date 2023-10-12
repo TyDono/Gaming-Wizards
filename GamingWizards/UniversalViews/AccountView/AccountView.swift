@@ -21,7 +21,7 @@ struct AccountView: View {
     @Binding var userLocation: String?
     @Binding var profileImageString: String
     @Binding var profileImage: UIImage?
-    @Binding var friendCodeId: String
+//    @Binding var friendCodeId: String
     @Binding var listOfGames: [String]?
     @Binding var groupSize: String?
     @Binding var age: String?
@@ -36,7 +36,7 @@ struct AccountView: View {
         userLocation: Binding<String?>,
         profileImageString: Binding<String>,
         profileImage: Binding<UIImage?>,
-        friendCodeId: Binding<String>,
+//        friendCodeId: Binding<String>,
         listOfGames: Binding<[String]?>,
         groupSize: Binding<String?>,
         age: Binding<String?>,
@@ -50,7 +50,7 @@ struct AccountView: View {
         _userLocation = userLocation
         _profileImageString = profileImageString
         _profileImage = profileImage
-        _friendCodeId = friendCodeId
+//        _friendCodeId = friendCodeId
         _listOfGames = listOfGames
         _groupSize = groupSize
         _age = age
@@ -97,8 +97,8 @@ struct AccountView: View {
                         Divider()
                             .background(Color.black)
                         //                profileNameView
-                        profileFriendCodeIdView
-                        Divider()
+//                        profileFriendCodeIdView
+//                        Divider()
                             .background(Color.black)
                         listOfGamesTagView
 //                        profileListOfGamesView
@@ -321,28 +321,28 @@ struct AccountView: View {
         }
     }
     
-    private var profileFriendCodeIdView: some View {
-        VStack {
-            VStack {
-                HStack {
-                    Image(systemName: "barcode")
-                        .foregroundColor(.black)
-                    Text("Friend Code")
-                        .foregroundColor(.black)
-                //                        .font(.globalFont(.luminari, size: 14))
-                        .font(.roboto(.regular, size: 14))
-                    Spacer()
-                }
-                Text(friendCodeId)
-                    .frame(
-                        maxWidth: .infinity,
-                        maxHeight: .infinity,
-                        alignment: .leading)
-                    .foregroundColor(.gray)
-                
-            }
-        }
-    }
+//    private var profileFriendCodeIdView: some View {
+//        VStack {
+//            VStack {
+//                HStack {
+//                    Image(systemName: "barcode")
+//                        .foregroundColor(.black)
+//                    Text("Friend Code")
+//                        .foregroundColor(.black)
+//                //                        .font(.globalFont(.luminari, size: 14))
+//                        .font(.roboto(.regular, size: 14))
+//                    Spacer()
+//                }
+//                Text(friendCodeId)
+//                    .frame(
+//                        maxWidth: .infinity,
+//                        maxHeight: .infinity,
+//                        alignment: .leading)
+//                    .foregroundColor(.gray)
+//                
+//            }
+//        }
+//    }
     
     private var profileUserLocationView: some View {
         VStack {
@@ -386,7 +386,7 @@ struct AccountView_Previews: PreviewProvider {
                     userLocation: .constant("New York"),
                     profileImageString: .constant("profileImageString"),
                     profileImage: .constant(UIImage(named: Constants.wantedWizardImageString)),
-                    friendCodeId: .constant("ABC123"),
+//                    friendCodeId: .constant("ABC123"),
                     listOfGames: .constant(["Game 1", "Game 2", "Game 3"]),
                     groupSize: .constant("Group"),
                     age: .constant("30"),

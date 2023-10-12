@@ -44,7 +44,7 @@ extension ChatLogView {
                     longitude: nil,
                     location: nil,
                     profileImageString: "",
-                    friendCodeID: "",
+//                    friendCodeID: "",
                     listOfGames: nil,
                     groupSize: nil,
                     age: nil,
@@ -73,7 +73,7 @@ extension ChatLogView {
         
         func convertFriendEntityToReportedUser(friend: FriendEntity, completion: @escaping (User) -> Void) {
             DispatchQueue.global().async {
-                let user = User(id: friend.id!, firstName: "", lastName: "", displayName: friend.displayName, email: "", latitude: 0.0, longitude: 0.0, location: "", profileImageString: "", friendCodeID: "", listOfGames: [""], groupSize: "", age: "", about: "", availability: "", title: "", isPayToPlay: false, isSolo: false)
+                let user = User(id: friend.id!, firstName: "", lastName: "", displayName: friend.displayName, email: "", latitude: 0.0, longitude: 0.0, location: "", profileImageString: "", listOfGames: [""], groupSize: "", age: "", about: "", availability: "", title: "", isPayToPlay: false, isSolo: false)
                 DispatchQueue.main.async {
                     completion(user)
                 }

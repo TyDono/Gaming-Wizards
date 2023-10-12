@@ -74,7 +74,7 @@ struct ViewPersonalAccountView: View {
     }
     
     private var accountView: some View {
-        AccountView(displayName: $user.displayName, userLocation: $user.location, profileImageString: $user.profileImageString, profileImage: $viewPersonalAccountViewModel.profileImage, friendCodeId: $user.friendCodeID, listOfGames: $user.listOfGames, groupSize: $user.groupSize, age: $user.age, about: $user.about, title: $user.title, availability: $user.availability, isPayToPlay: $user.isPayToPlay, isUserSolo: $user.isSolo)
+        AccountView(displayName: $user.displayName, userLocation: $user.location, profileImageString: $user.profileImageString, profileImage: $viewPersonalAccountViewModel.profileImage, listOfGames: $user.listOfGames, groupSize: $user.groupSize, age: $user.age, about: $user.about, title: $user.title, availability: $user.availability, isPayToPlay: $user.isPayToPlay, isUserSolo: $user.isSolo)
             .onAppear {
                 viewPersonalAccountViewModel.retrieveProfileImageFromDisk()
             }

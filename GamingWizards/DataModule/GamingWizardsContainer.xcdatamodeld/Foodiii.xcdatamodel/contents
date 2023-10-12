@@ -7,7 +7,6 @@
     </entity>
     <entity name="FriendEntity" representedClassName="FriendEntity" syncable="YES" codeGenerationType="class">
         <attribute name="displayName" attributeType="String"/>
-        <attribute name="friendCodeID" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="imageString" optional="YES" attributeType="String"/>
         <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>

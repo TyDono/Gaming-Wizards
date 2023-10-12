@@ -67,11 +67,10 @@ class FriendListViewModel: ObservableObject {
 //                            guard let userFriendCodeID = self.user.friendCodeID else { return }
                             guard let displayName = self.user.displayName else { return }
                             let newFriend: Friend = Friend(id: userID,
-                                                           friendCodeID: self.user.friendCodeID,
                                                            displayName: displayName,
                                                            isFriend: false, isFavorite: false,
                                                            imageString: self.user.profileImageString)
-                            let newPath = self.firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(self.user.friendCodeID)
+                            let newPath = self.firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(self.user.id)
                             
                             newPath.getDocument { (document, error) in
                                 if ((document?.exists) == false) {
@@ -105,20 +104,21 @@ class FriendListViewModel: ObservableObject {
         //MARK: Detailed Friend List View
         
         func acceptFriendRequest() {
-            guard let friendCodeIDRequest = friend?.friendCodeID else { return }
+//            guard let friendCodeIDRequest = friend?.friendCodeID else { return }
             guard let friendUserID = friend?.id else { return }
              let userID = user.id //else { return }
 //            guard let userFriendCodeID = user.friendCodeID else { return }
             guard let displayName = user.displayName else { return }
 //            guard let friendUserID
             let friends = coreDataController.savedFriendEntities
-            let newFriend = Friend(id: userID, friendCodeID: user.friendCodeID,
+            let newFriend = Friend(id: userID,
+//                                   friendCodeID: user.friendCodeID,
                                    displayName: displayName,
                                    isFriend: true,
                                    isFavorite: false,
                                    imageString: user.profileImageString)
-            let friendPath = firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.friendCodeID) //goes to the friend and adds you to their friend list
-            let userPath = firestoreDatabase.collection(Constants.usersString).document(userID).collection(Constants.userFriendList).document(friendCodeIDRequest) // goes to your friend list and changes isFriend to true
+            let friendPath = firestoreDatabase.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(user.id) //goes to the friend and adds you to their friend list
+            let userPath = firestoreDatabase.collection(Constants.usersString).document(userID).collection(Constants.userFriendList).document(friendUserID) // goes to your friend list and changes isFriend to true
 
             userPath.updateData([
                 Constants.isFriend: true
@@ -131,7 +131,7 @@ class FriendListViewModel: ObservableObject {
 
                     friendPath.setData(newFriend.friendDictionary)
                     friends.forEach {
-                        if $0.friendCodeID == friendCodeIDRequest {
+                        if $0.id == friendUserID {
                             $0.setValue(true, forKey: Constants.isFriend)
                             self.coreDataController.saveFriendData()
                         }
@@ -141,11 +141,11 @@ class FriendListViewModel: ObservableObject {
         }
 
         func denyFriendRequest() {
-            guard let friendCodeID = friend?.friendCodeID else { return }
+            guard let friendUserID = friend?.id else { return }
              let userID = user.id //else { return }// go into their cloud and remove them as a friend
             let friends = coreDataController.savedFriendEntities
             friends.forEach {
-                if $0.friendCodeID == friendCodeID {
+                if $0.id == friendUserID {
 //                    guard let displayName = $0.displayName else { return }
 //                    guard let friendUserID = $0.friendUserID else { return }
 //                    let isFriend = $0.isFriend
@@ -160,11 +160,11 @@ class FriendListViewModel: ObservableObject {
         }
 
         func removeFriend() { //remove friend from your cloud, their cloud and locally
-            guard let friendCodeIDRequest = friend?.friendCodeID else { return }
+            guard let friendIdRequest = friend?.id else { return }
              let userID = user.id //else { return }// go into their cloud and remove them as a friend
             let friends = coreDataController.savedFriendEntities
             friends.forEach {
-                if $0.friendCodeID == friendCodeIDRequest {
+                if $0.id == friendIdRequest {
 //                    guard let displayName = $0.displayName else { return }
 //                    guard let friendUserID = $0.friendUserID else { return }
 //                    let isFriend = $0.isFriend

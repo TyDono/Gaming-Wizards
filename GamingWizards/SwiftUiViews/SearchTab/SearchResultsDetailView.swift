@@ -55,7 +55,7 @@ struct SearchResultsDetailView: View {
     }
     
     private var viewAccountView: some View {
-        AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $searchResultsDetailViewModel.profileImage, friendCodeId: $selectedUser.friendCodeID, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, availability: $selectedUser.availability, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
+        AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $searchResultsDetailViewModel.profileImage, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, availability: $selectedUser.availability, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
     }
     
     private var friendRequestButton: some View {
@@ -103,7 +103,6 @@ struct SearchResultsDetailView: View {
                                                                 dateRemoved: Date())), friendEntity: searchResultsDetailViewModel.convertUserToFriendDataBinding(
                                                                     displayName: selectedUser.displayName ?? "",
                                                                     friendUserID: selectedUser.id,
-                                                                    friendCodeID: selectedUser.friendCodeID,
                                                                     profileImageString: selectedUser.profileImageString,
                                                                     isFavorite: false,
                                                                     isFriend: false)

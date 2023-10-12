@@ -9,7 +9,7 @@ import Foundation
 
 struct Friend: Codable, Hashable, Identifiable {
     var id: String
-    var friendCodeID: String
+//    var friendCodeID: String
 //    var friendUserID: String
     var displayName: String
     var isFriend: Bool
@@ -19,7 +19,7 @@ struct Friend: Codable, Hashable, Identifiable {
     var friendDictionary: [String: Any] {
         return [
             Constants.friendUserID: id,
-            Constants.friendCodeID: friendCodeID,
+//            Constants.friendCodeID: friendCodeID,
 //            "friendUserID": friendUserID,
             Constants.displayName: displayName,
             Constants.isFriend: isFriend,
@@ -44,7 +44,7 @@ struct Friend: Codable, Hashable, Identifiable {
 extension Friend {
     enum FriendCodingKeys: String, CodingKey {
         case id = "id"
-        case friendCodeID = "friend_code_id"
+//        case friendCodeID = "friend_code_id"
 //        case friendUserID = "friend_user_id"
         case displayName = "display_name"
         case isFriend = "is_friend"
@@ -55,8 +55,8 @@ extension Friend {
             switch constantValue {
             case Constants.friendUserID:
                 self = .id
-            case Constants.friendCodeID:
-                self = .friendCodeID
+//            case Constants.friendCodeID:
+//                self = .friendCodeID
             case Constants.displayName:
                 self = .displayName
             case Constants.isFriend:

@@ -61,11 +61,11 @@ struct DetailedFriendView: View {
                        alignment: .leading)
                 .font(.roboto(.semibold,
                               size: 15))
-            Text(friendListVM.friend?.friendCodeID ?? "")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .font(.roboto(.semibold,
-                              size: 21))
+//            Text(friendListVM.friend?.friendCodeID ?? "")
+//                .frame(maxWidth: .infinity,
+//                       alignment: .leading)
+//                .font(.roboto(.semibold,
+//                              size: 21))
         }
     }
 

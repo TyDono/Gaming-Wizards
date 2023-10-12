@@ -9,9 +9,9 @@ import Foundation
 
 struct DataConverter {
     
-    static func convertToFriendEntity(displayName: String, friendUserID: String, friendCodeID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> FriendEntity {
+    static func convertToFriendEntity(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> FriendEntity {
         let newFriend = FriendEntity()
-        newFriend.friendCodeID = friendCodeID
+//        newFriend.friendCodeID = friendCodeID
         newFriend.id =  friendUserID
         newFriend.displayName = displayName
         newFriend.isFriend = isFriend
