@@ -67,7 +67,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                         self.coreDataController.deleteFriendLocally(friend: friend)
                     }
                     for document in documents {
-                        let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
                         let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
                         let friendDisplayName = document.data()[Constants.displayName] as? String ?? ""
                         let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
@@ -288,7 +287,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             print("Error getting friend list documents: \(error.localizedDescription)")
         }
     }
-    //let blockedUserId = document.data()["id"] as? String ?? ""
+    
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws {
         let blockedUserData = blockedUser.blockedUserDictionary
         let blockedUserDocumentPath = firestore

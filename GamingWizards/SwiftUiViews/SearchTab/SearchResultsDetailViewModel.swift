@@ -62,7 +62,7 @@ import CoreData
     */
     
     func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
-        let friendEntity = DataConverter.convertToFriendEntity(
+        let friendEntity: FriendEntity = coreDataController.convertToFriendEntity2(
             displayName: displayName,
             friendUserID: friendUserID,
             profileImageString: profileImageString,

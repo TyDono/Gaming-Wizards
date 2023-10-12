@@ -100,12 +100,13 @@ struct SearchResultsDetailView: View {
                              chatRoomId: $selectedUser.id,
                              blockedUser: .constant(BlockedUser(id: selectedUser.id,
                                                                 displayName: selectedUser.displayName ?? "",
-                                                                dateRemoved: Date())), friendEntity: searchResultsDetailViewModel.convertUserToFriendDataBinding(
-                                                                    displayName: selectedUser.displayName ?? "",
-                                                                    friendUserID: selectedUser.id,
-                                                                    profileImageString: selectedUser.profileImageString,
-                                                                    isFavorite: false,
-                                                                    isFriend: false)
+                                                                dateRemoved: Date())),
+                             friendEntity: searchResultsDetailViewModel.convertUserToFriendDataBinding(
+                                displayName: selectedUser.displayName ?? "",
+                                friendUserID: selectedUser.id,
+                                profileImageString: selectedUser.profileImageString,
+                                isFavorite: false,
+                                isFriend: false)
         )
     }
     

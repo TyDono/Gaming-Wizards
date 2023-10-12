@@ -110,10 +110,15 @@ class CoreDataController: ObservableObject {
     
     // MARK: FRIEND
     
-    func clearAllFriends() { // post MVP
-        for friend in savedFriendEntities {
-            self.deleteFriendLocally(friend: friend)
-        }
+    func convertToFriendEntity2(displayName: String?, friendUserID: String?, profileImageString: String?, isFavorite: Bool?, isFriend: Bool?) -> FriendEntity {
+        let newFriend = FriendEntity(context: viewContext)
+//        newFriend.friendCodeID = friendCodeID
+        newFriend.id =  friendUserID
+        newFriend.displayName = displayName
+        newFriend.isFriend = isFriend ?? false
+        newFriend.isFavorite = isFavorite ?? false
+        newFriend.imageString = profileImageString
+        return newFriend
     }
     
     func fetchFriends() {
@@ -190,17 +195,6 @@ class CoreDataController: ObservableObject {
             let request = NSFetchRequest<BlockedUserEntity>(entityName: "BlockedUserEntity")
             do {
                 blockedUserEntities = try viewContext.fetch(request)
-            } catch let error {
-                print("ERROR FETCHING CORE DATA: \(error)")
-            }
-        }
-    }
-    
-    func fetchFriengds() {
-        viewContext.perform { [self] in
-            let request = NSFetchRequest<FriendEntity>(entityName: "FriendEntity")
-            do {
-                savedFriendEntities = try viewContext.fetch(request)
             } catch let error {
                 print("ERROR FETCHING CORE DATA: \(error)")
             }

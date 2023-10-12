@@ -1610,8 +1610,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "saveBlockedUsers()"
             landmarkType = "7">
             <Locations>
@@ -1673,8 +1673,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "fetchBlockedUser()"
             landmarkType = "7">
             <Locations>
@@ -1736,6 +1736,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "194"
                   endingLineNumber = "194"
+                  offsetFromSymbolStart = "429">
+               </Location>
+               <Location
+                  uuid = "D7894E95-E307-4E49-820E-BAF7FE687015 - 73b602d0cbc5a6fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.fetchBlockedUser() -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
                   offsetFromSymbolStart = "429">
                </Location>
             </Locations>
@@ -1878,8 +1893,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
             <Locations>
@@ -1971,8 +1986,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1981,14 +1996,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
             <Locations>
@@ -2203,8 +2218,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2293,7 +2308,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
@@ -2364,53 +2379,35 @@
                   endingLineNumber = "84"
                   offsetFromSymbolStart = "393">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "29265603-1B62-40C0-9EB1-5EAB5E3D0695"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/AccountTab/ProfileSettings/ViewPersonalAccountView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "accountView"
-            landmarkType = "24">
-            <Locations>
                <Location
-                  uuid = "29265603-1B62-40C0-9EB1-5EAB5E3D0695 - c6ee5bc294e09b50"
+                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - 9454a9c5c7b6add"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.ViewPersonalAccountView.accountView.getter : some"
+                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/AccountTab/ProfileSettings/ViewPersonalAccountView.swift"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "2983">
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "597">
                </Location>
                <Location
-                  uuid = "29265603-1B62-40C0-9EB1-5EAB5E3D0695 - 3753078be0ed194c"
+                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - 9454a9c5c7b6add"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GamingWizards.ViewPersonalAccountView.accountView.getter : some"
+                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/AccountTab/ProfileSettings/ViewPersonalAccountView.swift"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "68">
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "663">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2429,6 +2426,38 @@
             endingLineNumber = "20"
             landmarkName = "convertToFriendEntity(displayName:friendUserID:profileImageString:isFavorite:isFriend:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AFB31031-6F81-42B8-B68D-4C7403FA8F72 - c3fb93fb291d92f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; GamingWizards.FriendEntity"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "509">
+               </Location>
+               <Location
+                  uuid = "AFB31031-6F81-42B8-B68D-4C7403FA8F72 - 334ea72881290db6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.Optional&lt;Swift.String&gt;, friendUserID: Swift.Optional&lt;Swift.String&gt;, profileImageString: Swift.Optional&lt;Swift.String&gt;, isFavorite: Swift.Optional&lt;Swift.Bool&gt;, isFriend: Swift.Optional&lt;Swift.Bool&gt;) -&gt; GamingWizards.FriendEntity"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "943">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2445,13 +2474,45 @@
             endingLineNumber = "16"
             landmarkName = "convertToFriendEntity(displayName:friendUserID:profileImageString:isFavorite:isFriend:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CC7390DC-604E-416D-8F62-1BE2960275B7 - c3fb93fb291d9272"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; GamingWizards.FriendEntity"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "305">
+               </Location>
+               <Location
+                  uuid = "CC7390DC-604E-416D-8F62-1BE2960275B7 - 334ea72881290d32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.Optional&lt;Swift.String&gt;, friendUserID: Swift.Optional&lt;Swift.String&gt;, profileImageString: Swift.Optional&lt;Swift.String&gt;, isFavorite: Swift.Optional&lt;Swift.Bool&gt;, isFriend: Swift.Optional&lt;Swift.Bool&gt;) -&gt; GamingWizards.FriendEntity"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "456">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6CE39D47-AA7E-4B20-8977-BD4D89ED36E7"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GamingWizards/Modules/DataConverter.swift"
@@ -2460,6 +2521,102 @@
             startingLineNumber = "15"
             endingLineNumber = "15"
             landmarkName = "convertToFriendEntity(displayName:friendUserID:profileImageString:isFavorite:isFriend:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6CE39D47-AA7E-4B20-8977-BD4D89ED36E7 - c3fb93fb291d9593"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; GamingWizards.FriendEntity"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "6CE39D47-AA7E-4B20-8977-BD4D89ED36E7 - 334ea72881290ad3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.Optional&lt;Swift.String&gt;, friendUserID: Swift.Optional&lt;Swift.String&gt;, profileImageString: Swift.Optional&lt;Swift.String&gt;, isFavorite: Swift.Optional&lt;Swift.Bool&gt;, isFriend: Swift.Optional&lt;Swift.Bool&gt;) -&gt; GamingWizards.FriendEntity"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "294">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEFA5F91-FE4B-4BD5-AFC6-114D0C6A2CEF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
+            landmarkName = "saveUserReportToFirestore(userReport:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AEFA5F91-FE4B-4BD5-AFC6-114D0C6A2CEF - a9e5c83369d7569d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.saveUserReportToFirestore(userReport: GamingWizards.UserReport) async throws -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "491"
+                  endingLineNumber = "491"
+                  offsetFromSymbolStart = "545">
+               </Location>
+               <Location
+                  uuid = "AEFA5F91-FE4B-4BD5-AFC6-114D0C6A2CEF - a9e5c83369d756bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.saveUserReportToFirestore(userReport: GamingWizards.UserReport) async throws -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "490"
+                  endingLineNumber = "490"
+                  offsetFromSymbolStart = "545">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D37AA43E-5FFC-4FA3-A707-959A8FF42780"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/DataModule/CoreDataController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "addFriend(friendUserID:friendDisplayName:isFriend:isFavorite:profileImageString:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
