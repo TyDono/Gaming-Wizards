@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     @ObservedObject var searchSettingsViewModel = SearchSettingsViewModel()
     @ObservedObject var contactAndChatSettingsViewModel = ContactAndChatSettingsViewModel()
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @StateObject private var homeViewModel: HomeViewModel
     @EnvironmentObject var userAuth: UserAuth
     @State private var isViewPersonalAccountViewPopUp: Bool = false
     @State private var settingsIsActive: Bool = false
@@ -23,6 +23,14 @@ struct HomeView: View {
     @State var isShowingEditAccountView: Bool = false
     @State private var isSearchSettingsShowing: Bool = false
     @State private var isContactAndChatSettingsShowing: Bool = false
+    @State private var viewProfileTitleText: String? = ""
+    @State private var viewProfileTitleImageString: String? = ""
+    @State private var dismissButtonString: String? = "xmark"
+    @State private var customNavTrailingButtonString: String? = nil
+    
+    init(homeViewModel: HomeViewModel = HomeViewModel()) {
+        self._homeViewModel = StateObject(wrappedValue: homeViewModel)
+    }
     
 //    init(homeViewModel: HomeViewModel, userAuth: UserAuth) {
 //        self._homeViewModel = EnvironmentObject(wrappedValue: homeViewModel)
@@ -57,7 +65,7 @@ struct HomeView: View {
                 ManageAccountView()
             }
             .onAppear() {
-                print("")
+                viewProfileTitleText = homeViewModel.user.title
             }
     }
     
@@ -184,8 +192,22 @@ struct HomeView: View {
             .listRowInsets(EdgeInsets())
             .padding()
         }
-        .sheet(isPresented: $isViewPersonalAccountViewPopUp, content: {
-            ViewPersonalAccountView(isShowingEditAccountView: $isShowingEditAccountView)
+        .fullScreenCover(isPresented: $isViewPersonalAccountViewPopUp, content: {
+            NavigationStack {
+                ViewPersonalAccountView(isShowingEditAccountView: $isShowingEditAccountView)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            CustomNavigationTitle(leadingButtonAction: {
+                                isViewPersonalAccountViewPopUp = false
+                            },
+                                                  leadingButtonString: $dismissButtonString,
+                                                  trailingButtonString: $customNavTrailingButtonString,
+                                                  titleImageSystemName: $viewProfileTitleImageString,
+                                                  titleText: $viewProfileTitleText)
+                        }
+                    }
+            }
         })
     }
     
@@ -285,8 +307,8 @@ struct HomeView: View {
 
 
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}

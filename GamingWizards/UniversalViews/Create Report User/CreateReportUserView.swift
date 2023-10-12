@@ -206,7 +206,7 @@ struct CreateReportUserView: View {
                 $presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "exclamationmark.bubble")
-                    .frame(width: 25, height: 25, alignment: .center)
+//                    .frame(width: 25, height: 25, alignment: .center)
                     .foregroundColor(.blue)
             }
             .sheet(isPresented: $isReportBlockPresented, content: {

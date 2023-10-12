@@ -16,6 +16,8 @@ struct SearchSettingsView: View {
     @State private var isAgeRangeSettingsShowing: Bool = false
     @State private var searchSettingViewTitle: String? = "Search Settings"
     @State private var searchSettingTitleSystemImageName: String? = "slider.horizontal.3"
+    @State private var dismissButtonString: String? = nil
+    @State private var customNavTrailingButtonString: String? = nil
     
     init(searchSettingsVM: SearchSettingsViewModel) {
         self._searchSettingsVM = StateObject(wrappedValue: searchSettingsVM)
@@ -36,12 +38,18 @@ struct SearchSettingsView: View {
             }
         }
         .background(Color.clear)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    CustomNavigationTitle(titleImageSystemName: $searchSettingTitleSystemImageName, titleText: $searchSettingViewTitle)
-                }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomNavigationTitle(leadingButtonAction: {
+//                    isViewPersonalAccountViewPopUp = false
+                },
+                                      leadingButtonString: $dismissButtonString,
+                                      trailingButtonString: $customNavTrailingButtonString,
+                                      titleImageSystemName: $searchSettingTitleSystemImageName,
+                                      titleText: $searchSettingViewTitle)
             }
+        }
     }
     
     private var isPayToPlaySearchSettingsView: some View {

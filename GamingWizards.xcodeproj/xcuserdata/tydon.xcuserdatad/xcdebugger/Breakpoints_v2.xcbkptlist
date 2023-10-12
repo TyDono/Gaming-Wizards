@@ -126,8 +126,8 @@
             filePath = "GamingWizards/SwiftUiViews/AccountTab/HomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2141,69 +2141,6 @@
                   startingLineNumber = "176"
                   endingLineNumber = "176"
                   offsetFromSymbolStart = "673">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A33B896C-12A6-45BA-AC6B-1BB87227C69F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "A33B896C-12A6-45BA-AC6B-1BB87227C69F - 3330246eefda5a12"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; GamingWizards.SearchResultsDetailView in GamingWizards.SearchResultsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "237">
-               </Location>
-               <Location
-                  uuid = "A33B896C-12A6-45BA-AC6B-1BB87227C69F - 3330246eefda5977"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; GamingWizards.SearchResultsDetailView in GamingWizards.SearchResultsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "237">
-               </Location>
-               <Location
-                  uuid = "A33B896C-12A6-45BA-AC6B-1BB87227C69F - 3330246eefda5954"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; GamingWizards.SearchResultsDetailView in GamingWizards.SearchResultsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "237">
                </Location>
             </Locations>
          </BreakpointContent>

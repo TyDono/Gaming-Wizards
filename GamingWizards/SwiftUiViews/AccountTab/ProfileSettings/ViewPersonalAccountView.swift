@@ -8,18 +8,18 @@ import SwiftUI
 import PhotosUI
 
 struct ViewPersonalAccountView: View {
-    @ObservedObject var user: UserObservable
+//    @ObservedObject var user: UserObservable
     @StateObject var viewPersonalAccountViewModel: ViewPersonalAccountViewModel
     @Environment(\.dismiss) var dismiss
     @State var editAccountViewIsPresented: Bool = false
     @Binding var isShowingEditAccountView: Bool
 
     init(
-        user: UserObservable = UserObservable.shared,
+//        user: UserObservable = UserObservable.shared,
         viewPersonalAccountViewModel: ViewPersonalAccountViewModel = ViewPersonalAccountViewModel(user: UserObservable.shared),
         isShowingEditAccountView: Binding<Bool>
     ) {
-        self._user = ObservedObject(wrappedValue: user)
+//        self._user = ObservedObject(wrappedValue: user)
         self._viewPersonalAccountViewModel = StateObject(wrappedValue: viewPersonalAccountViewModel)
         self._isShowingEditAccountView = isShowingEditAccountView
     }
@@ -74,7 +74,7 @@ struct ViewPersonalAccountView: View {
     }
     
     private var accountView: some View {
-        AccountView(displayName: $user.displayName, userLocation: $user.location, profileImageString: $user.profileImageString, profileImage: $viewPersonalAccountViewModel.profileImage, listOfGames: $user.listOfGames, groupSize: $user.groupSize, age: $user.age, about: $user.about, title: $user.title, availability: $user.availability, isPayToPlay: $user.isPayToPlay, isUserSolo: $user.isSolo)
+        AccountView(displayName: $viewPersonalAccountViewModel.user.displayName, userLocation: $viewPersonalAccountViewModel.user.location, profileImageString: $viewPersonalAccountViewModel.user.profileImageString, profileImage: $viewPersonalAccountViewModel.profileImage, listOfGames: $viewPersonalAccountViewModel.user.listOfGames, groupSize: $viewPersonalAccountViewModel.user.groupSize, age: $viewPersonalAccountViewModel.user.age, about: $viewPersonalAccountViewModel.user.about, title: $viewPersonalAccountViewModel.user.title, availability: $viewPersonalAccountViewModel.user.availability, isPayToPlay: $viewPersonalAccountViewModel.user.isPayToPlay, isUserSolo: $viewPersonalAccountViewModel.user.isSolo)
             .onAppear {
                 viewPersonalAccountViewModel.retrieveProfileImageFromDisk()
             }

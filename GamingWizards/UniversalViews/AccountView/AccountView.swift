@@ -64,51 +64,52 @@ struct AccountView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                ScrollView {
-                    Group {
-                        profileTitleView
-                        profileImageView
-                            .padding()
-                        profileDisplayName
-                        Divider()
-                            .background(Color.black)
-                        profileUserLocationView
-                        Divider()
-                            .background(Color.black)
-                    }
-                    Group {
-                        profileIsSolo
-                        Divider()
-                            .background(Color.black)
-                        profileAgeView
-                        Divider()
-                            .background(Color.black)
-                        profileAvailability
-                        Divider()
-                            .background(Color.black)
-                    }
-                    Group {
-                        profileIsPayToPlayView
-                        Divider()
-                            .background(Color.black)
-                        profileAboutView
-                            .lineLimit(nil)
-                        Divider()
-                            .background(Color.black)
-                        //                profileNameView
-//                        profileFriendCodeIdView
-//                        Divider()
-                            .background(Color.black)
-                        listOfGamesTagView
-//                        profileListOfGamesView
+            NavigationStack {
+                VStack {
+                    ScrollView {
+                        Group {
+                            //                        profileTitleView
+                            profileImageView
+                                .padding()
+                            profileDisplayName
+                            Divider()
+                                .background(Color.black)
+                            profileUserLocationView
+                            Divider()
+                                .background(Color.black)
+                        }
+                        Group {
+                            profileIsSolo
+                            Divider()
+                                .background(Color.black)
+                            profileAgeView
+                            Divider()
+                                .background(Color.black)
+                            profileAvailability
+                            Divider()
+                                .background(Color.black)
+                        }
+                        Group {
+                            profileIsPayToPlayView
+                            Divider()
+                                .background(Color.black)
+                            profileAboutView
+                                .lineLimit(nil)
+                            Divider()
+                                .background(Color.black)
+                            //                profileNameView
+                            //                        profileFriendCodeIdView
+                            //                        Divider()
+                                .background(Color.black)
+                            listOfGamesTagView
+                            //                        profileListOfGamesView
+                        }
                     }
                 }
             }
             .padding(.horizontal, 20)
             .background(Color.clear)
-//            .font(.globalFont(.luminari, size: 16))
-            .font(.roboto(.regular, size: 16))
+
         }
     }
     

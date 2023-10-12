@@ -31,11 +31,11 @@ extension ViewPersonalAccountView {
          */
         
         init(
-            user: UserObservable,
+            user: UserObservable = UserObservable.shared,
             diskSpace: DiskSpaceHandler = DiskSpaceHandler()
             
         ) {
-            self.user = user
+            self._user = ObservedObject(wrappedValue: user)
             self.diskSpace = diskSpace
         }
         

@@ -10,7 +10,10 @@ import SwiftUI
 struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var searchResultsVM: SearchResultsViewModel
-    
+    @State private var viewProfileTitleText: String? = ""
+    @State private var viewProfileTitleImageString: String? = ""
+    @State private var dismissButtonString: String? = "xmark"
+    @State private var customNavTrailingButtonString: String? = "exclamationmark.bubble"
     @Binding var tabSelection: String
     @Binding var searchText: String
     
@@ -40,9 +43,27 @@ struct SearchResultsView: View {
             }
         }
 //        .font(.globalFont(.luminari, size: 16))
-        .font(.roboto(.regular, size: 16))
-        .sheet(isPresented: $searchResultsVM.resultWasTapped, content: {
-            SearchResultsDetailView(selectedUser: $searchResultsVM.selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
+//        .font(.roboto(.regular, size: 16))
+        .fullScreenCover(isPresented: $searchResultsVM.resultWasTapped, content: {
+            NavigationStack {
+                SearchResultsDetailView(selectedUser: $searchResultsVM.selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            CustomNavigationTitle(leadingButtonAction: {
+                                searchResultsVM.resultWasTapped = false
+                            },
+                                                  trailingButtonAction: {
+                                print("tapped")
+//                                searchResultsVM.resultWasTapped = false
+                            },
+                                                  leadingButtonString: $dismissButtonString,
+                                                  trailingButtonString: $customNavTrailingButtonString,
+                                                  titleImageSystemName: $viewProfileTitleImageString,
+                                                  titleText: $viewProfileTitleText)
+                        }
+                    }
+            }
         })
         .background(
 //            Color(.init(white: 1.0, alpha: 1))
@@ -101,6 +122,7 @@ struct SearchResultsView: View {
                     }
                 )
                 .onTapGesture {
+                    viewProfileTitleText = user.title
                     searchResultsVM.selectedUser = user
                     searchResultsVM.resultWasTapped = true
                 }

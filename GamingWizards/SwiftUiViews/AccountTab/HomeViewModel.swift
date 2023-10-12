@@ -8,7 +8,8 @@
 import SwiftUI
 
 extension HomeView {
-    @MainActor class HomeViewModel: ObservableObject {
+     class HomeViewModel: ObservableObject {
+        @ObservedObject var user: UserObservable
 //        @Published var isShowingEditAccountView: Bool = false
 //        @Published var isViewPersonalAccountViewPopUp: Bool = false
 //        @Published var settingsIsActive: Bool = false
@@ -16,6 +17,13 @@ extension HomeView {
 //        @Published var isShowingLogoutAlert: Bool = false
 //        @Published var isFriendListShowing: Bool = false
 //        @Published var isAccountSettingsShowing: Bool = false
+        
+        init(
+            user: UserObservable = UserObservable.shared
+            
+        ) {
+            self._user = ObservedObject(wrappedValue: user)
+        }
         
         enum currentView {
             case settingsView
