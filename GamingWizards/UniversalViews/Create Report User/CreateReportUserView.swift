@@ -48,8 +48,8 @@ struct CreateReportUserView: View {
     var body: some View {
         ZStack {
             VStack {
-                reportPopUp
-                    .background(Color.clear)
+//                reportPopUp
+                reportPopUpSheet
             }
         }
     }
@@ -194,9 +194,50 @@ struct CreateReportUserView: View {
             }) {
                 Text("Cancel")
                 
-            }
-            )
+            })
         }
+    }
+    
+    private var reportPopUpSheet: some View {
+                VStack(spacing: 20) {
+                    Button(action: {
+                        Task {
+                            await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
+                        }
+                        isReportBlockPresented.toggle()
+                    }) {
+                        Text("Block")
+                            .foregroundColor(.red)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                    }
+                    Button(action: {
+                        isReportReasonsPresented.toggle()
+                    }) {
+                        Text("Report")
+                            .foregroundColor(.red)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                    }
+                    .sheet(isPresented: $isReportReasonsPresented, content: {
+                        reportReasonsPopUpView
+                    })
+                    Spacer()
+                    Button(action: {
+                        isReportBlockPresented.toggle()
+                    }) {
+                        Text("Cancel")
+                            .foregroundColor(.blue)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(Constants.semiRoundedCornerRadius)
+                    }
+                }
+                .background(Color.clear)
+                .presentationDetents([.height(200)])
+                .padding()
     }
     
     private var reportPopUp: some View {
@@ -206,7 +247,6 @@ struct CreateReportUserView: View {
                 $presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "exclamationmark.bubble")
-//                    .frame(width: 25, height: 25, alignment: .center)
                     .foregroundColor(.blue)
             }
             .sheet(isPresented: $isReportBlockPresented, content: {

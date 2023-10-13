@@ -54,8 +54,7 @@ struct SearchResultsView: View {
                                 searchResultsVM.resultWasTapped = false
                             },
                                                   trailingButtonAction: {
-                                print("tapped")
-//                                searchResultsVM.resultWasTapped = false
+                                searchResultsVM.isCreateReportUserViewShowing.toggle()
                             },
                                                   leadingButtonString: $dismissButtonString,
                                                   trailingButtonString: $customNavTrailingButtonString,
@@ -63,6 +62,22 @@ struct SearchResultsView: View {
                                                   titleText: $viewProfileTitleText)
                         }
                     }
+            }
+            .sheet(isPresented: $searchResultsVM.isCreateReportUserViewShowing) {
+                CreateReportUserView(presentationMode: self.presentationMode,
+                                     reporterId: $searchResultsVM.user.id,
+                                     reportedUser: $searchResultsVM.selectedUser,
+                                     chatRoomId: $searchResultsVM.selectedUser.id,
+                                     blockedUser: .constant(BlockedUser(id: searchResultsVM.selectedUser.id,
+                                                                        displayName: searchResultsVM.selectedUser.displayName ?? "",
+                                                                        dateRemoved: Date())),
+                                     friendEntity: searchResultsVM.convertUserToFriendDataBinding(
+                                        displayName: searchResultsVM.selectedUser.displayName ?? "",
+                                        friendUserID: searchResultsVM.selectedUser.id,
+                                        profileImageString: searchResultsVM.selectedUser.profileImageString,
+                                        isFavorite: false,
+                                        isFriend: false)
+                )
             }
         })
         .background(

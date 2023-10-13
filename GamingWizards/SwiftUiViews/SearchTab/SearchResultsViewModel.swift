@@ -10,14 +10,15 @@ import SwiftUI
 //extension SearchResultsView {
      class SearchResultsViewModel: ObservableObject {
 //        @Published var searchText: String = ""
-        @ObservedObject var user = UserObservable.shared
-        @Published var users: [User]? = []
-        @Published var resultWasTapped: Bool = false
-        @Published var selectedUser: User
-        let fbFirestoreHelper: FirebaseFirestoreHelper
-        let coreDataController: CoreDataController
-        
-        init(
+         @ObservedObject var user = UserObservable.shared
+         @Published var users: [User]? = []
+         @Published var resultWasTapped: Bool = false
+         @Published var selectedUser: User
+         @Published var isCreateReportUserViewShowing: Bool = false
+         let fbFirestoreHelper: FirebaseFirestoreHelper
+         let coreDataController: CoreDataController
+         
+         init(
             fbFirestoreHelper: FirebaseFirestoreHelper = .shared,
             coreDataController: CoreDataController = .shared,
             selectedUser: User = User(id: "110k1")
@@ -26,6 +27,29 @@ import SwiftUI
             self.coreDataController = coreDataController
             self._selectedUser = Published(initialValue: selectedUser)
         }
+         
+         func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
+             let friendEntity: FriendEntity = coreDataController.convertToFriendEntity2(
+                 displayName: displayName,
+                 friendUserID: friendUserID,
+                 profileImageString: profileImageString,
+                 isFavorite: isFavorite,
+                 isFriend: isFriend
+             )
+             // Create a Binding for the FriendEntity
+             let binding = Binding(get: {
+                 friendEntity
+             }, set: { newValue in
+                 // Update properties of friendEntity when the binding is set
+     //            friendEntity.friendCodeID = newValue.friendCodeID
+                 friendEntity.id = newValue.id
+                 friendEntity.displayName = newValue.displayName
+                 friendEntity.isFriend = newValue.isFriend
+                 friendEntity.isFavorite = newValue.isFavorite
+                 friendEntity.imageString = newValue.imageString
+             })
+             return binding
+         }
         
         func searchForMatchingUsers(gameName: String, isPayToPlay: Bool) async {
             Task {

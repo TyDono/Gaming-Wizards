@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import CoreData
 
-@MainActor class SearchResultsDetailViewModel: ObservableObject {
+ class SearchResultsDetailViewModel: ObservableObject {
     @ObservedObject var user: UserObservable
     @Published var FriendRequestAlreadySentIsTrue: Bool = false
     @Published var noFriendExistsAlertIsShowing: Bool = false
@@ -61,6 +61,7 @@ import CoreData
     }
     */
     
+    //moved to search results View Model
     func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
         let friendEntity: FriendEntity = coreDataController.convertToFriendEntity2(
             displayName: displayName,

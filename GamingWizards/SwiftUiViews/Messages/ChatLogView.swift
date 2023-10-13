@@ -12,6 +12,7 @@ struct ChatLogView: View {
     
     @StateObject private var chatLogVM: ChatLogViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
+    @State private var isCreateReportUserViewShowing: Bool = false
     let chatUser: FriendEntity?
 //    @State private var reportedUser: User!
     
@@ -29,9 +30,11 @@ struct ChatLogView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                messagesView
-                Text(chatLogVM.errorMessage)
+            NavigationStack {
+                VStack {
+                    messagesView
+                    Text(chatLogVM.errorMessage)
+                }
             }
         }
         .navigationTitle(chatUser?.displayName ?? "")
@@ -40,6 +43,9 @@ struct ChatLogView: View {
         .navigationBarItems(trailing: HStack {
             gearButtonView
         })
+        .sheet(isPresented: $isCreateReportUserViewShowing) {
+            userReportView
+        }
         .task {
             guard let unwrappedChatUser = self.chatUser else { return }
             chatLogVM.callFetchMessages(chatUser: unwrappedChatUser)
@@ -85,7 +91,15 @@ struct ChatLogView: View {
     }
     
     private var gearButtonView: some View {
-        //            let reportedUser = chatLogVM.convertFriendEntityToReportedUser(friend: chatUser!)
+        Button(action: {
+            isCreateReportUserViewShowing.toggle()
+        }) {
+            Image(systemName: "exclamationmark.bubble")
+                .foregroundColor(.blue)
+        }
+    }
+    
+    private var userReportView: some View {
         CreateReportUserView(
             presentationMode: self.$presentationMode,
             reporterId: $chatLogVM.user.id,
@@ -96,7 +110,6 @@ struct ChatLogView: View {
                                                dateRemoved: Date())),
             friendEntity: Binding<FriendEntity>( get: { chatUser! }, set: { _ in })
         )
-        
     }
     
     private var messagesView: some View {

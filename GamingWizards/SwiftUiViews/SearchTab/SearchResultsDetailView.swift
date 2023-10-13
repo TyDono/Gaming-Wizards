@@ -10,14 +10,19 @@ import SwiftUI
 struct SearchResultsDetailView: View {
     
     @Environment(\.presentationMode) private var presentationMode
-    @StateObject private var searchResultsDetailViewModel = SearchResultsDetailViewModel()
+    @StateObject private var searchResultsDetailVM: SearchResultsDetailViewModel
 //    @Environment(\.dismiss) var dismiss
     @Binding var selectedUser: User
     @Binding var specificGame: String
     @Binding var tabSelection: String
     
-    init(selectedUser: Binding<User>, specificGame: Binding<String>, tabSelection: Binding<String>) {
-        self._searchResultsDetailViewModel = StateObject(wrappedValue: SearchResultsDetailViewModel())
+    init(
+        searchResultsDetailVM: SearchResultsDetailViewModel = SearchResultsDetailViewModel(),
+        selectedUser: Binding<User>,
+        specificGame: Binding<String>,
+        tabSelection: Binding<String>
+    ) {
+        self._searchResultsDetailVM = StateObject(wrappedValue: SearchResultsDetailViewModel())
         self._selectedUser = selectedUser
         self._specificGame = specificGame
         self._tabSelection = tabSelection
@@ -29,9 +34,8 @@ struct SearchResultsDetailView: View {
                 viewAccountView
                     .padding()
                 friendRequestButton
-                reportUserButton
+//                reportUserButton
 //                    .font(.globalFont(.luminari, size: 16))
-                    .font(.roboto(.regular, size: 16))
                     .padding()
             }
         }
@@ -39,7 +43,7 @@ struct SearchResultsDetailView: View {
 //            backgroundImageView
         )
         .task {
-            searchResultsDetailViewModel.callRetrieveUserProfileImage(selectedUserProfileImageString: selectedUser.profileImageString)
+            searchResultsDetailVM.callRetrieveUserProfileImage(selectedUserProfileImageString: selectedUser.profileImageString)
         }
         
     }
@@ -55,7 +59,7 @@ struct SearchResultsDetailView: View {
     }
     
     private var viewAccountView: some View {
-        AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $searchResultsDetailViewModel.profileImage, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, availability: $selectedUser.availability, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
+        AccountView(displayName: $selectedUser.displayName, userLocation: $selectedUser.location, profileImageString: $selectedUser.profileImageString, profileImage: $searchResultsDetailVM.profileImage, listOfGames: $selectedUser.listOfGames, groupSize: $selectedUser.groupSize, age: $selectedUser.age, about: $selectedUser.about, title: $selectedUser.title, availability: $selectedUser.availability, isPayToPlay: $selectedUser.isPayToPlay, isUserSolo: $selectedUser.isSolo)
     }
     
     private var friendRequestButton: some View {
@@ -67,7 +71,7 @@ struct SearchResultsDetailView: View {
                 Button {
                     Task {
                         do {
-                            try await searchResultsDetailViewModel.friendRequestButtonWasTapped(newFriend: selectedUser, friendProfileImage: searchResultsDetailViewModel.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
+                            try await searchResultsDetailVM.friendRequestButtonWasTapped(newFriend: selectedUser, friendProfileImage: searchResultsDetailVM.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
                         } catch {
                             print("ERROR friendRequestButtonWasTapped FAILED: \(error.localizedDescription)")
                             return
@@ -93,15 +97,15 @@ struct SearchResultsDetailView: View {
         }
     }
     
-    private var reportUserButton: some View {
+    private var reportUserButton: some View { // not used
         CreateReportUserView(presentationMode: self.presentationMode,
-                             reporterId: $searchResultsDetailViewModel.user.id,
+                             reporterId: $searchResultsDetailVM.user.id,
                              reportedUser: $selectedUser,
                              chatRoomId: $selectedUser.id,
                              blockedUser: .constant(BlockedUser(id: selectedUser.id,
                                                                 displayName: selectedUser.displayName ?? "",
                                                                 dateRemoved: Date())),
-                             friendEntity: searchResultsDetailViewModel.convertUserToFriendDataBinding(
+                             friendEntity: searchResultsDetailVM.convertUserToFriendDataBinding(
                                 displayName: selectedUser.displayName ?? "",
                                 friendUserID: selectedUser.id,
                                 profileImageString: selectedUser.profileImageString,

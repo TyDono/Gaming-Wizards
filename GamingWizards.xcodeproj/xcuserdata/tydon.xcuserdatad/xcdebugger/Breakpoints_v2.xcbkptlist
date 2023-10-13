@@ -551,8 +551,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
          </BreakpointContent>
@@ -2171,9 +2171,9 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "init(selectedUser:specificGame:tabSelection:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "init(searchResultsDetailVM:selectedUser:specificGame:tabSelection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2187,9 +2187,9 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "init(selectedUser:specificGame:tabSelection:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "init(searchResultsDetailVM:selectedUser:specificGame:tabSelection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2203,8 +2203,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
             <Locations>
@@ -2237,114 +2237,6 @@
                   startingLineNumber = "90"
                   endingLineNumber = "90"
                   offsetFromSymbolStart = "1250">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "convertUserToFriendDataBinding(displayName:friendUserID:profileImageString:isFavorite:isFriend:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - 916b3092245a80ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, friendCodeID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "442">
-               </Location>
-               <Location
-                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - 916b3092245a80ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, friendCodeID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "601">
-               </Location>
-               <Location
-                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - c1fd3314c91f7dc1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, friendCodeID: Swift.Optional&lt;Swift.String&gt;, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "442">
-               </Location>
-               <Location
-                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - 9454a9c5c7b6add"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "393">
-               </Location>
-               <Location
-                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - 9454a9c5c7b6add"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "597">
-               </Location>
-               <Location
-                  uuid = "4504D4D9-8DE2-400C-85FA-61E46FBA7196 - 9454a9c5c7b6add"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SearchResultsDetailViewModel.convertUserToFriendDataBinding(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; SwiftUI.Binding&lt;GamingWizards.FriendEntity&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "663">
                </Location>
             </Locations>
          </BreakpointContent>
