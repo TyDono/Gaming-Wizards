@@ -275,16 +275,16 @@ struct CreateReportUserView: View {
                     .sheet(isPresented: $isReportReasonsPresented, content: {
                         reportReasonsPopUpView
                     })
-                    Spacer()
-                    Button(action: {
-                        isReportBlockPresented.toggle()
-                    }) {
-                        Text("Cancel")
-                            .foregroundColor(.blue)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(Constants.semiRoundedCornerRadius)
-                    }
+//                    Spacer()
+//                    Button(action: {
+//                        isReportBlockPresented.toggle()
+//                    }) {
+//                        Text("Cancel")
+//                            .foregroundColor(.blue)
+//                            .padding()
+//                            .background(Color.white)
+//                            .cornerRadius(Constants.semiRoundedCornerRadius)
+//                    }
                 }
                 .background(Color.clear)
                 .presentationDetents([.height(200)])

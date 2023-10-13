@@ -97,23 +97,6 @@ struct SearchResultsDetailView: View {
         }
     }
     
-    private var reportUserButton: some View { // not used
-        CreateReportUserView(presentationMode: self.presentationMode,
-                             reporterId: $searchResultsDetailVM.user.id,
-                             reportedUser: $selectedUser,
-                             chatRoomId: $selectedUser.id,
-                             blockedUser: .constant(BlockedUser(id: selectedUser.id,
-                                                                displayName: selectedUser.displayName ?? "",
-                                                                dateRemoved: Date())),
-                             friendEntity: searchResultsDetailVM.convertUserToFriendDataBinding(
-                                displayName: selectedUser.displayName ?? "",
-                                friendUserID: selectedUser.id,
-                                profileImageString: selectedUser.profileImageString,
-                                isFavorite: false,
-                                isFriend: false)
-        )
-    }
-    
     private var listOfGames: some View {
         List {
             ForEach(selectedUser.listOfGames ?? [], id: \.self) { game in

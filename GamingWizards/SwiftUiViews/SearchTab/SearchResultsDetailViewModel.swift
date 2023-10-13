@@ -39,28 +39,6 @@ import CoreData
         self.diskSpaceHandler = diskSpaceHandler
     }
     
-    /*
-    func sendFriendRequest(selectedUserID: String) { // not used
-//        guard let userFriendCode = user.friendCodeID else { return }
-        let path = fbFirestoreService.firestore.collection(Constants.usersString).document(selectedUserID).collection(Constants.userFriendList).document(user.friendCodeID)
-        let newFriend = Friend(id: user.id, friendCodeID: user.friendCodeID,
-                               displayName: user.displayName ?? "",
-                               isFriend: false,
-                               isFavorite: false,
-                               imageString: user.profileImageString) //this should be the current user's info
-        path.getDocument { [weak self] (documentSnapshot, err) in
-            if let error = err {
-                print("Error retrieving document: \(error.localizedDescription)")
-            } else if documentSnapshot?.exists == true {
-                guard let self = self else { return }
-                self.FriendRequestAlreadySentIsTrue = true
-            } else {
-                path.setData(newFriend.friendDictionary)
-            }
-        }
-    }
-    */
-    
     //moved to search results View Model
     func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
         let friendEntity: FriendEntity = coreDataController.convertToFriendEntity2(

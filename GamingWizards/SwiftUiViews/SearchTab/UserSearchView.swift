@@ -122,7 +122,7 @@ struct UserSearchView: View {
             .listRowBackground(Color.clear)
             .padding()
             .listStyle(.plain)
-            .animation(Animation.easeInOut(duration: 0.5), value: filterer.searchText)
+//            .animation(Animation.easeInOut(duration: 0.2), value: filterer.searchText)
             
         }
     }

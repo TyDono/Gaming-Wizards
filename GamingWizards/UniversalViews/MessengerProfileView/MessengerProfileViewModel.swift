@@ -39,9 +39,5 @@ extension MessengerProfileView {
             return nil
         }
         
-        func callRetrieveProfileImageFromDisk(imageString: String) { // not used
-            self.profileImage = diskSpaceHandler.loadProfileImageFromDisk(imageString: imageString)
-        }
-        
     }
 }
