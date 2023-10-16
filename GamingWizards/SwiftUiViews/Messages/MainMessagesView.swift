@@ -9,12 +9,13 @@ import SwiftUI
 
 struct MainMessagesView: View {
     @Environment(\.presentationMode) private var presentationMode
-    @ObservedObject private var mainMessagesVM: MainMessagesViewModel
+    @StateObject private var mainMessagesVM: MainMessagesViewModel
     
-    init() {
-        self._mainMessagesVM = ObservedObject(wrappedValue: MainMessagesViewModel(recentMessages: []))
+    init(
+        mainMessagesVM: MainMessagesViewModel = MainMessagesViewModel(recentMessages: [])
+    ) {
+        _mainMessagesVM = StateObject(wrappedValue: mainMessagesVM)
     }
-
     
     var body: some View {
         ZStack {

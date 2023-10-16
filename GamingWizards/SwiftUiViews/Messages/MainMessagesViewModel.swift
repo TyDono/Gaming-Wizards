@@ -11,7 +11,7 @@ import SwiftUI
 import Firebase
 
 extension MainMessagesView {
-    @MainActor class MainMessagesViewModel: ObservableObject {
+    class MainMessagesViewModel: ObservableObject {
         @ObservedObject var user: UserObservable
         @ObservedObject var coredataController: CoreDataController
 //        @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
