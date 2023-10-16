@@ -148,6 +148,7 @@
 		CBB8CAB12A67911D009B13A6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8CAB02A67911D009B13A6 /* ColorExtension.swift */; };
 		CBBD556A2A27F08900F27626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBD55692A27F08800F27626 /* LaunchScreen.storyboard */; };
 		CBBD556F2A294B6A00F27626 /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBD556E2A294B6A00F27626 /* imagePicker.swift */; };
+		CBC466A72ADDD29A00B1D496 /* GetDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC466A62ADDD29A00B1D496 /* GetDeviceInfo.swift */; };
 		CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58132A01AFD200136AA0 /* UserReport.swift */; };
 		CBCD58182A03147900136AA0 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58172A03147900136AA0 /* SearchBar.swift */; };
 		CBCD581B2A0467F600136AA0 /* Luminari.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCD581A2A0467F600136AA0 /* Luminari.ttf */; };
@@ -298,6 +299,7 @@
 		CBB8CAB02A67911D009B13A6 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CBBD55692A27F08800F27626 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBBD556E2A294B6A00F27626 /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
+		CBC466A62ADDD29A00B1D496 /* GetDeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceInfo.swift; sourceTree = "<group>"; };
 		CBCD58132A01AFD200136AA0 /* UserReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReport.swift; sourceTree = "<group>"; };
 		CBCD58172A03147900136AA0 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CBCD581A2A0467F600136AA0 /* Luminari.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Luminari.ttf; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 			children = (
 				CB5BE83029FDE954009D38D6 /* GamingWizardsApp.swift */,
 				CB5F57E62AB9EF330003660A /* ReportReason.swift */,
+				CBC466A62ADDD29A00B1D496 /* GetDeviceInfo.swift */,
 				CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */,
 				CBBD556E2A294B6A00F27626 /* imagePicker.swift */,
 				CB5BE82E29FDE954009D38D6 /* NetworkRequestService.swift */,
@@ -1045,6 +1048,7 @@
 				CB049A192A33D8EF00024D01 /* AccountView.swift in Sources */,
 				CBCD58232A0B1EF400136AA0 /* BackgroundImageView.swift in Sources */,
 				CB5BE8AB29FDE958009D38D6 /* FontModifier.swift in Sources */,
+				CBC466A72ADDD29A00B1D496 /* GetDeviceInfo.swift in Sources */,
 				CB1248132AD4B2610057372F /* IsPayToPlaySearchSettingsViewModel.swift in Sources */,
 				CB5948912A6AA9EC00BE0DE2 /* FlowTag.swift in Sources */,
 				CBB8CAAD2A676106009B13A6 /* ManageListOfGamesView.swift in Sources */,

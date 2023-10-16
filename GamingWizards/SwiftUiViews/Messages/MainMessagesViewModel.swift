@@ -13,15 +13,13 @@ import Firebase
 extension MainMessagesView {
     class MainMessagesViewModel: ObservableObject {
         @ObservedObject var user: UserObservable
-        @ObservedObject var coredataController: CoreDataController
-//        @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
+        @ObservedObject var coreDataController: CoreDataController
         private let timeUtilsService: TimeUtilsService
         private let firestoreService: FirebaseFirestoreService
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
         @Published var isDetailedMessageViewShowing: Bool = false
         @Published var onlineStatus: Bool = false
-        
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
@@ -29,22 +27,20 @@ extension MainMessagesView {
         
         init(
             user: UserObservable = UserObservable.shared,
-            coredataController: CoreDataController = CoreDataController.shared,
-//            fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
+            coreDataController: CoreDataController = CoreDataController.shared,
             firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
             diskSpace: DiskSpaceHandler = DiskSpaceHandler(),
             timeUtilsService: TimeUtilsService = TimeUtils(),
             recentMessages: [RecentMessage]
         ) {
             self.user = user
-            self.coredataController = coredataController
-//            self.fbFirestoreHelper = fbFirestoreHelper
+            self.coreDataController = coreDataController
             self.timeUtilsService = timeUtilsService
             self.firestoreService = firestoreService
             self.diskSpace = diskSpace
             self.recentMessages = recentMessages
             
-            savedFriendEntities = self.coredataController.savedFriendEntities
+            savedFriendEntities = self.coreDataController.savedFriendEntities
 //            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
             callFetchRecentMessages()

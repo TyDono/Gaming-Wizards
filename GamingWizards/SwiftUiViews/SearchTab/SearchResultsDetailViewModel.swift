@@ -40,7 +40,11 @@ import CoreData
     }
     
     //moved to search results View Model
-    func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
+    func convertUserToFriendDataBinding(displayName: String,
+                                        friendUserID: String,
+                                        profileImageString: String,
+                                        isFavorite: Bool,
+                                        isFriend: Bool) -> Binding<FriendEntity> {
         let friendEntity: FriendEntity = coreDataController.convertToFriendEntity2(
             displayName: displayName,
             friendUserID: friendUserID,
@@ -64,15 +68,22 @@ import CoreData
     }
 
      
-    func friendRequestButtonWasTapped(newFriend: User, friendProfileImage: UIImage) async throws {
+    func friendRequestButtonWasTapped(newFriend: User,
+                                      friendProfileImage: UIImage) async throws {
         do {
             let friend = try await fbFirestoreService.sendFriendRequest(newFriend: newFriend)
             
-            coreDataController.addFriend(friendUserID: friend.id, friendDisplayName: friend.displayName, isFriend: false, isFavorite: false, profileImageString: friend.imageString)
-            diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString, image: friendProfileImage)
+            coreDataController.addFriend(friendUserID: friend.id,
+                                         friendDisplayName: friend.displayName,
+                                         isFriend: false, isFavorite: false,
+                                         profileImageString: friend.imageString)
+            diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
+                                                    image: friendProfileImage)
             
             do {
-                try await fbFirestoreService.createDualRecentMessage(toId: newFriend.id, chatUserDisplayName: newFriend.displayName ?? "", fromId: user.id)
+                try await fbFirestoreService.createDualRecentMessage(toId: newFriend.id,
+                                                                     chatUserDisplayName: newFriend.displayName ?? "",
+                                                                     fromId: user.id)
             } catch {
                 print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
             }

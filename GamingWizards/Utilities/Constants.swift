@@ -52,6 +52,8 @@ struct Constants {
     static let userTitle = "title"
     static let userPayToPlay = "isPayToPlay"
     static let userIsSolo = "isSolo"
+    static let deviceInfo = "deviceInfo"
+    static let dateFirstInstalled = "dateFirstInstalled"
     
     // MARK: calls to user reports
     static let userReports = "userReports"

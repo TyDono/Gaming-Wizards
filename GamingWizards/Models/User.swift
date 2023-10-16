@@ -28,6 +28,8 @@ struct User: Identifiable, Codable, Hashable {
     var title: String? = ""
     var isPayToPlay: Bool = false
     var isSolo: Bool = true
+    var deviceInfo: String?
+    var dateFirstInstalled: Date?
     
     var userDictionary: [String: Any] {
         return [
@@ -50,7 +52,9 @@ struct User: Identifiable, Codable, Hashable {
             Constants.userAvailability: availability,
             Constants.userTitle: title,
             Constants.userPayToPlay: isPayToPlay,
-            Constants.userIsSolo: isSolo
+            Constants.userIsSolo: isSolo,
+            Constants.deviceInfo: deviceInfo,
+            Constants.dateFirstInstalled: dateFirstInstalled
             
         ]
     }
@@ -78,6 +82,8 @@ extension User {
         case title = "title"
         case payToPlay = "isPayToPlay"
         case isSolo = "isSolo"
+        case deviceInfo = "deviceInfo"
+        case dateFirstInstalled = "dateFirstInstalled"
         
         init?(constantValue: String) {
             switch constantValue {
@@ -117,6 +123,10 @@ extension User {
                 self = .payToPlay
             case Constants.userIsSolo:
                 self = .isSolo
+            case Constants.deviceInfo:
+                self = .deviceInfo
+            case Constants.dateFirstInstalled:
+                self = .dateFirstInstalled
             default:
                 return nil
             }
@@ -149,6 +159,8 @@ class UserObservable: ObservableObject {
     private let titleKey = Constants.userTitle
     private let payToPlayKey = Constants.userPayToPlay
     private let isSoloKey = Constants.userIsSolo
+    private let deviceInfoKey = Constants.deviceInfo
+    private let dateFirstInstalledKey = Constants.dateFirstInstalled
     
     var id: String
     
@@ -273,6 +285,18 @@ class UserObservable: ObservableObject {
         }
     }
     
+    @Published var deviceInfo: String? {
+        didSet {
+            UserDefaults.standard.setValue(deviceInfo, forKey: "\(deviceInfoKey)-\(id)")
+        }
+    }
+    
+    @Published var dateFirstInstalled: Date? {
+        didSet {
+            UserDefaults.standard.setValue(dateFirstInstalled, forKey: "\(dateFirstInstalledKey)-\(id)")
+        }
+    }
+    
     private init() {
 //        guard let userId = KeychainHelper.getUserID() else {
 //            // Crashes the app, post mvp on just log them out and take them back to log in screen.
@@ -307,5 +331,7 @@ class UserObservable: ObservableObject {
         title = UserDefaults.standard.string(forKey: "\(titleKey)-\(id)") ?? ""
         isPayToPlay = UserDefaults.standard.bool(forKey: "\(payToPlayKey)-\(id)")
         isSolo = UserDefaults.standard.bool(forKey: "\(isSoloKey)-\(id)")
+        deviceInfo = UserDefaults.standard.string(forKey: "\(deviceInfoKey)-\(id)") ?? ""
+        dateFirstInstalled = UserDefaults.standard.object(forKey: "\(dateFirstInstalledKey)-\(id)") as? Date
     }
 }

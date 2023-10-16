@@ -29,6 +29,7 @@ protocol FirebaseFirestoreService {
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
     func retrieveBlockedUsers(userId: String) async 
     func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?) async throws -> [User]
+    func updateUserDeviceInFirestore() async 
     
 }
 
@@ -87,6 +88,19 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             })
     }
     
+    func updateUserDeviceInFirestore() async {
+        let deviceInfoResult = DeviceInfo.getDeviceInfo()
+        do {
+            let path = firestore.collection(Constants.usersString).document(user.id)
+            let updateData: [String: Any] = [
+                "deviceInfo": deviceInfoResult
+            ]
+            try await path.setData(updateData)
+        } catch {
+            print("UPDATING USER DEVICE IN CLOUD ERROR: \(error.localizedDescription)")
+        }
+    }
+            
     func stopListening() {
         listeningRegistration?.remove()
     }

@@ -123,12 +123,6 @@ struct SearchResultsDetailView: View {
     }
     
 }
-#Preview {
-    let user = User(id: "110k1") // Create an instance of User or use a mock object
-    let SpecificGame = "tony hawk"
-    
-    return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(SpecificGame), tabSelection: .constant("nil"))
-}
 
 //struct SearchResultsDetailView_Previews: PreviewProvider {
 //    static var previews: some View {

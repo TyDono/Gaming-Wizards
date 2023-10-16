@@ -110,8 +110,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "createUserBaseData(id:firstName:lastName:displayName:email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "GamingWizards/Models/User.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "init()"
             landmarkType = "7">
             <Locations>
@@ -190,8 +190,8 @@
             filePath = "GamingWizards/Models/User.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "init()"
             landmarkType = "7">
             <Locations>
@@ -238,8 +238,8 @@
             filePath = "GamingWizards/Models/User.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "init()"
             landmarkType = "7">
             <Locations>
@@ -1197,8 +1197,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "saveUserToUserDefaults(user:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1370,8 +1370,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "sha256(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1544,8 +1544,8 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "callTimeUtilsService(timeStamp:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1560,8 +1560,8 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "callFetchRecentMessages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1576,8 +1576,8 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "callFetchRecentMessages()"
             landmarkType = "7">
             <Locations>
@@ -1656,6 +1656,21 @@
                   endingLineNumber = "89"
                   offsetFromSymbolStart = "592">
                </Location>
+               <Location
+                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986ede"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "481">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1669,8 +1684,8 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "callFetchRecentMessages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1983,8 +1998,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
             <Locations>
@@ -2076,8 +2091,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2092,8 +2107,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
             <Locations>
@@ -2245,8 +2260,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2515,8 +2530,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "saveUserReportToFirestore(userReport:)"
             landmarkType = "7">
             <Locations>
@@ -2756,6 +2771,22 @@
                   offsetFromSymbolStart = "597">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EEF18A3-F7C8-4F2E-BE9A-8EEEFC21EDAC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/Models/LocationManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

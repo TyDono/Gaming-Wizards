@@ -67,6 +67,7 @@ import Security
                                 await self.retrieveFriendsListener()
                                 await self.fbFirestoreHelper.retrieveBlockedUsers(userId: existingUser.id)
                                 await self.coreDataController.createBaselineSearchSettings()
+                                await self.fbFirestoreHelper.updateUserDeviceInFirestore()
                                 await self.signInSuccess()
                             }
                         }
@@ -142,6 +143,7 @@ import Security
         let title = ""
         let isSolo = true
         let payToPlay = false
+        let deviceModel = DeviceInfo.getDeviceInfo()
         var newUser = User(id: id,
                            firstName: firstName,
                            lastName: lastName,
@@ -151,7 +153,7 @@ import Security
                            longitude: longitude,
                            location: location,
                            profileImageString: profileImageString,
-//                           friendCodeID: friendID,
+                           //                           friendCodeID: friendID,
                            listOfGames: games,
                            groupSize: groupSize,
                            age: age,
@@ -159,8 +161,10 @@ import Security
                            availability: availability,
                            title: title,
                            isPayToPlay: payToPlay,
-                           isSolo: isSolo)
-        locationManager.requestUserLocation { [weak self] lat, long, city, state  in
+                           isSolo: isSolo,
+                           deviceInfo: deviceModel,
+                           dateFirstInstalled: Date())
+        locationManager.requestUserLocation { lat, long, city, state  in
             if let safeCity = city, let safeState = state {
                 newUser.location = "\(safeCity), \(safeState)"
             } else {
