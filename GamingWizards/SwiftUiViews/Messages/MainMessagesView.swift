@@ -104,9 +104,12 @@ struct MainMessagesView: View {
                 Text(mainMessagesVM.user.displayName ?? "")
                     .font(.roboto(.bold, size: 24))
                 HStack {
+                    // re-add it post mvp
+                    /*
                     OnlineStatus(circleColor: mainMessagesVM.onlineStatus ? .green : .red,
                                  circleWidth: 14,
                                  circleHeight: 14)
+                     */
 //                    .task {
 //                        await mainMessagesVM.onlineStatusCircleWasTapped(toId: "POST MVP")
 //                    }

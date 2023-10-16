@@ -68,27 +68,31 @@ import CoreData
     }
 
      
-    func friendRequestButtonWasTapped(newFriend: User,
-                                      friendProfileImage: UIImage) async throws {
-        do {
-            let friend = try await fbFirestoreService.sendFriendRequest(newFriend: newFriend)
-            
-            coreDataController.addFriend(friendUserID: friend.id,
-                                         friendDisplayName: friend.displayName,
-                                         isFriend: false, isFavorite: false,
-                                         profileImageString: friend.imageString)
-            diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
-                                                    image: friendProfileImage)
-            
-            do {
-                try await fbFirestoreService.createDualRecentMessage(toId: newFriend.id,
-                                                                     chatUserDisplayName: newFriend.displayName ?? "",
-                                                                     fromId: user.id)
-            } catch {
-                print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
-            }
-        }
-    }
+     func friendRequestButtonWasTapped(newFriend: User,
+                                        friendProfileImage: UIImage) async throws {
+         do {
+             let friend = try await fbFirestoreService.sendFriendRequest(newFriend: newFriend)
+             
+
+             diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
+                                                     image: friendProfileImage)
+             
+             let recentMessageResult = await fbFirestoreService.createDualRecentMessage(toId: newFriend.id, chatUserDisplayName: newFriend.displayName ?? "", fromId: user.id)
+             
+             switch recentMessageResult {
+             case .success:
+                 coreDataController.addFriend(friendUserID: friend.id,
+                                              friendDisplayName: friend.displayName,
+                                              isFriend: false, isFavorite: false,
+                                              profileImageString: friend.imageString)
+             case .failure(let error):
+                 print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
+             }
+         } catch {
+             print("ERROR SENDING FRIEND REQUEST: \(error.localizedDescription)")
+         }
+     }
+
     
     func callRetrieveUserProfileImage(selectedUserProfileImageString: String ) {
         fbStorageHelper.retrieveUserProfileImage(imageString: selectedUserProfileImageString) { [weak self]  uiimage in

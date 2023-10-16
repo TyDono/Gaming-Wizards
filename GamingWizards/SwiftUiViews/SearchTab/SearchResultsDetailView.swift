@@ -63,10 +63,8 @@ struct SearchResultsDetailView: View {
     }
     
     private var friendRequestButton: some View {
-        Button(action: {
 //            searchResultsDetailViewModel.sendFriendRequest(selectedUserID: selectedUser.id)
             // instead of a friend request. this will be used to just send a message. maybe later have a private account feature in premium that will require users to send a friend request first.
-        }) {
             HStack {
                 Button {
                     Task {
@@ -93,8 +91,6 @@ struct SearchResultsDetailView: View {
                 .padding(.horizontal)
                 .shadow(radius: Constants.buttonShadowRadius)
             }
-
-        }
     }
     
     private var listOfGames: some View {

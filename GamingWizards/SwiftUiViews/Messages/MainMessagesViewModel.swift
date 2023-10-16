@@ -19,7 +19,7 @@ extension MainMessagesView {
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
         @Published var isDetailedMessageViewShowing: Bool = false
-        @Published var onlineStatus: Bool = false
+        @Published var onlineStatus: Bool = true
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
         @Published var friendEntityImageCache: [String: UIImage] = [:]

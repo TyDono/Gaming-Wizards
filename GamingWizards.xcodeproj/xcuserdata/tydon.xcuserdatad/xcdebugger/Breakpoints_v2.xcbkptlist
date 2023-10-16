@@ -551,8 +551,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
          </BreakpointContent>
@@ -1998,8 +1998,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
             <Locations>
@@ -2091,8 +2091,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2107,8 +2107,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
             <Locations>
@@ -2260,8 +2260,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2308,8 +2308,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
             <Locations>
@@ -2530,8 +2530,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
             landmarkName = "saveUserReportToFirestore(userReport:)"
             landmarkType = "7">
             <Locations>
@@ -2579,6 +2579,21 @@
                   startingLineNumber = "490"
                   endingLineNumber = "490"
                   offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  uuid = "AEFA5F91-FE4B-4BD5-AFC6-114D0C6A2CEF - a9e5c83369d7574a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.saveUserReportToFirestore(userReport: GamingWizards.UserReport) async throws -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "504"
+                  endingLineNumber = "504"
+                  offsetFromSymbolStart = "545">
                </Location>
             </Locations>
          </BreakpointContent>

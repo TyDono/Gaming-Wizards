@@ -20,7 +20,8 @@ protocol FirebaseFirestoreService {
     func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
     func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
     func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void)
-    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws
+    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async -> Result<Void, Error>
+//    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws
     func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws 
     func saveUserReportToFirestore(userReport: UserReport) async throws
     func deleteRecentMessage(friend: FriendEntity, userId: String) async throws
@@ -29,7 +30,7 @@ protocol FirebaseFirestoreService {
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
     func retrieveBlockedUsers(userId: String) async 
     func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?) async throws -> [User]
-    func updateUserDeviceInFirestore() async 
+    func updateUserDeviceInFirestore() async
     
 }
 
@@ -218,7 +219,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws {
+    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async -> Result<Void, Error> {
         
         let recentSenderMessageData = [
             Constants.chatMessageTimeStamp: Timestamp(),
@@ -241,7 +242,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             try await senderMessageDocumentPath.setData(recentSenderMessageData)
         } catch {
             print("ERROR, FAILED TO SAVE RECENT MESSAGES SENDER TO FIRESTORE: \(error.localizedDescription)")
-            throw error
+            return .failure(error)
         }
         
         let recentReceiverMessageData = [
@@ -251,7 +252,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             Constants.toId: fromId,
             Constants.displayName: user.displayName ?? "",
             Constants.onlineStatus: true
-//            "profileImageUrl":
+    //        "profileImageUrl":
             
         ] as [String : Any]
         
@@ -265,10 +266,12 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             try await receiverMessageDocumentPath.setData(recentReceiverMessageData)
         } catch {
             print("ERROR, FAILED TO SAVE RECENT MESSAGES RECEIVER TO FIRESTORE: \(error.localizedDescription)")
-            throw error
+            return .failure(error)
         }
         
+        return .success(())
     }
+
     
     func retrieveBlockedUsers(userId: String) async {
         let blockedUsersPath = firestore
