@@ -114,6 +114,8 @@ import Security
         user.title = newUser.title
         user.isPayToPlay = newUser.isPayToPlay
         user.isSolo = newUser.isSolo
+        user.deviceInfo = newUser.deviceInfo
+        user.dateFirstInstalled = newUser.dateFirstInstalled
         
         completion()
     }
@@ -144,6 +146,7 @@ import Security
         let isSolo = true
         let payToPlay = false
         let deviceModel = DeviceInfo.getDeviceInfo()
+        let dateFirstInstalled = Date()
         var newUser = User(id: id,
                            firstName: firstName,
                            lastName: lastName,
@@ -163,7 +166,7 @@ import Security
                            isPayToPlay: payToPlay,
                            isSolo: isSolo,
                            deviceInfo: deviceModel,
-                           dateFirstInstalled: Date())
+                           dateFirstInstalled: dateFirstInstalled)
         locationManager.requestUserLocation { lat, long, city, state  in
             if let safeCity = city, let safeState = state {
                 newUser.location = "\(safeCity), \(safeState)"

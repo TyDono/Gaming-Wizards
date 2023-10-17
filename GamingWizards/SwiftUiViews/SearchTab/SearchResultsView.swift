@@ -38,7 +38,7 @@ struct SearchResultsView: View {
             }
             .onAppear {
                 Task {
-                    await searchResultsVM.searchForMatchingUsers(gameName: searchText, isPayToPlay: searchResultsVM.coreDataController.savedSearchSettingsEntity?.isFreeToPlay ?? true)
+                    await searchResultsVM.searchForMatchingUsers(gameName: searchText, isPayToPlay: searchResultsVM.coreDataController.savedSearchSettingsEntity?.isPayToPlay ?? true)
                 }
             }
         }

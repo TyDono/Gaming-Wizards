@@ -45,12 +45,13 @@ struct SignInView: View {
     @State var coordinator: SignInWithAppleCoordinator?
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-//            ScrollView {
-                Image("gaming-wizard")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
+//        ScrollView {
+            ZStack(alignment: .bottom) {
+                //            ScrollView {
+//                Image("gaming-wizard")
+//                    .resizable()
+//                    .scaledToFill()
+//                    .edgesIgnoringSafeArea(.all)
                 //            LinearGradient(gradient: Gradient(colors: [Colors.GamingWizardsBrown, Colors.GamingWizardsYellow]), startPoint: .bottomLeading, endPoint: .topTrailing)
                 //                .edgesIgnoringSafeArea(.all)
                 //                .cornerRadius(15)
@@ -67,27 +68,29 @@ struct SignInView: View {
                             .background(Color.white)
                             .cornerRadius(10)
                     }
-//                    if authenticationViewModel.isUserLoggingInLoading == true {
-//                        LoadingAnimation(loadingProgress: $authenticationViewModel.loadingProgress)
-//                    }
+                    //                    if authenticationViewModel.isUserLoggingInLoading == true {
+                    //                        LoadingAnimation(loadingProgress: $authenticationViewModel.loadingProgress)
+                    //                    }
                 }
                 
-                GeometryReader { geometry in
-                    VStack {
-                        customNavigationBar
-                        
-                        Spacer()
-                        appleSignInButton
-                            .padding(.bottom, 5)
-                        googleSignInButton
-                            .padding(.vertical, 5)
-                        //                    signInWithFacebook // NON MVP
-                        //                        .padding(.vertical, 5)
-                    }
+                VStack {
+                    customNavigationBar
+                    
+                    Spacer()
+                    appleSignInButton
+                        .padding(.bottom, 5)
+                    googleSignInButton
+                        .padding(.vertical, 5)
                 }
-//            }
+//                }
+            }
+//        }
+        .background {
+            Image("gaming-wizard")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
         }
-        
     }
     
 

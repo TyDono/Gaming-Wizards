@@ -55,7 +55,6 @@ class SignInWithAppleCoordinator: NSObject, ASAuthorizationControllerPresentatio
     }
 }
 
-@available(iOS 13.0, *)
 extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
 
     func notificationSignup() {

@@ -77,7 +77,7 @@ class CoreDataController: ObservableObject {
         newSearchSettings.ageRangeMin = 18
         newSearchSettings.groupSizeRangeMax = 0
         newSearchSettings.groupSizeRangeMin = 25
-        newSearchSettings.isFreeToPlay = true
+        newSearchSettings.isPayToPlay = false
         newSearchSettings.searchRadius = 150
         
         do {

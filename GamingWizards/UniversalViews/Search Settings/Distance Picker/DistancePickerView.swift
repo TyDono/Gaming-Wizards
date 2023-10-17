@@ -28,6 +28,19 @@ struct DistancePickerView: View {
     
     private var distancePickerSlider: some View {
         VStack {
+            Slider(value: $distancePickerVM.miles, in: 1...500, step: 1.0)
+            .padding()
+            .onChange(of: distancePickerVM.miles) { newMiles in
+                distancePickerVM.saveDistanceSearchSettings(distance: newMiles)
+            }
+            .onAppear {
+                self.distancePickerVM.miles = distancePickerVM.coreDataController.savedSearchSettingsEntity?.searchRadius ?? 0
+            }
+        }
+    }
+    /*
+    private var distancePickerSlider: some View {
+        VStack {
             Slider(value: Binding(
                 get: {
                     self.distancePickerVM.miles
@@ -46,7 +59,7 @@ struct DistancePickerView: View {
             }
         }
     }
-    
+    */
 
     
     private var distancePickerMessage: some View {

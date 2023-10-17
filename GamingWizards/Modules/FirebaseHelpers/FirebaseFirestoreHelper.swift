@@ -91,16 +91,15 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     
     func updateUserDeviceInFirestore() async {
         let deviceInfoResult = DeviceInfo.getDeviceInfo()
+        
         do {
             let path = firestore.collection(Constants.usersString).document(user.id)
-            let updateData: [String: Any] = [
-                "deviceInfo": deviceInfoResult
-            ]
-            try await path.setData(updateData)
+            try await path.updateData(["deviceInfo": deviceInfoResult])
         } catch {
             print("UPDATING USER DEVICE IN CLOUD ERROR: \(error.localizedDescription)")
         }
     }
+
             
     func stopListening() {
         listeningRegistration?.remove()
@@ -145,44 +144,11 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         
         do {
             let querySnapshot = try await query.getDocuments()
-            let users = querySnapshot.documents.compactMap { document in
+            let users = try querySnapshot.documents.compactMap { document in
                 let data = document.data()
-                
-                let id = data[Constants.userID] as? String ?? ""
-                let displayName = data[Constants.userDisplayName] as? String ?? ""
-                let email = data[Constants.userEmail] as? String ?? ""
-                let latitude = data[Constants.userLatitude] as? Double ?? 0.0
-                let longitude = data[Constants.userLongitude] as? Double ?? 0.0
-                let location = data[Constants.userLocation] as? String ?? ""
-                let profileImageString = data[Constants.userProfileImageString] as? String ?? ""
-                let friendCodeID = data[Constants.userFriendCodeID] as? String ?? ""
-                let listOfGames = data[Constants.userListOfGamesString] as? [String] ?? [""]
-                let groupSize = data[Constants.userGroupSize] as? String ?? ""
-                let age = data[Constants.userAge] as? String ?? ""
-                let about = data[Constants.userAbout] as? String ?? ""
-                let availability = data[Constants.userAvailability] as? String ?? ""
-                let title = data[Constants.userTitle] as? String ?? ""
-                let payToPlay = data[Constants.userPayToPlay] as? Bool ?? false
-                let isSolo = data[Constants.userIsSolo] as? Bool ?? true
-                
-                return User(
-                    id: id,
-                    displayName: displayName,
-                    email: email,
-                    latitude: latitude,
-                    longitude: longitude,
-                    location: location,
-                    profileImageString: profileImageString,
-//                    friendCodeID: friendCodeID,
-                    listOfGames: listOfGames,
-                    groupSize: groupSize,
-                    age: age,
-                    about: about,
-                    availability: availability,
-                    title: title,
-                    isPayToPlay: payToPlay,
-                    isSolo: isSolo
-                )
+                let decoder = Firestore.Decoder()
+//                let jsonData = try JSONSerialization.data(withJSONObject: data)
+                return try decoder.decode(User.self, from: data)
             }
             return users
         } catch {

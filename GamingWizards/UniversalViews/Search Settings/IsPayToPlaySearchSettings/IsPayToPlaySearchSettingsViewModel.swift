@@ -25,13 +25,13 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     }
     
     func changeIsPayToPlay() {
-        guard let isFreeToPlaySetting = coreDataController.savedSearchSettingsEntity?.isFreeToPlay else { return }
+        guard let isFreeToPlaySetting = coreDataController.savedSearchSettingsEntity?.isPayToPlay else { return }
         isPayToPlay = isFreeToPlaySetting
     }
     
     func saveIsPayToPlaySettings(isPayToPlay: Bool) {
         guard let newSearchSettings = coreDataController.savedSearchSettingsEntity else { return }
-        newSearchSettings.isFreeToPlay = isPayToPlay
+        newSearchSettings.isPayToPlay = isPayToPlay
         do {
             print(newSearchSettings.searchRadius)
             try coreDataController.saveSearchSettings(searchSettings: newSearchSettings)
