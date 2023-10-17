@@ -8,7 +8,10 @@
 //import Foundation
 import SwiftUI
 
-struct Constants {
+enum Constants {
+    
+//    private init() { }
+    
     static var isFriendRequestPending: Bool = false // not used rn. using friendRequestCount instead. shows number, or if it's 0. shows nothing
     static var friendRequestCount: Int = 0
     static let luminariRegularFontIdentifier = "Luminari"

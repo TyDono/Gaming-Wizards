@@ -55,7 +55,9 @@ import CoreData
                 
                 
                 self.authenticationViewModel.createUserBaseData(id: id, firstName: firstName, lastName: lastName, displayName: displayName, email: email) { user in
-                    self.authenticationViewModel.saveUserIntoFirestore(for: user)
+                    Task.detached {
+                        await self.authenticationViewModel.saveUserIntoFirestore(for: user)
+                    }
                 }
 //                let newUser = self.authenticationViewModel.createUserBaseData(id: id,
 //                                                                              firstName: firstName,

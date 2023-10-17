@@ -33,9 +33,10 @@ struct DistancePickerView: View {
                     self.distancePickerVM.miles
                 },
                 set: { newValue in
-                    self.distancePickerVM.miles = self.distancePickerVM.mapExponential(value: newValue)
+                    self.distancePickerVM.miles
+//                    self.distancePickerVM.miles = self.distancePickerVM.mapExponential(value: newValue)
                 }
-            ), in: 1...1000)
+            ), in: 1...500)
             .padding()
             .onChange(of: distancePickerVM.miles) { newMiles in
                 distancePickerVM.saveDistanceSearchSettings(distance: newMiles)

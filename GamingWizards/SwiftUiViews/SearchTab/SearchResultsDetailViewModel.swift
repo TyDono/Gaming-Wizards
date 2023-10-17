@@ -77,7 +77,9 @@ import CoreData
              diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
                                                      image: friendProfileImage)
              
-             let recentMessageResult = await fbFirestoreService.createDualRecentMessage(toId: newFriend.id, chatUserDisplayName: newFriend.displayName ?? "", fromId: user.id)
+             let recentMessageResult = await fbFirestoreService.createDualRecentMessage(toId: newFriend.id,
+                                                                                        chatUserDisplayName: newFriend.displayName ?? "",
+                                                                                        fromId: user.id)
              
              switch recentMessageResult {
              case .success:

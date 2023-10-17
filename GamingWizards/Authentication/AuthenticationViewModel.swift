@@ -27,7 +27,8 @@ import Security
     @Published var isLoading: Bool = false
     @Published var signingIn: String = ""
     @Published var myFriendListData: [Friend] = []
-//    @Published var user = UserObservable.shared
+    @Published var isUserLoggingInLoading: Bool = false
+    @Published var loadingProgress: Double = 0.0
     let coreDataController = CoreDataController.shared
     private var listeningRegistration: ListenerRegistration?
     static let sharedAuthenticationVM = AuthenticationViewModel()
@@ -43,17 +44,12 @@ import Security
         case signedOut
   }
     
-    //MARK MAKE THE AYSNC CALLS HERE ? Maybe
-    func saveUserIntoFirestore(for user: User) {
-        let documentPath = fbFirestoreHelper.firestore.collection(Constants.usersString).document(user.id)
-        documentPath.getDocument { [weak self] document, err in
-            if let error = err {
-                print("ERROR RETRIEVING FIRESTORE USER DATA WHEN SIGNING IN: \(error.localizedDescription)")
-                return
-            }
-            guard let self = self else { return }
-            if document?.exists == true {
-                if let documentData = document?.data() {
+    func saveUserIntoFirestore(for user: User) async {
+        do {
+            let documentPath = fbFirestoreHelper.firestore.collection(Constants.usersString).document(user.id)
+            let document = try await documentPath.getDocument()
+            if document.exists == true {
+                if let documentData = document.data() {
                     do {
                         let decoder = Firestore.Decoder()
                         let existingUser = try decoder.decode(User.self, from: documentData)
@@ -77,7 +73,7 @@ import Security
                     }
                 }
             } else {
-                documentPath.setData(user.userDictionary)
+                try await documentPath.setData(user.userDictionary)
                 self.saveUserToUserDefaults(user: user) {
                     Task.detached {
                         await self.retrieveFriendsListener()
@@ -86,12 +82,16 @@ import Security
                     }
                 }
             }
+        } catch {
+            print("ERROR RETRIEVING FIRESTORE USER DATA WHEN SIGNING IN: \(error.localizedDescription)")
+            return
         }
     }
     
     private func signInSuccess() {
         self.signInState = .signedIn
         self.isLoading = false
+        self.isUserLoggingInLoading = false
         self.log_Status = true
     }
     

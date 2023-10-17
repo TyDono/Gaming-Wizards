@@ -46,106 +46,47 @@ struct SignInView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image("gaming-wizard")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-//            LinearGradient(gradient: Gradient(colors: [Colors.GamingWizardsBrown, Colors.GamingWizardsYellow]), startPoint: .bottomLeading, endPoint: .topTrailing)
-//                .edgesIgnoringSafeArea(.all)
-//                .cornerRadius(15)
-//                .overlay(
-                    ZStack {
-                        if authenticationViewModel.isLoading {
-                            Color.black
-                                .opacity(1.00) //post mvp
-                                .ignoresSafeArea()
-                            
-                            ProgressView()
-                                .font(.title2)
-                                .frame(width: 60, height: 60)
-                                .background(Color.white)
-                                .cornerRadius(10)
-                        }
+//            ScrollView {
+                Image("gaming-wizard")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                //            LinearGradient(gradient: Gradient(colors: [Colors.GamingWizardsBrown, Colors.GamingWizardsYellow]), startPoint: .bottomLeading, endPoint: .topTrailing)
+                //                .edgesIgnoringSafeArea(.all)
+                //                .cornerRadius(15)
+                //                .overlay(
+                ZStack {
+                    if authenticationViewModel.isLoading {
+                        Color.black
+                            .opacity(1.00) //post mvp
+                            .ignoresSafeArea()
+                        
+                        ProgressView()
+                            .font(.title2)
+                            .frame(width: 60, height: 60)
+                            .background(Color.white)
+                            .cornerRadius(10)
                     }
-//                )
-            
-            GeometryReader { geometry in
-                VStack {
-                customNavigationBar
-//                    Image("header_image") // need image first
-//                      .resizable()
-//                      .aspectRatio(contentMode: .fit)
-
-                    Spacer()
-                    appleSignInButton
-//                    SignInWithAppleButton(
-//                        onRequest: { request in
-//                            let nonce = randomNonceString()
-//                            currentNonce = nonce
-//
-//                            request.requestedScopes = [.fullName, .email]
-//                            request.nonce = sha256(nonce)
-//                        },
-//                        onCompletion: { result in
-//                            switch result {
-//                            case .success(let authResults):
-//                                switch authResults.credential {
-//                                case let appleIDCredential as ASAuthorizationAppleIDCredential:
-//
-//                                    guard let nonce = currentNonce else {
-//                                        fatalError("Invalid state: A login callback was received, but no login request was sent.")
-//                                    }
-//                                    guard let appleIDToken = appleIDCredential.identityToken else {
-//                                        fatalError("Invalid state: A login callback was received, but no login request was sent.")
-//                                    }
-//                                    guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-//                                        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-//                                        return
-//                                    }
-//
-//                                    let credential = OAuthProvider.credential(withProviderID: "apple.com",idToken: idTokenString,rawNonce: nonce)
-//                                    Auth.auth().signIn(with: credential) { (authResult, error) in
-//                                        if (error != nil) {
-//                                            // Error. If error.code == .MissingOrInvalidNonce, make sure
-//                                            // you're sending the SHA256-hashed nonce as a hex string with
-//                                            // your request to Apple.
-//                                            print(error?.localizedDescription as Any)
-//                                            return
-//                                        }
-//                                        print("signed in")
-//            //                            self.userAuth.login()
-//                                    }
-//
-//                                    print("\(String(describing: Auth.auth().currentUser?.uid))")
-//                                default:
-//                                    break
-//
-//                                }
-//                            default:
-//                                break
-//                            }
-//                        }
-//                    )
-//                    .frame(width: 250, height: 45, alignment: .center)
-                    .padding(.bottom, 5)
-                    googleSignInButton
-                        .padding(.vertical, 5)
-//                    signInWithFacebook // NON MVP
-//                        .padding(.vertical, 5)
+//                    if authenticationViewModel.isUserLoggingInLoading == true {
+//                        LoadingAnimation(loadingProgress: $authenticationViewModel.loadingProgress)
+//                    }
                 }
-//                .padding(16)
-//                .frame(width: geometry.size.width, height: geometry.size.height)
-            }
-//            .keyboardAdaptive()
+                
+                GeometryReader { geometry in
+                    VStack {
+                        customNavigationBar
+                        
+                        Spacer()
+                        appleSignInButton
+                            .padding(.bottom, 5)
+                        googleSignInButton
+                            .padding(.vertical, 5)
+                        //                    signInWithFacebook // NON MVP
+                        //                        .padding(.vertical, 5)
+                    }
+                }
+//            }
         }
-//        .hideNavigationBar()
-//        .onAppear {
-//        }
-//        .alert(item: $alertItem) { alertItem in
-//            Alert(title: alertItem.title,
-//                  message: alertItem.message,
-//                  dismissButton: alertItem.dismissButton)
-//        }
         
     }
     
