@@ -32,7 +32,8 @@ struct IsPayToPlaySearchSettingsView: View {
             .onChange(of: isPayToPlaySearchSettingsVM.isPayToPlay) { newIsPayToPlayValue in
                 isPayToPlaySearchSettingsVM.saveIsPayToPlaySettings(isPayToPlay: newIsPayToPlayValue)
             }
-        } .onAppear {
+        }
+        .onAppear {
             isPayToPlaySearchSettingsVM.changeIsPayToPlay()
         }
         

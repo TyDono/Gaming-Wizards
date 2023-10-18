@@ -50,16 +50,17 @@ struct SearchResultsView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
-                            CustomNavigationTitle(leadingButtonAction: {
-                                searchResultsVM.resultWasTapped = false
-                            },
-                                                  trailingButtonAction: {
+                            CustomNavigationTitle(titleImageSystemName: $viewProfileTitleImageString, titleText: $viewProfileTitleText)
+                        }
+                        ToolbarItem(placement: .topBarLeading) {
+                            CustomNavigationLeadingBarItem(leadingButtonAction: {
+                                searchResultsVM.resultWasTapped.toggle()
+                            }, leadingButtonString: $dismissButtonString)
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            CustomNavigationTrailingItem(trailingButtonAction: {
                                 searchResultsVM.isCreateReportUserViewShowing.toggle()
-                            },
-                                                  leadingButtonString: $dismissButtonString,
-                                                  trailingButtonString: $customNavTrailingButtonString,
-                                                  titleImageSystemName: $viewProfileTitleImageString,
-                                                  titleText: $viewProfileTitleText)
+                            }, trailingButtonString: $customNavTrailingButtonString)
                         }
                     }
             }
@@ -157,4 +158,13 @@ struct SearchResultsView: View {
             .edgesIgnoringSafeArea(.all)
     }
     
+}
+
+import SwiftUI
+
+struct SearchResultsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchResultsView(tabSelection: .constant("someTabSelection"), searchText: .constant("someSearchText"))
+            .preferredColorScheme(.light) // You can adjust the color scheme as needed
+    }
 }

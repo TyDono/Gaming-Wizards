@@ -62,7 +62,7 @@ import Security
                             Task.detached {
                                 await self.retrieveFriendsListener()
                                 await self.fbFirestoreHelper.retrieveBlockedUsers(userId: existingUser.id)
-                                await self.coreDataController.createBaselineSearchSettings()
+                                await self.coreDataController.createBaselineSearchSettings() // get from cloud later on
                                 await self.fbFirestoreHelper.updateUserDeviceInFirestore()
                                 await self.signInSuccess()
                             }

@@ -120,11 +120,12 @@ struct SearchResultsDetailView: View {
     
 }
 
-//struct SearchResultsDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let user = User(id: "110k1") // Create an instance of User or use a mock object
-//        let SpecificGame = "tony hawk"
-//        
-//        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(SpecificGame), tabSelection: .constant("nil"))
-//    }
-//}
+struct SearchResultsDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        let user = User(id: "110k1", displayName: "John Doe", location: "City", profileImageString: "profile_image_placeholder", listOfGames: ["Game A", "Game B"], groupSize: "3-4", age: "25", about: "About me...", availability: "Evenings", title: "Gamer", isPayToPlay: false, isSolo: false)
+        let specificGame = "Game A"
+        
+        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(specificGame), tabSelection: .constant("nil"))
+    }
+}
+

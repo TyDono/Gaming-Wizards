@@ -15,15 +15,15 @@ import SwiftUI
          @Published var resultWasTapped: Bool = false
          @Published var selectedUser: User
          @Published var isCreateReportUserViewShowing: Bool = false
-         let fbFirestoreHelper: FirebaseFirestoreHelper
+         let fbFirestoreService: FirebaseFirestoreService
          let coreDataController: CoreDataController
          
          init(
-            fbFirestoreHelper: FirebaseFirestoreHelper = .shared,
+            fbFirestoreHelper: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
             coreDataController: CoreDataController = .shared,
             selectedUser: User = User(id: "110k1")
         ) {
-            self.fbFirestoreHelper = fbFirestoreHelper
+            self.fbFirestoreService = fbFirestoreHelper
             self.coreDataController = coreDataController
             self._selectedUser = Published(initialValue: selectedUser)
         }
@@ -54,7 +54,7 @@ import SwiftUI
         func searchForMatchingUsers(gameName: String, isPayToPlay: Bool) async {
             Task {
                 do {
-                    let listOfUsers: [User]? = try await fbFirestoreHelper.fetchMatchingUsersSearch(gameName: gameName, isPayToPlay: isPayToPlay)
+                    let listOfUsers: [User]? = try await fbFirestoreService.fetchMatchingUsersSearch(gameName: gameName, isPayToPlay: isPayToPlay)
                     guard let safeListOfUsers = listOfUsers else { return }
                     for user in safeListOfUsers {
                         // Have a check if they are in your blocked user list here as well

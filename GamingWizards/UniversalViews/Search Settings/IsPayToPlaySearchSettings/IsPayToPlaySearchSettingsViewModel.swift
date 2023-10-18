@@ -17,11 +17,9 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     init(
         user: UserObservable = UserObservable.shared,
         coreDataController: CoreDataController = CoreDataController.shared
-//        isPayToPlay: Bool
     ) {
         self.user = user
         self.coreDataController = coreDataController
-//        self.isPayToPlay = isPayToPlay
     }
     
     func changeIsPayToPlay() {

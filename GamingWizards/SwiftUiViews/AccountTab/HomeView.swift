@@ -198,14 +198,26 @@ struct HomeView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
-                            CustomNavigationTitle(leadingButtonAction: {
-                                isViewPersonalAccountViewPopUp = false
-                            },
-                                                  leadingButtonString: $dismissButtonString,
-                                                  trailingButtonString: $customNavTrailingButtonString,
-                                                  titleImageSystemName: $viewProfileTitleImageString,
-                                                  titleText: $viewProfileTitleText)
+                            CustomNavigationTitle(titleImageSystemName: $viewProfileTitleImageString, titleText: $viewProfileTitleText)
                         }
+                        ToolbarItem(placement: .topBarLeading) {
+                            CustomNavigationLeadingBarItem(leadingButtonAction: {
+                                isViewPersonalAccountViewPopUp = false
+                            }, leadingButtonString: $dismissButtonString)
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            CustomNavigationTrailingItem(trailingButtonAction: {
+                                
+                            }, trailingButtonString: $customNavTrailingButtonString)
+                        }
+//                            CustomNavigationTitle(leadingButtonAction: {
+//                                isViewPersonalAccountViewPopUp = false
+//                            },
+//                                                  leadingButtonString: $dismissButtonString,
+//                                                  trailingButtonString: $customNavTrailingButtonString,
+//                                                  titleImageSystemName: $viewProfileTitleImageString,
+//                                                  titleText: $viewProfileTitleText)
+//                        }
                     }
             }
         })

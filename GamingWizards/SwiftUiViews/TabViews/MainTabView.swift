@@ -44,9 +44,9 @@ struct MainTabView: View {
             }
             .tag(Constants.messageTabViewString)
             
-            NavigationStack {
-                MapBoxView()
-            }
+//            NavigationStack {
+//                MapBoxView()
+//            }
             
             // Map will return post MVP. I don't need map to use location services.
             /*

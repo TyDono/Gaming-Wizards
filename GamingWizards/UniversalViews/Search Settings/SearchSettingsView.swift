@@ -41,13 +41,17 @@ struct SearchSettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomNavigationTitle(leadingButtonAction: {
-//                    isViewPersonalAccountViewPopUp = false
-                },
-                                      leadingButtonString: $dismissButtonString,
-                                      trailingButtonString: $customNavTrailingButtonString,
-                                      titleImageSystemName: $searchSettingTitleSystemImageName,
-                                      titleText: $searchSettingViewTitle)
+                CustomNavigationTitle(titleImageSystemName: $searchSettingTitleSystemImageName, titleText: $searchSettingViewTitle)
+            }
+            ToolbarItem(placement: .topBarLeading) {
+                CustomNavigationLeadingBarItem(leadingButtonAction: {
+//                    isViewPersonalAccountViewPopUp.toggle()
+                }, leadingButtonString: $dismissButtonString)
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                CustomNavigationTrailingItem(trailingButtonAction: {
+                    
+                }, trailingButtonString: $customNavTrailingButtonString)
             }
         }
     }
