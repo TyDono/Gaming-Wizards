@@ -133,7 +133,7 @@ class FriendListViewModel: ObservableObject {
                     friends.forEach {
                         if $0.id == friendUserID {
                             $0.setValue(true, forKey: Constants.isFriend)
-                            self.coreDataController.saveFriendData()
+//                            self.coreDataController.saveFriendData()
                         }
                     }
                 }

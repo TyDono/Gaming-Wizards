@@ -28,8 +28,7 @@ struct MainMessagesView: View {
             }
         }
         .onAppear {
-            let tim = mainMessagesVM.coreDataController.savedFriendEntities
-            print(tim.count)
+            print(mainMessagesVM.savedFriendEntities)
         }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
             ChatLogView(presentationMode: self.presentationMode, chatUser: mainMessagesVM.selectedContact)
@@ -38,7 +37,7 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(mainMessagesVM.coreDataController.savedFriendEntities, id: \.self) { (contact: FriendEntity) in
+            ForEach(mainMessagesVM.savedFriendEntities, id: \.self) { (contact: FriendEntity) in
                 // Find the matching recent message for this contact
                 if let matchingRecentMessage = mainMessagesVM.recentMessages.first(where: { recentMessage in
                     return contact.id == recentMessage.toId

@@ -15,6 +15,7 @@ import AuthenticationServices
 import CryptoKit
 import CoreData
 import Security
+import Combine
 
 @MainActor class AuthenticationViewModel: ObservableObject {
     
@@ -29,15 +30,24 @@ import Security
     @Published var myFriendListData: [Friend] = []
     @Published var isUserLoggingInLoading: Bool = false
     @Published var loadingProgress: Double = 0.0
-    let coreDataController = CoreDataController.shared
+    @State var coreDataController: CoreDataController
     private var listeningRegistration: ListenerRegistration?
     static let sharedAuthenticationVM = AuthenticationViewModel()
     // The firestore and storage need to be directly called here in coredata as for what ever reason the configure doesn't go through in time.
     @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
     @ObservedObject var fbStorageHelper = FirebaseStorageHelper.shared
 //    private let keychainHelper = KeychainHelper()
+    @State private var savedFriendEntities: [FriendEntity] = []
+    private var cancellable: AnyCancellable?
     
-    private init() { }
+    private init(coreDataController: CoreDataController = CoreDataController.shared) {
+        self.coreDataController = coreDataController
+        self.cancellable = coreDataController.fetchFriendEntitiesPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) { friends in
+                self.savedFriendEntities = friends
+            }
+    }
 
     enum SignInState {
         case signedIn
@@ -259,7 +269,7 @@ import Security
                     
                     let documents = querySnapshot.documents
                     //deletes all friends locally
-                    for friend in coreDataController.savedFriendEntities {
+                    for friend in savedFriendEntities {
                         self.coreDataController.deleteFriendLocally(friend: friend)
                     }
                     for document in documents {

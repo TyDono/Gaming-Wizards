@@ -341,7 +341,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             
             // Delete the friend from CoreData
             await coreDataController.viewContext.delete(friend)
-            await coreDataController.saveFriendData()
+//            await coreDataController.saveFriendData()
             
         } catch {
             print("ERROR DELETING FRIEND FROM FIRESTORE: \(error.localizedDescription)")

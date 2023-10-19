@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 //extension SearchResultsView {
      class SearchResultsViewModel: ObservableObject {
@@ -17,6 +18,8 @@ import SwiftUI
          @Published var isCreateReportUserViewShowing: Bool = false
          let fbFirestoreService: FirebaseFirestoreService
          let coreDataController: CoreDataController
+         @Published var savedFriendEntities: [FriendEntity] = []
+         private var cancellable: AnyCancellable?
          
          init(
             fbFirestoreHelper: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
@@ -26,6 +29,11 @@ import SwiftUI
             self.fbFirestoreService = fbFirestoreHelper
             self.coreDataController = coreDataController
             self._selectedUser = Published(initialValue: selectedUser)
+            self.cancellable = coreDataController.fetchFriendEntitiesPublisher()
+                                    .receive(on: DispatchQueue.main)
+                                    .sink(receiveCompletion: { _ in }) { friends in
+                                        self.savedFriendEntities = friends
+                                    }
         }
          
          func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
@@ -58,7 +66,7 @@ import SwiftUI
                     guard let safeListOfUsers = listOfUsers else { return }
                     for user in safeListOfUsers {
                         // Have a check if they are in your blocked user list here as well
-                        if coreDataController.checkIfUserIsInFriendList(user: user) == false && user.id != self.user.id {
+                        if coreDataController.checkIfUserIsInFriendList(user: user, savedFriendEntities: self.savedFriendEntities) == false && user.id != self.user.id {
                             self.searchedForUsers?.append(user)
                         }
                     }

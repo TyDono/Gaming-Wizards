@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 import Firebase
+import Combine
 
 extension MainMessagesView {
     class MainMessagesViewModel: ObservableObject {
@@ -24,6 +25,7 @@ extension MainMessagesView {
         @Published var selectedContact: FriendEntity?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
         @Published var recentMessages: [RecentMessage]
+        private var cancellable: AnyCancellable?
         
         init(
             user: UserObservable = UserObservable.shared,
@@ -39,8 +41,13 @@ extension MainMessagesView {
             self.firestoreService = firestoreService
             self.diskSpace = diskSpace
             self.recentMessages = recentMessages
+            self.cancellable = coreDataController.fetchFriendEntitiesPublisher()
+                        .receive(on: DispatchQueue.main)
+                        .sink(receiveCompletion: { _ in }) { friends in
+                            self.savedFriendEntities = friends
+                        }
             
-            savedFriendEntities = self.coreDataController.savedFriendEntities
+//            savedFriendEntities = self.coreDataController.savedFriendEntities
 //            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
             callFetchRecentMessages()
