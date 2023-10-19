@@ -10,6 +10,7 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
+import Combine
 
 class CoreDataController: ObservableObject {
     
@@ -29,6 +30,8 @@ class CoreDataController: ObservableObject {
     @Published var savedSearchSettingsEntity: SearchSettingsEntity?
     @Published var savedUser: UserEntity?
     
+    private var cancellables: Set<AnyCancellable> = []
+    
     private init() {
         persistentContainer = NSPersistentContainer(name: "GamingWizardsContainer")
         persistentContainer.loadPersistentStores { description, err in
@@ -38,10 +41,32 @@ class CoreDataController: ObservableObject {
             }
             self.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
+        //below is used to check is an object changed
+        /*
+        NotificationCenter.default.publisher(for: .NSManagedObjectContextObjectsDidChange)
+                    .sink { _ in
+                        self.objectDidChange()
+                    }
+                    .store(in: &cancellables)
+         */
         fetchFriends()
         fetchBlockedUser()
         fetchSavedSearchSettings()
         //have fetch user here later if ever added
+    }
+    
+    private func objectDidChange() {
+        // Fetch your CoreData entity here or update it as needed
+//        print("search settings changed")
+//        print(savedSearchSettingsEntity)
+//        let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
+//        
+//        do {
+//            self.savedSearchSettingsEntity = try CoreDataController.shared.context.fetch(fetchRequest).first
+//        } catch {
+//            // Handle the error
+//            print("Error fetching CoreData entity: \(error)")
+//        }
     }
     
     func clearAllData() {

@@ -32,7 +32,6 @@ import SwiftUI
             guard let newSearchSettings = coreDataController.savedSearchSettingsEntity else { return }
             newSearchSettings.searchRadius = distance
             do {
-                print(newSearchSettings.searchRadius)
                 try coreDataController.saveSearchSettings(searchSettings: newSearchSettings)
             } catch {
                 print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")

@@ -30,7 +30,7 @@ struct SearchResultsView: View {
     var body: some View {
         ZStack {
             NavigationView {
-                if ((searchResultsVM.users?.isEmpty) == true) {
+                if ((searchResultsVM.searchedForUsers?.isEmpty) == true) {
                     noSearchResults
                 } else {
                     searchResultsList
@@ -38,6 +38,7 @@ struct SearchResultsView: View {
             }
             .onAppear {
                 Task {
+                    searchResultsVM.searchedForUsers = []
                     guard let isPayToPlaySearchSettings = searchResultsVM.coreDataController.savedSearchSettingsEntity?.isPayToPlay else { return }
                     await searchResultsVM.searchForMatchingUsers(gameName: searchText, isPayToPlay: isPayToPlaySearchSettings)
                 }
@@ -105,7 +106,7 @@ struct SearchResultsView: View {
     
     private var searchResultsList: some View {
         List {
-            ForEach(Array(searchResultsVM.users ?? []), id: \.self) { user in
+            ForEach(Array(searchResultsVM.searchedForUsers ?? []), id: \.self) { user in
                 VStack {
                     Text(user.title ?? "")
                         .font(.roboto(.regular, size: 19))

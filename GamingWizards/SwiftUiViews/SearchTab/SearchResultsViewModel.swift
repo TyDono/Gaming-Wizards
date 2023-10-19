@@ -11,7 +11,7 @@ import SwiftUI
      class SearchResultsViewModel: ObservableObject {
 //        @Published var searchText: String = ""
          @ObservedObject var user = UserObservable.shared
-         @Published var users: [User]? = []
+         @Published var searchedForUsers: [User]? = []
          @Published var resultWasTapped: Bool = false
          @Published var selectedUser: User
          @Published var isCreateReportUserViewShowing: Bool = false
@@ -59,7 +59,7 @@ import SwiftUI
                     for user in safeListOfUsers {
                         // Have a check if they are in your blocked user list here as well
                         if coreDataController.checkIfUserIsInFriendList(user: user) == false && user.id != self.user.id {
-                            self.users?.append(user)
+                            self.searchedForUsers?.append(user)
                         }
                     }
                 } catch {

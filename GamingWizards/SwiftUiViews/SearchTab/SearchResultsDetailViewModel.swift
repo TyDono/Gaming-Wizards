@@ -82,6 +82,7 @@ import CoreData
              
              switch recentMessageResult {
              case .success:
+                 print("succ")
                  coreDataController.addFriend(friendUserID: friend.id,
                                               friendDisplayName: friend.displayName,
                                               isFriend: false, isFavorite: false,
