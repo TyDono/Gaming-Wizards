@@ -132,7 +132,7 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    func addFriend(friendUserID: String, friendDisplayName: String, isFriend: Bool, isFavorite: Bool, profileImageString: String) { // change this to patch friend entity
+    func addFriend(friendUserID: String, friendDisplayName: String, isFriend: Bool, isFavorite: Bool, profileImageString: String) {
         let newFriend = FriendEntity(context: viewContext)
         newFriend.id =  friendUserID
         newFriend.displayName = friendDisplayName

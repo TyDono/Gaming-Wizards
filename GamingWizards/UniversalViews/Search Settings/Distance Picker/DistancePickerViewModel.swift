@@ -16,7 +16,7 @@ import SwiftUI
         
         init(
             coreDataController: CoreDataController = CoreDataController.shared,
-            miles: Double = CoreDataController.shared.savedSearchSettingsEntity?.searchRadius ?? 0,
+            miles: Double, //= CoreDataController.shared.savedSearchSettingsEntity?.searchRadius ?? 0,
             kilometers: Int
         ) {
             self.miles = miles

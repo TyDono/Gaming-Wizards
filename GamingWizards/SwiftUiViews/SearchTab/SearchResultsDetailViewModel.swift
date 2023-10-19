@@ -66,10 +66,9 @@ import CoreData
         })
         return binding
     }
-
      
      func friendRequestButtonWasTapped(newFriend: User,
-                                        friendProfileImage: UIImage) async throws {
+                                       friendProfileImage: UIImage) async throws {
          do {
              let friend = try await fbFirestoreService.sendFriendRequest(newFriend: newFriend)
              
@@ -94,7 +93,6 @@ import CoreData
              print("ERROR SENDING FRIEND REQUEST: \(error.localizedDescription)")
          }
      }
-
     
     func callRetrieveUserProfileImage(selectedUserProfileImageString: String ) {
         fbStorageHelper.retrieveUserProfileImage(imageString: selectedUserProfileImageString) { [weak self]  uiimage in

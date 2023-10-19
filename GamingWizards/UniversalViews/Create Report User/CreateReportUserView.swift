@@ -21,6 +21,7 @@ struct CreateReportUserView: View {
     @State var userReportDescriptionTextEditorPlaceHolderText: String = "Your description here"
     @Binding var blockedUser: BlockedUser
     @Binding var friendEntity: FriendEntity
+//    @Binding var cancelReportPopUpSheetAction: (() -> Void)?
     
     
     init(
@@ -33,6 +34,7 @@ struct CreateReportUserView: View {
         chatRoomId: Binding<String>,
         blockedUser: Binding<BlockedUser>,
         friendEntity: Binding<FriendEntity>
+//        cancelReportPopUpSheetAction: Binding<(() -> Void)?>
     ) {
         self._presentationMode = presentationMode
         self._createReportUserVM = ObservedObject(wrappedValue: createReportUserVM)
@@ -43,6 +45,7 @@ struct CreateReportUserView: View {
         self._chatRoomId = chatRoomId
         self._blockedUser = blockedUser
         self._friendEntity = friendEntity
+//        self._cancelReportPopUpSheetAction = cancelReportPopUpSheetAction
     }
     
     var body: some View {
@@ -192,14 +195,13 @@ struct CreateReportUserView: View {
                                     Button(action: {
                 isReportReasonsPresented.toggle()
             }) {
-//                Text("Cancel")
                 
             })
         }
     }
     
     private var reportPopUpSheet: some View {
-                VStack(spacing: 20) {
+                VStack(spacing: 15) {
                     Button(action: {
                         Task {
                             await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
@@ -224,10 +226,11 @@ struct CreateReportUserView: View {
                     .sheet(isPresented: $isReportReasonsPresented, content: {
                         reportReasonsPopUpView
                     })
-                    
+                    /*
                     Spacer()
                     Button(action: {
-                        isReportBlockPresented.toggle()
+                        $presentationMode.wrappedValue.dismiss()
+//                        isReportBlockPresented.toggle()
                     }) {
                         Text("Cancel")
                             .foregroundColor(.blue)
@@ -235,6 +238,7 @@ struct CreateReportUserView: View {
                             .background(Color.white)
                             .cornerRadius(Constants.semiRoundedCornerRadius)
                     }
+                     */
                      
                 }
                 .background(Color.clear)
@@ -242,6 +246,7 @@ struct CreateReportUserView: View {
                 .padding()
     }
     
+    /*
     private var reportPopUp: some View {
         VStack {
             Button(action: {
@@ -294,6 +299,7 @@ struct CreateReportUserView: View {
             }).background(Color.clear)
         }
     }
+     */
     
 }
 

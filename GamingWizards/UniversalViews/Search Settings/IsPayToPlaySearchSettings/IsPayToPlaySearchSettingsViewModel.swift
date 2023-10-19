@@ -28,10 +28,9 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     }
     
     func saveIsPayToPlaySettings(isPayToPlay: Bool) {
-        guard let newSearchSettings = coreDataController.savedSearchSettingsEntity else { return }
+        guard let newSearchSettings: SearchSettingsEntity = coreDataController.savedSearchSettingsEntity else { return }
         newSearchSettings.isPayToPlay = isPayToPlay
         do {
-            print(newSearchSettings.searchRadius)
             try coreDataController.saveSearchSettings(searchSettings: newSearchSettings)
         } catch {
             print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")

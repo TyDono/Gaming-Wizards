@@ -27,11 +27,9 @@ struct MainMessagesView: View {
                 .navigationBarHidden(true)
             }
         }
-        .task {
-//            mainMessagesVM.fbFirestoreHelper.retrieveFriendsListener(user: mainMessagesVM.user)
-        }
-        .onDisappear {
-//            mainMessagesVM.fbFirestoreHelper.stopListening()
+        .onAppear {
+            let tim = mainMessagesVM.coreDataController.savedFriendEntities
+            print(tim.count)
         }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
             ChatLogView(presentationMode: self.presentationMode, chatUser: mainMessagesVM.selectedContact)
