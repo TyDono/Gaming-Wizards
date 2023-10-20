@@ -12,6 +12,7 @@ import Security
 
 //extension FriendListView {
 class FriendListViewModel: ObservableObject {
+    /*
     @ObservedObject var user: UserObservable
     @Published var friendList: [Friend] = []
     @Published var addFriendAlertIsShowing: Bool = false
@@ -180,6 +181,6 @@ class FriendListViewModel: ObservableObject {
             }
         }
 
-        
+        */
     }
 //}

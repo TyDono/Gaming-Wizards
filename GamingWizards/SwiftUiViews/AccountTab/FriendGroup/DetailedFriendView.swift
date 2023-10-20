@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct DetailedFriendView: View {
+    var body: some View {
+        ZStack {
+            Text("")
+        }
+    }
+    /*
     @EnvironmentObject var friendListVM: FriendListViewModel
     @Environment(\.presentationMode) var presentationMode
     
@@ -137,6 +143,7 @@ struct DetailedFriendView: View {
         }
 
     }
+     */
 
 }
 

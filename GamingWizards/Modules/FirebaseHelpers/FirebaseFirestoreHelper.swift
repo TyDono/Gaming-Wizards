@@ -10,7 +10,7 @@ import FirebaseFirestore
 import Firebase
 
 protocol FirebaseFirestoreService {
-    func retrieveFriendsListener(user: UserObservable)
+//    func retrieveFriendsListener(user: UserObservable)
     func stopListening()
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
@@ -51,6 +51,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         super.init()
     }
     
+    /*
     func retrieveFriendsListener(user: UserObservable) {
         listeningRegistration = firestore.collection(Constants.usersString).document(user.id).collection(Constants.userFriendList)
             .addSnapshotListener({ [weak self] snapshot, err in
@@ -88,6 +89,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 }
             })
     }
+     */
     
     func updateUserDeviceInFirestore() async {
         let deviceInfoResult = DeviceInfo.getDeviceInfo()
@@ -254,9 +256,10 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             }
 
             let documents = snapshot.documents
-            for blockedUser in await coreDataController.blockedUserEntities {
-                await self.coreDataController.deleteBlockedUserLocally(blockedUser: blockedUser)
-            }
+            // below commented out code not needed as i delete all core data when the user logs out. this is only called when the user logs in with a pre-existing account
+//            for blockedUser in await coreDataController.blockedUserEntities {
+//                await self.coreDataController.deleteBlockedUserLocally(blockedUser: blockedUser)
+//            }
             for document in documents {
                 do {
                     let decoder = Firestore.Decoder()

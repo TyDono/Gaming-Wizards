@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct FriendListView: View {
+    var body: some View {
+        ZStack {
+            Text("ello wrld")
+        }
+    }
+    
+    /*
     @Environment(\.presentationMode) var presentationMode
       @ObservedObject var friendListVM: FriendListViewModel
       @ObservedObject var authenticationViewModel: AuthenticationViewModel
@@ -149,5 +156,6 @@ struct FriendListView_Previews: PreviewProvider {
             fbFirestoreHelper: FirebaseFirestoreHelper.shared
         )
     }
+     */
 }
 

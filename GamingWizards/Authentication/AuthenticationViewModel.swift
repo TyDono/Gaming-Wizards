@@ -37,7 +37,8 @@ import Combine
     @ObservedObject var fbFirestoreHelper = FirebaseFirestoreHelper.shared
     @ObservedObject var fbStorageHelper = FirebaseStorageHelper.shared
 //    private let keychainHelper = KeychainHelper()
-    @State private var savedFriendEntities: [FriendEntity] = []
+    @Published private var savedFriendEntities: [FriendEntity] = []
+    @Published private var blockedUserEntities: [BlockedUserEntity] = []
     private var cancellable: AnyCancellable?
     
     private init(coreDataController: CoreDataController = CoreDataController.shared) {
@@ -47,6 +48,11 @@ import Combine
             .sink(receiveCompletion: { _ in }) { friends in
                 self.savedFriendEntities = friends
             }
+        self.cancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
+                    .receive(on: DispatchQueue.main)
+                    .sink(receiveCompletion: { _ in }) { blockedUser in
+                        self.blockedUserEntities = blockedUser
+                    }
     }
 
     enum SignInState {

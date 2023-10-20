@@ -40,7 +40,7 @@ struct BlockedUsersView: View {
         ZStack {
             VStack {
                 List {
-                    ForEach(Array(blockedUsersVM.coreDataController.blockedUserEntities.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" }).enumerated()), id: \.element.id) { index, blockedUser in
+                    ForEach(Array(blockedUsersVM.blockedUserEntities.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" }).enumerated()), id: \.element.id) { index, blockedUser in
                         Button {
                             isUnblockUserAlertShowing = true
                             blockedUsersVM.selectedUsedToUnblock = blockedUser

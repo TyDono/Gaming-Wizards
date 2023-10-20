@@ -25,8 +25,8 @@ class CoreDataController: ObservableObject {
         return persistentContainer.viewContext
     }
 //    @Published var savedUserEntities: [UserEntity] = []
-    @Published var savedFriendEntities: [FriendEntity] = []
-    @Published var blockedUserEntities: [BlockedUserEntity] = []
+//    @Published var savedFriendEntities: [FriendEntity] = []
+//    @Published var blockedUserEntities: [BlockedUserEntity] = []
     @Published var savedSearchSettingsEntity: SearchSettingsEntity?
     @Published var savedUser: UserEntity?
     
@@ -41,7 +41,7 @@ class CoreDataController: ObservableObject {
         }
          
 //        fetchFriends()
-        fetchBlockedUser()
+//        fetchBlockedUser()
         fetchSavedSearchSettings()
     }
     
@@ -232,7 +232,7 @@ class CoreDataController: ObservableObject {
             
             try viewContext.save()
         } catch {
-            print("ERROR SAVING CORE DATA: \(error)")
+            print("ERROR SAVING FRIEND CORE DATA: \(error)")
         }
     }
 
@@ -248,25 +248,51 @@ class CoreDataController: ObservableObject {
     
     // MARK: Blocked Users
     
-    func fetchBlockedUser() {
-        viewContext.perform { [self] in
-            let request = NSFetchRequest<BlockedUserEntity>(entityName: "BlockedUserEntity")
+    func fetchBlockedUserEntitiesPublisher() -> AnyPublisher<[BlockedUserEntity], Error> {
+        let fetchRequest: NSFetchRequest<BlockedUserEntity> = BlockedUserEntity.fetchRequest()
+        return Future { promise in
             do {
-                blockedUserEntities = try viewContext.fetch(request)
-            } catch let error {
-                print("ERROR FETCHING CORE DATA: \(error)")
+                let blockedUsers = try self.viewContext.fetch(fetchRequest)
+                promise(.success(blockedUsers))
+            } catch {
+                promise(.failure(error))
             }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+//    func fetchBlockedUser() {
+//        viewContext.perform { [self] in
+//            let request = NSFetchRequest<BlockedUserEntity>(entityName: "BlockedUserEntity")
+//            do {
+//                blockedUserEntities = try viewContext.fetch(request)
+//            } catch let error {
+//                print("ERROR FETCHING CORE DATA: \(error)")
+//            }
+//        }
+//    }
+    
+    func saveBlockedUsersToCoreData(blockedUser: BlockedUserEntity) {
+        do {
+            // Insert the friend entity into the view context if it's not already there.
+            if !viewContext.hasChanges {
+                viewContext.insert(blockedUser)
+            }
+            
+            try viewContext.save()
+        } catch {
+            print("ERROR SAVING BLOCKED USER CORE DATA: \(error)")
         }
     }
     
-    func saveBlockedUsers() {
-        do {
-            try viewContext.save()
-            fetchBlockedUser()
-        } catch {
-            print("ERROR SAVING CORE DATA \(error.localizedDescription)")
-        }
-    }
+//    func saveBlockedUsers() {
+//        do {
+//            try viewContext.save()
+//            fetchBlockedUser()
+//        } catch {
+//            print("ERROR SAVING CORE DATA \(error.localizedDescription)")
+//        }
+//    }
     
     func addBlockedUser(blockedUser: BlockedUser) {
         let newBlockedUser = BlockedUserEntity(context: viewContext)
@@ -274,7 +300,16 @@ class CoreDataController: ObservableObject {
         newBlockedUser.displayName = blockedUser.displayName
         newBlockedUser.dateRemoved = blockedUser.dateRemoved
         
-        saveBlockedUsers()
+        saveBlockedUsersToCoreData(blockedUser: newBlockedUser)
+    }
+    
+    func addBlockedUser(id: String, displayName: String, dateRemoved: Date) { // not used, not called.
+        let newBlockedUser = BlockedUserEntity(context: viewContext)
+        newBlockedUser.id = id
+        newBlockedUser.displayName = displayName
+        newBlockedUser.dateRemoved = dateRemoved
+        
+        saveBlockedUsersToCoreData(blockedUser: newBlockedUser)
     }
     
     func deleteBlockedUserInCloud(blockedUser: BlockedUserEntity, userId: String) {
@@ -291,7 +326,6 @@ class CoreDataController: ObservableObject {
                             print("ERROR DELETING SPECIFIC FRIEND IN THE FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
                             self.viewContext.delete(blockedUser)
-                            self.saveBlockedUsers()
                         }
                     }
                 }
@@ -301,17 +335,7 @@ class CoreDataController: ObservableObject {
     func deleteBlockedUserLocally(blockedUser: BlockedUserEntity) {
         viewContext.perform { [self] in
             self.viewContext.delete(blockedUser)
-            self.saveBlockedUsers()
         }
-    }
-    
-    func addBlockedUser(id: String, displayName: String, dateRemoved: Date) {
-        let newBlockedUser = BlockedUserEntity(context: viewContext)
-        newBlockedUser.id = id
-        newBlockedUser.displayName = displayName
-        newBlockedUser.dateRemoved = dateRemoved
-        
-        saveBlockedUsers()
     }
     
     // MARK: USER
