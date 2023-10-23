@@ -7,12 +7,15 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 //extension DistancePickerView {
     class DistancePickerViewModel: ObservableObject {
         @ObservedObject var coreDataController: CoreDataController
         @Published var miles: Double = 0.0
         @Published var kilometers: Int = 0
+        @Published var savedSearchSettingsEntity: SearchSettingsEntity?
+        private var searchSettingsCancellable: AnyCancellable?
         
         init(
             coreDataController: CoreDataController = CoreDataController.shared,
@@ -22,6 +25,11 @@ import SwiftUI
             self.miles = miles
             self.kilometers = kilometers
             self.coreDataController = coreDataController
+            self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { _ in }) { searchSettings in
+                    self.savedSearchSettingsEntity = searchSettings
+                }
         }
         
         func convertMilesToKm(miles: Double) -> Int {
@@ -29,10 +37,10 @@ import SwiftUI
         }
         
         func saveDistanceSearchSettings(distance: Double) {
-            guard let newSearchSettings = coreDataController.savedSearchSettingsEntity else { return }
+            guard let newSearchSettings = savedSearchSettingsEntity else { return }
             newSearchSettings.searchRadius = distance
             do {
-                try coreDataController.saveSearchSettings(searchSettings: newSearchSettings)
+                try coreDataController.saveSearchSettingsToCoreData(searchSettings: newSearchSettings)
             } catch {
                 print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")
             }

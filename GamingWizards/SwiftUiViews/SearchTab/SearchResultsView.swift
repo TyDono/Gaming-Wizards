@@ -39,7 +39,7 @@ struct SearchResultsView: View {
             .onAppear {
                 Task {
                     searchResultsVM.searchedForUsers = []
-                    guard let isPayToPlaySearchSettings = searchResultsVM.coreDataController.savedSearchSettingsEntity?.isPayToPlay else { return }
+                    guard let isPayToPlaySearchSettings = searchResultsVM.savedSearchSettingsEntity?.isPayToPlay else { return }
                     await searchResultsVM.searchForMatchingUsers(gameName: searchText, isPayToPlay: isPayToPlaySearchSettings)
                 }
             }

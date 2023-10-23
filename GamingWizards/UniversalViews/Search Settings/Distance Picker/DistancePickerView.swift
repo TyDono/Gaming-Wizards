@@ -34,7 +34,7 @@ struct DistancePickerView: View {
                 distancePickerVM.saveDistanceSearchSettings(distance: newMiles)
             }
             .onAppear {
-                guard let searchRadiusSettings = distancePickerVM.coreDataController.savedSearchSettingsEntity?.searchRadius else { return }
+                guard let searchRadiusSettings = distancePickerVM.savedSearchSettingsEntity?.searchRadius else { return }
                 self.distancePickerVM.miles = searchRadiusSettings
             }
         }

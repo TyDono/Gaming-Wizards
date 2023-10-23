@@ -86,6 +86,8 @@ import Combine
                         // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                     } catch {
                         print("Error decoding Firestore data: \(error.localizedDescription)")
+                        signOut()
+                        return
                     }
                 }
             } else {
@@ -100,6 +102,7 @@ import Combine
             }
         } catch {
             print("ERROR RETRIEVING FIRESTORE USER DATA WHEN SIGNING IN: \(error.localizedDescription)")
+            signOut()
             return
         }
     }
@@ -311,6 +314,8 @@ import Combine
             signInState = .signedOut
             withAnimation(.easeInOut) {
                 log_Status = false
+                self.isLoading = false
+                self.isUserLoggingInLoading = false
                 if let bundleIdentifier = Bundle.main.bundleIdentifier {
                     KeychainHelper.clearKeychain()
                     coreDataController.clearAllData()

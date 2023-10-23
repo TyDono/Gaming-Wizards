@@ -19,7 +19,9 @@ import Combine
          let fbFirestoreService: FirebaseFirestoreService
          let coreDataController: CoreDataController
          @Published var savedFriendEntities: [FriendEntity] = []
-         private var cancellable: AnyCancellable?
+         @Published var savedSearchSettingsEntity: SearchSettingsEntity?
+         private var friendEntitiesCancellable: AnyCancellable?
+         private var searchSettingsCancellable: AnyCancellable?
          
          init(
             fbFirestoreHelper: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
@@ -29,11 +31,16 @@ import Combine
             self.fbFirestoreService = fbFirestoreHelper
             self.coreDataController = coreDataController
             self._selectedUser = Published(initialValue: selectedUser)
-            self.cancellable = coreDataController.fetchFriendEntitiesPublisher()
-                                    .receive(on: DispatchQueue.main)
-                                    .sink(receiveCompletion: { _ in }) { friends in
-                                        self.savedFriendEntities = friends
-                                    }
+            self.friendEntitiesCancellable = coreDataController.fetchFriendEntitiesPublisher()
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { _ in }) { friends in
+                    self.savedFriendEntities = friends
+                }
+            self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { _ in }) { searchSettings in
+                    self.savedSearchSettingsEntity = searchSettings
+                }
         }
          
          func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {

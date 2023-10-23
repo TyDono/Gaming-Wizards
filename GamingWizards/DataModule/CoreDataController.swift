@@ -27,7 +27,7 @@ class CoreDataController: ObservableObject {
 //    @Published var savedUserEntities: [UserEntity] = []
 //    @Published var savedFriendEntities: [FriendEntity] = []
 //    @Published var blockedUserEntities: [BlockedUserEntity] = []
-    @Published var savedSearchSettingsEntity: SearchSettingsEntity?
+//    @Published var savedSearchSettingsEntity: SearchSettingsEntity?
     @Published var savedUser: UserEntity?
     
     private init() {
@@ -39,10 +39,6 @@ class CoreDataController: ObservableObject {
             }
             self.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
-         
-//        fetchFriends()
-//        fetchBlockedUser()
-        fetchSavedSearchSettings()
     }
     
     private func objectDidChange() {
@@ -87,7 +83,7 @@ class CoreDataController: ObservableObject {
     // MARK: SearchSettings
     
     func createBaselineSearchSettings() {
-        guard savedSearchSettingsEntity == nil else { return }
+//        guard savedSearchSettingsEntity == nil else { return }
         let newSearchSettings = SearchSettingsEntity(context: viewContext)
         newSearchSettings.ageRangeMax = 18
         newSearchSettings.ageRangeMin = 18
@@ -97,31 +93,56 @@ class CoreDataController: ObservableObject {
         newSearchSettings.searchRadius = 150
         
         do {
-            try saveSearchSettings(searchSettings: newSearchSettings)
+            try saveSearchSettingsToCoreData(searchSettings: newSearchSettings)
         } catch {
             print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")
         }
     }
     
-    func fetchSavedSearchSettings() {
+    func fetchSearchSettingsEntityPublisher() -> AnyPublisher<SearchSettingsEntity?, Error> {
         let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
+        return Future { promise in
+            do {
+                let settings = try self.viewContext.fetch(fetchRequest)
+                promise(.success(settings.first))
+            } catch {
+                promise(.failure(error))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+//    func fetchSavedSearchSettings() {
+//        let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
+//        do {
+//            let settings = try viewContext.fetch(fetchRequest)
+//            savedSearchSettingsEntity = settings.first
+//        } catch {
+//            print("Failed to fetch saved SearchSettingsEntity: \(error)")
+//        }
+//    }
+    
+    func saveSearchSettingsToCoreData(searchSettings: SearchSettingsEntity) throws {
         do {
-            let settings = try viewContext.fetch(fetchRequest)
-            savedSearchSettingsEntity = settings.first
+            // Insert the search settings entity into the view context if it's not already there.
+            if !viewContext.hasChanges {
+                viewContext.insert(searchSettings)
+            }
+            
+            try viewContext.save()
         } catch {
-            print("Failed to fetch saved SearchSettingsEntity: \(error)")
+            print("ERROR SAVING SEARCH SETTINGS: \(error)")
         }
     }
     
-    func saveSearchSettings(searchSettings: SearchSettingsEntity) throws {
-        do {
-            try viewContext.save()
-            savedSearchSettingsEntity = searchSettings
-        } catch {
-            print("FAILED TO SAVED SEARCH SETTINGS: \(error)")
-            throw CoreDataError.saveError
-        }
-    }
+//    func saveSearchSettingsToCoreData(searchSettings: SearchSettingsEntity) throws {
+//        do {
+//            try viewContext.save()
+//            savedSearchSettingsEntity = searchSettings
+//        } catch {
+//            print("FAILED TO SAVED SEARCH SETTINGS: \(error)")
+//            throw CoreDataError.saveError
+//        }
+//    }
 
     
     // MARK: FRIEND
