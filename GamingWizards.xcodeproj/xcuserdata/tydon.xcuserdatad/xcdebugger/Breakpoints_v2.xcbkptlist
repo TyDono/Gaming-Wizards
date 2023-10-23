@@ -544,22 +544,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B7B37031-81B0-4BA9-A79F-F3FC41D9506B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "friendRequestButton"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1979,8 +1963,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
             <Locations>

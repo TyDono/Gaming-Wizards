@@ -20,6 +20,8 @@ import CoreData
     @Published var detailedFriendViewIsDismissed: Bool = false
     @Published var displayName: String? = ""
     @Published var profileImage: UIImage?
+     @Published var isShowingSendMessageConfirmationAlert: Bool = false
+     @Published var isFailedToSendMessageShowing: Bool = false
     let fbFirestoreService: FirebaseFirestoreService
     let fbStorageHelper: FirebaseStorageHelper
     let coreDataController: CoreDataController

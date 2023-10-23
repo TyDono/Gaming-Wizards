@@ -11,7 +11,7 @@ struct SearchResultsDetailView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @StateObject private var searchResultsDetailVM: SearchResultsDetailViewModel
-//    @Environment(\.dismiss) var dismiss
+    //    @Environment(\.dismiss) var dismiss
     @Binding var selectedUser: User
     @Binding var specificGame: String
     @Binding var tabSelection: String
@@ -34,13 +34,13 @@ struct SearchResultsDetailView: View {
                 viewAccountView
                     .padding()
                 friendRequestButton
-//                reportUserButton
-//                    .font(.globalFont(.luminari, size: 16))
+                //                reportUserButton
+                //                    .font(.globalFont(.luminari, size: 16))
                     .padding()
             }
         }
         .background(
-//            backgroundImageView
+            //            backgroundImageView
         )
         .task {
             searchResultsDetailVM.callRetrieveUserProfileImage(selectedUserProfileImageString: selectedUser.profileImageString)
@@ -51,10 +51,10 @@ struct SearchResultsDetailView: View {
     private var backgroundImageView: some View {
         Color(.init(white: 0.95, alpha: 1))
         /*
-        Image("blank-page")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .edgesIgnoringSafeArea(.all)
+         Image("blank-page")
+         .resizable()
+         .aspectRatio(contentMode: .fill)
+         .edgesIgnoringSafeArea(.all)
          */
     }
     
@@ -63,10 +63,26 @@ struct SearchResultsDetailView: View {
     }
     
     private var friendRequestButton: some View {
-//            searchResultsDetailViewModel.sendFriendRequest(selectedUserID: selectedUser.id)
-            // instead of a friend request. this will be used to just send a message. maybe later have a private account feature in premium that will require users to send a friend request first.
-            HStack {
-                Button {
+        //            searchResultsDetailViewModel.sendFriendRequest(selectedUserID: selectedUser.id)
+        // instead of a friend request. this will be used to just send a message. maybe later have a private account feature in premium that will require users to send a friend request first.
+        HStack {
+            Button {
+                searchResultsDetailVM.isShowingSendMessageConfirmationAlert.toggle()
+            } label: {
+                Text("Send Message")
+                //                        .font(.globalFont(.luminari, size: 21))
+                    .font(.roboto(.regular, size: 21))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding(.vertical)
+            .background(.blue)
+            .cornerRadius(Constants.roundedCornerRadius)
+            .padding(.horizontal)
+            .shadow(radius: Constants.buttonShadowRadius)
+            .alert("Add Friend", isPresented: $searchResultsDetailVM.isShowingSendMessageConfirmationAlert, actions: {
+                Button("Yes", action: {
                     Task {
                         do {
                             try await searchResultsDetailVM.friendRequestButtonWasTapped(newFriend: selectedUser, friendProfileImage: searchResultsDetailVM.profileImage ?? UIImage(named: Constants.wantedWizardImageString)!)
@@ -75,22 +91,21 @@ struct SearchResultsDetailView: View {
                             return
                         }
                     }
+                    searchResultsDetailVM.isShowingSendMessageConfirmationAlert.toggle()
                     presentationMode.wrappedValue.dismiss()
                     self.tabSelection = Constants.messageTabViewString
-                } label: {
-                    Text("Send Message")
-//                        .font(.globalFont(.luminari, size: 21))
-                        .font(.roboto(.regular, size: 21))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    Spacer()
-                }
-                .foregroundColor(.white)
-                .padding(.vertical)
-                .background(.blue)
-                .cornerRadius(Constants.roundedCornerRadius)
-                .padding(.horizontal)
-                .shadow(radius: Constants.buttonShadowRadius)
-            }
+                })
+                Button("Cancel", role: .cancel, action: {})
+            }, message: {
+                Text("Are you sure you want to contact \(selectedUser.displayName ?? "this user")?")
+            })
+        }
+        .alert("Cannot Send", isPresented: $searchResultsDetailVM.isFailedToSendMessageShowing, actions: {
+            Button("OK", role: .cancel, action: {})
+        }, message: {
+            Text("Failed to send message to user, please check your internet connection.")
+        })
+        
     }
     
     private var listOfGames: some View {
