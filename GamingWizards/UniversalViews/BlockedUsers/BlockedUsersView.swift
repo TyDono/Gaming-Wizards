@@ -40,7 +40,7 @@ struct BlockedUsersView: View {
         ZStack {
             VStack {
                 List {
-                    ForEach(Array(blockedUsersVM.blockedUserEntities.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" }).enumerated()), id: \.element.id) { index, blockedUser in
+                    ForEach(Array(blockedUsersVM.blockedUserEntities.sorted(by: { $0.dateRemoved! < $1.dateRemoved! }).enumerated()), id: \.element.id) { index, blockedUser in
                         Button {
                             isUnblockUserAlertShowing = true
                             blockedUsersVM.selectedUsedToUnblock = blockedUser
@@ -55,7 +55,7 @@ struct BlockedUsersView: View {
                         }
                         .alert(isPresented: $isUnblockUserAlertShowing) {
                             Alert(
-                                title: Text("Are you sure you want to unblock this user?"),
+                                title: Text("Are you sure you want to unblock \(blockedUser.displayName ?? "this user?")"),
                                 message: Text(""),
                                 primaryButton: .default(Text("Unblock")) {
                                     Task {
@@ -67,6 +67,7 @@ struct BlockedUsersView: View {
                         }
                     }
                 }
+                .animation(Animation.easeInOut(duration: 0.2), value: blockedUsersVM.blockedUserEntities)
             }
            
         }

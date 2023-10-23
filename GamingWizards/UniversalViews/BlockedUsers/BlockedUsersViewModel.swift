@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class BlockedUsersViewModel: ObservableObject {
+@MainActor class BlockedUsersViewModel: ObservableObject {
     let coreDataController: CoreDataController
     private let firestoreService: FirebaseFirestoreService
     @Published var selectedUsedToUnblock: BlockedUserEntity?
@@ -29,11 +29,19 @@ class BlockedUsersViewModel: ObservableObject {
                     }
     }
     
+    func removeBlockedUserAtIndex(index: Int) {
+        
+    }
+    
     func callUnblockUser(blockedUser: BlockedUserEntity) async {
         do {
             try await firestoreService.deleteBlockedUser(blockedUser: blockedUser)
         } catch {
-            
+            print("call to unblock user failed")
+            return
+        }
+        if let indexToRemove = blockedUserEntities.firstIndex(where: { $0.id == blockedUser.id }) {
+            blockedUserEntities.remove(at: indexToRemove)
         }
     }
     

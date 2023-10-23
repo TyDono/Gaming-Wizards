@@ -56,9 +56,11 @@ struct MainMessagesView: View {
                                 VStack(alignment: .leading) {
                                     Text(matchingRecentMessage.chatUserDisplayName)
                                         .font(.roboto(.bold, size: 16))
+                                        .lineLimit(2)
                                     Text(matchingRecentMessage.text)
                                         .font(.roboto(.semibold, size: 14))
                                         .foregroundColor(.lightGrey)
+                                        .lineLimit(2)
                                 }
                                 Spacer()
                                 Text("Sent \(timeAgo)")

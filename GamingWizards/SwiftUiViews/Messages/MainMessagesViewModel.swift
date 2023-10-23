@@ -25,7 +25,7 @@ extension MainMessagesView {
         @Published var selectedContact: FriendEntity?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
         @Published var recentMessages: [RecentMessage]
-        private var cancellable: AnyCancellable?
+        private var friendCancellable: AnyCancellable?
         
         init(
             user: UserObservable = UserObservable.shared,
@@ -41,14 +41,11 @@ extension MainMessagesView {
             self.firestoreService = firestoreService
             self.diskSpace = diskSpace
             self.recentMessages = recentMessages
-            self.cancellable = coreDataController.fetchFriendEntitiesPublisher()
+            self.friendCancellable = coreDataController.fetchFriendEntitiesPublisher()
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { _ in }) { friends in
                             self.savedFriendEntities = friends
                         }
-            
-//            savedFriendEntities = self.coreDataController.savedFriendEntities
-//            mainUserProfileImage = diskSpace.loadProfileImageFromDisk(imageString: user.profileImageString)
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
             callFetchRecentMessages()
         }

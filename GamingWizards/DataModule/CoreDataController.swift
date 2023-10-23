@@ -324,15 +324,6 @@ class CoreDataController: ObservableObject {
         saveBlockedUsersToCoreData(blockedUser: newBlockedUser)
     }
     
-    func addBlockedUser(id: String, displayName: String, dateRemoved: Date) { // not used, not called.
-        let newBlockedUser = BlockedUserEntity(context: viewContext)
-        newBlockedUser.id = id
-        newBlockedUser.displayName = displayName
-        newBlockedUser.dateRemoved = dateRemoved
-        
-        saveBlockedUsersToCoreData(blockedUser: newBlockedUser)
-    }
-    
     func deleteBlockedUserInCloud(blockedUser: BlockedUserEntity, userId: String) {
         guard let blockedUserId = blockedUser.id else { return }
         //        guard let friendCodeID = blockedUser.friendCodeID else { return }
@@ -356,6 +347,11 @@ class CoreDataController: ObservableObject {
     func deleteBlockedUserLocally(blockedUser: BlockedUserEntity) {
         viewContext.perform { [self] in
             self.viewContext.delete(blockedUser)
+            do {
+                try self.viewContext.save()
+            } catch {
+                print("Error saving blocked user after deletion: \(error)")
+            }
         }
     }
     

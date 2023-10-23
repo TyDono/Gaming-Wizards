@@ -203,9 +203,6 @@ struct CreateReportUserView: View {
     private var reportPopUpSheet: some View {
                 VStack(spacing: 15) {
                     Button(action: {
-                        Task {
-                            await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
-                        }
                         isReportBlockPresented.toggle()
                     }) {
                         Text("Block")
@@ -213,6 +210,19 @@ struct CreateReportUserView: View {
                             .padding()
                             .background(Color.white)
                             .cornerRadius(Constants.semiRoundedCornerRadius)
+                    }
+                    .alert(isPresented: $isReportBlockPresented) {
+                        Alert(
+                            title: Text("Are you sure you want to block \(blockedUser.displayName)?"),
+                            message: Text(""),
+                            primaryButton: .default(Text("Block")) {
+                                Task {
+                                    await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
+                                }
+                                isReportBlockPresented.toggle()
+                            },
+                            secondaryButton: .cancel()
+                        )
                     }
                     Button(action: {
                         isReportReasonsPresented.toggle()
