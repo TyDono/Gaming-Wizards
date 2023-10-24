@@ -41,13 +41,16 @@ extension MainMessagesView {
             self.firestoreService = firestoreService
             self.diskSpace = diskSpace
             self.recentMessages = recentMessages
-            self.friendCancellable = coreDataController.fetchFriendEntitiesPublisher()
-                        .receive(on: DispatchQueue.main)
-                        .sink(receiveCompletion: { _ in }) { friends in
-                            self.savedFriendEntities = friends
-                        }
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
             callFetchRecentMessages()
+        }
+        
+        func callForCoreDataEntities() async {
+            self.friendCancellable = coreDataController.fetchFriendEntitiesPublisher()
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { _ in }) { friends in
+                    self.savedFriendEntities = friends
+                }
         }
         
         func callTimeUtilsService(timeStamp: Timestamp) -> String {

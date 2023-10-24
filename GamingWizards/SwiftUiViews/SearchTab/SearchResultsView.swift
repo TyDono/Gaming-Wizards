@@ -38,6 +38,7 @@ struct SearchResultsView: View {
             }
             .onAppear {
                 Task {
+                    await searchResultsVM.callForCoreDatsEntities()
                     searchResultsVM.searchedForUsers = []
                     guard let isPayToPlaySearchSettings = searchResultsVM.savedSearchSettingsEntity?.isPayToPlay else { return }
                     await searchResultsVM.searchForMatchingUsers(gameName: searchText, isPayToPlay: isPayToPlaySearchSettings)

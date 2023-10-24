@@ -84,6 +84,9 @@ struct SignInView: View {
                 }
 //                }
             }
+            .task {
+                await authenticationViewModel.callCoreDataEntities()
+            }
 //        }
         .background {
             Image("gaming-wizard")

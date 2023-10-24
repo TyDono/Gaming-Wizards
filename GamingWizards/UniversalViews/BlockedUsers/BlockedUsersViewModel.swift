@@ -22,15 +22,18 @@ import Combine
     ) {
         self.coreDataController = coreDataController
         self.firestoreService = firestoreService
-        self.cancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveCompletion: { _ in }) { blockedUser in
-                        self.blockedUserEntities = blockedUser
-                    }
     }
     
     func removeBlockedUserAtIndex(index: Int) {
         
+    }
+    
+    func callCoreDataEntities() async {
+        self.cancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) { blockedUser in
+                self.blockedUserEntities = blockedUser
+            }
     }
     
     func callUnblockUser(blockedUser: BlockedUserEntity) async {

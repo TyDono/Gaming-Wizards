@@ -43,6 +43,14 @@ import Combine
     
     private init(coreDataController: CoreDataController = CoreDataController.shared) {
         self.coreDataController = coreDataController
+    }
+
+    enum SignInState {
+        case signedIn
+        case signedOut
+  }
+    
+    func callCoreDataEntities() async {
         self.cancellable = coreDataController.fetchFriendEntitiesPublisher()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }) { friends in
@@ -54,11 +62,6 @@ import Combine
                         self.blockedUserEntities = blockedUser
                     }
     }
-
-    enum SignInState {
-        case signedIn
-        case signedOut
-  }
     
     func saveUserIntoFirestore(for user: User) async {
         do {

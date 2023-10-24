@@ -28,6 +28,9 @@ struct MainMessagesView: View {
             }
         }
         .onAppear {
+            Task {
+                await mainMessagesVM.callForCoreDataEntities()
+            }
             print(mainMessagesVM.savedFriendEntities)
         }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {

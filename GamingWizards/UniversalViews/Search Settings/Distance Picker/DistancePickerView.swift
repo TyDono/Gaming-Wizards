@@ -17,12 +17,17 @@ struct DistancePickerView: View {
     }
     
     var body: some View {
-        VStack {
-            distancePickTitle
-                .padding()
-            distancePickerMessage
-            distancePickerSlider
-            
+        ZStack {
+            VStack {
+                distancePickTitle
+                    .padding()
+                distancePickerMessage
+                distancePickerSlider
+                
+            }
+        }
+        .task {
+            await distancePickerVM.callCoreDataEntities()
         }
     }
     

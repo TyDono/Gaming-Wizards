@@ -25,6 +25,9 @@ import Combine
             self.miles = miles
             self.kilometers = kilometers
             self.coreDataController = coreDataController
+        }
+        
+        func callCoreDataEntities() async {
             self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { _ in }) { searchSettings in

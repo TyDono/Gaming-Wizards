@@ -31,17 +31,21 @@ import Combine
             self.fbFirestoreService = fbFirestoreHelper
             self.coreDataController = coreDataController
             self._selectedUser = Published(initialValue: selectedUser)
-            self.friendEntitiesCancellable = coreDataController.fetchFriendEntitiesPublisher()
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { _ in }) { friends in
-                    self.savedFriendEntities = friends
-                }
-            self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { _ in }) { searchSettings in
-                    self.savedSearchSettingsEntity = searchSettings
-                }
+
         }
+         
+         func callForCoreDatsEntities() async {
+             self.friendEntitiesCancellable = coreDataController.fetchFriendEntitiesPublisher()
+                 .receive(on: DispatchQueue.main)
+                 .sink(receiveCompletion: { _ in }) { friends in
+                     self.savedFriendEntities = friends
+                 }
+             self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
+                 .receive(on: DispatchQueue.main)
+                 .sink(receiveCompletion: { _ in }) { searchSettings in
+                     self.savedSearchSettingsEntity = searchSettings
+                 }
+         }
          
          func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
              let friendEntity: FriendEntity = coreDataController.convertToFriendEntity2(
