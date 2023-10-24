@@ -18,7 +18,7 @@ struct SearchResultsView: View {
     @Binding var searchText: String
     
     init(
-        searchResultsVM: SearchResultsViewModel = SearchResultsViewModel(),
+        searchResultsVM: SearchResultsViewModel,
         tabSelection: Binding<String>,
         searchText: Binding<String>
     ) {
@@ -161,12 +161,9 @@ struct SearchResultsView: View {
     }
     
 }
-
-import SwiftUI
-
-struct SearchResultsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchResultsView(tabSelection: .constant("someTabSelection"), searchText: .constant("someSearchText"))
-            .preferredColorScheme(.light) // You can adjust the color scheme as needed
-    }
-}
+//struct SearchResultsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchResultsView(tabSelection: .constant("someTabSelection"), searchText: .constant("someSearchText"))
+//            .preferredColorScheme(.light) // You can adjust the color scheme as needed
+//    }
+//}

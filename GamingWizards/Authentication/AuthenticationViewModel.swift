@@ -303,10 +303,6 @@ import Combine
             })
     }
     
-    func stopListening() { // not used. moved to firestore helper
-        listeningRegistration?.remove()
-    }
-    
     func signOut() {
         GIDSignIn.sharedInstance.signOut()
         do {

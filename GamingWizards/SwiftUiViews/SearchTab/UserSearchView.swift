@@ -13,17 +13,22 @@ struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchVM: UserSearchViewModel
     @StateObject private var filterer = Filterer(isLayoutDesign: false)
+    @StateObject var searchResultsVM: SearchResultsViewModel
     @State private var debouncer = Debouncer(delay: 0.5)
     @State private var selectedDistance: String = "150"
     @Binding var tabSelection: String
     
-    init(debouncer: Debouncer, tabSelection: Binding<String>) {
+    init(
+        debouncer: Debouncer,
+        tabSelection: Binding<String>
+    ) {
         self._tabSelection = tabSelection
         self._userSearchVM = StateObject(wrappedValue: UserSearchViewModel())
         self._filterer = StateObject(wrappedValue: Filterer(isLayoutDesign: false))
         self._debouncer = State(wrappedValue: debouncer)
-//        self._selectedDistance = selectedDistance
+        self._searchResultsVM = StateObject(wrappedValue: SearchResultsViewModel())
     }
+
     
     var body: some View {
         ZStack {
@@ -50,7 +55,7 @@ struct UserSearchView: View {
                 Image(systemName: "slider.horizontal.3")
             })
             .navigationDestination(isPresented: $userSearchVM.isNavigateToSearchResults) {
-                SearchResultsView(tabSelection: $tabSelection, searchText: $filterer.searchText)
+                SearchResultsView(searchResultsVM: searchResultsVM, tabSelection: $tabSelection, searchText: $filterer.searchText)
             }
         }
         .navigationDestination(isPresented: $userSearchVM.isSearchSettingsViewShown) {
@@ -129,15 +134,15 @@ struct UserSearchView: View {
 
 }
 
-struct UserSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            UserSearchView(
-                debouncer: Debouncer(delay: 0.5),
-                tabSelection: Binding.constant("Tab 1")
-//                selectedDistance: "10"
-            )
-        }
-    }
-}
+//struct UserSearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            UserSearchView(
+//                debouncer: Debouncer(delay: 0.5),
+//                tabSelection: Binding.constant("Tab 1")
+////                selectedDistance: "10"
+//            )
+//        }
+//    }
+//}
 
