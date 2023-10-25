@@ -558,7 +558,9 @@ struct ManageAccountView: View {
     
     private var deleteAccountButton: some View {
         Button(action: {
-            manageAccountVM.deleteUserAccount()
+            Task {
+                await manageAccountVM.deleteUserAccountAndFirestore()
+            }
         }) {
             Text("Delete Account")
                 .cornerRadius(Constants.roundedCornerRadius)
@@ -576,7 +578,9 @@ struct ManageAccountView: View {
                 title: Text("Error in Deletion"),
                 message: Text("You must re-sign in to re-authenticate your account before deletion"),
                 primaryButton: .default(Text("Sign Out?")) {
-                    authenticationViewModel.signOut()
+                    Task {
+                        await authenticationViewModel.signOut()
+                    }
                 },
                 secondaryButton: .cancel()
             )
@@ -623,11 +627,6 @@ struct ManageAccountView: View {
 
 //            .modifier(isSaveChangesButtonIsActive ? FontModifier(size: 14, weight: .extraBold) : FontModifier(size: 14, weight: .regular))
         
-    }
-    
-    func signOut() {
-//        presentationMode.wrappedValue.dismiss()
-        authenticationViewModel.signOut()
     }
     
 }

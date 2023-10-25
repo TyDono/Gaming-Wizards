@@ -31,7 +31,6 @@ struct MainMessagesView: View {
             Task {
                 await mainMessagesVM.callForCoreDataEntities()
             }
-            print(mainMessagesVM.savedFriendEntities)
         }
         .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
             ChatLogView(presentationMode: self.presentationMode, chatUser: mainMessagesVM.selectedContact)

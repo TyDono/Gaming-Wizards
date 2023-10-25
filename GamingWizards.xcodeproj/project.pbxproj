@@ -130,6 +130,7 @@
 		CB8841CE2A791E680017C874 /* ChatLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CD2A791E680017C874 /* ChatLogView.swift */; };
 		CB8841D02A791E790017C874 /* ChatLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841CF2A791E790017C874 /* ChatLogViewModel.swift */; };
 		CB8841D22A7AC0D00017C874 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */; };
+		CB9556E72AE8738600F38127 /* DataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9556E62AE8738600F38127 /* DataProcessor.swift */; };
 		CB9685592AABD4DB0051D7D6 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9685582AABD4DB0051D7D6 /* TimeUtils.swift */; };
 		CB9BBE0C2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBE0B2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift */; };
 		CB9BBE0E2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBE0D2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift */; };
@@ -283,6 +284,7 @@
 		CB8841CD2A791E680017C874 /* ChatLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogView.swift; sourceTree = "<group>"; };
 		CB8841CF2A791E790017C874 /* ChatLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewModel.swift; sourceTree = "<group>"; };
 		CB8841D12A7AC0D00017C874 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
+		CB9556E62AE8738600F38127 /* DataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProcessor.swift; sourceTree = "<group>"; };
 		CB9685582AABD4DB0051D7D6 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		CB9BBE0B2ACE06CF00FD4A51 /* ContactAndChatSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAndChatSettingsView.swift; sourceTree = "<group>"; };
 		CB9BBE0D2ACE06DA00FD4A51 /* ContactAndChatSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAndChatSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 				CB5BE83129FDE954009D38D6 /* Notifications */,
 				CB62406F2A5F052B00E69C5C /* Debouncer.swift */,
 				CB32709F2ACCE8CC00717D4E /* DataConverter.swift */,
+				CB9556E62AE8738600F38127 /* DataProcessor.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				CB1248082AD1C03E0057372F /* TwoPointRangeSliderView.swift in Sources */,
 				CB5BE88E29FDE958009D38D6 /* GamingWizardsContainer.xcdatamodeld in Sources */,
 				CB5F57E32AB9E73F0003660A /* CreateReportUserView.swift in Sources */,
+				CB9556E72AE8738600F38127 /* DataProcessor.swift in Sources */,
 				CB5BE8B829FDE958009D38D6 /* UserAuth.swift in Sources */,
 				CBCD58272A16F84C00136AA0 /* SearchResultsDetailView.swift in Sources */,
 				CBCD58142A01AFD200136AA0 /* UserReport.swift in Sources */,

@@ -9,10 +9,10 @@ import SwiftUI
 import FirebaseAuth
 
 protocol FirebaseAuthService {
-    
+    func deleteUserAccount() async -> Bool 
 }
 
-class FirebaseAuthHelper: NSObject, ObservableObject {
+class FirebaseAuthHelper: NSObject, ObservableObject, FirebaseAuthService {
     
     let auth: Auth
     
@@ -23,5 +23,23 @@ class FirebaseAuthHelper: NSObject, ObservableObject {
         
         super.init()
     }
+    
+    func deleteUserAccount() async -> Bool {
+        guard let currentUser = auth.currentUser else { return true }
+        
+        return await withCheckedContinuation { continuation in
+            currentUser.delete { err in
+                if let error = err {
+                    print("ERROR DELETING ACCOUNT: \(error.localizedDescription)")
+                    continuation.resume(returning: true)
+                } else {
+                    continuation.resume(returning: false)
+                }
+            }
+        }
+    }
+
+
+
     
 }

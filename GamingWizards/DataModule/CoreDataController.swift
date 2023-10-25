@@ -56,14 +56,14 @@ class CoreDataController: ObservableObject {
 //        }
     }
     
-    func clearAllData() {
-        clearEntityData(entityName: "UserEntity")
-        clearEntityData(entityName: "FriendEntity")
-        clearEntityData(entityName: "BlockedUserEntity")
-        clearEntityData(entityName: "SearchSettingsEntity")
+    func clearAllData() async {
+        await clearEntityData(entityName: "UserEntity")
+        await clearEntityData(entityName: "FriendEntity")
+        await clearEntityData(entityName: "BlockedUserEntity")
+        await clearEntityData(entityName: "SearchSettingsEntity")
     }
 
-    private func clearEntityData(entityName: String) {
+    private func clearEntityData(entityName: String) async {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {

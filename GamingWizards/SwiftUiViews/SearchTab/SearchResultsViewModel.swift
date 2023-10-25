@@ -18,10 +18,12 @@ import Combine
          @Published var isCreateReportUserViewShowing: Bool = false
          let fbFirestoreService: FirebaseFirestoreService
          let coreDataController: CoreDataController
-         @Published var savedFriendEntities: [FriendEntity] = []
+         @Published var savedFriendEntities: [FriendEntity]?
          @Published var savedSearchSettingsEntity: SearchSettingsEntity?
+         @Published var savedBlockedUserEntities: [BlockedUserEntity]?
          private var friendEntitiesCancellable: AnyCancellable?
          private var searchSettingsCancellable: AnyCancellable?
+         private var blockedUserEntitiesCancellable: AnyCancellable?
          
          init(
             fbFirestoreHelper: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
@@ -44,6 +46,11 @@ import Combine
                  .receive(on: DispatchQueue.main)
                  .sink(receiveCompletion: { _ in }) { searchSettings in
                      self.savedSearchSettingsEntity = searchSettings
+                 }
+             self.blockedUserEntitiesCancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
+                 .receive(on: DispatchQueue.main)
+                 .sink(receiveCompletion: { _ in }) { blockedUsers in
+                     self.savedBlockedUserEntities = blockedUsers
                  }
          }
          
@@ -73,13 +80,10 @@ import Combine
         func searchForMatchingUsers(gameName: String, isPayToPlay: Bool) async {
             Task {
                 do {
-                    let listOfUsers: [User]? = try await fbFirestoreService.fetchMatchingUsersSearch(gameName: gameName, isPayToPlay: isPayToPlay)
+                    let listOfUsers: [User]? = try await fbFirestoreService.fetchMatchingUsersSearch(gameName: gameName, isPayToPlay: isPayToPlay, friendUserIDs: savedFriendEntities, blockedUserIds: savedBlockedUserEntities)
                     guard let safeListOfUsers = listOfUsers else { return }
                     for user in safeListOfUsers {
-                        // Have a check if they are in your blocked user list here as well
-                        if coreDataController.checkIfUserIsInFriendList(user: user, savedFriendEntities: self.savedFriendEntities) == false && user.id != self.user.id {
-                            self.searchedForUsers?.append(user)
-                        }
+                        self.searchedForUsers?.append(user)
                     }
                 } catch {
                     print("ERROR RETRIEVING MATCHING GAMES FROM SEARCH: \(error)")

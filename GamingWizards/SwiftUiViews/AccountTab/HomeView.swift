@@ -55,7 +55,9 @@ struct HomeView: View {
                         title: Text("Are you sure?"),
                         message: Text(""),
                         primaryButton: .default(Text("Logout")) {
-                            authenticationViewModel.signOut()
+                            Task {
+                                await authenticationViewModel.signOut()
+                            }
                         },
                         secondaryButton: .cancel()
                     )

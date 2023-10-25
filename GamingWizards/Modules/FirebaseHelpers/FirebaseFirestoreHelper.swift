@@ -28,8 +28,8 @@ protocol FirebaseFirestoreService {
     func deleteFriend(friend: FriendEntity, userId: String) async throws
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
-    func retrieveBlockedUsers(userId: String) async 
-    func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?) async throws -> [User]
+    func retrieveBlockedUsers(userId: String) async
+    func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?, friendUserIDs: [FriendEntity]?, blockedUserIds: [BlockedUserEntity]?) async throws -> [User]
     func updateUserDeviceInFirestore() async
     
 }
@@ -133,16 +133,25 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?) async throws -> [User] {
-        var query: Query = firestore.collection(Constants.usersString)
+    func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?, friendUserIDs: [FriendEntity]?, blockedUserIds: [BlockedUserEntity]?) async throws -> [User] {
         
+        var query: Query = firestore.collection(Constants.usersString)
+        if let friendUserIDs = friendUserIDs {
+            let processedFriendIds = DataProcessor.extractUserIDs(from: friendUserIDs)
+            query = query.whereField(Constants.idStringValue, notIn: processedFriendIds)
+        }
+        if let blockedUserIds = blockedUserIds {
+            let processedBlockedUserIds = DataProcessor.extractUserIDsFromBlockedUser(from: blockedUserIds)
+            query = query.whereField(Constants.idStringValue, notIn: processedBlockedUserIds)
+        }
         if let gameName = gameName {
             query = query.whereField(Constants.userListOfGamesString, arrayContains: gameName)
         }
-        
         if let isPayToPlay = isPayToPlay {
             query = query.whereField(Constants.userPayToPlay, isEqualTo: isPayToPlay)
         }
+        
+        query = query.whereField(Constants.idStringValue, isNotEqualTo: user.id)
         
         do {
             let querySnapshot = try await query.getDocuments()
@@ -467,17 +476,29 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
 
-        func saveUserReportToFirestore(userReport: UserReport) async throws {
-            let firestoreDocReference = firestore.collection(Constants.userReports).document(userReport.id)
-            do {
-//                let encoder = JSONEncoder()
-//                let reportData = try encoder.encode(userReport)
+    func saveUserReportToFirestore(userReport: UserReport) async throws {
+        let firestoreDocReference = firestore.collection(Constants.userReports).document(userReport.id)
+        do {
+            //                let encoder = JSONEncoder()
+            //                let reportData = try encoder.encode(userReport)
+            
+            try firestoreDocReference.setData(from: userReport)
+            
+        } catch {
+            print("Error encoding user report: \(error)")
+        }
+    }
+    
+    func deleteUserFirebaseAccount(userId: String) async {
+        let path = firestore.collection(Constants.usersString).document(userId)
+        
+        await path.delete() { err in
+            if let error = err {
+                print("FIRESTORE DELETION ERROR: \(error.localizedDescription)")
+            } else {
                 
-                try firestoreDocReference.setData(from: userReport)
-                
-            } catch {
-                print("Error encoding user report: \(error)")
             }
         }
+    }
     
 }

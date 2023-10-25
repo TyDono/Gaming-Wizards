@@ -20,6 +20,7 @@ extension ManageAccountView {
         @ObservedObject var user: UserObservable
         @ObservedObject var fbFirestoreHelper: FirebaseFirestoreHelper
         @ObservedObject var fbStorageHelper: FirebaseStorageHelper
+        private let fbAuthService: FirebaseAuthService
         @ObservedObject var authenticationViewModel: AuthenticationViewModel
         @ObservedObject var locationManager: LocationManager
         let diskSpaceHandler: DiskSpaceHandler
@@ -64,6 +65,7 @@ extension ManageAccountView {
             user: UserObservable = UserObservable.shared,
             fbFirestoreHelper: FirebaseFirestoreHelper = FirebaseFirestoreHelper.shared,
             fbStorageHelper: FirebaseStorageHelper = FirebaseStorageHelper.shared,
+            fbAuthService: FirebaseAuthService = FirebaseAuthHelper.shared,
             diskSpaceHandler: DiskSpaceHandler = DiskSpaceHandler(),
             locationManager: LocationManager = LocationManager()
         ) {
@@ -71,6 +73,7 @@ extension ManageAccountView {
             self.user = user
             self.fbFirestoreHelper =  fbFirestoreHelper
             self.fbStorageHelper = fbStorageHelper
+            self.fbAuthService = fbAuthService
             self.diskSpaceHandler = diskSpaceHandler
             self.locationManager = locationManager
         }
@@ -217,26 +220,13 @@ extension ManageAccountView {
             }
         }
         
-        func deleteUserAccount() {
-            let currentUser = Auth.auth().currentUser
-            guard let userId = currentUser?.uid else { return }
-            let path = fbFirestoreHelper.firestore.collection(Constants.usersString).document(userId)
+        func deleteUserAccountAndFirestore() async {
             
-            currentUser?.delete { [weak self] err in
-                guard let self = self else { return }
-                if let error = err {
-                    self.accountDeleteErrorAlertIsShowing = true
-                    print("ACCOUNT DELETION ERROR: \(error.localizedDescription)")
-                    // have pop up here
-                } else {
-                    path.delete() { err in
-                        if let error = err {
-                            print("FIRESTORE DELETION ERROR: \(error.localizedDescription)")
-                        } else {
-                            self.authenticationViewModel.signOut()
-                        }
-                    }
-                }
+            let result = await fbAuthService.deleteUserAccount()
+            if result == true {
+                self.accountDeleteErrorAlertIsShowing = true
+            } else {
+                await fbFirestoreHelper.deleteUserFirebaseAccount(userId: user.id)
             }
         }
         

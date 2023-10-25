@@ -89,7 +89,7 @@ import Combine
                         // add image from storage here. get the image from cloud storage using document.profileImageString. then save the image to disk
                     } catch {
                         print("Error decoding Firestore data: \(error.localizedDescription)")
-                        signOut()
+                        await signOut()
                         return
                     }
                 }
@@ -105,7 +105,7 @@ import Combine
             }
         } catch {
             print("ERROR RETRIEVING FIRESTORE USER DATA WHEN SIGNING IN: \(error.localizedDescription)")
-            signOut()
+            await signOut()
             return
         }
     }
@@ -306,21 +306,21 @@ import Combine
             })
     }
     
-    func signOut() {
+    func signOut() async {
         GIDSignIn.sharedInstance.signOut()
         do {
             try Auth.auth().signOut()
             signInState = .signedOut
-            withAnimation(.easeInOut) {
+//            withAnimation(.easeInOut) {
                 log_Status = false
                 self.isLoading = false
                 self.isUserLoggingInLoading = false
                 if let bundleIdentifier = Bundle.main.bundleIdentifier {
                     KeychainHelper.clearKeychain()
-                    coreDataController.clearAllData()
+                    await coreDataController.clearAllData()
                     UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
                 }
-            }
+//            }
         } catch {
             print(error.localizedDescription)
         }

@@ -15,7 +15,8 @@ extension CreateReportUserView {
         @Published var userReportDescription: String = ""
         
         init(userObservable: UserObservable = UserObservable.shared,
-             firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared)
+             firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared
+        )
         {
             self.user = userObservable
             self.firestoreService = firestoreService
