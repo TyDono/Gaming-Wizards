@@ -10,6 +10,7 @@ import SwiftUI
 struct MainMessagesView: View {
     @Environment(\.presentationMode) private var presentationMode
     @StateObject private var mainMessagesVM: MainMessagesViewModel
+    @State private var isChatLogViewPresented: Bool = false
     
     init(
         mainMessagesVM: MainMessagesViewModel = MainMessagesViewModel(recentMessages: [])
@@ -28,12 +29,18 @@ struct MainMessagesView: View {
             }
         }
         .onAppear {
+            print(mainMessagesVM.savedFriendEntities)
+            print(mainMessagesVM.savedFriendEntities.count) // this is breaking
+            print(mainMessagesVM.recentMessages.count)
             Task {
                 await mainMessagesVM.callForCoreDataEntities()
+                await mainMessagesVM.callFetchRecentMessages()
             }
         }
-        .navigationDestination(isPresented: $mainMessagesVM.isDetailedMessageViewShowing) {
-            ChatLogView(presentationMode: self.presentationMode, chatUser: mainMessagesVM.selectedContact)
+        .navigationDestination(isPresented: $isChatLogViewPresented) {
+            ChatLogView(presentationMode: self.presentationMode,
+                        chatUser: mainMessagesVM.selectedContact,
+                        isChatLogViewPresented: $isChatLogViewPresented)
         }
     }
     
@@ -47,7 +54,7 @@ struct MainMessagesView: View {
                     let timeAgo = mainMessagesVM.callTimeUtilsService(timeStamp: matchingRecentMessage.timeStamp)
                     Button {
                         mainMessagesVM.selectedContact = contact
-                        mainMessagesVM.isDetailedMessageViewShowing.toggle()
+                        isChatLogViewPresented.toggle()
                     } label: {
                         VStack {
                             HStack(spacing: 16) {

@@ -10,7 +10,6 @@ import CoreLocation
 import Combine
 
 struct UserSearchView: View {
-    @Environment(\.presentationMode) var presentationMode
     @StateObject private var userSearchVM: UserSearchViewModel
     @StateObject private var filterer = Filterer(isLayoutDesign: false)
     @StateObject var searchResultsVM: SearchResultsViewModel
@@ -55,7 +54,9 @@ struct UserSearchView: View {
                 Image(systemName: "slider.horizontal.3")
             })
             .navigationDestination(isPresented: $userSearchVM.isNavigateToSearchResults) {
-                SearchResultsView(searchResultsVM: searchResultsVM, tabSelection: $tabSelection, searchText: $filterer.searchText)
+                SearchResultsView(searchResultsVM: searchResultsVM,
+                                  tabSelection: $tabSelection,
+                                  searchText: $filterer.searchText)
             }
         }
         .navigationDestination(isPresented: $userSearchVM.isSearchSettingsViewShown) {

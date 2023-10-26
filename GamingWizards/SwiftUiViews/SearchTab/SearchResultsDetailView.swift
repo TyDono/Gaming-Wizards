@@ -15,17 +15,20 @@ struct SearchResultsDetailView: View {
     @Binding var selectedUser: User
     @Binding var specificGame: String
     @Binding var tabSelection: String
+    @Binding private var isSearchResultsViewPresented: Bool
     
     init(
         searchResultsDetailVM: SearchResultsDetailViewModel = SearchResultsDetailViewModel(),
         selectedUser: Binding<User>,
         specificGame: Binding<String>,
-        tabSelection: Binding<String>
+        tabSelection: Binding<String>,
+        isSearchResultsViewPresented: Binding<Bool>
     ) {
         self._searchResultsDetailVM = StateObject(wrappedValue: SearchResultsDetailViewModel())
         self._selectedUser = selectedUser
         self._specificGame = specificGame
         self._tabSelection = tabSelection
+        self._isSearchResultsViewPresented = isSearchResultsViewPresented
     }
     
     var body: some View {
@@ -69,10 +72,11 @@ struct SearchResultsDetailView: View {
             Button {
                 searchResultsDetailVM.isShowingSendMessageConfirmationAlert.toggle()
             } label: {
-                Text("Send Message")
+                Text("Contact \(selectedUser.displayName ?? "this User")")
                 //                        .font(.globalFont(.luminari, size: 21))
                     .font(.roboto(.regular, size: 21))
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .lineLimit(2)
                 Spacer()
             }
             .foregroundColor(.white)
@@ -140,7 +144,7 @@ struct SearchResultsDetailView_Previews: PreviewProvider {
         let user = User(id: "110k1", displayName: "John Doe", location: "City", profileImageString: "profile_image_placeholder", listOfGames: ["Game A", "Game B"], groupSize: "3-4", age: "25", about: "About me...", availability: "Evenings", title: "Gamer", isPayToPlay: false, isSolo: false)
         let specificGame = "Game A"
         
-        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(specificGame), tabSelection: .constant("nil"))
+        return SearchResultsDetailView(selectedUser: .constant(user), specificGame: .constant(specificGame), tabSelection: .constant("nil"), isSearchResultsViewPresented: .constant(false))
     }
 }
 

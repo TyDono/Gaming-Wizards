@@ -19,7 +19,6 @@ extension MainMessagesView {
         private let firestoreService: FirebaseFirestoreService
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
-        @Published var isDetailedMessageViewShowing: Bool = false
         @Published var onlineStatus: Bool = true
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
@@ -42,7 +41,6 @@ extension MainMessagesView {
             self.diskSpace = diskSpace
             self.recentMessages = recentMessages
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
-            callFetchRecentMessages()
         }
         
         func callForCoreDataEntities() async {
@@ -86,7 +84,7 @@ extension MainMessagesView {
              */
         }
         
-        func callFetchRecentMessages() {
+        func callFetchRecentMessages() async  {
             firestoreService.fetchRecentMessages { [weak self] err, recentMessages in
                 if let error = err {
                     print("ERROR FETCHING RECENT MESSAGES: \(error.localizedDescription)")

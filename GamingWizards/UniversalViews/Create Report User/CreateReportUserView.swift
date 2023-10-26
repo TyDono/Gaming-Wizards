@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CreateReportUserView: View {
-    @Binding var presentationMode: PresentationMode
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var isCreateReportUserViewPresented: Bool
     @ObservedObject private var createReportUserVM: CreateReportUserViewModel
 //    @State var reportReason: ReportReason
     @Binding var reporterId: String
@@ -21,11 +22,13 @@ struct CreateReportUserView: View {
     @State var userReportDescriptionTextEditorPlaceHolderText: String = "Your description here"
     @Binding var blockedUser: BlockedUser
     @Binding var friendEntity: FriendEntity
+    @Binding var isSearchResultsViewPresented: Bool
+    @Binding var isChatLogViewPresented: Bool
 //    @Binding var cancelReportPopUpSheetAction: (() -> Void)?
     
     
     init(
-        presentationMode: Binding<PresentationMode>,
+        isCreateReportUserViewPresented: Binding<Bool>,
         createReportUserVM: CreateReportUserViewModel = CreateReportUserViewModel(),
 //        reportReason: ReportReason,
         reporterId: Binding<String>,
@@ -33,10 +36,12 @@ struct CreateReportUserView: View {
 //        userReportedMessage: String,
         chatRoomId: Binding<String>,
         blockedUser: Binding<BlockedUser>,
-        friendEntity: Binding<FriendEntity>
+        friendEntity: Binding<FriendEntity>,
+        isSearchResultsViewPresented: Binding<Bool>,
+        isChatLogViewPresented: Binding<Bool>
 //        cancelReportPopUpSheetAction: Binding<(() -> Void)?>
     ) {
-        self._presentationMode = presentationMode
+        self._isCreateReportUserViewPresented = isCreateReportUserViewPresented
         self._createReportUserVM = ObservedObject(wrappedValue: createReportUserVM)
 //        self.reportReason = reportReason
         self._reporterId = reporterId
@@ -45,6 +50,8 @@ struct CreateReportUserView: View {
         self._chatRoomId = chatRoomId
         self._blockedUser = blockedUser
         self._friendEntity = friendEntity
+        self._isSearchResultsViewPresented = isSearchResultsViewPresented
+        self._isChatLogViewPresented = isChatLogViewPresented
 //        self._cancelReportPopUpSheetAction = cancelReportPopUpSheetAction
     }
     
@@ -86,7 +93,7 @@ struct CreateReportUserView: View {
                     await createReportUserVM.handleSendUserReportWasTapped(userReport: userReportInfo)
                     await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
                 }
-                $presentationMode.wrappedValue.dismiss()
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Submit")
                     .foregroundColor(.blue)
@@ -121,26 +128,6 @@ struct CreateReportUserView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
-
-//                TextEditor(text: $createReportUserVM.userReportDescription.max(Constants.textViewMaxCharacters))
-//                    .foregroundColor(.black)
-//                    .frame(height: 200)
-//                //                .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    .foregroundStyle(.secondary)
-//                    .overlay(
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .stroke(Color.black, lineWidth: 1)
-//                    )
-//                    .foregroundColor(createReportUserVM.userReportDescription.isEmpty ? Color.black.opacity(0.25) : .black)
-//                    .padding(.horizontal)
-//                    .padding(.vertical)
-//                    .background(Color.white)
-//                    .font(.roboto(.regular,
-//                                  size: 16))
-//                    if createReportUserVM.userReportDescription.isEmpty {
-//                        Text("Your description here")
-//                            .foregroundColor(Color(UIColor.placeholderText))
-//                    }
             }
                 .padding(.horizontal)
                 .padding(.vertical)
@@ -220,6 +207,10 @@ struct CreateReportUserView: View {
                                     await createReportUserVM.handleBlockingUser(blockedUser: blockedUser, friendEntity: friendEntity)
                                 }
                                 isReportBlockPresented.toggle()
+                                isCreateReportUserViewPresented = false
+                                isSearchResultsViewPresented = false
+                                isChatLogViewPresented = false
+                                presentationMode.wrappedValue.dismiss()
                             },
                             secondaryButton: .cancel()
                         )

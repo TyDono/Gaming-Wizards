@@ -87,8 +87,8 @@ class CoreDataController: ObservableObject {
         let newSearchSettings = SearchSettingsEntity(context: viewContext)
         newSearchSettings.ageRangeMax = 18
         newSearchSettings.ageRangeMin = 18
-        newSearchSettings.groupSizeRangeMax = 0
-        newSearchSettings.groupSizeRangeMin = 25
+        newSearchSettings.groupSizeRangeMax = 25
+        newSearchSettings.groupSizeRangeMin = 0
         newSearchSettings.isPayToPlay = false
         newSearchSettings.searchRadius = 150
         

@@ -14,17 +14,20 @@ struct ChatLogView: View {
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
     @State private var isCreateReportUserViewShowing: Bool = false
     let chatUser: FriendEntity?
+    @Binding var isChatLogViewPresented: Bool
 //    @State private var reportedUser: User!
     
     private let chatLogScrollToString: String = "Empty"
     
     init(
         presentationMode: Binding<PresentationMode>,
-         chatUser: FriendEntity?
+        chatUser: FriendEntity?,
+        isChatLogViewPresented: Binding<Bool>
     ) {
         self._presentationMode = presentationMode
         self.chatUser = chatUser
         self._chatLogVM = StateObject(wrappedValue: ChatLogViewModel(chatUser: chatUser))
+        self._isChatLogViewPresented = isChatLogViewPresented
 //        self.chatLogVM = .init(chatUser: chatUser)
     }
     
@@ -101,14 +104,18 @@ struct ChatLogView: View {
     
     private var userReportView: some View {
         CreateReportUserView(
-            presentationMode: self.$presentationMode,
+//            presentationMode: self.$presentationMode,
+            isCreateReportUserViewPresented: $isCreateReportUserViewShowing,
             reporterId: $chatLogVM.user.id,
             reportedUser: Binding(get: { chatLogVM.reportedUser }, set: { _ in }),
             chatRoomId: Binding<String>( get: { chatLogVM.reportedUser.id }, set: { _ in }),
             blockedUser: .constant(BlockedUser(id: chatLogVM.reportedUser.id,
                                                displayName: chatLogVM.reportedUser.displayName ?? "",
                                                dateRemoved: Date())),
-            friendEntity: Binding<FriendEntity>( get: { chatUser! }, set: { _ in })
+            friendEntity: Binding<FriendEntity>( get: { chatUser! },
+                                                 set: { _ in }),
+            isSearchResultsViewPresented: .constant(false),
+            isChatLogViewPresented: $isChatLogViewPresented
         )
     }
     

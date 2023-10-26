@@ -302,8 +302,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/UserSearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "resultView"
             landmarkType = "24">
          </BreakpointContent>
@@ -1663,8 +1663,8 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "callTimeUtilsService(timeStamp:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1679,8 +1679,8 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "callFetchRecentMessages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1695,28 +1695,13 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "callFetchRecentMessages()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - fb2d0a3101c7ba04"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "29">
-               </Location>
-               <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986d62"
+                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986da4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1726,12 +1711,12 @@
                   urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "481">
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "172">
                </Location>
                <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986d62"
+                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986da4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1741,39 +1726,39 @@
                   urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7246ba2631b87da0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() async -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
                   offsetFromSymbolStart = "360">
                </Location>
                <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986dc5"
+                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7246ba2631b87d87"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() async -&gt; ()"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
                   offsetFromSymbolStart = "360">
-               </Location>
-               <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986dc5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "481">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1788,8 +1773,8 @@
             filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "callFetchRecentMessages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2021,9 +2006,9 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "init(searchResultsDetailVM:selectedUser:specificGame:tabSelection:)"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "init(searchResultsDetailVM:selectedUser:specificGame:tabSelection:isSearchResultsViewPresented:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2037,9 +2022,9 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "init(searchResultsDetailVM:selectedUser:specificGame:tabSelection:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init(searchResultsDetailVM:selectedUser:specificGame:tabSelection:isSearchResultsViewPresented:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2053,8 +2038,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
             <Locations>
@@ -2810,53 +2795,35 @@
                   endingLineNumber = "178"
                   offsetFromSymbolStart = "136">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7EB19350-379B-4AC2-9AA1-AD1ACE04BAF1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/UniversalViews/Create Report User/CreateReportUserView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "reportReasonsPopUpView"
-            landmarkType = "24">
-            <Locations>
                <Location
-                  uuid = "7EB19350-379B-4AC2-9AA1-AD1ACE04BAF1 - e74dd2b99ebc902e"
+                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 9c456963fe4562c4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; SwiftUI.EmptyView in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.navigationBarItems&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(leading: &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in GamingWizards.CreateReportUserView.reportReasonsPopUpView.getter : some"
+                  symbolName = "(3) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Create%20Report%20User/CreateReportUserView.swift"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197"
-                  offsetFromSymbolStart = "0">
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "932">
                </Location>
                <Location
-                  uuid = "7EB19350-379B-4AC2-9AA1-AD1ACE04BAF1 - ae8bcb6b4ca826a4"
+                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 528c533421b180c5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.navigationBarItems&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(leading: &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in GamingWizards.CreateReportUserView.reportReasonsPopUpView.getter : some"
+                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Create%20Report%20User/CreateReportUserView.swift"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "196"
-                  endingLineNumber = "196"
-                  offsetFromSymbolStart = "259">
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "136">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -4110,6 +4077,36 @@
                   endingLineNumber = "311"
                   offsetFromSymbolStart = "220">
                </Location>
+               <Location
+                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - c21c6ae00e6a1c09"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(10) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - 707499ab2731b108"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "220">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -4126,6 +4123,165 @@
             startingLineNumber = "15"
             endingLineNumber = "15"
             landmarkName = "extractUserIDs(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3185B779-489B-4C12-9782-75CDD275CB76"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "deleteRecentMessage(friend:userId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3185B779-489B-4C12-9782-75CDD275CB76 - 54aecac4fdc802c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.deleteRecentMessage(friend: GamingWizards.FriendEntity, userId: Swift.String) async throws -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "3185B779-489B-4C12-9782-75CDD275CB76 - 317b32a78b5a4c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.deleteRecentMessage(friend: GamingWizards.FriendEntity, userId: Swift.String) async throws -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335"
+                  offsetFromSymbolStart = "224">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "74841587-E06E-4752-801C-8468D10495CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/DataModule/CoreDataController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "clearAllData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "74841587-E06E-4752-801C-8468D10495CD - 25146faf08b9c234"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) await resume partial function for GamingWizards.CoreDataController.clearAllData() async -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "74841587-E06E-4752-801C-8468D10495CD - 7a86e17001ffe9c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) await resume partial function for GamingWizards.CoreDataController.clearAllData() async -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "74841587-E06E-4752-801C-8468D10495CD - 94a2bbe2cb170b63"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for GamingWizards.CoreDataController.clearAllData() async -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "257B84E2-518E-4B90-8E1B-91BECE98EB69"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "callForCoreDatsEntities()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97456AE1-024B-4C25-AED0-0D87C43B2C20"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "callForCoreDatsEntities()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4527EFAF-05CA-4123-A7A0-4A50246ED0ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "callForCoreDatsEntities()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

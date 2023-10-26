@@ -40,17 +40,29 @@ import Combine
              self.friendEntitiesCancellable = coreDataController.fetchFriendEntitiesPublisher()
                  .receive(on: DispatchQueue.main)
                  .sink(receiveCompletion: { _ in }) { friends in
-                     self.savedFriendEntities = friends
+                     if !friends.isEmpty {
+                         self.savedFriendEntities = friends
+                     }
+                     print(friends)
+                     print("pause1")
                  }
              self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
                  .receive(on: DispatchQueue.main)
                  .sink(receiveCompletion: { _ in }) { searchSettings in
-                     self.savedSearchSettingsEntity = searchSettings
+                     if searchSettings != nil {
+                         self.savedSearchSettingsEntity = searchSettings
+                     }
+                     print(searchSettings)
+                     print("pause2")
                  }
              self.blockedUserEntitiesCancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
                  .receive(on: DispatchQueue.main)
                  .sink(receiveCompletion: { _ in }) { blockedUsers in
-                     self.savedBlockedUserEntities = blockedUsers
+                     if !blockedUsers.isEmpty {
+                         self.savedBlockedUserEntities = blockedUsers
+                     }
+                     print(blockedUsers)
+                     print("pause3")
                  }
          }
          

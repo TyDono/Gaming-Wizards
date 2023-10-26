@@ -14,17 +14,21 @@ struct SearchResultsView: View {
     @State private var viewProfileTitleImageString: String? = ""
     @State private var dismissButtonString: String? = "xmark"
     @State private var customNavTrailingButtonString: String? = "exclamationmark.bubble"
+    @State private var isCreateReportUserViewPresented: Bool = false
     @Binding var tabSelection: String
     @Binding var searchText: String
+    @State private var isSearchResultsViewPresented: Bool = false
     
     init(
         searchResultsVM: SearchResultsViewModel,
         tabSelection: Binding<String>,
         searchText: Binding<String>
+//        isSearchResultsViewPresented: State<Bool>
     ) {
         self._tabSelection = tabSelection
         self._searchText = searchText
         self._searchResultsVM = StateObject(wrappedValue: searchResultsVM)
+//        self._isSearchResultsViewPresented = isSearchResultsViewPresented
     }
     
     var body: some View {
@@ -49,7 +53,10 @@ struct SearchResultsView: View {
 //        .font(.roboto(.regular, size: 16))
         .fullScreenCover(isPresented: $searchResultsVM.resultWasTapped, content: {
             NavigationStack {
-                SearchResultsDetailView(selectedUser: $searchResultsVM.selectedUser, specificGame: $searchText, tabSelection: $tabSelection)
+                SearchResultsDetailView(selectedUser: $searchResultsVM.selectedUser,
+                                        specificGame: $searchText,
+                                        tabSelection: $tabSelection,
+                                        isSearchResultsViewPresented: $isSearchResultsViewPresented)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
@@ -68,19 +75,23 @@ struct SearchResultsView: View {
                     }
             }
             .sheet(isPresented: $searchResultsVM.isCreateReportUserViewShowing) {
-                CreateReportUserView(presentationMode: self.presentationMode,
-                                     reporterId: $searchResultsVM.user.id,
-                                     reportedUser: $searchResultsVM.selectedUser,
-                                     chatRoomId: $searchResultsVM.selectedUser.id,
-                                     blockedUser: .constant(BlockedUser(id: searchResultsVM.selectedUser.id,
-                                                                        displayName: searchResultsVM.selectedUser.displayName ?? "",
-                                                                        dateRemoved: Date())),
-                                     friendEntity: searchResultsVM.convertUserToFriendDataBinding(
-                                        displayName: searchResultsVM.selectedUser.displayName ?? "",
-                                        friendUserID: searchResultsVM.selectedUser.id,
-                                        profileImageString: searchResultsVM.selectedUser.profileImageString,
-                                        isFavorite: false,
-                                        isFriend: false)
+                CreateReportUserView(
+//                    presentationMode: self.presentationMode,
+                    isCreateReportUserViewPresented: $isCreateReportUserViewPresented,
+                    reporterId: $searchResultsVM.user.id,
+                    reportedUser: $searchResultsVM.selectedUser,
+                    chatRoomId: $searchResultsVM.selectedUser.id,
+                    blockedUser: .constant(BlockedUser(id: searchResultsVM.selectedUser.id,
+                                                       displayName: searchResultsVM.selectedUser.displayName ?? "",
+                                                       dateRemoved: Date())),
+                    friendEntity: searchResultsVM.convertUserToFriendDataBinding(
+                        displayName: searchResultsVM.selectedUser.displayName ?? "",
+                        friendUserID: searchResultsVM.selectedUser.id,
+                        profileImageString: searchResultsVM.selectedUser.profileImageString,
+                        isFavorite: false,
+                        isFriend: false),
+                    isSearchResultsViewPresented: $isSearchResultsViewPresented,
+                    isChatLogViewPresented: .constant(false)
                 )
             }
         })
