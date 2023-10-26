@@ -136,21 +136,12 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?, friendUserIDs: [FriendEntity]?, blockedUserIds: [BlockedUserEntity]?) async throws -> [User] {
         
         var query: Query = firestore.collection(Constants.usersString)
-        if let friendUserIDs = friendUserIDs {
-            let processedFriendIds = DataProcessor.extractUserIDs(from: friendUserIDs)
-            query = query.whereField(Constants.idStringValue, notIn: processedFriendIds)
-        }
-        if let blockedUserIds = blockedUserIds {
-            let processedBlockedUserIds = DataProcessor.extractUserIDsFromBlockedUser(from: blockedUserIds)
-            query = query.whereField(Constants.idStringValue, notIn: processedBlockedUserIds)
-        }
         if let gameName = gameName {
             query = query.whereField(Constants.userListOfGamesString, arrayContains: gameName)
         }
         if let isPayToPlay = isPayToPlay {
             query = query.whereField(Constants.userPayToPlay, isEqualTo: isPayToPlay)
         }
-        
         query = query.whereField(Constants.idStringValue, isNotEqualTo: user.id)
         
         do {
@@ -158,10 +149,21 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             let users = try querySnapshot.documents.compactMap { document in
                 let data = document.data()
                 let decoder = Firestore.Decoder()
-//                let jsonData = try JSONSerialization.data(withJSONObject: data)
                 return try decoder.decode(User.self, from: data)
             }
+
+            if let friendUserIDs = friendUserIDs {
+                let processedFriendIds = DataProcessor.extractUserIDs(from: friendUserIDs)
+                let blockedUserIds = blockedUserIds ?? []
+                let processedBlockedUserIds = DataProcessor.extractUserIDsFromBlockedUser(from: blockedUserIds)
+                let filteredUsers = users.filter { user in
+                    return !processedFriendIds.contains(user.id) && !processedBlockedUserIds.contains(user.id)
+                }
+                return filteredUsers
+            }
+
             return users
+
         } catch {
             print("Error in Firestore query for user search: \(error)")
             throw error
@@ -491,7 +493,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     
     func deleteUserFirebaseAccount(userId: String) async {
         let path = firestore.collection(Constants.usersString).document(userId)
-        
         await path.delete() { err in
             if let error = err {
                 print("FIRESTORE DELETION ERROR: \(error.localizedDescription)")

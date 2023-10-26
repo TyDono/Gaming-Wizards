@@ -11,11 +11,19 @@ import Foundation
 class DataProcessor {
     
     static func extractUserIDs(from friendEntity: [FriendEntity]) -> [String] {
-        return friendEntity.map { $0.id ?? "" }
+        if !friendEntity.isEmpty {
+            return friendEntity.map { $0.id ?? "" }
+        } else {
+            return [""]
+        }
     }
     
     static func extractUserIDsFromBlockedUser(from blockedUserEntity: [BlockedUserEntity]) -> [String] {
-        return blockedUserEntity.map { $0.id ?? "" }
+        if !blockedUserEntity.isEmpty {
+            return blockedUserEntity.map { $0.id ?? "" }
+        } else {
+            return [""]
+        }
     }
     
 }
