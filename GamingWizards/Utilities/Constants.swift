@@ -28,6 +28,16 @@ enum Constants {
     static let wantedWizardPlusImageString = "WantedWizard+"
     static let idStringValue = "id"
     
+    // MARK: calls to collection names in firestore
+    static let userChatMessages = "userChatMessages"
+    static let users = "users"
+    static let userReport = "userReport"
+    static let userBlockedList = "userBlockedList"
+    static let listOfBlockedUsers = "listOfBlockedUsers"
+    static let userFriendList = "userFriendList"
+    static let listOfFriends = "listOfFriends"
+    static let recent_messages = "recent_messages" // remove _ and make camel case later on
+    
     // MARK: calls to Tab
     static let accountTabViewString = "Account"
     static let searchTabViewString = "Search"
@@ -45,7 +55,7 @@ enum Constants {
     static let userLongitude = "longitude"
     static let userLocation = "location"
     static let userProfileImageString = "profileImageString"
-    static let userFriendList = "friendList"
+//    static let userFriendList = "friendList"
     static let userFriendRequest = "friendRequest"
     static let userListOfGamesString = "listOfGames"
     static let userGroupSize = "groupSize"
@@ -65,7 +75,7 @@ enum Constants {
     static let recentMessages = "recent_messages"
     static let messagesStringCollectionCall = "messages"
     static let usersString = "users"
-    static let onlineStatus = "onlineStatus"
+//    static let onlineStatus = "onlineStatus"
     
     // MARK: calls to ChatMessages
     static let fromId = "fromId"
@@ -109,6 +119,10 @@ enum Constants {
     static let isFriend = "isFriend"
     static let isFavorite = "isFavorite"
     static let imageString = "imageString"
+    static let recentMessageText = "recentMessageText"
+    static let recentMessageTimeStamp = "recentMessageTimeStamp"
+    static let onlineStatus = "onlineStatus"
+    static let messageToId = "messageToId"
     
     // MARK: call to UserReport
     static let reportReason = "reason"

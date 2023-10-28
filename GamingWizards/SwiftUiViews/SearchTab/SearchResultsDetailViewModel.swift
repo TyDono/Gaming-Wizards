@@ -11,35 +11,36 @@ import FirebaseStorage
 import CoreData
 
  class SearchResultsDetailViewModel: ObservableObject {
-    @ObservedObject var user: UserObservable
-    @Published var FriendRequestAlreadySentIsTrue: Bool = false
-    @Published var noFriendExistsAlertIsShowing: Bool = false
-    @Published var detailedFriendViewIsShowing: Bool = false
-    @Published var friends: [Friend] = [] // not being called. not used. ?
-    @Published var friend: FriendEntity? // not being called. not used. ?
-    @Published var detailedFriendViewIsDismissed: Bool = false
-    @Published var displayName: String? = ""
-    @Published var profileImage: UIImage?
+     @ObservedObject var user: UserObservable
+     @Published var FriendRequestAlreadySentIsTrue: Bool = false
+     @Published var noFriendExistsAlertIsShowing: Bool = false
+     @Published var detailedFriendViewIsShowing: Bool = false
+     @Published var friends: [Friend] = [] // not being called. not used. ?
+     @Published var friend: FriendEntity? // not being called. not used. ?
+     @Published var detailedFriendViewIsDismissed: Bool = false
+     @Published var displayName: String? = ""
+     @Published var profileImage: UIImage?
      @Published var isShowingSendMessageConfirmationAlert: Bool = false
      @Published var isFailedToSendMessageShowing: Bool = false
-    let fbFirestoreService: FirebaseFirestoreService
-    let fbStorageHelper: FirebaseStorageHelper
-    let coreDataController: CoreDataController
-    let diskSpaceHandler: DiskSpaceHandler
-
-    init(
+     private let convertUserToFriend = ConvertUserToFriend()
+     let fbFirestoreService: FirebaseFirestoreService
+     let fbStorageHelper: FirebaseStorageHelper
+     let coreDataController: CoreDataController
+     let diskSpaceHandler: DiskSpaceHandler
+     
+     init(
         user: UserObservable = UserObservable.shared,
         fbFirestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
         fbStorageHelper: FirebaseStorageHelper = FirebaseStorageHelper.shared,
         coreDataController: CoreDataController = CoreDataController.shared,
         diskSpaceHandler: DiskSpaceHandler = DiskSpaceHandler()
-    ) {
-        self.user = user
-        self.fbFirestoreService = fbFirestoreService
-        self.fbStorageHelper = fbStorageHelper
-        self.coreDataController = coreDataController
-        self.diskSpaceHandler = diskSpaceHandler
-    }
+     ) {
+         self.user = user
+         self.fbFirestoreService = fbFirestoreService
+         self.fbStorageHelper = fbStorageHelper
+         self.coreDataController = coreDataController
+         self.diskSpaceHandler = diskSpaceHandler
+     }
     
     //moved to search results View Model
     func convertUserToFriendDataBinding(displayName: String,
@@ -71,13 +72,16 @@ import CoreData
      
      func friendRequestButtonWasTapped(newFriend: User,
                                        friendProfileImage: UIImage) async throws {
+         let senderFriendInfo = convertUserToFriend.convertUserObservableToFriend(userObservable: user)
+         let receiverFriendInfo = convertUserToFriend.convertUserToFriend(user: newFriend)
          do {
-             let friend = try await fbFirestoreService.sendFriendRequest(newFriend: newFriend)
+             let friend = try await fbFirestoreService.sendFriendRequest(senderFriendInfo: senderFriendInfo, receiverFriendInfo: receiverFriendInfo)
              
 
              diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
                                                      image: friendProfileImage)
              
+             /*
              let recentMessageResult = await fbFirestoreService.createDualRecentMessage(toId: newFriend.id,
                                                                                         chatUserDisplayName: newFriend.displayName ?? "",
                                                                                         fromId: user.id)
@@ -92,6 +96,7 @@ import CoreData
              case .failure(let error):
                  print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
              }
+             */
          } catch {
              print("ERROR SENDING FRIEND REQUEST: \(error.localizedDescription)")
          }

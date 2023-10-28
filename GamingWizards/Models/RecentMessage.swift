@@ -9,14 +9,14 @@ import Foundation
 import Firebase
 
 struct RecentMessage: Identifiable, Hashable, Codable {
-    var id: String { documentId }
-    var documentId: String
+    var id: String { documentId }//
+    var documentId: String//
     var text: String
-    var fromId: String
-    var toId: String
+    var fromId: String//
+    var toId: String//
     var chatUserDisplayName: String
     var timeStamp: Timestamp
-    var imageString: String
+    var imageString: String//
     var onlineStatus: Bool
     
     init(documentId: String, data: [String: Any]) {

@@ -14,8 +14,8 @@ protocol FirebaseFirestoreService {
     func stopListening()
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
-//    func sendFriendRequest(newFriend: User, completion: @escaping (Error?, Friend) -> Void)
-    func sendFriendRequest(newFriend: User) async throws -> Friend 
+//    func sendFriendRequest(newFriend: User) async throws -> Friend 
+    func sendFriendRequest(senderFriendInfo: Friend, receiverFriendInfo: Friend) async throws -> Friend
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
     func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
     func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
@@ -170,33 +170,45 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    // change to use codable and decodable.
-    func sendFriendRequest(newFriend: User) async throws -> Friend {
-        let friendListPath = firestore.collection(Constants.usersString).document(newFriend.id).collection(Constants.userFriendList).document(self.user.id)
-        let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(newFriend.id)
-
-        let yourFriendInfo = Friend(id: self.user.id,
-//                                    friendCodeID: self.user.friendCodeID,
-                                    displayName: self.user.displayName ?? "",
-                                    isFriend: false,
-                                    isFavorite: false,
-                                    imageString: self.user.profileImageString)
-
-        let theirFriendInfo = Friend(id: newFriend.id,
-//                                     friendCodeID: newFriend.friendCodeID,
-                                     displayName: newFriend.displayName ?? "",
-                                     isFriend: false,
-                                     isFavorite: false,
-                                     imageString: newFriend.profileImageString)
-
+    func sendFriendRequest(senderFriendInfo: Friend, receiverFriendInfo: Friend) async throws -> Friend {
+        let senderFriendPath = firestore.collection(Constants.userFriendList).document(receiverFriendInfo.id)
+        let receiverFriendPath = firestore.collection(Constants.userFriendList).document(senderFriendInfo.id)
         do {
-            try await friendListPath.setData(yourFriendInfo.friendDictionary)
-            try await yourInfoPath.setData(theirFriendInfo.friendDictionary)
-            return theirFriendInfo
+            try await senderFriendPath.setData(senderFriendInfo.friendDictionary)
+            try await receiverFriendPath.setData(receiverFriendInfo.friendDictionary)
+            return receiverFriendInfo
         } catch {
             throw error
         }
     }
+    
+//    func sendFriendRequest(newFriend: User) async throws -> Friend {
+//        let friendListPath = firestore.collection(Constants.usersString).document(newFriend.id).collection(Constants.userFriendList).document(self.user.id)
+//        let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(newFriend.id)
+//
+//        
+//        let yourFriendInfo = Friend(id: self.user.id,
+////                                    friendCodeID: self.user.friendCodeID,
+//                                    displayName: self.user.displayName ?? "",
+//                                    isFriend: false,
+//                                    isFavorite: false,
+//                                    imageString: self.user.profileImageString)
+//
+//        let theirFriendInfo = Friend(id: newFriend.id,
+////                                     friendCodeID: newFriend.friendCodeID,
+//                                     displayName: newFriend.displayName ?? "",
+//                                     isFriend: false,
+//                                     isFavorite: false,
+//                                     imageString: newFriend.profileImageString)
+//
+//        do {
+//            try await friendListPath.setData(yourFriendInfo.friendDictionary)
+//            try await yourInfoPath.setData(theirFriendInfo.friendDictionary)
+//            return theirFriendInfo
+//        } catch {
+//            throw error
+//        }
+//    }
     
     func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async -> Result<Void, Error> {
         
@@ -318,25 +330,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func deleteRecentMessage(friend: FriendEntity, userId: String) async throws {
-        guard let friendUserId = friend.id else { return }
-        let friendDocPath = firestore.collection(Constants.recentMessages)
-            .document(friendUserId)
-            .collection(Constants.messagesStringCollectionCall)
-            .document(userId)
-        let userFriendDocPath = firestore.collection(Constants.recentMessages)
-            .document(userId)
-            .collection(Constants.messagesStringCollectionCall)
-            .document(friendUserId)
-        do {
-            try await friendDocPath.delete()
-            try await userFriendDocPath.delete()
-        } catch {
-            print("ERROR DELETING RECENT MESSAGE FROM FIRESTORE: \(error.localizedDescription)")
-            throw error
-        }
-    }
-    
     func deleteFriend(friend: FriendEntity, userId: String) async throws {
         guard let friendUserId = friend.id else { return }
         // Delete your yourself from their friend's list
@@ -437,6 +430,25 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             try await recentMessageDocumentPath.setData(recentMessageData)
         } catch {
             print("ERROR, FAILED TO SAVE RECENT MESSAGES TO FIRESTORE: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func deleteRecentMessage(friend: FriendEntity, userId: String) async throws {
+        guard let friendUserId = friend.id else { return }
+        let friendDocPath = firestore.collection(Constants.recentMessages)
+            .document(friendUserId)
+            .collection(Constants.messagesStringCollectionCall)
+            .document(userId)
+        let userFriendDocPath = firestore.collection(Constants.recentMessages)
+            .document(userId)
+            .collection(Constants.messagesStringCollectionCall)
+            .document(friendUserId)
+        do {
+            try await friendDocPath.delete()
+            try await userFriendDocPath.delete()
+        } catch {
+            print("ERROR DELETING RECENT MESSAGE FROM FIRESTORE: \(error.localizedDescription)")
             throw error
         }
     }

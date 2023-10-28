@@ -17,9 +17,6 @@ struct User: Identifiable, Codable, Hashable {
     var longitude: Double?
     var location: String? = "" //change to UserLocation later date maybe
     var profileImageString: String = ""
-//    var friendCodeID = ""
-//    var friendList: [Friend] = [] // sub collection
-//    var friendRequests: [Friend] = [] // sub collection
     var listOfGames: [String]? = []
     var groupSize: String? = ""
     var age: String? = "" // change to an array of Int
@@ -148,7 +145,6 @@ class UserObservable: ObservableObject {
     private let locationKey = Constants.userLocation
     private let profileImageStringKey = Constants.userProfileImageString
     private let isNewUserKey = "isNewUser" // No constant provided for this, so using the original string
-//    private let friendIDKey = Constants.userFriendCodeID
     private let friendListKey = Constants.userFriendList
     private let friendRequestsKey = Constants.userFriendRequest
     private let listOfGamesKey = Constants.userListOfGamesString
@@ -157,7 +153,7 @@ class UserObservable: ObservableObject {
     private let aboutKey = Constants.userAbout
     private let availabilityKey = Constants.userAvailability
     private let titleKey = Constants.userTitle
-    private let payToPlayKey = Constants.userPayToPlay
+    private let isPayToPlayKey = Constants.userPayToPlay
     private let isSoloKey = Constants.userIsSolo
     private let deviceInfoKey = Constants.deviceInfo
     private let dateFirstInstalledKey = Constants.dateFirstInstalled
@@ -275,7 +271,7 @@ class UserObservable: ObservableObject {
     
     @Published var isPayToPlay: Bool {
         didSet {
-            UserDefaults.standard.setValue(isPayToPlay, forKey: "\(payToPlayKey)-\(id)")
+            UserDefaults.standard.setValue(isPayToPlay, forKey: "\(isPayToPlayKey)-\(id)")
         }
     }
     
@@ -329,7 +325,7 @@ class UserObservable: ObservableObject {
         about = UserDefaults.standard.string(forKey: "\(aboutKey)-\(id)") ?? ""
         availability = UserDefaults.standard.string(forKey: "\(availabilityKey)-\(id)") ?? ""
         title = UserDefaults.standard.string(forKey: "\(titleKey)-\(id)") ?? ""
-        isPayToPlay = UserDefaults.standard.bool(forKey: "\(payToPlayKey)-\(id)")
+        isPayToPlay = UserDefaults.standard.bool(forKey: "\(isPayToPlayKey)-\(id)")
         isSolo = UserDefaults.standard.bool(forKey: "\(isSoloKey)-\(id)")
         deviceInfo = UserDefaults.standard.string(forKey: "\(deviceInfoKey)-\(id)") ?? ""
         dateFirstInstalled = UserDefaults.standard.object(forKey: "\(dateFirstInstalledKey)-\(id)") as? Date

@@ -67,10 +67,6 @@ extension ChatLogView {
             }
         }
         
-        func chatSettingsButtonWasTapped() {
-            
-        }
-        
         func convertFriendEntityToReportedUser(friend: FriendEntity, completion: @escaping (User) -> Void) {
             DispatchQueue.global().async {
                 let user = User(id: friend.id!, firstName: "", lastName: "", displayName: friend.displayName, email: "", latitude: 0.0, longitude: 0.0, location: "", profileImageString: "", listOfGames: [""], groupSize: "", age: "", about: "", availability: "", title: "", isPayToPlay: false, isSolo: false)
