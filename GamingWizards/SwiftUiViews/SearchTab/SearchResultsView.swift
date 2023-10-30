@@ -89,7 +89,11 @@ struct SearchResultsView: View {
                         friendUserID: searchResultsVM.selectedUser.id,
                         profileImageString: searchResultsVM.selectedUser.profileImageString,
                         isFavorite: false,
-                        isFriend: false),
+                        isFriend: false,
+                        recentMessageText: "",
+                        recentMessageTimeStamp: Date(),
+                        onlineStatus: false,
+                        messageToId: ""),
                     isSearchResultsViewPresented: $isSearchResultsViewPresented,
                     isChatLogViewPresented: .constant(false)
                 )

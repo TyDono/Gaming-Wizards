@@ -172,16 +172,21 @@ class CoreDataController: ObservableObject {
 //        }
 //        .eraseToAnyPublisher()
 //    }
-    
-    func convertToFriendEntity2(displayName: String?, friendUserID: String?, profileImageString: String?, isFavorite: Bool?, isFriend: Bool?) -> FriendEntity {
-        let newFriend = FriendEntity(context: viewContext)
+    //create a func that can cover friend to entity and user to entity
+    func convertToFriendEntity2(displayName: String?, friendUserID: String?, profileImageString: String?, isFavorite: Bool?, isFriend: Bool?, recentMessageText: String, recentMessageTimeStamp: Date, onlineStatus: Bool, messageToId: String) -> FriendEntity {
+        let newFriendEntity = FriendEntity(context: viewContext)
 //        newFriend.friendCodeID = friendCodeID
-        newFriend.id =  friendUserID
-        newFriend.displayName = displayName
-        newFriend.isFriend = isFriend ?? false
-        newFriend.isFavorite = isFavorite ?? false
-        newFriend.imageString = profileImageString
-        return newFriend
+        newFriendEntity.id =  friendUserID
+        newFriendEntity.displayName = displayName
+        newFriendEntity.isFriend = isFriend ?? false
+        newFriendEntity.isFavorite = isFavorite ?? false
+        newFriendEntity.imageString = profileImageString
+        newFriendEntity.recentMessageText = recentMessageText
+        newFriendEntity.recentMessageTimeStamp = recentMessageTimeStamp
+        newFriendEntity.onlineStatus = onlineStatus
+        newFriendEntity.messageToId = messageToId
+        
+        return newFriendEntity
     }
     
 //    func fetchFriends() {

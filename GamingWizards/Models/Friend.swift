@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import CoreData
 
 struct Friend: Codable, Hashable, Identifiable {
     var id: String
@@ -15,7 +16,7 @@ struct Friend: Codable, Hashable, Identifiable {
     var isFavorite: Bool
     var imageString: String
     var recentMessageText: String
-    var recentMessageTimeStamp: Timestamp
+    var recentMessageTimeStamp: Date
     var onlineStatus: Bool
     var messageToId: String
     
@@ -33,7 +34,7 @@ struct Friend: Codable, Hashable, Identifiable {
         ]
     }
     
-    /*
+    
     init(data: [String: Any]) {
         self.id = data[Constants.idStringValue] as? String ?? ""
         self.displayName = data[Constants.displayName] as? String ?? ""
@@ -42,12 +43,12 @@ struct Friend: Codable, Hashable, Identifiable {
         self.imageString = data[Constants.imageString] as? String ?? ""
         
         self.recentMessageText = data[Constants.recentMessageText] as? String ?? ""
-        self.recentMessageTimeStamp = data[Constants.recentMessageTimeStamp] as? Timestamp ?? Timestamp(date: Date())
+        self.recentMessageTimeStamp = data[Constants.recentMessageTimeStamp] as? Date ?? Date()
         self.onlineStatus = data[Constants.onlineStatus] as? Bool ?? false
         self.messageToId = data[Constants.messageToId] as? String ?? ""
     }
     
-     */
+     
 }
 
 extension Friend {
@@ -90,3 +91,17 @@ extension Friend {
         
     }
 }
+
+//extension Friend {
+//    init(coreDataEntity: FriendEntity) {
+//        self.name = coreDataEntity.name ?? ""
+//        self.age = Int(coreDataEntity.age)
+//    }
+//
+//    func toCoreDataEntity(in context: NSManagedObjectContext) -> FriendEntity {
+//        let friendEntity = FriendEntity(context: context)
+//        friendEntity.name = self.name
+//        friendEntity.age = Int16(self.age)
+//        return friendEntity
+//    }
+//}

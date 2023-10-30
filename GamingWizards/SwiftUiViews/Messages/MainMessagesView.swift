@@ -13,7 +13,7 @@ struct MainMessagesView: View {
     @State private var isChatLogViewPresented: Bool = false
     
     init(
-        mainMessagesVM: MainMessagesViewModel = MainMessagesViewModel(recentMessages: [])
+        mainMessagesVM: MainMessagesViewModel = MainMessagesViewModel(listOfFriends: [])
     ) {
         _mainMessagesVM = StateObject(wrappedValue: mainMessagesVM)
     }
@@ -29,12 +29,9 @@ struct MainMessagesView: View {
             }
         }
         .onAppear {
-            print(mainMessagesVM.savedFriendEntities)
-            print(mainMessagesVM.savedFriendEntities.count) // this is breaking
-            print(mainMessagesVM.recentMessages.count)
             Task {
                 await mainMessagesVM.callForCoreDataEntities()
-                await mainMessagesVM.callFetchRecentMessages()
+//                await mainMessagesVM.callFetchListOfFriends()
             }
         }
         .navigationDestination(isPresented: $isChatLogViewPresented) {
@@ -46,27 +43,23 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(mainMessagesVM.savedFriendEntities, id: \.self) { (contact: FriendEntity) in
-                // Find the matching recent message for this contact
-                if let matchingRecentMessage = mainMessagesVM.recentMessages.first(where: { recentMessage in
-                    return contact.id == recentMessage.toId
-                }) {
-                    let timeAgo = mainMessagesVM.callTimeUtilsService(timeStamp: matchingRecentMessage.timeStamp)
+            ForEach(mainMessagesVM.arrayOfFriendEntities, id: \.self) { (friend: FriendEntity) in
+                let timeAgo = mainMessagesVM.timeUtilsService.timeAgoString(from: friend.recentMessageTimeStamp ?? Date())
                     Button {
-                        mainMessagesVM.selectedContact = contact
+                        mainMessagesVM.selectedContact = friend
                         isChatLogViewPresented.toggle()
                     } label: {
                         VStack {
                             HStack(spacing: 16) {
                                 MessengerProfileView(profileImageString: Binding<String>(
-                                    get: { contact.imageString ?? "1993" },
-                                    set: { contact.imageString = $0 }
+                                    get: { friend.imageString ?? "1993" },
+                                    set: { friend.imageString = $0 }
                                 ))
                                 VStack(alignment: .leading) {
-                                    Text(matchingRecentMessage.chatUserDisplayName)
+                                    Text(friend.displayName ?? "")
                                         .font(.roboto(.bold, size: 16))
                                         .lineLimit(2)
-                                    Text(matchingRecentMessage.text)
+                                    Text(friend.recentMessageText ?? "")
                                         .font(.roboto(.semibold, size: 14))
                                         .foregroundColor(.lightGrey)
                                         .lineLimit(2)
@@ -82,26 +75,12 @@ struct MainMessagesView: View {
                     .foregroundColor(.black)
                     .padding(.horizontal)
                     .padding(.vertical, 8)
-                }
+//                }
             }
             .padding(.bottom, 50)
             
         }
     }
-    
-//    private var messengerProfileImage: some View {
-//
-//        Image(systemName: "person.fill")
-//            .font(.system(size: 32))
-//            .padding(8)
-//            .overlay(RoundedRectangle(cornerRadius: 44)
-//                .stroke( .black,
-//                       lineWidth: 1)
-//            )
-//            .scaledToFit()
-//            .frame(width: 32, height: 32)
-//
-//    }
     
     private var mainMessagesCustomNavBar: some View {
         HStack (spacing: 16){

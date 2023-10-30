@@ -1656,132 +1656,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2CCF86E0-3036-42E6-8CC6-DDE85B912CFB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "callTimeUtilsService(timeStamp:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4704B17F-0274-45AD-9C39-1995947C0BD9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "callFetchRecentMessages()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02D2C548-1F92-4B78-8317-43B81F90524E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "callFetchRecentMessages()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986da4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "172">
-               </Location>
-               <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7aec63311e986da4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7246ba2631b87da0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "360">
-               </Location>
-               <Location
-                  uuid = "02D2C548-1F92-4B78-8317-43B81F90524E - 7246ba2631b87d87"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Array&lt;GamingWizards.RecentMessage&gt;) -&gt; () in GamingWizards.MainMessagesView.MainMessagesViewModel.callFetchRecentMessages() async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "360">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B7FEF9F7-E812-4010-B800-B941927323F5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/Messages/MainMessagesViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "callFetchRecentMessages()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7E2EA4CD-F4DB-43F3-A139-B80DFBAF15FD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1841,159 +1715,6 @@
             endingLineNumber = "41"
             landmarkName = "distancePickerSlider"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:friendUserIDs:blockedUserIds:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a497"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "313">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a497"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "662">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a497"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "679">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a4b6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "178"
-                  endingLineNumber = "178"
-                  offsetFromSymbolStart = "656">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a4b6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "178"
-                  endingLineNumber = "178"
-                  offsetFromSymbolStart = "673">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a4d1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "177"
-                  endingLineNumber = "177"
-                  offsetFromSymbolStart = "656">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a4d1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "177"
-                  endingLineNumber = "177"
-                  offsetFromSymbolStart = "673">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a4f0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "176"
-                  endingLineNumber = "176"
-                  offsetFromSymbolStart = "656">
-               </Location>
-               <Location
-                  uuid = "146C3329-C5B8-459F-BD6A-C190DBFFBE40 - 9d98d7e9b631a4f0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "176"
-                  endingLineNumber = "176"
-                  offsetFromSymbolStart = "673">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2686,144 +2407,6 @@
                   startingLineNumber = "98"
                   endingLineNumber = "98"
                   offsetFromSymbolStart = "352">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "fetchMatchingUsersSearch(gameName:isPayToPlay:friendUserIDs:blockedUserIds:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 9c456963fe4562c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "1084">
-               </Location>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 9c456963fe4562c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "1092">
-               </Location>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 528c533421b180c5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "276">
-               </Location>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 528c533421b180c5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "284">
-               </Location>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 9c456963fe45638a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "178"
-                  endingLineNumber = "178"
-                  offsetFromSymbolStart = "932">
-               </Location>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 528c533421b1818b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "178"
-                  endingLineNumber = "178"
-                  offsetFromSymbolStart = "136">
-               </Location>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 9c456963fe4562c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "932">
-               </Location>
-               <Location
-                  uuid = "2C9F5F87-7DBF-41B1-93B5-3C8191ABCA8F - 528c533421b180c5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.fetchMatchingUsersSearch(gameName: Swift.Optional&lt;Swift.String&gt;, isPayToPlay: Swift.Optional&lt;Swift.Bool&gt;, friendUserIDs: Swift.Optional&lt;Swift.Array&lt;GamingWizards.FriendEntity&gt;&gt;, blockedUserIds: Swift.Optional&lt;Swift.Array&lt;GamingWizards.BlockedUserEntity&gt;&gt;) async throws -&gt; Swift.Array&lt;GamingWizards.User&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "136">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3528,8 +3111,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "addFriend(friendUserID:friendDisplayName:isFriend:isFavorite:profileImageString:)"
             landmarkType = "7">
             <Locations>
@@ -3599,54 +3182,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EE9A500A-2C03-4AE2-B37E-0D28D108BE4A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "FirebaseFirestoreHelper"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "EE9A500A-2C03-4AE2-B37E-0D28D108BE4A - 51482451786abad7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.FirebaseFirestoreHelper.retrieveFriendsListener(user: GamingWizards.UserObservable) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "1904">
-               </Location>
-               <Location
-                  uuid = "EE9A500A-2C03-4AE2-B37E-0D28D108BE4A - 51482451786abad7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.FirebaseFirestoreHelper.retrieveFriendsListener(user: GamingWizards.UserObservable) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "2264">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "AA54B6DD-2DEB-4817-9571-15CE09B39298"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -3695,174 +3230,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "blockUser(blockedUser:friendEntity:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - eee41956bebf37c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "187">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - 9c204697bf1d5337"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(8) await resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - b30f8149349688b0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(9) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "283"
-                  endingLineNumber = "283"
-                  offsetFromSymbolStart = "82">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - b30f814934968bdf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(9) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "126">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - 707499ab2731b0b5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "167">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - eee41956bebf37c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - 9c204697bf1d5337"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(8) await resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - b30f814934968b7a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(9) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "293"
-                  endingLineNumber = "293"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - 707499ab2731b220"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "277"
-                  endingLineNumber = "277"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "A9F2CD0D-9E77-4F12-B00C-913AD069DB6C - 707499ab2731b0b5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "AE36DDB9-9BFC-414D-91A3-0F3844955FB8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3879,84 +3246,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C4BD78F6-39DE-43F7-A289-DA5D3F18F22A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
-            landmarkName = "deleteBlockedUser(blockedUser:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C4BD78F6-39DE-43F7-A289-DA5D3F18F22A - 1b3c5d296183c31b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.deleteBlockedUser(blockedUser: GamingWizards.BlockedUserEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "303"
-                  endingLineNumber = "303"
-                  offsetFromSymbolStart = "50">
-               </Location>
-               <Location
-                  uuid = "C4BD78F6-39DE-43F7-A289-DA5D3F18F22A - 30c5594dc7da8715"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.deleteBlockedUser(blockedUser: GamingWizards.BlockedUserEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "303"
-                  endingLineNumber = "303"
-                  offsetFromSymbolStart = "17">
-               </Location>
-               <Location
-                  uuid = "C4BD78F6-39DE-43F7-A289-DA5D3F18F22A - e88e5560bc305b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.deleteBlockedUser(blockedUser: GamingWizards.BlockedUserEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "300"
-                  endingLineNumber = "300"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "C4BD78F6-39DE-43F7-A289-DA5D3F18F22A - e88e5560bc305b17"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.deleteBlockedUser(blockedUser: GamingWizards.BlockedUserEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "303"
-                  endingLineNumber = "303"
-                  offsetFromSymbolStart = "89">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "45CE85EF-1A3D-4BA7-AD2A-F1A6BE98259C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -3964,8 +3253,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "deleteBlockedUserLocally(blockedUser:)"
             landmarkType = "7">
             <Locations>
@@ -3999,143 +3288,35 @@
                   endingLineNumber = "353"
                   offsetFromSymbolStart = "468">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
-            landmarkName = "blockUser(blockedUser:friendEntity:)"
-            landmarkType = "7">
-            <Locations>
                <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - c21c6ae00e6a1c09"
+                  uuid = "45CE85EF-1A3D-4BA7-AD2A-F1A6BE98259C - c47b2c3c17f60b95"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(10) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.deleteBlockedUserLocally(blockedUser: GamingWizards.BlockedUserEntity) -&gt; ()"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "301"
-                  endingLineNumber = "301"
-                  offsetFromSymbolStart = "384">
+                  startingLineNumber = "360"
+                  endingLineNumber = "360"
+                  offsetFromSymbolStart = "308">
                </Location>
                <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - 707499ab2731b108"
+                  uuid = "45CE85EF-1A3D-4BA7-AD2A-F1A6BE98259C - c47b2c3c17f60bdb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.deleteBlockedUserLocally(blockedUser: GamingWizards.BlockedUserEntity) -&gt; ()"
                   moduleName = "GamingWizards"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "301"
-                  endingLineNumber = "301"
-                  offsetFromSymbolStart = "372">
-               </Location>
-               <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - c21c6ae00e6be2bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(10) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "311"
-                  endingLineNumber = "311"
-                  offsetFromSymbolStart = "232">
-               </Location>
-               <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - 707499ab27304fbe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "311"
-                  endingLineNumber = "311"
-                  offsetFromSymbolStart = "220">
-               </Location>
-               <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - c21c6ae00e6a1c09"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(10) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "301"
-                  endingLineNumber = "301"
-                  offsetFromSymbolStart = "232">
-               </Location>
-               <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - 707499ab2731b108"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "301"
-                  endingLineNumber = "301"
-                  offsetFromSymbolStart = "220">
-               </Location>
-               <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - c21c6ae00e6be2fd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(10) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "313"
-                  endingLineNumber = "313"
-                  offsetFromSymbolStart = "232">
-               </Location>
-               <Location
-                  uuid = "9E70FA00-255C-413B-A7EF-43D536CF7EEF - 707499ab27304ffc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.FirebaseFirestoreHelper.blockUser(blockedUser: GamingWizards.BlockedUser, friendEntity: GamingWizards.FriendEntity) async throws -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "313"
-                  endingLineNumber = "313"
-                  offsetFromSymbolStart = "220">
+                  startingLineNumber = "358"
+                  endingLineNumber = "358"
+                  offsetFromSymbolStart = "308">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -4264,6 +3445,22 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "callForCoreDatsEntities()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A5257BB-C474-4A7C-9309-F315A13C821E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
+            landmarkName = "fetchMessages(fromId:toId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

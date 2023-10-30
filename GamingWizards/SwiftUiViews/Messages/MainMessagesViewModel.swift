@@ -15,7 +15,7 @@ extension MainMessagesView {
     class MainMessagesViewModel: ObservableObject {
         @ObservedObject var user: UserObservable
         @ObservedObject var coreDataController: CoreDataController
-        private let timeUtilsService: TimeUtilsService
+        @Published var timeUtilsService: TimeUtilsService
         private let firestoreService: FirebaseFirestoreService
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
@@ -23,7 +23,7 @@ extension MainMessagesView {
         @Published var savedFriendEntities: [FriendEntity] = []
         @Published var selectedContact: FriendEntity?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
-        @Published var recentMessages: [RecentMessage]
+        @Published var arrayOfFriendEntities: [FriendEntity]
         private var friendCancellable: AnyCancellable?
         
         init(
@@ -32,14 +32,14 @@ extension MainMessagesView {
             firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared,
             diskSpace: DiskSpaceHandler = DiskSpaceHandler(),
             timeUtilsService: TimeUtilsService = TimeUtils(),
-            recentMessages: [RecentMessage]
+            listOfFriends: [FriendEntity]
         ) {
             self.user = user
             self.coreDataController = coreDataController
             self.timeUtilsService = timeUtilsService
             self.firestoreService = firestoreService
             self.diskSpace = diskSpace
-            self.recentMessages = recentMessages
+            self.arrayOfFriendEntities = listOfFriends
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
         }
         
@@ -47,13 +47,8 @@ extension MainMessagesView {
             self.friendCancellable = coreDataController.fetchFriendEntitiesPublisher()
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { _ in }) { friends in
-                    self.savedFriendEntities = friends
+                    self.arrayOfFriendEntities = friends
                 }
-        }
-        
-        func callTimeUtilsService(timeStamp: Timestamp) -> String {
-            let timeAgo = timeUtilsService.timeAgoString(from: timeStamp)
-            return timeAgo
         }
         
         func loadImageFromDisk(imageString: String) -> UIImage? {
@@ -82,20 +77,6 @@ extension MainMessagesView {
                 return
             }
              */
-        }
-        
-        func callFetchRecentMessages() async  {
-            firestoreService.fetchRecentMessages { [weak self] err, recentMessages in
-                if let error = err {
-                    print("ERROR FETCHING RECENT MESSAGES: \(error.localizedDescription)")
-                } else {
-                    if let self = self {
-                        DispatchQueue.main.async {
-                            self.recentMessages.append(contentsOf: recentMessages)
-                        }
-                    }
-                }
-            }
         }
         
     }

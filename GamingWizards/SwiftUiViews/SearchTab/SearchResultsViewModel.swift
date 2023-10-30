@@ -66,13 +66,26 @@ import Combine
                  }
          }
          
-         func convertUserToFriendDataBinding(displayName: String, friendUserID: String, profileImageString: String, isFavorite: Bool, isFriend: Bool) -> Binding<FriendEntity> {
+         
+         func convertUserToFriendDataBinding(displayName: String,
+                                             friendUserID: String,
+                                             profileImageString: String,
+                                             isFavorite: Bool,
+                                             isFriend: Bool,
+                                             recentMessageText: String,
+                                             recentMessageTimeStamp: Date,
+                                             onlineStatus: Bool,
+                                             messageToId: String) -> Binding<FriendEntity> {
              let friendEntity: FriendEntity = coreDataController.convertToFriendEntity2(
                  displayName: displayName,
                  friendUserID: friendUserID,
                  profileImageString: profileImageString,
                  isFavorite: isFavorite,
-                 isFriend: isFriend
+                 isFriend: isFriend,
+                 recentMessageText: recentMessageText,
+                 recentMessageTimeStamp: recentMessageTimeStamp,
+                 onlineStatus: onlineStatus,
+                 messageToId: messageToId
              )
              // Create a Binding for the FriendEntity
              let binding = Binding(get: {

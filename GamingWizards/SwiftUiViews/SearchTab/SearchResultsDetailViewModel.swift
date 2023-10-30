@@ -22,7 +22,7 @@ import CoreData
      @Published var profileImage: UIImage?
      @Published var isShowingSendMessageConfirmationAlert: Bool = false
      @Published var isFailedToSendMessageShowing: Bool = false
-     private let convertUserToFriend = ConvertUserToFriend()
+     private let convertUserToFriend = ConvertToFriend()
      let fbFirestoreService: FirebaseFirestoreService
      let fbStorageHelper: FirebaseStorageHelper
      let coreDataController: CoreDataController
@@ -42,6 +42,7 @@ import CoreData
          self.diskSpaceHandler = diskSpaceHandler
      }
     
+     /*
     //moved to search results View Model
     func convertUserToFriendDataBinding(displayName: String,
                                         friendUserID: String,
@@ -69,34 +70,38 @@ import CoreData
         })
         return binding
     }
+     */
      
      func friendRequestButtonWasTapped(newFriend: User,
                                        friendProfileImage: UIImage) async throws {
          let senderFriendInfo = convertUserToFriend.convertUserObservableToFriend(userObservable: user)
          let receiverFriendInfo = convertUserToFriend.convertUserToFriend(user: newFriend)
          do {
-             let friend = try await fbFirestoreService.sendFriendRequest(senderFriendInfo: senderFriendInfo, receiverFriendInfo: receiverFriendInfo)
+             let friend = await fbFirestoreService.sendFriendRequest(senderFriendInfo: senderFriendInfo, receiverFriendInfo: receiverFriendInfo)
              
-
-             diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
-                                                     image: friendProfileImage)
+//             let recentMessageResult = await fbFirestoreService.createDualRecentMessage(toId: newFriend.id,
+//                                                                                        chatUserDisplayName: newFriend.displayName ?? "",
+//                                                                                        fromId: user.id)
              
-             /*
-             let recentMessageResult = await fbFirestoreService.createDualRecentMessage(toId: newFriend.id,
-                                                                                        chatUserDisplayName: newFriend.displayName ?? "",
-                                                                                        fromId: user.id)
-             
-             switch recentMessageResult {
-             case .success:
+             switch friend {
+             case .success(let friend):
                  print("succ")
-                 coreDataController.addFriend(friendUserID: friend.id,
-                                              friendDisplayName: friend.displayName,
-                                              isFriend: false, isFavorite: false,
-                                              profileImageString: friend.imageString)
+                 diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
+                                                         image: friendProfileImage)
+                 let newFriendEntity = coreDataController.convertToFriendEntity2(displayName: friend.displayName,
+                                                                                 friendUserID: friend.id,
+                                                                                 profileImageString: friend.imageString,
+                                                                                 isFavorite: friend.isFavorite,
+                                                                                 isFriend: friend.isFriend,
+                                                                                 recentMessageText: friend.recentMessageText,
+                                                                                 recentMessageTimeStamp: friend.recentMessageTimeStamp,
+                                                                                 onlineStatus: friend.onlineStatus,
+                                                                                 messageToId: friend.messageToId)
+                 coreDataController.saveFriendToCoreData(friend: newFriendEntity)
              case .failure(let error):
                  print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
              }
-             */
+             
          } catch {
              print("ERROR SENDING FRIEND REQUEST: \(error.localizedDescription)")
          }

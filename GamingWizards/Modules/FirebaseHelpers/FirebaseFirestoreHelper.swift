@@ -15,7 +15,8 @@ protocol FirebaseFirestoreService {
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
 //    func sendFriendRequest(newFriend: User) async throws -> Friend 
-    func sendFriendRequest(senderFriendInfo: Friend, receiverFriendInfo: Friend) async throws -> Friend
+    func sendFriendRequest(senderFriendInfo: Friend, receiverFriendInfo: Friend) async -> Result<Friend, Error>
+    func fetchListOfFriends(uid: String, completion: @escaping (Error?, [Friend]) -> Void)
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
     func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
     func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
@@ -170,16 +171,39 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func sendFriendRequest(senderFriendInfo: Friend, receiverFriendInfo: Friend) async throws -> Friend {
-        let senderFriendPath = firestore.collection(Constants.userFriendList).document(receiverFriendInfo.id)
-        let receiverFriendPath = firestore.collection(Constants.userFriendList).document(senderFriendInfo.id)
+    func sendFriendRequest(senderFriendInfo: Friend, receiverFriendInfo: Friend) async -> Result<Friend, Error> {
         do {
+            let senderFriendPath = firestore.collection(Constants.userFriendList).document(receiverFriendInfo.id).collection(Constants.listOfFriends).document(senderFriendInfo.id)
+            let receiverFriendPath = firestore.collection(Constants.userFriendList).document(senderFriendInfo.id).collection(Constants.listOfFriends).document(receiverFriendInfo.id)
+            
             try await senderFriendPath.setData(senderFriendInfo.friendDictionary)
             try await receiverFriendPath.setData(receiverFriendInfo.friendDictionary)
-            return receiverFriendInfo
+            
+            return .success(receiverFriendInfo)
         } catch {
-            throw error
+            print("SEND FRIEND REQUEST TO FIRE STORE CLOUD ERROR: \(error.localizedDescription)")
+            return .failure(error)
         }
+    }
+
+    
+    func fetchListOfFriends(uid: String, completion: @escaping (Error?, [Friend]) -> Void) {
+        firestore
+            .collection(Constants.userFriendList)
+            .document(uid)
+            .collection(Constants.listOfFriends)
+            .addSnapshotListener { querySnapshot, err in
+                if let error = err {
+                    print("ERROR, FAILED TO LISTEN FOR RECENT MESSAGES: \(error.localizedDescription)")
+                    return
+                }
+                querySnapshot?.documentChanges.forEach({ change in
+//                    let docId = change.document.documentID
+                    var listOfFriends: [Friend] = []
+                    listOfFriends.append(.init(data: change.document.data()))
+                    completion(nil, listOfFriends)
+                })
+            }
     }
     
 //    func sendFriendRequest(newFriend: User) async throws -> Friend {
