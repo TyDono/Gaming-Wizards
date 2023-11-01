@@ -3458,8 +3458,8 @@
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "fetchMessages(fromId:toId:completion:)"
             landmarkType = "7">
          </BreakpointContent>

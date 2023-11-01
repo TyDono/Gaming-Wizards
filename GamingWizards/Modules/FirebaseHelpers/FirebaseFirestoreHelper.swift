@@ -19,13 +19,8 @@ protocol FirebaseFirestoreService {
     func fetchListOfFriends(uid: String, completion: @escaping (Error?, [Friend]) -> Void)
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
     func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
-    func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
-    func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void)
-    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async -> Result<Void, Error>
-//    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async throws
     func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws 
     func saveUserReportToFirestore(userReport: UserReport) async throws
-    func deleteRecentMessage(friend: FriendEntity, userId: String) async throws
     func deleteFriend(friend: FriendEntity, userId: String) async throws
     func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
@@ -205,89 +200,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                 })
             }
     }
-    
-//    func sendFriendRequest(newFriend: User) async throws -> Friend {
-//        let friendListPath = firestore.collection(Constants.usersString).document(newFriend.id).collection(Constants.userFriendList).document(self.user.id)
-//        let yourInfoPath = self.firestore.collection(Constants.usersString).document(self.user.id).collection(Constants.userFriendList).document(newFriend.id)
-//
-//        
-//        let yourFriendInfo = Friend(id: self.user.id,
-////                                    friendCodeID: self.user.friendCodeID,
-//                                    displayName: self.user.displayName ?? "",
-//                                    isFriend: false,
-//                                    isFavorite: false,
-//                                    imageString: self.user.profileImageString)
-//
-//        let theirFriendInfo = Friend(id: newFriend.id,
-////                                     friendCodeID: newFriend.friendCodeID,
-//                                     displayName: newFriend.displayName ?? "",
-//                                     isFriend: false,
-//                                     isFavorite: false,
-//                                     imageString: newFriend.profileImageString)
-//
-//        do {
-//            try await friendListPath.setData(yourFriendInfo.friendDictionary)
-//            try await yourInfoPath.setData(theirFriendInfo.friendDictionary)
-//            return theirFriendInfo
-//        } catch {
-//            throw error
-//        }
-//    }
-    
-    func createDualRecentMessage(toId: String, chatUserDisplayName: String, fromId: String) async -> Result<Void, Error> {
-        
-        let recentSenderMessageData = [
-            Constants.chatMessageTimeStamp: Timestamp(),
-            Constants.chatMessageText: "",
-            Constants.fromId: fromId,
-            Constants.toId: toId,
-            Constants.displayName: chatUserDisplayName,
-            Constants.onlineStatus: true
-//            "profileImageUrl":
-            
-        ] as [String : Any]
-        
-        let senderMessageDocumentPath = firestore
-            .collection(Constants.recentMessages)
-            .document(fromId)
-            .collection(Constants.messagesStringCollectionCall)
-            .document(toId)
-        
-        do {
-            try await senderMessageDocumentPath.setData(recentSenderMessageData)
-        } catch {
-            print("ERROR, FAILED TO SAVE RECENT MESSAGES SENDER TO FIRESTORE: \(error.localizedDescription)")
-            return .failure(error)
-        }
-        
-        let recentReceiverMessageData = [
-            Constants.chatMessageTimeStamp: Timestamp(),
-            Constants.chatMessageText: "",
-            Constants.fromId: toId,
-            Constants.toId: fromId,
-            Constants.displayName: user.displayName ?? "",
-            Constants.onlineStatus: true
-    //        "profileImageUrl":
-            
-        ] as [String : Any]
-        
-        let receiverMessageDocumentPath = firestore
-            .collection(Constants.recentMessages)
-            .document(toId)
-            .collection(Constants.messagesStringCollectionCall)
-            .document(fromId)
-        
-        do {
-            try await receiverMessageDocumentPath.setData(recentReceiverMessageData)
-        } catch {
-            print("ERROR, FAILED TO SAVE RECENT MESSAGES RECEIVER TO FIRESTORE: \(error.localizedDescription)")
-            return .failure(error)
-        }
-        
-        return .success(())
-    }
 
-    
     func retrieveBlockedUsers(userId: String) async {
         let blockedUsersPath = firestore
             .collection(Constants.usersString)
@@ -332,7 +245,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             try await blockedUserDocumentPath.setData(blockedUserData)
             await coreDataController.addBlockedUser(blockedUser: blockedUser)
             await coreDataController.deleteFriendInCloud(friend: friendEntity, userId: user.id)
-            try await deleteRecentMessage(friend: friendEntity, userId: user.id)
+            try await deleteFriend(friend: friendEntity, userId: user.id)
         } catch {
             print("ERROR BLOCKING USER FROM FIRESTORE: \(error.localizedDescription)")
             throw error
@@ -434,48 +347,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             throw error
         }
     }
-
-    func persistRecentMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws {
-        let uid = user.id
-        let recentMessageDocumentPath = firestore.collection(Constants.recentMessages).document(uid).collection(Constants.messagesStringCollectionCall).document(toId)
-        
-        let recentMessageData = [
-            Constants.chatMessageTimeStamp: Timestamp(),
-            Constants.chatMessageText: chatText,
-            Constants.fromId: uid,
-            Constants.toId: toId,
-            Constants.displayName: chatUserDisplayName
-//            "profileImageUrl":
-            
-            // similar dictionary for the recipient of this message.
-        ] as [String : Any]
-        
-        do {
-            try await recentMessageDocumentPath.setData(recentMessageData)
-        } catch {
-            print("ERROR, FAILED TO SAVE RECENT MESSAGES TO FIRESTORE: \(error.localizedDescription)")
-            throw error
-        }
-    }
-    
-    func deleteRecentMessage(friend: FriendEntity, userId: String) async throws {
-        guard let friendUserId = friend.id else { return }
-        let friendDocPath = firestore.collection(Constants.recentMessages)
-            .document(friendUserId)
-            .collection(Constants.messagesStringCollectionCall)
-            .document(userId)
-        let userFriendDocPath = firestore.collection(Constants.recentMessages)
-            .document(userId)
-            .collection(Constants.messagesStringCollectionCall)
-            .document(friendUserId)
-        do {
-            try await friendDocPath.delete()
-            try await userFriendDocPath.delete()
-        } catch {
-            print("ERROR DELETING RECENT MESSAGE FROM FIRESTORE: \(error.localizedDescription)")
-            throw error
-        }
-    }
     
     func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws {
         let uid = user.id
@@ -490,27 +361,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         } catch {
             print("ERROR, FAILED TO SAVE RECENT MESSAGES TO FIRESTORE: \(error.localizedDescription)")
             throw error
-        }
-    }
-    
-    func fetchRecentMessages(completion: @escaping (Error?, [RecentMessage]) -> Void) {
-        let uid = user.id
-        firestore
-            .collection(Constants.recentMessages)
-            .document(uid)
-            .collection(Constants.messagesStringCollectionCall)
-            .addSnapshotListener { querySnapshot, err in
-            if let error = err {
-                print("ERROR, FAILED TO LISTEN FOR RECENT MESSAGES: \(error.localizedDescription)")
-                return
-            }
-            querySnapshot?.documentChanges.forEach({ change in
-                    let docId = change.document.documentID
-                    var recentMessages: [RecentMessage] = []
-                    recentMessages.append(.init(documentId: docId, data: change.document.data()))
-                    completion(nil, recentMessages)
-                    // ad to recent messages
-            })
         }
     }
 

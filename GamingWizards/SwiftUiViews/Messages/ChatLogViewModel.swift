@@ -83,7 +83,7 @@ extension ChatLogView {
             counter += 1
             do {
                 try await firestoreService.handleSendMessage(toId: chatUserId, chatUserDisplayName: chatUser.displayName ?? "", fromId: user.id, chatText: sentChatText)
-                try await firestoreService.persistRecentMessage(toId: chatUserId, chatUserDisplayName: chatUser.displayName ?? "", fromId: user.id, chatText: sentChatText)
+//                try await firestoreService.persistRecentMessage(toId: chatUserId, chatUserDisplayName: chatUser.displayName ?? "", fromId: user.id, chatText: sentChatText)
             } catch {
                 self.errorMessage = "Failed to send the message" // error.localizedDescription
             }
