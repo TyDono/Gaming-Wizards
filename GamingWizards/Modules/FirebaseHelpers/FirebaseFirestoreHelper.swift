@@ -26,6 +26,8 @@ protocol FirebaseFirestoreService {
     func retrieveBlockedUsers(userId: String) async
     func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?, friendUserIDs: [FriendEntity]?, blockedUserIds: [BlockedUserEntity]?) async throws -> [User]
     func updateUserDeviceInFirestore() async
+    func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> 
+    func saveChangesToFirestore<T: Updatable, U: Updatable>(from oldData: T, to newData: U, userId: String) async -> Result<Void, Error>
     
 }
 
@@ -378,6 +380,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     // MARK: Search Settings
     
     func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> {
+        
         do {
             let searchSettingsPath = firestore.collection(Constants.searchSettings).document(userId)
             let encoder = JSONEncoder()
@@ -389,6 +392,20 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         } catch {
             print("Error updating Firestore document: \(error)")
             return .failure(error)
+        }
+    }
+    
+    func saveChangesToFirestore<T: Updatable, U: Updatable>(from oldData: T, to newData: U, userId: String) async -> Result<Void, Error> {
+        let changes = ChangeMapper.mapChanges(from: oldData, to: newData)
+        if changes.isEmpty {
+            return .success(())
+        }
+        do {
+            let documentReference = Firestore.firestore().collection(Constants.searchSettings).document(userId)
+            try await documentReference.updateData(changes)
+            return .success(())
+        } catch let error {
+            return .failure(FirestoreError.updateFailed(error.localizedDescription))
         }
     }
     

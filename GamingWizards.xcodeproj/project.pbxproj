@@ -163,6 +163,9 @@
 		CBCD58292A16F8BD00136AA0 /* SearchResultsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */; };
 		CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */; };
 		CBDF7EA42AF410D500B29D5C /* SearchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF7EA32AF410D500B29D5C /* SearchSettings.swift */; };
+		CBDF7EA72AF44E1D00B29D5C /* UpdatableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF7EA62AF44E1D00B29D5C /* UpdatableProtocol.swift */; };
+		CBDF7EA92AF44EA300B29D5C /* ChangeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF7EA82AF44EA300B29D5C /* ChangeMapper.swift */; };
+		CBDF7EAD2AF4530B00B29D5C /* FirestoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF7EAC2AF4530B00B29D5C /* FirestoreError.swift */; };
 		CBEAF0462A1EB87400B9E900 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAF0452A1EB87400B9E900 /* LocationManager.swift */; };
 		CBF071B02AB8D24D00CB7C13 /* OnlineStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF071AF2AB8D24D00CB7C13 /* OnlineStatus.swift */; };
 		CBF91C942A7D059B00F20986 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = CBF91C932A7D059B00F20986 /* MapboxMaps */; };
@@ -318,6 +321,9 @@
 		CBCD58282A16F8BC00136AA0 /* SearchResultsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDetailViewModel.swift; sourceTree = "<group>"; };
 		CBCD582A2A1BDD9C00136AA0 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		CBDF7EA32AF410D500B29D5C /* SearchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettings.swift; sourceTree = "<group>"; };
+		CBDF7EA62AF44E1D00B29D5C /* UpdatableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableProtocol.swift; sourceTree = "<group>"; };
+		CBDF7EA82AF44EA300B29D5C /* ChangeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMapper.swift; sourceTree = "<group>"; };
+		CBDF7EAC2AF4530B00B29D5C /* FirestoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreError.swift; sourceTree = "<group>"; };
 		CBEAF0452A1EB87400B9E900 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		CBF071AF2AB8D24D00CB7C13 /* OnlineStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -469,6 +475,8 @@
 				CBBD556B2A27F2A800F27626 /* StoryBoards */,
 				CB5BE83429FDE954009D38D6 /* SignInContent */,
 				CBCD58212A0B1EC500136AA0 /* UniversalViews */,
+				CBDF7EA52AF44DF100B29D5C /* Protocols */,
+				CBDF7EAB2AF452F500B29D5C /* Enums */,
 				CB5BE86829FDE956009D38D6 /* Utilities */,
 				CB5BE83B29FDE955009D38D6 /* DataModule */,
 				CB5BE83A29FDE955009D38D6 /* Plist */,
@@ -506,6 +514,7 @@
 				CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */,
 				CBBD556E2A294B6A00F27626 /* imagePicker.swift */,
 				CB5BE82E29FDE954009D38D6 /* NetworkRequestService.swift */,
+				CBDF7EAA2AF44EB900B29D5C /* Mapping */,
 				CB5BE82F29FDE954009D38D6 /* RestaurantEndpoint.swift */,
 				CB5BE83329FDE954009D38D6 /* Endpoint.swift */,
 				CB62406B2A5787FF00E69C5C /* Filterer.swift */,
@@ -819,6 +828,30 @@
 			path = UniversalViews;
 			sourceTree = "<group>";
 		};
+		CBDF7EA52AF44DF100B29D5C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CBDF7EA62AF44E1D00B29D5C /* UpdatableProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CBDF7EAA2AF44EB900B29D5C /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				CBDF7EA82AF44EA300B29D5C /* ChangeMapper.swift */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		CBDF7EAB2AF452F500B29D5C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CBDF7EAC2AF4530B00B29D5C /* FirestoreError.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		CBF91C962A81715600F20986 /* FirebaseHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1056,7 @@
 				CB5BE88329FDE958009D38D6 /* UserSignInViewController.swift in Sources */,
 				CB5BE8A229FDE958009D38D6 /* HomeViewModel.swift in Sources */,
 				CB5BE8A429FDE958009D38D6 /* FriendListView.swift in Sources */,
+				CBDF7EA92AF44EA300B29D5C /* ChangeMapper.swift in Sources */,
 				CB5BE8AE29FDE958009D38D6 /* Validation.swift in Sources */,
 				CB9F7C312AA0FCD4000E8AE1 /* MessageView.swift in Sources */,
 				CB5F57E72AB9EF340003660A /* ReportReason.swift in Sources */,
@@ -1039,6 +1073,7 @@
 				CB623DF92AC602C0008E6180 /* UnitConverter.swift in Sources */,
 				CB623DFC2AC62570008E6180 /* SearchSettingsView.swift in Sources */,
 				CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */,
+				CBDF7EA72AF44E1D00B29D5C /* UpdatableProtocol.swift in Sources */,
 				CB5BE8A529FDE958009D38D6 /* DetailedFriendView.swift in Sources */,
 				CB5BE88129FDE957009D38D6 /* GamingWizardsNotification.swift in Sources */,
 				CB049A152A33D87B00024D01 /* ViewPersonalAccountView.swift in Sources */,
@@ -1069,6 +1104,7 @@
 				CBEAF0462A1EB87400B9E900 /* LocationManager.swift in Sources */,
 				CBA22B142AA8DFA500D02912 /* RecentMessage.swift in Sources */,
 				CB5BE8AA29FDE958009D38D6 /* KeybaordAdaptiveModifier.swift in Sources */,
+				CBDF7EAD2AF4530B00B29D5C /* FirestoreError.swift in Sources */,
 				CB3270A62ACDECAB00717D4E /* BlockedUsersViewModel.swift in Sources */,
 				CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */,
 				CBCD582B2A1BDD9C00136AA0 /* TextExtension.swift in Sources */,
