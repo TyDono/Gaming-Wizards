@@ -15,14 +15,17 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     @ObservedObject var coreDataController: CoreDataController
     @Published var isPayToPlay: Bool = false
     @Published var savedSearchSettingsEntity: SearchSettingsEntity?
+    private let firestoreService: FirebaseFirestoreService
     private var searchSettingsCancellable: AnyCancellable?
     
     init(
         user: UserObservable = UserObservable.shared,
-        coreDataController: CoreDataController = CoreDataController.shared
+        coreDataController: CoreDataController = CoreDataController.shared,
+        firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared
     ) {
         self.user = user
         self.coreDataController = coreDataController
+        self.firestoreService = firestoreService
     }
     
     func callCoreDataEntities() async {
@@ -30,7 +33,12 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }) { searchSettings in
                 self.savedSearchSettingsEntity = searchSettings
+                self.changeIsPayToPlay()
             }
+    }
+    
+    func searchSettingsIsBeingCanceled() {
+        searchSettingsCancellable?.cancel()
     }
     
     func changeIsPayToPlay() {

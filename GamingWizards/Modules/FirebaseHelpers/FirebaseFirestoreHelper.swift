@@ -10,7 +10,6 @@ import FirebaseFirestore
 import Firebase
 
 protocol FirebaseFirestoreService {
-//    func retrieveFriendsListener(user: UserObservable)
     func stopListening()
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
@@ -31,13 +30,11 @@ protocol FirebaseFirestoreService {
 }
 
 class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreService {
-//    let user = UserObservable.shared
-//    let firestoreDatabase = Firestore.firestore()
     let firestore: Firestore
     let user = UserObservable.shared
     let coreDataController = CoreDataController.shared
     private var listeningRegistration: ListenerRegistration?
-//    let fbStorageHelper = FirebaseStorageHelper.shared
+    private var listeningFriendRegistration: ListenerRegistration?
     
     static let shared = FirebaseFirestoreHelper()
     
@@ -180,7 +177,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             return .failure(error)
         }
     }
-
     
     func fetchListOfFriends(uid: String, completion: @escaping (Error?, [Friend]) -> Void) {
         firestore
@@ -193,12 +189,15 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                     return
                 }
                 querySnapshot?.documentChanges.forEach({ change in
-//                    let docId = change.document.documentID
                     var listOfFriends: [Friend] = []
                     listOfFriends.append(.init(data: change.document.data()))
                     completion(nil, listOfFriends)
                 })
             }
+    }
+    
+    func stopListeningToFriendRegistration() {
+        listeningFriendRegistration?.remove()
     }
 
     func retrieveBlockedUsers(userId: String) async {
@@ -285,7 +284,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             
             // Delete the friend from CoreData
             await coreDataController.viewContext.delete(friend)
-//            await coreDataController.saveFriendData()
             
         } catch {
             print("ERROR DELETING FRIEND FROM FIRESTORE: \(error.localizedDescription)")
@@ -375,6 +373,27 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         } catch {
             print("Error encoding user report: \(error)")
         }
+    }
+    
+    // MARK: Search Settings
+    
+    func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> {
+        do {
+            let searchSettingsPath = firestore.collection(Constants.searchSettings).document(userId)
+            let encoder = JSONEncoder()
+            let searchSettingsData = try encoder.encode(searchSettings)
+            
+            try await searchSettingsPath.setData([Constants.searchSettings: searchSettingsData])
+            
+            return .success(true)
+        } catch {
+            print("Error updating Firestore document: \(error)")
+            return .failure(error)
+        }
+    }
+    
+    func fetchUserSearchSettings(userId: String) {
+        
     }
     
     func deleteUserFirebaseAccount(userId: String) async {

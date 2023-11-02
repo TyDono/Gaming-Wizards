@@ -14,7 +14,7 @@ import Combine
     private let firestoreService: FirebaseFirestoreService
     @Published var selectedUsedToUnblock: BlockedUserEntity?
     @Published var blockedUserEntities: [BlockedUserEntity] = []
-    private var cancellable: AnyCancellable?
+    private var blockedUserEntitiesCancellable: AnyCancellable?
     
     init(
         coreDataController: CoreDataController = CoreDataController.shared,
@@ -28,8 +28,12 @@ import Combine
         
     }
     
+    func cancelBlockedUserEntities() {
+        blockedUserEntitiesCancellable?.cancel()
+    }
+    
     func callCoreDataEntities() async {
-        self.cancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
+        self.blockedUserEntitiesCancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }) { blockedUser in
                 self.blockedUserEntities = blockedUser

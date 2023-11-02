@@ -26,6 +26,9 @@ struct BlockedUsersView: View {
         .task {
             await blockedUsersVM.callCoreDataEntities()
         }
+        .onAppear {
+            blockedUsersVM.cancelBlockedUserEntities()
+        }
         .navigationBarTitle("", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .principal) {

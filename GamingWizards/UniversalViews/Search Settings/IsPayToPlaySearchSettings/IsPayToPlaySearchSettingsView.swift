@@ -37,7 +37,9 @@ struct IsPayToPlaySearchSettingsView: View {
             Task {
                 await isPayToPlaySearchSettingsVM.callCoreDataEntities()
             }
-            isPayToPlaySearchSettingsVM.changeIsPayToPlay()
+        }
+        .onDisappear {
+            isPayToPlaySearchSettingsVM.searchSettingsIsBeingCanceled()
         }
         
     }

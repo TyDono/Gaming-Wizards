@@ -48,6 +48,11 @@ struct SearchResultsView: View {
                     await searchResultsVM.searchForMatchingUsers(gameName: searchText, isPayToPlay: isPayToPlaySearchSettings)
                 }
             }
+            .onDisappear {
+                searchResultsVM.cancelFriendEntities()
+                searchResultsVM.cancelSearchSettings()
+                searchResultsVM.cancelBlockedUserEntities()
+            }
         }
 //        .font(.globalFont(.luminari, size: 16))
 //        .font(.roboto(.regular, size: 16))

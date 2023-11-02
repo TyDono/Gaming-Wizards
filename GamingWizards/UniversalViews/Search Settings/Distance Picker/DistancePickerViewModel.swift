@@ -15,16 +15,19 @@ import Combine
         @Published var miles: Double = 0.0
         @Published var kilometers: Int = 0
         @Published var savedSearchSettingsEntity: SearchSettingsEntity?
+        private let firestoreService: FirebaseFirestoreService
         private var searchSettingsCancellable: AnyCancellable?
         
         init(
             coreDataController: CoreDataController = CoreDataController.shared,
             miles: Double, //= CoreDataController.shared.savedSearchSettingsEntity?.searchRadius ?? 0,
-            kilometers: Int
+            kilometers: Int,
+            firestoreService: FirebaseFirestoreService = FirebaseFirestoreHelper.shared
         ) {
             self.miles = miles
             self.kilometers = kilometers
             self.coreDataController = coreDataController
+            self.firestoreService = firestoreService
         }
         
         func callCoreDataEntities() async {
@@ -32,7 +35,16 @@ import Combine
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { _ in }) { searchSettings in
                     self.savedSearchSettingsEntity = searchSettings
+                    self.miles = searchSettings?.searchRadius ?? 10.0
                 }
+        }
+        
+        func searchSettingsIsBeingCanceled() {
+            searchSettingsCancellable?.cancel()
+        }
+        
+        func callSaveUserSearchSettings() {
+            //have a debouncer
         }
         
         func convertMilesToKm(miles: Double) -> Int {
@@ -50,7 +62,7 @@ import Combine
         }
         
         func mapExponential(value: Double) -> Double {
-            let exponent = 1.5 // You can adjust the exponent based on your preference
+            let exponent = 1.5
             let maxValue: Double = 1000
             let midPoint: Double = 150
             

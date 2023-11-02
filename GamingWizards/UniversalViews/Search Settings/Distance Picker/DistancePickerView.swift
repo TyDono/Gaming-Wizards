@@ -29,6 +29,9 @@ struct DistancePickerView: View {
         .task {
             await distancePickerVM.callCoreDataEntities()
         }
+        .onDisappear {
+            distancePickerVM.searchSettingsIsBeingCanceled()
+        }
     }
     
     private var distancePickerSlider: some View {

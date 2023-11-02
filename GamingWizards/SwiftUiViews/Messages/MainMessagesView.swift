@@ -34,6 +34,9 @@ struct MainMessagesView: View {
 //                await mainMessagesVM.callFetchListOfFriends()
             }
         }
+        .onDisappear {
+            mainMessagesVM.cancelFriend()
+        }
         .navigationDestination(isPresented: $isChatLogViewPresented) {
             ChatLogView(presentationMode: self.presentationMode,
                         chatUser: mainMessagesVM.selectedContact,

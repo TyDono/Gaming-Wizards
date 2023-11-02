@@ -51,6 +51,10 @@ extension MainMessagesView {
                 }
         }
         
+        func cancelFriend() {
+            friendCancellable?.cancel()
+        }
+        
         func loadImageFromDisk(imageString: String) -> UIImage? {
             if let cachedImage = friendEntityImageCache[imageString] {
                 return cachedImage

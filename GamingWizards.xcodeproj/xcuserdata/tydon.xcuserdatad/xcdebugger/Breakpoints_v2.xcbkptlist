@@ -3063,13 +3063,13 @@
             filePath = "GamingWizards/UniversalViews/Search Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "saveIsPayToPlaySettings(isPayToPlay:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d75f5"
+                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d75d4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -3079,12 +3079,27 @@
                   urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d75d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GamingWizards.IsPayToPlaySearchSettingsViewModel.saveIsPayToPlaySettings(isPayToPlay: Swift.Bool) -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
                   offsetFromSymbolStart = "272">
                </Location>
                <Location
-                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d75f5"
+                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d72ed"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -3094,9 +3109,9 @@
                   urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "462">
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "272">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3237,8 +3252,8 @@
             filePath = "GamingWizards/UniversalViews/BlockedUsers/BlockedUsersView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "listOfBlockedUsers"
             landmarkType = "24">
          </BreakpointContent>
@@ -3410,8 +3425,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "callForCoreDatsEntities()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3426,8 +3441,8 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "callForCoreDatsEntities()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3442,25 +3457,9 @@
             filePath = "GamingWizards/SwiftUiViews/SearchTab/SearchResultsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "callForCoreDatsEntities()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6A5257BB-C474-4A7C-9309-F315A13C821E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
-            landmarkName = "fetchMessages(fromId:toId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

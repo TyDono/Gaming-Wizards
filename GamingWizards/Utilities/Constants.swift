@@ -92,6 +92,15 @@ enum Constants {
     static let blockedUsersTitle = "Blocked Users"
     static let lookingForGroupTitle = "Looking for Group"
     
+    // MARK: call to Search Settings
+    static let searchSettings = "searchSettings"
+    static let ageRangeMax = "ageRangeMax"
+    static let ageRangeMin = "ageRangeMin"
+    static let groupSizeRangeMax = "groupSizeRangeMax"
+    static let groupSizeRangeMin = "groupSizeRangeMin"
+    static let isPayToPlay = "isPayToPlay"
+    static let searchRadius = "searchRadius"
+    
     // MARK: calls to AppStorage
 //    static let appStorageStringUserId = "user_Id"
 //    static let appStorageStringUserFirstName = "user_First_Name"

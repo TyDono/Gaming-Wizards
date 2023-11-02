@@ -36,6 +36,18 @@ import Combine
 
         }
          
+         func cancelFriendEntities() {
+             friendEntitiesCancellable?.cancel()
+         }
+         
+         func cancelSearchSettings() {
+             searchSettingsCancellable?.cancel()
+         }
+         
+         func cancelBlockedUserEntities() {
+             blockedUserEntitiesCancellable?.cancel()
+         }
+         
          func callForCoreDatsEntities() async {
              self.friendEntitiesCancellable = coreDataController.fetchFriendEntitiesPublisher()
                  .receive(on: DispatchQueue.main)
