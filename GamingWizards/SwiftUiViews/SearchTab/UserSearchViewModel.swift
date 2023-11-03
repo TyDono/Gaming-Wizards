@@ -10,10 +10,7 @@ import SwiftUI
 //extension UserSearchView {
     @MainActor class UserSearchViewModel: ObservableObject {
         @ObservedObject var searchSettingsVM = SearchSettingsViewModel()
-//        @Published var listOfGames = [ListOfGames]()
         @Published var listOfGames = ListOfGames.name
-//        @Published var searchText: String = ""
-        @Published var searchScope = SearchScope.inbox
         @Published var users: [User] = []
         @Published var searchBarDropDownNotificationText: String = ""
         @Published var isSearchBarDropDownNotificationShowing: Bool = false

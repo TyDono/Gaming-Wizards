@@ -8,6 +8,7 @@
 import Foundation
 
 struct User: Identifiable, Codable, Hashable {
+    
     var id: String
     var firstName: String? = ""
     var lastName: String? = ""
@@ -330,4 +331,88 @@ class UserObservable: ObservableObject {
         deviceInfo = UserDefaults.standard.string(forKey: "\(deviceInfoKey)-\(id)") ?? ""
         dateFirstInstalled = UserDefaults.standard.object(forKey: "\(dateFirstInstalledKey)-\(id)") as? Date
     }
+}
+
+extension User: Updatable {
+    
+    func updatedFields<T>(from other: T) -> [String: Any] where T: Updatable {
+        var changes: [String: Any] = [:]
+
+        if let otherUser = other as? User {
+            if self.firstName != otherUser.firstName {
+                changes[Constants.userFirstName] = self.firstName ?? ""
+            }
+
+            if self.lastName != otherUser.lastName {
+                changes[Constants.userLastName] = self.lastName ?? ""
+            }
+
+            if self.displayName != otherUser.displayName {
+                changes[Constants.displayName] = self.displayName ?? ""
+            }
+
+            if self.email != otherUser.email {
+                changes[Constants.userEmail] = self.email ?? ""
+            }
+
+            if self.latitude != otherUser.latitude {
+                changes[Constants.userLatitude] = self.latitude
+            }
+
+            if self.longitude != otherUser.longitude {
+                changes[Constants.userLongitude] = self.longitude
+            }
+
+            if self.location != otherUser.location {
+                changes[Constants.userLocation] = self.location ?? ""
+            }
+
+            if self.profileImageString != otherUser.profileImageString {
+                changes[Constants.userProfileImageString] = self.profileImageString
+            }
+
+            if self.listOfGames != otherUser.listOfGames {
+                changes[Constants.userListOfGamesString] = self.listOfGames ?? []
+            }
+
+            if self.groupSize != otherUser.groupSize {
+                changes[Constants.userGroupSize] = self.groupSize ?? ""
+            }
+
+            if self.age != otherUser.age {
+                changes[Constants.userAge] = self.age ?? ""
+            }
+
+            if self.about != otherUser.about {
+                changes[Constants.userAbout] = self.about ?? ""
+            }
+
+            if self.availability != otherUser.availability {
+                changes[Constants.userAvailability] = self.availability ?? ""
+            }
+
+            if self.title != otherUser.title {
+                changes[Constants.userTitle] = self.title ?? ""
+            }
+
+            if self.isPayToPlay != otherUser.isPayToPlay {
+                changes[Constants.isPayToPlay] = self.isPayToPlay
+            }
+
+            if self.isSolo != otherUser.isSolo {
+                changes[Constants.userIsSolo] = self.isSolo
+            }
+
+            if self.deviceInfo != otherUser.deviceInfo {
+                changes[Constants.deviceInfo] = self.deviceInfo ?? ""
+            }
+
+            if self.dateFirstInstalled != otherUser.dateFirstInstalled {
+                changes[Constants.dateFirstInstalled] = self.dateFirstInstalled
+            }
+        }
+
+        return changes
+    }
+    
 }

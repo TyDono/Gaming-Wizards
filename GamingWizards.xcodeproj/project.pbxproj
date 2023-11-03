@@ -67,10 +67,8 @@
 		CB5BE8AF29FDE958009D38D6 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE86C29FDE956009D38D6 /* DependencyInjector.swift */; };
 		CB5BE8B029FDE958009D38D6 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE86D29FDE956009D38D6 /* AlertItem.swift */; };
 		CB5BE8B129FDE958009D38D6 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE86F29FDE956009D38D6 /* Navigation.swift */; };
-		CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87129FDE956009D38D6 /* Message.swift */; };
 		CB5BE8B429FDE958009D38D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87229FDE956009D38D6 /* User.swift */; };
 		CB5BE8B529FDE958009D38D6 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87329FDE956009D38D6 /* Friend.swift */; };
-		CB5BE8B629FDE958009D38D6 /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87429FDE956009D38D6 /* Invitation.swift */; };
 		CB5BE8B729FDE958009D38D6 /* SignInWithGoogleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87629FDE956009D38D6 /* SignInWithGoogleCoordinator.swift */; };
 		CB5BE8B829FDE958009D38D6 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87729FDE956009D38D6 /* UserAuth.swift */; };
 		CB5BE8B929FDE958009D38D6 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BE87829FDE956009D38D6 /* SessionStore.swift */; };
@@ -252,10 +250,8 @@
 		CB5BE86C29FDE956009D38D6 /* DependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		CB5BE86D29FDE956009D38D6 /* AlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		CB5BE86F29FDE956009D38D6 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		CB5BE87129FDE956009D38D6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CB5BE87229FDE956009D38D6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CB5BE87329FDE956009D38D6 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		CB5BE87429FDE956009D38D6 /* Invitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		CB5BE87629FDE956009D38D6 /* SignInWithGoogleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleCoordinator.swift; sourceTree = "<group>"; };
 		CB5BE87729FDE956009D38D6 /* UserAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		CB5BE87829FDE956009D38D6 /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
@@ -668,12 +664,10 @@
 				CB5BE86F29FDE956009D38D6 /* Navigation.swift */,
 				CB12480B2AD493DA0057372F /* SearchSettingsEntity.swift */,
 				CBDF7EA32AF410D500B29D5C /* SearchSettings.swift */,
-				CB5BE87129FDE956009D38D6 /* Message.swift */,
 				CB5BE87229FDE956009D38D6 /* User.swift */,
 				CBCD58132A01AFD200136AA0 /* UserReport.swift */,
 				CB5BE87329FDE956009D38D6 /* Friend.swift */,
 				CB623DF12AC28B8D008E6180 /* BlockedUser.swift */,
-				CB5BE87429FDE956009D38D6 /* Invitation.swift */,
 				CB24502A2A0102E200581048 /* ListOfGames.swift */,
 				CBCD58242A0B4AA400136AA0 /* UserLocation.swift */,
 				CBEAF0452A1EB87400B9E900 /* LocationManager.swift */,
@@ -1072,7 +1066,6 @@
 				CBCD581D2A047A0D00136AA0 /* SearchResultsViewModel.swift in Sources */,
 				CB623DF92AC602C0008E6180 /* UnitConverter.swift in Sources */,
 				CB623DFC2AC62570008E6180 /* SearchSettingsView.swift in Sources */,
-				CB5BE8B329FDE958009D38D6 /* Message.swift in Sources */,
 				CBDF7EA72AF44E1D00B29D5C /* UpdatableProtocol.swift in Sources */,
 				CB5BE8A529FDE958009D38D6 /* DetailedFriendView.swift in Sources */,
 				CB5BE88129FDE957009D38D6 /* GamingWizardsNotification.swift in Sources */,
@@ -1155,7 +1148,6 @@
 				CB5789D12AEC477500E8BE5E /* ConvertToFriend.swift in Sources */,
 				CB5BE8B529FDE958009D38D6 /* Friend.swift in Sources */,
 				CB24502B2A0102E200581048 /* ListOfGames.swift in Sources */,
-				CB5BE8B629FDE958009D38D6 /* Invitation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

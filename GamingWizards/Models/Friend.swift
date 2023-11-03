@@ -34,7 +34,6 @@ struct Friend: Codable, Hashable, Identifiable {
         ]
     }
     
-    
     init(data: [String: Any]) {
         self.id = data[Constants.idStringValue] as? String ?? ""
         self.displayName = data[Constants.displayName] as? String ?? ""
@@ -90,6 +89,50 @@ extension Friend {
         }
         
     }
+}
+
+extension Friend: Updatable {
+    
+    func updatedFields<T>(from other: T) -> [String: Any] where T: Updatable {
+        var changes: [String: Any] = [:]
+
+        if let otherFriend = other as? Friend {
+            if self.displayName != otherFriend.displayName {
+                changes[Constants.displayName] = self.displayName
+            }
+
+            if self.isFriend != otherFriend.isFriend {
+                changes[Constants.isFriend] = self.isFriend
+            }
+
+            if self.isFavorite != otherFriend.isFavorite {
+                changes[Constants.isFavorite] = self.isFavorite
+            }
+
+            if self.imageString != otherFriend.imageString {
+                changes[Constants.imageString] = self.imageString
+            }
+
+            if self.recentMessageText != otherFriend.recentMessageText {
+                changes[Constants.recentMessageText] = self.recentMessageText
+            }
+
+            if self.recentMessageTimeStamp != otherFriend.recentMessageTimeStamp {
+                changes[Constants.chatMessageTimeStamp] = self.recentMessageTimeStamp
+            }
+
+            if self.onlineStatus != otherFriend.onlineStatus {
+                changes[Constants.onlineStatus] = self.onlineStatus
+            }
+
+            if self.messageToId != otherFriend.messageToId {
+                changes[Constants.messageToId] = self.messageToId
+            }
+        }
+
+        return changes
+    }
+    
 }
 
 //extension Friend {

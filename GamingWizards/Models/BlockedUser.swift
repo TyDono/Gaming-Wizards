@@ -17,7 +17,7 @@ struct BlockedUser:Identifiable, Codable {
 //        self.blockedUserId = data[Constants.blockedUsers] as? String ?? ""
 //        self.displayName = data[Constants.displayName] as? String ?? ""
 //        self.dateRemoved = data[Constants.dateRemoved] as? Date ?? Date()   
-//    }
+//    } 
     
     enum BlockedUserCodingKeys: String, CodingKey {
         case id = "id"

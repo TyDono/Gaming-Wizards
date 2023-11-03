@@ -8,13 +8,32 @@
 import Foundation
 
 
-struct SearchSettings: Hashable, Codable {
+struct SearchSettings: Hashable, Codable, Updatable {
+    
     var ageRangeMax: Int
     var ageRangeMin: Int
     var groupSizeRangeMax: Int
     var groupSizeRangeMin: Int
     var isPayToPlay: Bool
     var searchRadius: Double
+    
+    init(data: [String: Any]) {
+        self.ageRangeMax = data[Constants.ageRangeMax] as? Int ?? 0
+        self.ageRangeMin = data[Constants.ageRangeMin] as? Int ?? 0
+        self.groupSizeRangeMax = data[Constants.groupSizeRangeMax] as? Int ?? 0
+        self.groupSizeRangeMin = data[Constants.groupSizeRangeMin] as? Int ?? 0
+        self.isPayToPlay = data[Constants.isPayToPlay] as? Bool ?? false
+        self.searchRadius = data[Constants.searchRadius] as? Double ?? 0.0
+    }
+    
+    init(from entity: SearchSettingsEntity) {
+        self.ageRangeMax = Int(entity.ageRangeMax)
+        self.ageRangeMin = Int(entity.ageRangeMin)
+        self.groupSizeRangeMax = Int(entity.groupSizeRangeMax)
+        self.groupSizeRangeMin = Int(entity.groupSizeRangeMin)
+        self.isPayToPlay = entity.isPayToPlay
+        self.searchRadius = entity.searchRadius
+    }
     
     var searchSettingDictionary: [String: Any] {
         return [
@@ -27,14 +46,36 @@ struct SearchSettings: Hashable, Codable {
         ]
     }
     
-    
-    init(data: [String: Any]) {
-        self.ageRangeMax = data[Constants.ageRangeMax] as? Int ?? 0
-        self.ageRangeMin = data[Constants.ageRangeMin] as? Int ?? 0
-        self.groupSizeRangeMax = data[Constants.groupSizeRangeMax] as? Int ?? 0
-        self.groupSizeRangeMin = data[Constants.groupSizeRangeMin] as? Int ?? 0
-        self.isPayToPlay = data[Constants.isPayToPlay] as? Bool ?? false
-        self.searchRadius = data[Constants.searchRadius] as? Double ?? 0.0
+    func updatedFields<T>(from other: T) -> [String: Any] where T: Updatable {
+        var changes: [String: Any] = [:]
+
+        if let otherSettings = other as? SearchSettings {
+            if self.ageRangeMax != otherSettings.ageRangeMax {
+                changes["ageRangeMax"] = self.ageRangeMax
+            }
+
+            if self.ageRangeMin != otherSettings.ageRangeMin {
+                changes["ageRangeMin"] = self.ageRangeMin
+            }
+
+            if self.groupSizeRangeMax != otherSettings.groupSizeRangeMax {
+                changes["groupSizeRangeMax"] = self.groupSizeRangeMax
+            }
+
+            if self.groupSizeRangeMin != otherSettings.groupSizeRangeMin {
+                changes["groupSizeRangeMin"] = self.groupSizeRangeMin
+            }
+
+            if self.isPayToPlay != otherSettings.isPayToPlay {
+                changes["isPayToPlay"] = self.isPayToPlay
+            }
+
+            if self.searchRadius != otherSettings.searchRadius {
+                changes["searchRadius"] = self.searchRadius
+            }
+        }
+
+        return changes
     }
     
 }
