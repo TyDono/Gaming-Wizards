@@ -505,13 +505,11 @@
 			children = (
 				CB5BE83029FDE954009D38D6 /* GamingWizardsApp.swift */,
 				CB84BEAF2AF022CB0042EA0E /* Converters */,
-				CB5F57E62AB9EF330003660A /* ReportReason.swift */,
 				CBC466A62ADDD29A00B1D496 /* GetDeviceInfo.swift */,
 				CB3392C02A1EF4F000EE72D2 /* ShakeEffect.swift */,
 				CBBD556E2A294B6A00F27626 /* imagePicker.swift */,
 				CB5BE82E29FDE954009D38D6 /* NetworkRequestService.swift */,
 				CBDF7EAA2AF44EB900B29D5C /* Mapping */,
-				CB5BE82F29FDE954009D38D6 /* RestaurantEndpoint.swift */,
 				CB62406B2A5787FF00E69C5C /* Filterer.swift */,
 				CB6240672A53AD8100E69C5C /* DiskSpaceHandler.swift */,
 				CBF91C962A81715600F20986 /* FirebaseHelpers */,
@@ -841,6 +839,8 @@
 		CBDF7EAB2AF452F500B29D5C /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				CB5F57E62AB9EF330003660A /* ReportReason.swift */,
+				CB5BE82F29FDE954009D38D6 /* RestaurantEndpoint.swift */,
 				CBDF7EAC2AF4530B00B29D5C /* FirestoreError.swift */,
 			);
 			path = Enums;

@@ -28,6 +28,7 @@ protocol FirebaseFirestoreService {
     func updateUserDeviceInFirestore() async
     func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> 
     func saveChangesToFirestore<T: Updatable, U: Updatable>(from oldData: T, to newData: U, userId: String) async -> Result<Void, Error>
+    func fetchUserSearchSettings(userId: String) async -> SearchSettings? 
     
 }
 
@@ -409,8 +410,26 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func fetchUserSearchSettings(userId: String) {
-        
+    func fetchUserSearchSettings(userId: String) async -> SearchSettings? {
+        let searchSettingPath = firestore.collection(Constants.searchSettings).document(userId)
+        do {
+            let document = try await searchSettingPath.getDocument()
+            if document.exists == true, let documentData = document.data() {
+                do {
+                    let decoder = Firestore.Decoder()
+                    let existingSearchSettings = try decoder.decode(SearchSettings.self, from: documentData)
+                    return existingSearchSettings
+                } catch {
+                    print("ERROR DECODING SEARCH SETTINGS: \(error.localizedDescription)")
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        } catch {
+            print("ERROR FETCHING SEARCH SETTINGS: \(error.localizedDescription)")
+            return nil
+        }
     }
     
     func deleteUserFirebaseAccount(userId: String) async {

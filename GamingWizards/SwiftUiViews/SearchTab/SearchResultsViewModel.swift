@@ -10,7 +10,6 @@ import Combine
 
 //extension SearchResultsView {
      @MainActor class SearchResultsViewModel: ObservableObject {
-//        @Published var searchText: String = ""
          @ObservedObject var user = UserObservable.shared
          @Published var searchedForUsers: [User]? = []
          @Published var resultWasTapped: Bool = false
@@ -55,8 +54,6 @@ import Combine
                      if !friends.isEmpty {
                          self.savedFriendEntities = friends
                      }
-                     print(friends)
-                     print("pause1")
                  }
              self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
                  .receive(on: DispatchQueue.main)
@@ -64,8 +61,6 @@ import Combine
                      if searchSettings != nil {
                          self.savedSearchSettingsEntity = searchSettings
                      }
-                     print(searchSettings)
-                     print("pause2")
                  }
              self.blockedUserEntitiesCancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
                  .receive(on: DispatchQueue.main)
@@ -73,11 +68,8 @@ import Combine
                      if !blockedUsers.isEmpty {
                          self.savedBlockedUserEntities = blockedUsers
                      }
-                     print(blockedUsers)
-                     print("pause3")
                  }
          }
-         
          
          func convertUserToFriendDataBinding(displayName: String,
                                              friendUserID: String,
@@ -104,7 +96,6 @@ import Combine
                  friendEntity
              }, set: { newValue in
                  // Update properties of friendEntity when the binding is set
-     //            friendEntity.friendCodeID = newValue.friendCodeID
                  friendEntity.id = newValue.id
                  friendEntity.displayName = newValue.displayName
                  friendEntity.isFriend = newValue.isFriend
