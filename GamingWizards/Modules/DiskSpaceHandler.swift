@@ -10,13 +10,12 @@ import UIKit
 
 protocol DiskSpaceService {
     func saveProfileImageToDisc(imageString: String, image: UIImage)
-    func loadProfileImageFromDisk(imageString: String) -> UIImage 
+    func loadProfileImageFromDisk(imageString: String) -> UIImage?
 }
 
-class DiskSpaceHandler: ObservableObject {
+class DiskSpaceHandler: ObservableObject, DiskSpaceService {
     
      func saveProfileImageToDisc(imageString: String, image: UIImage) {
-
         guard let data = image.jpegData(compressionQuality: 1.0) else { return }
 
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

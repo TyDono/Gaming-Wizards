@@ -12,12 +12,17 @@ struct BlockedUser:Identifiable, Codable {
     var displayName: String
     var dateRemoved: Date
     
-//    init(blockedUserId: String, data: [String: Any]) {
-//        self.blockedUserId = blockedUserId
-//        self.blockedUserId = data[Constants.blockedUsers] as? String ?? ""
-//        self.displayName = data[Constants.displayName] as? String ?? ""
-//        self.dateRemoved = data[Constants.dateRemoved] as? Date ?? Date()   
-//    } 
+    init(data: [String: Any]) {
+        self.id = data[Constants.idStringValue] as? String ?? ""
+        self.displayName = data[Constants.displayName] as? String ?? ""
+        self.dateRemoved = data[Constants.dateRemoved] as? Date ?? Date()   
+    } 
+    
+    init(from entity: BlockedUserEntity) {
+        self.id = entity.id ?? ""
+        self.displayName = entity.displayName ?? ""
+        self.dateRemoved = entity.dateRemoved ?? Date()
+    }
     
     enum BlockedUserCodingKeys: String, CodingKey {
         case id = "id"

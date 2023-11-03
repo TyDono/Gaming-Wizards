@@ -15,7 +15,7 @@ struct ChatLogView: View {
     @State private var isCreateReportUserViewShowing: Bool = false
     let chatUser: FriendEntity?
     @Binding var isChatLogViewPresented: Bool
-//    @State private var reportedUser: User!
+    @State private var blockedUserData: [String: Any] = [:]
     
     private let chatLogScrollToString: String = "Empty"
     
@@ -23,6 +23,7 @@ struct ChatLogView: View {
         presentationMode: Binding<PresentationMode>,
         chatUser: FriendEntity?,
         isChatLogViewPresented: Binding<Bool>
+        
     ) {
         self._presentationMode = presentationMode
         self.chatUser = chatUser
@@ -52,6 +53,13 @@ struct ChatLogView: View {
         .task {
             guard let unwrappedChatUser = self.chatUser else { return }
             chatLogVM.callFetchMessages(chatUser: unwrappedChatUser)
+        }
+        .onAppear() {
+            self.blockedUserData = [
+                Constants.idStringValue: chatLogVM.reportedUser.id,
+                Constants.displayName: chatLogVM.reportedUser.displayName ?? "",
+                Constants.dateRemoved: Date()
+            ]
         }
     }
     
@@ -104,14 +112,11 @@ struct ChatLogView: View {
     
     private var userReportView: some View {
         CreateReportUserView(
-//            presentationMode: self.$presentationMode,
             isCreateReportUserViewPresented: $isCreateReportUserViewShowing,
             reporterId: $chatLogVM.user.id,
             reportedUser: Binding(get: { chatLogVM.reportedUser }, set: { _ in }),
             chatRoomId: Binding<String>( get: { chatLogVM.reportedUser.id }, set: { _ in }),
-            blockedUser: .constant(BlockedUser(id: chatLogVM.reportedUser.id,
-                                               displayName: chatLogVM.reportedUser.displayName ?? "",
-                                               dateRemoved: Date())),
+            blockedUser: .constant(BlockedUser(data: blockedUserData)),
             friendEntity: Binding<FriendEntity>( get: { chatUser! },
                                                  set: { _ in }),
             isSearchResultsViewPresented: .constant(false),

@@ -80,15 +80,18 @@ struct SearchResultsView: View {
                     }
             }
             .sheet(isPresented: $searchResultsVM.isCreateReportUserViewShowing) {
+                let blockedUserData: [String: Any] = [
+                    Constants.idStringValue: searchResultsVM.selectedUser.id,
+                    Constants.displayName: searchResultsVM.selectedUser.displayName ?? "",
+                    Constants.dateRemoved: Date()
+                ]
                 CreateReportUserView(
 //                    presentationMode: self.presentationMode,
                     isCreateReportUserViewPresented: $isCreateReportUserViewPresented,
                     reporterId: $searchResultsVM.user.id,
                     reportedUser: $searchResultsVM.selectedUser,
                     chatRoomId: $searchResultsVM.selectedUser.id,
-                    blockedUser: .constant(BlockedUser(id: searchResultsVM.selectedUser.id,
-                                                       displayName: searchResultsVM.selectedUser.displayName ?? "",
-                                                       dateRemoved: Date())),
+                    blockedUser: .constant(BlockedUser(data: blockedUserData)),
                     friendEntity: searchResultsVM.convertUserToFriendDataBinding(
                         displayName: searchResultsVM.selectedUser.displayName ?? "",
                         friendUserID: searchResultsVM.selectedUser.id,

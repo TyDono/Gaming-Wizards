@@ -58,7 +58,6 @@ struct CreateReportUserView: View {
     var body: some View {
         ZStack {
             VStack {
-//                reportPopUp
                 reportPopUpSheet
             }
         }
