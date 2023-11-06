@@ -14,9 +14,13 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     @ObservedObject var user: UserObservable
     @ObservedObject var coreDataController: CoreDataController
     @Published var isPayToPlay: Bool = false
-    @Published var savedSearchSettingsEntity: SearchSettingsEntity?
+    @Published var userSearchSettings: SearchSettings?
+    @Published var isFailedToSavePayToPlayShowing: Bool = false
     private let firestoreService: FirebaseFirestoreService
     private var searchSettingsCancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
+
+    let convertToFriend = ConvertToFriend()
     
     init(
         user: UserObservable = UserObservable.shared,
@@ -32,7 +36,8 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
         self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }) { searchSettings in
-                self.savedSearchSettingsEntity = searchSettings
+                guard let searchSettingsEntity = searchSettings else { return }
+                self.userSearchSettings = SearchSettings(from: searchSettingsEntity)
                 self.changeIsPayToPlay()
             }
     }
@@ -42,15 +47,39 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     }
     
     func changeIsPayToPlay() {
-        guard let isFreeToPlaySetting = savedSearchSettingsEntity?.isPayToPlay else { return }
-        isPayToPlay = isFreeToPlaySetting
+        guard let userSearchSettings = userSearchSettings else { return  }
+        isPayToPlay = userSearchSettings.isPayToPlay
+    }
+    
+    func callSaveChangesToFirestore(oldSearchSettingsData: SearchSettings, newSearchSettingsData: SearchSettings) async {
+            let saveChangesSuccess = await firestoreService.saveChangesToFirestore(from: oldSearchSettingsData, to: newSearchSettingsData, userId: user.id)
+            switch saveChangesSuccess {
+            case .success():
+                saveIsPayToPlaySettings(isPayToPlay: newSearchSettingsData.isPayToPlay)
+            case .failure(let error):
+                print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
+                userSearchSettings?.isPayToPlay.toggle()
+                isFailedToSavePayToPlayShowing = true
+            }
     }
     
     func saveIsPayToPlaySettings(isPayToPlay: Bool) {
-        guard let newSearchSettings: SearchSettingsEntity = savedSearchSettingsEntity else { return }
-        newSearchSettings.isPayToPlay = isPayToPlay
+        guard userSearchSettings != nil else { return }
+        userSearchSettings?.isPayToPlay = isPayToPlay
         do {
-            try coreDataController.saveSearchSettingsToCoreData(searchSettings: newSearchSettings)
+            coreDataController.saveUserSearchSettingsToCoreData(userSearchSettings!)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("Failed to save search settings: \(error)")
+                    }
+                }, receiveValue: { savedEntity in
+                    print("Search settings saved: \(savedEntity)")
+                })
+                .store(in: &cancellables)
         } catch {
             print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")
         }

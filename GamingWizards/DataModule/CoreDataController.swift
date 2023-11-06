@@ -24,10 +24,6 @@ class CoreDataController: ObservableObject {
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-//    @Published var savedUserEntities: [UserEntity] = []
-//    @Published var savedFriendEntities: [FriendEntity] = []
-//    @Published var blockedUserEntities: [BlockedUserEntity] = []
-//    @Published var savedSearchSettingsEntity: SearchSettingsEntity?
     @Published var savedUser: UserEntity?
     
     private init() {
@@ -120,6 +116,43 @@ class CoreDataController: ObservableObject {
 //            print("Failed to fetch saved SearchSettingsEntity: \(error)")
 //        }
 //    }
+    
+    func saveUserSearchSettingsToCoreData(_ searchSettings: SearchSettings) -> AnyPublisher<SearchSettingsEntity, Error> {
+        return Future { promise in
+            do {
+                let context = self.viewContext
+                var searchSettingsEntity: SearchSettingsEntity?
+                // Check if there is an existing SearchSettingsEntity
+                let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
+                if let existingSettings = try context.fetch(fetchRequest).first {
+                    // Update the existing entity
+                    searchSettingsEntity = existingSettings
+                } else {
+                    // Create a new entity if it doesn't exist
+                    searchSettingsEntity = SearchSettingsEntity(context: context)
+                }
+                searchSettingsEntity?.ageRangeMax = Int16(searchSettings.ageRangeMax)
+                searchSettingsEntity?.ageRangeMin = Int16(searchSettings.ageRangeMin)
+                searchSettingsEntity?.groupSizeRangeMax = Int16(searchSettings.groupSizeRangeMax)
+                searchSettingsEntity?.isPayToPlay = searchSettings.isPayToPlay
+                searchSettingsEntity?.searchRadius = searchSettings.searchRadius
+                
+                // Save the context to persist the changes
+                try context.save()
+                
+                if let entity = searchSettingsEntity {
+                    promise(.success(entity))
+                } else {
+                    // Handle the case where the entity is not available
+                    let error = NSError(domain: "YourDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to save SearchSettingsEntity"])
+                    promise(.failure(error))
+                }
+            } catch {
+                promise(.failure(error))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
     
     func saveSearchSettingsToCoreData(searchSettings: SearchSettingsEntity) throws {
         do {
@@ -251,17 +284,14 @@ class CoreDataController: ObservableObject {
     
     func saveFriendToCoreData(friend: FriendEntity) {
         do {
-            // Insert the friend entity into the view context if it's not already there.
             if !viewContext.hasChanges {
                 viewContext.insert(friend)
             }
-            
             try viewContext.save()
         } catch {
             print("ERROR SAVING FRIEND CORE DATA: \(error)")
         }
     }
-
     
 //    func saveFriendData() {
 //        do {

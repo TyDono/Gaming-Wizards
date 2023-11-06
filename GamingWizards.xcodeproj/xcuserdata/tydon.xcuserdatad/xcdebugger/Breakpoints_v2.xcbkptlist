@@ -2268,8 +2268,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "createBaselineSearchSettings()"
             landmarkType = "7">
             <Locations>
@@ -2406,6 +2406,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
                   endingLineNumber = "98"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbbb00"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
                   offsetFromSymbolStart = "352">
                </Location>
             </Locations>
@@ -3056,69 +3071,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/UniversalViews/Search Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "saveIsPayToPlaySettings(isPayToPlay:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d75d4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.IsPayToPlaySearchSettingsViewModel.saveIsPayToPlaySettings(isPayToPlay: Swift.Bool) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "192">
-               </Location>
-               <Location
-                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d75d4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.IsPayToPlaySearchSettingsViewModel.saveIsPayToPlaySettings(isPayToPlay: Swift.Bool) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "272">
-               </Location>
-               <Location
-                  uuid = "6D930E4D-7128-44BD-AA65-D90A09B2C727 - 9af5493c982d72ed"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.IsPayToPlaySearchSettingsViewModel.saveIsPayToPlaySettings(isPayToPlay: Swift.Bool) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "272">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4D7368D9-E3AF-462D-8D89-0A2F9F96CDB9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3126,8 +3078,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "addFriend(friendUserID:friendDisplayName:isFriend:isFavorite:profileImageString:)"
             landmarkType = "7">
             <Locations>
@@ -3268,72 +3220,10 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "deleteBlockedUserLocally(blockedUser:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "45CE85EF-1A3D-4BA7-AD2A-F1A6BE98259C - c47b2c3c17f60abc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.deleteBlockedUserLocally(blockedUser: GamingWizards.BlockedUserEntity) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "353"
-                  endingLineNumber = "353"
-                  offsetFromSymbolStart = "308">
-               </Location>
-               <Location
-                  uuid = "45CE85EF-1A3D-4BA7-AD2A-F1A6BE98259C - c47b2c3c17f60abc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.deleteBlockedUserLocally(blockedUser: GamingWizards.BlockedUserEntity) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "353"
-                  endingLineNumber = "353"
-                  offsetFromSymbolStart = "468">
-               </Location>
-               <Location
-                  uuid = "45CE85EF-1A3D-4BA7-AD2A-F1A6BE98259C - c47b2c3c17f60b95"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.deleteBlockedUserLocally(blockedUser: GamingWizards.BlockedUserEntity) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "360"
-                  endingLineNumber = "360"
-                  offsetFromSymbolStart = "308">
-               </Location>
-               <Location
-                  uuid = "45CE85EF-1A3D-4BA7-AD2A-F1A6BE98259C - c47b2c3c17f60bdb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GamingWizards.CoreDataController.deleteBlockedUserLocally(blockedUser: GamingWizards.BlockedUserEntity) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "358"
-                  endingLineNumber = "358"
-                  offsetFromSymbolStart = "308">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3362,8 +3252,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "clearAllData()"
             landmarkType = "7">
             <Locations>
@@ -3435,7 +3325,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FE160D7C-2C8D-48E9-8065-C43EA5AB4EB1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
@@ -3445,6 +3335,225 @@
             endingLineNumber = "406"
             landmarkName = "saveChangesToFirestore(from:to:userId:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FE160D7C-2C8D-48E9-8065-C43EA5AB4EB1 - a8bf87122b480a67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of generic specialization &lt;GamingWizards.SearchSettings, GamingWizards.SearchSettings&gt; of GamingWizards.FirebaseFirestoreHelper.saveChangesToFirestore&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_0_0: GamingWizards.Updatable, &#x3c4;_0_1: GamingWizards.Updatable&gt;(from: &#x3c4;_0_0, to: &#x3c4;_0_1, userId: Swift.String) async -&gt; Swift.Result&lt;(), Swift.Error&gt;"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "406"
+                  endingLineNumber = "406"
+                  offsetFromSymbolStart = "268">
+               </Location>
+               <Location
+                  uuid = "FE160D7C-2C8D-48E9-8065-C43EA5AB4EB1 - 8bc8a3c4a61eea4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of generic specialization &lt;GamingWizards.SearchSettings, GamingWizards.SearchSettings&gt; of GamingWizards.FirebaseFirestoreHelper.saveChangesToFirestore&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_0_0: GamingWizards.Updatable, &#x3c4;_0_1: GamingWizards.Updatable&gt;(from: &#x3c4;_0_0, to: &#x3c4;_0_1, userId: Swift.String) async -&gt; Swift.Result&lt;(), Swift.Error&gt;"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "406"
+                  endingLineNumber = "406"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "FE160D7C-2C8D-48E9-8065-C43EA5AB4EB1 - 7f1aaaf28fa14ec4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of generic specialization &lt;GamingWizards.SearchSettings, GamingWizards.SearchSettings&gt; of GamingWizards.FirebaseFirestoreHelper.saveChangesToFirestore&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_0_0: GamingWizards.Updatable, &#x3c4;_0_1: GamingWizards.Updatable&gt;(from: &#x3c4;_0_0, to: &#x3c4;_0_1, userId: Swift.String) async -&gt; Swift.Result&lt;(), Swift.Error&gt;"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "411"
+                  endingLineNumber = "411"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "FE160D7C-2C8D-48E9-8065-C43EA5AB4EB1 - 19343b62d192217b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of generic specialization &lt;GamingWizards.SearchSettings, GamingWizards.SearchSettings&gt; of GamingWizards.FirebaseFirestoreHelper.saveChangesToFirestore&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_0_0: GamingWizards.Updatable, &#x3c4;_0_1: GamingWizards.Updatable&gt;(from: &#x3c4;_0_0, to: &#x3c4;_0_1, userId: Swift.String) async -&gt; Swift.Result&lt;(), Swift.Error&gt;"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "399"
+                  endingLineNumber = "399"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "FE160D7C-2C8D-48E9-8065-C43EA5AB4EB1 - 19343b62d1922062"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of generic specialization &lt;GamingWizards.SearchSettings, GamingWizards.SearchSettings&gt; of GamingWizards.FirebaseFirestoreHelper.saveChangesToFirestore&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_0_0: GamingWizards.Updatable, &#x3c4;_0_1: GamingWizards.Updatable&gt;(from: &#x3c4;_0_0, to: &#x3c4;_0_1, userId: Swift.String) async -&gt; Swift.Result&lt;(), Swift.Error&gt;"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "406"
+                  endingLineNumber = "406"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "002A40C0-A4F8-43B9-8854-1AAD48B78057"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/UniversalViews/Search Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C347063-7C86-4513-936D-E26C5E574D60"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/UniversalViews/Search Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "5C347063-7C86-4513-936D-E26C5E574D60 - da5c6f5423307645"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "540">
+               </Location>
+               <Location
+                  uuid = "5C347063-7C86-4513-936D-E26C5E574D60 - 5d39f89af4521a30"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "5C347063-7C86-4513-936D-E26C5E574D60 - 4f2d501a1e6dda2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49D6C3F5-CB40-4140-890B-F778804F1B61"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GamingWizards/UniversalViews/Search Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "49D6C3F5-CB40-4140-890B-F778804F1B61 - da5c6f5423307645"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "540">
+               </Location>
+               <Location
+                  uuid = "49D6C3F5-CB40-4140-890B-F778804F1B61 - 5d39f89af4521a30"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "49D6C3F5-CB40-4140-890B-F778804F1B61 - 4f2d501a1e6dda2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
+                  moduleName = "GamingWizards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

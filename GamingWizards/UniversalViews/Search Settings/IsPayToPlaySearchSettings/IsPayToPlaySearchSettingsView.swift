@@ -30,7 +30,16 @@ struct IsPayToPlaySearchSettingsView: View {
             }
             
             .onChange(of: isPayToPlaySearchSettingsVM.isPayToPlay) { newIsPayToPlayValue in
-                isPayToPlaySearchSettingsVM.saveIsPayToPlaySettings(isPayToPlay: newIsPayToPlayValue)
+                Task {
+                    guard let oldUserSearchSettings = isPayToPlaySearchSettingsVM.userSearchSettings else{  return }
+                    var newSearchSettings = oldUserSearchSettings
+                    print(newIsPayToPlayValue)
+                    print(newSearchSettings.isPayToPlay)
+                    newSearchSettings.isPayToPlay = newIsPayToPlayValue
+                    await isPayToPlaySearchSettingsVM.callSaveChangesToFirestore(
+                        oldSearchSettingsData: oldUserSearchSettings, newSearchSettingsData: newSearchSettings)
+//                    isPayToPlaySearchSettingsVM.saveIsPayToPlaySettings(isPayToPlay: newIsPayToPlayValue)
+                }
             }
         }
         .onAppear {
