@@ -19,8 +19,6 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     private let firestoreService: FirebaseFirestoreService
     private var searchSettingsCancellable: AnyCancellable?
     private var cancellables = Set<AnyCancellable>()
-
-    let convertToFriend = ConvertToFriend()
     
     init(
         user: UserObservable = UserObservable.shared,
@@ -57,7 +55,7 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
             case .success():
                 saveIsPayToPlaySettings(isPayToPlay: newSearchSettingsData.isPayToPlay)
             case .failure(let error):
-                print("ERROR CREATING DUAL RECENT MESSAGE: \(error.localizedDescription)")
+                print("ERROR UPDATING SEARCH SETTINGS ISPAYTOPLAY: \(error.localizedDescription)")
                 userSearchSettings?.isPayToPlay.toggle()
                 isFailedToSavePayToPlayShowing = true
             }
@@ -66,23 +64,19 @@ class IsPayToPlaySearchSettingsViewModel: ObservableObject {
     func saveIsPayToPlaySettings(isPayToPlay: Bool) {
         guard userSearchSettings != nil else { return }
         userSearchSettings?.isPayToPlay = isPayToPlay
-        do {
-            coreDataController.saveUserSearchSettingsToCoreData(userSearchSettings!)
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .finished:
-                        break
-                    case .failure(let error):
-                        print("Failed to save search settings: \(error)")
-                    }
-                }, receiveValue: { savedEntity in
-                    print("Search settings saved: \(savedEntity)")
-                })
-                .store(in: &cancellables)
-        } catch {
-            print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")
-        }
+        coreDataController.saveUserSearchSettingsToCoreData(userSearchSettings!)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("Failed to save search settings: \(error)")
+                }
+            }, receiveValue: { savedEntity in
+                print("Search settings saved: \(savedEntity)")
+            })
+            .store(in: &cancellables)
     }
     
 }

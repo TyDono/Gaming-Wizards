@@ -37,16 +37,28 @@ struct DistancePickerView: View {
     private var distancePickerSlider: some View {
         VStack {
             Slider(value: $distancePickerVM.miles, in: 1...500, step: 1.0)
-            .padding()
-            .onChange(of: distancePickerVM.miles) { newMiles in
-                distancePickerVM.saveDistanceSearchSettings(distance: newMiles)
-            }
-            .onAppear {
-                guard let searchRadiusSettings = distancePickerVM.savedSearchSettingsEntity?.searchRadius else { return }
-                self.distancePickerVM.miles = searchRadiusSettings
+                .padding()
+                .onAppear {
+                    guard let searchRadiusSettings = distancePickerVM.savedSearchSettings?.searchRadius else { return }
+                    self.distancePickerVM.miles = searchRadiusSettings
+                }
+        }
+        .onReceive(
+            distancePickerVM.$miles
+                .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+        ) { newMiles in
+            
+            guard let oldUserSearchSettings = distancePickerVM.savedSearchSettings else{  return }
+            var newSearchSettings = oldUserSearchSettings
+            newSearchSettings.searchRadius = newMiles
+            
+            Task {
+                await distancePickerVM.callSaveChangesToFirestore(oldSearchSettingsData: oldUserSearchSettings, newSearchSettingsData: newSearchSettings)
             }
         }
     }
+
+    
     /*
     private var distancePickerSlider: some View {
         VStack {

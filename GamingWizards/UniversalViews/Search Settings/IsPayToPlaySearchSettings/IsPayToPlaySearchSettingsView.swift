@@ -28,13 +28,10 @@ struct IsPayToPlaySearchSettingsView: View {
                     
                 }
             }
-            
             .onChange(of: isPayToPlaySearchSettingsVM.isPayToPlay) { newIsPayToPlayValue in
                 Task {
                     guard let oldUserSearchSettings = isPayToPlaySearchSettingsVM.userSearchSettings else{  return }
                     var newSearchSettings = oldUserSearchSettings
-                    print(newIsPayToPlayValue)
-                    print(newSearchSettings.isPayToPlay)
                     newSearchSettings.isPayToPlay = newIsPayToPlayValue
                     await isPayToPlaySearchSettingsVM.callSaveChangesToFirestore(
                         oldSearchSettingsData: oldUserSearchSettings, newSearchSettingsData: newSearchSettings)
@@ -50,7 +47,6 @@ struct IsPayToPlaySearchSettingsView: View {
         .onDisappear {
             isPayToPlaySearchSettingsVM.searchSettingsIsBeingCanceled()
         }
-        
     }
     
 }
