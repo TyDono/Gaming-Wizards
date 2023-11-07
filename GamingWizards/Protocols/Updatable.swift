@@ -8,6 +8,5 @@
 import Foundation
 
 protocol Updatable {
-//    func updatedFields<T: Updatable>(from other: T) -> [String: Any]
     func updatedFields<U: Updatable>(from other: U) -> [String: Any]
 }

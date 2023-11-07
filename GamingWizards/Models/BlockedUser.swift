@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct BlockedUser:Identifiable, Codable {
-    var id: String 
+struct BlockedUser: Identifiable, Codable {
+    
+    var id: String
     var displayName: String
     var dateRemoved: Date
     
@@ -36,6 +37,31 @@ struct BlockedUser:Identifiable, Codable {
             Constants.displayName: displayName,
             Constants.dateRemoved: dateRemoved
         ]
+    }
+    
+}
+
+extension BlockedUser: Updatable {
+    
+    func updatedFields<U: Updatable>(from other: U) -> [String: Any] {
+        guard let otherUser = other as? BlockedUser else {
+            return [:]
+        }
+        var updatedFields: [String: Any] = [:]
+        
+        if self.id != otherUser.id {
+            updatedFields[BlockedUserCodingKeys.id.rawValue] = self.id
+        }
+        
+        if self.displayName != otherUser.displayName {
+            updatedFields[BlockedUserCodingKeys.displayName.rawValue] = self.displayName
+        }
+        
+        if self.dateRemoved != otherUser.dateRemoved {
+            updatedFields[BlockedUserCodingKeys.dateRemoved.rawValue] = self.dateRemoved
+        }
+        
+        return updatedFields
     }
     
 }
