@@ -26,7 +26,7 @@ protocol FirebaseFirestoreService {
     func retrieveBlockedUsers(userId: String) async
     func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?, friendUserIDs: [FriendEntity]?, blockedUserIds: [BlockedUserEntity]?) async throws -> [User]
     func updateUserDeviceInFirestore() async
-    func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> 
+//    func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> 
     func saveChangesToFirestore<T: Updatable, U: Updatable>(from oldData: T, to newData: U, userId: String) async -> Result<Void, Error>
     func fetchUserSearchSettings(userId: String) async -> SearchSettings? 
     
@@ -380,6 +380,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     
     // MARK: Search Settings
     
+    /*
     func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> {
         
         do {
@@ -395,6 +396,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             return .failure(error)
         }
     }
+    */
     
     func saveChangesToFirestore<T: Updatable, U: Updatable>(from oldData: T, to newData: U, userId: String) async -> Result<Void, Error> {
         let changes = ChangeMapper.mapChanges(from: oldData, to: newData)
@@ -402,8 +404,14 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             return .success(())
         }
         do {
-            let documentReference = Firestore.firestore().collection(Constants.searchSettings).document(userId)
-            try await documentReference.updateData(changes)
+            let firestore = Firestore.firestore()
+            let documentReference = firestore.collection(Constants.searchSettings).document(userId)
+            let documentSnapshot = try await documentReference.getDocument()
+            if documentSnapshot.exists {
+                try await documentReference.updateData(changes)
+            } else {
+                try await documentReference.setData(changes)
+            }
             return .success(())
         } catch let error {
             return .failure(FirestoreError.updateFailed(error.localizedDescription))

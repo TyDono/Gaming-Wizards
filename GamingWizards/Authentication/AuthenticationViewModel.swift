@@ -101,7 +101,6 @@ import Combine
                     Task.detached {
                         guard let searchSettings = await self.coreDataController.createBaselineSearchSettings() else { return }
                         await self.retrieveFriendsListener()
-                        await self.fbFirestoreHelper.saveUserSearchSettings(userId: user.id, searchSettings: searchSettings)
                         await self.signInSuccess()
                     }
                 }
@@ -117,6 +116,7 @@ import Combine
         Task {
             guard let searchSettings = await fbFirestoreHelper.fetchUserSearchSettings(userId: userId) else { return }
             coreDataController.saveUserSearchSettingsToCoreData(searchSettings)
+//            await self.fbFirestoreHelper.saveUserSearchSettings(userId: user.id, searchSettings: searchSettings)
         }
     }
     
