@@ -70,6 +70,7 @@ import Combine
             if document.exists == true {
                 if let documentData = document.data() {
                     do {
+                        //get existing user from firestore
                         let decoder = Firestore.Decoder()
                         let existingUser = try decoder.decode(User.self, from: documentData)
                         self.fbStorageHelper.retrieveUserProfileImage(imageString: existingUser.profileImageString) { profileImage in
@@ -81,8 +82,8 @@ import Combine
                             Task.detached {
                                 await self.retrieveFriendsListener()
                                 await self.fbFirestoreHelper.retrieveBlockedUsers(userId: existingUser.id)
-                                await self.coreDataController.createBaselineSearchSettings() // get from cloud later on
                                 await self.fbFirestoreHelper.updateUserDeviceInFirestore()
+                                await self.callFetchUserSearchSettings(userId: user.id)
                                 await self.signInSuccess()
                             }
                         }
@@ -94,11 +95,13 @@ import Combine
                     }
                 }
             } else {
+                //create new user in firestore
                 try await documentPath.setData(user.userDictionary)
                 self.saveUserToUserDefaults(user: user) {
                     Task.detached {
+                        guard let searchSettings = await self.coreDataController.createBaselineSearchSettings() else { return }
                         await self.retrieveFriendsListener()
-                        await self.coreDataController.createBaselineSearchSettings()
+                        await self.fbFirestoreHelper.saveUserSearchSettings(userId: user.id, searchSettings: searchSettings)
                         await self.signInSuccess()
                     }
                 }
@@ -107,6 +110,13 @@ import Combine
             print("ERROR RETRIEVING FIRESTORE USER DATA WHEN SIGNING IN: \(error.localizedDescription)")
             await signOut()
             return
+        }
+    }
+    
+    private func callFetchUserSearchSettings(userId: String) async {
+        Task {
+            guard let searchSettings = await fbFirestoreHelper.fetchUserSearchSettings(userId: userId) else { return }
+            coreDataController.saveUserSearchSettingsToCoreData(searchSettings)
         }
     }
     

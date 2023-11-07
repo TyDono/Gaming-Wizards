@@ -78,8 +78,8 @@ class CoreDataController: ObservableObject {
     
     // MARK: SearchSettings
     
-    func createBaselineSearchSettings() {
-//        guard savedSearchSettingsEntity == nil else { return }
+    // add a result type with return as well. it shouldn't ever return nil, but like it can if you break code.
+    func createBaselineSearchSettings() -> SearchSettings? {
         let newSearchSettings = SearchSettingsEntity(context: viewContext)
         newSearchSettings.ageRangeMax = 18
         newSearchSettings.ageRangeMin = 18
@@ -90,8 +90,11 @@ class CoreDataController: ObservableObject {
         
         do {
             try saveSearchSettingsToCoreData(searchSettings: newSearchSettings)
+            let searchSettings = SearchSettings(from: newSearchSettings)
+            return searchSettings
         } catch {
             print("ERROR SAVING SEARCH RADIUS TO SEARCH SETTINGS ENTITY: \(error)")
+            return nil
         }
     }
     

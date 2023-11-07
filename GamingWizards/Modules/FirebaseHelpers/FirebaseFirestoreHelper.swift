@@ -438,7 +438,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             if let error = err {
                 print("FIRESTORE DELETION ERROR: \(error.localizedDescription)")
             } else {
-                
+                // have user be logged out
             }
         }
     }

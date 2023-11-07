@@ -110,8 +110,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "createUserBaseData(id:firstName:lastName:displayName:email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1316,8 +1316,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "saveUserToUserDefaults(user:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1489,8 +1489,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "sha256(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2252,8 +2252,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "createUserBaseData(id:firstName:lastName:displayName:email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2268,8 +2268,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "createBaselineSearchSettings()"
             landmarkType = "7">
             <Locations>
@@ -2436,8 +2436,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "saveUserIntoFirestore(for:)"
             landmarkType = "7">
             <Locations>
@@ -2559,8 +2559,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "saveUserIntoFirestore(for:)"
             landmarkType = "7">
             <Locations>
@@ -2727,8 +2727,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "saveUserIntoFirestore(for:)"
             landmarkType = "7">
             <Locations>
@@ -2850,8 +2850,8 @@
             filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "saveUserIntoFirestore(for:)"
             landmarkType = "7">
             <Locations>
@@ -3078,8 +3078,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "addFriend(friendUserID:friendDisplayName:isFriend:isFavorite:profileImageString:)"
             landmarkType = "7">
             <Locations>
@@ -3220,8 +3220,8 @@
             filePath = "GamingWizards/DataModule/CoreDataController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
             landmarkName = "deleteBlockedUserLocally(blockedUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3303,22 +3303,6 @@
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "10F2C5C2-B251-4E98-A670-7708D61AB923"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Modules/FirebaseHelpers/FirebaseFirestoreHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
-            landmarkName = "saveChangesToFirestore(from:to:userId:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

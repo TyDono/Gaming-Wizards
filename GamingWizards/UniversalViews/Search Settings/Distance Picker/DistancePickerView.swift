@@ -81,7 +81,6 @@ struct DistancePickerView: View {
         }
     }
     */
-
     
     private var distancePickerMessage: some View {
         VStack {
