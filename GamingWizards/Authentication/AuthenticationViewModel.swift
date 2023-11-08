@@ -40,6 +40,7 @@ import Combine
     @Published private var savedFriendEntities: [FriendEntity] = []
     @Published private var blockedUserEntities: [BlockedUserEntity] = []
     private var cancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
     
     private init(coreDataController: CoreDataController = CoreDataController.shared) {
         self.coreDataController = coreDataController
@@ -137,7 +138,6 @@ import Combine
         user.longitude = newUser.longitude
         user.location = newUser.location
         user.profileImageString = newUser.profileImageString
-//        user.friendCodeID = newUser.friendCodeID
         user.listOfGames = newUser.listOfGames
         user.groupSize = newUser.groupSize
         user.age = newUser.age
@@ -168,7 +168,7 @@ import Combine
         let longitude = 0.0
         let location = ""
         let profileImageString = "\(UUID().uuidString).jpg"
-        let friendID = String((UUID().uuidString.suffix(4)))
+//        let friendID = String((UUID().uuidString.suffix(4)))
         let games: [String] = []
         let groupSize = ""
         let age = ""
@@ -188,7 +188,6 @@ import Combine
                            longitude: longitude,
                            location: location,
                            profileImageString: profileImageString,
-                           //                           friendCodeID: friendID,
                            listOfGames: games,
                            groupSize: groupSize,
                            age: age,
@@ -276,45 +275,47 @@ import Combine
             }
     }
     
-    func retrieveFriendsListener() { // not used. moved to firestore helper
-         let userID = user.id //else { return }
-        listeningRegistration = fbFirestoreHelper.firestore.collection(Constants.usersString).document(userID).collection(Constants.userFriendList)
-            .addSnapshotListener({ [weak self] snapshot, err in
+    func retrieveFriendsListener() {
+        let userID = user.id
+        
+        listeningRegistration = fbFirestoreHelper.firestore.collection(Constants.usersString)
+            .document(userID)
+            .collection(Constants.userFriendList)
+            .addSnapshotListener { [weak self] snapshot, err in
                 if let error = err {
                     print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
                 } else {
                     guard let self = self else { return }
                     guard let querySnapshot = snapshot else {
-                        print("ERROR FETCHING SNAPSHOT DATA: ")
+                        print("ERROR FETCHING SNAPSHOT DATA")
                         return
                     }
-                    
                     let documents = querySnapshot.documents
-                    //deletes all friends locally
-                    for friend in savedFriendEntities {
-                        self.coreDataController.deleteFriendLocally(friend: friend)
-                    }
                     for document in documents {
-                        let friendCodeID = document.data()[Constants.friendCodeID] as? String ?? "????"
-                        let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
-                        let friendDisplayName = document.data()[Constants.displayName] as? String ?? ""
-                        let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
-                        let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
-                        let profileImageString = document.data()[Constants.imageString] as? String ?? ""
-                        self.coreDataController.addFriend(friendUserID: friendUserID,
-                                                          friendDisplayName: friendDisplayName,
-                                                          isFriend: isFriend,
-                                                          isFavorite: isFavorite,
-                                                          profileImageString: profileImageString)
+                        do {
+                            let existingFriend = try document.data(as: Friend.self)
+                            let friend = existingFriend
+                            self.coreDataController.saveFriend(friend: friend)
+                                .receive(on: DispatchQueue.main)
+                                .sink(receiveCompletion: { completion in
+                                    switch completion {
+                                    case .finished:
+                                        break
+                                    case .failure(let error):
+                                        print("FAILED TO SAVE FRIEND TO CORE DATA: \(error)")
+                                    }
+                                }, receiveValue: { savedEntity in
+                                    // DO SOMETHING ITH THE SAVED ENTITY IF NEEDED
+                                })
+                                .store(in: &cancellables)
+                        } catch {
+                            print("ERROR DECODING FRIEND: \(error.localizedDescription)")
+                        }
                     }
-                    //keep. use it so I can update the ui cleaner
-//                    self.myFriendListData = querySnapshot.documents.compactMap({ document in
-//                        try? document.data(as: Friend.self)
-//                    })
-                    
                 }
-            })
+            }
     }
+
     
     func signOut() async {
         GIDSignIn.sharedInstance.signOut()

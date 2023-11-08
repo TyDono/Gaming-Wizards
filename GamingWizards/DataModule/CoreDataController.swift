@@ -195,20 +195,9 @@ class CoreDataController: ObservableObject {
         }
         .eraseToAnyPublisher()
     }
-    //single value
-//    func fetchSearchSettingsEntityPublisher() -> AnyPublisher<SearchSettingsEntity?, Error> {
-//        let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
-//        return Future { promise in
-//            do {
-//                let settings = try self.viewContext.fetch(fetchRequest)
-//                promise(.success(settings.first))
-//            } catch {
-//                promise(.failure(error))
-//            }
-//        }
-//        .eraseToAnyPublisher()
-//    }
+    
     //create a func that can cover friend to entity and user to entity
+    // remove this later when i replace all entity calls
     func convertToFriendEntity2(displayName: String?, friendUserID: String?, profileImageString: String?, isFavorite: Bool?, isFriend: Bool?, recentMessageText: String, recentMessageTimeStamp: Date, onlineStatus: Bool, messageToId: String) -> FriendEntity {
         let newFriendEntity = FriendEntity(context: viewContext)
 //        newFriend.friendCodeID = friendCodeID
@@ -235,18 +224,6 @@ class CoreDataController: ObservableObject {
 //            }
 //        }
 //    }
-    
-    //rename to convert then save
-    func addFriend(friendUserID: String, friendDisplayName: String, isFriend: Bool, isFavorite: Bool, profileImageString: String) {
-        let newFriend = FriendEntity(context: viewContext)
-        newFriend.id =  friendUserID
-        newFriend.displayName = friendDisplayName
-        newFriend.isFriend = isFriend
-        newFriend.isFavorite = isFavorite
-        newFriend.imageString = profileImageString
-        
-        saveFriendToCoreData(friend: newFriend)
-    }
     
     func deleteFriendInCloud(friend: FriendEntity, userId: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
         guard let friendUserID = friend.id else { return }
@@ -285,15 +262,31 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    func saveFriendToCoreData(friend: FriendEntity) {
-        do {
-            if !viewContext.hasChanges {
-                viewContext.insert(friend)
+    func saveFriend(friend: Friend) -> AnyPublisher<FriendEntity, Error> {
+        return Future { promise in
+            do {
+                let context = self.viewContext
+                var friendEntity: FriendEntity?
+                let fetchRequest: NSFetchRequest<FriendEntity> = FriendEntity.fetchRequest()
+                if let existingFriend = try context.fetch(fetchRequest).first {
+                    friendEntity = existingFriend
+                } else {
+                    friendEntity = FriendEntity(context: context)
+                }
+                friendEntity?.displayName = friend.displayName
+                try context.save()
+                if let entity = friendEntity {
+                    promise(.success(entity))
+                } else {
+                    // Handle the case where the entity is not available
+                    let error = NSError(domain: "YourDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to save SearchSettingsEntity"])
+                    promise(.failure(error))
+                }
+            } catch {
+                promise(.failure(error))
             }
-            try viewContext.save()
-        } catch {
-            print("ERROR SAVING FRIEND CORE DATA: \(error)")
         }
+        .eraseToAnyPublisher()
     }
     
 //    func saveFriendData() {
