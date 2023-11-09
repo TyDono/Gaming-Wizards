@@ -37,21 +37,6 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    private func objectDidChange() {
-        // Fetch your CoreData entity here or update it as needed
-//        print("search settings changed")
-//        print(savedSearchSettingsEntity)
-//        print("pause")
-//        let fetchRequest: NSFetchRequest<SearchSettingsEntity> = SearchSettingsEntity.fetchRequest()
-//        
-//        do {
-//            self.savedSearchSettingsEntity = try CoreDataController.shared.context.fetch(fetchRequest).first
-//        } catch {
-//            // Handle the error
-//            print("Error fetching CoreData entity: \(error)")
-//        }
-    }
-    
     func clearAllData() async {
         await clearEntityData(entityName: "UserEntity")
         await clearEntityData(entityName: "FriendEntity")

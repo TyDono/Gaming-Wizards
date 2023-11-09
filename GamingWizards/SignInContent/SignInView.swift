@@ -142,21 +142,6 @@ struct SignInView: View {
         .clipShape(Capsule())
         .padding(.horizontal, 40)
         .offset(y: -70)
-//        Button(action: {
-//            signInViewModel.testrest()
-//            signInWithApple()
-//        }) {
-//            RoundedRectangle(cornerRadius: 4)
-//                .foregroundColor(.white)
-//                .shadow(color: Color.black.opacity(0.26), radius: 12, x: 0, y: 0)
-//                .frame(maxWidth: .infinity)
-//                .frame(height: 44)
-//                .overlay(
-//                    Text("Sign in with Apple")
-//                        .foregroundColor(Colors.greyDark)
-//                        .modifier(FontModifier(size: 15, weight: .extraBold))
-//                )
-//        }
     }
     
     private var googleSignInButton: some View {

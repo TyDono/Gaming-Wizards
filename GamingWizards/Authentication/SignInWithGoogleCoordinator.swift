@@ -14,8 +14,6 @@ import CryptoKit
 import CoreData
 
 @MainActor class SignInWithGoogleCoordinator: ObservableObject {
-    
-//    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
     let scenes = UIApplication.shared.connectedScenes
     
