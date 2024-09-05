@@ -12,7 +12,7 @@ import FirebaseStorage
 
 
 extension ManageAccountView {
-    @MainActor class ManageAccountViewModel: ObservableObject {
+     class ManageAccountViewModel: ObservableObject {
 //        @ObservedObject var user = UserObservable.shared
 //        @StateObject private var authenticationViewModel = AuthenticationViewModel.sharedAuthenticationVM
 //        @ObservedObject var locationManager: LocationManager = LocationManager()

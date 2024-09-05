@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 //extension SearchResultsView {
-     @MainActor class SearchResultsViewModel: ObservableObject {
+      class SearchResultsViewModel: ObservableObject {
          @ObservedObject var user = UserObservable.shared
          @Published var searchedForUsers: [User]? = []
          @Published var resultWasTapped: Bool = false

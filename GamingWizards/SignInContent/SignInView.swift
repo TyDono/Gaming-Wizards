@@ -144,14 +144,35 @@ struct SignInView: View {
         .offset(y: -70)
     }
     
+//    private var googleSignInButton: some View {
+//        Button(action: {
+////            authenticationViewModel.signInWithGoogle()
+//            signInWithGoogleCoordinator.signInWithGoogle()
+//        }) {
+//            Image("btn_google_signin_light_normal_web")
+////                .aspectRatio(contentMode: .fit)
+//        }
+//    }
+    
     private var googleSignInButton: some View {
         Button(action: {
-//            authenticationViewModel.signInWithGoogle()
             signInWithGoogleCoordinator.signInWithGoogle()
         }) {
-            Image("btn_google_signin_light_normal_web")
-//                .aspectRatio(contentMode: .fit)
+            HStack {
+                Spacer()
+                Image("google_g_logo")
+                    .resizable()
+                    .frame(width: 23, height: 23)
+                Text("Continue with Google")
+                    .font(.roboto(.bold, size: 18))
+                    .foregroundColor(.black)
+                Spacer()
+            }
+            .frame(height: 55)
+            .background(Color.white)
+            .clipShape(Capsule())
         }
+        .padding(.horizontal, 40)
     }
     
     private var orDivider: some View {

@@ -256,7 +256,7 @@
 		CB5BE87729FDE956009D38D6 /* UserAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		CB5BE87829FDE956009D38D6 /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		CB5BE87929FDE956009D38D6 /* SignInWithAppleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleCoordinator.swift; sourceTree = "<group>"; };
-		CB5BE87A29FDE956009D38D6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		CB5BE87A29FDE956009D38D6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		CB5BE87B29FDE957009D38D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB5BE87D29FDE957009D38D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB5BE9002A0079BC009D38D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -679,12 +679,12 @@
 		CB5BE87529FDE956009D38D6 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				CB5BE87A29FDE956009D38D6 /* AuthenticationViewModel.swift */,
 				CB5BE87629FDE956009D38D6 /* SignInWithGoogleCoordinator.swift */,
 				CB5BE87729FDE956009D38D6 /* UserAuth.swift */,
 				CB5BE87829FDE956009D38D6 /* SessionStore.swift */,
 				CB5BE87929FDE956009D38D6 /* SignInWithAppleCoordinator.swift */,
 				CBAD3BC82A3A9CCC0068089B /* KeychainHelper.swift */,
-				CB5BE87A29FDE956009D38D6 /* AuthenticationViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";

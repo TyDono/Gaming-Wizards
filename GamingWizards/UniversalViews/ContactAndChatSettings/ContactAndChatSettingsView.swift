@@ -23,41 +23,37 @@ struct ContactAndChatSettingsView: View {
                     blockedUser
                 }
             }
-        }
-        .navigationBarTitle("", displayMode: .inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text(Constants.contactAndChatSettingsTitle)
-                    .font(.globalFont(.luminari, size: 26))
-                    .foregroundColor(.primary)
+            .navigationBarTitle("", displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(Constants.contactAndChatSettingsTitle)
+                        .font(.globalFont(.luminari, size: 26))
+                        .foregroundColor(.primary)
+                }
             }
         }
     }
-    
+
     private var blockedUser: some View {
-        NavigationStack {
-            Button(action: {
-                isBlockedUsersViewShowing = true
-            }) {
-                HStack {
-                    blockedUsersImage
-                    Text(Constants.blockedUsersTitle)
-                        .frame(maxWidth: .infinity,
-                               alignment: .leading)
-                        .font(.roboto(.regular, size: 20))
-                    
-                    Image(systemName: "chevron.right")
-                        .frame(maxWidth: .infinity,
-                               alignment: .trailing)
-                }
-                .listRowInsets(EdgeInsets())
-                .padding()
+        Button(action: {
+            isBlockedUsersViewShowing = true
+        }) {
+            HStack {
+                blockedUsersImage
+                Text(Constants.blockedUsersTitle)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.roboto(.regular, size: 20))
+                Image(systemName: "chevron.right")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
+            .listRowInsets(EdgeInsets())
+            .padding()
         }
-        .navigationDestination(isPresented: $isBlockedUsersViewShowing) {
-            BlockedUsersView(blockedUsersVM: blockedUsersVM)
-        }
-        
+        .background(
+            NavigationLink("", destination: BlockedUsersView(blockedUsersVM: blockedUsersVM))
+                .buttonStyle(PlainButtonStyle())
+                .opacity(0)  // Hidden NavigationLink
+        )
     }
     
     private var blockedUsersImage: some View {
@@ -71,6 +67,4 @@ struct ContactAndChatSettingsView: View {
                 .frame(width: 18, height: 18)
         }
     }
-    
 }
-

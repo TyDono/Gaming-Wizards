@@ -50,38 +50,6 @@
             endingLineNumber = "48"
             landmarkName = "getUserID()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B26B929D-4561-4E9E-BE28-6D36DEB03462 - 724b6bd288958e1e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GamingWizards.KeychainHelper.getUserID() -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/KeychainHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "1596">
-               </Location>
-               <Location
-                  uuid = "B26B929D-4561-4E9E-BE28-6D36DEB03462 - 724b6bd288958e1e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GamingWizards.KeychainHelper.getUserID() -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/KeychainHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "1660">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -119,22 +87,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4B8B8B57-7C2C-4199-95E0-B3C16DFC9D64"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/SwiftUiViews/AccountTab/HomeView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B1A55E52-AB59-46F6-80FC-33B033CD8215"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -146,38 +98,6 @@
             endingLineNumber = "315"
             landmarkName = "init()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B1A55E52-AB59-46F6-80FC-33B033CD8215 - d842b254c307acb8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.UserObservable.init() -&gt; GamingWizards.UserObservable"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/User.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "234"
-                  endingLineNumber = "234"
-                  offsetFromSymbolStart = "4629">
-               </Location>
-               <Location
-                  uuid = "B1A55E52-AB59-46F6-80FC-33B033CD8215 - d842b254c307acb8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.UserObservable.init() -&gt; GamingWizards.UserObservable"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/User.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "234"
-                  endingLineNumber = "234"
-                  offsetFromSymbolStart = "5365">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,38 +114,6 @@
             endingLineNumber = "314"
             landmarkName = "init()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "181EF2CB-E4DF-4665-BDF4-44F9E53F5CBB - 52a419b34ae8e2b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.UserObservable.() -&gt; GamingWizards.UserObservable.init() -&gt; GamingWizards.UserObservable"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/User.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "3523">
-               </Location>
-               <Location
-                  uuid = "181EF2CB-E4DF-4665-BDF4-44F9E53F5CBB - 52a419b34ae8e2b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.UserObservable.() -&gt; GamingWizards.UserObservable.init() -&gt; GamingWizards.UserObservable"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/User.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "4259">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -242,38 +130,6 @@
             endingLineNumber = "313"
             landmarkName = "init()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FE8D74A4-A574-4FB5-9C8F-183861F096E7 - 52a419b34ae8ea7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.UserObservable.() -&gt; GamingWizards.UserObservable.init() -&gt; GamingWizards.UserObservable"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/User.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "237"
-                  endingLineNumber = "237"
-                  offsetFromSymbolStart = "2466">
-               </Location>
-               <Location
-                  uuid = "FE8D74A4-A574-4FB5-9C8F-183861F096E7 - 52a419b34ae8ea7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.UserObservable.() -&gt; GamingWizards.UserObservable.init() -&gt; GamingWizards.UserObservable"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/User.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "237"
-                  endingLineNumber = "237"
-                  offsetFromSymbolStart = "3160">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -399,8 +255,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "410">
+                  endingLineNumber = "48">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8b9f"
@@ -414,8 +269,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "332">
+                  endingLineNumber = "48">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8b9f"
@@ -429,8 +283,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "269">
+                  endingLineNumber = "48">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8b9f"
@@ -444,8 +297,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "180">
+                  endingLineNumber = "48">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8c2b"
@@ -459,8 +311,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "410">
+                  endingLineNumber = "60">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8c2b"
@@ -474,8 +325,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "332">
+                  endingLineNumber = "60">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8c2b"
@@ -489,8 +339,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "269">
+                  endingLineNumber = "60">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8c2b"
@@ -504,8 +353,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "180">
+                  endingLineNumber = "60">
                </Location>
                <Location
                   uuid = "CB6608C3-B29C-418C-AC83-6EFF38703BB4 - 9332c584057c8c2b"
@@ -519,8 +367,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "462">
+                  endingLineNumber = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -555,143 +402,6 @@
             endingLineNumber = "44"
             landmarkName = "signInWithGoogle()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "394">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "244">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "392">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "192">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "366">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "136">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "443">
-               </Location>
-               <Location
-                  uuid = "1C7A2C07-D826-44F0-BF38-2311ADB922B8 - 4eabefd11ad206a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "312">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -708,53 +418,6 @@
             endingLineNumber = "30"
             landmarkName = "signInWithGoogle()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6C07A12A-7181-42F8-A670-6AA19185E239 - e36bdf55baf0d25"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "972">
-               </Location>
-               <Location
-                  uuid = "6C07A12A-7181-42F8-A670-6AA19185E239 - e36bdf55baf0d25"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "1315">
-               </Location>
-               <Location
-                  uuid = "6C07A12A-7181-42F8-A670-6AA19185E239 - e36bdf55baf0d48"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "507">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -771,158 +434,6 @@
             endingLineNumber = "88"
             landmarkName = "appleAuthenticate(credential:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "1117">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "1164">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "1112">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "848">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "820">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "1188">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443b78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "1244">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443c99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "1244">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443c99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "1188">
-               </Location>
-               <Location
-                  uuid = "AA9F0405-7283-40C5-9594-4F22BDB56797 - b2f090e184443c99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "864">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -939,158 +450,6 @@
             endingLineNumber = "84"
             landmarkName = "appleAuthenticate(credential:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "1358">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "1412">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "1353">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "702">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "684">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "1447">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443cfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "1508">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443c1d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "1508">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443c1d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "1447">
-               </Location>
-               <Location
-                  uuid = "EE48F48E-9656-4BCF-8981-BEC3B131A884 - b2f090e184443c1d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "712">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1107,203 +466,6 @@
             endingLineNumber = "94"
             landmarkName = "appleAuthenticate(credential:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "394">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "244">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "392">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "186">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "366">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "136">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "296">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "443">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8332d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "388">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8334c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "388">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8334c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "443">
-               </Location>
-               <Location
-                  uuid = "0F5A18FF-BB16-4046-8B96-DAB87590F5A9 - bd8c3491d6e8334c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithAppleCoordinator.appleAuthenticate(credential: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithAppleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "240">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1320,83 +482,6 @@
             endingLineNumber = "132"
             landmarkName = "saveUserToUserDefaults(user:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D1BFE3BA-6DFA-4D90-A8D6-D220D354534C - 3e032c3ec49283b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "454">
-               </Location>
-               <Location
-                  uuid = "D1BFE3BA-6DFA-4D90-A8D6-D220D354534C - 3e032c3ec49283b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "316">
-               </Location>
-               <Location
-                  uuid = "D1BFE3BA-6DFA-4D90-A8D6-D220D354534C - 3e032c3ec49283b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "481">
-               </Location>
-               <Location
-                  uuid = "D1BFE3BA-6DFA-4D90-A8D6-D220D354534C - 3e032c3ec49283b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "179">
-               </Location>
-               <Location
-                  uuid = "D1BFE3BA-6DFA-4D90-A8D6-D220D354534C - 3e032c3ec4928396"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "454">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1413,38 +498,6 @@
             endingLineNumber = "63"
             landmarkName = "callFetchMessages(chatUser:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "AD224D64-BF50-4A24-B56A-49A62ADDDA9E - 98b2015be2961859"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, GamingWizards.ChatMessage) -&gt; () in GamingWizards.ChatLogView.ChatLogViewModel.callFetchMessages(chatUser: GamingWizards.FriendEntity) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/ChatLogViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "362">
-               </Location>
-               <Location
-                  uuid = "AD224D64-BF50-4A24-B56A-49A62ADDDA9E - 98b2015be2961859"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, GamingWizards.ChatMessage) -&gt; () in GamingWizards.ChatLogView.ChatLogViewModel.callFetchMessages(chatUser: GamingWizards.FriendEntity) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/ChatLogViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "479">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1589,68 +642,6 @@
             endingLineNumber = "86"
             landmarkName = "callHandelSendMessage(chatUser:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B3681CAA-1BA5-4C45-9F2A-1287B14B0FE4 - 1020ce3ea0835515"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.ChatLogView.ChatLogViewModel.callHandelSendMessage(chatUser: GamingWizards.FriendEntity) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/ChatLogViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "211">
-               </Location>
-               <Location
-                  uuid = "B3681CAA-1BA5-4C45-9F2A-1287B14B0FE4 - a042c13522c2ee0d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for GamingWizards.ChatLogView.ChatLogViewModel.callHandelSendMessage(chatUser: GamingWizards.FriendEntity) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/ChatLogViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "B3681CAA-1BA5-4C45-9F2A-1287B14B0FE4 - c6ee312dc2ad916b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.ChatLogView.ChatLogViewModel.callHandelSendMessage(chatUser: GamingWizards.FriendEntity) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/ChatLogViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "65">
-               </Location>
-               <Location
-                  uuid = "B3681CAA-1BA5-4C45-9F2A-1287B14B0FE4 - 7cbd98c06cf6dd69"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.ChatLogView.ChatLogViewModel.callHandelSendMessage(chatUser: GamingWizards.FriendEntity) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/Messages/ChatLogViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "78">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1763,38 +754,6 @@
             endingLineNumber = "87"
             landmarkName = "friendRequestButton"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "D6A50B8B-AB50-4210-8EFB-79605CEC4925 - 6cf5b5a363ce2db2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0 in closure #2 () -&gt; SwiftUI.HStack&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt; in GamingWizards.SearchResultsDetailView.friendRequestButton.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "676">
-               </Location>
-               <Location
-                  uuid = "D6A50B8B-AB50-4210-8EFB-79605CEC4925 - 6e926287fe09233c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0 in closure #2 () -&gt; SwiftUI.HStack&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt; in GamingWizards.SearchResultsDetailView.friendRequestButton.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/SwiftUiViews/SearchTab/SearchResultsDetailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "1250">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1824,8 +783,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "509">
+                  endingLineNumber = "20">
                </Location>
                <Location
                   uuid = "AFB31031-6F81-42B8-B68D-4C7403FA8F72 - 334ea72881290db6"
@@ -1839,8 +797,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "943">
+                  endingLineNumber = "20">
                </Location>
                <Location
                   uuid = "AFB31031-6F81-42B8-B68D-4C7403FA8F72 - 334ea72881290db6"
@@ -1854,8 +811,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "756">
+                  endingLineNumber = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1887,8 +843,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "305">
+                  endingLineNumber = "16">
                </Location>
                <Location
                   uuid = "CC7390DC-604E-416D-8F62-1BE2960275B7 - 334ea72881290d32"
@@ -1902,8 +857,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "456">
+                  endingLineNumber = "16">
                </Location>
                <Location
                   uuid = "CC7390DC-604E-416D-8F62-1BE2960275B7 - 334ea72881290d32"
@@ -1917,8 +871,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "300">
+                  endingLineNumber = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1937,38 +890,6 @@
             endingLineNumber = "15"
             landmarkName = "convertToFriendEntity(displayName:friendUserID:profileImageString:isFavorite:isFriend:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6CE39D47-AA7E-4B20-8977-BD4D89ED36E7 - c3fb93fb291d9593"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.String, friendUserID: Swift.String, profileImageString: Swift.String, isFavorite: Swift.Bool, isFriend: Swift.Bool) -&gt; GamingWizards.FriendEntity"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "212">
-               </Location>
-               <Location
-                  uuid = "6CE39D47-AA7E-4B20-8977-BD4D89ED36E7 - 334ea72881290ad3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GamingWizards.DataConverter.convertToFriendEntity(displayName: Swift.Optional&lt;Swift.String&gt;, friendUserID: Swift.Optional&lt;Swift.String&gt;, profileImageString: Swift.Optional&lt;Swift.String&gt;, isFavorite: Swift.Optional&lt;Swift.Bool&gt;, isFriend: Swift.Optional&lt;Swift.Bool&gt;) -&gt; GamingWizards.FriendEntity"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/DataConverter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "294">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1985,38 +906,6 @@
             endingLineNumber = "39"
             landmarkName = "reorderSelectedGameItems()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F0AA0A64-568C-4222-8A2C-EF6DE3BB0296 - df15c158362825c7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GamingWizards.Filterer.reorderSelectedGameItems() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/Filterer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "74">
-               </Location>
-               <Location
-                  uuid = "F0AA0A64-568C-4222-8A2C-EF6DE3BB0296 - 4b3b93165bacf44b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (GamingWizards.FlowTag, GamingWizards.FlowTag) -&gt; Swift.Bool in closure #1 () -&gt; () in GamingWizards.Filterer.reorderSelectedGameItems() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/Filterer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "87">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2033,38 +922,6 @@
             endingLineNumber = "31"
             landmarkName = "gamesFilter"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "2524CB9F-A8B0-4D9E-88EC-1C0AB5CEA144 - 5fb56773e0a8b9a6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.Filterer.gamesFilter.getter : Swift.Array&lt;GamingWizards.FlowTag&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/Filterer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "126">
-               </Location>
-               <Location
-                  uuid = "2524CB9F-A8B0-4D9E-88EC-1C0AB5CEA144 - cb443ce0b7bc4705"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (GamingWizards.FlowTag) -&gt; Swift.Bool in GamingWizards.Filterer.gamesFilter.getter : Swift.Array&lt;GamingWizards.FlowTag&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/Filterer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2081,53 +938,6 @@
             endingLineNumber = "42"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9EEF18A3-F7C8-4F2E-BE9A-8EEEFC21EDAC - 2d9e6e968c2af36e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.LocationManager.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/LocationManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "415">
-               </Location>
-               <Location
-                  uuid = "9EEF18A3-F7C8-4F2E-BE9A-8EEEFC21EDAC - 2d9e6e968c2af36e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.LocationManager.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/LocationManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "380">
-               </Location>
-               <Location
-                  uuid = "9EEF18A3-F7C8-4F2E-BE9A-8EEEFC21EDAC - 2d9e6e968c2af36e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.LocationManager.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Models/LocationManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "240">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2160,38 +970,6 @@
             endingLineNumber = "37"
             landmarkName = "retrieveUserProfileImage(imageString:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EE9230AA-080C-41C1-9210-98593A0FA017 - 311670160cd3f9b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.FirebaseStorageHelper.retrieveUserProfileImage(imageString: Swift.String, completion: (Swift.Optional&lt;__C.UIImage&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseStorageHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "1271">
-               </Location>
-               <Location
-                  uuid = "EE9230AA-080C-41C1-9210-98593A0FA017 - 311670160cd3f9b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.FirebaseStorageHelper.retrieveUserProfileImage(imageString: Swift.String, completion: (Swift.Optional&lt;__C.UIImage&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Modules/FirebaseHelpers/FirebaseStorageHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "1272">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2208,38 +986,6 @@
             endingLineNumber = "55"
             landmarkName = "signInWithGoogle()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E04DBAFA-AE0C-49B7-865C-4C1C0ED1BC23 - 4eabefd11ad20408"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "1704">
-               </Location>
-               <Location
-                  uuid = "E04DBAFA-AE0C-49B7-865C-4C1C0ED1BC23 - 1291b2c0df72e9ae"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (GamingWizards.User) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GamingWizards.SignInWithGoogleCoordinator.signInWithGoogle() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/SignInWithGoogleCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "200">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2272,188 +1018,6 @@
             endingLineNumber = "81"
             landmarkName = "createBaselineSearchSettings()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbba08"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "628">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbba08"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "629">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbba08"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "568">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbb9d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "629">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbb931"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "629">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbb96e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "629">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbb818"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "629">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbb89c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "419">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbb89c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "352">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 71a46dfcfadbbb00"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "352">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 873f53ce78577339"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; Swift.Optional&lt;GamingWizards.SearchSettings&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "368">
-               </Location>
-               <Location
-                  uuid = "7AEBD9AE-428E-4D92-84CE-38536360CABA - 873f53ce78577508"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GamingWizards.CoreDataController.createBaselineSearchSettings() -&gt; Swift.Optional&lt;GamingWizards.SearchSettings&gt;"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "368">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2470,902 +1034,6 @@
             endingLineNumber = "93"
             landmarkName = "saveUserIntoFirestore(for:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - ea4035c287dfcd9e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "704">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - e276b98f2bb6d879"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - 5b05554006c08b9c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - c8ce74cf86254992"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - ea4035c287dfcd3d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "516">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - ea4035c287dfcd3d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "2191">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - ea4035c287dfcd3d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "512">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - ea4035c287dfcd5c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "512">
-               </Location>
-               <Location
-                  uuid = "D20CE103-C1AE-432C-B92F-69321EC93B2A - ea4035c287dfcd7f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "512">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "saveUserIntoFirestore(for:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - ea4035c287dfcb6c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "1232">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 5b05554006c08d6e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 9068c50146b3ee61"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "396">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - c8ce74cf86254f60"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "412">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 9068c50146b3ee40"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "144">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - c8ce74cf86254f41"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "160">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 9068c50146b3ee40"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "345">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - c8ce74cf86254f41"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "435">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 12de48cc594a042"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(8) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 25bfca66c34f24fa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 12de48cc594a0a1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(8) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "6EA70C1F-8FAE-488A-8973-53CDEF55278B - 25bfca66c34f2419"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "156">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "83B986ED-F802-44BF-B4CE-0F038A379184"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "saveUserIntoFirestore(for:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - d075d1c08593c655"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(9) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - e595adeb353ad44d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 759a0762327b28c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 201da6f5511090cf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - e595adeb353ad44d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "61">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 759a0762327b28c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "17">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 201da6f5511090cf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "17">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 5e85dbff4d664dfc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 7849de7a7b532b3d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 950ddcf969bc097e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 5e85dbff4d664ddd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 7849de7a7b532b1c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "83B986ED-F802-44BF-B4CE-0F038A379184 - 950ddcf969bc095f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/Authentication/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "saveUserIntoFirestore(for:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - e595adeb353ad42a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 759a0762327b2eb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 201da6f5511090a8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #3 () -&gt; () in GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - ea4035c287dfcc03"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "704">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - e276b98f2bb6d9e4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 5b05554006c08a01"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - c8ce74cf8625480f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - ea4035c287dfcc03"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "1655">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - e276b98f2bb6d9e4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "61">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 5b05554006c08a01"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "69">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - c8ce74cf86254448"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "158">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - c8ce74cf8625480f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "207">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - ea4035c287dfcc03"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "724">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 25bfca66c34f23b4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - ea4035c287dfcc45"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "724">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - e276b98f2bb6d9a2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 5b05554006c08a66"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "132">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 25bfca66c34f23f2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - ea4035c287dfcc64"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "724">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - e276b98f2bb6d983"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 5b05554006c08a66"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "BE0F4848-E8F8-4FB6-80AD-3A81189F6628 - 25bfca66c34f23d3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(11) suspend resume partial function for GamingWizards.AuthenticationViewModel.saveUserIntoFirestore(for: GamingWizards.User) async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/Authentication/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3380,8 +1048,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "acceptFriendRequest()"
-            landmarkType = "7">
+            landmarkName = "FriendListViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3396,8 +1064,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "removeFriend()"
-            landmarkType = "7">
+            landmarkName = "FriendListViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3412,24 +1080,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "denyFriendRequest()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AE36DDB9-9BFC-414D-91A3-0F3844955FB8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GamingWizards/UniversalViews/BlockedUsers/BlockedUsersView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "listOfBlockedUsers"
-            landmarkType = "24">
+            landmarkName = "FriendListViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3462,53 +1114,6 @@
             endingLineNumber = "44"
             landmarkName = "clearAllData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "74841587-E06E-4752-801C-8468D10495CD - 25146faf08b9c234"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) await resume partial function for GamingWizards.CoreDataController.clearAllData() async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "74841587-E06E-4752-801C-8468D10495CD - 7a86e17001ffe9c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) await resume partial function for GamingWizards.CoreDataController.clearAllData() async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "74841587-E06E-4752-801C-8468D10495CD - 94a2bbe2cb170b63"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for GamingWizards.CoreDataController.clearAllData() async -&gt; ()"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/DataModule/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3541,53 +1146,6 @@
             endingLineNumber = "36"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "5C347063-7C86-4513-936D-E26C5E574D60 - da5c6f5423307645"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "540">
-               </Location>
-               <Location
-                  uuid = "5C347063-7C86-4513-936D-E26C5E574D60 - 5d39f89af4521a30"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "5C347063-7C86-4513-936D-E26C5E574D60 - 4f2d501a1e6dda2b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3604,53 +1162,6 @@
             endingLineNumber = "35"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "49D6C3F5-CB40-4140-890B-F778804F1B61 - da5c6f5423307645"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "540">
-               </Location>
-               <Location
-                  uuid = "49D6C3F5-CB40-4140-890B-F778804F1B61 - 5d39f89af4521a30"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "49D6C3F5-CB40-4140-890B-F778804F1B61 - 4f2d501a1e6dda2b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 (Swift.Bool) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0 in GamingWizards.IsPayToPlaySearchSettingsView.body.getter : some"
-                  moduleName = "GamingWizards"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tydon/Desktop/GamingWizard%202.0/GamingWizards/GamingWizards/UniversalViews/Search%20Settings/IsPayToPlaySearchSettings/IsPayToPlaySearchSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

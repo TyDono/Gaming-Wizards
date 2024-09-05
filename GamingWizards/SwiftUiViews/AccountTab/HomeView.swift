@@ -38,138 +38,110 @@ struct HomeView: View {
 //    }
     
     var body: some View {
-            ZStack(alignment: .bottom) {
-                VStack {
-                    List {
-//                        manageFriendList // disabled until premium version added. post mvp
-                        viewProfileButton
-                        searchSettings
-                        contactAndChatSettings
-                        // accountSettingsButtonView // change fonts from normal and luminari. post mvp
-                        logOutButton
-                    }
-                }
-                .navigationBarTitle("Account", displayMode: .large)
-                .alert(isPresented: $isShowingLogoutAlert) {
-                    Alert(
-                        title: Text("Are you sure?"),
-                        message: Text(""),
-                        primaryButton: .default(Text("Logout")) {
-                            Task {
-                                await authenticationViewModel.signOut()
-                            }
-                        },
-                        secondaryButton: .cancel()
-                    )
+        ZStack(alignment: .bottom) {
+            VStack {
+                List {
+                    viewProfileButton
+                    searchSettings
+                    contactAndChatSettings
+                    logOutButton
                 }
             }
-            .navigationDestination(isPresented: $isShowingEditAccountView) {
-                ManageAccountView()
-            }
-            .onAppear() {
-                viewProfileTitleText = homeViewModel.user.title
-            }
-    }
-    
-    private var manageFriendList: some View {
-        NavigationStack {
-                Button(action: {
-                    isFriendListShowing = true
-                }) {
-                    HStack {
-                        /*
-                        if Constants.friendRequestCount != 0 {
-                            Text("\(Constants.friendRequestCount)")
-                                .foregroundColor(.white)
-                                .background(
-                                    Circle()
-                                        .fill(.red)
-                                        .frame(width: 20, height: 20)
-                                )
+            .navigationBarTitle("Account", displayMode: .large)
+            .alert(isPresented: $isShowingLogoutAlert) {
+                Alert(
+                    title: Text("Are you sure?"),
+                    message: Text(""),
+                    primaryButton: .default(Text("Logout")) {
+                        Task {
+                            await authenticationViewModel.signOut()
                         }
-                        */
-                        Image(systemName: "person.2")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("Contact Info")
-                            .badge(Constants.friendRequestCount)
-                            .frame(maxWidth: .infinity,
-                                   alignment: .leading)
-//                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
-                            .font(.roboto(.regular, size: 20))
-//                            .font(.roboto(.custom("luminri")))
-//                            .font(.roboto(.semibold,
-//                                          size: 20))
-                        
-                        Image(systemName: "chevron.right")
-                            .frame(maxWidth: .infinity,
-                                   alignment: .trailing)
-                    }
-                }
-                .listRowInsets(EdgeInsets())
-                .padding()
-        }
-        .navigationDestination(isPresented: $isFriendListShowing) {
-            FriendListView()
-        }
-    }
-    
-    private var contactAndChatSettings: some View {
-        NavigationStack {
-            Button(action: {
-                isContactAndChatSettingsShowing = true
-            }) {
-                HStack {
-                    Image(systemName: "person.2.badge.gearshape")
-                        .resizable()
-                        .frame(width: 23, height: 23)
-                    Text(Constants.contactAndChatSettingsTitle)
-                        .frame(maxWidth: .infinity,
-                               alignment: .leading)
-                        .font(.roboto(.regular, size: 20))
-                    
-                    Image(systemName: "chevron.right")
-                        .frame(maxWidth: .infinity,
-                               alignment: .trailing)
-                }
-                .listRowInsets(EdgeInsets())
-                .padding()
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
-        .navigationDestination(isPresented: $isContactAndChatSettingsShowing) {
-            ContactAndChatSettingsView(ContactAndChatSettingsVM: contactAndChatSettingsViewModel)
+        .onAppear {
+            viewProfileTitleText = homeViewModel.user.title
         }
+    }
+
+    private var manageFriendList: some View {
+        Button(action: {
+            isFriendListShowing = true
+        }) {
+            HStack {
+                Image(systemName: "person.2")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                Text("Contact Info")
+                    .badge(Constants.friendRequestCount)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.roboto(.regular, size: 20))
+                Image(systemName: "chevron.right")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .foregroundStyle(.blue)
+            .padding()
+        }
+        .background(
+            NavigationLink("", destination: FriendListView())
+                .buttonStyle(PlainButtonStyle())
+                .opacity(0)  // Hidden NavigationLink
+        )
+        .listRowInsets(EdgeInsets())
+    }
+
+    private var contactAndChatSettings: some View {
+        Button(action: {
+            isContactAndChatSettingsShowing = true
+        }) {
+            HStack {
+                Image(systemName: "person.2.badge.gearshape")
+                    .resizable()
+                    .frame(width: 23, height: 23)
+                Text(Constants.contactAndChatSettingsTitle)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.roboto(.regular, size: 20))
+                Image(systemName: "chevron.right")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .foregroundStyle(.blue)
+            .listRowInsets(EdgeInsets())
+            .padding()
+        }
+        .background(
+            NavigationLink("", destination: ContactAndChatSettingsView(ContactAndChatSettingsVM: contactAndChatSettingsViewModel))
+                .buttonStyle(PlainButtonStyle())
+                .opacity(0)
+        )
     }
     
     private var searchSettings: some View {
-        NavigationStack {
-            Button(action: {
-                isSearchSettingsShowing = true
-            }) {
-                HStack {
-                    Image(systemName: "slider.horizontal.3")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Text("Search Settings")
-                        .frame(maxWidth: .infinity,
-                               alignment: .leading)
-                        .font(.roboto(.regular, size: 20))
-                    
-                    Image(systemName: "chevron.right")
-                        .frame(maxWidth: .infinity,
-                               alignment: .trailing)
-                }
-                .listRowInsets(EdgeInsets())
-                .padding()
+        Button(action: {
+            isSearchSettingsShowing = true
+        }) {
+            HStack {
+                Image(systemName: "slider.horizontal.3")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                Text("Search Settings")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.roboto(.regular, size: 20))
+                Image(systemName: "chevron.right")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
+            .foregroundStyle(Color.blue)
+            .listRowInsets(EdgeInsets())
+            .padding()
         }
-        .navigationDestination(isPresented: $isSearchSettingsShowing) {
-            SearchSettingsView(searchSettingsVM: searchSettingsViewModel)
-        }
+        .background(
+            NavigationLink("", destination: SearchSettingsView(searchSettingsVM: searchSettingsViewModel))
+                .buttonStyle(PlainButtonStyle())
+                .opacity(0)
+        )
     }
-    
 
-    
     private var viewProfileButton: some View {
         NavigationStack {
             Button(action: {
@@ -191,6 +163,7 @@ struct HomeView: View {
                                alignment: .trailing)
                 }
             }
+            .foregroundStyle(Color.blue)
             .listRowInsets(EdgeInsets())
             .padding()
         }
@@ -226,31 +199,29 @@ struct HomeView: View {
     }
     
     private var accountSettingsButtonView: some View {
-        NavigationStack {
-                Button(action: {
-                    isAccountSettingsShowing = true
-                }) {
-                    HStack {
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("Settings")
-                            .frame(maxWidth: .infinity,
-                                   alignment: .leading)
-//                            .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
-                            .font(.roboto(.regular, size: 20))
-                        
-                        Image(systemName: "chevron.right")
-                            .frame(maxWidth: .infinity,
-                                   alignment: .trailing)
-                    }
-                }
-                .listRowInsets(EdgeInsets())
-                .padding()
+        Button(action: {
+            isAccountSettingsShowing = true
+        }) {
+            HStack {
+                Image(systemName: "gear")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                Text("Settings")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.roboto(.regular, size: 20))
+
+                Image(systemName: "chevron.right")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .foregroundStyle(.blue)
+            .padding()
         }
-        .navigationDestination(isPresented: $isAccountSettingsShowing) {
-            AccountSettingsView()
-        }
+        .background(
+            NavigationLink("", destination: AccountSettingsView())
+                .buttonStyle(PlainButtonStyle())
+                .opacity(0)
+        )
+        .listRowInsets(EdgeInsets())
     }
     
     private var logOutButton: some View {
@@ -272,6 +243,7 @@ struct HomeView: View {
 //                           alignment: .trailing)
             }
         }
+        .foregroundStyle(Color.red)
 //        .listRowInsets(EdgeInsets()) // un comment if you get a neato image for log out
         .padding()
         

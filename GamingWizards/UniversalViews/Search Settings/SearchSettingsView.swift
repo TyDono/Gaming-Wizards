@@ -24,34 +24,32 @@ struct SearchSettingsView: View {
     }
     
     var body: some View {
-        ZStack {
-            NavigationStack {
-                VStack {
-                    List {
-                        distanceSettingsButton
-                            .font(.system(size: 25))
-//                        ageRangeSettingsButton
-                        isPayToPlaySearchSettingsView
-                            .font(.system(size: 25))
-                    }
+        NavigationStack {
+            VStack {
+                List {
+                    distanceSettingsButton
+                        .font(.system(size: 25))
+                    
+                    isPayToPlaySearchSettingsView
+                        .font(.system(size: 25))
                 }
             }
-        }
-        .background(Color.clear)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                CustomNavigationTitle(titleImageSystemName: $searchSettingTitleSystemImageName, titleText: $searchSettingViewTitle)
-            }
-            ToolbarItem(placement: .topBarLeading) {
-                CustomNavigationLeadingBarItem(leadingButtonAction: {
-//                    isViewPersonalAccountViewPopUp.toggle()
-                }, leadingButtonString: $dismissButtonString)
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                CustomNavigationTrailingItem(trailingButtonAction: {
-                    
-                }, trailingButtonString: $customNavTrailingButtonString)
+            .background(Color.clear)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    CustomNavigationTitle(titleImageSystemName: $searchSettingTitleSystemImageName, titleText: $searchSettingViewTitle)
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    CustomNavigationLeadingBarItem(leadingButtonAction: {
+                        // Dismiss logic
+                    }, leadingButtonString: $dismissButtonString)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    CustomNavigationTrailingItem(trailingButtonAction: {
+                        // Custom action
+                    }, trailingButtonString: $customNavTrailingButtonString)
+                }
             }
         }
     }

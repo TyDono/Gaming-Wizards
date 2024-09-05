@@ -17,7 +17,7 @@ import CoreData
 import Security
 import Combine
 
-@MainActor class AuthenticationViewModel: ObservableObject {
+ class AuthenticationViewModel: ObservableObject {
     
     @AppStorage(Constants.appStorageStringLogStatus) var log_Status = false
     @ObservedObject var user = UserObservable.shared
@@ -277,7 +277,6 @@ import Combine
     
     func retrieveFriendsListener() {
         let userID = user.id
-        
         listeningRegistration = fbFirestoreHelper.firestore.collection(Constants.usersString)
             .document(userID)
             .collection(Constants.userFriendList)
@@ -315,14 +314,12 @@ import Combine
                 }
             }
     }
-
     
     func signOut() async {
         GIDSignIn.sharedInstance.signOut()
         do {
             try Auth.auth().signOut()
             signInState = .signedOut
-//            withAnimation(.easeInOut) {
                 log_Status = false
                 self.isLoading = false
                 self.isUserLoggingInLoading = false
@@ -331,7 +328,6 @@ import Combine
                     await coreDataController.clearAllData()
                     UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
                 }
-//            }
         } catch {
             print(error.localizedDescription)
         }
