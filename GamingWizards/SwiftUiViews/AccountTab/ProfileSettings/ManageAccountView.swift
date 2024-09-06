@@ -26,94 +26,82 @@ struct ManageAccountView: View {
 //    }
     
     var body: some View {
-            ZStack(alignment: .bottom) {
-
-                VStack {
-                    ScrollView {
-                        Group {
-                            Spacer().frame(height: 16)
-                            profileImageView
-                                .padding()
-                            Divider()
-                            manageListOfGamesButtonView
-                                .padding()
-                            Divider()
-                            personalTitleView
-                                .padding()
-                            Divider()
-                        }
-                        Group {
-                            displayNameTextField
-                                .padding()
-                            Divider()
-//                            firstNameTextField
-//                                .padding()
-//                            lastNameTextField
-//                                .padding()
-                            userAgeTextView
-                                .padding()
-                            Divider()
-                            userLocation
-                                .padding()
-                            Divider()
-                            
-                        }
-                        Group {
-                            aboutUserTextView
-                                .padding()
-                            Divider()
-                            userAvailabilityTextView
-                                .padding()
-                            Divider()
-                            userIsSoloView
-                                .padding()
-                            Divider()
-                            PayToPlayView
-                                .padding()
-                            Divider()
-                        }
-                        Group {
-//                            listOfGamesView
-                            Divider()
-                            emailTextField
-                                .padding()
-                            Divider()
-                            VStack {
-                                deleteAccountButton
-                                    .padding()
-                            }
-                        }
-                    
+        ZStack(alignment: .bottom) {
+            VStack {
+                ScrollView {
+                    Group {
+                        profileImageView
+                            .padding()
+                        Divider()
+                        manageListOfGamesButtonView
+                            .padding()
+                        Divider()
+                        personalTitleView
+                            .padding()
+                        Divider()
                     }
-                    .padding(.bottom, 80)
-                    .scrollDismissesKeyboard(.automatic)
-                    .onTapGesture {
-                        hideKeyboard()
+                    Group {
+                        displayNameTextField
+                            .padding()
+                        Divider()
+                        userAgeTextView
+                            .padding()
+                        Divider()
+                        userLocation
+                            .padding()
+                        Divider()
+                    }
+                    Group {
+                        aboutUserTextView
+                            .padding()
+                        Divider()
+                        userAvailabilityTextView
+                            .padding()
+                        Divider()
+                        userIsSoloView
+                            .padding()
+                        Divider()
+                        PayToPlayView
+                            .padding()
+                        Divider()
+                    }
+                    Group {
+                        Divider()
+                        emailTextField
+                            .padding()
+                        Divider()
+                        VStack {
+                            deleteAccountButton
+                                .padding()
+                        }
                     }
                 }
-                .frame(maxWidth: .infinity,
-                       maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-                if manageAccountVM.isProfileUploading {
-                    LoadingAnimation(loadingProgress: $manageAccountVM.uploadProfileProgress)
+                .padding(.bottom, 80)
+                .scrollDismissesKeyboard(.automatic)
+                .onTapGesture {
+                    hideKeyboard()
                 }
             }
-            .navigationBarTitle("Manage Account", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    saveChangesNavButton
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea(edges: .bottom) // Only ignore bottom safe area to accommodate keyboard if needed
+            if manageAccountVM.isProfileUploading {
+                LoadingAnimation(loadingProgress: $manageAccountVM.uploadProfileProgress)
+            }
+        }
+        .navigationBarTitle("Manage Account", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                saveChangesNavButton
+            }
+        }
+        .alert(isPresented: $manageAccountVM.accountInformationChangedErrorAlertIsActive) {
+            Alert(
+                title: Text("Error in Saving"),
+                message: Text("There was an error saving your changes. Please check your internet connection and try again"),
+                dismissButton: .default(Text("Ok")) {
                 }
-            }
-        
-            .alert(isPresented: $manageAccountVM.accountInformationChangedErrorAlertIsActive) {
-                Alert(
-                    title: Text("Error in Saving"),
-                    message: Text("There was an error saving your changes. Please check your internet connection and try again"),
-                    dismissButton: .default(Text("Ok")) {
-                    }
-                )
-            }
-
+            )
+        }
     }
     
     private var profileImageView: some View {
@@ -608,8 +596,8 @@ struct ManageAccountView: View {
             manageAccountVM.updateUserInfo()
         } label: {
             Text("Save")
-                .foregroundColor(manageAccountVM.isSaveChangesButtonIsActive ? Colors.black70 : Colors.lightGreyTwo)
-                .fontWeight(.black)
+                .foregroundColor(manageAccountVM.isSaveChangesButtonIsActive ? Color.blue : Colors.lightGreyTwo)
+//                .fontWeight(.black)
                 .foregroundColor(Color(.systemIndigo))
                 .multilineTextAlignment(.center)
 //                .padding(.top, 15)

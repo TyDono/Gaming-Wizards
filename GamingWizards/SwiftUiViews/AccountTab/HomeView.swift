@@ -145,7 +145,7 @@ struct HomeView: View {
     private var viewProfileButton: some View {
         NavigationStack {
             Button(action: {
-//                isUserManagingAccountShown = true
+                //                isUserManagingAccountShown = true
                 isViewPersonalAccountViewPopUp = true
             }) {
                 HStack {
@@ -155,7 +155,7 @@ struct HomeView: View {
                     Text("View Profile")
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-//                        .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
+                    //                        .font(.custom(Constants.luminariRegularFontIdentifier, size: 20))
                         .font(.roboto(.regular, size: 20))
                     
                     Image(systemName: "chevron.right")
@@ -173,7 +173,13 @@ struct HomeView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
-                            CustomNavigationTitle(titleImageSystemName: $viewProfileTitleImageString, titleText: $viewProfileTitleText)
+                            VStack {
+                                Text(viewProfileTitleText ?? "")
+                                    .font(.custom("Luminari", size: 20))
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(2)
+                                    .frame(maxWidth: .infinity)
+                            }
                         }
                         ToolbarItem(placement: .topBarLeading) {
                             CustomNavigationLeadingBarItem(leadingButtonAction: {
@@ -181,18 +187,13 @@ struct HomeView: View {
                             }, leadingButtonString: $dismissButtonString)
                         }
                         ToolbarItem(placement: .topBarTrailing) {
-                            CustomNavigationTrailingItem(trailingButtonAction: {
-                                
-                            }, trailingButtonString: $customNavTrailingButtonString)
+                            Button(action: {
+                                isShowingEditAccountView = true
+                            }) {
+                                Text("Edit")
+                                    .font(.roboto(.regular, size: 16))
+                            }
                         }
-//                            CustomNavigationTitle(leadingButtonAction: {
-//                                isViewPersonalAccountViewPopUp = false
-//                            },
-//                                                  leadingButtonString: $dismissButtonString,
-//                                                  trailingButtonString: $customNavTrailingButtonString,
-//                                                  titleImageSystemName: $viewProfileTitleImageString,
-//                                                  titleText: $viewProfileTitleText)
-//                        }
                     }
             }
         })
