@@ -118,15 +118,31 @@ extension ManageAccountView {
             
             let uploadTask = storageRef.putData(compressedImageData, metadata: metadata) { [weak self] metadata, err in
                 guard let self = self else { return }
-                if let error = err {
+                if let error = err as NSError? {
+                    // More detailed error logging
                     print("ERROR UPLOADING IMAGE TO STORAGE: \(error.localizedDescription)")
+
+                    if let errorCode = StorageErrorCode(rawValue: error.code) {
+                        switch errorCode {
+                        case .objectNotFound:
+                            print("Object not found.")
+                        case .unauthorized:
+                            print("User doesn't have permission to access the object.")
+                        case .cancelled:
+                            print("User canceled the upload.")
+                        case .unknown:
+                            print("Unknown error occurred, inspect the server response.")
+                        default:
+                            print("A different error occurred: \(error.localizedDescription)")
+                        }
+                    }
                 } else {
                     self.saveProfileImageToDisc()
+                    print("Upload succeeded")
                 }
                 self.isProfileUploading = false
                 self.accountInformationSavedAlertIsActive = true
             }
-            isProfileUploading = true
             
             uploadTask.observe(.progress) { snapshot in
                 guard let progress = snapshot.progress else { return }
@@ -221,7 +237,6 @@ extension ManageAccountView {
         }
         
         func deleteUserAccountAndFirestore() async {
-            
             let result = await fbAuthService.deleteUserAccount()
             if result == true {
                 self.accountDeleteErrorAlertIsShowing = true
