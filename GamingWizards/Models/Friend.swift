@@ -20,6 +20,28 @@ struct Friend: Codable, Hashable, Identifiable {
     var onlineStatus: Bool
     var messageToId: String
     
+    init(
+        id: String = "",
+        displayName: String = "",
+        isFriend: Bool = false,
+        isFavorite: Bool = false,
+        imageString: String = "",
+        recentMessageText: String = "",
+        recentMessageTimeStamp: Date = Date(),
+        onlineStatus: Bool = false,
+        messageToId: String = ""
+    ) {
+        self.id = id
+        self.displayName = displayName
+        self.isFriend = isFriend
+        self.isFavorite = isFavorite
+        self.imageString = imageString
+        self.recentMessageText = recentMessageText
+        self.recentMessageTimeStamp = recentMessageTimeStamp
+        self.onlineStatus = onlineStatus
+        self.messageToId = messageToId
+    }
+    
     var friendDictionary: [String: Any] {
         return [
             Constants.friendUserID: id,

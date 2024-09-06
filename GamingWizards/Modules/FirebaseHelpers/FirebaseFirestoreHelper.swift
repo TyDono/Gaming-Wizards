@@ -14,6 +14,7 @@ protocol FirebaseFirestoreService {
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
     func addItemToArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void)
 //    func sendFriendRequest(newFriend: User) async throws -> Friend 
+    func retrieveFriendsListener(user: UserObservable) async throws -> [Friend]
     func sendFriendRequest(senderFriendInfo: Friend, receiverFriendInfo: Friend) async -> Result<Friend, Error>
     func fetchListOfFriends(uid: String, completion: @escaping (Error?, [Friend]) -> Void)
     func fetchMessages(fromId: String, toId: String, completion: @escaping (Error?, ChatMessage) -> Void)
@@ -26,7 +27,7 @@ protocol FirebaseFirestoreService {
     func retrieveBlockedUsers(userId: String) async
     func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?, friendUserIDs: [FriendEntity]?, blockedUserIds: [BlockedUserEntity]?) async throws -> [User]
     func updateUserDeviceInFirestore() async
-//    func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error> 
+//    func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error>
     func saveChangesToFirestore<T: Updatable, U: Updatable>(from oldData: T, to newData: U, userId: String) async -> Result<Void, Error>
     func fetchUserSearchSettings(userId: String) async -> SearchSettings? 
     
@@ -87,6 +88,49 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     }
      */
     
+    func retrieveFriendsListener(user: UserObservable) async throws -> [Friend] {
+        do {
+            let snapshot = try await firestore.collection(Constants.usersString)
+                .document(user.id)
+                .collection(Constants.userFriendList)
+                .getDocuments()
+            
+            let documents = snapshot.documents
+            var friendsList: [Friend] = []
+            
+            for document in documents {
+                let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
+                let friendDisplayName = document.data()[Constants.displayName] as? String ?? ""
+                let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
+                let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
+                let profileImageString = document.data()[Constants.imageString] as? String ?? ""
+                let recentMessageText = document.data()[Constants.recentMessageText] as? String ?? ""
+                let recentMessageTimeStamp = (document.data()[Constants.recentMessageTimeStamp] as? Timestamp)?.dateValue() ?? Date()
+                let onlineStatus = document.data()[Constants.onlineStatus] as? Bool ?? false
+                let messageToId = document.data()[Constants.messageToId] as? String ?? ""
+                
+                let friend = Friend(
+                    id: friendUserID,
+                    displayName: friendDisplayName,
+                    isFriend: isFriend,
+                    isFavorite: isFavorite,
+                    imageString: profileImageString,
+                    recentMessageText: recentMessageText,
+                    recentMessageTimeStamp: recentMessageTimeStamp,
+                    onlineStatus: onlineStatus,
+                    messageToId: messageToId
+                )
+                
+                friendsList.append(friend)
+            }
+            
+            return friendsList
+        } catch {
+            print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
     func updateUserDeviceInFirestore() async {
         let deviceInfoResult = DeviceInfo.getDeviceInfo()
         
@@ -97,7 +141,6 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             print("UPDATING USER DEVICE IN CLOUD ERROR: \(error.localizedDescription)")
         }
     }
-
             
     func stopListening() {
         listeningRegistration?.remove()
@@ -432,7 +475,28 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
                     return nil
                 }
             } else {
-                return nil
+                let defaultSearchSettings = SearchSettings(
+                    ageRangeMax: 0,
+                    ageRangeMin: 0,
+                    groupSizeRangeMax: 0,
+                    groupSizeRangeMin: 0,
+                    isPayToPlay: false,
+                    searchRadius: 0.0
+                )
+                do {
+                    try await searchSettingPath.setData([
+                        "ageRangeMax": defaultSearchSettings.ageRangeMax,
+                        "ageRangeMin": defaultSearchSettings.ageRangeMin,
+                        "groupSizeRangeMax": defaultSearchSettings.groupSizeRangeMax,
+                        "groupSizeRangeMin": defaultSearchSettings.groupSizeRangeMin,
+                        "isPayToPlay": defaultSearchSettings.isPayToPlay,
+                        "searchRadius": defaultSearchSettings.searchRadius
+                    ])
+                    return defaultSearchSettings
+                } catch {
+                    print("ERROR CREATING DEFAULT SEARCH SETTINGS: \(error.localizedDescription)")
+                    return nil
+                }
             }
         } catch {
             print("ERROR FETCHING SEARCH SETTINGS: \(error.localizedDescription)")

@@ -52,21 +52,23 @@ import Combine
          let friend = await fbFirestoreService.sendFriendRequest(senderFriendInfo: senderFriendInfo, receiverFriendInfo: receiverFriendInfo)
          switch friend {
          case .success(let friend):
-             diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
-                                                     image: friendProfileImage)
-             coreDataController.saveFriend(friend: friend)
-                 .receive(on: DispatchQueue.main)
-                 .sink(receiveCompletion: { completion in
-                     switch completion {
-                     case .finished:
-                         break
-                     case .failure(let error):
-                         print("FAILED TO SAVE FRIEND TO CORE DATA: \(error)")
-                     }
-                 }, receiveValue: { savedEntity in
-                     // DO SOMETHING WITH THE SAVED ENTITY IF NEEDED
-                 })
-                 .store(in: &cancellables)
+             break
+             // don't save freinds locally. jsut save in cloud and listen'
+//             diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
+//                                                     image: friendProfileImage)
+//             coreDataController.saveFriend(friend: friend)
+//                 .receive(on: DispatchQueue.main)
+//                 .sink(receiveCompletion: { completion in
+//                     switch completion {
+//                     case .finished:
+//                         break
+//                     case .failure(let error):
+//                         print("FAILED TO SAVE FRIEND TO CORE DATA: \(error)")
+//                     }
+//                 }, receiveValue: { savedEntity in
+//                     // DO SOMETHING WITH THE SAVED ENTITY IF NEEDED
+//                 })
+//                 .store(in: &cancellables)
              
          case .failure(let error):
              // have pop up

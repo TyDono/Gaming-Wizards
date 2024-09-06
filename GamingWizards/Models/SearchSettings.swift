@@ -17,6 +17,22 @@ struct SearchSettings: Hashable, Codable, Updatable {
     var isPayToPlay: Bool
     var searchRadius: Double
     
+    init(
+        ageRangeMax: Int = 0,
+        ageRangeMin: Int = 0,
+        groupSizeRangeMax: Int = 0,
+        groupSizeRangeMin: Int = 0,
+        isPayToPlay: Bool = false,
+        searchRadius: Double = 0.0
+    ) {
+        self.ageRangeMax = ageRangeMax
+        self.ageRangeMin = ageRangeMin
+        self.groupSizeRangeMax = groupSizeRangeMax
+        self.groupSizeRangeMin = groupSizeRangeMin
+        self.isPayToPlay = isPayToPlay
+        self.searchRadius = searchRadius
+    }
+    
     init(data: [String: Any]) {
         self.ageRangeMax = data[Constants.ageRangeMax] as? Int ?? 0
         self.ageRangeMin = data[Constants.ageRangeMin] as? Int ?? 0

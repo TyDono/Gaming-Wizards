@@ -87,7 +87,7 @@ struct HomeView: View {
         .background(
             NavigationLink("", destination: FriendListView())
                 .buttonStyle(PlainButtonStyle())
-                .opacity(0)  // Hidden NavigationLink
+                .opacity(0)
         )
         .listRowInsets(EdgeInsets())
     }

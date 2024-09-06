@@ -47,29 +47,38 @@ import Combine
              blockedUserEntitiesCancellable?.cancel()
          }
          
-         func callForCoreDatsEntities() async {
-             self.friendEntitiesCancellable = coreDataController.fetchFriendEntitiesPublisher()
-                 .receive(on: DispatchQueue.main)
-                 .sink(receiveCompletion: { _ in }) { friends in
-                     if !friends.isEmpty {
-                         self.savedFriendEntities = friends
-                     }
-                 }
-             self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
-                 .receive(on: DispatchQueue.main)
-                 .sink(receiveCompletion: { _ in }) { searchSettings in
-                     if searchSettings != nil {
-                         self.savedSearchSettingsEntity = searchSettings
-                     }
-                 }
-             self.blockedUserEntitiesCancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
-                 .receive(on: DispatchQueue.main)
-                 .sink(receiveCompletion: { _ in }) { blockedUsers in
-                     if !blockedUsers.isEmpty {
-                         self.savedBlockedUserEntities = blockedUsers
-                     }
-                 }
-         }
+          func callForCoreDatsEntities() async {
+              await withCheckedContinuation { continuation in
+                  // Fetch friends
+                  self.friendEntitiesCancellable = coreDataController.fetchFriendEntitiesPublisher()
+                      .receive(on: DispatchQueue.main)
+                      .sink(receiveCompletion: { _ in }) { friends in
+                          if !friends.isEmpty {
+                              self.savedFriendEntities = friends
+                          }
+                      }
+
+                  // Fetch search settings
+                  self.searchSettingsCancellable = coreDataController.fetchSearchSettingsEntityPublisher()
+                      .receive(on: DispatchQueue.main)
+                      .sink(receiveCompletion: { _ in }) { searchSettings in
+                          if searchSettings != nil {
+                              self.savedSearchSettingsEntity = searchSettings
+                          }
+                          // Once search settings are fetched, trigger the continuation
+                          continuation.resume()
+                      }
+
+                  // Fetch blocked users
+                  self.blockedUserEntitiesCancellable = coreDataController.fetchBlockedUserEntitiesPublisher()
+                      .receive(on: DispatchQueue.main)
+                      .sink(receiveCompletion: { _ in }) { blockedUsers in
+                          if !blockedUsers.isEmpty {
+                              self.savedBlockedUserEntities = blockedUsers
+                          }
+                      }
+              }
+          }
          
          func convertUserToFriendDataBinding(displayName: String,
                                              friendUserID: String,
