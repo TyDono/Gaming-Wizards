@@ -30,11 +30,13 @@ struct MainMessagesView: View {
         }
         .onAppear {
             Task {
-                await mainMessagesVM.callForCoreDataEntities()
+                await mainMessagesVM.callListenForChangesInUserFriendListSubCollection()
+//                await mainMessagesVM.callForCoreDataEntities()
 //                await mainMessagesVM.callFetchListOfFriends()
             }
         }
         .onDisappear {
+            mainMessagesVM.stopListening()
             mainMessagesVM.cancelFriend()
         }
         .navigationDestination(isPresented: $isChatLogViewPresented) {
@@ -46,42 +48,41 @@ struct MainMessagesView: View {
     
     private var messagesScrollView: some View {
         ScrollView {
-            ForEach(mainMessagesVM.arrayOfFriendEntities, id: \.self) { (friend: FriendEntity) in
+            ForEach(Array(mainMessagesVM.listOfFriends.enumerated()), id: \.element) { (index, friend) in
                 let timeAgo = mainMessagesVM.timeUtilsService.timeAgoString(from: friend.recentMessageTimeStamp ?? Date())
-                    Button {
-                        mainMessagesVM.selectedContact = friend
-                        isChatLogViewPresented.toggle()
-                    } label: {
-                        VStack {
-                            HStack(spacing: 16) {
-                                MessengerProfileView(profileImageString: Binding<String>(
-                                    get: { friend.imageString ?? "1993" },
-                                    set: { friend.imageString = $0 }
-                                ))
-                                VStack(alignment: .leading) {
-                                    Text(friend.displayName ?? "")
-                                        .font(.roboto(.bold, size: 16))
-                                        .lineLimit(2)
-                                    Text(friend.recentMessageText ?? "")
-                                        .font(.roboto(.semibold, size: 14))
-                                        .foregroundColor(.lightGrey)
-                                        .lineLimit(2)
-                                }
-                                Spacer()
-                                Text("Sent \(timeAgo)")
-                                    .font(.roboto(.semibold, size: 15))
+                
+                Button {
+                    mainMessagesVM.selectedContact = friend
+                    isChatLogViewPresented.toggle()
+                } label: {
+                    VStack {
+                        HStack(spacing: 16) {
+                            MessengerProfileView(profileImageString: Binding<String>(
+                                get: { mainMessagesVM.listOfFriends[index].imageString },
+                                set: { mainMessagesVM.listOfFriends[index].imageString = $0 }
+                            ))
+                            VStack(alignment: .leading) {
+                                Text(friend.displayName)
+                                    .font(.roboto(.bold, size: 16))
+                                    .lineLimit(2)
+                                Text(friend.recentMessageText)
+                                    .font(.roboto(.semibold, size: 14))
+                                    .foregroundColor(.lightGrey)
+                                    .lineLimit(2)
                             }
-                            Divider()
-                                .padding(.vertical, 8)
+                            Spacer()
+                            Text("Sent \(timeAgo)")
+                                .font(.roboto(.semibold, size: 15))
                         }
+                        Divider()
+                            .padding(.vertical, 8)
                     }
-                    .foregroundColor(.black)
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-//                }
+                }
+                .foregroundColor(.black)
+                .padding(.horizontal)
+                .padding(.vertical, 8)
             }
             .padding(.bottom, 50)
-            
         }
     }
     
@@ -94,12 +95,10 @@ struct MainMessagesView: View {
                 Text(mainMessagesVM.user.displayName ?? "")
                     .font(.roboto(.bold, size: 24))
                 HStack {
-                    // re-add it post mvp
-                    /*
                     OnlineStatus(circleColor: mainMessagesVM.onlineStatus ? .green : .red,
                                  circleWidth: 14,
                                  circleHeight: 14)
-                     */
+                    
 //                    .task {
 //                        await mainMessagesVM.onlineStatusCircleWasTapped(toId: "POST MVP")
 //                    }

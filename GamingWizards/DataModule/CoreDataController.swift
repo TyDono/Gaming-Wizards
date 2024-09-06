@@ -210,8 +210,8 @@ class CoreDataController: ObservableObject {
 //        }
 //    }
     
-    func deleteFriendInCloud(friend: FriendEntity, userId: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
-        guard let friendUserID = friend.id else { return }
+    func deleteFriendInCloud(friend: Friend, userId: String) { //later when you get help, move the deleting of you from their friend list to be the first action then from your own list, and then locally,
+         let friendUserID = friend.id
         fbFirestoreHelper.collection(Constants.usersString).document(friendUserID).collection(Constants.userFriendList).document(userId)
             .delete() { err in
                 if let error = err {
@@ -221,7 +221,7 @@ class CoreDataController: ObservableObject {
                         if let error = err {
                             print("ERROR DELETING SPECIFIC FRIEND IN THE FIRESTORE CLOUD: \(error.localizedDescription)")
                         } else {
-                            self.viewContext.delete(friend)
+//                            self.viewContext.delete(friend)
                         }
                     }
                 }

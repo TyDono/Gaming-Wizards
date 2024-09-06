@@ -21,7 +21,7 @@ struct CreateReportUserView: View {
     @State private var isReportReasonsPresented: Bool = false
     @State var userReportDescriptionTextEditorPlaceHolderText: String = "Your description here"
     @Binding var blockedUser: BlockedUser
-    @Binding var friendEntity: FriendEntity
+    @Binding var friendEntity: Friend
     @Binding var isSearchResultsViewPresented: Bool
     @Binding var isChatLogViewPresented: Bool
 //    @Binding var cancelReportPopUpSheetAction: (() -> Void)?
@@ -36,7 +36,7 @@ struct CreateReportUserView: View {
 //        userReportedMessage: String,
         chatRoomId: Binding<String>,
         blockedUser: Binding<BlockedUser>,
-        friendEntity: Binding<FriendEntity>,
+        friendEntity: Binding<Friend>,
         isSearchResultsViewPresented: Binding<Bool>,
         isChatLogViewPresented: Binding<Bool>
 //        cancelReportPopUpSheetAction: Binding<(() -> Void)?>

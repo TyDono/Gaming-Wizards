@@ -17,14 +17,17 @@ extension MainMessagesView {
         @ObservedObject var coreDataController: CoreDataController
         @Published var timeUtilsService: TimeUtilsService
         private let firestoreService: FirebaseFirestoreService
+        private let firebaseAuthService: FirebaseAuthService = FirebaseAuthHelper.shared
         var diskSpace: DiskSpaceHandler
         @Published var mainUserProfileImage: UIImage?
         @Published var onlineStatus: Bool = true
         @Published var savedFriendEntities: [FriendEntity] = []
-        @Published var selectedContact: FriendEntity?
+        @Published var selectedContact: Friend?
         @Published var friendEntityImageCache: [String: UIImage] = [:]
         @Published var arrayOfFriendEntities: [FriendEntity]
+        @Published var listOfFriends: [Friend] = []
         private var friendCancellable: AnyCancellable?
+        private var userFriendListListener: ListenerRegistration?
         
         init(
             user: UserObservable = UserObservable.shared,
@@ -43,12 +46,26 @@ extension MainMessagesView {
             mainUserProfileImage = loadImageFromDisk(imageString: user.profileImageString)
         }
         
-        func callForCoreDataEntities() async {
-            self.friendCancellable = coreDataController.fetchFriendEntitiesPublisher()
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { _ in }) { friends in
-                    self.arrayOfFriendEntities = friends
+        func callListenForChangesInUserFriendListSubCollection() async {
+            guard let uid = firebaseAuthService.getCurrentUid() else { return }
+            userFriendListListener = firestoreService.listenForChangesInSubcollection(
+                collectionPath: "userFriendList",
+                documentId: uid,
+                subcollectionPath: "listOfFriends",
+                type: Friend.self) { [weak self] (data, error) in
+                    guard let self = self else { return }
+                if let listOfFriendsData = data {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.listOfFriends = listOfFriendsData
+                    }
+                } else if let error = error {
+                    print("Error listening for changes: \(error)")
                 }
+            }
+        }
+        
+        func stopListening() {
+            userFriendListListener?.remove()
         }
         
         func cancelFriend() {

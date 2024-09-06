@@ -21,8 +21,8 @@ protocol FirebaseFirestoreService {
     func handleSendMessage(toId: String, chatUserDisplayName: String, fromId: String, chatText: String) async throws
     func changeOnlineStatus(onlineStatus: Bool, toId: String, fromId: String) async throws 
     func saveUserReportToFirestore(userReport: UserReport) async throws
-    func deleteFriend(friend: FriendEntity, userId: String) async throws
-    func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws
+    func deleteFriend(friend: Friend, userId: String) async throws
+    func blockUser(blockedUser: BlockedUser, friendEntity: Friend) async throws
     func deleteBlockedUser(blockedUser: BlockedUserEntity) async throws
     func retrieveBlockedUsers(userId: String) async
     func fetchMatchingUsersSearch(gameName: String?, isPayToPlay: Bool?, friendUserIDs: [FriendEntity]?, blockedUserIds: [BlockedUserEntity]?) async throws -> [User]
@@ -30,6 +30,7 @@ protocol FirebaseFirestoreService {
 //    func saveUserSearchSettings(userId: String, searchSettings: SearchSettings) async -> Result<Bool, Error>
     func saveChangesToFirestore<T: Updatable, U: Updatable>(from oldData: T, to newData: U, userId: String) async -> Result<Void, Error>
     func fetchUserSearchSettings(userId: String) async -> SearchSettings? 
+    func listenForChangesInSubcollection<T: Codable>(collectionPath: String, documentId: String, subcollectionPath: String, type: T.Type, completion: @escaping ([T]?, Error?) -> Void) -> ListenerRegistration
     
 }
 
@@ -49,43 +50,43 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
     }
     
     /*
-    func retrieveFriendsListener(user: UserObservable) {
-        listeningRegistration = firestore.collection(Constants.usersString).document(user.id).collection(Constants.userFriendList)
-            .addSnapshotListener({ [weak self] snapshot, err in
-                if let error = err {
-                    print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
-                } else {
-                    guard let self = self else { return }
-                    guard let querySnapshot = snapshot else {
-                        print("ERROR FETCHING SNAPSHOT DATA: ")
-                        return
-                    }
-                    
-                    let documents = querySnapshot.documents
-                    //deletes all friends locally. this must be called before you get get new users.
-                    for friend in coreDataController.savedFriendEntities {
-                        self.coreDataController.deleteFriendLocally(friend: friend)
-                    }
-                    for document in documents {
-                        let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
-                        let friendDisplayName = document.data()[Constants.displayName] as? String ?? ""
-                        let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
-                        let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
-                        let profileImageString = document.data()[Constants.imageString] as? String ?? ""
-                        self.coreDataController.addFriend(friendUserID: friendUserID,
-                                                          friendDisplayName: friendDisplayName,
-                                                          isFriend: isFriend,
-                                                          isFavorite: isFavorite,
-                                                          profileImageString: profileImageString)
-                    }
-                    //keep. use it so I can update the ui cleaner
-//                    self.myFriendListData = querySnapshot.documents.compactMap({ document in
-//                        try? document.data(as: Friend.self)
-//                    })
-                    
-                }
-            })
-    }
+     func retrieveFriendsListener(user: UserObservable) {
+     listeningRegistration = firestore.collection(Constants.usersString).document(user.id).collection(Constants.userFriendList)
+     .addSnapshotListener({ [weak self] snapshot, err in
+     if let error = err {
+     print("ERROR GETTING FRIEND LIST DOCUMENTS: \(error.localizedDescription)")
+     } else {
+     guard let self = self else { return }
+     guard let querySnapshot = snapshot else {
+     print("ERROR FETCHING SNAPSHOT DATA: ")
+     return
+     }
+     
+     let documents = querySnapshot.documents
+     //deletes all friends locally. this must be called before you get get new users.
+     for friend in coreDataController.savedFriendEntities {
+     self.coreDataController.deleteFriendLocally(friend: friend)
+     }
+     for document in documents {
+     let friendUserID = document.data()[Constants.friendUserID] as? String ?? ""
+     let friendDisplayName = document.data()[Constants.displayName] as? String ?? ""
+     let isFriend = document.data()[Constants.isFriend] as? Bool ?? false
+     let isFavorite = document.data()[Constants.isFavorite] as? Bool ?? false
+     let profileImageString = document.data()[Constants.imageString] as? String ?? ""
+     self.coreDataController.addFriend(friendUserID: friendUserID,
+     friendDisplayName: friendDisplayName,
+     isFriend: isFriend,
+     isFavorite: isFavorite,
+     profileImageString: profileImageString)
+     }
+     //keep. use it so I can update the ui cleaner
+     //                    self.myFriendListData = querySnapshot.documents.compactMap({ document in
+     //                        try? document.data(as: Friend.self)
+     //                    })
+     
+     }
+     })
+     }
      */
     
     func retrieveFriendsListener(user: UserObservable) async throws -> [Friend] {
@@ -141,9 +142,36 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             print("UPDATING USER DEVICE IN CLOUD ERROR: \(error.localizedDescription)")
         }
     }
-            
+    
     func stopListening() {
         listeningRegistration?.remove()
+    }
+    
+    func listenForChangesInSubcollection<T: Codable>(collectionPath: String, documentId: String, subcollectionPath: String, type: T.Type, completion: @escaping ([T]?, Error?) -> Void) -> ListenerRegistration {
+        let subcollectionRef = firestore.collection(collectionPath).document(documentId).collection(subcollectionPath)
+
+        return subcollectionRef.addSnapshotListener { (querySnapshot, error) in
+            if let error = error {
+                print("Error listening for subcollection changes: \(error)")
+                completion(nil, error)
+                return
+            }
+
+            if let documents = querySnapshot?.documents {
+                let decodedDocuments: [T] = documents.compactMap { document in
+                    do {
+                        let data = document.data()
+                        let decoder = Firestore.Decoder()
+                        let decodedData = try decoder.decode(T.self, from: data)
+                        return decodedData
+                    } catch {
+                        print("Error decoding document: \(error)")
+                        return nil
+                    }
+                }
+                completion(decodedDocuments, nil)
+            }
+        }
     }
     
     func deleteItemFromArray(collectionName: String, documentField: String, itemName: String, arrayField: String, completion: @escaping (Error?, String) -> Void) {
@@ -279,7 +307,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func blockUser(blockedUser: BlockedUser, friendEntity: FriendEntity) async throws {
+    func blockUser(blockedUser: BlockedUser, friendEntity: Friend) async throws {
         let blockedUserData = blockedUser.blockedUserDictionary
         let blockedUserDocumentPath = firestore
             .collection(Constants.usersString)
@@ -312,8 +340,8 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
         }
     }
     
-    func deleteFriend(friend: FriendEntity, userId: String) async throws {
-        guard let friendUserId = friend.id else { return }
+    func deleteFriend(friend: Friend, userId: String) async throws {
+         let friendUserId = friend.id
         // Delete your yourself from their friend's list
         let friendDocPath = firestore.collection(Constants.usersString)
             .document(friendUserId)
@@ -329,7 +357,7 @@ class FirebaseFirestoreHelper: NSObject, ObservableObject, FirebaseFirestoreServ
             try await userFriendDocPath.delete()
             
             // Delete the friend from CoreData
-            await coreDataController.viewContext.delete(friend)
+//            await coreDataController.viewContext.delete(friend)
             
         } catch {
             print("ERROR DELETING FRIEND FROM FIRESTORE: \(error.localizedDescription)")

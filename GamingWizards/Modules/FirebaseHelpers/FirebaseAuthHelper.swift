@@ -10,6 +10,7 @@ import FirebaseAuth
 
 protocol FirebaseAuthService {
     func deleteUserAccount() async -> Bool 
+    func getCurrentUid() -> String?
 }
 
 class FirebaseAuthHelper: NSObject, ObservableObject, FirebaseAuthService {
@@ -22,6 +23,14 @@ class FirebaseAuthHelper: NSObject, ObservableObject, FirebaseAuthService {
         self.auth = Auth.auth()
         
         super.init()
+    }
+    
+    func getCurrentUid() -> String? {
+        if let userId = auth.currentUser?.uid {
+            return userId
+        } else {
+            return nil
+        }
     }
     
     func deleteUserAccount() async -> Bool {

@@ -50,13 +50,19 @@ import Combine
          let receiverFriendInfo = convertUserToFriend.convertUserToFriend(user: newFriend)
          // move most of this to view model
          let friend = await fbFirestoreService.sendFriendRequest(senderFriendInfo: senderFriendInfo, receiverFriendInfo: receiverFriendInfo)
+         //save to cloud
          switch friend {
          case .success(let friend):
              break
-             // don't save freinds locally. jsut save in cloud and listen'
 //             diskSpaceHandler.saveProfileImageToDisc(imageString: friend.imageString,
 //                                                     image: friendProfileImage)
-//             coreDataController.saveFriend(friend: friend)
+             
+             // Ensure required fields are set before saving to Core Data
+//             var validFriend = friend
+//             validFriend.isFavorite = validFriend.isFavorite ?? false // Default to false if nil
+//             validFriend.isFriend = validFriend.isFriend ?? false // Default to false if nil
+
+//             coreDataController.saveFriend(friend: validFriend)
 //                 .receive(on: DispatchQueue.main)
 //                 .sink(receiveCompletion: { completion in
 //                     switch completion {
@@ -66,7 +72,7 @@ import Combine
 //                         print("FAILED TO SAVE FRIEND TO CORE DATA: \(error)")
 //                     }
 //                 }, receiveValue: { savedEntity in
-//                     // DO SOMETHING WITH THE SAVED ENTITY IF NEEDED
+//                     // Handle saved entity if needed
 //                 })
 //                 .store(in: &cancellables)
              

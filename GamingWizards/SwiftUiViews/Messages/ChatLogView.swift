@@ -13,7 +13,7 @@ struct ChatLogView: View {
     @StateObject private var chatLogVM: ChatLogViewModel
     @State private var MessageBarTextEditorPlaceholder: String = "Description"
     @State private var isCreateReportUserViewShowing: Bool = false
-    let chatUser: FriendEntity?
+    let chatUser: Friend?
     @Binding var isChatLogViewPresented: Bool
     @State private var blockedUserData: [String: Any] = [:]
     
@@ -21,7 +21,7 @@ struct ChatLogView: View {
     
     init(
         presentationMode: Binding<PresentationMode>,
-        chatUser: FriendEntity?,
+        chatUser: Friend?,
         isChatLogViewPresented: Binding<Bool>
         
     ) {
@@ -117,7 +117,7 @@ struct ChatLogView: View {
             reportedUser: Binding(get: { chatLogVM.reportedUser }, set: { _ in }),
             chatRoomId: Binding<String>( get: { chatLogVM.reportedUser.id }, set: { _ in }),
             blockedUser: .constant(BlockedUser(data: blockedUserData)),
-            friendEntity: Binding<FriendEntity>( get: { chatUser! },
+            friendEntity: Binding<Friend>( get: { chatUser! },
                                                  set: { _ in }),
             isSearchResultsViewPresented: .constant(false),
             isChatLogViewPresented: $isChatLogViewPresented
